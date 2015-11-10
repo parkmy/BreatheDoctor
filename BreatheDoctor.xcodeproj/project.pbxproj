@@ -1,0 +1,522 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7912112F1BF1A6A6004166C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912112E1BF1A6A6004166C5 /* main.m */; };
+		791211321BF1A6A6004166C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211311BF1A6A6004166C5 /* AppDelegate.m */; };
+		791211351BF1A6A6004166C5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211341BF1A6A6004166C5 /* ViewController.m */; };
+		791211381BF1A6A6004166C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 791211361BF1A6A6004166C5 /* Main.storyboard */; };
+		7912113A1BF1A6A6004166C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 791211391BF1A6A6004166C5 /* Assets.xcassets */; };
+		7912113D1BF1A6A6004166C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7912113B1BF1A6A6004166C5 /* LaunchScreen.storyboard */; };
+		791211481BF1A6A6004166C5 /* BreatheDoctorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211471BF1A6A6004166C5 /* BreatheDoctorTests.m */; };
+		791211531BF1A6A6004166C5 /* BreatheDoctorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211521BF1A6A6004166C5 /* BreatheDoctorUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		791211441BF1A6A6004166C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 791211221BF1A6A6004166C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 791211291BF1A6A6004166C5;
+			remoteInfo = BreatheDoctor;
+		};
+		7912114F1BF1A6A6004166C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 791211221BF1A6A6004166C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 791211291BF1A6A6004166C5;
+			remoteInfo = BreatheDoctor;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7912112A1BF1A6A6004166C5 /* BreatheDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreatheDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7912112E1BF1A6A6004166C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		791211301BF1A6A6004166C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		791211311BF1A6A6004166C5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		791211331BF1A6A6004166C5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		791211341BF1A6A6004166C5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		791211371BF1A6A6004166C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		791211391BF1A6A6004166C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7912113C1BF1A6A6004166C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7912113E1BF1A6A6004166C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		791211431BF1A6A6004166C5 /* BreatheDoctorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreatheDoctorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		791211471BF1A6A6004166C5 /* BreatheDoctorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BreatheDoctorTests.m; sourceTree = "<group>"; };
+		791211491BF1A6A6004166C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7912114E1BF1A6A6004166C5 /* BreatheDoctorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreatheDoctorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		791211521BF1A6A6004166C5 /* BreatheDoctorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BreatheDoctorUITests.m; sourceTree = "<group>"; };
+		791211541BF1A6A6004166C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		791211271BF1A6A6004166C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		791211401BF1A6A6004166C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7912114B1BF1A6A6004166C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		791211211BF1A6A6004166C5 = {
+			isa = PBXGroup;
+			children = (
+				7912112C1BF1A6A6004166C5 /* BreatheDoctor */,
+				791211461BF1A6A6004166C5 /* BreatheDoctorTests */,
+				791211511BF1A6A6004166C5 /* BreatheDoctorUITests */,
+				7912112B1BF1A6A6004166C5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7912112B1BF1A6A6004166C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7912112A1BF1A6A6004166C5 /* BreatheDoctor.app */,
+				791211431BF1A6A6004166C5 /* BreatheDoctorTests.xctest */,
+				7912114E1BF1A6A6004166C5 /* BreatheDoctorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7912112C1BF1A6A6004166C5 /* BreatheDoctor */ = {
+			isa = PBXGroup;
+			children = (
+				791211301BF1A6A6004166C5 /* AppDelegate.h */,
+				791211311BF1A6A6004166C5 /* AppDelegate.m */,
+				791211331BF1A6A6004166C5 /* ViewController.h */,
+				791211341BF1A6A6004166C5 /* ViewController.m */,
+				791211361BF1A6A6004166C5 /* Main.storyboard */,
+				791211391BF1A6A6004166C5 /* Assets.xcassets */,
+				7912113B1BF1A6A6004166C5 /* LaunchScreen.storyboard */,
+				7912113E1BF1A6A6004166C5 /* Info.plist */,
+				7912112D1BF1A6A6004166C5 /* Supporting Files */,
+			);
+			path = BreatheDoctor;
+			sourceTree = "<group>";
+		};
+		7912112D1BF1A6A6004166C5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7912112E1BF1A6A6004166C5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		791211461BF1A6A6004166C5 /* BreatheDoctorTests */ = {
+			isa = PBXGroup;
+			children = (
+				791211471BF1A6A6004166C5 /* BreatheDoctorTests.m */,
+				791211491BF1A6A6004166C5 /* Info.plist */,
+			);
+			path = BreatheDoctorTests;
+			sourceTree = "<group>";
+		};
+		791211511BF1A6A6004166C5 /* BreatheDoctorUITests */ = {
+			isa = PBXGroup;
+			children = (
+				791211521BF1A6A6004166C5 /* BreatheDoctorUITests.m */,
+				791211541BF1A6A6004166C5 /* Info.plist */,
+			);
+			path = BreatheDoctorUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		791211291BF1A6A6004166C5 /* BreatheDoctor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 791211571BF1A6A6004166C5 /* Build configuration list for PBXNativeTarget "BreatheDoctor" */;
+			buildPhases = (
+				791211261BF1A6A6004166C5 /* Sources */,
+				791211271BF1A6A6004166C5 /* Frameworks */,
+				791211281BF1A6A6004166C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BreatheDoctor;
+			productName = BreatheDoctor;
+			productReference = 7912112A1BF1A6A6004166C5 /* BreatheDoctor.app */;
+			productType = "com.apple.product-type.application";
+		};
+		791211421BF1A6A6004166C5 /* BreatheDoctorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7912115A1BF1A6A6004166C5 /* Build configuration list for PBXNativeTarget "BreatheDoctorTests" */;
+			buildPhases = (
+				7912113F1BF1A6A6004166C5 /* Sources */,
+				791211401BF1A6A6004166C5 /* Frameworks */,
+				791211411BF1A6A6004166C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				791211451BF1A6A6004166C5 /* PBXTargetDependency */,
+			);
+			name = BreatheDoctorTests;
+			productName = BreatheDoctorTests;
+			productReference = 791211431BF1A6A6004166C5 /* BreatheDoctorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7912114D1BF1A6A6004166C5 /* BreatheDoctorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7912115D1BF1A6A6004166C5 /* Build configuration list for PBXNativeTarget "BreatheDoctorUITests" */;
+			buildPhases = (
+				7912114A1BF1A6A6004166C5 /* Sources */,
+				7912114B1BF1A6A6004166C5 /* Frameworks */,
+				7912114C1BF1A6A6004166C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				791211501BF1A6A6004166C5 /* PBXTargetDependency */,
+			);
+			name = BreatheDoctorUITests;
+			productName = BreatheDoctorUITests;
+			productReference = 7912114E1BF1A6A6004166C5 /* BreatheDoctorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		791211221BF1A6A6004166C5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = lwh;
+				TargetAttributes = {
+					791211291BF1A6A6004166C5 = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = B9SY9N7DJU;
+					};
+					791211421BF1A6A6004166C5 = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = B9SY9N7DJU;
+						TestTargetID = 791211291BF1A6A6004166C5;
+					};
+					7912114D1BF1A6A6004166C5 = {
+						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = B9SY9N7DJU;
+						TestTargetID = 791211291BF1A6A6004166C5;
+					};
+				};
+			};
+			buildConfigurationList = 791211251BF1A6A6004166C5 /* Build configuration list for PBXProject "BreatheDoctor" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 791211211BF1A6A6004166C5;
+			productRefGroup = 7912112B1BF1A6A6004166C5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				791211291BF1A6A6004166C5 /* BreatheDoctor */,
+				791211421BF1A6A6004166C5 /* BreatheDoctorTests */,
+				7912114D1BF1A6A6004166C5 /* BreatheDoctorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		791211281BF1A6A6004166C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7912113D1BF1A6A6004166C5 /* LaunchScreen.storyboard in Resources */,
+				7912113A1BF1A6A6004166C5 /* Assets.xcassets in Resources */,
+				791211381BF1A6A6004166C5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		791211411BF1A6A6004166C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7912114C1BF1A6A6004166C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		791211261BF1A6A6004166C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				791211351BF1A6A6004166C5 /* ViewController.m in Sources */,
+				791211321BF1A6A6004166C5 /* AppDelegate.m in Sources */,
+				7912112F1BF1A6A6004166C5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7912113F1BF1A6A6004166C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				791211481BF1A6A6004166C5 /* BreatheDoctorTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7912114A1BF1A6A6004166C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				791211531BF1A6A6004166C5 /* BreatheDoctorUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		791211451BF1A6A6004166C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 791211291BF1A6A6004166C5 /* BreatheDoctor */;
+			targetProxy = 791211441BF1A6A6004166C5 /* PBXContainerItemProxy */;
+		};
+		791211501BF1A6A6004166C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 791211291BF1A6A6004166C5 /* BreatheDoctor */;
+			targetProxy = 7912114F1BF1A6A6004166C5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		791211361BF1A6A6004166C5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				791211371BF1A6A6004166C5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7912113B1BF1A6A6004166C5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7912113C1BF1A6A6004166C5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		791211551BF1A6A6004166C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		791211561BF1A6A6004166C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		791211581BF1A6A6004166C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = BreatheDoctor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.comvee.breathe.BreatheDoctor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		791211591BF1A6A6004166C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = BreatheDoctor/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.comvee.breathe.BreatheDoctor;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7912115B1BF1A6A6004166C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BreatheDoctorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.comvee.breathe.BreatheDoctorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BreatheDoctor.app/BreatheDoctor";
+			};
+			name = Debug;
+		};
+		7912115C1BF1A6A6004166C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BreatheDoctorTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.comvee.breathe.BreatheDoctorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BreatheDoctor.app/BreatheDoctor";
+			};
+			name = Release;
+		};
+		7912115E1BF1A6A6004166C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = BreatheDoctorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.comvee.breathe.BreatheDoctorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = BreatheDoctor;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		7912115F1BF1A6A6004166C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = BreatheDoctorUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.comvee.breathe.BreatheDoctorUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = BreatheDoctor;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		791211251BF1A6A6004166C5 /* Build configuration list for PBXProject "BreatheDoctor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				791211551BF1A6A6004166C5 /* Debug */,
+				791211561BF1A6A6004166C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		791211571BF1A6A6004166C5 /* Build configuration list for PBXNativeTarget "BreatheDoctor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				791211581BF1A6A6004166C5 /* Debug */,
+				791211591BF1A6A6004166C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7912115A1BF1A6A6004166C5 /* Build configuration list for PBXNativeTarget "BreatheDoctorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7912115B1BF1A6A6004166C5 /* Debug */,
+				7912115C1BF1A6A6004166C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		7912115D1BF1A6A6004166C5 /* Build configuration list for PBXNativeTarget "BreatheDoctorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7912115E1BF1A6A6004166C5 /* Debug */,
+				7912115F1BF1A6A6004166C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 791211221BF1A6A6004166C5 /* Project object */;
+}
