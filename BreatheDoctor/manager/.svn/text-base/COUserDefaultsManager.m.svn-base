@@ -1,0 +1,95 @@
+//
+//  CAUserDefaultsManager.m
+//  CWGJCarPark
+//
+//  Created by mutouren on 9/7/15.
+//  Copyright (c) 2015 mutouren. All rights reserved.
+//
+
+#import "COUserDefaultsManager.h"
+
+
+static NSString *const kUserModelKey = @"kUserModelKey";
+static NSString *const kPushIDKey = @"kPushIDKey";
+static NSString *const kUserPayTypeKey = @"kUserPayTypeKey";
+
+
+
+@interface COUserDefaultsManager ()
+
+@property (nonatomic, strong) NSUserDefaults *ud;
+
+@end
+
+
+@implementation COUserDefaultsManager
+
+
+//share Instance of ViewManager
++ (COUserDefaultsManager *)shareInstance
+{
+    static COUserDefaultsManager *instance = nil;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^ { instance = [[COUserDefaultsManager alloc] init]; });
+    return instance;
+}
+
+-(id)init
+{
+    self = [super init];
+    if (self) {
+        self.ud = [NSUserDefaults standardUserDefaults];
+    }
+    return self;
+}
+
+#pragma mark 保存用户数据
+- (void)saveUserModel:(COUserModel*)userModel
+{
+    if (userModel){
+        NSData * data = [NSKeyedArchiver archivedDataWithRootObject:userModel];
+        [_ud setObject:data forKey:kUserModelKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+}
+#pragma mark 删除用户数据
+- (void)removeUserModel
+{
+        [_ud removeObjectForKey:kUserModelKey];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+#pragma mark 返回用户数据
+- (COUserModel*)userModel
+{
+    return [NSKeyedUnarchiver unarchiveObjectWithData:[_ud objectForKey:kUserModelKey]];
+}
+
+
+#pragma mark 保存用户支付方式
+- (void)saveUserPayType:(PayType)type
+{
+    NSNumber *ber = [NSNumber numberWithInt:type];
+    [_ud setObject:ber forKey:kUserPayTypeKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+#pragma mark 返回用户支付方式
+- (PayType)userPayType
+{
+    NSNumber *ber = [_ud objectForKey:kUserPayTypeKey];
+    if (ber) {
+        return [ber intValue];
+    }
+    return 1;
+}
+
+#pragma mark 删除支付方式
+- (void)removeUserPayType
+{
+    [_ud removeObjectForKey:kUserPayTypeKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+@end

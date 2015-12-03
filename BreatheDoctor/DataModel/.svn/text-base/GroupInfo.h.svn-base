@@ -1,0 +1,20 @@
+//
+//  groupInfo.h
+//  ComveeDoctor
+//
+//  Created by happytool on 15/5/6.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface GroupInfo : NSObject
+@property(nonatomic, strong) NSString*  groupId;
+@property(nonatomic, strong) NSString* groupName;
+@property(nonatomic, strong) NSNumber* peopleNumber;
+@property(nonatomic, strong) NSNumber* doctorId;
+@property(nonatomic, strong) NSString* insertDt;
+@property(nonatomic, assign) int isValid;
+@property(nonatomic, strong) NSString* modifyDt;
+@property (nonatomic, assign) BOOL ifDelegate;
+@end

@@ -1,0 +1,21 @@
+//
+//  groupInfo.m
+//  ComveeDoctor
+//
+//  Created by happytool on 15/5/6.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import "GroupInfo.h"
+#import "LKDBHelper.h"
+
+@implementation GroupInfo
+@synthesize groupId;
+@synthesize groupName;
+@synthesize peopleNumber;
+
++(NSString*)getPrimaryKey
+{
+    return @"groupId";
+}
+@end

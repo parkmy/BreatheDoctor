@@ -1,0 +1,26 @@
+//
+//  MessageDataCenter.h
+//  ComveeDoctor
+//
+//  Created by happytool on 15/5/12.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "ChartMessage.h"
+
+@interface MessageDataCenter : NSObject
+
++(MessageDataCenter *)sharedInstance;
+
+@property (nonatomic ,retain) NSMutableDictionary* gDataQuene;
+
+-(BOOL)addElement:(ChartMessage*)item forKey:(NSString*)key;
+-(BOOL)deleteElement:(NSString*)key;
+-(BOOL)updateElement:(NSString*)key;
+-(ChartMessage*)getElement:(NSString*)key;
+-(NSString*)getKeyByElement:(ChartMessage*)element;
+-(BOOL)isExitElement:(NSString*)key;
+-(BOOL)isExitElementByData:(ChartMessage *)item;
+-(BOOL)clearElement;
+@end

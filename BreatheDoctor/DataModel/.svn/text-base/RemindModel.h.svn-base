@@ -1,0 +1,37 @@
+//
+//  RemindModel.h
+//  ComveeDoctor
+//
+//  Created by happytool on 15/7/6.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface RemindModel : NSObject
+
+@property (nonatomic, strong) NSString* detailNewsType;
+
+@property (nonatomic, strong) NSString* remark;
+
+@property (nonatomic, strong) NSString* pushDt;
+
+@property (nonatomic, strong) NSString* pushtime;
+
+@property (nonatomic, strong) NSString* memberIdStr;
+
+@property (nonatomic, strong) NSString* contentText;
+
+@property (nonatomic, strong) NSString* doctorId;
+
+@property (nonatomic, strong) NSString* newsType;
+
+@property (nonatomic, strong) NSString* memberNameStr;
+
+@property (nonatomic, strong) NSString* remindPeople;
+
+@property (nonatomic, strong) NSString* remindHz;
+
+@property (nonatomic, strong) NSString* newsId;
+
+@end

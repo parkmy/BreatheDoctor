@@ -1,0 +1,94 @@
+//
+//  MessageDataCenter.m
+//  ComveeDoctor
+//
+//  Created by happytool on 15/5/12.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import "MessageDataCenter.h"
+#import "ShareFun.h"
+
+static MessageDataCenter *MessageDC = nil;
+
+@implementation MessageDataCenter
+
+
+@synthesize gDataQuene;
+- (void)initialize
+{
+    gDataQuene = [[NSMutableDictionary alloc] init];
+}
+
++ (MessageDataCenter *)sharedInstance
+{
+    @synchronized(self)
+    {
+        if (MessageDC == nil)
+        {
+            MessageDC = [[MessageDataCenter alloc] init];
+            [MessageDC initialize];
+        }
+    }
+    return MessageDC;
+}
+-(BOOL)addElement:(ChartMessage *)item forKey:(NSString *)key
+{
+    if ([ShareFun isNullOrEmpty:key]) {
+        return NO;
+    }
+    
+    [gDataQuene setValue:item forKey:key];
+    
+    return YES;
+}
+
+-(BOOL)updateElement:(NSString*)key;
+{
+    return YES;
+}
+
+-(ChartMessage *)getElement:(NSString *)key
+{
+    return  [gDataQuene objectForKey:key];
+}
+-(NSString*)getKeyByElement:(ChartMessage *)element
+{
+    for (NSString* key in gDataQuene.allKeys)
+    {
+        if ([[gDataQuene objectForKey:key] isEqual:element]) {
+            return key;
+            
+        }
+    }
+    return nil;
+}
+-(BOOL)isExitElement:(NSString *)key
+{
+    return [gDataQuene.allKeys containsObject:key];
+}
+-(BOOL)isExitElementByData:(ChartMessage *)item
+{
+    for(NSString* key in gDataQuene.allKeys)
+    {
+        ChartMessage* element = [gDataQuene objectForKey:key];
+        if ([element isEqual:item])
+        {
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(BOOL)deleteElement:(NSString *)key
+{
+    [gDataQuene removeObjectForKey:key];
+    return YES;
+}
+-(BOOL)clearElement
+{
+    [gDataQuene removeAllObjects];
+    return true;
+}
+
+@end

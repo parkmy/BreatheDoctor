@@ -1,0 +1,434 @@
+//
+//  CDSetting.m
+//  ComveeDoctor
+//
+//  Created by zhengjw on 14-7-28.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import "CDSetting.h"
+
+@implementation CDSetting
+
++(void)setIsAutoLogin:(BOOL)yesOrNo
+{
+    NSUserDefaults *yinDaoDefaults=[NSUserDefaults standardUserDefaults];
+    
+    [yinDaoDefaults setBool:yesOrNo forKey:@"isAutoLogin"];
+    [yinDaoDefaults synchronize];
+    
+}
+
++(BOOL)readIsAutoLoginState
+{
+    NSUserDefaults *yinDaoDefaults=[NSUserDefaults standardUserDefaults];
+    return [yinDaoDefaults boolForKey:@"isAutoLogin"];
+}
+
++(void) writeFirstUse:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    if(strValue==nil)
+    {
+        [yinDaoDefaults setObject:@"" forKey:@"FirstUse"];
+    }
+    else {
+        [yinDaoDefaults setObject:strValue forKey:@"FirstUse"];
+    }
+    [yinDaoDefaults synchronize];
+}
+
++ (NSInteger) readFirstUse
+{
+    NSInteger nValue = 0;
+    
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"FirstUse"];
+    if(strValue!=nil)
+    {
+        nValue = [strValue intValue];
+    }
+    
+    return nValue;
+}
+
++(void) writeFirstInputeMainView:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    if(strValue==nil)
+    {
+        [yinDaoDefaults setObject:@"" forKey:@"FirstMainView"];
+    }
+    else {
+        [yinDaoDefaults setObject:strValue forKey:@"FirstMainView"];
+    }
+    [yinDaoDefaults synchronize];
+
+}
+
++ (NSInteger) readFirstInputeMainView
+{
+    NSInteger nValue = 0;
+    
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"FirstMainView"];
+    if(strValue!=nil)
+    {
+        nValue = [strValue intValue];
+    }
+    
+    return nValue;
+}
+
++(void) writeFirstInputeMsgView:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    if(strValue==nil)
+    {
+        [yinDaoDefaults setObject:@"" forKey:@"FirstMsgView"];
+    }
+    else {
+        [yinDaoDefaults setObject:strValue forKey:@"FirstMsgView"];
+    }
+    [yinDaoDefaults synchronize];
+    
+}
+
++ (NSInteger) readFirstInputeMsgView
+{
+    NSInteger nValue = 0;
+    
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"FirstMsgView"];
+    if(strValue!=nil)
+    {
+        nValue = [strValue intValue];
+    }
+    
+    return nValue;
+}
+
+
++ (void) writeUnReadNum:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    if(strValue==nil)
+    {
+        [yinDaoDefaults setObject:@"0" forKey:@"UnReadNum"];
+    }
+    else {
+        [yinDaoDefaults setObject:strValue forKey:@"UnReadNum"];
+    }
+    [yinDaoDefaults synchronize];
+
+}
+
++ (NSInteger) readUnReadNum
+{
+    NSInteger nValue = 0;
+    
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"UnReadNum"];
+    if(strValue!=nil)
+    {
+        nValue = [strValue intValue];
+    }
+    
+    return nValue;
+}
+
++(void)writeOpenTime:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    if(strValue==nil)
+    {
+        [yinDaoDefaults setObject:@"" forKey:@"OpenTime"];
+    }
+    else {
+        [yinDaoDefaults setObject:strValue forKey:@"OpenTime"];
+    }
+    [yinDaoDefaults synchronize];
+}
+
++ (NSInteger)readOpenTime
+{
+    NSInteger nValue = 0;
+    
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"OpenTime"];
+    if(strValue!=nil)
+    {
+        nValue = [strValue intValue];
+    }
+    
+    return nValue;
+}
+
+
+//登陆用户名
++ (void) writeUserLoginName:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    [yinDaoDefaults setObject:strValue forKey:@"UserLoginName"];
+    [yinDaoDefaults synchronize];
+}
+
++ (NSString*) readUserLoginName
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"UserLoginName"];
+    return strValue;
+}
+
+
+//登陆密码
++ (void) writeUserLoginPasswd:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    [yinDaoDefaults setObject:strValue forKey:@"UserLoginPasswd"];
+    [yinDaoDefaults synchronize];
+}
+
++ (NSString*) readUserLoginPasswd
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"UserLoginPasswd"];
+    return strValue;
+}
+//捷酷地址配置
++ (void) writeComveeUrl:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    [yinDaoDefaults setObject:strValue forKey:@"ComveeUrl"];
+    [yinDaoDefaults synchronize];
+}
+
++ (NSString*) readComveeUrl
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"ComveeUrl"];
+    return strValue;
+}
+
+
++ (void) writeUserPhotoUrl:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    [yinDaoDefaults setObject:strValue forKey:@"UserPhotoUrl"];
+    [yinDaoDefaults synchronize];
+}
+
++ (NSString*) readUserPhotoUrl
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"UserPhotoUrl"];
+    return strValue;
+}
+
++ (void)writeUserNichen:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    [yinDaoDefaults setObject:strValue forKey:@"UserNichen"];
+    [yinDaoDefaults synchronize];
+}
+
++ (NSString*)readUserNichen
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"UserNichen"];
+    return strValue;
+}
+
++ (void) writeSessionID:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    [yinDaoDefaults setObject:strValue forKey:@"SessionID"];
+    [yinDaoDefaults synchronize];
+}
++ (NSString*) readSessionID
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"SessionID"];
+    return strValue;
+}
+
++ (void) writeDoctorID:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    [yinDaoDefaults setObject:strValue forKey:@"DoctorID"];
+    [yinDaoDefaults synchronize];
+}
+
++ (NSString*)readDoctorID
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"DoctorID"];
+    return strValue;
+}
+
++ (void) writeSessionDoctorID:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    [yinDaoDefaults setObject:strValue forKey:@"SessionDoctorID"];
+    [yinDaoDefaults synchronize];
+}
+
++ (NSString*) readSessionDoctorID
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"SessionDoctorID"];
+    return strValue;
+}
+
+//写入设备号（推送token）
++ (void) writeDeviceToken:(NSString*)strValue
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    if(strValue==nil)
+    {
+        [yinDaoDefaults setObject:@"" forKey:@"deviceToken"];
+    }
+    else
+    {
+        [yinDaoDefaults setObject:strValue forKey:@"deviceToken"];
+    }
+    [yinDaoDefaults synchronize];
+}
+
++ (NSString*) readDeviceToken
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"deviceToken"];
+    if(strValue==nil)
+    {
+        return @"";
+    }
+    return strValue;
+}
+
+
+///写入随访id
++ (void) writeFollowUpId:(NSNumber*)followId
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    if(followId==nil)
+    {
+        [yinDaoDefaults setObject:@"" forKey:@"followId"];
+    }
+    else
+    {
+        [yinDaoDefaults setObject:followId forKey:@"followId"];
+    }
+    [yinDaoDefaults synchronize];
+}
+
+///读取随访Id
++ (NSNumber*) readFollowUpId
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *strValue = [yinDaoDefaults objectForKey:@"followId"];
+    if(strValue==nil)
+    {
+        return nil;
+    }
+    return strValue;
+}
+
++(void)writeFollowMsg:(NSMutableArray *)data WithKey:(NSString*)key
+{
+    NSString *documents = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [documents stringByAppendingPathComponent:key];//拓展名可以自己随便取
+    [NSKeyedArchiver archiveRootObject:data toFile:path];
+}
+
++(NSMutableArray *)readFollowMsgWithKey:(NSString*)key
+{
+    NSString *documents = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [documents stringByAppendingPathComponent:key];
+    NSMutableArray*myData  = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+
+    return myData;
+}
+
++(void) delegateFollowUpMsgWithKey:(NSString*)key
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSFileManager *fileMgr = [NSFileManager defaultManager];
+    NSString *MapLayerDataPath = [documentsDirectory stringByAppendingPathComponent:key];
+    BOOL bRet = [fileMgr fileExistsAtPath:MapLayerDataPath];
+    if (bRet) {
+        //
+        NSError *err;
+        [fileMgr removeItemAtPath:MapLayerDataPath error:&err];
+    }
+
+   
+}
+
++(void)writeFastReply:(NSArray*)data WithKey:(NSString*)key
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    [yinDaoDefaults setObject:data forKey:key];
+    [yinDaoDefaults synchronize];
+
+}
+
++(NSMutableArray *)readFastReply:(NSString*)key
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableArray*myData = [yinDaoDefaults objectForKey:key];
+    return myData;
+}
+
++ (void)writeClientVersion:(NSString*)key
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    [yinDaoDefaults setObject:key forKey:@"time"];
+    [yinDaoDefaults synchronize];
+}
+
++ (NSString*)readVersion
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:@"time"];
+    return strValue;
+
+}
+
++(void)writeTheDraftWith:(NSString*)Msg WithKey:(NSString*)key
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    [yinDaoDefaults setObject:Msg forKey:key];
+    [yinDaoDefaults synchronize];
+
+}
+
++(NSString*)readTheDraftWithKey:(NSString*)key
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:key];
+    return strValue;
+}
+
++ (void)removeTheDraftWithKey:(NSString*)key
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    [yinDaoDefaults removeObjectForKey:key];
+}
+
++(void)writeFilePath:(NSString*)ownPath withKey:(NSString*)key
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    [yinDaoDefaults setObject:ownPath forKey:key];
+    [yinDaoDefaults synchronize];
+}
++(NSString*)readFilePath:(NSString*)key
+{
+    NSUserDefaults *yinDaoDefaults = [NSUserDefaults standardUserDefaults];
+    NSString *strValue = [yinDaoDefaults objectForKey:key];
+    return strValue;
+}
+
+@end

@@ -1,0 +1,37 @@
+//
+//  CDGloablVar.m
+//  ComveeDoctor
+//
+//  Created by zhengjw on 14-7-28.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import "CDGloablVar.h"
+
+@implementation CDGloablVar
+
+@synthesize pushTokenKey;
+@synthesize sessionID;
+@synthesize sessionDoctorID;
+@synthesize urlPersonalGuide;
+@synthesize currentPatientID;
+@synthesize DBName;
+@synthesize isLogin;
+@synthesize netWorkOK;
+
+static CDGloablVar *gloablVarSingleton = nil;
+
++ (CDGloablVar *) sharedGloablVar
+{
+	@synchronized(self)
+	{
+		if (!gloablVarSingleton)
+		{
+			gloablVarSingleton = [[CDGloablVar alloc] init];
+		}
+		return gloablVarSingleton;
+	}
+}
+
+
+@end

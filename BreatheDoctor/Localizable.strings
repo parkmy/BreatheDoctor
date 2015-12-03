@@ -1,0 +1,106 @@
+/* 
+  Localizable.strings
+  ComveeDoctor
+
+  Created by zhengjw on 14-7-27.
+  Copyright (c) 2014年 zhengjw. All rights reserved.
+*/
+
+/*
+ *      导航控制器标题
+ */
+
+"NAV_MAINVIEW_TEXT" = "掌控糖尿病";
+
+"LOGINING_TEXT" = "正在登录...";
+"LOADING_TEXT" = "加载中...";
+"LOADFAIED_TEXT" = "网络连接失败，请检查";
+"CONNECTSERVERFAIL" = "连接服务器失败";
+"POST_TEXT" = "提交中...";
+"CHECK_TEXT" = "验证中...";
+"DETECT_TEXT" = "验证中...";
+
+"MAINVIEW_SEARCH_PLACEHOLDER" = "搜索";
+
+"NAV_PATIENT_TEXT" = "患者";
+"NAV_SELECT_PATIENT" = "选择患者";
+"NAV_PATIENTPERSONALCENTER_TEXT" = "患者个人中心";
+"PATIENTPERSONALCENTER_ADD_TEXT" = "添加患者";
+"PATIENTFILE_TEXT"               = "患者档案";
+"PATIENT_SYSTEMINFORM_TEXT" = "套餐记录";
+"Remind_Detail"                 = "提醒详情";
+"NAV_ABNORMAL_TEXT"                       = "异常提醒";
+"NAV_SAVE_PATIENT" = "保存";
+"PATIENT_MSG" = "患者信息";
+"NAV_PATIENTHEALTHRECORD_TEXT"   = "体征监测记录";
+"NAV_PATIENT_TAXTLIST_TEXT"      = "任务记录";
+"NAV_TAXTLIST_TEXT"              = "任务列表";
+"NAV_ADD_TAXT_TEXT"              = "添加任务";
+
+"PATIENTADD_ALERT_NOPATIENTNAME" = "对不起,请输入患者姓名";
+"PATIENTADD_ALERT_NOTTELNUM" =  "对不起,请输入手机号码";
+"PATIENTADD_ALERT_IncorrectTELNUM" =  "对不起,请输入正确的手机号码";
+
+"NAV_PERSONAL_TEXT" = "个人中心";
+"NAV_More_SETTING" = "更多设置";
+"NAV_PERSONAL_GUIDE" = "使用指南";
+"NAV_Statement"     = "声明";
+"NAV_PERSONAL_TIME" ="问答时间设置";
+"NAV_PERSONAL_TIMEADD" = "新建";
+"NAV_PERSONAL_TIMEEDIT" = "编辑";
+"NAV_PERSONAL_REMIND" = "推送设置";
+"NAV_PERSONAL_PASSMODIFY" = "密码修改";
+"NAV_PERSONAL_MSG" = "个人信息";
+"EDITMSG" = "编辑";
+"NAV_EDITMSG" = "消息编辑";
+"NAV_EDITMSG_DETAIL" = "消息详情";
+
+"CONSULT" = "我的咨询";
+"PATIENTCONSULT" = "问题咨询记录";
+"The_Task_Center" = "任务中心";
+"The_Task_Detail" = "任务详情";
+"NAV_PERSONAL_REGTITLE" = "注册";
+"NAV_PERSONAL_REGTITLE2" = "忘记密码";
+"PERSONAL_LOGINACCOUT" = "手机号";
+"PERSONAL_LOGINPASSWD" = "密码";
+"PERSONAL_LOGINBUTTON" = "登 录";
+"PERSONAL_FORGETPASSWD" = "忘记密码?";
+"PERSONAL_LOGINREMARK" = "暂时仅供经过身份核实的康为注册医生使用";
+
+
+"LOGIN_ALERT_NOUSERNAME" = "对不起，用户名不能为空";
+"LOGIN_ALERT_NOPASSWORD" = "对不起，密码不能为空";
+"LOGIN_ALERT_IncorrectUsername" =  "对不起，请输入正确的用户名";
+"LOGIN_ALERT_IncorrectPassword" = "对不起，请输入正确的密码";
+
+"LOGIN_ALERT_IncorrectLengthUsername" = "请输入2-15个中文";
+"LOGIN_ALERT_PleaseInputChinese" = "请输入中文";
+"LOGIN_ALERT_InputCompletionInfo" = "请输入完整信息";
+
+
+"MAIN_ADDREMAIND_TEXT"          = "添加日程";
+"MAIN_Modify the reminder"      = "日程编辑";
+"ADDREMAIND_ALERT_TEXT"         = "对不起,提醒事项不能为空";
+"NaV_IMAGE_TEXT"                = "图文咨询";
+"Fast Reply"                    = "快捷回复";
+"AddMsg"                        = "添加";
+"Suggest that can't be empty"   = "建议不能为空";
+
+"AddFollowUp"                   = "添加随访" ;
+"Follow-up for the first time"  = "首次随访";
+"NAV_FOLLOWUP_ASSESS_TEXT"      = "随访记录";
+"CONTROL_TARGET_TEXT"           = "管理目标设置";
+"CreatFollowUp"                 = "创建随访" ;
+"NAV_NEWADD_TASKMODE"           = "新建任务模板";
+"NAV_TASK_DESCRIBE"             = "任务描述";
+"Follow-up_Record"              = "随访记录";
+"Group-Sent-Message"            = "群发消息";
+"ReceiverPeoPle"                = "收件人" ;
+"Personal_AboutUs"              = "关于我们";
+"SystemInforms"                 = "系统通知";
+"RemarkSetting"                 = "备注";
+"PatientGroup"                  = "患者分组";
+"TelAddPatient"                 = "手机添加";
+"Patient_data"                  = "患者资料";
+"Search_Result"                 = "查找结果";
+"PerfectInformation"            = "完善信息";

@@ -1,0 +1,28 @@
+//
+//  ControllerExtraDataManager.h
+//  BaseMVVM
+//
+//  Created by suyushen on 15/8/11.
+//  Copyright (c) 2015年 suyushen. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface ControllerExtraDataManager : NSObject
+
+
++ (ControllerExtraDataManager *)shareInstance;
+
+#pragma mark 存数据
+- (void)setObject:(id)obj forKey:(NSString*)key;
+
+#pragma mark 取数据
+- (id)objectForKey:(NSString*)key;
+
+#pragma mark 清除所有数据
+- (void)clearAllData;
+
+#pragma mark 清除数据
+- (void)clearDataForKey:(NSString*)key;
+
+@end

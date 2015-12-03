@@ -1,0 +1,30 @@
+//
+//  CreatFollowUpMsg.h
+//  ComveeDoctor
+//
+//  Created by JYL on 14-9-14.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+
+@interface CreatFollowUpMsg : NSObject
+
+@property (nonatomic, strong) NSNumber * defualtCheck;
+@property (nonatomic, strong) NSString * path;
+@property (nonatomic, strong) NSString * dictName;
+@property (nonatomic, strong) NSString * dictValue;
+@property (nonatomic, strong) NSString * itemCode;
+///选中第一层数据是其他层级原图片
+@property (nonatomic, strong) NSString * oldImg;
+@property (nonatomic, assign) BOOL isShow;
+@property (nonatomic, assign) BOOL isExpanded;
+@property (nonatomic, assign) NSUInteger nodeLevel;
+@property (nonatomic, assign) BOOL lastLevel;
+///倒数第二层
+@property (nonatomic, assign) BOOL beforeLevel;
+
+@property (nonatomic, assign) int followType;
+
+@end

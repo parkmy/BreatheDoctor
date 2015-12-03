@@ -1,0 +1,95 @@
+//
+//  ChartMessage.m
+//  ComveeDoctor
+//
+//  Created by happytool on 15/4/15.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import "ChartMessage.h"
+#import "LKDBHelper.h"
+#import "CDMacro.h"
+#import "ShareFun.h"
+
+@implementation ChartMessage
+
++(ChartMessage*)ConvertDictToModel:(NSDictionary *) dic
+{
+    ChartMessage* mes = [[ChartMessage alloc] init];
+    mes.doctorId = [dic objectForKey:@"doctorId"];
+    mes.ownerType = [dic objectForKey:@"ownerType"];
+    mes.msgContent = [dic objectForKey:@"msgContent"];
+    mes.sid = [dic objectForKey:@"sid"];
+    mes.msgType = [dic objectForKey:@"msgType"];
+    
+    mes.memberId = [dic objectForKey:@"memberId"];
+    mes.insertDt = [dic objectForKey:@"insertDt"];
+    mes.isDispose = [dic objectForKey:@"isDispose"];
+    mes.timeStamp =  [dic objectForKey:@"timeStamp"];
+    mes.foreignId = [dic objectForKey:@"foreignId"];
+    mes.is_valid = [[dic objectForKey:@"isValid"] boolValue];
+    mes.modifyDt = [dic objectForKey:@"modifyDt"];
+    
+    NSDictionary* dataStruct = [dic objectForKey:@"dataStruct"];
+    
+    if (dataStruct && [dataStruct isKindOfClass:[NSDictionary class]])
+    {
+        
+        if(![ShareFun isNullOrEmpty:[dic objectForKey:@"doctorContent"]])
+        {
+            mes.msgContent = [dic objectForKey:@"doctorContent"];
+        }
+        
+        mes.paramCode = [dataStruct objectForKey:@"paramCode"];
+        mes.paramLevel = [dataStruct objectForKey:@"paramLevel"];
+        mes.title = [dataStruct objectForKey:@"title"];
+        mes.recordTime = [dataStruct objectForKey:@"recordTime"];
+        mes.bloodpressurediastolic = [dataStruct objectForKey:@"bloodpressurediastolic"];
+        mes.bloodpressuresystolic = [dataStruct objectForKey:@"bloodpressuresystolic"];
+        mes.bloodglucoseValue = [dataStruct objectForKeyedSubscript:@"bloodglucoseValue"];
+        mes.unit = [dataStruct objectForKey:@"unit"];
+        mes.bmiValue = [dataStruct objectForKey:@"bmiValue"];
+        mes.height = [dataStruct objectForKey:@"height"];
+        mes.weight = [dataStruct objectForKey:@"weight"];
+        mes.content = [dataStruct objectForKey:@"content"];
+        mes.jobList = [dataStruct objectForKey:@"jobList"];
+        mes.entrance = [dataStruct objectForKey:@"entrance"];
+        mes.followupType = [dataStruct objectForKey:@"followupType"];
+        mes.checkTime = [dataStruct objectForKey:@"time"];
+        mes.TC = [dataStruct objectForKey:@"TCHO"];
+        mes.TG = [dataStruct objectForKey:@"TG"];
+        mes.HDL = [dataStruct objectForKey:@"HDL"];
+        mes.LDL = [dataStruct objectForKey:@"LDL"];
+        mes.FT3 = [dataStruct objectForKey:@"FT3"];
+        mes.FT4 = [dataStruct objectForKey:@"FT4"];
+        mes.TSH = [dataStruct objectForKey:@"TSH"];
+        mes.TGAb = [dataStruct objectForKey:@"TG-AB"];
+        mes.tpoaB = [dataStruct objectForKey:@"TPOAB"];
+
+        NSDictionary* attachlistDictionary = [[dataStruct objectForKey:@"attachList"] objectAtIndex:0];
+        if (attachlistDictionary)
+        {
+            mes.attachUrl = [attachlistDictionary objectForKey:@"attachUrl"];
+            mes.attachType = [[attachlistDictionary objectForKey:@"attachType"] intValue];
+            mes.voiceMins = [[attachlistDictionary objectForKey:@"voiceMins"] intValue];
+        }
+        else
+        {
+            mes.attachUrl = nil;
+            mes.attachType = TEXT;
+            mes.voiceMins = 0;
+        }
+        mes.remindTitle = [dataStruct objectForKey:@"remindTitle"];
+        mes.date = [dataStruct objectForKey:@"date"];
+        mes.time = [dataStruct objectForKey:@"time"];
+        mes.remindPeople = [dataStruct objectForKey:@"remindPeople"];
+    }
+    
+    
+    return mes;
+}
+@end
+@implementation AttachList
+
+
+@end

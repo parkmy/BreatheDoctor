@@ -1,0 +1,37 @@
+//
+//  MainViewShowMsg.m
+//  ComveeDoctor
+//
+//  Created by JYL on 14-8-5.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import "MainViewShowMsg.h"
+
+@implementation MainViewShowMsg
+@synthesize member_name;
+@synthesize default_head_image_url;
+@synthesize head_image_url;
+@synthesize memberId;
+@synthesize contentText;
+@synthesize insertDt;
+@synthesize pushDt;
+@synthesize identifying_image_url;
+@synthesize newsType;
+@synthesize newsId;
+@synthesize doctorId;
+@synthesize detailId;
+@synthesize con;
+@synthesize isValid;
+
+- (void)dealloc
+{
+    
+    
+}
+
++(NSString*)getPrimaryKey
+{
+    return @"memberId";
+}
+@end

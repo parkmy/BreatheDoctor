@@ -1,0 +1,182 @@
+//
+//  DoctorInputFollowUpMsg.m
+//  ComveeDoctor
+//
+//  Created by JYL on 14-9-24.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import "DoctorInputFollowUpMsg.h"
+
+@implementation DoctorInputFollowUpMsg
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
+@synthesize pCode;
+@synthesize childpCode;
+@synthesize ids;
+@synthesize isNeed;
+@synthesize isRestrain;
+@synthesize isShow;
+@synthesize itemCode;
+@synthesize itemList;
+@synthesize itemType;
+@synthesize help;
+@synthesize seq;
+@synthesize dictName;
+@synthesize category;
+@synthesize categoryName;
+@synthesize valueCode;
+@synthesize  childCode;
+@synthesize valueName;
+@synthesize rule;
+@synthesize tie;
+@synthesize rightMsg;
+@synthesize flick;
+@synthesize ifRestrain;
+@synthesize valueCodeArry;
+@synthesize path;
+@synthesize isValue;
+
+- (void)itemCode:(NSString*)itemCodes dictName:(NSString*)dictNames pCode:(NSString*)pCodes itemType:(NSString*)itemTypes isShow:(NSString*)isShows help:(NSString*)helps seq:(NSString*)seqs tie:(NSString*)ties isNeed:(NSString*)isNeeds category:(NSString*)categorys categoryName:(NSString*)categoryNames itemList:(NSMutableArray*)itemLists rule:(NSDictionary*)rules path:(NSString*)paths{
+    
+    itemCode = itemCodes;
+    dictName = dictNames;
+    pCode = pCodes;
+    itemType = itemTypes;
+    isShow = [NSString stringWithFormat:@"%@",isShows];
+    help =helps;
+    seq = seqs;
+    tie = ties;
+    isNeed = isNeeds;
+    category = categorys;
+    categoryName = categoryNames;
+    itemList = itemLists;
+    rule = rules;
+    path =paths;
+    
+}
+//需要格式化后才能存入本地
+-(void)encodeWithCoder:(NSCoder *)encoder{
+    [super encodeWithCoder:encoder];
+    [encoder encodeObject:itemCode forKey:@"itemCode"];
+    [encoder encodeObject:_childItemCode forKey:@"childItemCode"];
+    [encoder encodeObject:dictName forKey:@"dictName"];
+    [encoder encodeObject:pCode forKey:@"pCode"];
+    [encoder encodeObject:childpCode forKey:@"childpCode"];
+    [encoder encodeObject:itemType forKey:@"itemType"];
+    [encoder encodeObject: isShow forKey:@"isShow"];
+    [encoder encodeObject:help forKey:@"help"];
+    [encoder encodeObject:seq forKey:@"seq"];
+    [encoder encodeObject:isNeed forKey:@"isNeed"];
+    [encoder encodeObject:category forKey:@"category"];
+    [encoder encodeObject:categoryName forKey:@"categoryName"];
+    [encoder encodeObject:rule forKey:@"rule"];
+    [encoder encodeObject:tie forKey:@"tie"];
+    [encoder encodeObject:itemList forKey:@"itemList"];
+    [encoder encodeObject:_childItemList forKey:@"childItemList"];
+    
+    [encoder encodeObject:ids forKey:@"ids"];
+    [encoder encodeObject:valueCode forKey:@"valueCode"];
+    [encoder encodeObject:childCode forKey:@"childCode"];
+    
+    [encoder encodeObject:isValue forKey:@"isValue"];
+    [encoder encodeObject:valueName forKey:@"valueName"];
+    [encoder encodeObject:isRestrain forKey:@"isRestrain"];
+    [encoder encodeObject:path forKey:@"path"];
+    [encoder encodeObject:_allpath forKey:@"allpath"];
+    [encoder encodeObject:_defualtCheck forKey:@"defualtCheck"];
+    [encoder encodeObject:rightMsg forKey:@"rightMsg"];
+    
+    [encoder encodeObject:valueCodeArry forKey:@"valueCodeArry"];
+    [encoder encodeBool:flick forKey:@"flick"];
+    [encoder encodeBool:ifRestrain forKey:@"ifRestrain"];
+    [encoder encodeObject:_ritemCode forKey:@"ritemCode"];
+    [encoder encodeObject:_Code forKey:@"Code"];
+    [encoder encodeObject:_rightCode forKey:@"rightCode"];
+    [encoder encodeObject:_oldCode forKey:@"oldCode"];
+    [encoder encodeObject:_rightList forKey:@"rightList"];
+    [encoder encodeObject:_unit forKey:@"unit"];
+    [encoder encodeObject:_isFloat forKey:@"isFloat"];
+    
+    [encoder encodeObject:_max forKey:@"max"];
+    [encoder encodeObject:_min forKey:@"min"];
+    [encoder encodeObject:_defualt forKey:@"defualt"];
+    [encoder encodeObject:_standard_min forKey:@"standard_min"];
+    [encoder encodeObject:_standard_max forKey:@"standard_max"];
+    [encoder encodeObject:_date forKey:@"date"];
+    [encoder encodeObject:_oldImg forKey:@"oldImg"];
+    [encoder encodeInteger:_nodeLevel forKey:@"nodeLevel"];
+    [encoder encodeBool:_lastLevel forKey:@"lastLevel"];
+    [encoder encodeBool:_beforeLevel forKey:@"beforeLevel"];
+
+}
+
+-(id)initWithCoder:(NSCoder *)decoder{
+    
+    self = [super initWithCoder:decoder];
+  
+    itemCode =[decoder decodeObjectForKey:@"itemCode"];
+    _childItemCode=[decoder decodeObjectForKey:@"childItemCode"];
+    dictName =[decoder decodeObjectForKey:@"dictName"];
+    pCode=[decoder decodeObjectForKey:@"pCode"];
+    childpCode =[decoder decodeObjectForKey:@"childpCode"];
+    itemType=[decoder decodeObjectForKey:@"itemType"];
+    isShow =[decoder decodeObjectForKey:@"isShow"];
+    help=[decoder decodeObjectForKey:@"help"];
+    seq =[decoder decodeObjectForKey:@"seq"];
+    isNeed=[decoder decodeObjectForKey:@"isNeed"];
+    category=[decoder decodeObjectForKey:@"category"];
+    categoryName=[decoder decodeObjectForKey:@"categoryName"];
+    rule =[decoder decodeObjectForKey:@"rule"];
+    tie=[decoder decodeObjectForKey:@"tie"];
+    itemList =[decoder decodeObjectForKey:@"itemList"];
+    _childItemList=[decoder decodeObjectForKey:@"childItemList"];
+    ids =[decoder decodeObjectForKey:@"ids"];
+    valueCode=[decoder decodeObjectForKey:@"valueCode"];
+    childCode =[decoder decodeObjectForKey:@"childCode"];
+    isValue=[decoder decodeObjectForKey:@"isValue"];
+    valueName=[decoder decodeObjectForKey:@"valueName"];
+    isRestrain =[decoder decodeObjectForKey:@"isRestrain"];
+    path=[decoder decodeObjectForKey:@"path"];
+    _allpath =[decoder decodeObjectForKey:@"allpath"];
+    _defualtCheck=[decoder decodeObjectForKey:@"defualtCheck"];
+    rightMsg=[decoder decodeObjectForKey:@"rightMsg"];
+    valueCodeArry=[decoder decodeObjectForKey:@"valueCodeArry"];
+    flick =[decoder decodeBoolForKey:@"flick"];
+   
+    ifRestrain =[decoder decodeBoolForKey:@"ifRestrain"];
+    _ritemCode=[decoder decodeObjectForKey:@"ritemCode"];
+    _oldCode=[decoder decodeObjectForKey:@"oldCode"];
+    _rightList=[decoder decodeObjectForKey:@"rightList"];
+    _unit =[decoder decodeObjectForKey:@"unit"];
+   _isFloat=[decoder decodeObjectForKey:@"isFloat"];
+    _max =[decoder decodeObjectForKey:@"max"];
+    _min=[decoder decodeObjectForKey:@"min"];
+   _defualt =[decoder decodeObjectForKey:@"defualt"];
+   _standard_min=[decoder decodeObjectForKey:@"standard_min"];
+    _standard_max=[decoder decodeObjectForKey:@"standard_max"];
+    _date=[decoder decodeObjectForKey:@"date"];
+    _oldImg =[decoder decodeObjectForKey:@"oldImg"];
+    _lastLevel =[decoder decodeBoolForKey:@"lastLevel"];
+    _beforeLevel =[decoder decodeBoolForKey:@"beforeLevel"];
+    return self;
+}
+
+/*
+// Only override drawRect: if you perform custom drawing.
+// An empty implementation adversely affects performance during animation.
+- (void)drawRect:(CGRect)rect
+{
+    // Drawing code
+}
+*/
+
+@end

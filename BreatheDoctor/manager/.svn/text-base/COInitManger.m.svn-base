@@ -1,0 +1,47 @@
+
+//
+//  COInitManger.m
+//  CWGJCarOwner
+//
+//  Created by 廖维海 on 15/9/22.
+//  Copyright (c) 2015年 mutouren. All rights reserved.
+//
+#define kMapType @"maptype"
+
+#import "COInitManger.h"
+#import "HttpServer.h"
+#import "ControllerExtraDataManager.h"
+
+@implementation COInitManger
+
++ (COInitManger *)shareInstance
+{
+    static dispatch_once_t onceToken;
+    static COInitManger *manager;
+    dispatch_once(&onceToken, ^{
+        manager = [[COInitManger alloc] init];
+    });
+    return manager;
+}
+
+- (void)lodingMapInitType
+{
+    [HttpServer httpMrequestapTypeListsuccess:^(id responseObject) {
+        NSMutableArray *arr = [[NSMutableArray alloc]initWithArray:[(NSDictionary*)[(NSDictionary*)responseObject objectForKey:@"r_content"] objectForKey:@"rows"]];
+        NSMutableArray *objcs = [NSMutableArray array];
+        for (NSDictionary *dic in arr) {
+            COMapTypeModel *order = [[COMapTypeModel alloc] initWithDictionary:dic];
+            [objcs addObject:order];
+        }
+        [[ControllerExtraDataManager shareInstance] setObject:objcs forKey:kMapType];
+    } failure:^(NSString *errorMes) {
+        [MBProgressHUD showHUDWithText:errorMes view:[UIApplication sharedApplication].keyWindow];
+    }];
+}
+
+- (NSMutableArray *)mapTypes
+{
+    return [[ControllerExtraDataManager shareInstance] objectForKey:kMapType];
+}
+
+@end

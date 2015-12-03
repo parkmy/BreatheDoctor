@@ -1,0 +1,46 @@
+//
+//  MainViewShowMsg.h
+//  ComveeDoctor
+//
+//  Created by JYL on 14-8-5.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//首页展示信息解析
+
+#import <Foundation/Foundation.h>
+#import "LKDBHelper.h"
+
+@interface MainViewShowMsg : NSObject
+@property (nonatomic, assign) NSInteger rowid;
+@property (nonatomic, strong) NSString * memberId;
+@property (nonatomic, strong) NSString * default_head_image_url;
+@property (nonatomic, strong) NSString * head_image_url;
+@property (nonatomic, strong) NSString * member_name;
+@property (nonatomic, strong) NSString * contentText;
+@property (nonatomic, strong) NSString * detailId;
+@property (nonatomic, strong) NSNumber * newsType;
+@property (nonatomic, strong) NSString * dataStr;
+@property (nonatomic, assign) BOOL ifSystem;
+///消息子类型
+@property (nonatomic, strong) NSString * detailNewStype;
+
+//时间
+@property (nonatomic, strong) NSString * insertDt;
+//时间
+@property (nonatomic, strong) NSString * pushDt;
+@property (nonatomic, strong) NSString * identifying_image_url;
+//有都少条提示
+@property (nonatomic, assign) int  con;
+@property (nonatomic, strong) NSString * newsId;
+@property (nonatomic, strong) NSString * doctorId;
+
+///1患者2医生
+@property (nonatomic, assign) int useType;
+
+@property (nonatomic, assign) int state;
+
+@property (nonatomic, assign) int isValid;
+
+//0要求，1接受，2拒绝
+@property (nonatomic, assign) int isDispose;
+
+@end

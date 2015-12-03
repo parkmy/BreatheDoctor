@@ -1,0 +1,73 @@
+//
+//  CADataCacheManager.m
+//  CWGJCarPark
+//
+//  Created by mutouren on 9/7/15.
+//  Copyright (c) 2015 mutouren. All rights reserved.
+//
+
+#import "CODataCacheManager.h"
+#import "COUserDefaultsManager.h"
+
+@implementation CODataCacheManager
+
+
+//share Instance of ViewManager
++ (CODataCacheManager *)shareInstance
+{
+    static CODataCacheManager *instance = nil;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^ { instance = [[CODataCacheManager alloc] init]; });
+    return instance;
+}
+
+-(id)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
+
+#pragma mark 去读userDefault文件缓存
+- (void)loadUserDefaultData
+{
+    COUserModel *userModel = [COUserDefaultsManager shareInstance].userModel;
+    if (userModel) {
+        self.userModel = userModel;
+    }
+}
+
+#pragma mark 保存用户信息
+- (void)saveUserModel
+{
+    [[COUserDefaultsManager shareInstance] saveUserModel:self.userModel];
+}
+
+#pragma mark 清除用户信息
+- (void)clearUserModel
+{
+    self.userModel = nil;
+    [[COUserDefaultsManager shareInstance] removeUserModel];
+    [[COUserDefaultsManager shareInstance] removeUserPayType];
+}
+
+#pragma mark 保存头像数据
+- (void)saveUserModelIconUrl:(NSString*)url
+{
+    self.userModel.iconUrl = url;
+    [self saveUserModel];
+}
+
+#pragma mark 是否登录
+- (BOOL)isLogin
+{
+    if (self.userModel) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+@end

@@ -1,0 +1,96 @@
+//
+//  CDSetting.h
+//  ComveeDoctor
+//
+//  Created by zhengjw on 14-7-28.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface CDSetting : NSObject
+
+//是否首次启动
++(void) writeFirstUse:(NSString*)strValue;
++ (NSInteger) readFirstUse;
+
+//是否首次进入首页
++(void) writeFirstInputeMainView:(NSString*)strValue;
++ (NSInteger) readFirstInputeMainView;
+
+//是否首次进入对话界面
++(void) writeFirstInputeMsgView:(NSString*)strValue;
++ (NSInteger) readFirstInputeMsgView;
+
+//写入未读消息数
++ (void) writeUnReadNum:(NSString*)strValue;
++ (NSInteger) readUnReadNum;
+
+//启动次数
++(void) writeOpenTime:(NSString*)strValue;
++ (NSInteger) readOpenTime;
+
+//登陆用户名
++ (void) writeUserLoginName:(NSString*)strValue;
++ (NSString*) readUserLoginName;
+
+//登陆密码
++ (void) writeUserLoginPasswd:(NSString*)strValue;
++ (NSString*) readUserLoginPasswd;
+
+//接口地址配置
++ (void) writeComveeUrl:(NSString*)strValue;
++ (NSString*) readComveeUrl;
+
+//基本信息部分
++ (void) writeUserPhotoUrl:(NSString*)strValue;
++ (NSString*) readUserPhotoUrl;
+
++ (void) writeUserNichen:(NSString*)strValue;
++ (NSString*) readUserNichen;
+
++ (void) writeSessionID:(NSString*)strValue;
++ (NSString*) readSessionID;
+
++ (void) writeSessionDoctorID:(NSString*)strValue;
++ (NSString*) readSessionDoctorID;
+
++ (void) writeDoctorID:(NSString*)strValue;
++ (NSString*) readDoctorID;
+
+//写入设备号
++ (void) writeDeviceToken:(NSString*)strValue;
++ (NSString*) readDeviceToken;
+///写入随访id
++ (void) writeFollowUpId:(NSNumber*)followId;
+///读取随访Id
++ (NSNumber*) readFollowUpId;
+
+//写入随访信息
++(void)writeFollowMsg:(NSMutableArray *)data WithKey:(NSString*)key;
++(NSMutableArray *)readFollowMsgWithKey:(NSString*)key;
+//清楚缓存好的随访信息
++(void) delegateFollowUpMsgWithKey:(NSString*)key;
+//写入快捷回复信息
++(void)writeFastReply:(NSArray*)data WithKey:(NSString*)key;
+
++(NSMutableArray *)readFastReply:(NSString*)key;
+///保存草稿信息
++(void)writeTheDraftWith:(NSString*)Msg WithKey:(NSString*)key;
+///读取草稿信息
++(NSString*)readTheDraftWithKey:(NSString*)key;
++ (void)removeTheDraftWithKey:(NSString*)key;
+
+//写入版本升级时间
++ (void)writeClientVersion:(NSString*)key;
+//读取版本升级时间
++ (NSString*)readVersion;
+
+//文件夹
++(void)writeFilePath:(NSString*)ownPath withKey:(NSString*)key;
++(NSString*)readFilePath:(NSString*)key;
+
++(void)setIsAutoLogin:(BOOL)yesOrNo;
++(BOOL)readIsAutoLoginState;
+
+@end

@@ -1,0 +1,36 @@
+//
+//  RemindShowMsg.m
+//  ComveeDoctor
+//
+//  Created by JYL on 14-8-12.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import "RemindShowMsg.h"
+
+@implementation RemindShowMsg
+@synthesize memberId;
+@synthesize memberName;
+@synthesize newsId;
+@synthesize doctorId;
+@synthesize insertDt;
+@synthesize contentText;
+@synthesize isValid;
+@synthesize newsType;
+@synthesize detailNewsType;
+@synthesize pushDt;
+@synthesize isPush;
+@synthesize pushMark;
+@synthesize readDt;
+@synthesize reamindHz;
+@synthesize detailId;
+@synthesize addUserId;
+@synthesize dispose;
+@synthesize doctorAdvise;
+
+- (void)dealloc
+{
+    
+}
+
+@end

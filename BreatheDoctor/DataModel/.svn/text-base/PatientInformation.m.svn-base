@@ -1,0 +1,59 @@
+//
+//  PatientInformation.m
+//  ComveeDoctor
+//
+//  Created by JYL on 14-8-5.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import "PatientInformation.h"
+#import "LKDBHelper.h"
+
+@implementation PatientInformation
+@synthesize rowid;
+@synthesize patientName;
+@synthesize pinYin;
+@synthesize headPortraitUrl;
+@synthesize memberId;
+@synthesize isGuest;
+@synthesize birthday;
+@synthesize callreason;
+@synthesize bloodType;
+@synthesize coordinator;
+@synthesize default_head_image_url;
+@synthesize eduLevelText;
+@synthesize familyId;
+@synthesize goal;
+@synthesize head_image_url;
+@synthesize hasMachine;
+@synthesize marryText;
+@synthesize medicalPayFlagTex;
+@synthesize memberBmi;
+@synthesize memberHeight;
+@synthesize memberWeight;
+@synthesize picPath;
+@synthesize picPathS;
+@synthesize picUrl;
+@synthesize professionText;
+@synthesize relationText;
+@synthesize sex;
+@synthesize memberArchive;
+@synthesize memberPackage;
+@synthesize packageName;
+@synthesize questionId;
+@synthesize abnomalHasNew;
+@synthesize informHasNew;
+@synthesize consultHasNew;
+@synthesize describe;
+@synthesize tel;
+@synthesize machineSN;
+
++(NSString*)getPrimaryKey
+{
+    return @"memberId";
+}
+- (void)dealloc
+{
+}
+
+@end

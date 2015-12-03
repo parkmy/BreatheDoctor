@@ -1,0 +1,28 @@
+//
+//  COCLLocationCoordinateManager.h
+//  CWGJCarOwner
+//
+//  Created by 廖维海 on 15/9/21.
+//  Copyright (c) 2015年 mutouren. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "COSharedMapView.h"
+#import <AMapSearchAPI.h>
+@protocol COCLLocationCoordinateManagerDelegate <NSObject>
+@end
+
+@interface COCLLocationCoordinateManager : NSObject
+
+@property (nonatomic, strong) MAMapView *mapView;
+@property (nonatomic, strong) AMapSearchAPI *search;
+@property (nonatomic, copy)   NSString  *city;
+
++ (COCLLocationCoordinateManager *)shareInstance;
+
++ (CLLocationCoordinate2D)userLocation;
+
+- (void)mapLocation;
+- (void)cancelMapView;
+
+@end

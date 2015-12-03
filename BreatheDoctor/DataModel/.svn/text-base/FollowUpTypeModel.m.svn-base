@@ -1,0 +1,18 @@
+//
+//  FollowUpTypeModel.m
+//  ComveeDoctor
+//
+//  Created by happytool on 15/7/13.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import "FollowUpTypeModel.h"
+
+@implementation FollowUpTypeModel
+
++(NSString*)getPrimaryKey
+{
+    return @"type";
+}
+
+@end

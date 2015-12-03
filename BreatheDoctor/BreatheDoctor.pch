@@ -1,0 +1,53 @@
+//
+//  BreatheDoctor.pch
+//  BreatheDoctor
+//
+//  Created by comv on 15/11/10.
+//  Copyright © 2015年 lwh. All rights reserved.
+//
+
+#ifndef BreatheDoctor_pch
+#define BreatheDoctor_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#import "UIView+TKGeometry.h"
+#import "UIColor+HexString.h"
+#import "UIViewController+Factory.h"
+#import "UIViewController+KSNoNetController.h"
+#import "NavManager.h"
+#import "NSString+Size.h"
+#import "LWHttpRequestManager.h"
+#import "LWPublicDataManager.h"
+#import "LWProgressHUD.h"
+
+#import "LKDBHelper.h"
+
+#import "CODataCacheManager.h"
+#import "UIView+SDAutoLayout.h"
+#import "UITableView+SDAutoTableViewCellHeight.h"
+
+#define StoryboardCtr(Identifier) [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:Identifier]
+
+#pragma mark - RGBA颜色
+#define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
+#pragma mark - 主视图bound
+#define Screen_SIZE [UIScreen mainScreen].bounds.size
+#pragma mark - 加载图片
+#define kImage(M) [UIImage imageNamed:M]
+#pragma mark - long 转 NSNumber
+#define kNSNumLong(M)    [NSNumber numberWithLong:M]
+#pragma mark - longlong 转 NSNumber
+#define kNSNumLongLong(M)    [NSNumber numberWithLongLong:M]
+#pragma mark - int 转 NSNumber
+#define kNSNumInteger(M) [NSNumber numberWithInteger:M]
+#pragma mark - double 转 NSNumber
+#define kNSNumDouble(M)  [NSNumber numberWithDouble:M]
+#pragma mark - 字符串格式化函数
+#define kNSString(M) [NSString stringWithFormat:@"%@",M]
+#pragma mark - 字符串格式化URL
+#define kNSURL(M)   [NSURL URLWithString:M]
+
+
+#endif /* BreatheDoctor_pch */

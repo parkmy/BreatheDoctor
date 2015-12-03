@@ -1,0 +1,19 @@
+//
+//  COInitManger.h
+//  CWGJCarOwner
+//
+//  Created by 廖维海 on 15/9/22.
+//  Copyright (c) 2015年 mutouren. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "COMapTypeModel.h"
+
+@interface COInitManger : NSObject
+
++ (COInitManger *)shareInstance;
+
+- (void)lodingMapInitType;
+
+- (NSMutableArray *)mapTypes;
+@end

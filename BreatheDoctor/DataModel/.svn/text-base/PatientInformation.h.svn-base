@@ -1,0 +1,96 @@
+//
+//  PatientInformation.h
+//  ComveeDoctor
+//
+//  Created by JYL on 14-8-5.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//患者基本资料
+
+#import <Foundation/Foundation.h>
+
+@interface PatientInformation : NSObject
+@property (nonatomic, assign) NSInteger rowid;
+//患者姓名
+@property (nonatomic, strong) NSString * patientName;
+//患者姓名拼音
+@property (nonatomic, strong) NSString * pinYin;
+//患者头像地址
+@property (nonatomic, strong) NSString * headPortraitUrl;
+//患者成员编码
+@property (nonatomic, strong) NSString * memberId;
+//1游客,0不是游客
+@property (nonatomic, strong) NSString * isGuest;
+@property (nonatomic, strong) NSString * birthday;
+@property (nonatomic, strong) NSString * bloodType;
+//是否糖尿病1是0不是或不知道
+@property (nonatomic, strong) NSString * callreason;
+//是否户主	1户主（家庭协作者,0成员）
+@property (nonatomic, strong) NSString * coordinator;
+@property (nonatomic, strong) NSString * default_head_image_url;
+//文化程度文本
+@property (nonatomic, strong) NSString * eduLevelText;
+@property (nonatomic, strong) NSString * familyId;
+
+//目标得分
+@property (nonatomic, strong) NSString * goal;
+@property (nonatomic, strong) NSString * head_image_url;
+//是否绑定设备	0 未绑定1 已绑定
+@property (nonatomic, strong) NSString * hasMachine;
+@property (nonatomic, strong) NSString * marryText;
+//医疗支付方式文本
+@property (nonatomic, strong) NSString * medicalPayFlagTex;
+//成员mbi
+@property (nonatomic, strong) NSString * memberBmi;
+@property (nonatomic, strong) NSString * memberHeight;
+@property (nonatomic, strong) NSString * memberWeight;
+@property (nonatomic, strong) NSString * questionId;
+//头像前缀
+@property (nonatomic, strong) NSString * picPath;
+//头像后缀
+@property (nonatomic, strong) NSString * picPathS;
+//小头像后缀
+@property (nonatomic, strong) NSString * picUrl;
+//职业情况文本
+@property (nonatomic, strong) NSString * professionText;
+@property (nonatomic, strong) NSString * relationText;
+@property (nonatomic, strong) NSString * sex;
+//此数组中含pcode
+@property (nonatomic, strong) NSArray * memberArchive;
+//
+@property (nonatomic, strong) NSDictionary * memberPackage;
+//套餐名称
+@property (nonatomic, strong) NSString * packageName;
+//异常类型
+@property (nonatomic, strong) NSDictionary* news;
+//异常类型
+@property (nonatomic, strong) NSDictionary* consult;
+///消息子类型
+@property (nonatomic, strong) NSString * detailNewStype;
+///分组ID
+@property (nonatomic, strong) NSString* groupId;
+///备注内容
+@property (nonatomic, strong) NSString * remarkContent;
+///描述
+@property (nonatomic, strong) NSString * describe;
+
+@property (nonatomic, strong) NSString * abnomalHasNew;
+@property (nonatomic, strong) NSString * informHasNew;
+@property (nonatomic, strong) NSString * consultHasNew;
+///是否选中
+@property (nonatomic, assign) BOOL ifSelect;
+///是否选中
+@property (nonatomic, assign) BOOL ifSearch;
+
+//@property (nonatomic, strong) NSMutableString * telNum;
+@property (nonatomic, strong) NSString * tel;
+
+///通讯录联系人唯一标示
+@property (nonatomic, strong) NSString * lookupforkey;
+///是否绑定
+@property (nonatomic, assign) BOOL isBound;
+///是否显示选中
+@property (nonatomic, assign) BOOL ifShowSelect;
+
+@property (nonatomic, strong) NSString* machineSN;
+
+@end

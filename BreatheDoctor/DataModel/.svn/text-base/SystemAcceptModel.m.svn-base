@@ -1,0 +1,13 @@
+//
+//  SystemAcceptModel.m
+//  ComveeDoctor
+//
+//  Created by happytool on 15/7/16.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import "SystemAcceptModel.h"
+
+@implementation SystemAcceptModel
+
+@end

@@ -1,0 +1,39 @@
+//
+//  SystemAcceptModel.h
+//  ComveeDoctor
+//
+//  Created by happytool on 15/7/16.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface SystemAcceptModel : NSObject
+
+@property (nonatomic, assign) NSInteger rowid;
+@property (nonatomic, strong) NSString * memberId;
+@property (nonatomic, strong) NSString * head_image_url;
+@property (nonatomic, strong) NSString * member_name;
+@property (nonatomic, strong) NSString * contentText;
+@property (nonatomic, strong) NSString * detailId;
+
+@property (nonatomic, assign) int  newsType;
+@property (nonatomic, strong) NSString * dataStr;
+
+//时间
+@property (nonatomic, strong) NSString * insertDt;
+
+@property (nonatomic, strong) NSString * sid;
+@property (nonatomic, strong) NSString * doctorId;
+
+@property (nonatomic, assign) int state;
+
+@property (nonatomic, assign) int isValid;
+
+//0要求，1接受，2拒绝
+@property (nonatomic, assign) int dispose;
+
+
+
+
+@end

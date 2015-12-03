@@ -1,0 +1,97 @@
+//
+//  ChartMessage.h
+//  ComveeDoctor
+//
+//  Created by happytool on 15/4/15.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface ChartMessage : NSObject
+
+//@property (nonatomic, strong) NSNumber * questionId;
+//@property (nonatomic, strong) NSString * attachUrl;
+//@property (nonatomic, strong) NSString * questionCon;
+//@property (nonatomic, strong) NSString * insertDt;
+//@property (nonatomic, strong) NSString * fromUserUrl;
+//@property (nonatomic, strong) NSString * fromUserName;
+//@property (nonatomic, strong) NSNumber * isAnswer;
+//@property (nonatomic, strong) NSNumber * answerNew;
+//@property (nonatomic, strong) NSNumber * attachmentType;
+//@property (nonatomic, strong) NSNumber * fromUserId;
+//@property (nonatomic,retain) NSMutableArray  *AnswerMessageList;//所有消息集合
+@property (nonatomic, assign) NSInteger rowid;
+@property (nonatomic, assign) int state;
+@property (nonatomic, strong) NSString * sid;
+@property (nonatomic, strong) NSNumber * doctorId;
+@property (nonatomic, strong) NSNumber * ownerType;
+@property (nonatomic, strong) NSString * msgContent;
+@property (nonatomic, strong) NSNumber * msgType;
+@property (nonatomic, strong) NSString * memberId;
+@property (nonatomic, strong) NSString * insertDt;
+@property (nonatomic, strong) NSString * timeStamp;
+@property (nonatomic, strong) NSString * modifyDt;
+@property (nonatomic, strong) NSNumber * isDispose;
+@property (nonatomic, strong) NSNumber * bloodglucoseValue;
+@property (nonatomic, strong) NSString * paramCode;
+@property (nonatomic, strong) NSString * paramLevel;
+@property (nonatomic, strong) NSString * title;
+@property (nonatomic, strong) NSString * recordTime;
+@property (nonatomic, strong) NSNumber * bloodpressuresystolic;
+@property (nonatomic, strong) NSNumber * bloodpressurediastolic;
+@property (nonatomic, strong) NSString * unit;
+@property (nonatomic, strong) NSNumber * bmiValue;
+@property (nonatomic, strong) NSNumber * height;
+@property (nonatomic, strong) NSNumber * weight;
+@property (nonatomic, strong) NSString * content;
+@property (nonatomic, strong) NSString * jobList;
+///
+@property (nonatomic, strong) NSString * TC;
+@property (nonatomic, strong) NSString * TG;
+@property (nonatomic, strong) NSString * HDL;
+@property (nonatomic, strong) NSString * LDL;
+@property (nonatomic, strong) NSString * FT3;
+@property (nonatomic, strong) NSString * FT4;
+@property (nonatomic, strong) NSString * TSH;
+@property (nonatomic, strong) NSString * TGAb;
+@property (nonatomic, strong) NSString * tpoaB;
+@property (nonatomic, strong) NSNumber * entrance;
+@property (nonatomic, strong) NSNumber * followupType;
+@property (nonatomic, strong) NSString * checkTime;
+//@property (nonatomic, strong) NSMutableArray* attachlist;
+@property (nonatomic, strong) NSString * attachUrl;
+@property (nonatomic, assign) int  attachType;
+@property (nonatomic, assign) int voiceMins;
+@property (nonatomic, strong) NSString * remindTitle;
+@property (nonatomic, strong) NSString * date;
+@property (nonatomic, strong) NSString * time;
+@property (nonatomic, strong) NSNumber * remindPeople;
+@property (nonatomic, assign) bool isShowTime;
+@property (nonatomic, assign) bool is_valid;
+
+@property (nonatomic, strong) NSString * foreignId;
+
++(ChartMessage*)ConvertDictToModel:(NSDictionary *) dic;
+
+@end
+@interface AttachList : NSObject
+@property (nonatomic, strong) NSString * attachUrl;
+@property (nonatomic, strong) NSString * attachType;
+@property (nonatomic, strong) NSNumber*  voiceMins;
+
+
+
+
+@end
+//@interface AnswerMessage:NSObject
+//@property (nonatomic, strong) NSString * answerCon;
+//@property (nonatomic, strong) NSString * answerUserName;
+//@property (nonatomic, strong) NSNumber * answerUserType;
+//@property (nonatomic, strong) NSString * answerUserUrl;
+//@property (nonatomic, strong) NSString * insertDt;
+//@property (nonatomic, strong) NSNumber * questionAnswerId;
+//@property (nonatomic, strong) NSNumber * continueType;
+//@property (nonatomic, strong) NSNumber * voiceMins;
+//
+//@end

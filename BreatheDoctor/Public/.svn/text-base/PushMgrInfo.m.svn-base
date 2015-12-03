@@ -1,0 +1,188 @@
+//
+//  PushMgrInfo.m
+//  LarkDoctor
+//
+//  Created by 郑建武 on 15/3/27.
+//  Copyright (c) 2015年 com.comvee. All rights reserved.
+//
+#import "PushMgrInfo.h"
+#import "CDSetting.h"
+#import "CDMacro.h"
+#import "CDGloablVar.h"
+#import "ShareFun.h"
+#import "CDGloablVar.h"
+#import "RequestManager.h"
+#import "AdvisoryBodyCtr.h"
+
+
+@implementation PushMgrInfo
+
+@synthesize pushDic;
+@synthesize localNotifyPrev;
+
+
+static PushMgrInfo *pushMgrInfoSingleton = nil;
+
++ (PushMgrInfo *) sharedInstance
+{
+    @synchronized(self)
+    {
+        if (!pushMgrInfoSingleton)
+        {
+            pushMgrInfoSingleton = [[PushMgrInfo alloc] init];
+        }
+        return pushMgrInfoSingleton;
+    }
+}
+
++ (void)releaseInstance
+{
+    @synchronized(self)
+    {
+        if (pushMgrInfoSingleton != nil)
+        {
+            pushMgrInfoSingleton = nil;
+        }
+    }
+}
+
+- (void)dealloc
+{
+    pushDic = nil;
+    localNotifyPrev = nil;
+}
+
+- (void)didRegisterDeviceToken:(NSData *)deviceToken
+{
+    
+    NSString *str = [NSString stringWithFormat:@"%@",deviceToken];
+    NSString *neirong = [str substringFromIndex:1];
+    NSString *ret = [neirong substringToIndex:[neirong length]-1];
+    NSString *token = [ret stringByReplacingOccurrencesOfString:@" " withString:@""];//最终
+    
+    NSLog(@"token%@",token);
+    //跟以前的TOKEN不一样，需上传，上传需等用户登陆完毕再上传
+    //    if(![oldToken isEqualToString:token])
+    //    {
+    //
+    //    }
+    [CDSetting writeDeviceToken:token];
+    [CDGloablVar sharedGloablVar].pushTokenKey = token;
+    
+}
+
+
+//launchType:1,启动，2应用在后台，3应用在前台
+- (void)showRemotePushAction:(NSDictionary*)userInfo launchType:(int)launchType
+{
+    NSLog(@"showRemotePushAction:%d,%@",launchType,userInfo);
+
+    if([[userInfo objectForKey:@"aps"] objectForKey:@"alert"]==nil)
+    {
+        return;
+    }
+    
+    if(pushDic==nil)
+    {
+        pushDic = [[NSMutableDictionary alloc] init];
+    }
+    
+    [pushDic removeAllObjects];
+    [pushDic addEntriesFromDictionary:userInfo];
+    
+    NSString *pushStr=[userInfo objectForKey:@"customdata"];
+    NSData *pushData = [pushStr dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:pushData options:NSJSONReadingMutableLeaves error:nil];
+    
+    NSString* busyType = [dic objectForKey:@"busi_type"];
+    
+    long long memberIDs = [dic[@"memId"] longLongValue];
+    
+    NSString * checkStatus = [NSString stringWithFormat:@"%@",[dic objectForKey:@"id"]];
+    
+    switch ([busyType intValue])
+    {
+        case 300:
+            
+            break;
+            
+        case 301:
+            
+            [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+                        
+            if ([CDGloablVar sharedGloablVar].currentPatientID  != 0)
+            {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"QuestionGetPushMsg" object:nil];
+            }
+            else
+            {
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"MainViewGetPushMsg" object:[NSNumber numberWithLongLong:memberIDs]];
+            }
+            
+            break;
+            case 392:
+        {
+            [CDGloablVar sharedGloablVar].AuthenticationMsg = [NSString stringWithFormat:@"%@",checkStatus];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"CheckStaueChance" object:nil];
+        }
+            break;
+        case 61:
+        {
+            if (launchType == 2)
+            {
+                [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"AdvisoryBodyPushMsg" object:dic];
+            }
+            else if(launchType == 1)
+            {
+                [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"AdvisoryBodyPushMsg" object:dic];
+            }
+            else if (launchType==3)
+            {
+                
+            }
+            
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
+- (void)showLocalPushAction:(UILocalNotification *)notification
+{
+    if (localNotifyPrev!=nil && [localNotifyPrev.alertBody isEqual:notification.alertBody]  && ![localNotifyPrev.fireDate isEqual:notification.fireDate])
+    {
+        [[UIApplication sharedApplication] cancelLocalNotification:localNotifyPrev];
+    }
+    
+    localNotifyPrev = notification;
+}
+
+- (void)pushMessageDetailsCtrWithDic:(NSDictionary*)dic ContentText:(NSString*)contentText
+{
+    
+    //    if  ([[LDGloablVar sharedGloablVar].currentControl isKindOfClass:[MessageDetailsCtr class]])
+    //    {
+    //        MessageDetailsCtr * detail = (MessageDetailsCtr*)[LDGloablVar sharedGloablVar].currentControl;
+    //        if ([detail.patient.mid isEqualToString:[dic objectForKey:@"mid"]])
+    //        {
+    //            detail.ifProgress = YES;
+    //            [detail getChatDetailDataWithType:@"1" WithTime:[LDSetting readLastTime]];
+    //        }
+    //    }
+    //    else
+    //    {
+    //
+    //        [self.navigationController popToRootViewControllerAnimated:YES];
+    //        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReceiveRemoteNotification" object:nil];
+    //    }
+}
+
+@end

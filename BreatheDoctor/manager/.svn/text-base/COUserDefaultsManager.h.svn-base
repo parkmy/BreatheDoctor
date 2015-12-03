@@ -1,0 +1,39 @@
+//
+//  CAUserDefaultsManager.h
+//  CWGJCarPark
+//
+//  Created by mutouren on 9/7/15.
+//  Copyright (c) 2015 mutouren. All rights reserved.
+//  userDefault类 存到文件
+
+#import <Foundation/Foundation.h>
+#import "COUserModel.h"
+#import "COPayTypeShowView.h"
+
+@interface COUserDefaultsManager : NSObject
+
+
+//share Instance of NavManager
++ (COUserDefaultsManager *)shareInstance;
+
+
+#pragma mark 保存用户数据
+- (void)saveUserModel:(COUserModel*)userModel;
+
+#pragma mark 返回用户数据
+- (COUserModel*)userModel;
+
+#pragma mark 删除用户数据
+- (void)removeUserModel;
+
+#pragma mark 保存用户支付方式
+- (void)saveUserPayType:(PayType)type;
+
+#pragma mark 返回用户支付方式
+- (PayType)userPayType;
+
+#pragma mark 删除支付方式
+- (void)removeUserPayType;
+
+
+@end

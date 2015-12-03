@@ -1,0 +1,19 @@
+//
+//  TaskListCenterModel.m
+//  ComveeDoctor
+//
+//  Created by happytool on 15/7/6.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import "TaskListCenterModel.h"
+
+
+@implementation TaskListCenterModel
+
++(NSString*)getPrimaryKey
+{
+    return @"jobCfgId";
+}
+
+@end

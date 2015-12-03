@@ -1,0 +1,38 @@
+//
+//  PatientListInfo.m
+//  ComveeDoctor
+//
+//  Created by happytool on 15/5/6.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import "PatientListInfo.h"
+#import "LKDBHelper.h"
+
+@implementation PatientListInfo
+@synthesize picPath;
+//头像后缀
+@synthesize picPathS;
+//小头像后缀
+@synthesize picUrl;
+//患者成员编码
+@synthesize memberId;
+
+//患者成员编码
+@synthesize memberName;
+//患者成员编码
+@synthesize groupId;
+//患者成员编码
+@synthesize remarkContent;
+//患者成员编码
+@synthesize describe;
+//患者成员编码
+@synthesize userNo;
+
+@synthesize firstLetter;
+
++(NSString*)getPrimaryKey
+{
+    return @"memberId";
+}
+@end

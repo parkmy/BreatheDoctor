@@ -1,0 +1,31 @@
+//
+//  DiscoverInfo.h
+//  ComveeDoctor
+//
+//  Created by JYL on 15/11/3.
+//  Copyright © 2015年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface DiscoverInfo : NSObject
+
+@property (nonatomic, strong) NSString * summary;
+///缩列图地址
+@property (nonatomic, strong) NSString * coverImgThumb;
+///消息id
+@property (nonatomic, strong) NSString * sid;
+@property (nonatomic, strong) NSString * title;
+@property (nonatomic, strong) NSString * columnType;
+@property (nonatomic, strong) NSString * informationTypeText;
+@property (nonatomic, strong) NSString * informationType;
+@property (nonatomic, strong) NSString * columnTypeText;
+@property (nonatomic, strong) NSString * insertDt;
+@property (nonatomic, strong) NSString * isCollect;
+@property (nonatomic, assign) BOOL  insertSucceed;
+///h5url
+@property (nonatomic, strong) NSString * url;
+
++ (DiscoverInfo*)assignmentToModle:(NSDictionary*)dic WithTableName:(NSString*)tableName;
+
+@end

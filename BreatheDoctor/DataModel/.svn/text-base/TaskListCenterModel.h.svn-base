@@ -1,0 +1,24 @@
+//
+//  TaskListCenterModel.h
+//  ComveeDoctor
+//
+//  Created by happytool on 15/7/6.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "LKDBHelper.h"
+
+@interface TaskListCenterModel : NSObject
+
+@property (nonatomic, strong) NSString* imgUrl;
+
+@property (nonatomic, strong) NSString* jobTitle;
+
+@property (nonatomic, strong) NSString* jobInfo;
+
+@property (nonatomic, strong) NSString* gainNum;
+
+@property (nonatomic, strong) NSString* jobCfgId;
+
+@end

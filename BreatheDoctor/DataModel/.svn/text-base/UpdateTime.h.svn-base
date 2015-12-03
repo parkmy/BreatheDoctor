@@ -1,0 +1,42 @@
+//
+//  UpdateTime.h
+//  ComveeDoctor
+//
+//  Created by happytool on 15/5/7.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface UpdateTime : NSObject
+
+@property (nonatomic, strong) NSString* doctorId;
+@property (nonatomic, strong) NSString* HomeUpdateTime;
+@property (nonatomic, strong) NSString* HomeRefreshTime;
+
+@property (nonatomic, strong) NSString* sugarLoadTime;
+@property (nonatomic, strong) NSString* sugarRefreshTime;
+
+@property (nonatomic, strong) NSString* PatientLoadTime;
+@property (nonatomic, strong) NSString* PatientRefreshTime;
+
+@property (nonatomic, strong) NSString* systemAcceptRefreshTime;
+
+@end
+
+@interface DialogUpdateTime : NSObject
+
+@property (nonatomic, strong) NSString* memberId;
+@property (nonatomic, strong) NSString* DialogLoadTime;
+@property (nonatomic, strong) NSString* DialogRefreshTime;
+
+@end
+
+@interface DiscoverCtrUpdateTime : NSObject
+
+@property (nonatomic, strong) NSString* InformationType;
+@property (nonatomic, strong) NSString* DiscoverCtrLoadTime;
+@property (nonatomic, strong) NSString* DiscoverCtrfreshTime;
+
+@end
+

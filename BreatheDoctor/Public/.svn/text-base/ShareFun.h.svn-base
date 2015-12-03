@@ -1,0 +1,50 @@
+//
+//  ShareFun.h
+//  ComveeDoctor
+//
+//  Created by zhengjw on 14-7-28.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "PatientInformation.h"
+#import "PatientListInfo.h"
+
+@interface ShareFun : NSObject
+
++(NSString *)md5Digest:(NSString *)digestStr;
++ (NSString*)GetTimeString:(NSString*)insertDt;
+//进度条
++(void)displayProgressHUD:(UIView *)view displayText:(NSString*)text;
++(void)closeProgressHUD:(UIView *)view;
+
++(void)showAlertViewWithText:(NSString *)text;
++(void)showALAlertBannerWithView:(UIView*)view Style:(int)style Position:(int)position Subtitle:(NSString*)subtitle WithBtn:(UIButton*)sender;
+#pragma mark 解析患者信息数据
++ (PatientInformation*)parsingData:(NSDictionary*)dic;
+#pragma mark 解析医生信息
++(void)analysisDoctorMsg:(NSDictionary*)dics;
+
++(NSString*)getFollowUpTypeString:(int)followType;
+
++(BOOL)isNullOrEmpty:(NSString*)string;
+
++(NSString*)getSendMessageReqNum;
+
++ (NSString*)GetMainViewTimeString:(NSString*)insertDt WithType:(int)type;
+//发现模块时间
++ (NSString*)getDiscoveryTimeString:(NSString*)insertDt;
++(BOOL)isValidImageUrl:(NSString*)Url;
+
++(NSString*)getPatienShowName:(PatientInformation*)info;
++(NSString*)getPatienListInfoShowName:(PatientListInfo*)info;
+
++ (UIViewController*)viewController:(UIView*)sender;
+
++ (NSComparisonResult)compareTimeBetweenStartTime:(NSString*)startTimeStr andEndTime:(NSString*)endTimeStr;
+
++ (NSString *)intervalSinceNow: (NSString *) theDate;
+
++ (UIView*)createNotMsgView:(UIView*)noMsgBGView WithText:(NSString*)msgText;
+
+@end

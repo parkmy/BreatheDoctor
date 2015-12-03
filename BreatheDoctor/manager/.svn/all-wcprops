@@ -1,0 +1,89 @@
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/cheweiguanjia/!svn/ver/3615/develop/ios/CWGJCarOwner/CWGJCarOwner/manager
+END
+CODataCacheManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/cheweiguanjia/!svn/ver/2936/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/CODataCacheManager.h
+END
+COPayManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/cheweiguanjia/!svn/ver/3588/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/COPayManager.m
+END
+COCLLocationCoordinateManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/cheweiguanjia/!svn/ver/3446/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/COCLLocationCoordinateManager.h
+END
+ControllerExtraDataManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/cheweiguanjia/!svn/ver/3615/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/ControllerExtraDataManager.h
+END
+CODataCacheManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/cheweiguanjia/!svn/ver/2936/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/CODataCacheManager.m
+END
+COInitManger.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/cheweiguanjia/!svn/ver/2853/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/COInitManger.h
+END
+NavManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/cheweiguanjia/!svn/ver/3248/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/NavManager.h
+END
+COCLLocationCoordinateManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/cheweiguanjia/!svn/ver/3607/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/COCLLocationCoordinateManager.m
+END
+ControllerExtraDataManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/cheweiguanjia/!svn/ver/3615/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/ControllerExtraDataManager.m
+END
+COUserDefaultsManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/cheweiguanjia/!svn/ver/3021/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/COUserDefaultsManager.h
+END
+COInitManger.m
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/cheweiguanjia/!svn/ver/3459/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/COInitManger.m
+END
+NavManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/cheweiguanjia/!svn/ver/3437/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/NavManager.m
+END
+COPayManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/cheweiguanjia/!svn/ver/3295/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/COPayManager.h
+END
+COUserDefaultsManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/cheweiguanjia/!svn/ver/3017/develop/ios/CWGJCarOwner/CWGJCarOwner/manager/COUserDefaultsManager.m
+END

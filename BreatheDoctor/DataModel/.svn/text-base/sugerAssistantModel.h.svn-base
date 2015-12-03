@@ -1,0 +1,31 @@
+//
+//  sugerAssistantModel.h
+//  ComveeDoctor
+//
+//  Created by happytool on 15/7/9.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "LKDBHelper.h"
+
+@interface sugerAssistantModel : NSObject
+@property (nonatomic, assign) NSInteger rowid;
+@property (nonatomic, strong) NSString * remindDt;
+@property (nonatomic, strong) NSString * headImageUrl;
+@property (nonatomic, strong) NSString * sex;
+@property (nonatomic, strong) NSString * contentText;
+@property (nonatomic, assign) int  isRead;
+@property (nonatomic, strong) NSString * detailId;
+@property (nonatomic, strong) NSString * memberName;
+@property (nonatomic, assign) int  detailNewsType;
+
+
+@property (nonatomic, strong) NSString * title;
+@property (nonatomic, assign) int  newsType;
+@property (nonatomic, strong) NSString * newsId;
+@property (nonatomic, strong) NSString * doctorId;
+@property (nonatomic, assign) int  dispose;
+@property (nonatomic, strong) NSString * memberId;
+
+@end

@@ -1,0 +1,115 @@
+//
+//  CDGloablVar.h
+//  ComveeDoctor
+//
+//  Created by zhengjw on 14-7-28.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "DoctorInformationVC.h"
+#import "PersonalScheduleVC.h"
+#import "PatientVC.h"
+#import "LoginVC.h"
+#import "QuestionlistVC.h"
+#import "CDPromptView.h"
+#import "UpdateTime.h"
+
+@interface CDGloablVar : NSObject
+
++ (CDGloablVar *) sharedGloablVar;
+
+
+@property (nonatomic, strong) CDPromptView * alther;
+@property (nonatomic, assign) BOOL ifRemoveFromSuperview;
+
+///推送信息
+@property (nonatomic, strong)NSDictionary * pushDic;
+@property(nonatomic,strong) NSString *pushTokenKey;     //推送Key
+@property(nonatomic,strong) NSString *sessionID;        //sessionID
+@property(nonatomic,strong) NSString *sessionDoctorID;  //医生的会话ID
+//指南
+@property(nonatomic,strong) NSString *urlPersonalGuide;
+//声明
+@property(nonatomic,strong) NSString *urlStatement;
+//认证
+@property(nonatomic,strong) NSString *doctor_attestation;
+//分享
+@property(nonatomic,strong) NSString *doctor_share;
+//未认证套餐设置set_package_attestationing
+@property(nonatomic,strong) NSString *set_package_unattestation;
+//郑在认证套餐设置
+@property(nonatomic,strong) NSString *set_package_attestationing;
+
+@property(nonatomic,strong) NSString *set_package_attestation;
+//免费套餐
+@property(nonatomic,strong) NSString *free_package_FAQ;
+//免费体验
+@property(nonatomic,strong) NSString *set_package_FAQ;
+//分享标题
+@property(nonatomic,strong) NSString *doctor_share_title;
+//分享文案
+@property(nonatomic,strong) NSString *doctor_share_text;
+
+////登陆成功标志
+@property (nonatomic, assign) BOOL ifSucceed;
+////保存Tag下标避免重复点击
+@property (nonatomic, assign) int indxt;
+////医生个人信息
+@property (nonatomic, strong) NSMutableArray * doctorData;
+@property (nonatomic, assign) NSString * doctorID;
+@property (nonatomic, assign) BOOL ifChange;
+////医生个人信息是否修改过
+@property (nonatomic, assign) BOOL ifEdited;
+///患者档案是否修改过
+@property (nonatomic, assign) BOOL ifEditFile;
+//医生是否回复过信息
+@property (nonatomic, assign) BOOL ifReply;
+////2异常，3,1(没异常)健康记录导航标题展示标识
+@property (nonatomic, assign) int navType;
+///随访信息：第一个元素为数组(显示的数据)，第二个为字典(所有数据)
+@property (nonatomic, strong) NSMutableArray * followMsgArr;
+
+///用于指定返回个人中心界面
+@property (nonatomic, strong) PatientVC * patient;
+///用于指定返回个登入界面
+@property (nonatomic, strong) LoginVC * loginVC;
+
+///用于指定返回医生信息界面
+@property (nonatomic, strong) DoctorInformationVC * doctorInformation;
+///用于指定返回我的日程
+@property (nonatomic, strong) PersonalScheduleVC * scheduleVC;
+///用于指定返回工具
+@property (nonatomic, strong) QuestionlistVC * question;
+///判断医院，科室是选择的还是输入的
+@property (nonatomic, assign) BOOL input;
+////患者界面是否需要刷新
+@property (nonatomic, assign) BOOL ifRefresh;
+////患者档案
+//@property (nonatomic, assign) BOOL ifFile;
+////修改提醒
+//@property (nonatomic, assign) BOOL ifRemind;
+///选中的患者(新增随访界面)
+@property (nonatomic, strong) NSMutableDictionary * selectPatientDic;
+///选中的患者(群发消息,添加患者)
+@property (nonatomic, strong) NSMutableDictionary * selectPatientDics;
+///1表示由首页添加患者
+@property (nonatomic, assign) int enterType;
+
+//当前咨询会话患者ID
+@property (nonatomic, assign)long long currentPatientID;
+
+@property (nonatomic, strong)NSString* DBName;
+
+@property (nonatomic, assign) BOOL isLogin;
+
+@property (nonatomic, assign) BOOL update;
+
+@property (nonatomic, assign) BOOL netWorkOK;
+
+///认证信息:(失败，我要认证。。。)
+@property (nonatomic, strong) NSString * AuthenticationMsg;
+///医生是否设置过套餐非0为设置过
+@property (nonatomic, strong) NSString * packageNum;
+
+@end

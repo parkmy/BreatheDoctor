@@ -1,0 +1,105 @@
+//
+//  COCLLocationCoordinateManager.m
+//  CWGJCarOwner
+//
+//  Created by 廖维海 on 15/9/21.
+//  Copyright (c) 2015年 mutouren. All rights reserved.
+//
+
+#import "COCLLocationCoordinateManager.h"
+#import "PKParking.h"
+
+
+@interface COCLLocationCoordinateManager ()<MAMapViewDelegate,AMapSearchDelegate,CLLocationManagerDelegate>
+@property (strong, nonatomic) CLLocationManager* locationManager;
+@end
+
+@implementation COCLLocationCoordinateManager
+
++ (COCLLocationCoordinateManager *)shareInstance
+{
+    static dispatch_once_t onceToken;
+    static COCLLocationCoordinateManager *manager;
+    dispatch_once(&onceToken, ^{
+        manager = [[COCLLocationCoordinateManager alloc] init];
+    });
+    return manager;
+}
+
+- (void)mapLocation
+{
+    [self cancelMapView];
+    
+    self.mapView = [COSharedMapView sharedInstance].mapView;
+    self.mapView.delegate = self;
+    self.mapView.showsUserLocation = YES;
+    self.mapView.userTrackingMode = MAUserTrackingModeFollow;
+    
+    if (self.mapView.userLocation)
+    {
+        [self searchAddress:self.mapView.userLocation.coordinate];
+    }
+    
+}
+
+- (void)cancelMapView
+{
+    self.mapView.delegate = nil;
+    self.mapView = nil;
+}
+
++ (CLLocationCoordinate2D)userLocation
+{
+    if ([COSharedMapView sharedInstance].mapView.userLocation) {
+        return [COSharedMapView sharedInstance].mapView.userLocation.coordinate;
+    }
+    return CLLocationCoordinate2DMake(26.054229, 119.342846);
+}
+
+- (AMapSearchAPI  *)search{
+    
+    if (!_search) {
+        _search = [[AMapSearchAPI alloc] initWithSearchKey:[MAMapServices sharedServices].apiKey Delegate:nil];
+        _search.delegate = self;
+    }
+    return _search;
+}
+
+#pragma mark -MAMapViewDelegate
+- (void)mapView:(MAMapView *)mapView didFailToLocateUserWithError:(NSError *)error
+{
+    [PKParking updateInitModelWithCity:self.city];
+    
+}
+- (void)mapView:(MAMapView *)mapView didUpdateUserLocation:(MAUserLocation *)userLocation updatingLocation:(BOOL)updatingLocation
+{
+    static BOOL isFirstLocation;
+    // 是否是location数据更新
+    if (!updatingLocation)
+        return;
+    if (!isFirstLocation) {
+        isFirstLocation = YES;
+        [self searchAddress:userLocation.coordinate];
+    }
+}
+
+- (void)searchAddress:(CLLocationCoordinate2D)location
+{
+    AMapReGeocodeSearchRequest *regeoRequest = [[AMapReGeocodeSearchRequest alloc] init];
+    regeoRequest.searchType = AMapSearchType_ReGeocode;
+    regeoRequest.location = [AMapGeoPoint locationWithLatitude:location.latitude longitude:location.longitude];
+    [self.search AMapReGoecodeSearch:regeoRequest];
+}
+
+- (void)onReGeocodeSearchDone:(AMapReGeocodeSearchRequest *)request response:(AMapReGeocodeSearchResponse *)response
+{
+    if(response.regeocode != nil)
+    {
+        NSString *city = response.regeocode.addressComponent.city;
+        self.city = city;
+        [PKParking updateInitModelWithCity:city];
+    }
+    
+}
+
+@end

@@ -1,0 +1,44 @@
+//
+//  PatientListInfo.h
+//  ComveeDoctor
+//
+//  Created by happytool on 15/5/6.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface PatientListInfo : NSObject
+//头像前缀
+@property (nonatomic, strong) NSString * picPath;
+//头像后缀
+@property (nonatomic, strong) NSString * picPathS;
+//小头像后缀
+@property (nonatomic, strong) NSString * picUrl;
+//患者成员编码
+@property (nonatomic, strong) NSString * memberId;
+
+//患者成员编码
+@property (nonatomic, strong) NSString * memberName;
+//患者成员编码
+@property (nonatomic, strong) NSString* groupId;
+//患者成员编码
+@property (nonatomic, strong) NSString * remarkContent;
+//患者成员编码
+@property (nonatomic, strong) NSString * describe;
+//患者成员编码
+@property (nonatomic, strong) NSString * userNo;
+
+@property (nonatomic, strong) NSString* insertDt;
+
+@property (nonatomic, strong) NSNumber * isValid;
+
+@property (nonatomic, strong) NSNumber * memberDoctorId;
+
+@property (nonatomic, strong) NSString * DoctorId;
+
+@property (nonatomic, strong) NSString * modifyDt;
+
+@property (nonatomic, strong) NSString* firstLetter;//备注或者名字的首字母
+
+@end

@@ -1,0 +1,47 @@
+//
+//  RemindShowMsg.h
+//  ComveeDoctor
+//
+//  Created by JYL on 14-8-12.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//提醒信息
+
+#import <Foundation/Foundation.h>
+
+@interface RemindShowMsg : NSObject
+
+@property (nonatomic, strong) NSString * memberId;
+@property (nonatomic, strong) NSString * memberName;
+
+@property (nonatomic, strong) NSNumber * newsId;
+@property (nonatomic, strong) NSString * doctorId;
+@property (nonatomic, strong) NSString * insertDt;
+
+@property (nonatomic, strong) NSString * contentText;
+
+@property (nonatomic, strong) NSString * isValid;
+@property (nonatomic, strong) NSString * newsType;
+//消息子类型10 血糖异常  11 BMI异常  12 血压异常   20 新增咨询  30 新购买服务 31 定期随访 32 已完成随访
+@property (nonatomic, strong) NSString * detailNewsType;
+@property (nonatomic, strong) NSString * isPush;
+//是否已经推送
+@property (nonatomic, strong) NSString * pushMark;
+//
+@property (nonatomic, strong) NSString * pushDt;
+//
+@property (nonatomic, strong) NSString * readDt;
+//异常提醒频率
+@property (nonatomic, strong) NSString * reamindHz;
+//外键id(如咨询则关联至相关咨询，即questionId)
+@property (nonatomic, strong) NSString * detailId;
+//添加提醒人的userid
+@property (nonatomic, strong) NSString * addUserId;
+///是否已经处理0处理
+@property (nonatomic, strong) NSString * dispose;
+//医生对该异常的处理意见
+@property (nonatomic, strong) NSString * doctorAdvise;
+///是否有建议
+@property (nonatomic, assign) int hasAdvice;
+
+
+@end

@@ -1,0 +1,27 @@
+//
+//  CreatFollowUpMsg.m
+//  ComveeDoctor
+//
+//  Created by JYL on 14-9-14.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import "CreatFollowUpMsg.h"
+
+@implementation CreatFollowUpMsg
+@synthesize defualtCheck;
+@synthesize path;
+@synthesize dictName;
+@synthesize itemCode;
+@synthesize isShow;
+@synthesize oldImg;
+@synthesize dictValue;
+@synthesize followType;
+
+- (void)dealloc
+{
+    
+}
+
+
+@end

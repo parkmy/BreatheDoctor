@@ -1,0 +1,574 @@
+//
+//  ShareFun.m
+//  ComveeDoctor
+//
+//  Created by zhengjw on 14-7-28.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import "ShareFun.h"
+
+#import <CommonCrypto/CommonDigest.h>
+#import "CDMacro.h"
+#import "ShareFun.h"
+#import "OpenUDID.h"
+#import "CDGloablVar.h"
+#import "CDPromptView.h"
+
+@implementation ShareFun
+
+
+NSTimer *timer;
+CDPromptView * PromptView= nil;
+UIView* showView = nil;
+
+
++(NSString *)md5Digest:(NSString *)digestStr
+{
+	NSString *astr = [NSString stringWithFormat:@"%@",digestStr];
+	const char *cStr = [astr cStringUsingEncoding:CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000)];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5( cStr, strlen(cStr), result );
+    NSString *str = [NSString stringWithFormat:
+                     @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x",
+                     result[0], result[1], result[2], result[3], result[4], result[5], result[6], result[7],
+                     result[8], result[9], result[10], result[11], result[12], result[13], result[14], result[15]
+                     ];
+	
+	NSString *str2 = [str substringWithRange:NSMakeRange(0, 32)];
+    return str2;
+}
+
+
++(void)displayProgressHUD:(UIView *)view displayText:(NSString*)text
+{
+    
+    CGSize  sizes = [text sizeWithFont:[UIFont systemFontOfSize:14]];
+
+    UIActivityIndicatorView* activity = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 30*sizeScaleX, 30)];
+    activity.tag = -110;
+    [activity setCenter:CGPointMake(view.frame.size.width/2-sizes.width/2, view.frame.size.height/2)];//指定进度轮中心点
+    [activity setActivityIndicatorViewStyle:UIActivityIndicatorViewStyleGray];//设置进度轮显示类型
+    [view addSubview:activity];
+    [activity startAnimating];
+    
+    UILabel * lable = [[UILabel alloc]initWithFrame: CGRectMake(activity.frame.origin.x+activity.frame.size.width + 10,
+                                                                activity.frame.origin.y, sizes.width, 30)];
+    lable.font = [UIFont systemFontOfSize:14];
+    lable.text = text;
+    lable.tag = -111;
+    lable.textColor = [UIColor grayColor];
+    [lable bringSubviewToFront:view];
+    [view addSubview:lable];
+    
+    showView = view;
+	
+}
+
++(void)closeProgressHUD:(UIView *)view
+{
+
+    if (view == nil && showView==nil)
+    {
+        return;
+    }
+    else if(view == nil)
+    {
+        view = showView;
+    }
+        
+    UIView * vie = [showView viewWithTag:-110];
+    [vie removeFromSuperview];
+    vie = nil;
+    
+    vie = [showView viewWithTag:-111];
+    [vie removeFromSuperview];
+    vie = nil;
+
+}
+
++(void)showAlertViewWithText:(NSString *)text
+{
+    UIAlertView *t_alertView = [[UIAlertView alloc] initWithTitle:@"" message:text delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
+    [t_alertView show];
+
+}
+
++(void)showALAlertBannerWithView:(UIView*)view Style:(int)style Position:(int)position Subtitle:(NSString*)subtitle WithBtn:(UIButton*)sender{
+    
+    
+    if ([CDGloablVar sharedGloablVar].ifRemoveFromSuperview==NO)
+    {
+        CGSize size = [subtitle sizeWithFont:[UIFont systemFontOfSize:TextFontNumMin] constrainedToSize:CGSizeMake(screenWidth-40, 1000) lineBreakMode:NSLineBreakByTruncatingTail];
+        
+        int y = view.frame.size.height-59-systemTabbarHeight;
+        
+        if (position==-10)
+        {
+            y-= 66;
+    
+        }
+        if (position==-11)
+        {
+            y-= 170;
+        }
+        CDPromptView * PromptView = [[CDPromptView alloc]initWithFrame:CGRectMake(view.frame.size.width/2-size.width/2 -10,
+                                                                                  y, size.width + 20, size.height + 20)];
+        PromptView.btn =sender;
+        PromptView.ifDelegate = YES;
+        [view addSubview:PromptView];
+        [PromptView showViewWithMsg:subtitle];
+        
+        
+        sender.userInteractionEnabled = NO;
+        [CDGloablVar sharedGloablVar].ifRemoveFromSuperview=YES;
+        [CDGloablVar sharedGloablVar].alther = PromptView;
+    }
+    
+}
+
+#pragma mark 解析患者信息数据
++(PatientInformation*)parsingData:(NSDictionary*)dic
+{//201410194100827
+    
+    PatientInformation * patients = [[PatientInformation alloc]init];
+    
+    if ([[[dic objectForKey:@"body"] objectForKey:@"isGuest"] intValue ]==0 )
+    {
+        patients.isGuest = @"不是游客" ;
+    }
+    else
+    {
+        patients.isGuest = @"游客";
+    }
+    
+    patients.birthday = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"birthday"];
+    patients.bloodType= [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"bloodType"];
+    
+    if ([[[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"callreason"] isEqualToString:@"0"])
+    {
+        patients.callreason = @"不是" ;
+    }
+    else
+    {
+        patients.callreason = @"是";
+    }
+    if ([[[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"coordinator"] intValue] ==0)
+    {
+        patients.coordinator = @"户主" ;
+    }
+    else
+    {
+        patients.coordinator = @"家庭成员";
+    }
+    
+    patients.default_head_image_url = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"default_head_image_url"];
+    patients.eduLevelText = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"eduLevelText"];
+    patients.familyId = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"familyId"];
+    patients.goal = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"goal"];
+    patients.hasMachine = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"hasMachine"];
+    patients.marryText =  [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"marryText"];
+    patients.medicalPayFlagTex = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"medicalPayFlagText"];
+    patients.head_image_url = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"picPath"];
+    patients.memberHeight = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"height"];
+    NSString* memberId = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"memberId"];
+    if ([memberId isKindOfClass:[NSNumber class]])
+    {
+        patients.memberId = [NSString stringWithFormat:@"%lld",[memberId longLongValue]];
+    }
+    else
+    {
+        patients.memberId = memberId;
+    }
+    
+    patients.patientName = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"memberName"];
+    patients.memberWeight = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"memberWeight"];
+    patients.picPath = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"picPath"];
+    patients.picPathS = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"picPathS"];
+    patients.picUrl = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"picUrl"];
+    patients.professionText = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"professionText"];
+    patients.relationText = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"relationText"];
+    patients.questionId = [[[dic objectForKey:@"body"] objectForKey:@"consult"] objectForKey:@"questionId"];
+    patients.news =[[dic objectForKey:@"body"] objectForKey:@"abnormal"];
+    if ([[patients.news objectForKey:@"details"]isKindOfClass:[NSDictionary class]])
+    {
+        
+        patients.detailNewStype = [[patients.news objectForKey:@"details"] objectForKey:@"detailNewsType"];
+    }
+    patients.consult =[[dic objectForKey:@"body"] objectForKey:@"consult"];
+    //
+
+    patients.informHasNew =[NSString stringWithFormat:@"%@",[[dic objectForKey:@"body"] objectForKey:@"informHasNew"]];
+    patients.abnomalHasNew=[NSString stringWithFormat:@"%@",[[dic objectForKey:@"body"] objectForKey:@"abnomalHasNew"]];
+    patients.consultHasNew =[NSString stringWithFormat:@"%@",[[dic objectForKey:@"body"] objectForKey:@"consultHasNew"]];
+    
+    if ([[[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"sex"] intValue] ==1)
+    {
+        patients.sex = @"男" ;
+    }
+    else
+    {
+        patients.sex = @"女";
+    }
+    patients.groupId = [[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"groupId"];
+    NSLog(@"%@",patients.groupId);
+    patients.remarkContent =[[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"remarkContent"];
+    NSLog(@"%@",patients.remarkContent);
+    patients.describe =[[[dic objectForKey:@"body"] objectForKey:@"memberBase"] objectForKey:@"describe"];
+    
+    patients.memberArchive= [[dic objectForKey:@"body"]  objectForKey:@"memberArchive"];
+    patients.memberPackage = [[dic objectForKey:@"body"]  objectForKey:@"memberPackage"];
+    patients.packageName =  [[dic objectForKey:@"body"]  objectForKey:@"packageName"];
+    patients.tel = [dic objectForKey:@"userNo"];
+    
+    return patients;
+}
+
+#pragma mark 解析医生信息
++(void)analysisDoctorMsg:(NSDictionary*)dics
+{
+    
+    NSString * sex  = nil;
+    
+    if ([[dics objectForKey:@"perSex"] intValue] ==1)
+    {
+        sex = @"男";
+        
+    }
+    else
+    {
+        sex = @"女";
+    }
+    
+    NSMutableArray * arr1 = [[NSMutableArray alloc]initWithObjects:[dics objectForKey:@"perRealPhoto"], [dics objectForKey:@"perName"],sex,[dics objectForKey:@"birthday"],nil];
+    
+    NSMutableArray * arr2 = [[NSMutableArray alloc]initWithObjects:@"",[dics objectForKey:@"hospitalNameText"],[dics objectForKey:@"departmentNameText"],[dics objectForKey:@"positionText"],[dics objectForKey:@"perSpacil"],[dics objectForKey:@"signature"],[dics objectForKey:@"hospitalName"],[dics objectForKey:@"departmentName"],[dics objectForKey:@"position"],[dics objectForKey:@"province"],[dics objectForKey:@"city"],[dics objectForKey:@"qrcodePath"],[dics objectForKey:@"qrcodeId"],nil];
+    NSMutableArray * arr3 = [[NSMutableArray alloc]initWithObjects:[dics objectForKey:@"doctorId"], nil];
+    NSNumber * checkStatues = [dics objectForKey:@"checkStatus"];
+    [CDGloablVar sharedGloablVar].doctorID = [NSString stringWithFormat:@"%@",[dics objectForKey:@"doctorId"]];
+    
+    //  NSLog(@"编码:(城市)%@--(省份)%@---(职称)%@--(科室)%@--(医院)%@--文本:(签名)%@--(专长)%@--(职称文本)%@--(科室文本)%@--(医院文本)%@",arr2[10],arr2[9],arr2[8],arr2[7],arr2[6],arr2[5],arr2[4],arr2[3],arr2[2],arr2[1]);
+    [CDGloablVar sharedGloablVar].doctorData =  [[NSMutableArray alloc]initWithObjects:arr1,arr2,arr3, nil];
+    [[CDGloablVar sharedGloablVar].doctorData addObject:checkStatues];
+    
+    [[CDGloablVar sharedGloablVar].doctorData addObject:[dics objectForKey:@"paper"]];
+    [CDGloablVar sharedGloablVar].AuthenticationMsg = [NSString stringWithFormat:@"%@",checkStatues];
+    [CDGloablVar sharedGloablVar].packageNum =[NSString stringWithFormat:@"%@",[dics  objectForKey:@"packageNum"]];
+    
+}
+
++ (NSString*)GetTimeString:(NSString*)insertDt
+{
+    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];//实例化一个NSDateFormatter对象
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];//设定时间格式,要注意跟下面的dateString匹配，否则日起将无效
+    
+    NSDate *Date2 = [NSDate date];
+    
+    NSString* strData2 = [dateFormat stringFromDate:Date2];
+    Date2 = [dateFormat dateFromString:strData2];
+    
+    NSDate *Date1  = [dateFormat dateFromString:[insertDt substringWithRange:NSMakeRange(0,10)]];
+    
+    if(Date1 == nil)
+        return @"北京时间";
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    unsigned int unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit |NSMinuteCalendarUnit;//年、月、日、时、分、秒、周等等都可以
+    //NSLog(@"MessageCell GetTimeString/n");
+    NSDateComponents *comps = [gregorian components:unitFlags fromDate:Date1 toDate:Date2 options:0];
+    int day = (int)[comps day];
+    NSString* str = @"";
+    
+    if( day == 0)//时间差
+    {
+        str = [[NSString alloc] initWithFormat:@"%@",[insertDt substringWithRange:NSMakeRange(10,6)] ];
+        return str;
+    }
+    else if(day == 1)
+    {
+        str = [[NSString alloc] initWithFormat:@"昨天%@",[insertDt substringWithRange:NSMakeRange(10,6)] ];
+        return str;
+    }
+    else if(day == 2)
+    {
+        str = [[NSString alloc] initWithFormat:@"前天%@",[insertDt substringWithRange:NSMakeRange(10,6)] ];
+        return str;
+    }
+    else
+        return [insertDt substringWithRange:NSMakeRange(5,11)];
+}
+
++ (NSString*)GetMainViewTimeString:(NSString*)insertDt WithType:(int)type
+{
+    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];//实例化一个NSDateFormatter对象
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];//设定时间格式,要注意跟下面的dateString匹配，否则日起将无效
+    
+    NSDate *Date2 = [NSDate date];
+    
+    NSString* strData2 = [dateFormat stringFromDate:Date2];
+    Date2 = [dateFormat dateFromString:strData2];
+    
+    NSDate *Date1  = [dateFormat dateFromString:[insertDt substringWithRange:NSMakeRange(0,10)]];
+    
+    if(Date1 == nil)
+        return [[CommentConvenient getCurrentTime] substringWithRange:NSMakeRange(10,6)];
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    unsigned int unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit |NSMinuteCalendarUnit;//年、月、日、时、分、秒、周等等都可以
+    //NSLog(@"MessageCell GetTimeString/n");
+    NSDateComponents *comps = [gregorian components:unitFlags fromDate:Date1 toDate:Date2 options:0];
+    int day = (int)[comps day];
+    NSString* str = @"";
+    
+    if( day == 0)//时间差
+    {
+        str = [[NSString alloc] initWithFormat:@"%@",[insertDt substringWithRange:NSMakeRange(10,6)] ];
+        if (type==1)
+        {
+            str = @"今天";
+        }
+        return str;
+    }
+    else if(day == 1)
+    {
+        str = [[NSString alloc] initWithFormat:@"昨天"];
+        return str;
+    }
+    else if(day == 2)
+    {
+        str = [[NSString alloc] initWithFormat:@"前天"];
+        return str;
+    }
+    else
+        return [insertDt substringWithRange:NSMakeRange(5,5)];
+}
+
++ (NSString*)getDiscoveryTimeString:(NSString*)insertDt
+{
+    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];//实例化一个NSDateFormatter对象
+    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];//设定时间格式,要注意跟下面的dateString匹配，否则日起将无效
+    
+    NSDate *Date2 = [NSDate date];
+    
+    NSString* strData2 = [dateFormat stringFromDate:Date2];
+    Date2 = [dateFormat dateFromString:strData2];
+    
+    NSDate *Date1  = [dateFormat dateFromString:insertDt];
+    
+    if(Date1 == nil)
+        return [[CommentConvenient getCurrentTime] substringWithRange:NSMakeRange(10,6)];
+    
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    unsigned int unitFlags = NSYearCalendarUnit| NSMonthCalendarUnit | NSDayCalendarUnit |NSHourCalendarUnit |NSMinuteCalendarUnit;//年、月、日、时、分、秒、周等等都可以
+    //NSLog(@"MessageCell GetTimeString/n");
+    NSDateComponents *comps = [gregorian components:unitFlags fromDate:Date1 toDate:Date2 options:0];
+    int years = (int)[comps year];
+    int day = (int)[comps day];
+    NSString* str = @"";
+    
+    if( day == 0 &&years==0)//时间差
+    {
+        str = @"今天";
+        
+        return str;
+    }
+    else if(day == 1 &&years==0)
+    {
+        str = [[NSString alloc] initWithFormat:@"昨天"];
+        
+        return str;
+    }
+    else if( years!=0)
+    {
+        return [insertDt substringWithRange:NSMakeRange(0,10)];
+    }
+    else
+        return [insertDt substringWithRange:NSMakeRange(5,5)];
+}
+
++ (NSComparisonResult)compareTimeBetweenStartTime:(NSString*)startTimeStr andEndTime:(NSString*)endTimeStr
+{
+    NSDateFormatter* dateFormat1 = [[NSDateFormatter alloc] init];//实例化一个NSDateFormatter对象
+    [dateFormat1 setDateFormat:@"yyyy-MM-dd HH:mm:ss"];//设定时间格式,要注意跟下面的dateString匹配，否则日起将无效
+    
+    NSDate *startDate  = [dateFormat1 dateFromString:startTimeStr];
+    NSDate *endDate  = [dateFormat1 dateFromString:endTimeStr];
+    
+    if(startDate == nil || endDate == nil)
+        return NSOrderedAscending;
+      NSComparisonResult result = [endDate compare:startDate];
+    
+    return result;
+}
+
+//计算某点时间的时间差
++ (NSString *)intervalSinceNow: (NSString *) theDate
+{
+    
+    NSDateFormatter *date=[[NSDateFormatter alloc] init];
+    [date setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSDate *d=[date dateFromString:theDate];
+    NSTimeInterval late=[d timeIntervalSince1970]*1;
+    
+    
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval now=[dat timeIntervalSince1970]*1;
+    NSString *timeString=@"";
+    
+    NSTimeInterval cha=late-now;
+    
+    if (cha/3600<1) {
+        timeString = [NSString stringWithFormat:@"%f", cha/60];
+        timeString = [timeString substringToIndex:timeString.length-7];
+        timeString=[NSString stringWithFormat:@"%@", timeString];
+        
+    }
+    if (cha/3600>1&&cha/86400<1) {
+        timeString = [NSString stringWithFormat:@"%f", cha/3600];
+        timeString = [timeString substringToIndex:timeString.length-7];
+        timeString=[NSString stringWithFormat:@"%@", timeString];
+    }
+    if (cha/86400>1)
+    {
+        timeString = [NSString stringWithFormat:@"%f", cha/86400];
+        timeString = [timeString substringToIndex:timeString.length-7];
+        timeString=[NSString stringWithFormat:@"%@", timeString];
+        
+    }
+#if !__has_feature(objc_arc)
+    [date release];
+#endif
+    return timeString;
+}
+
++(NSString*)getFollowUpTypeString:(int)followType
+{
+    switch (followType)
+    {
+        case 1:
+            return @"首次随访";
+            break;
+        case 2:
+            return @"年度随访";
+            break;
+        case 3:
+            return @"季度随访";
+            break;
+        case 4:
+            return @"日常随访";
+            break;
+        default:
+            return @"随访";
+            break;
+    }
+}
+
++(BOOL)isNullOrEmpty:(NSString*)string{
+    return string == nil || string==(id)[NSNull null] || [string isEqualToString:@""];
+}
+
++(NSString*)getSendMessageReqNum
+{
+    NSDate *now = [NSDate date];
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    unsigned int unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit | NSWeekdayCalendarUnit;
+    NSDateComponents *dd = [cal components:unitFlags fromDate:now];
+    
+    int value = arc4random() % 1000000;     //6位随机数
+    
+    NSString* req_Num = [NSString stringWithFormat:@"%04d%02d%02d%02d%02d%02ld%06d",(int)[dd year],(int)[dd month],(int)[dd day],(int)[dd hour],(int)[dd minute],(long)[dd second],value];
+    
+    return req_Num;
+}
+
++(BOOL)isValidImageUrl:(NSString*)Url
+{
+    if ([ShareFun isNullOrEmpty:Url])
+    {
+        return NO;
+    }
+    if ([Url rangeOfString:@"http" options:NSCaseInsensitiveSearch].location == NSNotFound) {
+        return NO;
+    } else {
+        return YES;
+    }
+
+}
+
++ (UIViewController*)viewController:(UIView*)sender
+{
+    for (UIView* next = [sender superview]; next; next = next.superview) {
+        UIResponder* nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController*)nextResponder;
+        }
+    }
+    return nil;
+}
+
++ (UIView*)createNotMsgView:(UIView*)noMsgBGView WithText:(NSString*)msgText
+{
+    
+    float height = screenHeight-systemNavHeight;
+    
+    if (systemVersion>7)
+    {
+        height-=20;
+    }
+    noMsgBGView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,screenWidth,height)];
+    noMsgBGView.backgroundColor = [UIColor clearColor];
+    noMsgBGView.hidden = YES;
+    
+    UIImageView *noMsgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, (noMsgBGView.frame.size.height-95-10-20)/2, noMsgBGView.frame.size.width, 95+10+20)];
+    noMsgView.backgroundColor = [UIColor clearColor];
+    [noMsgBGView addSubview:noMsgView];
+    
+    UIImageView *logoImg = [[UIImageView alloc] initWithFrame:CGRectMake((noMsgView.frame.size.width-70)/2, 0, 70, 95)];
+    logoImg.image = [UIImage imageNamed:@"dandan_.png"];
+    [noMsgView addSubview:logoImg];
+    
+    UILabel *logoLab = [[UILabel alloc] initWithFrame:CGRectMake(0, noMsgView.frame.size.height-20, noMsgView.frame.size.width, 20)];
+    logoLab.backgroundColor = [UIColor clearColor];
+    logoLab.font = [UIFont fontWithName:FONT size:15];
+    logoLab.textColor = [UIColor colorWithRed:0xcc/255.0 green:0xcc/255.0 blue:0xcc/255.0 alpha:1.0];
+    logoLab.textAlignment = NSTextAlignmentCenter;
+    logoLab.text = msgText;
+    [noMsgView addSubview:logoLab];
+    
+    return noMsgBGView;
+}
+
++(NSString*)getPatienShowName:(PatientInformation*)info
+{
+    NSString* name = @"--";
+    if (![ShareFun isNullOrEmpty:info.remarkContent])
+    {
+        name = info.remarkContent;
+    }
+    else if (![ShareFun isNullOrEmpty:info.patientName])
+    {
+        name = info.patientName;
+    }
+    else
+        name = info.tel;
+    return name;
+}
+
++(NSString*)getPatienListInfoShowName:(PatientListInfo*)info
+{
+    NSString* name = @"--";
+    if (![ShareFun isNullOrEmpty:info.remarkContent])
+    {
+        name = info.remarkContent;
+    }
+    else if (![ShareFun isNullOrEmpty:info.memberName])
+    {
+        name = info.memberName;
+    }
+    else
+        name = info.userNo;
+    return name;
+}
+
+@end

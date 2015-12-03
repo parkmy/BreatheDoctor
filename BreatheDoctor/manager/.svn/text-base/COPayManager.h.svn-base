@@ -1,0 +1,28 @@
+//
+//  CAPayManager.h
+//  CheWeiGuanJia
+//
+//  Created by 廖维海 on 15/9/10.
+//  Copyright (c) 2015年 www.cheweiguanjia.com. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "WXUtil.h"
+#import "WXApi.h"
+#import "Order.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "DataSigner.h"
+
+@interface COPayManager : NSObject
+
++ (COPayManager*)getInstance;
+
+- (void)requestWX:(GJWXPayRContent *)rcontent;
+
+- (void)requestZFB:(GJZFBPayRContent *)RContent;
+
+- (void)showPaySuccView;
+
+@property (nonatomic, copy)void(^payCompleteBlock)();
+
+@end

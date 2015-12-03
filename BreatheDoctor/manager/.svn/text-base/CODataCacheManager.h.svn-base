@@ -1,0 +1,34 @@
+//
+//  CADataCacheManager.h
+//  CWGJCarPark
+//
+//  Created by mutouren on 9/7/15.
+//  Copyright (c) 2015 mutouren. All rights reserved.
+//  数据缓存类
+
+#import <Foundation/Foundation.h>
+#import "COUserModel.h"
+
+@interface CODataCacheManager : NSObject
+
+@property (nonatomic, strong) COUserModel *userModel;                   //用户基本信息
+
+//share Instance of NavManager
++ (CODataCacheManager *)shareInstance;
+
+#pragma mark 去读userDefault文件缓存
+- (void)loadUserDefaultData;
+
+#pragma mark 保存用户信息
+- (void)saveUserModel;
+
+#pragma mark 清除用户信息
+- (void)clearUserModel;
+
+#pragma mark 保存头像数据
+- (void)saveUserModelIconUrl:(NSString*)url;
+
+#pragma mark 是否登录
+- (BOOL)isLogin;
+
+@end

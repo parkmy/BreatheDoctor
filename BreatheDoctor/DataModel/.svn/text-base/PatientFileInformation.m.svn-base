@@ -1,0 +1,71 @@
+//
+//  PatientFileInformation.m
+//  ComveeDoctor
+//
+//  Created by JYL on 14-8-6.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import "PatientFileInformation.h"
+
+@implementation PatientFileInformation
+@synthesize isGuest;
+@synthesize picPath;
+@synthesize pCode;
+@synthesize picPathS;
+@synthesize picUrl;
+@synthesize ids;
+@synthesize isNeed;
+@synthesize isRestrain;
+@synthesize isShow;
+@synthesize isValue;
+@synthesize itemCode;
+@synthesize itemList;
+@synthesize itemType;
+@synthesize help;
+@synthesize seq;
+@synthesize dictName;
+@synthesize category;
+@synthesize categoryName;
+@synthesize valueCode;
+@synthesize childCode;
+@synthesize valueName;
+@synthesize values;
+@synthesize rule;
+@synthesize tie;
+@synthesize rightMsg;
+@synthesize flick;
+@synthesize ifRestrain;
+@synthesize valueCodeArry;
+@synthesize path;
+
+- (void)dealloc
+{
+    
+}
+
+- (void)isGuest:(NSString*)isGuests picPath:(NSString*)picPaths picPathS:(NSString*)picPathSs picUrl:(NSString*)picUrls itemCode:(NSString*)itemCodes dictName:(NSString*)dictNames pCode:(NSString*)pCodes itemType:(NSString*)itemTypes isShow:(NSString*)isShows help:(NSString*)helps seq:(NSString*)seqs tie:(NSString*)ties isNeed:(NSString*)isNeeds category:(NSString*)categorys categoryName:(NSString*)categoryNames itemList:(NSMutableArray*)itemLists rule:(NSDictionary*)rules values:(NSString*)valuess
+{
+      isGuest = isGuests;
+      picPath = picPaths;
+      picPathS = picPathSs;
+      picUrl = picUrls;
+      itemCode = itemCodes;
+      dictName = dictNames;
+      pCode = pCodes;
+      itemType = itemTypes;
+      isShow = [NSString stringWithFormat:@"%@",isShows];
+      help =helps;
+      seq = seqs;
+      tie = ties;
+      isNeed = isNeeds;
+      category = categorys;
+      categoryName = categoryNames;
+      itemList = itemLists;
+      rule = rules;
+      values = valuess;
+      rightMsg = @"";
+
+}
+
+@end

@@ -1,0 +1,374 @@
+//
+//  CDMacro.h
+//  ComveeDoctor
+//
+//  Created by zhengjw on 14-7-27.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#ifndef ComveeDoctor_CDMacro_h
+#define ComveeDoctor_CDMacro_h
+
+#import "AppDelegate.h"
+#import "CDCommontConvenient.h"
+#import "RequestManager.h"
+#import "NSString+Common.h"
+
+#define appDelegate ((AppDelegate *)[UIApplication sharedApplication].delegate)
+#define currentNavigationController  appDelegate.rootViewConttroller.selectedViewController.navigationController
+
+#ifdef DEBUG
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define DLog(...)
+#endif
+
+#define VersionNum 210            //v1.3.1 ver就传 131
+//渠道
+//#define ChannelId @"QQ3群"
+//#define ChannelId @"本地服务器"
+//#define ChannelId @"App Store"
+ #define ChannelId @"91助手"
+//#define ChannelId @"同步推"
+//#define ChannelId @"PP助手"
+//渠道数字
+//#define ChannelNum @"q103"
+//#define ChannelNum @"k800"
+//#define ChannelNum @"k801"
+//#define ChannelNum @"k802"
+//#define ChannelNum @"k803"
+
+//xxx-xx(02ios)-xxx(01:正式 03:企业 99:测试)
+#define ChannelNum @"1010203"
+
+#define Join_Id @"comveeiPhone"
+
+#define FILEPATH @"FilePath" 
+
+#define DBDIR   @"comveeDB"
+
+#define ImageFilePath @"/ChatCaches/ThumbNail"
+
+#define SoundFilePath @"/ChatCaches/chatSound"
+
+//返回标示码
+#define REQUESTSUCCESS @"0000" //请求成功
+#define KICKOUT @"8888"        //被踢下线
+#define LOGINTIMEOUT @"8000"   //登录超时
+#define ACCOUNTNOUSE @"80003"  //医生帐号不存在或未审
+
+#define CACHENULL @"100001"    //缓存为空
+
+#define PUSH_NOCHANGE 300
+#define PUSH_CONSULT 301
+#define PUSH_TELCONSULT 302
+
+//字体
+#define FONT @"HelveticaNeue"
+#define FONT_BOLD @"HelveticaNeue-Bold"
+
+//友盟APPKEY
+//53e0407dfd98c5be120251e9
+//
+#define UMENG_KEY @"53e0407dfd98c5be120251e9"
+
+#define QQAppId @"1104806175"
+#define QQAppKey @"daxo97rvcjpAtAq6"
+//微博、微信注册ID
+#define wxID @"wx1fd9031080e2ebc4"
+#define wxSecret @"7a07c2b8f1f3d8ec4ca00c31a2d37c67"
+#define sinaKey @"2221450207"
+#define sinaSecret @"336134a80fe2bbd7e7715e5765ccd142"
+
+#define ShareSDKKey @"b462825a82f0"
+
+//#define iPhone6P ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(828,1472), [[UIScreen mainScreen] currentMode].size) : NO)
+//{1125, 2001}
+//暂时已320作为6与6+的区别条件
+#define iPad         (screenWidth > 750 ? YES : NO)
+#define iPhone6Add   (screenWidth > 375 ? YES : NO)
+#define iPhone6Plus ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(1242,2208), [[UIScreen mainScreen] currentMode].size) || CGSizeEqualToSize(CGSizeMake(828,1472), [[UIScreen mainScreen] currentMode].size)|| CGSizeEqualToSize(CGSizeMake(1125, 2001), [[UIScreen mainScreen] currentMode].size): NO)
+
+#define iPhone6 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? (CGSizeEqualToSize(CGSizeMake(750, 1334), [[UIScreen mainScreen] currentMode].size)) : NO)
+
+#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
+#define iPhone4 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 960), [[UIScreen mainScreen] currentMode].size) : NO)
+
+#define screenWidth [[UIScreen mainScreen] bounds].size.width
+#define screenHeight [[UIScreen mainScreen] bounds].size.height
+
+#define sizeScaleX ((screenHeight<=480)?1.0f:screenWidth/320)
+#define sizeScaleY ((screenHeight<=480)?1.0f:screenHeight/568)
+#define FontScale iPhone6Plus?1.8:1
+
+CG_INLINE CGRect CGRectMakeFit(CGFloat x, CGFloat y, CGFloat width, CGFloat height)
+{
+    CGRect rect;
+    rect.origin.x = x * sizeScaleX;
+    rect.origin.y = y * sizeScaleY;
+    rect.size.width = width * sizeScaleX;
+    rect.size.height = height * sizeScaleY;
+    return rect;
+}
+
+#define systemVersion [[[UIDevice currentDevice] systemVersion] floatValue]    //系统版本号
+#define XcodeAppVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+
+#define ios7Height ([[[UIDevice currentDevice] systemVersion] floatValue]>=7?20:0)
+
+//系统导航设置高度
+#define systemNavHeight 44
+#define systemTabbarHeight 50
+
+#define systemColor [UIColor colorWithRed:61/255.0f green:134/255.0f blue:255/255.0f alpha:1.0f]//系统配色
+//#define BackgroundColor [UIColor colorWithRed:242.0f/255.0f green:240.0f/255.0f blue:235.0f/255.0f alpha:1.0f]//背景配色
+
+#define viewBackgroundColor [UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f]
+//线条颜色
+#define LineColor [UIColor colorWithRed:0xd9/255.0 green:0xd9/255.0 blue:0xd9/255.0 alpha:1.0]
+
+#define LINEWIDTH 0.5
+#define CORNERRADIUS 5.0
+#define BORDERWIDTH 0.5
+//表数据颜色
+#define maxDataColor [UIColor colorWithRed:0xff/255.0f green:0x33/255.0f blue:0x00/255.0f alpha:1.0f]
+#define mixDataColor CUSTOM_COLOR(0x3d, 0x86, 0xff, 1.0)
+
+#define normalDataColor [UIColor colorWithRed:0x6b/255.0f green:0xcd/255.0f blue:0x14/255.0f alpha:1.0f]
+
+#define CUSTOM_COLOR(r,g,b,a) [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+
+//字体
+#define MsgNameTextFontNum iPhone6Plus?17:16
+#define MsgNameTextFont [UIFont systemFontOfSize:MsgNameTextFontNum]
+
+#define TextFontNumMax 16
+#define TextFontMax [UIFont systemFontOfSize:TextFontNumMax]
+
+#define TextFontNumMin 13
+#define TextFontMin [UIFont systemFontOfSize:TextFontNumMin]
+
+#define TextFontNumMins 10
+#define TextFontMins [UIFont systemFontOfSize:TextFontNumMins]
+
+#define MsgTextFontNum 14
+#define MsgTextFont  [UIFont systemFontOfSize:MsgTextFontNum]
+
+#define TimeFontNum 12
+#define TimeFont [UIFont systemFontOfSize:TimeFontNum]
+
+#define MainViewIconWidth iPhone6Plus?50:45
+
+#define systemAcceptID  @"1000000"
+#define systemAcceptTableName @"systemAccept"
+
+#define sugerAssistantTableName @"sugerAssistant"
+
+#define ImageViewHeight iPhone6Plus?210:180
+#define ImageVIewWidth  iPhone6Plus?120:100
+#define Nums  @"0123456789"
+//消息横条类型
+#define  SALAlertBannerStyleSuccess  0
+#define  SALAlertBannerStyleFailure 1
+#define  SALAlertBannerStyleNotify 2
+#define  SALAlertBannerStyleWarning 3
+//消息横条弹出方式
+#define  SALAlertBannerPositionTop 0
+#define  SALAlertBannerPositionBottom 1
+#define  SALAlertBannerPositionUnderNavBar 2
+
+
+//超时
+#define CONNECT_TIMEOUT 8//超时时间
+
+
+//接口地址管理
+#define VersionTime @"2015-11-03 00:00:00"
+
+#define getQuestionListInterface @"question/getQuestionList"//问题列表
+#define loadMemberInfoInterface @"member/loadMemberInfo"//获取个人信息
+#define textInfoInterface @"extension/textInfo"//获取文字配置接口
+#define loadHelloInfoInterface @"question/loadHelloInfo"//获取文字配置接口
+#define loadRemindSetInterface @"member/loadRemindSet"//获取提醒开关列表
+#define setRemindInterface @"member/setRemind"//设置提醒开关
+#define userEditPwdInterface @"member/userEditPwd"//修改密码
+#define doAnswerTimeInterface @"member/doAnswerTime"//医生答题时间操作（增删查）
+#define loadQuestionInfoListInterface @"question/loadQuesInfoList"//获取详细问题页面
+#define addDoctorReplayInterface  @"question/addDoctorReplay"//回答问题
+
+#define checkVersionInterface  @"extension/checkVersion"//客户端版本比较
+
+//healthdoctor/follow/getQuesCfg
+#define Comvee_Url    @"http://comvee.3322.org:8888/comveedoctor/"//新预上线
+//#define Comvee_Url    @"http://192.168.2.3:998/comveedoctor/"//预上线
+//#define Comvee_Url  @"https://doctorintf.izhangkong.com/"//正式
+//#define Comvee_Url    @"http://192.168.20.164:8081/comveedoctor/"//我同
+//#define Comvee_Url    @"http://comvee.3322.org:8081/comveedoctor/"//友智
+
+#define Evaluate_Url  @"itms-apps://itunes.apple.com/cn/app/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=1036130615";
+//评价地址
+#define regInterface    @"user/reg"                                //医生注册001
+#define getValidCode    @"user/sendMsg"                            //获取验证码002
+#define checkValidCode  @"user/checkMsg"                           //验证验证码003
+#define findPassword    @"user/findPwd"                            //找回密码004
+#define Attestation     @"user/attestation.do"                     //提交认证信息
+#define ChangeAttestation    @"user/modifyDoctorAttestation.do"  //修改认证
+#define loginInterface  @"user/login"                              //登陆接口005
+//#define GetHomePageMsg  @"server/loadDoctorHomePage"               //加载首页006
+#define GetHomePageMsg  @"doctor/doctorHomePage"                   //加载首页087
+#define AddRemind       @"server/addRemind"                        //添加提醒007
+#define DelegateRemind  @"server/deleteRemind"                     //删除提醒008
+#define UpdateRemind    @"server/updateRemind"                     //修改提醒009
+#define AddMember      @"member/addMember"                        //添加患者010
+#define DelegatePatient @"member/deleteMember"                     //删除患者011
+                                                                   //修改患者012
+#define getPatientList  @"member/doctorMemberList"                 //患者列表013
+#define GetRecordMsg    @"member/memberDetail"                     //获取患者信息014
+//#define GetFileMsg      @"member/memberArchive"
+#define GetFileMsg      @"member/memberArchiveNew"                 //档案信息015->061
+                                                                   //系统通知016
+#define MemberQuesList  @"server/memberQuesList"                   //咨询问题列表017
+#define LoadQuestion    @"server/loadQuestionInfo"                 //问题正文018
+#define AnswerList      @"server/answerQuestion"                   //咨询回答019
+
+/**************************020~030还未开始****************************************/
+#define GetQuesCfg      @"follow/getQuesCfg"                     //获取题目配置020
+#define SelectFollowUpList @"follow/selectFollowUpList"           //获取随访列表(记录)021
+#define SelectFollowUpById @"follow/selectFollowUpById"           //根据随访id获取题目022
+#define AddFollowUp        @"follow/addFollowUp"                   //新增随访023
+#define SubmiFollowUp      @"follow/addFollowUpMemberLog"          //提交随访024
+#define GetFollowUpDetails @"follow/getFollowUpMemberLog"         //获取随访内容详情025
+#define getActionPlanDetail @"follow/getActionPlanDetail"         //获取行动方案详情026
+#define CommitActionPlan  @"follow/commitActionPlan"               //提交行动方案
+
+#define GetFollowUpType   @"follow/getFollowUpType"                 //获取随访类型028
+#define SyncFastReply     @"server/syncFastReply"                   //同步快捷回复029
+#define LoadFastReply     @"server/loadFastReply"                   //加载快捷回复030
+#define JobCenter         @"job/jobCenter"                          //任务中心031
+#define JobForMember      @"job/recommendJob"                       //为患者推荐任务032
+#define MemberJobList     @"job/memberJobList"                      //患者任务列表033
+#define JobDetail         @"job/jobDetail"                          //任务详情034
+#define MemberJobDetail   @"job/memberJobDetail"                    //患者任务详情035
+#define RemindList        @"server/errorList"                       //异常提醒列表036
+#define HealthyRecord     @"server/getGraphsForParameters"          // 健康记录037
+#define AnswerQuestion    @"server/addAbnormalSuggest"              //提交医生建议038
+#define RangeSet          @"server/rangeSet"                        //设置控制目标039
+
+#define HistoryList     @"doctor/loadDoctorQuesList"              //历史咨询列表040
+#define DoctorSchedule  @"doctor/doctorSchedule"                  //我的日程041
+#define LoadDoctorMsg   @"doctor/loadDoctorDetail"                //加载医生信息042
+#define EditDoctorMsg   @"doctor/updateDoctorInfo"                //修改医生信息043
+#define UserGuide       @"info/textInfo"                          //使用指南044
+#define StageGuide       @"info/textInfo"                          //声明
+#define LoadRemindSet   @"loadRemindSet"                          //加载提醒设置045
+#define DocRemindSet    @"info/doctorSetRemind"                   //提醒设置046
+#define DocAskTimeSet   @"doctor/doctorAskTimeSet"                //问答时间设置047
+#define LoadAskTimeSet  @"doctor/loadDoctorAskTimeSet"            //加载问答时间设置048
+#define ChangePass      @"user/changePwd"                         //修改密码049
+#define setPushKeyInterface  @"info/setPushKey"           //推送key录入053
+#define SelectRemind         @"server/loadHomePageSort"                //医生获取患者首页提醒分类列表!055
+#define ScheduleDayDetial @"doctor/doctorScheduleDayDetial"       //获取医生当日日程列表!056
+#define UpdateVersion    @"info/clientVersion"            //版本升级(054)
+#define DeleteAskTimeSet @"doctor/deleteDoctorAskTime"            //删除问答时间设置057
+#define UpdateAskTimeSet @"doctor/updateDoctorAskTime"            //修改问答时间设置058
+#define setOpen         @"doctor/setDoctorAskTimeIsOpen"          //医生开关059
+#define DoctorSystemRemind @"server/doctorSystemRemind"           //加载系统提醒列表!060
+
+#define ModifyMember     @"member/modifyMember"                   //修改患者062
+#define RangeSelect      @"server/rangeSelect"                    //加载目标设置063
+#define GetUnifyData     @"doctor/getUnifyData"                   //064、获取统一接口数据（20141013）
+
+
+#define AddMassNews      @"server/addMassNews"        //065医生群发消息
+#define LoadMassNewsList @"server/loadMassNewsList"  //066加载群发消息列表
+#define MassNewsDetail   @ "server/massNewsDetail"  //067群发消息详情
+
+#define DoctorRemindList @"doctor/doctorRemindList" //072医生提醒列表
+#define UploadingPV      @"http://img.mamibon.com:8080/fileuploader/uploader.do"//临时文件(图片,语音先上传到阿里云，将其返回的链接地址传给服务器)
+/**************************68~71****************************************/
+#define AddPatientRemind     @"server/addPatientRemind"            //添加患者提醒
+#define GetPatientRemindList @"server/patientRemindList"            //患者提醒列表
+#define DeletePatientRemind  @"server/deletePatientRemind"           //删除患者提醒
+#define UpdatePatientRemind  @"server/updatePatientRemind"         //修改患者提醒
+
+#define LoadDoctorGrouping   @"doctor/loadDoctorGrouping"          //医生分组列表
+#define AddDoctorGroup       @"doctor/addDoctorGrouping"           //新建医生分组
+#define EditDoctorGrouping   @"doctor/editDoctorGrouping"          //编辑医生分组
+#define DeleteDoctorGrouping @"doctor/deleteDoctorGrouping"        //删除医生分组
+#define loadMemberRemark     @"member/loadMemberRemark"            //获取患者备注
+#define setMemberRemark      @"member/setMemberRemark"             //设置患者备注
+
+#define searchUserByPhone    @"member/searchUserByPhone" //079、根据电话号码查询患者
+#define addPatient           @"member/addPatient"    //080、添加患者（20150105）
+#define PackageInfo          @"member/memberPackageInfo"  //套餐信息
+
+#define DoctorWeekSchedule   @"doctor/doctorWeekSchedule"//加载一周日程安排
+#define DocScheduleDetail    @"doctor/docScheduleDetail"//加载日程安排083
+#define AddSchedule          @"doctor/addSchedule"//084、添加日程
+#define LoadSingleSchedule   @"doctor/loadSchedule"//085、加载单个日程安排
+#define EidtSchedule         @"doctor/eidtSchedule"//086、编辑日程安排
+#define InformList           @"doctor/doctorInformList"//088、通知列表（糖小助）
+#define refreshInformList    @"doctor/refreshDoctorInformList"
+#define DelegateHomePatient  @"doctor/deleteHomeNews" //089、删除首页联系人
+#define AgreeRelation        @"doctor/agreeCreateRelation"//090、接受医患关系创建
+#define MemberDialogue       @"doctor/docMemberDialogue"//091、加载患者-医生消息对话
+#define answerDocDialogue    @"server/addDocDialogue"  //092、医生添加对话消息
+#define refreshDialogue      @"doctor/refreshDialogue"  //94加载最新的对话消息
+#define refreshHomePage      @"doctor/refreshHomePage"  //098
+
+#define loadMemberListAndGroup       @"member/loadMemberListAndGroup"    //95加载患者列表与分组
+#define refreshMemberListAndGroup    @"member/refreshMemberListAndGroup" //96刷新患者列表与分组
+
+#define getPatientInfo          @"member/getPatientInfo"//获取患者信息
+
+#define refuseCreateRelation    @"doctor/refuseCreateRelation"
+
+#define JobListByIdStr       @"job/jobListByIdStr"   //093、根据任务id串获取任务列表
+
+#define loadLastInform      @"doctor/loadLastInform" //094获取最新的糖小助消息
+
+#define loadPatientInviteRequest  @"doctor/loadPatientRequest" //获取患者邀请列表
+
+#define iaboratoryTestReportListInterface @"member/getUploadPics"  //加载化验单
+
+#define getHemoglobinRecord @"server/getHemoglobinRecord.do"//糖化血红蛋白
+/******1.3.5 新接口***********/
+#define MemberDetailNew     @"member/memberDetailNew.do" //获取个人信息
+#define GetGlucoseRecord    @"server/getGlucoseRecord.do"
+#define getPackageMsg       @"member/memberPackageList.do"//套餐信息
+#define getPackageDetail    @"member/loadPackageServerList.do" //套餐详情
+
+#define setFreePackage        @"server/setFreePackageToPatient.do"//为患者设置免费体验
+#define loadDoctorPackageList @"server/loadDoctorPackageList.do"//加载医生套餐列表
+#define setDoctorPackageOnSell @"server/setDoctorPackageOnSell.do"//server/setDoctorPackageOnSell.do
+#define doctorAddPackage     @"server/doctorAddPackage.do" //医生设置套餐
+#define doctorModifyPackage  @"server/doctorModifyPackage.do"//修改套餐
+#define PackageOnSell        @"server/setDoctorPackageOnSell.do"//修改套餐
+
+#define loadDiscover        @"information/loadInformations"//发现首页
+#define addCollect @"information/addCollect.do"
+#define loadCollect @"information/loadCollect.do"
+#define deleteCollect @"information/deleteCollect.do"
+#define CommentConvenient   [CDCommontConvenient shareCDcomment]
+
+
+enum MESTYPE{
+//    1 血糖异常 2 血压异常 3 BMI异常 4 咨询 5 任务推荐 6 创建随访 7 完成随访 8 创建日程提醒 9 请求确认医患关系 10 通过医患关系 11拒绝邀请,17:甲状腺,16血脂
+    BLOODGLUCOSE = 1,BLOODPRESS,BMI,CONSULT,TASKCOMMAND,CREATFOLLOWUP,FINISHFOLLOWUP,CREATEREMIND,INVITER,ACCEPT,REFUSE,BloodFat=16,Thyroid
+};
+enum MESSTATE
+{
+    SENDING=0,SUCCESS,FAIL,EDIT
+};
+enum CONSULTTYPE
+{
+    PICTURE=0,VOICE,TEXT
+};
+
+enum DISPOSETYPE
+{
+    DISINVITER =0,DISACCEPT,DISREFUSE
+};
+#endif
+

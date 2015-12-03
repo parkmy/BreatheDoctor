@@ -1,0 +1,60 @@
+//
+//  DiscoverInfo.m
+//  ComveeDoctor
+//
+//  Created by JYL on 15/11/3.
+//  Copyright © 2015年 zhengjw. All rights reserved.
+//
+
+#import "DiscoverInfo.h"
+#import "LKDBHelper.h"
+
+@implementation DiscoverInfo
+
++ (DiscoverInfo*)assignmentToModle:(NSDictionary*)dic WithTableName:(NSString*)tableName
+{
+    DiscoverInfo * info = [[DiscoverInfo alloc]init];
+    
+    info.summary =[self getString:[dic objectForKey:@"summary"]];
+    
+    info.coverImgThumb =[self getString:[dic objectForKey:@"coverImgThumb"]];
+    info.sid =[self getString:[dic objectForKey:@"sid"]];
+    info.title =[self getString:[dic objectForKey:@"title"]];
+    info.columnType =[self getString:[dic objectForKey:@"columnType"]];
+    info.informationTypeText =[self getString:[dic objectForKey:@"informationTypeText"]];
+    info.informationType =[self getString:[dic objectForKey:@"informationType"]];
+    info.columnTypeText =[self getString:[dic objectForKey:@"columnTypeText"]];
+    info.insertDt =[self getString:[dic objectForKey:@"insertDt"]];
+    if ([info.insertDt rangeOfString:@"."].location!=NSNotFound)
+    {
+        info.insertDt  =[info.insertDt substringToIndex:[info.insertDt rangeOfString:@"."].location];
+    }
+    info.isCollect =[self getString:[dic objectForKey:@"isCollect"]];
+    info.url =[self getString:[dic objectForKey:@"url"]];
+    
+    NSString * where = [NSString stringWithFormat:@"sid = %@",info.sid];
+    
+    NSArray * arr = [[LKDBHelper getUsingLKDBHelper] search:[DiscoverInfo class] tableName:tableName where:where orderBy:nil offset:0 count:0];
+    
+    if (arr.count>0)
+    {
+        info.insertSucceed = NO;
+        [[LKDBHelper getUsingLKDBHelper]updateToDB:info tableName:tableName where:where];
+    }
+    else
+    {
+        info.insertSucceed = YES;
+        [[LKDBHelper getUsingLKDBHelper] insertToDB:info withTableName:tableName];
+    }
+    
+    return info;
+}
+
++ (NSString*)getString:(id)str
+{
+    NSString * string = [NSString stringWithFormat:@"%@",str];
+    
+    return string;
+}
+
+@end

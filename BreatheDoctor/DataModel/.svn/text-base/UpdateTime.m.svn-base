@@ -1,0 +1,51 @@
+//
+//  UpdateTime.m
+//  ComveeDoctor
+//
+//  Created by happytool on 15/5/7.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import "UpdateTime.h"
+#import "LKDBHelper.h"
+
+@implementation UpdateTime
+@synthesize doctorId;
+@synthesize HomeRefreshTime;
+@synthesize HomeUpdateTime;
+@synthesize PatientLoadTime;
+@synthesize PatientRefreshTime;
+@synthesize systemAcceptRefreshTime;
+@synthesize sugarLoadTime;
+@synthesize sugarRefreshTime;
+
++(NSString*)getPrimaryKey
+{
+    return @"doctorId";
+}
+@end
+
+@implementation DialogUpdateTime
+
+@synthesize memberId;
+@synthesize DialogLoadTime;
+@synthesize DialogRefreshTime;
+
++(NSString*)getPrimaryKey
+{
+    return @"memberId";
+}
+@end
+
+@implementation DiscoverCtrUpdateTime
+
+@synthesize InformationType;
+@synthesize DiscoverCtrfreshTime;
+@synthesize DiscoverCtrLoadTime;
+
++(NSString*)getPrimaryKey
+{
+    return @"InformationType";
+}
+
+@end

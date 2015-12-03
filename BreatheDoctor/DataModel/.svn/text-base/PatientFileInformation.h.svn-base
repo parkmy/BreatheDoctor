@@ -1,0 +1,109 @@
+//
+//  PatientFileInformation.h
+//  ComveeDoctor
+//
+//  Created by JYL on 14-8-6.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//患者档案信息
+
+#import <Foundation/Foundation.h>
+
+@interface PatientFileInformation : NSObject
+
+//1游客,0不是游客
+@property (nonatomic, strong) NSString * isGuest;
+//头像前缀
+@property (nonatomic, strong) NSString * picPath;
+//头像后缀
+@property (nonatomic, strong) NSString * picPathS;
+//小头像后缀
+@property (nonatomic, strong) NSString * picUrl;
+///code标识
+@property (nonatomic, strong) NSString * itemCode;
+///子节点(嵌入弹开)
+@property (nonatomic, strong) NSString * childItemCode;
+///资料文本
+@property (nonatomic, strong) NSString * dictName;
+///code标识父类
+@property (nonatomic, strong) NSString * pCode;
+///子节点(嵌入弹开)
+@property (nonatomic, strong) NSString * childpCode;
+///题目类型1 单选 2 多选 3 日期 4 文本填空 5 数值天空
+@property (nonatomic, strong) NSString * itemType;
+///是否展示
+@property (nonatomic, strong) NSString * isShow;
+///帮助
+@property (nonatomic, strong) NSString * help;
+///题号
+@property (nonatomic, strong) NSString * seq;
+///题目约束
+@property (nonatomic, strong) NSString * tie;
+///是否必填
+@property (nonatomic, strong) NSString * isNeed;
+///类别
+@property (nonatomic, strong) NSString * category;
+///类别文本
+@property (nonatomic, strong) NSString * categoryName;
+///选项列表(当题目类型为1，2时存在（即选择题）)
+@property (nonatomic, strong) NSMutableArray * itemList;
+///(嵌入弹开的数据)
+@property (nonatomic, strong) NSMutableArray * childItemList;
+///选项唯一标识
+@property (nonatomic, strong) NSString * ids;
+///选项code
+@property (nonatomic, strong) NSString * valueCode;
+///子节点(嵌入弹开)
+@property (nonatomic, strong) NSString * childCode;
+///选项文本
+@property (nonatomic, strong) NSString * valueName;
+///选项约束
+@property (nonatomic, strong) NSString * isRestrain;
+///是否选中
+@property (nonatomic, strong) NSString * isValue;
+///规则
+@property (nonatomic, strong) NSDictionary * rule;
+///值
+@property (nonatomic, strong) NSString * values;
+///右侧展示信息
+@property (nonatomic, strong) NSString * rightMsg;
+///多选code数组
+@property (nonatomic, strong) NSMutableArray * valueCodeArry;
+///嵌入弹开
+@property (nonatomic, assign) BOOL flick;
+///3 显示隐藏项目同时触发题目约束
+@property (nonatomic, assign) BOOL ifRestrain;
+///嵌入弹开code标识
+@property (nonatomic, strong) NSString * ritemCode;
+///嵌入弹开code标识
+@property (nonatomic, strong) NSString * Code;
+///追加的数据(嵌入弹开的数据选中对应的Code)
+@property (nonatomic, strong) NSMutableArray * rightCode;
+///追加的数据(嵌入弹开的数据对应的Code)
+@property (nonatomic, strong) NSString * oldCode;
+///(嵌入弹开的选项列表)
+@property (nonatomic, strong) NSMutableArray * rightList;
+///随访非选择题单位
+@property (nonatomic, strong) NSString * unit;
+//小数点后有几位
+@property (nonatomic, strong) NSString * isFloat;
+
+@property (nonatomic, strong) NSString * max;
+@property (nonatomic, strong) NSString * min;
+///默认值
+@property (nonatomic, strong) NSString * defualt;
+@property (nonatomic, strong) NSString * standard_min;
+@property (nonatomic, strong) NSString * standard_max;
+//日期
+@property (nonatomic, strong) NSString * date;
+///级别
+@property (nonatomic, strong) NSString *path;
+///默认勾选
+@property (nonatomic, strong) NSString *defualtCheck;
+///表头
+@property (nonatomic, assign) BOOL sectionTitle;
+///第一段
+@property (nonatomic, assign) BOOL section0;
+
+- (void)isGuest:(NSString*)isGuests picPath:(NSString*)picPaths picPathS:(NSString*)picPathSs picUrl:(NSString*)picUrls itemCode:(NSString*)itemCodes dictName:(NSString*)dictNames pCode:(NSString*)pCodes itemType:(NSString*)itemTypes isShow:(NSString*)isShows help:(NSString*)helps seq:(NSString*)seqs tie:(NSString*)ties isNeed:(NSString*)isNeeds category:(NSString*)categorys categoryName:(NSString*)categoryNames itemList:(NSMutableArray*)itemLists rule:(NSDictionary*)rules values:(NSString*)valuess;
+
+@end

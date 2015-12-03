@@ -1,0 +1,17 @@
+//
+//  sugerAssistantModel.m
+//  ComveeDoctor
+//
+//  Created by happytool on 15/7/9.
+//  Copyright (c) 2015年 zhengjw. All rights reserved.
+//
+
+#import "sugerAssistantModel.h"
+
+@implementation sugerAssistantModel
+
++(NSString*)getPrimaryKey
+{
+    return @"newsId";
+}
+@end

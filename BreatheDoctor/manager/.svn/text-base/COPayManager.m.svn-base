@@ -1,0 +1,239 @@
+//
+//  CAPayManager.m
+//  CheWeiGuanJia
+//
+//  Created by 廖维海 on 15/9/10.
+//  Copyright (c) 2015年 www.cheweiguanjia.com. All rights reserved.
+//
+
+#import "COPayManager.h"
+#import "COPaySuccView.h"
+#import "NSNotificationCenter+Extra.h"
+
+#define kWXKEY @"5701deb6c98fe19182bcc1ea7c38fd00"
+
+@interface COPayManager()
+
+@property (nonatomic, strong) COPaySuccView *paySuccView;
+
+@end
+
+@implementation COPayManager
+
+
++ (COPayManager *)getInstance
+{
+    static COPayManager* payManager = nil;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^(){
+        
+        payManager = [[COPayManager alloc] init];
+    });
+    
+    return payManager;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        [NSNotificationCenter addObserverExt:self selector:@selector(PayWXSucc:) msgName:@"paysuc" object:nil];
+    }
+    
+    return self;
+}
+
+#pragma mark 微信支付成功的消息
+- (void)PayWXSucc:(NSNotificationCenter *)sender
+{
+    //成功
+    [self showPaySuccView];
+    
+}
+
+#pragma mark - 生成各种参数 微信支付
+- (void)requestWX:(GJWXPayRContent *)rcontent
+{
+    
+    //  调起微信支付
+    PayReq *request     = [[PayReq alloc] init];
+    
+    NSMutableDictionary *signParams = [NSMutableDictionary dictionary];
+    [signParams setObject: rcontent.appid        forKey:@"appid"];
+    [signParams setObject: rcontent.noncestr    forKey:@"noncestr"];
+    [signParams setObject: rcontent.packagevalue      forKey:@"package"];
+    [signParams setObject: rcontent.partnerid        forKey:@"partnerid"];
+    [signParams setObject: rcontent.timestamp   forKey:@"timestamp"];
+    [signParams setObject: rcontent.prepayid     forKey:@"prepayid"];
+    //生成签名
+    NSString *sign  = [self createMd5Sign:signParams];
+    
+    request.openID      = rcontent.appid;
+    request.partnerId   = rcontent.partnerid;
+    request.prepayId    = rcontent.prepayid;
+    request.nonceStr    = rcontent.noncestr;
+    request.timeStamp   = [rcontent.timestamp intValue];
+    request.package     = rcontent.packagevalue;
+    request.sign        = sign;
+    
+    // 在支付之前，如果应用没有注册到微信，应该先调用 [WXApi registerApp:appId] 将应用注册到微信
+    if (![WXApi sendReq:request]) {
+        UIAlertView *aleat = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您未安装微信客户端,是否现在安装?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+        [aleat show];
+        
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[WXApi getWXAppInstallUrl]]];
+    }
+    
+}
+//创建package签名
+- (NSString*) createMd5Sign:(NSMutableDictionary*)dict
+{
+    NSMutableString *contentString  =[NSMutableString string];
+    NSArray *keys = [dict allKeys];
+    //按字母顺序排序
+    NSArray *sortedArray = [keys sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return [obj1 compare:obj2 options:NSNumericSearch];
+    }];
+    //拼接字符串
+    for (NSString *categoryId in sortedArray) {
+        if (   ![[dict objectForKey:categoryId] isEqualToString:@""]
+            && ![categoryId isEqualToString:@"sign"]
+            && ![categoryId isEqualToString:@"key"]
+            )
+        {
+            [contentString appendFormat:@"%@=%@&", categoryId, [dict objectForKey:categoryId]];
+        }
+    }
+    //添加key字段
+    [contentString appendFormat:@"key=%@", kWXKEY];
+    //得到MD5 sign签名
+    NSString *md5Sign =[WXUtil md5:contentString];
+    
+    //输出Debug Info
+    
+    return md5Sign;
+}
+#pragma mark -  支付宝
+- (void)requestZFB:(GJZFBPayRContent *)RContent
+{
+    
+    
+    
+    /*
+     *点击获取prodcut实例并初始化订单信息
+     */
+    /*
+     *商户的唯一的parnter和seller。
+     *签约后，支付宝会为每个商户分配一个唯一的 parnter 和 seller。
+     */
+    
+    /*============================================================================*/
+    
+    
+    /*
+     *生成订单信息及签名
+     */
+    
+    
+    //将商品信息赋予AlixPayOrder的成员变量
+    Order *order = [[Order alloc] init];
+    order.partner = RContent.partner;
+    order.seller = RContent.sellerId;
+    order.tradeNO = RContent.outTradeNo; //订单ID（由商家自行制定）
+    order.productName = RContent.subject; //商品标题
+    order.productDescription = RContent.body; //商品描述
+    order.amount = [NSString stringWithFormat:@"%.2f",[RContent.totalFee doubleValue]];
+    //  //商品价格
+    order.notifyURL =  RContent.notifyUrl; //回调URL
+    
+    order.service = RContent.service;
+    order.paymentType = RContent.paymentType;
+    order.inputCharset = RContent.inputCharset;
+    order.itBPay = RContent.itBPay;
+    order.showUrl = @"m.alipay.com";
+    
+    //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
+    NSString *appScheme = @"CWGJCarOwner";
+    
+    //将商品信息拼接成字符串
+    NSString *orderSpec = [order description];
+    
+    //获取私钥并将商户信息签名,外部商户可以根据情况存放私钥和签名,只需要遵循RSA签名规范,并将签名字符串base64编码和UrlEncode
+    id<DataSigner> signer = CreateRSADataSigner(RContent.rsaPrivate);
+    
+    NSString *signedString = [signer signString:orderSpec];
+    //
+    //将签名成功字符串格式化为订单字符串,请严格按照该格式
+    NSString *orderString = nil;
+    if (signedString != nil) {
+        orderString = [NSString stringWithFormat:@"%@&sign=\"%@\"&sign_type=\"%@\"",
+                       orderSpec, signedString, @"RSA"];
+        [[AlipaySDK defaultService] payOrder:orderString fromScheme:appScheme callback:^(NSDictionary *resultDic) {
+            if ([resultDic[@"resultStatus"] integerValue] == 9000) {
+                //成功
+                [self showPaySuccView];
+                
+            }
+        }];
+    }
+    
+}
+
+- (void)showPaySuccView
+{
+    if (self.paySuccView)
+    {
+        [self.paySuccView removeFromSuperview];
+        self.paySuccView = nil;
+    }
+        
+    NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"COPaySuccView"owner:self options:nil];
+    
+    self.paySuccView = [nib objectAtIndex:0];
+    
+    self.paySuccView.frame = [UIScreen mainScreen].bounds;
+    self.paySuccView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.3];
+    self.paySuccView.alpha = 0;
+    
+    UIWindow* window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:self.paySuccView];
+    
+    [_paySuccView.showView setCornerRadius:5.0f];
+    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:_paySuccView.titleLabel.text];
+    [str addAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:20],NSForegroundColorAttributeName:RGBA(136, 136, 136, 1)} range:NSMakeRange(0,2)];
+    _paySuccView.titleLabel.attributedText = str;
+    
+    [_paySuccView.backButton addTarget:self action:@selector(hiddSuccView) forControlEvents:UIControlEventTouchUpInside];
+    [_paySuccView.backButton setCornerRadius:5.0f];
+    
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        _paySuccView.alpha = 1;
+    }];
+}
+
+- (void)hiddSuccView
+{
+    [UIView animateWithDuration:0.1 animations:^{
+        _paySuccView.alpha = 0;
+        
+    } completion:^(BOOL finished) {
+        [_paySuccView removeFromSuperview];
+        self.paySuccView = nil;
+        
+        if (self.payCompleteBlock) {
+            self.payCompleteBlock();
+        }
+    }];
+}
+
+
+@end

@@ -1,0 +1,104 @@
+//
+//  DoctorInputFollowUpMsg.h
+//  ComveeDoctor
+//
+//  Created by JYL on 14-9-24.
+//  Copyright (c) 2014年 zhengjw. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface DoctorInputFollowUpMsg : UIView
+
+///当前项code标识
+@property (nonatomic, strong) NSString * itemCode;
+///子节点(嵌入弹开)
+@property (nonatomic, strong) NSString * childItemCode;
+///当前项资料文本
+@property (nonatomic, strong) NSString * dictName;
+///当前项code标识父类
+@property (nonatomic, strong) NSString * pCode;
+///子节点(嵌入弹开)
+@property (nonatomic, strong) NSString * childpCode;
+///题目类型1 单选 2 多选 3 日期 4 文本填空 5 数值天空
+@property (nonatomic, strong) NSString * itemType;
+///是否展示
+@property (nonatomic, strong) NSString * isShow;
+///帮助
+@property (nonatomic, strong) NSString * help;
+///题号
+@property (nonatomic, strong) NSString * seq;
+///是否必填
+@property (nonatomic, strong) NSString * isNeed;
+
+///类别
+@property (nonatomic, strong) NSString * category;
+///类别文本
+@property (nonatomic, strong) NSString * categoryName;
+///规则
+@property (nonatomic, strong) NSDictionary * rule;
+///题目约束
+@property (nonatomic, strong) NSString * tie;
+///选项列表(当题目类型为1，2时存在（即选择题）)
+@property (nonatomic, strong) NSMutableArray * itemList;
+///(嵌入弹开的数据)
+@property (nonatomic, strong) NSMutableArray * childItemList;
+///选项唯一标识
+@property (nonatomic, strong) NSString * ids;
+///选项code
+@property (nonatomic, strong) NSString * valueCode;
+///子节点(嵌入弹开)
+@property (nonatomic, strong) NSString * childCode;
+///是否选中
+@property (nonatomic, strong) NSString * isValue;
+///选项文本
+@property (nonatomic, strong) NSString * valueName;
+///选项约束
+@property (nonatomic, strong) NSString * isRestrain;
+///级别
+@property (nonatomic, strong) NSString *path;
+///级别(统一长度的)
+@property (nonatomic, strong) NSString *allpath;
+///默认勾选
+@property (nonatomic, strong) NSString *defualtCheck;
+///右侧展示信息
+@property (nonatomic, strong) NSString * rightMsg;
+///多选code数组
+@property (nonatomic, strong) NSMutableArray * valueCodeArry;
+///嵌入弹开
+@property (nonatomic, assign) BOOL flick;
+///3 显示隐藏项目同时触发题目约束
+@property (nonatomic, assign) BOOL ifRestrain;
+///嵌入弹开code标识
+@property (nonatomic, strong) NSString * ritemCode;
+///嵌入弹开code标识
+@property (nonatomic, strong) NSString * Code;
+///追加的数据(嵌入弹开的数据选中对应的Code)
+@property (nonatomic, strong) NSMutableArray * rightCode;
+///追加的数据(嵌入弹开的数据对应的Code)
+@property (nonatomic, strong) NSString * oldCode;
+///(嵌入弹开的选项列表)
+@property (nonatomic, strong) NSMutableArray * rightList;
+///随访非选择题单位
+@property (nonatomic, strong) NSString * unit;
+//小数点后有几位
+@property (nonatomic, strong) NSString * isFloat;
+@property (nonatomic, strong) NSString * max;
+@property (nonatomic, strong) NSString * min;
+///默认值
+@property (nonatomic, strong) NSString * defualt;
+@property (nonatomic, strong) NSString * standard_min;
+@property (nonatomic, strong) NSString * standard_max;
+//日期
+@property (nonatomic, strong) NSString * date;
+///选中第一层数据是其他层级原图片
+@property (nonatomic, strong) NSString * oldImg;
+@property (nonatomic, assign) NSUInteger nodeLevel;
+///倒数最后一层
+@property (nonatomic, assign) BOOL lastLevel;
+///倒数第二层
+@property (nonatomic, assign) BOOL beforeLevel;
+
+- (void)itemCode:(NSString*)itemCodes dictName:(NSString*)dictNames pCode:(NSString*)pCodes itemType:(NSString*)itemTypes isShow:(NSString*)isShows help:(NSString*)helps seq:(NSString*)seqs tie:(NSString*)ties isNeed:(NSString*)isNeeds category:(NSString*)categorys categoryName:(NSString*)categoryNames itemList:(NSMutableArray*)itemLists rule:(NSDictionary*)rules path:(NSString*)paths;
+
+@end
