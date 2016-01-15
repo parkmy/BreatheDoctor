@@ -88,14 +88,17 @@
 - (void)sizeForDataSource
 {
     //根据数据源的个数设置DrawView的内容Size
-    NSUInteger valueCount = [self.dataSource count];
-    if (valueCount > MAX_POINT_WITHIN_SCREEN)
-    {
-        self.contentSize = CGSizeMake(self.frame.size.width + (valueCount - MAX_POINT_WITHIN_SCREEN) * MARGIN_BETWEEN_X_POINT, self.frame.size.height);
-    }else
-    {
-        self.contentSize = CGSizeMake(MAX_POINT_WITHIN_SCREEN * MARGIN_BETWEEN_X_POINT-12, self.frame.size.height);
-    }
+//    NSUInteger valueCount = [self.dataSource count];
+//    if (valueCount > MAX_POINT_WITHIN_SCREEN)
+//    {
+//        self.contentSize = CGSizeMake(self.frame.size.width + (valueCount - MAX_POINT_WITHIN_SCREEN) * MARGIN_BETWEEN_X_POINT, self.frame.size.height);
+//    }else
+//    {
+//        
+//        self.contentSize = CGSizeMake(self.frame.size.width, self.frame.size.height);
+//    }
+    self.contentSize = CGSizeMake(Screen_SIZE.width + Screen_SIZE.width/3, 280);
+
 }
 
 @end

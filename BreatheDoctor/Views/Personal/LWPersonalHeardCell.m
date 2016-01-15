@@ -13,7 +13,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    [self.doctorIcon setCornerRadius:5.0f];
+    [self.doctorIcon setCornerRadius:self.doctorIcon.width/2];
+    self.doctorTypeLabel.backgroundColor = RGBA(0, 0, 0, .3);
+    [self.doctorTypeLabel setCornerRadius:self.doctorTypeLabel.height/2];
     
 }
 
@@ -35,6 +37,13 @@
 - (void)setDoctorType:(NSString *)type
 {
     self.doctorTypeLabel.text = stringJudgeNull(type);
+    self.doctorTypeLabel.hidden = NO;
+    if (self.doctorTypeLabel.text.length <= 0) {
+        self.doctorTypeLabel.hidden = YES;
+    }
+    CGFloat w = [self.doctorTypeLabel.text sizeWithFont:self.doctorTypeLabel.font constrainedToHeight:20].width + 20;
+    self.doctorTypeWidth.constant = w;
+    
 }
 
 @end

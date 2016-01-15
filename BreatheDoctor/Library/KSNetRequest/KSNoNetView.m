@@ -22,8 +22,14 @@
     NSArray* array = [[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil];
     noNetView = [array firstObject];
     noNetView.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
-    
+    [noNetView.ErrorButton setCornerRadius:5.0f];
     return noNetView;
 }
 
+- (IBAction)reloadNetworkDataSource:(UIButton *)sender {
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(reloadNetworkDataSource:)]) {
+        [self.delegate performSelector:@selector(reloadNetworkDataSource:) withObject:sender];
+    }
+}
 @end

@@ -66,6 +66,18 @@ NSString *const kLWChatDataStructPEFValue = @"pEFValue";
             self.assessResult = [[self objectOrNilForKey:kLWChatDataStructAssessResult fromDictionary:dict] doubleValue];
             self.pEFValue = [[self objectOrNilForKey:kLWChatDataStructPEFValue fromDictionary:dict] doubleValue];
 
+        
+        self.pharmacyUrgency = [[self objectOrNilForKey:@"pharmacyUrgency" fromDictionary:dict] doubleValue];
+        self.symptomChestdistress = [[self objectOrNilForKey:@"symptomChestdistress" fromDictionary:dict] doubleValue];
+        self.symptomDyspnea = [[self objectOrNilForKey:@"symptomDyspnea" fromDictionary:dict] doubleValue];
+        self.symptomCough = [[self objectOrNilForKey:@"symptomCough" fromDictionary:dict] doubleValue];
+        self.pharmacyControl = [[self objectOrNilForKey:@"pharmacyControl" fromDictionary:dict] doubleValue];
+        self.remark = [self objectOrNilForKey:@"remark" fromDictionary:dict];
+        self.symptomNightWoke = [[self objectOrNilForKey:@"symptomNightWoke" fromDictionary:dict] doubleValue];
+        self.symptomGood = [[self objectOrNilForKey:@"symptomGood" fromDictionary:dict] doubleValue];
+        
+        
+        
     }
     
     return self;

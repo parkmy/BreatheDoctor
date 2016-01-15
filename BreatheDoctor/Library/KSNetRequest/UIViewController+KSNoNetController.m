@@ -12,10 +12,29 @@
 
 @implementation UIViewController (KSNoNetController)
 
-- (void)showErrorMessage:(NSString *)message
+- (void)showErrorMessage:(NSString *)message isShowButton:(BOOL)isShow type:(showErrorType)type
 {
+    [self hiddenNonetWork];
+    
     KSNoNetView* view = [KSNoNetView instanceNoNetView];
+    view.ErrorButton.hidden = isShow;
+    view.ErrorButton.tag = type;
+    if (!isShow)
+    {
+        if (type == showErrorTypeHttp || type == showErrorType64Hight) {
+            [view.ErrorButton setTitle:@"点击重试" forState:UIControlStateNormal];
+        }else
+        {
+            [view.ErrorButton setTitle:@"添加患者" forState:UIControlStateNormal];
+        }
+    }
+
+    view.delegate = self;
     view.messageLabel.text = message;
+    if (type == showErrorType64Hight) {
+        view.frame = self.view.bounds;
+        view.yOrigin = 64+40;
+    }
     [self.view addSubview:view];
 }
 - (void)hiddenNonetWork
@@ -26,14 +45,14 @@
         }
     }
 }
-- (void)reloadNetworkDataSource:(id)sender
+- (void)reloadNetworkDataSource:(UIButton *)sender
 {
-    if ([self respondsToSelector:@selector(reloadRequest)]) {
-        [self performSelector:@selector(reloadRequest)];
+    if ([self respondsToSelector:@selector(reloadRequestWithSender:)]) {
+        [self performSelector:@selector(reloadRequestWithSender:) withObject:sender];
     }
 }
-- (void)reloadRequest
+- (void)reloadRequestWithSender:(UIButton *)sender
 {
-    NSLog(@"必须由网络控制器(%@)重写这个方法(%@)，才可以使用再次刷新网络",NSStringFromClass([self class]),NSStringFromSelector(@selector(reloadRequest)));
+
 }
 @end

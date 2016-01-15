@@ -8,11 +8,12 @@
 
 #import "CODataCacheManager.h"
 #import "COUserDefaultsManager.h"
+#import "KSCache.h"
 
 @implementation CODataCacheManager
 
 
-//share Instance of ViewManager
+//share Instance of Manager
 + (CODataCacheManager *)shareInstance
 {
     static CODataCacheManager *instance = nil;
@@ -28,14 +29,6 @@
         
     }
     return self;
-}
-+ (NSString *)DB_MainMessageTableName
-{
-    return @"DB_MainMessageTableName";
-}
-+ (NSString *)DB_MainPatientTbaleName
-{
-    return @"DB_MainPatientTbaleName";
 }
 #pragma mark 去读userDefault文件缓存
 - (void)loadUserDefaultData
@@ -60,6 +53,12 @@
 #pragma mark 清除用户信息
 - (void)clearUserModel
 {
+    
+    [KSCache cleanCache];
+    
+    LKDBHelper *db = [[LKDBHelper alloc] init];
+    [db deleteWithTableName:[LKDBHelper baseTableName] where:nil];
+    
     self.userModel = nil;
     [[COUserDefaultsManager shareInstance] removeUserModel];
 }

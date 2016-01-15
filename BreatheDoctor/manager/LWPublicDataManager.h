@@ -4,7 +4,7 @@
 //
 //  Created by comv on 15/11/12.
 //  Copyright © 2015年 lwh. All rights reserved.
-//
+//  公共数据管理者
 
 #import <Foundation/Foundation.h>
 #import "CDPromptView.h"

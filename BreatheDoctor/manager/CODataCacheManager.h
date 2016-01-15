@@ -20,9 +20,6 @@
 //share Instance of NavManager
 + (CODataCacheManager *)shareInstance;
 
-+ (NSString *)DB_MainMessageTableName;
-+ (NSString *)DB_MainPatientTbaleName;
-
 #pragma mark 去读userDefault文件缓存
 - (void)loadUserDefaultData;
 

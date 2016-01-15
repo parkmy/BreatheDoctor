@@ -55,6 +55,12 @@
 @end
 
 @implementation LKDBHelper
++ (NSString *)baseTableName
+{
+    LBLoginBaseModel *model = [CODataCacheManager shareInstance].userModel;
+    return model?[NSString stringWithFormat:@"%@Comvee",model.body.doctorId]:nil;
+}
+
 + (NSMutableArray *)dbHelperSingleArray
 {
     static __strong NSMutableArray *dbArray;
@@ -1792,12 +1798,12 @@
     return [self _createTableWithModelClass:modelClass tableName:[modelClass getTableName]];
 }
 
+
 + (LKDBHelper *)getUsingLKDBHelper
 {
     LBLoginBaseModel *model = [CODataCacheManager shareInstance].userModel;
-    
     if (model) {
-        return [[LKDBHelper alloc]initWithDBName:[NSString stringWithFormat:@"%@Comvee",model.body.doctorId]];
+        return [[LKDBHelper alloc]initWithDBName:[[self class] baseTableName]];
     }
     return nil;
     

@@ -7,6 +7,7 @@
 //
 
 #import "LWAsthmaAssessmentCell.h"
+#import "NSDate+Extension.h"
 
 @implementation LWAsthmaAssessmentCell
 
@@ -38,7 +39,7 @@
     //cushion	body	number		使用缓解药物	1 选中 0 未选中
     //acuteAttack	body	number		急性发作	1 选中 0 未选中
     
-    self.timeLabel.text = model.assessDt;
+    self.timeLabel.text = [NSDate stringWithDate:[NSDate dateWithString:model.assessDt format:[NSDate ymdHmsFormat]] format:@"yyyy-MM-dd HH:mm"];
     
     for (int a = 0; a < self.starLabels.count; a++) {
         UILabel *label = self.starLabels[a];

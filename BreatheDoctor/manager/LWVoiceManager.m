@@ -36,27 +36,41 @@
     }
 }
 - (void)playVoiceWithModel:(LWChatModel *)model withCell:(UUMessageCell *)cell{
+    
+    if ([self.chatModel.sid isEqualToString:model.sid] && _mm_player.isPlaying) //相同的取消在播放不播放
+    {
+        [_mm_player stop];
+        [self.starCell.btnContent stopPlay];
+        return;
+    }
+    
     self.chatModel = model;
-    if (self.starCell) {
-        if (_mm_player) {
+    if (self.starCell) {  //不同的在播放取消播放 播放新的
+        if (_mm_player.isPlaying) {
             [_mm_player stop];
         }
         [self.starCell.btnContent stopPlay];
     }
     self.starCell = cell;
-    [cell.btnContent benginLoadVoice];
+    [cell.btnContent benginLoadVoice];  //下载圈圈
     
 //    NSString * saveFilePath = Account.videoFolder;
 
-    NSData *data = [self voicData];
+    NSData *data = [self voicData]; //判断如果本地有了 就直接播放
     if (data) {
         [self playWav:data];
         return;
     }
     
+    
+    /*
+        ||
+        || 下载
+        ||
+     
+     */
 
     NSString *url = model.content;
-    
     
     [LCDownloadManager downloadFileWithURLString:url cachePath:[NSString stringWithFormat:@"%@%@",[CODataCacheManager shareInstance].userModel.sessionId,self.chatModel.sid] progress:^(CGFloat progress, CGFloat totalMBRead, CGFloat totalMBExpectedToRead) {
         
@@ -93,10 +107,7 @@
     NSString *videoDir = [NSString stringWithFormat:@"%@/Download/Video/%@",docPath,[self fileName1]];
     
     NSData *data = [NSData dataWithContentsOfFile:videoDir];
-//    if (data.length > 0) {
-//        return data;
-//    }
-//    data = [NSData dataWithContentsOfFile:[NSString stringWithFormat:@"%@%@",Account.videoFolder,[self fileName2]]];
+
     return data;
 }
 -(void)playWav:(NSData*)wavdata

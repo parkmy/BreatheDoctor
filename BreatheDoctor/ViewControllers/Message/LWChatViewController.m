@@ -9,27 +9,23 @@
 #import "LWChatViewController.h"
 #import "LWChatMessageInputBar.h"
 #import "PureLayout.h"
-#import "WSChatTextTableViewCell.h"
-#import "WSChatImageTableViewCell.h"
-#import "WSChatVoiceTableViewCell.h"
-#import "WSChatTimeTableViewCell.h"
 #import <IQKeyboardManager.h>
 #import "LWChatViewControllerDataSource.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "UIResponder+Router.h"
-#import "LWChatCardCell.h"
 #import "YRJSONAdapter.h"
 #import "LWVoiceManager.h"
 #import <MJRefresh.h>
 #import "LWTool.h"
 #import "FastReplyVC.h"
 #import "LWPatientCententCtr.h"
-#import "TGRImageViewController.h"
-#import "TGRImageZoomAnimationController.h"
 #import "LWAsthmaAssessmentViewController.h"
 #import "LWACTAssessmentViewController.h"
 #import "UUMessageCell.h"
 #import "UUMessageFrame.h"
+#import "NSDate+Extension.h"
+#import "LWPatientLogViewController.h"
+#import "MJPhotoBrowser.h"
 
 #define kBkColorTableView    ([UIColor colorWithRed:0.773 green:0.855 blue:0.824 alpha:1])
 
@@ -44,27 +40,26 @@ typedef NS_ENUM(NSInteger , SenderType) {
     SenderTypeVoice = 3,//语音
 };
 
-@interface LWChatViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,LWChatMessageInputBarDelegate,UIViewControllerTransitioningDelegate,LWChatViewControllerDataSourceDelegate>
+@interface LWChatViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,LWChatMessageInputBarDelegate,UIViewControllerTransitioningDelegate,LWChatViewControllerDataSourceDelegate,UIScrollViewDelegate>
 
-@property (nonatomic,strong) NSMutableArray *DataSource;
+@property (nonatomic, strong) NSMutableArray *DataSource;
 
-@property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic,strong) LWChatMessageInputBar *inputBar;
+@property (nonatomic, strong) LWChatMessageInputBar *inputBar;
 
 @property (nonatomic, assign) RefreshType refreshType;
 
 @property (nonatomic, strong) LWChatViewControllerDataSource *chatViewControllerDataSource;
 
-@property (nonatomic, strong) LWChatBaseModel *chatModel;
 
 @property (nonatomic, assign) SenderType senderType;
 
 @property (nonatomic, assign) NSInteger page;
 
-@property (nonatomic, strong) UIImageView *markImageView;
 
-@property (nonatomic, assign) long long mesageRows;
+@property (nonatomic, copy) NSString *refTimer;
+//@property (nonatomic, assign) long long mesageRows;
 @end
 
 @implementation LWChatViewController
@@ -87,7 +82,6 @@ typedef NS_ENUM(NSInteger , SenderType) {
     [[LWPublicDataManager shareInstance] cloesCurrentPatientID]; //清除对话ID
 
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -96,10 +90,12 @@ typedef NS_ENUM(NSInteger , SenderType) {
     [self loadSQLData];
     [self registNotificationCenter];
     [self xialarefreshData];
+    [self loadHttpChatList];
+
 }
 - (void)setUI
 {
-
+    
     UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 0, 0);
     
     [self.view addSubview:self.tableView];
@@ -107,9 +103,12 @@ typedef NS_ENUM(NSInteger , SenderType) {
     
     
     [self.view addSubview:self.inputBar];
+    self.inputBar.baseTbaleView = self.tableView;
     [self.inputBar autoPinEdgesToSuperviewEdgesWithInsets:inset excludingEdge:ALEdgeTop];
     [self.inputBar autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.tableView];
-
+    
+    self.tableView.delegate             =   self.chatViewControllerDataSource;
+    self.tableView.dataSource           =   self.chatViewControllerDataSource;
 }
 
 #pragma mark -NSNotificationCenter
@@ -121,18 +120,24 @@ typedef NS_ENUM(NSInteger , SenderType) {
 
 - (void)registNotificationCenter
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotification:) name:APP_PUSH_TYPE_ASSESS_ACT object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotification:) name:APP_PUSH_TYPE_ASSESS_ASTHMA object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotification:) name:APP_PUSH_TYPE_FIRST_DIAGNOSE object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotification:) name:APP_PUSH_TYPE_PATIENT_ADD_DIALOGUE object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotification:) name:APP_PUSH_TYPE_PEF_RECORD object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotification:) name:APP_PUSH_TYPE_REPEAT_TREATMENT_INFORM object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotification:) name:APP_PUSH_TYPE_REQUEST_RELATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_ASSESS_ACT object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_ASSESS_ASTHMA object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_FIRST_DIAGNOSE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_PATIENT_ADD_DIALOGUE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_PEF_RECORD object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_REPEAT_TREATMENT_INFORM object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_REQUEST_RELATION object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appNotificationss:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
     
 }
-- (void)appNotification:(NSNotification *)sender
+- (void)appNotificationss:(NSNotification *)sender
 {
-    [self loadHttpChatList];
+    if ([LWPublicDataManager shareInstance].currentPatientID ) {
+        self.refreshType = RefreshTypeNew;
+        [self loadHttpChatList];
+    }
 }
 
 #pragma mark - init
@@ -140,78 +145,63 @@ typedef NS_ENUM(NSInteger , SenderType) {
 {
     self.refreshType = RefreshTypeNew;
     self.page = 1;
-    self.mesageRows = [[LKDBHelper getUsingLKDBHelper] rowCount:[LWChatModel class] where:[NSString stringWithFormat:@"memberId = %@",self.patient.memberId]];
+    
 }
 
 #pragma mark - loadChatList
 
 - (void)xialarefreshData
 {
-    __weak typeof(self)weakSelf = self;
-    
+    __weak typeof(self) weakSelf = self;
     // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
-        if (self.chatModel) {
-            if (self.chatModel.body.pager.totalRows <= self.DataSource.count && self.chatModel.body.pager.totalRows >= 0) {
-                [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:@"无更多数据" ];
-                
-                [self.tableView.mj_header endRefreshing];
-                return ;
+        weakSelf.page++;
+        weakSelf.refreshType = RefreshTypeTypeOld;
+        if (weakSelf.DataSource.count > 0)
+        {
+            NSInteger count = weakSelf.DataSource.count;
+            NSMutableArray *array = [weakSelf refSQLData:[weakSelf refDate]];
+            if (array.count <= 0)
+            {
+                [weakSelf loadHttpChatList];
+            }else
+            {
+                [weakSelf.DataSource addObjectsFromArray:array];
+                [weakSelf reloadTableViewCount:count];
+                [weakSelf.tableView.mj_header endRefreshing];
             }
-            if (self.chatModel.body.pager.totalRows <=0 &&  weakSelf.page>1) {
-                return;
-            }
-            weakSelf.page ++;
-            self.refreshType = RefreshTypeTypeOld;
-            [self loadHttpChatList];
-
         }else
         {
-            if (self.mesageRows <= self.DataSource.count && self.mesageRows >= 0) {
-                [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:@"无更多数据" ];
-                
-                [self.tableView.mj_header endRefreshing];
-                return ;
-            }
-            if (self.mesageRows <=0 &&  weakSelf.page>1) {
-                return;
-            }
-            weakSelf.page ++;
-            [self loadSQLData];
-            [self.tableView.mj_header endRefreshing];
+            [weakSelf loadHttpChatList];
+ 
         }
-
     }];
 
     // 设置文字
     [header setTitle:@"下拉加载数据" forState:MJRefreshStateIdle];
-//    [header setTitle:@"Release to refresh" forState:MJRefreshStatePulling];
     [header setTitle:@"正在加载 ..." forState:MJRefreshStateRefreshing];
-    
     // 隐藏时间
     header.lastUpdatedTimeLabel.hidden = YES;
-    
-//    // 设置字体
-//    header.stateLabel.font = [UIFont systemFontOfSize:15];
-//    header.lastUpdatedTimeLabel.font = [UIFont systemFontOfSize:14];
-//    
-//    // 设置颜色
-//    header.stateLabel.textColor = [UIColor redColor];
-//    header.lastUpdatedTimeLabel.textColor = [UIColor blueColor];
-    
     [self.tableView setMj_header:header];
-    //    header.stateLabel.textColor = [UIColor whiteColor];
-    //    header.lastUpdatedTimeLabel.textColor = [UIColor whiteColor];
-    //    header.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+
     
 }
-- (void)loadSQLData
+
+- (NSMutableArray *)refSQLData:(NSString *)refTimer
 {
-    NSMutableArray *array = [LWChatBaseModel LoadSqliteDataWhere:[NSString stringWithFormat:@"memberId = %@ and currentPage <= %ld",self.patient.memberId,self.page] Offset:0 count:10000];
-    NSInteger count = self.DataSource.count;
-    [self.DataSource removeAllObjects];
-    [self.DataSource addObjectsFromArray:array];
+    
+    NSString *where = [NSString stringWithFormat:@"insertDt < '%@' and memberId = %@",refTimer,self.patient.memberId];
+    
+    NSMutableArray *array = [LWChatBaseModel LoadSqliteDataWhere:where Offset:0 count:10];
+    
+    return array;
+    
+}
+- (void)reloadTableViewCount:(NSInteger)count
+{
+    [LWChatBaseModel minuteOffSetArray:self.DataSource];
+    [LWTool traverseChatMessage:self.DataSource];
     if (self.DataSource.count > 0) {
         [self.tableView reloadData];
         if (self.DataSource.count > 0 && self.DataSource.count > count && count != 0) {
@@ -222,42 +212,65 @@ typedef NS_ENUM(NSInteger , SenderType) {
                 [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.DataSource.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
             }
         }
+    }
+
+}
+
+- (void)loadSQLData
+{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+        NSString *where;
+        if ([self refDate]) {
+            where = [NSString stringWithFormat:@"insertDt < '%@' and memberId = %@",[self refDate],self.patient.memberId];
+        }else
+        {
+            where = [NSString stringWithFormat:@"memberId = %@",self.patient.memberId];
+        }
+        
+        NSMutableArray *array = [LWChatBaseModel LoadSqliteDataWhere:where Offset:0 count:10];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSInteger count = self.DataSource.count;
+            [self.DataSource addObjectsFromArray:array];
+            [self  reloadTableViewCount:count];
+            [self.tableView.mj_header endRefreshing];
+
+        });
+    });
+    
+
+}
+
+- (NSString *)refDate
+{
+    if (self.refreshType == RefreshTypeNew)
+    {
+        NSString *where = [NSString stringWithFormat:@"insertDt < '%@' and memberId = %@",[NSDate stringWithDate:[NSDate date] format:[NSDate ymdHmsFormat]],self.patient.memberId];
+        NSMutableArray *array = [LWChatBaseModel LoadSqliteDataWhere:where Offset:0 count:10];
+        UUMessageFrame *modelFram = [array firstObject];
+        self.refTimer = modelFram.model.refreshDate;
+        return modelFram.model.refreshDate;
     }else
     {
-        [self loadHttpChatList];
+        UUMessageFrame *messageFram = [self.DataSource firstObject];
+        return messageFram.model.insertDt;
     }
-    
 }
 
 - (void)loadHttpChatList
 {
-    
-    UUMessageFrame *messageFram = [self.DataSource firstObject];
-    
-    [LWHttpRequestManager httpChatPatientListWithPatientId:self.patient.memberId Page:self.page type:self.refreshType size:10 refreshDate: messageFram.model.insertDt success:^(NSMutableArray *chats, LWChatBaseModel *baseModel) {
+    [LWHttpRequestManager httpChatPatientListWithPatientId:self.patient.memberId Page:self.page type:self.refreshType size:10 refreshDate: [self refDate] success:^(NSMutableArray *chats, LWChatBaseModel *baseModel) {
         [self.tableView.mj_header endRefreshing];
         
         if (chats.count <= 0) {
             return ;
         }
-        [self.DataSource removeAllObjects];
-        [self.DataSource addObjectsFromArray:chats];
-
-        self.chatModel = baseModel;
-
-        [self.tableView reloadData];
-        if (self.page > 1 && self.DataSource.count > 0)
-        {
-            NSInteger count = MAX((self.DataSource.count-chats.count), 0);
-            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:count inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
-        }else
-        {
-            if (self.DataSource.count > 0) {
-                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.DataSource.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
-            }
+        NSInteger count = self.DataSource.count;
+        if (self.refreshType == RefreshTypeNew) {
+            [self.DataSource removeAllObjects];
         }
-
-        
+        [self.DataSource addObjectsFromArray:chats];
+        [self reloadTableViewCount:count];
     } failure:^(NSString *errorMes) {
         [self.tableView.mj_header endRefreshing];
         [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
@@ -399,27 +412,9 @@ typedef NS_ENUM(NSInteger , SenderType) {
     _tableView.fd_debugLogEnabled   =   NO;
     _tableView.separatorStyle       =   UITableViewCellSeparatorStyleNone;
     _tableView.backgroundColor      =   RGBA(245, 245, 245, 1);
-    _tableView.delegate             =   self.chatViewControllerDataSource;
-    _tableView.dataSource           =   self.chatViewControllerDataSource;
     _tableView.keyboardDismissMode  =   UIScrollViewKeyboardDismissModeOnDrag;
     
     [_tableView registerClass:[UUMessageCell class] forCellReuseIdentifier:@"UUMessageCell"];
-
-    
-//    [_tableView registerClass:[WSChatTextTableViewCell class] forCellReuseIdentifier:kCellReuseIDWithSenderAndType(1, (long)WSChatCellType_Text)];
-//    [_tableView registerClass:[WSChatTextTableViewCell class] forCellReuseIdentifier:kCellReuseIDWithSenderAndType(0, (long)WSChatCellType_Text)];
-//    
-//    [_tableView registerClass:[WSChatImageTableViewCell class] forCellReuseIdentifier:kCellReuseIDWithSenderAndType(1, (long)WSChatCellType_Image)];
-//    [_tableView registerClass:[WSChatImageTableViewCell class] forCellReuseIdentifier:kCellReuseIDWithSenderAndType(0, (long)WSChatCellType_Image)];
-//    
-//    [_tableView registerClass:[WSChatVoiceTableViewCell class] forCellReuseIdentifier:kCellReuseIDWithSenderAndType(0, (long)WSChatCellType_Audio)];
-//    [_tableView registerClass:[WSChatVoiceTableViewCell class] forCellReuseIdentifier:kCellReuseIDWithSenderAndType(1, (long)WSChatCellType_Audio)];
-//    
-//    [_tableView registerClass:[LWChatCardCell class] forCellReuseIdentifier:kCardCellReusedID];
-//
-//    
-//    [_tableView registerClass:[WSChatTimeTableViewCell class] forCellReuseIdentifier:kTimeCellReusedID];
-    
     
     return _tableView;
 }
@@ -436,11 +431,32 @@ typedef NS_ENUM(NSInteger , SenderType) {
 #pragma mark - nav
 - (void)navLeftButtonAction
 {
+    if (self.DataSource.count > 0) {
+        UUMessageFrame *modelFram = self.DataSource.lastObject;
+        LWChatModel *model = modelFram.model;
+        NSString *message ;
+        if (model.chatCellType == WSChatCellType_Audio) {
+            message = @"语音";
+        }else if (model.chatCellType == WSChatCellType_Image)
+        {
+            message = @"图片";
+        }else if (model.chatCellType == WSChatCellType_Card)
+        {
+            message = model.doctorText;
+        }else if (model.chatCellType == WSChatCellType_Text)
+        {
+            message = model.content;
+        }
+        _backBlock?_backBlock(model.insertDt,message):nil;
+    }else
+    {
+        _backBlock?_backBlock(nil,nil):nil;
+
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)navRightButtonAction
 {
-
     LWPatientRows *pat = [self listPatient];
     
     if (!pat) {
@@ -452,9 +468,6 @@ typedef NS_ENUM(NSInteger , SenderType) {
     }else{
         [self pushPatientCententCtr:pat];
     }
-    
-
-    
 }
 
 - (LWPatientRows *)listPatient
@@ -488,7 +501,6 @@ typedef NS_ENUM(NSInteger , SenderType) {
          {
              
          }];
-        
     }
     
 }
@@ -687,17 +699,21 @@ typedef NS_ENUM(NSInteger , SenderType) {
             break;
         case 2://快捷回复
         {
+            __weak typeof(self)weakSelf = self;
+            
             FastReplyVC *vc = (FastReplyVC *)[UIViewController CreateControllerWithTag:CtrlTag_FastReply];
             [vc setChooseFastRepBlock:^(NSString *content) {
-                [self.inputBar fastReplyContent:content];
+                [weakSelf.inputBar fastReplyContent:content];
                 
             }];
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
-        case 3://创建随诊
+        case 3://biaodan
         {
-            
+            UIViewController *vc = [UIViewController CreateControllerWithTag:CtrlTag_TheFormType];
+            [self.navigationController pushViewController:vc animated:YES];
+
         }
             break;
         default:
@@ -705,41 +721,22 @@ typedef NS_ENUM(NSInteger , SenderType) {
     }
 
 }
-
-#pragma mark - UIViewControllerTransitioningDelegate methods
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    if ([presented isKindOfClass:TGRImageViewController.class]) {
-        return [[TGRImageZoomAnimationController alloc] initWithReferenceImageView:self.markImageView];
-    }
-    return nil;
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    if ([dismissed isKindOfClass:TGRImageViewController.class]) {
-        return [[TGRImageZoomAnimationController alloc] initWithReferenceImageView:self.markImageView];
-    }
-    return nil;
-}
-- (UIImageView *)markImageView
-{
-    if (_markImageView) {
-        _markImageView = [[UIImageView alloc] init];
-        _markImageView.frame = self.view.bounds;
-    }
-    return _markImageView;
-}
 #pragma mark - Private methods
 
 - (void)showImage :(UUMessageCell *)cell{
-    TGRImageViewController *viewController = [[TGRImageViewController alloc] initWithImage:cell.btnContent.backImageView.image];
-    viewController.transitioningDelegate = self;
-    
-    [self presentViewController:viewController animated:YES completion:nil];
+
+    MJPhotoBrowser *photoBrowser = [[MJPhotoBrowser alloc] init];
+    MJPhoto *photo = [[MJPhoto alloc] init];
+    photo.image = cell.btnContent.backImageView.image;
+    photoBrowser.photos = @[photo];
+    [photoBrowser show];
 }
 #pragma mark - LWChatViewControllerDataSourceDelegate
 - (void)didSelectRowAtIndexPath:(LWChatModel *)model
 {
+    
+    [self.inputBar removeFromMoreView];
+    
     switch (model.chatMessageType) {
         case WSChatMessageType_ACAassessment: //完成ACT评估
         {
@@ -756,10 +753,36 @@ typedef NS_ENUM(NSInteger , SenderType) {
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;
+        case WSChatMessageType_PEFRecord: //PEF记录通知
+        {
+            
+            LWPatientLogViewController *patientLog = (LWPatientLogViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];
+            //初始化时间建区
+            patientLog.refDateDic = [LWTool patientPEFDateLineSx:model.insertDt];
+            //初始化展示数据模型
+            LWPEFRecordList *record = [[LWPEFRecordList alloc] init];
+            record.recordDt = model.recordDt;
+            record.pefValue = model.pEFValue;
+            record.pharmacyControl = model.pharmacyControl;
+            record.symptomChestdistress = model.symptomChestdistress;
+            record.symptomDyspnea = model.symptomDyspnea;
+            record.symptomCough = model.symptomCough;
+            record.pharmacyControl = model.pharmacyControl;
+            record.remark = model.remark;
+            record.symptomNightWoke = model.symptomNightWoke;
+            record.symptomGood = model.symptomGood;
+            
+            patientLog.record = record;
+            
+            patientLog.patientId = self.patient.memberId;
+            patientLog.patientName = self.patient.patientName;
+            patientLog.intDate = model.insertDt;
+            [self.navigationController pushViewController:patientLog animated:YES];
+        }
+            break;
         default:
             break;
     }
-
-
 }
+
 @end

@@ -12,6 +12,7 @@
 #import "DrawView.h"
 #import "LWPEFRecordView.h"
 #import "MZFormSheetPresentationController Swift Example-Bridging-Header.h"
+#import "LWPatientLogViewController.h"
 
 @interface LWPatientPEFLogVC ()<UITableViewDataSource,UITableViewDelegate,DrawViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -33,9 +34,27 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)refreshPEFRecord
+- (void)refreshPEFRecordIsShowHttpError:(BOOL)isShow
 {
     [self.tableView reloadData];
+    if (isShow) {
+        [self showErrorMessage:@"网络连接失败，点击刷新~" isShowButton:NO type:showErrorTypeHttp];
+    }else{
+        NSArray *array = [LWPublicDataManager shareInstance].logModle.body.recordList;
+        if (array.count <= 0) {
+            [self showErrorMessage:@"本周暂无记录~" isShowButton:YES type:showErrorTypeMore];
+        }else
+        {
+            [self hiddenNonetWork];
+        }
+    }
+}
+
+- (void)reloadRequestWithSender:(UIButton *)sender
+{
+    [self hiddenNonetWork];
+
+    [self.vc loadLogRecord];
 }
 #pragma mark - tableviewdelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -44,7 +63,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.row == 0?320:150;
+    return indexPath.row == 0?300:150;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -70,8 +89,13 @@
 
 - (void)chooseItmButtonClick:(LWLineButton *)sender
 {
+    [self showPEFRecordView:sender.itm.record];
+}
+
+- (void)showPEFRecordView:(LWPEFRecordList *)record
+{
     LWPEFRecordView *vc = (LWPEFRecordView *)[[UIStoryboard storyboardWithName:@"PatientLog" bundle:nil] instantiateViewControllerWithIdentifier:@"LWPEFRecordView"];
-    vc.dataItm = sender.itm;
+    vc.record = record;
     MZFormSheetPresentationViewController *formSheetController = [[MZFormSheetPresentationViewController alloc] initWithContentViewController:vc];
     formSheetController.presentationController.shouldUseMotionEffect = YES;
     formSheetController.contentViewControllerTransitionStyle = MZFormSheetPresentationTransitionStyleFade;
@@ -79,6 +103,8 @@
     formSheetController.presentationController.contentViewSize = CGSizeMake(320, 480-30);
     formSheetController.presentationController.portraitTopInset = (Screen_SIZE.height-450)/2-20;
     [self presentViewController:formSheetController animated:YES completion:nil];
+
+
 }
 
 @end

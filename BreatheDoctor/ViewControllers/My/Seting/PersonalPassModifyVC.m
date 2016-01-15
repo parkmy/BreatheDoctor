@@ -112,12 +112,12 @@
     m_password2.secureTextEntry = YES;
     
     UIButton *sureBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [sureBtn setBackgroundColor:[UIColor colorWithRed:61/255.0f green:134/255.0f blue:255/255.0f alpha:1.0f]];
+    [sureBtn setBackgroundColor:systemColor];
     [sureBtn setCornerRadius:5.0f];
     [sureBtn setTitle:@"确 定" forState:UIControlStateNormal];
     sureBtn.titleLabel.font=[UIFont fontWithName:FONT size:20];
     [sureBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    sureBtn.frame = CGRectMake(21*sizeScaleX, (20+45*3+20)*sizeScaleY, m_view.frame.size.width-40*sizeScaleX, 40);
+    sureBtn.frame = CGRectMake(21*sizeScaleX, (20+45*3+20)*sizeScaleY, m_view.frame.size.width-40*sizeScaleX, 45);
     [sureBtn addTarget:self action:@selector(loadPassModify:) forControlEvents:UIControlEventTouchUpInside];
     [m_view addSubview:sureBtn];
 }

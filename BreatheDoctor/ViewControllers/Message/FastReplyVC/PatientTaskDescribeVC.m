@@ -69,8 +69,9 @@
     {
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardShow:) name:UIKeyboardWillShowNotification object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyBoardHild) name:UIKeyboardWillHideNotification object:nil];
-        [editView becomeFirstResponder];
-        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [editView becomeFirstResponder];
+        });
     }
 
 }
@@ -78,6 +79,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self initialize];
 }
@@ -85,7 +87,7 @@
 - (void)initialize
 {
         
-    m_view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)] ;
+    m_view=[[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64)] ;
     [self.view addSubview:m_view];
     
     editView = [[UITextView alloc]initWithFrame:CGRectMake(0, 0, m_view.frame.size.width, 220)];
@@ -115,7 +117,7 @@
 
 
     number = 0;
-    numberLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,0,305, 20)];
+    numberLabel = [[UILabel alloc]initWithFrame:CGRectMake(0,0,screenWidth-30, 20)];
     numberLabel.text = [NSString stringWithFormat:@"%d/500",number];
     numberLabel.font = [UIFont fontWithName:FONT size:13];
     numberLabel.textColor = [UIColor blueColor];
@@ -294,7 +296,7 @@
     NSDictionary *userInfo = [notication userInfo];
     NSValue *aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
     CGRect keyboardRect = [aValue CGRectValue];
-    editView.frame = CGRectMake(0, 0, m_view.frame.size.width, m_view.frame.size.height-keyboardRect.size.height-20);
+    editView.frame = CGRectMake(0, 0, m_view.frame.size.width, m_view.frame.size.height-keyboardRect.size.height-64);
     backView.frame =CGRectMake(0, editView.frame.size.height, m_view.frame.size.width, 20);
 //    numberLabel.frame = CGRectMake(200, editView.frame.size.height+editView.frame.origin.y+5,105, 20);
 }

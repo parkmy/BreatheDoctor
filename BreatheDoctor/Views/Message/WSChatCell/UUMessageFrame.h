@@ -31,6 +31,7 @@
 @property (nonatomic, assign, readonly) CGRect iconF;
 @property (nonatomic, assign, readonly) CGRect timeF;
 @property (nonatomic, assign, readonly) CGRect contentF;
+@property (nonatomic, assign) CGFloat cardContentHigh;
 
 @property (nonatomic, assign) CGFloat cellHeight;
 

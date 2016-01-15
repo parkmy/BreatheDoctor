@@ -11,5 +11,6 @@
 
 @interface LWPEFRecordView : UIViewController
 
-@property (nonatomic, strong) CoordinateItem *dataItm;
+@property (nonatomic, strong) LWPEFRecordList *record;
+
 @end

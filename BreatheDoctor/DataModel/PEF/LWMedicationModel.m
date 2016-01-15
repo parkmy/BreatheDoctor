@@ -7,6 +7,7 @@
 //
 
 #import "LWMedicationModel.h"
+#import "NSDate+Extension.h"
 
 @implementation LWMedicationModel
 
@@ -69,6 +70,17 @@
         }
         [datas addObject:base];
     }
+    
+    [datas sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        LWMedicationModel *model1 = obj1;
+        LWMedicationModel *model2 = obj2;
+        NSDate *date1 = [NSDate dateWithString:model1.recordDt format:[NSDate ymdFormat]];
+        NSDate *date2 = [NSDate dateWithString:model2.recordDt format:[NSDate ymdFormat]];
+
+        return [date1 compare:date2];
+    }];
+    
+    
     
     
     //    NSMutableArray *array = [NSMutableArray array];

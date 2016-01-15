@@ -133,31 +133,43 @@ NSString *const kLWChatBaseModelJoinId = @"join_id";
 + (NSMutableArray*)LoadSqliteDataWhere:(NSString *)wheres Offset:(NSInteger)offset count:(NSInteger)counts
 {
     
-    NSMutableArray* array = [[LKDBHelper getUsingLKDBHelper] search:[LWChatModel class] where:wheres orderBy:@"insertDt asc" offset:0 count:counts];
+    NSMutableArray* array = [[LKDBHelper getUsingLKDBHelper] search:[LWChatModel class] where:wheres orderBy:@"insertDt DESC" offset:0 count:counts];
     
     NSMutableArray *arrays = [NSMutableArray array];
     
-    for (LWChatModel *model in array) {
-        UUMessageFrame *modelFram = [[UUMessageFrame alloc] init];
-        modelFram.model = model;
-        [arrays addObject:modelFram];
+    @autoreleasepool {
+        
+        for (LWChatModel *model in array) {
+            UUMessageFrame *modelFram = [[UUMessageFrame alloc] init];
+            modelFram.model = model;
+            [arrays addObject:modelFram];
+        }
+        
     }
     
-    for (int i = 0; i < arrays.count; i++)
-    {
-        UUMessageFrame *model1 = arrays[i];
-        UUMessageFrame *model2;
-        if ((i+1) < arrays.count)
-        {
-            model2 = arrays[i+1];
-        }
-        if (model2)
-        {
+    
+    return arrays;
+}
 
-            [[self class] minuteOffSetStart:model1 end:model2];
++ (void)minuteOffSetArray:(NSMutableArray *)array
+{
+
+    @autoreleasepool {
+        for (int i = 0; i < array.count; i++)
+        {
+            UUMessageFrame *model1 = array[i];
+            UUMessageFrame *model2;
+            if ((i+1) < array.count)
+            {
+                model2 = array[i+1];
+            }
+            if (model2)
+            {
+                
+                [[self class] minuteOffSetStart:model1 end:model2];
+            }
         }
     }
-    return arrays;
 }
 
 + (void)minuteOffSetStart:(UUMessageFrame *)start end:(UUMessageFrame *)end
@@ -185,19 +197,20 @@ NSString *const kLWChatBaseModelJoinId = @"join_id";
 
 - (void)updateModel
 {
-    for (LWChatRows *row in self.body.rows) {
-         LWChatModel *model = [LWChatModel modelWith:self WithRow:row];
+    @autoreleasepool {
         
-        NSString * wheres = [NSString stringWithFormat:@"memberId = %@ and sid = %@",model.memberId,model.sid];
-        
-        if ([[LKDBHelper getUsingLKDBHelper] rowCount:[LWChatModel class] where:wheres]>0) {
-            [[LKDBHelper getUsingLKDBHelper] updateToDB:model where:wheres];
-        }else
-        {
-            [[LKDBHelper getUsingLKDBHelper] insertToDB:model];
+        for (LWChatRows *row in self.body.rows) {
+            LWChatModel *model = [LWChatModel modelWith:self WithRow:row];
+            
+            NSString * wheres = [NSString stringWithFormat:@"memberId = %@ and sid = %@",model.memberId,model.sid];
+            
+            if ([[LKDBHelper getUsingLKDBHelper] rowCount:[LWChatModel class] where:wheres]>0) {
+                [[LKDBHelper getUsingLKDBHelper] updateToDB:model where:wheres];
+            }else
+            {
+                [[LKDBHelper getUsingLKDBHelper] insertToDB:model];
+            }
         }
     }
-
-
 }
 @end

@@ -65,7 +65,7 @@
     
     CGContextRef currentCtx = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(currentCtx, self.lineAndPointColor.CGColor);
-    CGContextSetStrokeColorWithColor(currentCtx, self.lineAndPointColor.CGColor);
+    CGContextSetStrokeColorWithColor(currentCtx, [UIColor grayColor].CGColor);
     CGContextSetLineWidth(currentCtx, 1);
     
     //绘制坐标点
@@ -76,13 +76,15 @@
         CoordinateItem *item = [self.dataSource objectAtIndex:index];
         
         CGFloat Y ;
+       
         if ([item.coordinateYValue integerValue] == 1) { //全部控制
-            Y = self.height -(self.height/3);
+            Y = (self.height/4) * 2;
+
         }else if ([item.coordinateYValue integerValue] == 2){//部分控制
-            Y = self.height -(self.height/3)*2;
+            Y =  (self.height/4) * 1;
 
         }else{
-            Y = self.height -(self.height/3)*3;
+            Y =   (self.height/4) * 0;
 
         }
         
@@ -97,6 +99,8 @@
          */
         CGPoint itemCoordinate = CGPointMake(MARGIN_LEFT + X,
                                             Y+MARGIN_TOP);
+        CGContextSetFillColorWithColor(currentCtx, item.itemColor.CGColor);
+
         //记录坐标点
         [coordinateArray addObject:NSStringFromCGPoint(itemCoordinate)];
         CGContextAddArc(currentCtx, itemCoordinate.x, itemCoordinate.y, 4, 0, 2*M_PI, 1);
@@ -104,9 +108,27 @@
         //记录初始化坐标点，方便后续动画
         itemCoordinate.y = self.frame.size.height - MARGIN_TOP;
         [initCoordinateArray addObject:NSStringFromCGPoint(itemCoordinate)];
+        
     }
     CGContextStrokePath(currentCtx);
     
+    
+    CGFloat lengths[2] = {5,5};
+    CGContextSetLineDash(currentCtx, 0, lengths, 1);
+
+    for (NSString *PointStr in coordinateArray) {
+        
+        CGPoint Point = CGPointFromString(PointStr);
+
+        CGContextMoveToPoint(currentCtx, Point.x, Point.y);
+        
+        CGContextAddLineToPoint(currentCtx, Point.x, self.height-MARGIN_TOP
+                                );
+
+    }
+    
+    CGContextStrokePath(currentCtx);
+
     
     for (CAShapeLayer *lineLayer in self.lines) {
         [lineLayer removeFromSuperlayer];

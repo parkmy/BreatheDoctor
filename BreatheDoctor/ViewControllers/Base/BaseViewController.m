@@ -22,7 +22,7 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.view.backgroundColor = [UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f];
+    self.view.backgroundColor = [LWThemeManager shareInstance].vcBackgroundColor;
     
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)])
     {
@@ -50,7 +50,7 @@
 
 -(void)addNavBar:(NSString*)title
 {
-    self.navBar.tintColor=[UIColor colorWithRed:61/255.0f green:134/255.0f blue:255/255.0f alpha:1.0f];
+    self.navBar.tintColor=[UIColor colorWithHexString:@"#9cc75e"];
     [self.navBar addSubview:self.navBackView];
     self.navTitle.text=[NSString stringWithFormat:@"%@",title];
     
@@ -79,7 +79,7 @@
         if (systemVersion>=7) {
             _navBackView.frame=CGRectMake(0, -20, self.view.frame.size.width, systemNavHeight+20);
         }
-        _navBackView.backgroundColor=[UIColor colorWithRed:61/255.0f green:134/255.0f blue:255/255.0f alpha:1.0f];
+        _navBackView.backgroundColor=[LWThemeManager shareInstance].navBackgroundColor;
     }
     return _navBackView;
 }

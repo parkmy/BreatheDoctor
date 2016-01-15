@@ -12,7 +12,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="03_act_.png" translatesAutoresizingMaskIntoConstraints="NO" id="btS-0u-3Ef">
-                    <rect key="frame" x="142" y="219" width="90" height="90"/>
+                    <rect key="frame" x="142" y="209" width="90" height="90"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="90" id="FfL-If-dg0"/>
@@ -20,7 +20,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALD-rF-piu">
-                    <rect key="frame" x="0.0" y="324" width="375" height="45"/>
+                    <rect key="frame" x="0.0" y="304" width="375" height="45"/>
                     <animations/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="vmb-cD-Bsd"/>
@@ -29,18 +29,36 @@
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTU-3i-rkQ">
+                    <rect key="frame" x="127" y="354" width="120" height="45"/>
+                    <animations/>
+                    <color key="backgroundColor" red="0.19607843137254902" green="0.83921568627450982" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="MK0-Wn-bpg"/>
+                        <constraint firstAttribute="height" constant="45" id="RdS-uo-cbE"/>
+                    </constraints>
+                    <state key="normal" title="添加患者">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="reloadNetworkDataSource:" destination="iN0-l3-epB" eventType="touchUpInside" id="pTn-RU-ev4"/>
+                    </connections>
+                </button>
             </subviews>
             <animations/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="RTU-3i-rkQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="5aG-8D-6pL"/>
                 <constraint firstItem="ALD-rF-piu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Phh-t5-02t"/>
                 <constraint firstAttribute="trailing" secondItem="ALD-rF-piu" secondAttribute="trailing" id="SSy-nK-Awg"/>
                 <constraint firstItem="btS-0u-3Ef" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="br4-NG-CLO"/>
-                <constraint firstItem="btS-0u-3Ef" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-70" id="iCh-Cb-DXN"/>
-                <constraint firstItem="ALD-rF-piu" firstAttribute="top" secondItem="btS-0u-3Ef" secondAttribute="bottom" constant="15" id="iIh-qc-TdB"/>
+                <constraint firstItem="RTU-3i-rkQ" firstAttribute="top" secondItem="ALD-rF-piu" secondAttribute="bottom" constant="5" id="fVo-tl-SKB"/>
+                <constraint firstItem="btS-0u-3Ef" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-80" id="iCh-Cb-DXN"/>
+                <constraint firstItem="ALD-rF-piu" firstAttribute="top" secondItem="btS-0u-3Ef" secondAttribute="bottom" constant="5" id="iIh-qc-TdB"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <connections>
+                <outlet property="ErrorButton" destination="RTU-3i-rkQ" id="7wo-Ew-Ts2"/>
                 <outlet property="messageLabel" destination="ALD-rF-piu" id="0FZ-7i-BuM"/>
             </connections>
             <point key="canvasLocation" x="237" y="233"/>

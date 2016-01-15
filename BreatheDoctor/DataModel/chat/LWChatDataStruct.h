@@ -23,6 +23,15 @@
 @property (nonatomic, assign) double assessResult;
 @property (nonatomic, assign) double pEFValue;
 
+@property (nonatomic, assign) double pharmacyUrgency;
+@property (nonatomic, assign) double symptomChestdistress;
+@property (nonatomic, assign) double symptomDyspnea;
+@property (nonatomic, assign) double symptomCough;
+@property (nonatomic, assign) double pharmacyControl;
+@property (nonatomic, strong) NSString *remark;
+@property (nonatomic, assign) double symptomNightWoke;
+@property (nonatomic, assign) double symptomGood;
+
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;

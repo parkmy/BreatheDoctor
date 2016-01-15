@@ -21,13 +21,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    //主题
+    [LWThemeManager shareInstance].themeType = themeTypeDefault;
+    
     //加载缓存
     [[CODataCacheManager shareInstance] loadUserDefaultData];
     
     //注册通知
     [self registerUserNotification:application withLaunchOptions:launchOptions];
     
-
     return YES;
 }
 
@@ -35,15 +37,10 @@
 
 - (void)registerUserNotification:(UIApplication *)application  withLaunchOptions:(NSDictionary *)launchOptions
 {
-    
     //这里处理应用程序如果没有启动,但是是通过通知消息打开的,此时可以获取到消息.
     if (launchOptions != nil){
         NSDictionary *userInfo = [launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
-        NSLog(@"程序关闭时候接到推送消息=%@",userInfo);
         [self performSelector:@selector(showPushAction:) withObject:userInfo afterDelay:0.50f];
-        
-        //appDelegate.global.pushDic=userInfo;
-        //[self performSelector:@selector(showPushAction) withObject:nil afterDelay:0.50f];
     }
     
     //取消所有已经接受的通知
@@ -65,7 +62,6 @@
     }
 
 }
-
 //处理连接改变后的情况
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)pToken
 {
@@ -74,7 +70,6 @@
 }
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
     
-    application.applicationIconBadgeNumber = 1;
     application.applicationIconBadgeNumber+= 1;
     
     if(application.applicationState!=UIApplicationStateActive)          //后台
@@ -84,8 +79,6 @@
     }
     else
     {
-        application.applicationIconBadgeNumber = 0;
-        
         // 处理推送消息
         [[PushMgrInfo sharedInstance] showRemotePushAction:userInfo launchType:3];
     }
@@ -110,20 +103,6 @@
     //取消所有已经接受的通知
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     application.applicationIconBadgeNumber = 0;
-    
-    //     NSDictionary * dic = [[NSDictionary alloc]initWithObjectsAndKeys:@"151030174700015",@"id",@"http://comvee.3322.org:8888/comveedoctor/information/information.html",@"url", nil];
-    //    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    //    [[NSNotificationCenter defaultCenter] postNotificationName:@"AdvisoryBodyPushMsg" object:dic];
-    //
-    //    return;
-    if ([LWPublicDataManager shareInstance].currentPatientID) //对话刷新对话消息
-    {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"QuestionGetPushMsg" object:nil];
-    }
-    else
-    {
-        //刷新主页
-    }
     
 }
 

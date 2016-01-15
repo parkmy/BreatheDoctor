@@ -80,6 +80,11 @@
 - (IBAction)buttonClick:(UIButton *)sender
 {
     
+    if (self.timer && self.timer.isValid)
+    {
+        return;
+    }
+    
     if (self.accountTF.text.length <= 0) {
         [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:NSLocalizedString(@"LOGIN_ALERT_NOUSERNAME", nil)];
         return;

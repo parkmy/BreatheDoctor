@@ -7,7 +7,9 @@
 // 症状日志
 
 #import <UIKit/UIKit.h>
+@class LWPatientLogViewController;
 
 @interface LWPatientSymptomsLogVC : UIViewController
-- (void)refreshSymptomsLog;
+@property (nonatomic, weak) LWPatientLogViewController *vc;
+- (void)refreshSymptomsLogIsShowHttpError:(BOOL)isShow;
 @end

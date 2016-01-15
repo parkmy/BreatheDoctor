@@ -29,6 +29,7 @@
     
     self.problemLabel.text = model.wenti;
     self.resultsLabel.text = model.daan;
+    self.resultsLabel.textColor = [LWThemeManager shareInstance].navBackgroundColor;
     
     CGFloat ph = [self.problemLabel.text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToWidth:self.width-20].height+20;
     self.problemHight.constant = ph;

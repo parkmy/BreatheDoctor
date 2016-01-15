@@ -41,9 +41,9 @@ typedef NS_OPTIONS(NSInteger,WSChatCellType)
     WSChatCellType_Card = 5,
     
     /**
-     *  @brief  时间
+     *  @brief  同意消息
      */
-    WSChatCellType_Time  = 0
+    WSChatCellType_Agreed  = 0
 };
 
 

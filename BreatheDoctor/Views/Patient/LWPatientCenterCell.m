@@ -14,6 +14,11 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    [self.patientIcon setCornerRadius:self.patientIcon.height/2];
+    for (UILabel *label in self.patientDataLabels) {
+        [label setCornerRadius:label.height/2];
+    }
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -26,13 +31,16 @@
 {
     _patient = patient;
     
-    [LWTool atientControlLevel:_patient.controlLevel withLayoutConstraint:self.typeWidth withLabel:self.patientLabel];
+    [LWTool atientControlLevel:_patient.controlLevel withLayoutConstraint:self.typeWidth withLabel:self.patientTypeButton];
     if ([_patient.remark isEqualToString:@""] || !_patient.remark) {
         self.patientNameLabel.text = stringJudgeNull(_patient.patientName);
     }else
     {
         self.patientNameLabel.text = [NSString stringWithFormat:@"%@(%@)",stringJudgeNull(_patient.patientName),stringJudgeNull(_patient.remark)];
     }
+    CGFloat w = [self.patientNameLabel.text sizeWithFont:[UIFont systemFontOfSize:16] constrainedToHeight:24].width;
+    self.patientNameWidth.constant = w + 10 + 45;
+    
     [self.patientIcon sd_setImageWithURL:kNSURL(stringJudgeNull(_patient.headImgUrl)) placeholderImage:kImage(@"yishengzhushousy_03.png")];
     
 }

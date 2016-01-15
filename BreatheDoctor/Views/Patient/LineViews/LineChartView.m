@@ -8,6 +8,7 @@
 
 #import "LineChartView.h"
 #import "CoordinateItem.h"
+#import "CDMacro.h"
 
 #define ANIMATION_DURING 2
 #define LINE_WIDTH  1
@@ -26,7 +27,6 @@
 @end
 
 @implementation LineChartView
-
 /**
  *  @author li_yong
  *
@@ -48,6 +48,7 @@
         self.lineAndPointColor = color;
         self.isAnimation = isAnimation;
         self.backgroundColor = [UIColor clearColor];
+        
     }
     return self;
 }
@@ -71,7 +72,8 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
     [super drawRect:rect];
-    
+    CGFloat spa = (self.frame.size.height - MARGIN_TOP*2)/800;
+
     CGContextRef currentCtx = UIGraphicsGetCurrentContext();
     
     
@@ -100,7 +102,7 @@
         }
         
         CGPoint itemCoordinate = CGPointMake(x,
-                                             self.frame.size.height - (MARGIN_TOP + [item.coordinateYValue integerValue]*(self.dashedSpace/self.yNumberSpace)));
+                                             self.frame.size.height - (MARGIN_TOP + [item.coordinateYValue integerValue]*spa));
         //        CGContextSetFillColorWithColor(currentCtx, item.itemColor.CGColor);
         //记录坐标点
         [coordinateArray addObject:NSStringFromCGPoint(itemCoordinate)];
@@ -164,7 +166,7 @@
     }
     [self.buttons removeAllObjects];
     
-    
+
     for (int index = 0; index<[self.dataSource count]; index++)
     {
         CoordinateItem *item = [self.dataSource objectAtIndex:index];
@@ -178,13 +180,27 @@
         {
             x = (MARGIN_LEFT + self.dashedSpace + self.dashedSpace/2) + (([item.coordinateXValue integerValue]) * (self.dashedSpace*2));
         }
-        
+                
         CGPoint itemCoordinate = CGPointMake(x,
-                                             self.frame.size.height - (MARGIN_TOP + [item.coordinateYValue integerValue]*(self.dashedSpace/self.yNumberSpace)));
+                                             self.frame.size.height - (MARGIN_TOP + [item.coordinateYValue integerValue]*spa));
+        
+        
+        CAShapeLayer *solidLine =  [CAShapeLayer layer];
+        CGMutablePathRef solidPath =  CGPathCreateMutable();
+        solidLine.lineWidth = 2.0f ;
+        solidLine.strokeColor = item.itemColor.CGColor;
+        solidLine.fillColor = item.itemColor.CGColor;
+        CGPathAddEllipseInRect(solidPath, nil, CGRectMake(itemCoordinate.x-3,  itemCoordinate.y-3, 6, 6));
+        solidLine.path = solidPath;
+        CGPathRelease(solidPath);
+        [self.layer addSublayer:solidLine];
+        [self.lines addObject:solidLine];
+
+        
         //这里可以修改点得颜色 item.itemColor.CGColor
-        CGContextSetFillColorWithColor(currentCtx, item.itemColor.CGColor);
+//        CGContextSetFillColorWithColor(currentCtx, item.itemColor.CGColor);
         //记录坐标点
-        CGContextAddArc(currentCtx, itemCoordinate.x, itemCoordinate.y, 4, 0, 2*M_PI, 1);
+//        CGContextAddArc(currentCtx, itemCoordinate.x, itemCoordinate.y, 4, 0, 2*M_PI, 1);
         
         LWLineButton *button = [LWLineButton buttonWithType:UIButtonTypeCustom];
         button.bounds = CGRectMake(0, 0, 30, 30);
@@ -195,7 +211,7 @@
         [self addSubview:button];
         [self.buttons addObject:button];
         
-        CGContextFillPath(currentCtx);
+//        CGContextFillPath(currentCtx);
         
     }
     CGContextStrokePath(currentCtx);

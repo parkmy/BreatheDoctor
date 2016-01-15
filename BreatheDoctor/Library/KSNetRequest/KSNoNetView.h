@@ -14,10 +14,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol KSNoNetViewDelegate  <NSObject>
+
+- (void)reloadNetworkDataSource:(UIButton *)sender;
+
+@end
 
 @interface KSNoNetView : UIView
 
+@property (nonatomic, strong) id<KSNoNetViewDelegate>delegate;
+
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+@property (weak, nonatomic) IBOutlet UIButton *ErrorButton;
 
 /**
  *  初始化方法,可以自定义,

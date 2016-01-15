@@ -2,15 +2,12 @@
 //  LCDownloadManager.h
 //  TTlol
 //
-//  Created by 刘超 on 15/7/9.
+//  Created by mac on 15/7/9.
 //  Copyright (c) 2015年 Leo. All rights reserved.
 //
 //  下载助手
 //  (实现了断点续传功能)
 //
-//  依赖库:
-//  AFNetworking 2.0:   https://github.com/AFNetworking/AFNetworking
-
 #import <Foundation/Foundation.h>
 #import "AFNetworking.h"
 

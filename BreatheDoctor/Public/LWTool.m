@@ -11,42 +11,63 @@
 #import "NSDate+Extension.h"
 #import "LWPatientListModel.h"
 #import "LWACTAssessmentModel.h"
+#import "UUMessageFrame.h"
 
 @implementation LWTool
 //控制等级 1 未确认 2 已控制 3 部分控制 4 未控制
-+ (void)atientControlLevel:(double)controLevel withLayoutConstraint:(NSLayoutConstraint *)traint withLabel:(UILabel *)label
++ (void)atientControlLevel:(double)controLevel withLayoutConstraint:(NSLayoutConstraint *)traint withLabel:(id)objc
 {
     NSString *title = nil;
-    UIColor *color ;
+    UIColor *color = nil;
+    NSString *bgImageNmae = nil;
+
     if (controLevel == 1) {
         title = @"未确认";
         color = RGBA(203, 203, 203, 1);
+        bgImageNmae = @"weiqueren";
     }else if (controLevel == 2)
     {
         color = RGBA(119, 204, 78, 1);
         title = @"完全控制";
+        bgImageNmae = @"wanquankongzhi";
+
     }else if (controLevel == 3)
     {
         title = @"部分控制";
         color = RGBA(251, 186, 94, 1);
-        
+        bgImageNmae = @"bufenkongzhi";
+
     }else if (controLevel == 4)
     {
         title = @"未控制";
         color = RGBA(248, 140, 143, 1);
-        
+        bgImageNmae = @"weikongzhi";
+
     }else
     {
         title = @"";
         color = [UIColor clearColor];
+        bgImageNmae = @"weiqueren";
+
     }
     
     CGSize size = [title sizeWithFont:[UIFont systemFontOfSize:13] constrainedToHeight:20];
-    label.backgroundColor = color;
-    label.text = title;
-    traint.constant = size.width+20;
     
-    [label setCornerRadius:label.height/2];
+    if ([objc isKindOfClass:[UILabel class]]) {
+        UILabel *label = (UILabel *)objc;
+        label.backgroundColor = color;
+        label.text = title;
+        [label setCornerRadius:label.height/2];
+        
+    }else if ([objc isKindOfClass:[UIButton class]])
+    {
+        UIButton *button = (UIButton *)objc;
+        [button setBackgroundImage:kImage(bgImageNmae) forState:UIControlStateNormal];
+        [button setTitle:title forState:UIControlStateNormal];
+        
+    }
+    traint.constant = size.width+20;
+
 }
 
 
@@ -261,7 +282,8 @@
         }
         
     }
-    CGFloat hight = [message sizeWithFont:[UIFont systemFontOfSize:14] constrainedToWidth:160].height+10;
+    
+    CGFloat hight = [message sizeWithFont:[UIFont systemFontOfSize:14] constrainedToWidth:100].height+10;
     return  MAX(hight, 44);
 }
 
@@ -286,19 +308,37 @@
 
 + (void)traverseChatMessage:(NSMutableArray *)array
 {
-    
-    
     [array sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
-        LWChatModel *model1 = obj1;
-        LWChatModel *model2 = obj2;
-        
-        NSDate *time1 = [NSDate dateWithString:model1.insertDt format:[NSDate ymdHmsFormat]];
-        NSDate *time2 = [NSDate dateWithString:model2.insertDt format:[NSDate ymdHmsFormat]];
-        
-        NSComparisonResult result = [time1 compare:time2];
-        
-        return result;
+        if ([obj1 isKindOfClass:[UUMessageFrame class]] && [obj2 isKindOfClass:[UUMessageFrame class]]) {
+            
+            UUMessageFrame *model1 = obj1;
+            UUMessageFrame *model2 = obj2;
+            
+            NSDate *time1 = [NSDate dateWithString:model1.model.insertDt format:[NSDate ymdHmsFormat]];
+            NSDate *time2 = [NSDate dateWithString:model2.model.insertDt format:[NSDate ymdHmsFormat]];
+            
+            NSComparisonResult result = [time1 compare:time2];
+            
+            return result;
+        }else
+        {
+    
+            LWChatModel *model1 = obj1;
+            LWChatModel *model2 = obj2;
+            
+            NSDate *time1 = [NSDate dateWithString:model1.insertDt format:[NSDate ymdHmsFormat]];
+            NSDate *time2 = [NSDate dateWithString:model2.insertDt format:[NSDate ymdHmsFormat]];
+            
+            NSComparisonResult result = [time1 compare:time2];
+            
+            return result;
+        }
     }];
+    
+    UUMessageFrame *messageFram = [array firstObject];
+    if (messageFram) {
+        messageFram.showTime = YES;
+    }
 }
 
 + (NSMutableArray *)forGrouping:(NSMutableArray *)array
@@ -465,7 +505,7 @@
         [array addObject:label];
     }
     if (model.symptomNightWoke) {
-        UILabel *label = [[self class] createLabelWithBackgroundColor:RGBA(0, 0, 0, .3) withText:@"其他症状"];
+        UILabel *label = [[self class] createLabelWithBackgroundColor:RGBA(0, 0, 0, .3) withText:@"夜间憋醒"];
         [array addObject:label];
     }
         
@@ -496,32 +536,36 @@
 {
     NSArray *body = model.body;
     NSMutableArray *array = [NSMutableArray array];
-    for (LWAsthmaAssessLogBody *base in body)
-    {
-        if (base.controlLevelY == 0) {
-            continue;
-        }
-        LWAssessmentModel *assessmentModel = [[LWAssessmentModel alloc] init];
-        assessmentModel.type = base.controlLevelY;
-        NSDate *date = [NSDate dateWithString:base.dateX format:[NSDate ymdFormat]];
-        assessmentModel.xdate = date;
-        NSString *string = [NSDate stringWithDate:[date dateAfterDay:7] format:[NSDate ymdFormat]];
-        assessmentModel.starDate = base.dateX;
-        assessmentModel.endDate = string;
-        assessmentModel.date = [NSString stringWithFormat:@"%@ - %@",base.dateX,string];
-        NSString *content;
-        if (base.controlLevelY == 1) {
-            content = [[[self class] AsthmaAssessLogcontens] objectAtIndex:0];
-        }else if (base.controlLevelY == 2)
+    
+    @autoreleasepool {
+        for (LWAsthmaAssessLogBody *base in body)
         {
-            content = [[[self class] AsthmaAssessLogcontens] objectAtIndex:1];
-        }else
-        {
-            content = [[[self class] AsthmaAssessLogcontens] objectAtIndex:2];
-        }
-        assessmentModel.content = content;
-        [array addObject:assessmentModel];
+            if (base.controlLevelY == 0) {
+                continue;
+            }
+            LWAssessmentModel *assessmentModel = [[LWAssessmentModel alloc] init];
+            assessmentModel.type = base.controlLevelY;
+            NSDate *date = [NSDate dateWithString:base.dateX format:[NSDate ymdFormat]];
+            assessmentModel.xdate = date;
+            NSString *string = [NSDate stringWithDate:[date dateAfterDay:6] format:[NSDate ymdFormat]];
+            assessmentModel.starDate = base.dateX;
+            assessmentModel.endDate = string;
+            assessmentModel.date = [NSString stringWithFormat:@"%@ - %@",base.dateX,string];
+            NSString *content;
+            if (base.controlLevelY == 1) {
+                content = [[[self class] AsthmaAssessLogcontens] objectAtIndex:0];
+            }else if (base.controlLevelY == 2)
+            {
+                content = [[[self class] AsthmaAssessLogcontens] objectAtIndex:1];
+            }else
+            {
+                content = [[[self class] AsthmaAssessLogcontens] objectAtIndex:2];
+            }
+            assessmentModel.content = content;
+            [array addObject:assessmentModel];
+        }        
     }
+    
     
     [array sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         LWAssessmentModel *model1 = obj1;
@@ -535,5 +579,96 @@
     
     return array;
 }
+
++ (NSDictionary *)patientPEFDateLineSx:(NSString *)date
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+
+    if (!date) { //如果没有日期就默认当前日期
+        NSString *star = [NSDate stringWithDate:[NSDate dateAfterDate:[NSDate date] day:-6] format:[NSDate ymdFormat]];
+        NSString *end = [NSDate stringWithDate:[NSDate date] format:[NSDate ymdFormat]];
+        [dic setObject:star forKey:@"star"];
+        [dic setObject:end forKey:@"end"];
+
+    }else //有日期 进行分析
+    {
+        NSDate *xsDate = [NSDate dateWithString:date format:[NSDate ymdHmsFormat]];
+        NSInteger count = [NSDate daysAgo:xsDate];//传入日期和当前时间相差多少天
+        NSInteger wek = count/6;//相差多少周
+        //算出存在那一周的最后日期 也就是那周的结尾日期
+        NSString *end = [NSDate stringWithDate:[NSDate dateAfterDate:[NSDate date] day:(-(wek*7))] format:[NSDate ymdFormat]];
+        //根据结尾日期算出开始日期
+        NSString *star = [NSDate stringWithDate:[NSDate dateAfterDate:[NSDate dateWithString:end format:[NSDate ymdFormat]] day:-6] format:[NSDate ymdFormat]];
+        [dic setObject:star forKey:@"star"];
+        [dic setObject:end forKey:@"end"];
+    }
+    return dic;
+}
+
+
++ (NSDictionary *)chatMessageCardModel:(LWChatModel *)model
+{
+        
+    NSString *title = @"";
+    NSString *content = @"";
+    
+    switch (model.chatMessageType) {
+        case WSChatMessageType_FirstSeeDoctorRemind:
+        {
+            title = @"首次就诊";
+            content = model.doctorText;
+        }
+            break;
+        case WSChatMessageType_FirstSeeDoctorReport:
+        {
+            title = @"首诊就诊报告";
+            content = model.doctorText;
+            
+        }
+            break;
+        case WSChatMessageType_VisitReport:
+        {
+            title = @"复诊就诊报告";
+            content = model.doctorText;
+        }
+            break;
+        case WSChatMessageType_PEFRemind:
+        {
+            title = @"记录PEF提醒";
+            content = model.doctorText;
+        }
+            break;
+        case WSChatMessageType_ACAassessment:
+        {
+            title = @"ACT评估通知";
+            content = model.doctorText;
+        }
+            break;
+        case WSChatMessageType_AsthmaAassessment:
+        {
+            title = @"我有哮喘症状评估通知";
+            content = model.doctorText;
+        }
+            break;
+        case WSChatMessageType_VisitRemind:
+        {
+            title = @"复诊提醒";
+            content = model.doctorText;
+        }
+            break;
+        case WSChatMessageType_PEFRecord:
+        {
+            title = @"PEF值异常通知";
+            content = [NSString stringWithFormat:@"记录时间:%@\nPEF值:%@L/min\nPEF水平:%@",model.insertDt,kNSNumDouble(model.pEFValue),model.pEFLevel];
+        }
+            break;
+        default:
+            break;
+    }
+    
+    return @{@"title":title,@"content":content};
+    
+}
+
 
 @end

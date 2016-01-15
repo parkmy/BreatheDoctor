@@ -10,14 +10,17 @@
 #import "CoordinateItem.h"
 #import "NSDate+Extension.h"
 
+
 @interface LWPEFLineCell ()
 
 @end
 @implementation LWPEFLineCell
 
+
 - (void)awakeFromNib {
     // Initialization code
     self.backgroundColor = [UIColor whiteColor];
+
 }
 
 - (void)setModel:(LWPEFLineModel *)model
@@ -40,32 +43,37 @@
     NSInteger number3 = model.body.pefPredictedValue*.6;
     
     NSMutableArray *array = [NSMutableArray array];
-    for (int i = 0; i < model.body.recordList.count; i++)
-    {
+    @autoreleasepool {
         
-        LWPEFRecordList *record = model.body.recordList[i];
+        for (int i = 0; i < model.body.recordList.count; i++)
+        {
+            
+            LWPEFRecordList *record = model.body.recordList[i];
+            
+            CoordinateItem *itm = [[CoordinateItem alloc] init];
+            itm.record = record;
+            if (record.timeFrame == 1) {//早上
+                itm.isMorning = YES;
+            }else
+            {
+                itm.isMorning = NO;
+            }
+            if (record.pefValue >= number2) {
+                itm.itemColor = [UIColor colorWithRed:160/255.0 green:219/255.0 blue:28/255.0 alpha:1];
+            }else if (record.pefValue >= number3 && record.pefValue < number2)
+            {
+                itm.itemColor = [UIColor orangeColor];
+            }else
+            {
+                itm.itemColor = [UIColor redColor];
+            }
+            itm.coordinateYValue = [NSString stringWithFormat:@"%@",kNSNumDouble(record.pefValue)];
+            itm.coordinateXValue = kNSString(kNSNumInteger([self chajitian:record.recordDt]));
+            [array addObject:itm];
+        }
         
-        CoordinateItem *itm = [[CoordinateItem alloc] init];
-        itm.record = record;
-        if (record.timeFrame == 1) {//早上
-            itm.isMorning = YES;
-        }else
-        {
-            itm.isMorning = NO;
-        }
-        if (record.pefValue >= number2) {
-            itm.itemColor = [UIColor colorWithRed:160/255.0 green:219/255.0 blue:28/255.0 alpha:1];
-        }else if (record.pefValue >= number3 && record.pefValue < number2)
-        {
-            itm.itemColor = [UIColor orangeColor];
-        }else
-        {
-            itm.itemColor = [UIColor redColor];
-        }
-        itm.coordinateYValue = [NSString stringWithFormat:@"%@",kNSNumDouble(record.pefValue)];
-        itm.coordinateXValue = kNSString(kNSNumInteger([self chajitian:record.recordDt]));
-        [array addObject:itm];
     }
+    
     //排序下
     [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         

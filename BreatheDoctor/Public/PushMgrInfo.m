@@ -7,6 +7,7 @@
 //
 #import "PushMgrInfo.h"
 #import "CDMacro.h"
+#import "YRJSONAdapter.h"
 
 @implementation PushMgrInfo
 
@@ -36,10 +37,9 @@
 
 - (void)didRegisterDeviceToken:(NSData *)deviceToken
 {
-    NSString *str = [NSString stringWithFormat:@"%@",deviceToken];
-    NSString *neirong = [str substringFromIndex:1];
-    NSString *ret = [neirong substringToIndex:[neirong length]-1];
-    NSString *token = [ret stringByReplacingOccurrencesOfString:@" " withString:@""];//最终
+    
+    NSString *tokenkey = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    NSString *token = [[tokenkey stringByReplacingOccurrencesOfString:@" " withString:@""] copy];
     NSLog(@"token%@",token);
     if (token) {
         [CODataCacheManager shareInstance].pushTokenKey = token;
@@ -53,12 +53,12 @@
 {
     NSLog(@"showRemotePushAction:%d,%@",launchType,userInfo);
 
-    if([[userInfo objectForKey:@"aps"] objectForKey:@"alert"]==nil)
+    if(![[userInfo objectForKey:@"aps"] objectForKey:@"alert"])
     {
         return;
     }
     
-    if(pushDic==nil)
+    if(!pushDic)
     {
         pushDic = [[NSMutableDictionary alloc] init];
     }
@@ -71,14 +71,15 @@
     
     NSDictionary *dic=[NSJSONSerialization JSONObjectWithData:pushData options:NSJSONReadingMutableLeaves error:nil];
     
-    NSLog(@"%@",dic);
-    NSString* busyType = [dic objectForKey:@"busi_type"];
+    NSLog(@"%@",[dic JSONString]);
+    NSString* busyType = [dic objectForKey:@"type"];
     
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
     switch ([busyType intValue])
     {
+            
         case 1: //请求创建医患关系
             
             [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_REQUEST_RELATION object:nil];

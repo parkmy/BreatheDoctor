@@ -116,5 +116,19 @@
                                      success:(void (^)(NSMutableArray *models))success
                                      failure:(void (^)(NSString * errorMes))failure;
 
+#pragma mark 加载购买记录
++ (void)httpLoadShopOrderLogWithDate:(NSString *)date
+                                     success:(void (^)(NSMutableArray *models))success
+                                     failure:(void (^)(NSString * errorMes))failure;
+
+#pragma mark 获取医生服务时间
++ (void)httploadDoctorServerTimeSuccess:(void (^)(NSMutableArray *models))success
+                             failure:(void (^)(NSString * errorMes))failure;
+
+
+#pragma mark 提交医生服务时间
++ (void)httpsubmitDoctorServerTimeWithJsonString:(NSString *)array
+                                         Success:(void (^)())success
+                                failure:(void (^)(NSString * errorMes))failure;
 
 @end

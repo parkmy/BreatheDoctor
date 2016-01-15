@@ -18,6 +18,10 @@
 #import "NSObject+LKDBHelper.h"
 
 @interface LKDBHelper : NSObject
+
++ (NSString *)baseTableName;
++ (NSString *)getDBPathWithDBName:(NSString *)dbName;
+
 /**
  *	@brief  filepath the use of : "documents/db/" + fileName + ".db"
  *  refer:  FMDatabase.h  + (instancetype)databaseWithPath:(NSString*)inPath;

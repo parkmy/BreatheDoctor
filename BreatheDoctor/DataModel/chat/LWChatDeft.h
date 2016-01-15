@@ -67,6 +67,7 @@ typedef NS_OPTIONS(NSInteger,WSChatMessageType)
      *  @brief  PEF记录通知
      */
     WSChatMessageType_PEFRecord  = 12,
+    
 };
 
 

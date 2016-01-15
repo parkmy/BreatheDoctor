@@ -18,6 +18,10 @@
 #import "NSDate+Extension.h"
 
 @interface LWPatientLogViewController ()<SegmentTapViewDelegate,FlipTableViewDelegate,LWPatientLogDateIndexViewDeleagte>
+
+{
+    BOOL __isShowPEF;
+}
 @property (nonatomic, strong) SegmentTapView *segment;
 @property (nonatomic, strong) LWPatientLogDateIndexView *dateView;
 @property (nonatomic, strong) LWYerChangIndexView *yerIndexView;
@@ -49,27 +53,28 @@
     [self initDateView];
     [self initproperty];
     [self initFlipTableView];
+    
+    [self loadLogRecord];
+    [self.AssessmentLog refreshAssessmentLog:self.patientId];
 }
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self loadLogRecord];
-    [self.AssessmentLog refreshAssessmentLog:self.patientId];
 
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)dealloc
-{
-    [LWPublicDataManager shareInstance].starDate = nil;
-    [LWPublicDataManager shareInstance].endDate = nil;
-    [LWPublicDataManager shareInstance].logModle = nil;
-    [LWPublicDataManager shareInstance].yer = nil;
-    [LWPublicDataManager shareInstance].month = nil;
-    [LWPublicDataManager shareInstance].changeDate = nil;
-}
+//- (void)dealloc
+//{
+//    [LWPublicDataManager shareInstance].starDate = nil;
+//    [LWPublicDataManager shareInstance].endDate = nil;
+//    [LWPublicDataManager shareInstance].logModle = nil;
+//    [LWPublicDataManager shareInstance].yer = nil;
+//    [LWPublicDataManager shareInstance].month = nil;
+//    [LWPublicDataManager shareInstance].changeDate = nil;
+//}
 #pragma mark - data
 - (void)loadLogRecord
 {
@@ -78,10 +83,11 @@
     [LWHttpRequestManager httpLoadPEFRecordWithPatientId:self.patientId StartDt:[LWPublicDataManager shareInstance].starDate EndDt:[LWPublicDataManager shareInstance].endDate success:^(LWPEFLineModel *model) {
         [LWProgressHUD closeProgressHUD:self.view.window];
         [LWPublicDataManager shareInstance].logModle = model;
-        [self releadView];
+        [self releadViewIsHttpError:NO];
     } failure:^(NSString *errorMes) {
-        [self releadView];
-        [LWProgressHUD showALAlertBannerWithView:self.view.window Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        [self releadViewIsHttpError:YES];
+        [LWProgressHUD closeProgressHUD:self.view.window];
+//        [LWProgressHUD showALAlertBannerWithView:self.view.window Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
     
 }
@@ -89,15 +95,23 @@
 #pragma mark - init
 - (void)initproperty
 {
-    [LWPublicDataManager shareInstance].starDate = [NSDate stringWithDate:[NSDate dateAfterDate:[NSDate date] day:-6] format:[NSDate ymdFormat]];
-    [LWPublicDataManager shareInstance].endDate = [NSDate stringWithDate:[NSDate date] format:[NSDate ymdFormat]];
+    if (self.refDateDic) {
+        [LWPublicDataManager shareInstance].starDate = self.refDateDic[@"star"];
+        [LWPublicDataManager shareInstance].endDate = self.refDateDic[@"end"];
+
+    }else
+    {
+        [LWPublicDataManager shareInstance].starDate = [NSDate stringWithDate:[NSDate dateAfterDate:[NSDate date] day:-6] format:[NSDate ymdFormat]];
+        [LWPublicDataManager shareInstance].endDate = [NSDate stringWithDate:[NSDate date] format:[NSDate ymdFormat]];
+    }
+
     [LWPublicDataManager shareInstance].yer =  [NSString stringWithFormat:@"%@",kNSNumInteger([[NSDate date] year])];
     [LWPublicDataManager shareInstance].month = [NSString stringWithFormat:@"%@",kNSNumInteger([[NSDate date] month])];
     [LWPublicDataManager shareInstance].changeDate = [NSDate date];
 }
 - (void)initDateView
 {
-    self.dateView = [[LWPatientLogDateIndexView alloc] initWithFrame:CGRectZero WithDelegate:self];
+    self.dateView = [[LWPatientLogDateIndexView alloc] initWithFrame:CGRectZero WithDelegate:self withRefDateDic:self.refDateDic];
     self.dateView.backgroundColor = RGBA(245, 245, 245, 1);
     [self.view addSubview:self.dateView];
     self.dateView.sd_layout.leftSpaceToView(self.view,0).rightSpaceToView(self.view,0).topSpaceToView(self.segment,0).heightIs(40);
@@ -119,11 +133,16 @@
     }
     
     _PEFLog = [[UIStoryboard storyboardWithName:@"PatientLog" bundle:nil] instantiateViewControllerWithIdentifier:@"LWPatientPEFLogVC"];
+    _PEFLog.vc = self;
+    
     _AssessmentLog = [[UIStoryboard storyboardWithName:@"PatientLog" bundle:nil] instantiateViewControllerWithIdentifier:@"LWPatientAssessmentLogVC"];
     _AssessmentLog.vc = self;
     
     _SymptomsLog = [[UIStoryboard storyboardWithName:@"PatientLog" bundle:nil] instantiateViewControllerWithIdentifier:@"LWPatientSymptomsLogVC"];
+    _SymptomsLog.vc = self;
+    
     _MedicationLog = [[UIStoryboard storyboardWithName:@"PatientLog" bundle:nil] instantiateViewControllerWithIdentifier:@"LWPatientMedicationLogVC"];
+    _MedicationLog.vc = self;
     
     [self.controllsArray addObject:_PEFLog];
     [self.controllsArray addObject:_AssessmentLog];
@@ -133,6 +152,12 @@
     self.flipView = [[FlipTableView alloc] initWithFrame:CGRectMake(0, 104+40, Screen_SIZE.width, self.view.frame.size.height - 104-40) withArray:_controllsArray];
     self.flipView.delegate = self;
     [self.view addSubview:self.flipView];
+    
+    if (self.record) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_PEFLog showPEFRecordView:self.record];
+        });
+    }
 }
 #pragma mark -------- select Index
 - (void)selectedIndex:(NSInteger)index//0123
@@ -160,12 +185,13 @@
 
     }
 }
-- (void)releadView
+- (void)releadViewIsHttpError:(BOOL)isShow
 {
     //[NSArray arrayWithObjects:@"PEF日志",@"评估日志",@"症状日志",@"用药日志", nil]
-    [self.PEFLog refreshPEFRecord];
-    [self.SymptomsLog refreshSymptomsLog];
-    [self.MedicationLog refreshMedicationLog];
+    [self.PEFLog refreshPEFRecordIsShowHttpError:isShow];
+    [self.SymptomsLog refreshSymptomsLogIsShowHttpError:isShow];
+    [self.MedicationLog refreshMedicationLogIsShowHttpError:isShow];
+
 }
 #pragma mark - nav
 - (void)navLeftButtonAction

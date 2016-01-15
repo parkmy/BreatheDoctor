@@ -10,6 +10,7 @@
 #import "UUMessageFrame.h"
 #import "LWChatModel.h"
 #import "NSString+Size.h"
+#import "LWTool.h"
 
 @implementation LWCardView
 
@@ -46,19 +47,7 @@
         _contentTexView.textColor = [UIColor colorWithHexString:@"#999999"];
         _contentTexView.editable = NO;
         _contentTexView.userInteractionEnabled = NO;
-        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-        paragraphStyle.lineSpacing = 10;// 字体的行间距
-        
-        NSDictionary *attributes = @{
-                                     NSFontAttributeName:[UIFont systemFontOfSize:15],
-                                     NSParagraphStyleAttributeName:paragraphStyle,
-                                     NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#999999"]
-                                     };
-        
-        
-        
-        
-        _contentTexView.attributedText = [[NSAttributedString alloc] initWithString:_contentTexView.text attributes:attributes];
+  
         [_mBubbleView addSubview:_contentTexView];
         
         
@@ -78,7 +67,7 @@
         [_mBubbleView addSubview:jiantou];
         
         
-        _mBubbleView.sd_layout.leftSpaceToView(self,20).rightSpaceToView(self,20).topSpaceToView(self,10).bottomSpaceToView(self,10);
+        _mBubbleView.sd_layout.leftSpaceToView(self,20).rightSpaceToView(self,20).topSpaceToView(self,40).bottomSpaceToView(self,10);
         
         _titleLabel.sd_layout.leftSpaceToView(_mBubbleView,0).rightSpaceToView(_mBubbleView,0).topSpaceToView(_mBubbleView,10).heightIs(20);
         
@@ -96,77 +85,35 @@
     
     return self;
 }
+
+
 - (void)setModelFram:(UUMessageFrame *)modelFram
 {
     _modelFram = modelFram;
     
     LWChatModel *model  = _modelFram.model;
+    NSDictionary *dic = [LWTool chatMessageCardModel:model];
     
-    NSString *title ;
-    NSString *content;
-    switch (model.chatMessageType) {
-        case WSChatMessageType_FirstSeeDoctorRemind:
-        {
-            title = @"首次就诊";
-            content = model.doctorText;
-        }
-            break;
-        case WSChatMessageType_FirstSeeDoctorReport:
-        {
-            title = @"首诊就诊报告";
-            content = model.doctorText;
-            
-        }
-            break;
-        case WSChatMessageType_VisitReport:
-        {
-            title = @"复诊就诊报告";
-            content = model.doctorText;
-        }
-            break;
-        case WSChatMessageType_PEFRemind:
-        {
-            title = @"记录PEF提醒";
-            content = model.doctorText;
-        }
-            break;
-        case WSChatMessageType_ACAassessment:
-        {
-            title = @"完成ACT评估";
-            content = model.doctorText;
-        }
-            break;
-        case WSChatMessageType_AsthmaAassessment:
-        {
-            title = @"完成哮喘评估";
-            content = model.doctorText;
-        }
-            break;
-        case WSChatMessageType_VisitRemind:
-        {
-            title = @"复诊提醒";
-            content = model.doctorText;
-        }
-            break;
-        case WSChatMessageType_PEFRecord:
-        {
-            title = @"PEF记录通知";
-            content = model.doctorText;
-        }
-            break;
-        default:
-            break;
-    }
+    _titleLabel.text = dic[@"title"];
+    _contentTexView.text = dic[@"content"];
     
-    _titleLabel.text = title;
-    _contentTexView.text = content;
-    
-    CGFloat height = [content sizeWithFont:[UIFont systemFontOfSize:14] constrainedToWidth:[UIScreen mainScreen].bounds.size.width-50].height+15;
-    height = MAX(height, 30);
-    _contentTexView.sd_layout.heightIs(height);
-    
-    _modelFram.cellHeight = height+110;
 
+    _contentTexView.sd_layout.heightIs(modelFram.cardContentHigh);
+    
+    _mBubbleView.sd_layout.topSpaceToView(self,40);
+
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 5;// 字体的行间距
+    
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont systemFontOfSize:15],
+                                 NSParagraphStyleAttributeName:paragraphStyle,
+                                 NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#999999"]
+                                 };
+        
+    _contentTexView.attributedText = [[NSAttributedString alloc] initWithString:_contentTexView.text attributes:attributes];
 }
+
 
 @end

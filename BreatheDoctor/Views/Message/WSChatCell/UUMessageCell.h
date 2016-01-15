@@ -13,6 +13,7 @@
 @class UUMessageFrame;
 @class UUMessageCell;
 @class LWCardView;
+@class LWChatLoadingView;
 
 @protocol UUMessageCellDelegate <NSObject>
 @optional
@@ -26,6 +27,10 @@
 @property (nonatomic, retain)UILabel *labelTime;
 //@property (nonatomic, retain)UILabel *labelNum;
 @property (nonatomic, retain)UIButton *btnHeadImage;
+
+@property (nonatomic, strong)UIView  *agreedView;
+
+//@property (nonatomic, strong) LWChatLoadingView *chatLoadingView;
 
 @property (nonatomic, retain)UUMessageContentButton *btnContent;
 

@@ -24,7 +24,7 @@
 
 - (instancetype)initWithDataArr:(NSArray *)dataArr origin:(CGPoint)origin width:(CGFloat)width rowHeight:(CGFloat)rowHeight
 {
-    self = [super initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight)];
+    self = [super initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight)];
     if (self) {
         if (rowHeight <= 0) {
             rowHeight = 35;

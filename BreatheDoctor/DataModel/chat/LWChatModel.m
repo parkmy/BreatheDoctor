@@ -74,8 +74,18 @@
         self.assessResult = row.dataStruct.assessResult;
         self.pEFValue = row.dataStruct.pEFValue;
         
+        
+        self.pharmacyUrgency = row.dataStruct.pharmacyUrgency;
+        self.symptomChestdistress = row.dataStruct.symptomChestdistress;
+        self.symptomDyspnea = row.dataStruct.symptomDyspnea;
+        self.symptomCough = row.dataStruct.symptomCough;
+        self.pharmacyControl = row.dataStruct.pharmacyControl;
+        self.pefremark = row.dataStruct.remark;
+        self.symptomNightWoke = row.dataStruct.symptomNightWoke;
+        self.symptomGood = row.dataStruct.symptomGood;
+        
         [self changeTheDateString:self.insertDt];
-//        [self changRowhight];
+        //        [self changRowhight];
     }
     return self;
 }

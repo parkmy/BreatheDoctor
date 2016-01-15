@@ -10,6 +10,8 @@
 #import "LWLoginViewController.h"
 #import "CODataCacheManager.h"
 #import "LWMessageCtr.h"
+#import "GJMFileHelper.h"
+#import <SDImageCache.h>
 
 @interface LWLoginManager ()<LWLoginViewControllerDelegate>
 
@@ -38,8 +40,15 @@
 
 - (void)exitLoginViewVc:(UIViewController *)vc
 {
-    [[CODataCacheManager shareInstance] clearUserModel];
-    [self showLoginViewNav:vc];
+ 
+    [[SDImageCache sharedImageCache] clearDisk]; //清除图片缓存
+    
+    [[NSFileManager defaultManager] removeItemAtPath:[LKDBHelper getDBPathWithDBName:[LKDBHelper baseTableName]] error:nil]; //删除数据库
+    
+    [[CODataCacheManager shareInstance] clearUserModel]; //删除用户信息
+    
+    [self showLoginViewNav:vc]; //回到登陆
+    
 }
 - (void)showLoginViewNav:(UIViewController *)vc
 {

@@ -12,7 +12,7 @@
 @interface LWYerChangIndexView ()
 
 @property (nonatomic, strong) UILabel *centerLabel;
-
+@property (nonatomic, strong) UIButton *rightButton;
 @property (nonatomic, assign) NSInteger changeIndex;
 @end
 
@@ -30,17 +30,18 @@
         left.tag = 0;
         [left setImage:kImage(@"left_blue") forState:UIControlStateNormal];
         
-        UIButton *right = [UIButton buttonWithType:UIButtonTypeCustom];
-        [right setImage:kImage(@"right_blue") forState:UIControlStateNormal];
-        right.tag = 1;
+        _rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_rightButton setImage:kImage(@"right_blue") forState:UIControlStateNormal];
+        _rightButton.tag = 1;
         [left addTarget:self action:@selector(indexButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        [right addTarget:self action:@selector(indexButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        
+        [_rightButton addTarget:self action:@selector(indexButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        _rightButton.hidden = YES;
+
         [self addSubview:left];
-        [self addSubview:right];
+        [self addSubview:_rightButton];
         
         left.sd_layout.topSpaceToView(self,0).leftSpaceToView(self,0).bottomSpaceToView(self,0).widthIs(45);
-        right.sd_layout.topSpaceToView(self,0).rightSpaceToView(self,0).bottomSpaceToView(self,0).widthIs(45);
+        _rightButton.sd_layout.topSpaceToView(self,0).rightSpaceToView(self,0).bottomSpaceToView(self,0).widthIs(45);
         
         
         _centerLabel = [self allocLabel];
@@ -48,7 +49,7 @@
 
         
         [self addSubview:_centerLabel];
-        _centerLabel.sd_layout.leftSpaceToView(left,0).rightSpaceToView(right,0).centerYEqualToView(self).heightIs(30);
+        _centerLabel.sd_layout.leftSpaceToView(left,0).rightSpaceToView(_rightButton,0).centerYEqualToView(self).heightIs(30);
 
         
     }
@@ -69,14 +70,15 @@
 }
 - (void)changeTimerLable:(NSInteger)tag
 {
+    _rightButton.hidden = NO;
     if (tag == 0) { //左边
         self.changeIndex++;
     }else //右边
     {
-        if (self.changeIndex == 0) {
-            return;
-        }
         self.changeIndex--;
+        if (self.changeIndex == 0) {
+            _rightButton.hidden = YES;
+        }
     }
     
     _centerLabel.text = [NSDate stringWithDate:[NSDate offsetMonths:-(int)self.changeIndex fromDate:[NSDate date]] format:@"yyyy年MM月"];

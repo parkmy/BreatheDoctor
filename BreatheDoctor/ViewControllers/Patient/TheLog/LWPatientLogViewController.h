@@ -11,4 +11,12 @@
 @interface LWPatientLogViewController : BaseViewController
 @property (nonatomic, copy) NSString *patientId; //患者id
 @property (nonatomic, copy) NSString *patientName;
+
+@property (nonatomic, strong) NSDictionary *refDateDic;
+@property (nonatomic, copy) NSString *intDate;
+
+@property (nonatomic, strong)LWPEFRecordList *record;
+
+- (void)loadLogRecord;
+
 @end

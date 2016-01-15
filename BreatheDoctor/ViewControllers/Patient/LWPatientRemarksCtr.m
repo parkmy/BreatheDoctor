@@ -24,6 +24,10 @@
     [super addBackButton:@"nav_btnBack.png"];
     [super addRightButton:@"确认"];
 }
+- (void)dealloc
+{
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -59,6 +63,9 @@
 }
 - (void)navRightButtonAction
 {
+    
+    [self.view endEditing:YES];
+    
     LWPatientRemarksTFCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
     NSString *remk = cell.reamkNameLabel.text;
     if (remk) {
@@ -69,16 +76,19 @@
         }
     }
     
+    [LWProgressHUD displayProgressHUD:self.view displayText:@"正在修改..."];
+    
     [LWHttpRequestManager httpPatientRemarkWithPatientId:self.patient.patientId groupId:self.patient.groupId remark:remk success:^(NSDictionary *dic) {
+        [LWProgressHUD closeProgressHUD:self.view];
         self.patient.remark = remk;
         self.patient.controlLevel = [self.patient.groupId doubleValue];
-        
         /* 更新数据库 */
         NSString *where = [NSString stringWithFormat:@"sid = %@",self.patient.sid];
         [[LKDBHelper getUsingLKDBHelper]updateToDB:self.patient where:where];
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:APP_UPDATEPATIENT_SUCC object:nil];
         [self.navigationController popViewControllerAnimated:YES];
     } failure:^(NSString *errorMes) {
+        [LWProgressHUD closeProgressHUD:self.view];
         [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes];
     }];
     
@@ -99,6 +109,7 @@
     UITableViewCell *cell = nil;
     if (indexPath.section == 0) {
         LWPatientRemarksIconCell *patientRemarksIconCell = [tableView dequeueReusableCellWithIdentifier:@"LWPatientRemarksIconCell" forIndexPath:indexPath];
+        patientRemarksIconCell.selectionStyle = 0;
         [patientRemarksIconCell setPatient:self.patient];
         cell = patientRemarksIconCell;
         

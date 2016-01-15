@@ -82,6 +82,9 @@ NSString *const kLWChatRowsOwnerType = @"ownerType";
 
         }
         
+        self.chatMessageType = self.msgType;
+
+        
         if (self.dataStruct.contentType == 1) { //文本
             self.chatCellType = WSChatCellType_Text;
         }else if (self.dataStruct.contentType == 2)//图片
@@ -91,14 +94,17 @@ NSString *const kLWChatRowsOwnerType = @"ownerType";
         {
             self.chatCellType = WSChatCellType_Audio;
         }
-        self.chatMessageType = self.msgType;
+        
+        if (self.chatMessageType == WSChatMessageType_Agreed)
+        {
+            self.chatCellType = WSChatCellType_Agreed;
+        }
         
         if (self.chatMessageType  == 1 || self.chatMessageType  == 2 || self.chatMessageType == 3) {
          
         }else
         {
            self.chatCellType = WSChatCellType_Card;
-            self.height = 190;
         }
         
     }

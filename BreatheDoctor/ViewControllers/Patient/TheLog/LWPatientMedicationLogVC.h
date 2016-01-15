@@ -7,7 +7,9 @@
 //  用药日志
 
 #import <UIKit/UIKit.h>
+@class LWPatientLogViewController;
 
 @interface LWPatientMedicationLogVC : UIViewController
-- (void)refreshMedicationLog;
+@property (nonatomic, weak) LWPatientLogViewController *vc;
+- (void)refreshMedicationLogIsShowHttpError:(BOOL)isShow;
 @end

@@ -22,7 +22,8 @@
     self.typeLabel.textColor = _model.type == 1?RGBA(87, 198, 39, 1):_model.type == 2?RGBA(248, 131, 9, 1):RGBA(243, 34, 23, 1);
     self.contentLabel.text = stringJudgeNull(_model.content);
     self.timeLabel.text = _model.date;
-    
+    NSString *name = _model.type == 1?@"log_pg_3":_model.type == 2?@"log_pg_2":@"log_pg_1";
+    self.typeImageView.image = kImage(name);
     self.contentHeight.constant = [self.contentLabel.text sizeWithFont:[UIFont systemFontOfSize:14] constrainedToWidth:self.contentLabel.width].height+5;
     
     

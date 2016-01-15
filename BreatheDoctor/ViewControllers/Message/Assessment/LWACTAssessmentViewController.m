@@ -42,14 +42,24 @@
 #pragma mark - load
 - (void)loadACTbyd
 {
+    [LWProgressHUD displayProgressHUD:self.view displayText:@"加载中..."];
     [LWHttpRequestManager httpLoadActById:self.bayId success:^(LWACTModel *model) {
+        [LWProgressHUD closeProgressHUD:self.view];
+        [self hiddenNonetWork];
         self.ACTMdel = model;
         [LWTool ACTAssessmentChangeWithModel:self.ACTMdel withArray:self.dataArray];
         [self.tableView reloadData];
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        [LWProgressHUD closeProgressHUD:self.view];
+        [self showErrorMessage:@"网络连接失败，点击重试~" isShowButton:NO type:showErrorTypeHttp];
+//        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
 
+}
+- (void)reloadRequestWithSender:(UIButton *)sender
+{
+    [self hiddenNonetWork];
+    [self loadACTbyd];
 }
 
 #pragma mark - init
@@ -71,12 +81,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.dataArray.count+1;
+    return self.ACTMdel?self.dataArray.count+1:0;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 180;
+        return 200;
     }
     LWACTAssessmentModel *model = self.dataArray[indexPath.row-1];
     return model.rowHight;

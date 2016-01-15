@@ -70,7 +70,7 @@
         m_view.frame = CGRectMake(0, 20+systemNavHeight, self.view.frame.size.width, self.view.frame.size.height-systemNavHeight-20);
     }
     
-    m_view.backgroundColor = [UIColor colorWithHexString:@"#999999"];
+    m_view.backgroundColor = systemColor;
     
     [self.view addSubview:m_view];
   

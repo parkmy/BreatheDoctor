@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <AVFoundation/AVFoundation.h>
 #import "LWChatModel.h"
-#import "WSChatVoiceTableViewCell.h"
 #import "UUMessageCell.h"
 
 @interface LWVoiceManager : NSObject

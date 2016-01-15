@@ -11,6 +11,6 @@
 
 @interface LWPatientAssessmentLogVC : UIViewController
 
-@property (nonatomic, strong) LWPatientLogViewController *vc;
+@property (nonatomic, weak) LWPatientLogViewController *vc;
 - (void)refreshAssessmentLog:(NSString *)patientID;
 @end

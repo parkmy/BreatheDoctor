@@ -7,9 +7,12 @@
 // PEF日志
 
 #import <UIKit/UIKit.h>
+@class LWPatientLogViewController;
 
 @interface LWPatientPEFLogVC : UIViewController
 
-- (void)refreshPEFRecord;
+@property (nonatomic, weak) LWPatientLogViewController *vc;
+- (void)refreshPEFRecordIsShowHttpError:(BOOL)isShow;
+- (void)showPEFRecordView:(LWPEFRecordList *)record;
 
 @end

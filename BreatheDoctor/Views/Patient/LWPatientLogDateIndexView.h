@@ -17,6 +17,6 @@
 @interface LWPatientLogDateIndexView : UIView
 
 @property (nonatomic, weak) id<LWPatientLogDateIndexViewDeleagte>delegate;
-- (id)initWithFrame:(CGRect)frame WithDelegate:(id)delegate;
+- (id)initWithFrame:(CGRect)frame WithDelegate:(id)delegate withRefDateDic:(NSDictionary *)dic;
 
 @end

@@ -110,7 +110,7 @@ CG_INLINE CGRect CGRectMakeFit(CGFloat x, CGFloat y, CGFloat width, CGFloat heig
 #define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
 
-#define systemColor [UIColor colorWithRed:61/255.0f green:134/255.0f blue:255/255.0f alpha:1.0f]//系统配色
+#define systemColor [LWThemeManager shareInstance].navBackgroundColor//系统配色
 //#define BackgroundColor [UIColor colorWithRed:242.0f/255.0f green:240.0f/255.0f blue:235.0f/255.0f alpha:1.0f]//背景配色
 
 #define viewBackgroundColor [UIColor colorWithRed:244/255.0f green:244/255.0f blue:244/255.0f alpha:1.0f]
@@ -148,19 +148,19 @@ CG_INLINE CGRect CGRectMakeFit(CGFloat x, CGFloat y, CGFloat width, CGFloat heig
 #define CommentConvenient   [CDCommontConvenient shareCDcomment]
 
 ///请求创建医患关系
-static NSString * APP_PUSH_TYPE_REQUEST_RELATION = @"1";
+static NSString * APP_PUSH_TYPE_REQUEST_RELATION = @"APP_PUSH_TYPE_REQUEST_RELATION";
 ///PEF记录
-static NSString * APP_PUSH_TYPE_PEF_RECORD = @"2";
+static NSString * APP_PUSH_TYPE_PEF_RECORD = @"APP_PUSH_TYPE_PEF_RECORD";
 /// ACT评估
-static NSString * APP_PUSH_TYPE_ASSESS_ACT = @"3";
+static NSString * APP_PUSH_TYPE_ASSESS_ACT = @"APP_PUSH_TYPE_ASSESS_ACT";
 ///哮喘症状评估
-static NSString * APP_PUSH_TYPE_ASSESS_ASTHMA = @"4";
+static NSString * APP_PUSH_TYPE_ASSESS_ASTHMA = @"APP_PUSH_TYPE_ASSESS_ASTHMA";
 ///首诊
-static NSString * APP_PUSH_TYPE_FIRST_DIAGNOSE = @"5";
+static NSString * APP_PUSH_TYPE_FIRST_DIAGNOSE = @"APP_PUSH_TYPE_FIRST_DIAGNOSE";
 ///复诊通知
-static NSString * APP_PUSH_TYPE_REPEAT_TREATMENT_INFORM = @"6";
+static NSString * APP_PUSH_TYPE_REPEAT_TREATMENT_INFORM = @"APP_PUSH_TYPE_REPEAT_TREATMENT_INFORM";
 ///患者添加对话通知
-static NSString * APP_PUSH_TYPE_PATIENT_ADD_DIALOGUE = @"7";
+static NSString * APP_PUSH_TYPE_PATIENT_ADD_DIALOGUE = @"APP_PUSH_TYPE_PATIENT_ADD_DIALOGUE";
 
 
 ///点击消息
@@ -168,6 +168,16 @@ static NSString * APP_TABBAR_ITM_MESSAGE = @"APP_TABBAR_ITM_MESSAGE";
 
 ///登陆成功
 static NSString * APP_LOGIN_SUCC         = @"APP_LOGIN_SUCC";
+
+///添加成功
+static NSString * APP_ADDPATIENT_SUCC    = @"APP_ADDPATIENT_SUCC";
+
+///PEFSHOW
+static NSString * APP_LOG_PEFSHOW         = @"APP_LOG_PEFSHOW";
+
+///修改成功
+static NSString * APP_UPDATEPATIENT_SUCC    = @"APP_UPDATEPATIENT_SUCC";
+
 
 
 #endif

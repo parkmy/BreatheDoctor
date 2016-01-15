@@ -10,6 +10,7 @@
 #import "LWPersonalCell.h"
 #import "LWPersonalHeardCell.h"
 #import "CODataCacheManager.h"
+#import "LWPersonalMenuButton.h"
 
 @interface LWPersonalCtr ()
 
@@ -25,8 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-  
-
+    
     
 }
 
@@ -36,18 +36,15 @@
 }
 
 #pragma mark -
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 2;
-}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return  3;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
-    if (indexPath.section == 0) {
+    if (indexPath.row == 0) {
         LWPersonalHeardCell *personalHeardCell = [tableView dequeueReusableCellWithIdentifier:@"LWPersonalHeardCell" forIndexPath:indexPath];
         LBLoginBaseModel *user = [CODataCacheManager shareInstance].userModel;
         [personalHeardCell setDoctorIconImage:user.body.perRealPhoto];
@@ -59,36 +56,74 @@
     }else
     {
         LWPersonalCell *personalCell = [tableView dequeueReusableCellWithIdentifier:@"LWPersonalCell" forIndexPath:indexPath];
+        [personalCell setPersonalMenuButtonTapBlock:^(tapType type) {
+            switch (type) {
+                case tapTypeRecoverytime:
+                {
+                    [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_TimerRemind] animated:YES];
+                }
+                    break;
+                case tapTypePurchaseRecords:
+                {
+                    [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_OrderRecord] animated:YES];
+                }
+                    break;
+                case tapTypeMoreSettings:
+                {
+                    [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_PersonalSeting] animated:YES];
+                }
+                    break;
+                case tapTypeStayTunedFor:
+                {
+                    
+                }
+                    break;
+                default:
+                    break;
+            }
+            
+        }];
+        if (indexPath.row == 1) {
+            personalCell.lefticon.image = kImage(@"huifu@2x");
+            personalCell.leftmenuTitleLabel.text = @"回复时间";
+            personalCell.leftButton.tapType = tapTypeRecoverytime;
+            personalCell.rightIcon.image = kImage(@"jilu@2x");
+            personalCell.rightMenuLabel.text = @"患者购买记录";
+            personalCell.rightButton.tapType = tapTypePurchaseRecords;
+        }else
+        {
+            personalCell.lefticon.image = kImage(@"shezhi@2x");
+            personalCell.leftmenuTitleLabel.text = @"更多设置";
+            personalCell.leftButton.tapType = tapTypeMoreSettings;
+            personalCell.rightIcon.image = kImage(@"gengduo@2x");
+            personalCell.rightMenuLabel.text = @"敬请期待";
+            personalCell.rightButton.tapType = tapTypeStayTunedFor;
+            
+        }
+        
+        personalCell.iconw.constant = personalCell.lefticon.image.size.width;
+        personalCell.iconh.constant = personalCell.lefticon.image.size.height;
+        personalCell.riconw.constant = personalCell.rightIcon.image.size.width;
+        personalCell.riconh.constant = personalCell.rightIcon.image.size.height;
         cell = personalCell;
-    
+        
     }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        return 80;
+    if (indexPath.row == 0) {
+        return 170;
     }
-    return 44;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return .1;
-    }
-    return 15;
+    return 90;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if (indexPath.section == 1) {
-        [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_PersonalSeting] animated:YES];
-    }else if (indexPath.section == 0)
-    {
+    if (indexPath.row == 0) {
         [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_PersonalCenter] animated:YES];
-
     }
+    
     
 }
 

@@ -23,7 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
-        content = @"    “掌控呼吸医生助手”    定位是医生对慢性患者进行健康管理服务的工具。  为医生提供患者的咨询、预约、提醒及随访管理等一系列专业、连续、个性化的患者管理服务,帮助医生更好的管理患者健康及安排自身行程。";
+        content = @"    “呼吸卫士医生助手”    定位是医生对慢性患者进行健康管理服务的工具。  为医生提供患者的咨询、预约、提醒及随访管理等一系列专业、连续、个性化的患者管理服务,帮助医生更好的管理患者健康及安排自身行程。";
         titleAry = [[NSArray alloc]initWithObjects:@"体征数据",@"的处理和分析",@"全国",@"跟踪支持",@"记录和服务", nil];
         btnAry = [[NSArray alloc]initWithObjects:@"采集和统计",@"智能化",@"知名专家",@"专业随访", nil];
         version = @"";

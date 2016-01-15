@@ -5,7 +5,7 @@
 //  Created by comv on 15/11/10.
 //  Copyright © 2015年 lwh. All rights reserved.
 //
-#define ALPHA	@"ABCDEFGHIJKLMNOPQRSTUVWXYZ#"
+#define ALPHA	@"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 #import "LWPatientListCtr.h"
 #import "NSString+Size.h"
@@ -15,6 +15,8 @@
 #import <IQKeyboardManager.h>
 #import "LWCustomMenu.h"
 #import "LWPatientListModel.h"
+#import "NSString+Pinyin.h"
+#import "NSString+Contains.h"
 
 typedef NS_ENUM(NSInteger , ShowGroupingType) {
     ShowGroupingTypeAll = 0, //所有
@@ -65,13 +67,29 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     // Do any additional setup after loading the view.
     [self initProperty];
     [self setUI];
+    [self loadCacheMes];
     [self httploadPatientList];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotification:) name:APP_LOGIN_SUCC object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appLoginSucc:) name:APP_LOGIN_SUCC object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotification:) name:APP_ADDPATIENT_SUCC object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotification:) name:APP_UPDATEPATIENT_SUCC object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appNotification:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
 
+}
+- (void)appLoginSucc:(NSNotification *)sender
+{
+    [self.patientDics removeAllObjects];
+    [self.patients removeAllObjects];
+    self.keys = nil;
+    [self.tableView reloadData];
+    [self httploadPatientList];
 }
 - (void)appNotification:(NSNotificationCenter *)sender
 {
-    [self httploadPatientList];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [self httploadPatientList];
+    });
 }
 - (void)setUI
 {
@@ -79,7 +97,6 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     self.tableView.rowHeight  = 60;
     self.tableView.tableHeaderView = self.searchBar;
     setExtraCellLineHidden(self.tableView);
-    
     
     self.tableView.sectionIndexBackgroundColor = [UIColor clearColor];
     self.tableView.sectionIndexColor = [UIColor colorWithRed:85.0/255.0 green:85.0/255.0 blue:85.0/255.0 alpha:1];
@@ -123,40 +140,48 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
         array = self.patients;
     }else
     {
-        for (LWPatientRows *pat in self.patients) {
-            if (pat.controlLevel == self.showGroupingType) {
-                [array addObject:pat];
+        @autoreleasepool {
+            for (LWPatientRows *pat in self.patients) {
+                if (pat.controlLevel == self.showGroupingType) {
+                    [array addObject:pat];
+                }
             }
         }
     }
     
-    for (LWPatientRows *pat in array)
-    {
-        if (!pat.PinYin ) {
-            if ([self.patientDics objectForKey:@"#"]) {
-                NSMutableArray *arr = [self.patientDics objectForKey:@"#"];
-                [arr addObject:pat];
-                [arr addObject:pat];
-            }else
-            {
-                NSMutableArray *arr = [NSMutableArray array];
-                [arr addObject:pat];
-                [self.patientDics setObject:arr forKey:@"#"];
-            }
-        }else
+    @autoreleasepool {
+        
+        for (LWPatientRows *pat in array)
         {
-            if ([self.patientDics objectForKey:pat.PinYin]) {
-                NSMutableArray *arr = [self.patientDics objectForKey:pat.PinYin];
-                [arr addObject:pat];
+            
+            if (!pat.PinYin || ![ALPHA containsaString:stringJudgeNull(pat.PinYin)]) {
+                if ([self.patientDics objectForKey:@"#"]) {
+                    NSMutableArray *arr = [self.patientDics objectForKey:@"#"];
+                    [arr addObject:pat];
+                }else
+                {
+                    NSMutableArray *arr = [NSMutableArray array];
+                    [arr addObject:pat];
+                    [self.patientDics setObject:arr forKey:@"#"];
+                }
             }else
             {
-                NSMutableArray *arr = [NSMutableArray array];
-                [arr addObject:pat];
-                [self.patientDics setObject:arr forKey:pat.PinYin];
+                if ([self.patientDics objectForKey:pat.PinYin]) {
+                    NSMutableArray *arr = [self.patientDics objectForKey:pat.PinYin];
+                    [arr addObject:pat];
+                }else
+                {
+                    NSMutableArray *arr = [NSMutableArray array];
+                    [arr addObject:pat];
+                    [self.patientDics setObject:arr forKey:pat.PinYin];
+                }
             }
+            
         }
         
+        
     }
+    
     
     SEL sel = @selector(localizedCompare:);
     //对拼音排序
@@ -209,9 +234,9 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     if (!_searchBar) {
         _searchBar = [[UISearchBar alloc] init];
         _searchBar.delegate = self;
-        [self.searchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+        [_searchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
         [_searchBar sizeToFit];
-        _searchBar.backgroundColor = CUSTOM_COLOR(0, 0, 0, .3);
+        _searchBar.backgroundColor = systemColor;
         _searchBar.backgroundImage = [UIImage imageWithColor:[UIColor clearColor] size:_searchBar.bounds.size];
         _searchBar.placeholder = @"搜索";
     }
@@ -221,17 +246,18 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 #pragma mark -UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    if (self.searchArray.count <= 0) {
-        self.isSearch = NO;
-    }else
-    {
-        self.isSearch = YES;
-    }
+    [self isSearchShow];
     self.searchBar.showsCancelButton = YES;
     return YES;
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
+{
+    [self isSearchShow];
+    self.searchBar.showsCancelButton = NO;
+    return YES;
+}
+- (void)isSearchShow
 {
     if (self.searchArray.count <= 0) {
         self.isSearch = NO;
@@ -239,8 +265,6 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     {
         self.isSearch = YES;
     }
-    self.searchBar.showsCancelButton = NO;
-    return YES;
 }
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
@@ -260,17 +284,15 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 {
     [self.searchArray removeAllObjects];
     for (LWPatientRows *pat in self.patients) {
-        if ([pat.patientName containsaString:searchText]||[pat.qPingying containsaString:searchText]) {
+        NSString *patientNmae = [NSString stringWithFormat:@"%@(%@)",pat.patientName,pat.remark];
+        NSString *pinying = [patientNmae pinyinWithoutBlank];
+        if ([patientNmae containsaString:searchText]||[pinying containsaString:searchText]) {
             [self.searchArray addObject:pat];
         }
     }
-    if (self.searchArray.count <= 0) {
-        self.isSearch = NO;
-    }else
-    {
-        self.isSearch = YES;
-    }
+    [self isSearchShow];
     [self.tableView reloadData];
+
 }
 
 #pragma mark - tableviewdelegate
@@ -345,10 +367,16 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     patientCentent.patient = model;
     [self.navigationController pushViewController:patientCentent animated:YES];
     
+    
+    NSIndexPath *seleIndexPath = indexPath;
+    
     //返回的时候刷新这行
     [patientCentent setBackBlock:^{
         [self loadCacheMes];
-        [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+        if (indexPath.row > 0) {
+            [NSIndexPath indexPathForRow:seleIndexPath.row-1 inSection:seleIndexPath.section];
+            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+        }
     }];
     
 }
@@ -369,8 +397,8 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
         NSMutableArray *toBeReturned = [NSMutableArray arrayWithObject:UITableViewIndexSearch];
         
         [toBeReturned addObjectsFromArray:self.keys];
-        char c= '#';
-        [toBeReturned addObject:[NSString stringWithFormat:@"%c",c]];
+//        char c= '#';
+//        [toBeReturned addObject:[NSString stringWithFormat:@"%c",c]];
         return toBeReturned;
     }
     else return nil; // search table
@@ -393,9 +421,9 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     __weak __typeof(self) weakSelf = self;
     if (!self.pullDownView) {
         
-        if (self.patients.count > 0) {
-            [self.tableView scrollRectToVisible:self.searchBar.frame animated:NO];
-        }
+//        if (self.patients.count > 0) {
+//            [self.tableView scrollRectToVisible:self.searchBar.frame animated:NO];
+//        }
         _pullDownView.delegate = self;
         
         self.pullDownView = [[LWCustomMenu alloc] initWithDataArr:[LWTool forGrouping:self.patients] origin:CGPointMake(0, 0) width:125 rowHeight:44];
@@ -408,8 +436,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
         };
         _pullDownView.arrImgName = @[@"item_school.png", @"item_battle.png", @"item_list.png", @"item_chat.png", @"item_share.png"];
         
-        [self.view addSubview:_pullDownView];
-        [self.view sendSubviewToBack:self.tableView];
+        [self.view.window addSubview:_pullDownView];
         self.tableView.scrollEnabled = NO;
     } else {
         self.pullDownView = nil;
@@ -451,10 +478,10 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 
 - (void)loadCacheMes
 {
-//    LWPatientBaseModel *model = [[LKDBHelper getUsingLKDBHelper] searchSingle:[LWPatientBaseModel class] where:nil orderBy:nil];
+
     NSMutableArray *array = [[LKDBHelper getUsingLKDBHelper] search:[LWPatientRows class] where:nil orderBy:nil offset:0 count:10000];
     if (array.count <= 0) {
-        [self showErrorMessage:@"您还没有患者，去添加吧~"];
+        [self showErrorMessage:@"您还没有患者，去添加吧~" isShowButton:NO type:showErrorTypeMore];
         return;
     }
     LWPatientRows *model = array[0];
@@ -468,20 +495,32 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 
 - (void)httploadPatientList
 {
-    if ([[LKDBHelper getUsingLKDBHelper] rowCount:[LWPatientRows class] where:nil] > 0) {
-        [self loadCacheMes];
-        return;
-    }
-    
     [LWHttpRequestManager httpPatientListWithPage:1 size:100000 refreshDate:self.refreshTime success:^(LWPatientBaseModel *patientBaseModel) {
+        [LWProgressHUD closeProgressHUD:self.view];
         [self loadCacheMes];
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        [LWProgressHUD closeProgressHUD:self.view];
+        if (self.patients.count <= 0) {
+            [self showErrorMessage:@"网络连接失败，点击重试~" isShowButton:NO type:showErrorTypeHttp];
+        }
     }];
     
 }
-
-
+- (void)reloadRequestWithSender:(UIButton *)sender //错误页面按钮点击事件
+{
+    if (sender.tag == showErrorTypeHttp) {
+        [LWProgressHUD displayProgressHUD:self.view displayText:@"正在加载..."];
+        [self httploadPatientList];
+    }else{
+        [self showAddPatinentView];
+    }
+}
+- (void)showAddPatinentView
+{
+    UIViewController *vc = [UIViewController CreateControllerWithTag:CtrlTag_AddPatient];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 #pragma mark - nav
 - (void)navRightButtonAction
 {
@@ -489,9 +528,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
         [self hiddenPullView];
         return;
     }
-    UIViewController *vc = [UIViewController CreateControllerWithTag:CtrlTag_AddPatient];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    [self showAddPatinentView];
 }
 
 #pragma mark -LWPullDownViewDelegate
@@ -499,8 +536,14 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 {
     self.showGroupingType = indexPath.row;
     [self ToDealWithPatientList];
-}
 
+    if (!self.isSearch && self.patientDics.count <= 0) {
+        [self showErrorMessage:@"该分组暂无患者~" isShowButton:YES type:showErrorTypeMore];
+    }else
+    {
+        [self hiddenNonetWork];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -11,6 +11,7 @@
 #import "LWPatientRecordsCtr.h"
 #import "LWPatientRemarksCtr.h"
 #import "LWPatientLogViewController.h"
+#import "LWTheFormViewController.h"
 
 @interface LWPatientCententCtr ()
 
@@ -30,22 +31,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.tableView.sectionFooterHeight = .1;
+    setExtraCellLineHidden(self.tableView);
 }
 
 #pragma mark -
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 3;
-}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 4;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
-    if (indexPath.section == 0) {
+    if (indexPath.row == 0) {
         LWPatientCenterCell *patientCenterCell = [tableView dequeueReusableCellWithIdentifier:@"LWPatientCenterCell" forIndexPath:indexPath];
         [patientCenterCell setPatient:self.patient];
         cell = patientCenterCell;
@@ -55,49 +53,57 @@
         cell = [tableView dequeueReusableCellWithIdentifier:@"CELL"];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
+            
+            UIView *line = [[UIView alloc] initWithFrame:CGRectZero];
+            line.backgroundColor = RGBA(0, 0, 0, .2);
+            [cell addSubview:line];
             cell.accessoryType = 1;
+            
+            cell.textLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+            line.sd_layout.leftSpaceToView(cell,0).rightSpaceToView(cell,0).bottomSpaceToView(cell,0).heightIs(.5);
         }
-        
-        cell.textLabel.text = indexPath.section == 1?@"个人基本档案":@"患者日志";
+        cell.imageView.image = indexPath.row == 1?kImage(@"biaodan2"):indexPath.row == 2?kImage(@"bingqingxiangguan"):kImage(@"huanzherizhi");
+        cell.textLabel.text = indexPath.row == 1?@"已填表单":indexPath.row == 2?@"患者病情相关":@"患者日志";
         
     }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        return 80;
+    if (indexPath.row == 0) {
+        return 180;
     }
-    return 44;
-}
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    if (section == 0) {
-        return .1;
-    }
-    return 15;
+    return 60;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 1)
+    if (indexPath.row == 1)
     {
-        LWPatientRecordsCtr *patientRecords = (LWPatientRecordsCtr *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRecords];
-        patientRecords.patient = self.patient;
-        [self.navigationController pushViewController:patientRecords animated:YES];
-    }else if (indexPath.section == 0){
+        LWTheFormViewController *vc = (LWTheFormViewController *)[UIViewController CreateControllerWithTag:CtrlTag_TheForm];
+        vc.showType = showTheFormTypeBiaoDan;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (indexPath.row == 0){
         
         LWPatientRemarksCtr *patientRemarks = (LWPatientRemarksCtr *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRemarks];
         [patientRemarks setPatient:self.patient];
 
         [self.navigationController pushViewController:patientRemarks animated:YES];
-    }else if (indexPath.section == 2)
+    }else if (indexPath.row == 2)
     {
-        LWPatientLogViewController *patientLog = (LWPatientLogViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];
-        patientLog.patientId = self.patient.patientId;
-        patientLog.patientName = self.patient.patientName;
-        [self.navigationController pushViewController:patientLog animated:YES];
+
+        
+        [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_PatientRelated] animated:YES];
+        
+
+        
+    }else if (indexPath.row == 3)
+    {
+                LWPatientLogViewController *patientLog = (LWPatientLogViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];
+                patientLog.patientId = self.patient.patientId;
+                patientLog.patientName = self.patient.patientName;
+                [self.navigationController pushViewController:patientLog animated:YES];
     }
 }
 
@@ -114,6 +120,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation

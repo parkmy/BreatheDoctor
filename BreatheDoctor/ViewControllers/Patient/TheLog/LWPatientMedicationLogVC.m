@@ -12,6 +12,7 @@
 #import "LWMedicationLogTimerCell.h"
 #import "LWMedicationLogTimerOneCell.h"
 #import "LWMedicationModel.h"
+#import "LWPatientLogViewController.h"
 
 @interface LWPatientMedicationLogVC ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -29,10 +30,26 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (void)refreshMedicationLog
+- (void)refreshMedicationLogIsShowHttpError:(BOOL)isShow
 {
     self.datas = [LWMedicationModel MedicationModels];
     [self.tableView reloadData];
+    if (isShow) {
+        [self showErrorMessage:@"网络连接失败，点击刷新~" isShowButton:NO type:showErrorTypeHttp];
+    }else{
+        NSArray *array = [LWPublicDataManager shareInstance].logModle.body.recordList;
+        if (array.count <= 0) {
+            [self showErrorMessage:@"本周暂无记录~" isShowButton:YES type:showErrorTypeMore];
+        }else
+        {
+            [self hiddenNonetWork];
+        }
+    }
+}
+- (void)reloadRequestWithSender:(UIButton *)sender
+{
+    [self hiddenNonetWork];
+    [self.vc loadLogRecord];
 }
 #pragma mark -UITableViewDataSource
 
@@ -82,11 +99,7 @@
             LWMedicationLogTimerCell *MedicationLogTimerCell = [tableView dequeueReusableCellWithIdentifier:@"LWMedicationLogTimerCell" forIndexPath:indexPath];
             [MedicationLogTimerCell setModel:model];
             cell = MedicationLogTimerCell;
-        
         }
-        
-        
-
     }
     return cell;
 }

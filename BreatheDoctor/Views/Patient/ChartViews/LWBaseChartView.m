@@ -104,6 +104,17 @@
 
         
         
+        
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
+        titleLabel.centerX = 10+MARGIN_LEFT;
+        titleLabel.centerY  = 10;
+        titleLabel.text = @"ACT评估";
+        titleLabel.font = [UIFont systemFontOfSize:14];
+        titleLabel.textColor = [UIColor grayColor];
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        [self addSubview:titleLabel];
+
+        
     }
     return self;
 }
@@ -131,11 +142,11 @@
     //1.绘制X轴和y轴
     //第一种方法绘制四条线
     CGPoint poins[] = {CGPointMake(MARGIN_LEFT, MARGIN_TOP),
-                       CGPointMake(Screen_SIZE.width-20 , MARGIN_TOP),
-                       CGPointMake(Screen_SIZE.width-20, self.frame.size.height - MARGIN_TOP),
-                       CGPointMake(MARGIN_LEFT, self.frame.size.height - MARGIN_TOP)};
-    CGContextAddLines(currentCtx,poins,4);
-    CGContextClosePath(currentCtx);
+                       CGPointMake(MARGIN_LEFT, self.frame.size.height - MARGIN_TOP),
+                    CGPointMake(self.width-10 , self.frame.size.height - MARGIN_TOP)
+    };
+    CGContextAddLines(currentCtx,poins,3);
+//    CGContextClosePath(currentCtx);
     CGContextStrokePath(currentCtx);
     
     /*
@@ -151,7 +162,7 @@
     //设置虚线属性
     CGFloat lengths[2] = {5,5};
     CGContextSetLineDash(currentCtx, 0, lengths, 1);
-    for(int index = 1; index<Y_SECTION; index++)
+    for(int index = 0; index<Y_SECTION; index++)
     {
         CGContextMoveToPoint(currentCtx, MARGIN_LEFT, MARGIN_TOP + (self.height/4) * index);
         CGContextAddLineToPoint(currentCtx, self.frame.size.width-20, MARGIN_TOP + (self.height/4) * index);
@@ -164,11 +175,11 @@
     CGFloat W = self.frame.size.width/(weeks/7+1);
     //设置虚线属性
     CGContextSetLineDash(currentCtx, 0, lengths, 1);
-    for(int index = 1; index<(weeks/7); index++)
+    for(int index = 1; index<(weeks/7)+1; index++)
     {
         CGContextMoveToPoint(currentCtx, W * index +MARGIN_LEFT, self.frame.size.height-MARGIN_TOP);
         
-        CGContextAddLineToPoint(currentCtx, W * index + MARGIN_LEFT, MARGIN_TOP);
+        CGContextAddLineToPoint(currentCtx, W * index + MARGIN_LEFT, self.frame.size.height-MARGIN_TOP+10);
     }
     CGContextStrokePath(currentCtx);
 

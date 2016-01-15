@@ -21,6 +21,6 @@
 @interface LWChatViewControllerDataSource : NSObject<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, strong) LWChatViewController *vc;
+@property (nonatomic, weak) LWChatViewController *vc;
 @property (nonatomic, weak)  id<LWChatViewControllerDataSourceDelegate>delegate;
 @end

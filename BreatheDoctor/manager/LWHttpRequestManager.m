@@ -28,7 +28,6 @@
     [manager.requestSerializer willChangeValueForKey:@"timeoutInterval"];
     manager.requestSerializer.timeoutInterval = 10.0f;
     [manager.requestSerializer didChangeValueForKey:@"timeoutInterval"];
-    
     return manager;
 }
 
@@ -48,7 +47,9 @@
     [requestParams setObject:systemVersionStr forKey:@"sys"];
     [requestParams setObject:@"ios" forKey:@"dev_type"];
     [requestParams setObject:[NSString appVersion] forKey:@"ver"];
-    
+    //01 商店 03 企业 99 测试
+    [requestParams setObject:[NSString stringWithFormat:@"10202%@",LOADFROMKEY] forKey:@"loadFrom"];
+
 }
 
 + (NSMutableDictionary *)dic
@@ -62,7 +63,7 @@
 
 + (BOOL)httpIsOk:(NSDictionary *)res
 {
-    if (res || [[res objectForKey:res_code] integerValue] == 1) {
+    if (res && [[res objectForKey:res_code] integerValue] == 1) {
         return YES;
     }
     return NO;
@@ -84,6 +85,7 @@
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOGIN] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
         LBLoginBaseModel *userModel = [[LBLoginBaseModel alloc] initWithDictionary:responseObject];
         [CODataCacheManager shareInstance].userModel = userModel;
         [[CODataCacheManager shareInstance] saveUserModel];
@@ -124,15 +126,20 @@
     }
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
+    if (![CODataCacheManager shareInstance].userModel)
+    {
+        return;
+    }
+    NSLog(@"~~~~~~~~~~%@",[requestParams JSONString]);
     
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADHOMEPAGE] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         NSLog(@"%@",[responseObject
                      JSONString]);
         LWMainMessageBaseModel *mainMessageBaseModel = [[LWMainMessageBaseModel alloc] initWithDictionary:responseObject];
+
         for (LWMainRows *row in mainMessageBaseModel.body.rows)
         {
             NSString *wheres = [NSString stringWithFormat:@"memberId = %@",row.memberId];
-            
             NSInteger count = [[LKDBHelper getUsingLKDBHelper] rowCount:[LWMainRows class] where:wheres];
             if (count > 0) {
                 [[LKDBHelper getUsingLKDBHelper] updateToDB:row where:wheres];
@@ -143,7 +150,7 @@
         }
         if (success){ success(mainMessageBaseModel);}
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
-        failure?failure(errorMessage):nil;
+//        failure?failure(errorMessage):nil;
     } isCache:NO];
     
 }
@@ -187,12 +194,13 @@
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADPATIENTLIST] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
-        
+        NSLog(@"%@",[responseObject
+                     JSONString]);
         LWPatientBaseModel *patientBaseModel = [[LWPatientBaseModel alloc] initWithDictionary:responseObject];
         
         for (LWPatientRows *model in patientBaseModel.body.rows) {
             
-            NSString *where = [NSString stringWithFormat:@"sid = %@",model.sid];
+            NSString *where = [NSString stringWithFormat:@"patientId = %@",model.patientId];
             if ([[LKDBHelper getUsingLKDBHelper] isExistsClass:[LWPatientRows class] where:where]) {
                 [[LKDBHelper getUsingLKDBHelper]updateToDB:model where:where];
             }
@@ -219,11 +227,11 @@
 {
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     
-    [requestParams setObject:kNSString(kNSNumInteger(page)) forKey:@"page"];
+    [requestParams setObject:kNSString(kNSNumInteger(1)) forKey:@"page"];
     [requestParams setObject:kNSString(kNSNumInteger(size)) forKey:@"rows"];
     [requestParams setObject:kNSNumInteger(type) forKey:@"type"];
     if (refreshDate) {
-        [requestParams setObject:refreshDate forKey:@"refreshDate"];
+        [requestParams setObject:refreshDate forKey:@"time"];
     }
     if (patientId) {
         [requestParams setObject:patientId forKey:@"patientId"];
@@ -235,8 +243,26 @@
         NSLog(@"%@",[responseObject
                      JSONString]);
         LWChatBaseModel *chat = [[LWChatBaseModel alloc] initWithDictionary:responseObject];
+        if (chat.body.rows.count <= 0) {
+            if (success){ success([NSMutableArray array],chat);}
+            return ;
+        }
         [chat updateModel];
-        if (success){ success([LWChatBaseModel LoadSqliteDataWhere:[NSString stringWithFormat:@"memberId = %@ and currentPage <= %ld",patientId,page] Offset:0 count:10000],chat);}
+        
+        NSString *where;
+        if (type == 1) {
+            if (refreshDate) {
+                where = [NSString stringWithFormat:@"insertDt < '%@' and memberId = %@",refreshDate,patientId];
+            }else
+            {
+                where = [NSString stringWithFormat:@"memberId = %@",patientId];
+            }
+        }else
+        {
+            where = [NSString stringWithFormat:@"insertDt < '%@' and memberId = %@",[NSDate stringWithDate:[NSDate date] format:[NSDate ymdHmsFormat]],patientId];
+        }
+
+        if (success){ success([LWChatBaseModel LoadSqliteDataWhere:where Offset:0 count:size],chat);}
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
     } isCache:NO];
@@ -269,7 +295,7 @@
 {
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     
-    [requestParams setObject:pid forKey:@"patientId"];
+    [requestParams setObject:stringJudgeNull(pid) forKey:@"patientId"];
     
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
@@ -361,8 +387,7 @@
     //105 正式
     [requestParams setObject:@"199" forKey:@"platCode"];
     [requestParams setObject:[NSDate stringWithDate:[NSDate date] format:@"yyyy-MM-dd HH:mm:ss"] forKey:@"req_num"];
-#warning 测试正式切换
-    [httpManager POST:@"http://img.mamibon.com:8080/fileuploader/uploader.do" parameters:requestParams constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [httpManager POST:comveeUpload_URL parameters:requestParams constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:data name:type==2?@"testimage.jpg":@"testaudio.mp3" fileName:type==2?@"testimage.jpg":@"testaudio.mp3" mimeType:type==2?@"image/jpg":@"audio/mp3"];
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *jsDic = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingAllowFragments error:nil];
@@ -497,6 +522,83 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
     } isCache:YES];
+    
+}
+
+#pragma mark 加载购买记录 //参数:date 日期格式   按YYYY-MM-DD 这种格式传
++ (void)httpLoadShopOrderLogWithDate:(NSString *)date
+                             success:(void (^)(NSMutableArray *models))success
+                             failure:(void (^)(NSString * errorMes))failure
+{
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    
+    [requestParams setObject:stringJudgeNull(date) forKey:@"date"];
+
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    NSLog(@"%@",requestParams.JSONString);
+
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADSHOPORDERLOG] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        NSDictionary *body = [responseObject objectForKey:res_body];
+        NSArray *orderList = [body objectForKey:@"orderList"];
+        
+        NSMutableArray *array = [NSMutableArray array];
+        
+        for (NSDictionary *dic in orderList) {
+            LWOrderModel *model = [[LWOrderModel alloc] initWithDictionary:dic];
+            model.buyPeopleNum = [[body objectForKey:@"buyPeopleNum"] longLongValue];
+            [array addObject:model];
+        }
+        success?success(array):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:YES];
+}
+
+#pragma mark 获取医生服务时间
++ (void)httploadDoctorServerTimeSuccess:(void (^)(NSMutableArray *models))success
+                                failure:(void (^)(NSString * errorMes))failure
+{
+
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADDOCTORSERVERTIM] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        NSArray *body = [responseObject objectForKey:res_body];
+        NSMutableArray *array = [NSMutableArray array];
+
+        for (NSDictionary *dic in body)
+        {
+            LWDoctorTimerModel *model = [[LWDoctorTimerModel alloc] initWithDictionary:dic];
+            [array addObject:model];
+        }
+        
+        success?success(array):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:YES];
+
+}
+
+#pragma mark 提交医生服务时间
++ (void)httpsubmitDoctorServerTimeWithJsonString:(NSString *)array
+                                         Success:(void (^)())success
+                                         failure:(void (^)(NSString * errorMes))failure
+{
+
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    [requestParams setObject:array forKey:@"jsonData"];
+
+    NSLog(@"%@",requestParams.JSONString);
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_SUBMITDOCTORSERVERTIME] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        success?success():nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];
     
 }
 

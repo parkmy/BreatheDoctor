@@ -12,6 +12,7 @@
 #import "LWChatModel.h"
 #import <UIButton+WebCache.h>
 #import <UIImageView+WebCache.h>
+#import "LWChatLoadingView.h"
 
 @interface UUMessageCell ()
 {
@@ -28,7 +29,22 @@
         
         self.backgroundColor = [UIColor clearColor];
         self.selectionStyle = UITableViewCellSelectionStyleNone;
-
+        
+        // 0、创建同意请求类型
+        
+        self.agreedView = [[UIView alloc] initWithFrame:CGRectZero];
+        self.agreedView.backgroundColor = RGBA(0, 0, 0, .2);
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        label.textColor = [UIColor whiteColor];
+        label.text = @"您已通过患者请求，可以开始交流啦";
+        label.font = [UIFont systemFontOfSize:13];
+        [self.agreedView addSubview:label];
+        CGFloat w = [label.text sizeWithFont:[UIFont systemFontOfSize:13] constrainedToHeight:30].width + 20;
+        self.agreedView.bounds = CGRectMake(0, 0, w, 30);
+        label.frame = CGRectMake(10, 0, w, 30);
+        [self.agreedView setCornerRadius:5.0f];
+        [self.contentView addSubview:self.agreedView];
+        
         // 1、创建时间
         self.labelTime = [[UILabel alloc] init];
         self.labelTime.textAlignment = NSTextAlignmentCenter;
@@ -46,12 +62,12 @@
         [self.btnHeadImage addTarget:self action:@selector(btnHeadImageClick:)  forControlEvents:UIControlEventTouchUpInside];
         [headImageBackView addSubview:self.btnHeadImage];
         
-//        // 3、创建头像下标
-//        self.labelNum = [[UILabel alloc] init];
-//        self.labelNum.textColor = [UIColor grayColor];
-//        self.labelNum.textAlignment = NSTextAlignmentCenter;
-//        self.labelNum.font = ChatTimeFont;
-//        [self.contentView addSubview:self.labelNum];
+        //        // 3、创建头像下标
+        //        self.labelNum = [[UILabel alloc] init];
+        //        self.labelNum.textColor = [UIColor grayColor];
+        //        self.labelNum.textAlignment = NSTextAlignmentCenter;
+        //        self.labelNum.font = ChatTimeFont;
+        //        [self.contentView addSubview:self.labelNum];
         
         // 4、创建内容
         self.btnContent = [UUMessageContentButton buttonWithType:UIButtonTypeCustom];
@@ -65,20 +81,27 @@
         
         _cardView = [[LWCardView alloc] initWithFrame:self.bounds];
         [self.contentView addSubview:_cardView];
-
+        
+//        
+//        _chatLoadingView = [[LWChatLoadingView alloc] initWithFrame:CGRectZero];
+//        [self.contentView addSubview:_chatLoadingView];
+        
     }
     return self;
 }
 
 //头像点击
 - (void)btnHeadImageClick:(UIButton *)button{
-//    if ([self.delegate respondsToSelector:@selector(headImageDidClick:userId:)])  {
-//        [self.delegate headImageDidClick:self userId:self.messageFrame.message.strId];
-//    }
+    //    if ([self.delegate respondsToSelector:@selector(headImageDidClick:userId:)])  {
+    //        [self.delegate headImageDidClick:self userId:self.messageFrame.message.strId];
+    //    }
 }
 - (void)layoutSubviews
 {
     self.cardView.frame = self.bounds;
+    self.agreedView.xCenter = self.xCenter;
+    self.agreedView.yCenter = self.yCenter + 15;
+    
 }
 
 
@@ -93,6 +116,7 @@
     self.btnContent.hidden = YES;
     self.btnHeadImage.hidden = YES;
     headImageBackView.hidden = YES;
+    self.agreedView.hidden = YES;
     
     // 1、设置时间
     self.labelTime.text = model.insertDt;
@@ -102,26 +126,31 @@
     // 2、设置头像
     headImageBackView.frame = messageFrame.iconF;
     self.btnHeadImage.frame = CGRectMake(2, 2, ChatIconWH-4, ChatIconWH-4);
-
-    [self.btnHeadImage sd_setBackgroundImageWithURL:[NSURL URLWithString:model.headImgUrl] forState:UIControlStateNormal placeholderImage:kImage(@"yishengzhushou_35")];
-    
     
     [self.btnContent setTitle:@"" forState:UIControlStateNormal];
     self.btnContent.voiceBackView.hidden = YES;
     self.btnContent.backImageView.hidden = YES;
     self.btnContent.frame = messageFrame.contentF;
     
+//    self.chatLoadingView.frame = CGRectMake(self.btnContent.xCenter - self.btnContent.width/2 - 25, self.btnContent.yCenter-20, 40, 40);
+    
+    
+    
     
     if (model.ownerType) {
         self.btnContent.isMyMessage = YES;
         [self.btnContent setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.btnContent.contentEdgeInsets = UIEdgeInsetsMake(ChatContentTop, ChatContentRight, ChatContentBottom, ChatContentLeft);
+        [self.btnHeadImage sd_setBackgroundImageWithURL:[NSURL URLWithString:model.headImgUrl] forState:UIControlStateNormal placeholderImage:kImage(@"yishengzhushou_35")];
+
     }else{
         self.btnContent.isMyMessage = NO;
         [self.btnContent setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
         self.btnContent.contentEdgeInsets = UIEdgeInsetsMake(ChatContentTop, ChatContentLeft, ChatContentBottom, ChatContentRight);
-    }
+        [self.btnHeadImage sd_setBackgroundImageWithURL:[NSURL URLWithString:model.headImgUrl] forState:UIControlStateNormal placeholderImage:kImage(@"yishengzhushousy_03")];
 
+    }
+    
     //背景气泡图
     UIImage *normal;//jiankangzixun_57@2x
     if (model.ownerType) {
@@ -147,8 +176,9 @@
     }
     [self.btnContent setBackgroundImage:normal forState:UIControlStateNormal];
     [self.btnContent setBackgroundImage:normal forState:UIControlStateHighlighted];
-
-
+    
+    
+//    self.chatLoadingView.hidden = NO;
     
     switch (model.chatCellType) {
         case WSChatCellType_Text:
@@ -179,20 +209,31 @@
             break;
         case WSChatCellType_Card:
         {
+//            self.chatLoadingView.hidden = YES;
             self.cardView.modelFram = _messageFrame;
             self.btnContent.hidden = YES;
             self.cardView.hidden = NO;
             self.btnHeadImage.hidden = YES;
             headImageBackView.hidden = YES;
-            self.cardView.frame = self.bounds;
+        }
+            break;
+        case WSChatCellType_Agreed:
+        {
+//            self.chatLoadingView.hidden = YES;
+            self.btnContent.hidden = YES;
+            self.cardView.hidden = YES;
+            self.btnHeadImage.hidden = YES;
+            headImageBackView.hidden = YES;
+            self.agreedView.hidden = NO;
+            
         }
             break;
         default:
             break;
     }
-
     
-
+    
+    
 }
 
 - (void)makeMaskView:(UIView *)view withImage:(UIImage *)image

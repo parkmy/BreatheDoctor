@@ -11,6 +11,7 @@
 @interface LWPersonalHeardCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *doctorIcon;
 @property (weak, nonatomic) IBOutlet UILabel *doctorNameLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *doctorTypeWidth;
 @property (weak, nonatomic) IBOutlet UILabel *doctorTypeLabel;
 - (void)setDoctorIconImage:(NSString *)imageUrl;
 - (void)setDoctordoctorName:(NSString *)name;

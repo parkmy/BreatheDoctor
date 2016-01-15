@@ -43,7 +43,7 @@
 
         itm.coordinateYValue = [NSString stringWithFormat:@"%@",kNSNumDouble(body.controlLevelY)];
         itm.coordinateXValue = body.dateX;
-        
+        itm.itemColor = body.controlLevelY == 1?[UIColor colorWithRed:86/255.0 green:195/255.0 blue:39/255.0 alpha:1]:body.controlLevelY == 2?[UIColor colorWithRed:248/255.0 green:131/255.0 blue:9/255.0 alpha:1]:[UIColor colorWithRed:243/255.0 green:24/255.0 blue:23/255.0 alpha:1];
         [array addObject:itm];
     }
     [array sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {

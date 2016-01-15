@@ -39,7 +39,7 @@
     
     _model = model;
     
-    self.timerLabel.text = _model.recordDt;
+    self.timerLabel.text = _model.insertDt;
     
     for (UIView *view in self.labelArray) {
             [view removeFromSuperview];
@@ -48,23 +48,30 @@
     
     self.labelArray = [LWTool LoglabelsCount:model];
     
-    CGFloat w = 0;
+    CGFloat w = 10;
     CGFloat h = 30/2 + 10;
     for (int i = 0; i < self.labelArray.count; i++) {
+        
         UILabel *label = (UILabel *)self.labelArray[i];
         [label setCornerRadius:label.height/2];
         [self.centerView addSubview:label];
-        label.xCenter = w + label.width/2 ;
+        label.xCenter = w + label.width/2;
         label.yCenter = h;
-        w = label.width + w + 20;
-        if (i > 4) {
-            w = 0;
-            h = 30/2 + 10 + 30;
-        }
+        w = label.maxX + 20;
 
+        UILabel *label2 ;
+        if ((i+1) < self.labelArray.count) {
+            label2 = self.labelArray[i+1];
+        }
+        CGFloat wid = label2.width;
+        if ((w + wid) >= Screen_SIZE.width-20) {
+            w = 10;
+            h = 30/2 + 10 + 30 +10;
+        }
+        
     }
-    if (self.labelArray.count > 3) {
-        _model.rowHight = 150;
+    if (h == 30/2 + 10 + 30 +10) {
+        _model.rowHight = 170;
     }else
     {
         _model.rowHight = 130;

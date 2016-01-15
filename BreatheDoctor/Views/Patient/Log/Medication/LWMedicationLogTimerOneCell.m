@@ -15,6 +15,7 @@
     for (NSLayoutConstraint *contstraint in self.heights) {
         contstraint.constant = .5;
     }
+    self.dateLabel.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)setModel:(LWMedicationModel *)model

@@ -10,6 +10,7 @@
 #import "LWPatientLogSymptomsCountCell.h"
 #import "LWPatientLogSymptomsDescribeCell.h"
 #import "LWTool.h"
+#import "LWPatientLogViewController.h"
 
 @interface LWPatientSymptomsLogVC ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -24,11 +25,29 @@
 
 }
 
-- (void)refreshSymptomsLog
+- (void)refreshSymptomsLogIsShowHttpError:(BOOL)isShow
 {
     self.dataArray = [LWTool LogrowsCount];
     [self.tableView reloadData];
+    if (isShow) {
+        [self showErrorMessage:@"网络连接失败，点击刷新~" isShowButton:NO type:showErrorTypeHttp];
+    }else{
+        NSArray *array = [LWPublicDataManager shareInstance].logModle.body.recordList;
+        if (array.count <= 0) {
+            [self showErrorMessage:@"本周暂无记录~" isShowButton:YES type:showErrorTypeMore];
+        }else
+        {
+            [self hiddenNonetWork];
+        }
+    }
 }
+- (void)reloadRequestWithSender:(UIButton *)sender
+{
+    [self hiddenNonetWork];
+
+    [self.vc loadLogRecord];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

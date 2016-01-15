@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *datas;
 @property (nonatomic, strong) LWAsthmaAssessLogModel *assessmentModel;
+@property (nonatomic, copy)  NSString *patientID;
 @end
 
 @implementation LWPatientAssessmentLogVC
@@ -34,17 +35,31 @@
 }
 - (void)refreshAssessmentLog:(NSString *)patientID
 {
+    self.patientID = patientID;
+    
     [LWHttpRequestManager httpLoadAsthmaAssessLogWithPatientId:patientID year:[LWPublicDataManager shareInstance].yer month:[LWPublicDataManager shareInstance].month success:^(LWAsthmaAssessLogModel *model) {
         [LWProgressHUD closeProgressHUD:self.view.window];
         self.assessmentModel = model;
         self.datas = [LWTool toDealWithAsthmaAssessLogModel:model];
         [self.tableView reloadData];
+        if (self.datas.count <= 0) {
+            [self showErrorMessage:@"本月暂无记录~" isShowButton:YES type:showErrorTypeMore];
+        }else{
+            [self hiddenNonetWork];
+        }
     } failure:^(NSString *errorMes) {
         [LWProgressHUD closeProgressHUD:self.view.window];
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        [self showErrorMessage:@"网络连接失败，点击刷新~" isShowButton:NO type:showErrorTypeHttp];
+//        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
 }
+- (void)reloadRequestWithSender:(UIButton *)sender
+{
+    [self hiddenNonetWork];
 
+    [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
+    [self refreshAssessmentLog:self.patientID];
+}
 
 #pragma mark -UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

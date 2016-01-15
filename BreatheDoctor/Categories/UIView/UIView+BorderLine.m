@@ -32,8 +32,9 @@
 {
     UIView *view = [[UIView alloc] initWithFrame:rect];
     view.backgroundColor = color;
-    [self bringSubviewToFront:view];
     [self addSubview:view];
+    [self bringSubviewToFront:view];
+
 }
 
 - (void)byRoundingCorners:(UIRectCorner)corners withSize:(CGSize)size

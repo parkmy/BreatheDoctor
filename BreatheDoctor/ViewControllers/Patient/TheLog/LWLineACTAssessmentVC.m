@@ -41,15 +41,20 @@
     [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
     [LWHttpRequestManager httpLoadAsthmaAssessLogWithPatientId:self.patientID starDate:self.starDate EndDate:self.endDate success:^(NSMutableArray *models) {
         [LWProgressHUD closeProgressHUD:self.view];
+        [self hiddenNonetWork];
         [self.dataArray removeAllObjects];
         [self.dataArray addObjectsFromArray:models];
         [self.tableView reloadData];
     } failure:^(NSString *errorMes) {
         [LWProgressHUD closeProgressHUD:self.view];
-        [LWProgressHUD showALAlertBannerWithView:self.view.window Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        [self showErrorMessage:@"网络请求失败，点击重试~" isShowButton:NO type:showErrorTypeHttp];
     }];
 }
-
+- (void)reloadRequestWithSender:(id)sender //错误页面按钮点击事件
+{
+    [self hiddenNonetWork];
+    [self loadData];
+}
 #pragma mark - tableviewdelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

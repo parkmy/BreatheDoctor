@@ -11,12 +11,21 @@
 
 
 #define res_msg     @"res_msg"
-#define res_code    @"res_code"
+#define res_code    @"res_coder"
 #define res_desc    @"res_desc"
 #define res_body    @"body"
-#pragma mark 通用
-#define Comvee_Url @"http://comvee.3322.org:8084/comveebreath/" //呼吸测试
+#pragma mark 通用 
+// http://wechat.comvee.cn/comveebreath/
+//"http://comvee.3322.org:8084/comveebreath/"
 
+//正式 "http://breathintf.izhangkong.com/
+#define Comvee_Url @"http://comvee.3322.org:8084/comveebreath/"
+//呼吸测试
+
+#define comveeUpload_URL @"http://img.mamibon.com:8080/fileuploader/uploader.do"
+
+//01 商店 03 企业 99 测试
+#define LOADFROMKEY @"99"
 
 
 #pragma mark 短接
@@ -65,5 +74,13 @@ static  NSString *HTTP_POST_LOADACTASSESSLOG        = @"mobile/assess/loadACTAss
 // *-- 获取ACT哮喘日志
 static  NSString *HTTP_POST_LOADASTHMAASSESSLOG     = @"mobile/assess/loadAsthmaAssessLog.do";
 
+// *-- 获取购买记录
+static  NSString *HTTP_POST_LOADSHOPORDERLOG        = @"mobile/shop/loadShopOrderLog.do";
+
+// *-- 获取医生服务时间
+static  NSString *HTTP_POST_LOADDOCTORSERVERTIM     = @"mobile/doctor/loadDoctorServerTime.do";
+
+// *-- 提交医生服务时间
+static  NSString *HTTP_POST_SUBMITDOCTORSERVERTIME  = @"mobile/doctor/submitDoctorServerTime.do";
 
 #endif /* LWHttpDefine_h */

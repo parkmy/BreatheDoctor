@@ -27,5 +27,6 @@
 - (void)updateModel;
 + (NSMutableArray*)LoadSqliteDataWhere:(NSString *)wheres Offset:(NSInteger)offset count:(NSInteger)counts;
 + (void)minuteOffSetStart:(UUMessageFrame *)start end:(UUMessageFrame *)end;
++ (void)minuteOffSetArray:(NSMutableArray *)array;
 
 @end

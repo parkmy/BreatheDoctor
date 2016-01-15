@@ -16,7 +16,7 @@
     for (NSLayoutConstraint *contstraint in self.heights) {
         contstraint.constant = .5;
     }
-    
+    self.dateLabel.adjustsFontSizeToFitWidth = YES;
 }
 - (void)setModel:(LWMedicationModel *)model
 {
@@ -31,7 +31,7 @@
     self.afternoonCtrLabel.text = _model.afternoonPharmacyControl == 1?@"是":@"否";
     self.afternoonCtrLabel.textColor = _model.afternoonPharmacyControl == 1?[UIColor colorWithHexString:@"#6396ea"]:RGBA(0, 0, 0, .6);
     self.afternoonEmergencyLabel.text = _model.afternoonPharmacyUrgency == 1?@"是":@"否";
-    self.afternoonEmergencyLabel.textColor = _model.afternoonPharmacyControl == 1?[UIColor colorWithHexString:@"#ff3b4a"]:RGBA(0, 0, 0, .6);
+    self.afternoonEmergencyLabel.textColor = _model.afternoonPharmacyUrgency == 1?[UIColor colorWithHexString:@"#ff3b4a"]:RGBA(0, 0, 0, .6);
 
 }
 

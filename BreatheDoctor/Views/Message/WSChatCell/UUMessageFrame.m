@@ -8,6 +8,7 @@
 
 #import "UUMessageFrame.h"
 #import "LWChatModel.h"
+#import "LWTool.h"
 
 @implementation UUMessageFrame
 
@@ -63,6 +64,9 @@
             break;
         case WSChatCellType_Card:
             break;
+        case WSChatCellType_Agreed:
+            
+            break;
         default:
             break;
     }
@@ -75,9 +79,21 @@
     _cellHeight = MAX(CGRectGetMaxY(_contentF), CGRectGetMaxY(_nameF))  + ChatMargin;
 
     if (model.chatCellType == WSChatCellType_Card) {
-        _cellHeight = 190;
+        
+        NSDictionary *dic = [LWTool chatMessageCardModel:_model];
+        
+        CGFloat height = [dic[@"content"] sizeWithFont:[UIFont systemFontOfSize:14] constrainedToWidth:[UIScreen mainScreen].bounds.size.width-50].height+30;
+        height = MAX(height, 30);
+        _cardContentHigh = height;
+        _cellHeight = height+110 + 35;
+        _contentF = CGRectZero;
+        
+    }else if (model.chatCellType == WSChatCellType_Agreed)
+    {
+        _cellHeight = 75;
         _contentF = CGRectZero;
     }
 }
+
 
 @end

@@ -31,7 +31,7 @@
 
 - (void)loadDataViews
 {
-    LWPEFRecordList *Record = self.dataItm.record;
+    LWPEFRecordList *Record = self.record;
     
     NSString *dateString = [NSDate stringWithDate:[NSDate dateWithString:Record.recordDt format:[NSDate ymdFormat]] format:@"MM月dd日"];
     if (Record.timeFrame == 1) {
@@ -57,6 +57,7 @@
     
     if (Record.symptomGood == 1) {//症状记录--感觉良好	1 选中 0 未选中
         UILabel *label =  [self createLabelWithText:@"感觉良好"];
+        label.backgroundColor = RGBA(119, 204, 78, 1);
         [labels addObject:label];
     }
     if (Record.symptomGasp == 1) {//    症状记录--喘息	1 选中 0 未选中
@@ -76,14 +77,14 @@
         [labels addObject:label];
     }
     if (Record.symptomNightWoke) {
-        UILabel *label =  [self createLabelWithText:@"其他"];
+        UILabel *label =  [self createLabelWithText:@"夜间憋醒"];
         [labels addObject:label];
     }
 
     for (int i = 0; i < labels.count; i++)
     {
         UIView *view = labels[i];
-        view.centerX = (50 + 5 + 50/2) *i + 5;
+        view.centerX = (50 + 5) *i + 50/2 + 5;
         if (i == 0) {
             view.centerX = 5+50/2;
         }
@@ -98,14 +99,14 @@
     
     if (Record.pharmacyControl == 1)
     {
-        UIView *view = [self createpharmacyViewWithString:@"控制用药"];
+        UIView *view = [self createpharmacyViewWithString:@"控制用药" withImage:kImage(@"log_act_yao")];
         view.xCenter = view.width/2 + 10;
         [self.yongYaoView addSubview:view];
     }
     
     if (Record.pharmacyUrgency == 1)
     {
-        UIView *view = [self createpharmacyViewWithString:@"紧急用药"];
+        UIView *view = [self createpharmacyViewWithString:@"紧急用药" withImage:kImage(@"log_act_naoz")];
         CGFloat x;
         if (Record.pharmacyControl == 1) {
             x = view.width/2+ view.width + 20;
@@ -141,17 +142,19 @@
     
 
 }
-- (UIView *)createpharmacyViewWithString:(NSString *)string
+- (UIView *)createpharmacyViewWithString:(NSString *)string withImage:(UIImage *)image
 {
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
-    view.size = CGSizeMake(120, 50);
+    view.size = CGSizeMake(110, 50);
     view.backgroundColor = RGBA(46, 109, 252, .6);
     [view setCornerRadius:5.0f];
 
     UIImageView *leftimageView = [[UIImageView alloc] initWithFrame:CGRectZero];
-    leftimageView.size = CGSizeMake(30, 30);
-    leftimageView.centerX = 30/2+10;
+    leftimageView.image = image;
+    leftimageView.size = CGSizeMake(20, 20);
+    leftimageView.centerX = 30/2+5;
+    leftimageView.centerY = view.height/2;
     [view addSubview:leftimageView];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(leftimageView.maxX+5, 0, view.width-leftimageView.maxX-5, view.height)];

@@ -13,7 +13,7 @@
 
 
 //控制级别分析
-+ (void)atientControlLevel:(double)controLevel withLayoutConstraint:(NSLayoutConstraint *)traint withLabel:(UILabel *)label;
++ (void)atientControlLevel:(double)controLevel withLayoutConstraint:(NSLayoutConstraint *)traint withLabel:(id)objc;
 
 //便利排序对话
 + (void)traverseChatMessage:(NSMutableArray *)array;
@@ -21,15 +21,23 @@
 //患者档案分析
 + (CGFloat)personalMessageSource:(NSString *)title WithLabel:(LWPersonalMessageCell *)cell WithModel:(LWPatientRecordsBaseModel *)model;
 
+//分组遍历
 + (NSMutableArray *)forGrouping:(NSMutableArray *)array;
 
+//患者ACT分析
 + (void)ACTAssessmentChangeWithModel:(LWACTModel *)model withArray:(NSMutableArray *)array;
 
-
+//患者日志症状分析
 + (NSMutableArray *)LogrowsCount;
 + (NSMutableArray *)LoglabelsCount:(LWPEFRecordList *)model;
-
-
+//患者日志 控制分析
 + (NSMutableArray *)toDealWithAsthmaAssessLogModel:(LWAsthmaAssessLogModel *)model;
+//患者PEF时间段走势分析
++ (NSDictionary *)patientPEFDateLineSx:(NSString *)date;
+
+//卡片类型对话消息处理
++ (NSDictionary *)chatMessageCardModel:(LWChatModel *)model;
+
+
 
 @end

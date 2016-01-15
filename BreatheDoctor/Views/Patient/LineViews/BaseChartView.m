@@ -54,15 +54,15 @@
     
     //2.绘制虚线(暂时设置纵坐标分5个区间)
     //虚线间距
-    self.dashedSpace = (CGFloat)(self.frame.size.height - 2*MARGIN_TOP)/Y_SECTION-.5;
-
+    self.dashedSpace = (CGFloat)(self.width - 2*MARGIN_LEFT)/14;
+    CGFloat dash = (self.frame.size.height - MARGIN_TOP*2)/10;
     //设置虚线属性
     CGFloat lengths[2] = {5,5};
     CGContextSetLineDash(currentCtx, 0, lengths, 1);
-    for(int index = 1; index<Y_SECTION; index++)
+    for(int index = 1; index<10; index++)
     {
-        CGContextMoveToPoint(currentCtx, MARGIN_LEFT, MARGIN_TOP + self.dashedSpace * index);
-        CGContextAddLineToPoint(currentCtx, self.frame.size.width - MARGIN_LEFT, MARGIN_TOP + self.dashedSpace * index);
+        CGContextMoveToPoint(currentCtx, MARGIN_LEFT, MARGIN_TOP + dash * index);
+        CGContextAddLineToPoint(currentCtx, self.frame.size.width - MARGIN_LEFT, MARGIN_TOP + dash * index);
     }
     CGContextStrokePath(currentCtx);
     
@@ -123,6 +123,7 @@
                  withtextAlignment:(NSTextAlignment)textAlignment
 {
     UILabel *label = [[UILabel alloc] init];
+    label.adjustsFontSizeToFitWidth = YES;
     label.center = centerPoint;
     label.bounds = bounds;
     label.textAlignment = NSTextAlignmentCenter;
@@ -154,15 +155,18 @@
         self.dataSource = dataSource;
         
         //3.设置纵坐标值
-        self.maxYValue = 900;
-        self.yNumberSpace = self.maxYValue/Y_SECTION;
-        self.dashedSpace = (CGFloat)(rect.size.height - 2*MARGIN_TOP)/Y_SECTION-.5;
+        self.maxYValue = 800;
+        self.yNumberSpace = self.maxYValue/10;
+        self.dashedSpace = (CGFloat)(rect.size.width - 2*MARGIN_LEFT)/14;
 
+        CGFloat dash = (rect.size.height - MARGIN_TOP*2)/10;
+
+        
         for (int index = 0; index<3; index++)
         {
-            CGPoint centerPoint = CGPointMake(MARGIN_LEFT/2, MARGIN_TOP + self.dashedSpace * index);
+            CGPoint centerPoint = CGPointMake(MARGIN_LEFT/2, MARGIN_TOP + dash * index);
             CGRect bounds = CGRectMake(0, 0, MARGIN_LEFT - 10, 15);
-            NSString *labelText = [NSString stringWithFormat:@"%d",self.yNumberSpace * (Y_SECTION - index)];
+            NSString *labelText = @"0";
             UILabel *yNumber = [self createLabelWithCenter:centerPoint
                                                 withBounds:bounds
                                                   withText:labelText
@@ -193,7 +197,7 @@
         for(int index = 1; index<15; index++)
         {
             
-            CGPoint centerPoint = CGPointMake(MARGIN_LEFT/2 + self.dashedSpace * index,  MARGIN_TOP/2 + 5);
+            CGPoint centerPoint = CGPointMake(MARGIN_LEFT/2 + self.dashedSpace * index+5,  MARGIN_TOP/2 + 5);
             CGRect bounds = CGRectMake(0, 0, self.dashedSpace, 15);
             //        CoordinateItem *item = [self.dataSource objectAtIndex:index];
             NSString *str = index%2 == 1?@"早":@"晚";
@@ -237,25 +241,29 @@
     NSString *number2 = kNSString(kNSNumInteger(pefPredictedValue*.8));
     NSString *number3 = kNSString(kNSNumInteger(pefPredictedValue*.6));
     
+//    CGFloat dash = (self.frame.size.height - MARGIN_TOP*2)/10;
+
+    CGFloat spa = (self.frame.size.height - MARGIN_TOP*2)/800;
+    
     for (int i = 0; i < self.yNumbers.count; i++) {
         UILabel *label = self.yNumbers[i];
         CGFloat Y;
         if (i == 0) {
             label.text = number1;
             label.textColor = [UIColor greenColor];
-             Y = self.frame.size.height - (MARGIN_TOP + [number1 integerValue]*(self.dashedSpace/self.yNumberSpace));
+             Y = self.frame.size.height - (MARGIN_TOP + [number1 integerValue]*spa);
             
         }else if (i == 1)
         {
             label.text = number2;
             label.textColor = [UIColor orangeColor];
-             Y = self.frame.size.height - (MARGIN_TOP + [number2 integerValue]*(self.dashedSpace/self.yNumberSpace));
+             Y = self.frame.size.height - (MARGIN_TOP + [number2 integerValue]*spa);
             
         }else
         {
             label.text = number3;
             label.textColor = [UIColor redColor];
-             Y = self.frame.size.height - (MARGIN_TOP + [number3 integerValue]*(self.dashedSpace/self.yNumberSpace));
+             Y = self.frame.size.height - (MARGIN_TOP + [number3 integerValue]*spa);
         }
         label.yCenter = Y;
     }

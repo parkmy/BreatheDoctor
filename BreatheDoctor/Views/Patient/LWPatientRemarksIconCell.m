@@ -29,6 +29,7 @@
     
     
     [LWTool atientControlLevel:_patient.controlLevel withLayoutConstraint:self.typeWidth withLabel:self.typeLabel];
+    
     if ([_patient.remark isEqualToString:@""] || !_patient.remark) {
         self.patientNameLabel.text = stringJudgeNull(_patient.patientName);
     }else

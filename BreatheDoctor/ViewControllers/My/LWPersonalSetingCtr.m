@@ -8,6 +8,8 @@
 
 #import "LWPersonalSetingCtr.h"
 #import "LWLoginManager.h"
+#import "LWWEBViewController.h"
+#import "LWHttpDefine.h"
 
 @interface LWPersonalSetingCtr ()
 
@@ -63,6 +65,13 @@
     {
         if (indexPath.row == 0) {
             UIViewController *vc = [UIViewController CreateControllerWithTag:CtrlTag_AboutUser];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }else if (indexPath.row == 1)
+        {
+            LWWEBViewController *vc = (LWWEBViewController *)[UIViewController CreateControllerWithTag:CtrlTag_WEB];
+            vc.titleString = @"声明";
+            vc.url = @"http://zkys.zhangkong.me/mobile/statement/statement.html";
             vc.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:vc animated:YES];
         }

@@ -33,18 +33,30 @@
 #pragma mark - load
 - (void)loadAsthmaAssessment
 {
+    [LWProgressHUD displayProgressHUD:self.view displayText:@"加载中..."];
     [LWHttpRequestManager httpLoadAsthmaAssessmentById:self.searchLoadId success:^(LWAsthmaModel *model) {
+        [LWProgressHUD closeProgressHUD:self.view];
+        [self hiddenNonetWork];
         self.asModel = model;
         [self.tableView reloadData];
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        [LWProgressHUD closeProgressHUD:self.view];
+        [self showErrorMessage:@"网络连接失败，点击重试~" isShowButton:NO type:showErrorTypeHttp];
+//        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
 }
+
+- (void)reloadRequestWithSender:(UIButton *)sender
+{
+    [self hiddenNonetWork];
+    [self loadAsthmaAssessment];
+}
+
 #pragma mark - tableviewdelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return self.asModel?1:0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

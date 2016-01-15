@@ -35,14 +35,12 @@
     UIViewController *vc2  = StoryboardCtr(@"LWPatientListCtr");
     UIViewController *vc3  = StoryboardCtr(@"LWPersonalCtr");
     
-    //    discoverCtr = [[DiscoverCtr alloc]init];
     //5个导航控制器--对应上述5个视图
     UINavigationController *nav1 = [[UINavigationController alloc]initWithRootViewController:vc1];
     UINavigationController *nav2 =[[UINavigationController alloc]initWithRootViewController:vc2];
-    //    nav_third=[[UINavigationController alloc]initWithRootViewController:discoverCtr];
     UINavigationController *nav3 =[[UINavigationController alloc]initWithRootViewController:vc3];
-
-    
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     //nav_third
     NSArray *NavConnections=[[NSArray alloc] initWithObjects:nav1,nav2,nav3, nil];
     self.viewControllers=NavConnections;
@@ -73,8 +71,6 @@
     if (systemVersion>=7) {
         selectedImg=[selectedImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     }
-    
-    
     [nav1.tabBarItem setFinishedSelectedImage:selectedImg withFinishedUnselectedImage:[UIImage imageNamed:@"tab_down_1"]];
     
     selectedImg=[UIImage imageNamed:@"tab_up_2"];

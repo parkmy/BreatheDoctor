@@ -8,13 +8,7 @@
 
 #import "LWChatViewControllerDataSource.h"
 #import "UITableView+FDTemplateLayoutCell.h"
-#import "WSChatTextTableViewCell.h"
-#import "WSChatImageTableViewCell.h"
-#import "WSChatVoiceTableViewCell.h"
-#import "WSChatTimeTableViewCell.h"
-#import "LWChatCardCell.h"
 #import "LWChatRows.h"
-#import "LWChatCardCell.h"
 #import "LWChatModel.h"
 #import "UUMessageCell.h"
 #import "UUMessageFrame.h"

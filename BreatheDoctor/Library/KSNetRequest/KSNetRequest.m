@@ -32,7 +32,7 @@
 
 + (BOOL)httpIsOk:(NSDictionary *)res
 {
-    if (res || [[res objectForKey:res_code] integerValue] == 1) {
+    if (res && [[res objectForKey:res_code] integerValue] == 1) {
         return YES;
     }
     return NO;
@@ -107,10 +107,18 @@
     AFHTTPSessionManager* manager = [self getManager];
     
     [manager POST:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-        
+        NSDictionary *resMsg = responseObject[res_msg];
+
         //先判断是否有回调，然后回调
-        success?success(task,responseObject):nil;
-        
+        if ([KSNetRequest httpIsOk:resMsg]) {
+            success?success(task,responseObject):nil;
+        }else if ([[resMsg objectForKey:res_code] isEqualToString:@"20000"]){//医生信息错误
+            failure?failure(task,[KSNetRequest failureMes:responseObject[res_msg]]):nil;
+        }
+        else
+        {
+            failure?failure(task,[KSNetRequest failureMes:responseObject[res_msg]]):nil;
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         //如果有回调，则返回处理
         failure?failure(task,@"无法连接服务器"):NSLog(@"%@",error);
