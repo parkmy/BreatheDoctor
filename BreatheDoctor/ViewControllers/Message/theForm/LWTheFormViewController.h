@@ -11,4 +11,6 @@
 
 @interface LWTheFormViewController : BaseViewController
 @property (nonatomic, assign) showTheFormType showType;
+@property (nonatomic,   copy) NSString *foreignId;
+@property (nonatomic, copy) NSString *patientId;
 @end

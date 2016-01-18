@@ -332,9 +332,9 @@
     
     
     
-    [_mMoreBtn setImage:[UIImage imageNamed:@"chat_bottom_up_nor@3x"] forState:UIControlStateNormal];
-    [_mMoreBtn setImage:[UIImage imageNamed:@"chat_bottom_up_press@3x"] forState:UIControlStateHighlighted];
-    [_mMoreBtn  setImage:[UIImage imageNamed:@"chat_bottom_up_nor@3x"] forState:UIControlStateSelected];
+    [_mMoreBtn setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
+    [_mMoreBtn setImage:[UIImage imageNamed:@"add"] forState:UIControlStateHighlighted];
+    [_mMoreBtn  setImage:[UIImage imageNamed:@"add"] forState:UIControlStateSelected];
     [_mMoreBtn autoSetDimensionsToSize:kSizeBtn];
     
     
@@ -372,9 +372,9 @@
     _mVoiceBtn.translatesAutoresizingMaskIntoConstraints = NO;
     [_mVoiceBtn addTarget:self action:@selector(voiceBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     _mVoiceBtn.backgroundColor = [UIColor clearColor];
-    [_mVoiceBtn setImage:[UIImage imageNamed:@"chat_bottom_voice_nor@3x"] forState:UIControlStateNormal];
-    [_mVoiceBtn setImage:[UIImage imageNamed:@"chat_bottom_voice_press@3x"] forState:UIControlStateHighlighted];
-    [_mVoiceBtn  setImage:[UIImage imageNamed:@"chat_bottom_keyboard_nor@3x"] forState:UIControlStateSelected];
+    [_mVoiceBtn setImage:[UIImage imageNamed:@"speaker"] forState:UIControlStateNormal];
+//    [_mVoiceBtn setImage:[UIImage imageNamed:@"chat_bottom_voice_press@3x"] forState:UIControlStateHighlighted];
+    [_mVoiceBtn  setImage:[UIImage imageNamed:@"keyBoard"] forState:UIControlStateSelected];
     [_mVoiceBtn autoSetDimensionsToSize:kSizeBtn];
     
     

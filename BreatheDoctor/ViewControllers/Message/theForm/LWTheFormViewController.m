@@ -23,7 +23,7 @@
 
 #import "LWTheFormViewController.h"
 #import "YRJSONAdapter.h"
-
+#import "UIResponder+Router.h"
 
 @interface LWTheFormViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -42,8 +42,22 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
-    [self setData];
     [self setUI];
+    [self loadData];
+}
+
+- (void)loadData
+{
+    if (self.showType == showTheFormTypeMouKuaiNoSucc) {
+        [LWHttpRequestManager httploadFirstDiagnosticInfowithdiagnosticId:self.foreignId Success:^(NSMutableArray *models) {
+            
+        } failure:^(NSString *errorMes) {
+            
+        }];
+    }else
+    {
+        [self setData];
+    }
 }
 
 - (void)setData
@@ -71,7 +85,7 @@
         
     }
     
-    NSLog(@"%@",[dic JSONString]);
+//    NSLog(@"%@",[dic JSONString]);
 }
 - (void)setUI
 {
@@ -109,7 +123,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == _baseModel.mrows.count) {
-        return 60;
+        return .1;
     }
     LWTheFromMrows *model = _baseModel.mrows[indexPath.section];
     LWTheFromArows *aModel = model.arows[indexPath.row];
@@ -141,7 +155,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return section == _baseModel.mrows.count?10:40;
+    return section == _baseModel.mrows.count?60:40;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
@@ -166,23 +180,53 @@
         icon.centerX = 20;
         icon.centerY = 40/2;
         label.frame = CGRectMake(icon.maxX+10, 0, screenWidth-50, 40);
+        
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setCornerRadius:5.0f];
+        [btn setTitle:@"提交" forState:UIControlStateNormal];
+        btn.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
+        [view addSubview:btn];
+        btn.tag = 10086;
+        btn.sd_layout.leftSpaceToView(view,20).topSpaceToView(view,10).rightSpaceToView(view,20).bottomSpaceToView(view,10);
+        
     }
     UILabel *label = [view viewWithTag:888];
     UIImageView *icon = [view viewWithTag:999];
+    UIButton *btn = [view viewWithTag:10086];
+    btn.hidden = YES;
+    label.hidden = NO;
+    icon.hidden = NO;
     
     if (section == _baseModel.mrows.count) {
         label.hidden = YES;
         icon.hidden = YES;
+            if (self.showType == showTheFormTypeMouKuai) {
+                btn.hidden = NO;
+                [btn addTarget:self action:@selector(uploadBiaoDan) forControlEvents:UIControlEventTouchUpInside];
+            }
         return view;
     }
-    label.hidden = NO;
-    icon.hidden = NO;
+
     LWTheFromMrows *model = _baseModel.mrows[section];
     label.text = model.sectiontitle;
-    
-
     icon.image = section == 0?kImage(@"jilu"):section == 1?kImage(@"bingqingkongzhi"):kImage(@"yongyao");
     return view;
+}
+
+- (void)uploadBiaoDan
+{
+    [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
+    [LWHttpRequestManager httpDoctorReply:self.patientId content:@"哮喘诊断判定表" contentType:21 voiceMin:0 success:^(LWSenderResBaseModel *senderResBaseModel) {
+        [LWProgressHUD closeProgressHUD:self.view];
+        [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_SENDERZHENGDUANMOKUAISUCC object:nil userInfo:@{@"message":senderResBaseModel}];
+        UIViewController *vc = self.navigationController.viewControllers[1];
+        [self.navigationController popToViewController:vc animated:YES];
+        
+    } failure:^(NSString *errorMes) {
+        [LWProgressHUD closeProgressHUD:self.view];
+        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+    }];
 }
 
 /*

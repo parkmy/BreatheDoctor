@@ -31,6 +31,7 @@
     [super addNavBar:@"回复时间"];
     [super addBackButton:@"nav_btnBack.png"];
     [super addRightButton:@"完成"];
+    self.navRightButton.hidden = !self.isChange;
     
 }
 
@@ -38,6 +39,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.navRightButton.hidden = YES;
+
     [self setUI];
     [self loadData];
 }
@@ -63,7 +66,6 @@
         }
         [self.tableView reloadData];
     } failure:^(NSString *errorMes) {
-        [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:errorMes];
     }];
 }
@@ -102,7 +104,6 @@
             [self.navigationController popViewControllerAnimated:YES];
         });
     } failure:^(NSString *errorMes) {
-        [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:errorMes];
     }];
     
@@ -142,7 +143,7 @@
 
     }else
     {
-        
+        [self saveSeting];
     }
 }
 #pragma mark - tableviewDelegate
@@ -186,16 +187,32 @@
         [self.navigationController pushViewController:vc animated:YES];
         
         [vc setBackBlock:^(NSMutableArray *weeks) {
-            for (NSString *mstr in [self weekArray:model.repeatWeek])
+            
+            if (weeks.count != [[self weekArray:model.repeatWeek] count]) {
+                self.isChange = YES;
+                self.navRightButton.hidden = NO;
+            }else
             {
-                for (NSString *astr in weeks)
+                NSMutableString *string = [[NSMutableString alloc] initWithString:@""];
+                for (NSString *mstr in weeks)
                 {
-                    if (![astr containsaString:mstr])
+                    [string appendString:mstr];
+                }
+                for (NSString *astr in [self weekArray:model.repeatWeek])
+                {
+                    if (![string containsaString:astr])
                     {
-                        self.isChange = YES;
+                        if (![astr isEqualToString:@""]) {
+                            self.isChange = YES;
+                            self.navRightButton.hidden = NO;
+                        }
+                        
                     }
                 }
+            
             }
+
+            
             NSMutableString *weekString = [[NSMutableString alloc] initWithString:@""];
             for (NSString *str in weeks)
             {
@@ -264,8 +281,9 @@
     [self.tableView setContentOffset:CGPointMake(0, indexPath.section*(90+15)) animated:YES];
     
     [vc setCompleteChooseBlock:^(NSString *string) {
-        if ([label.text isEqualToString:string]) {
+        if (![label.text isEqualToString:string]) {
             self.isChange = YES;
+            self.navRightButton.hidden = NO;
         }
         if (isStar) {
             model.startTime = string;

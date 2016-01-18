@@ -14,7 +14,7 @@
 #import "LWTheFormViewController.h"
 
 @interface LWPatientCententCtr ()
-
+@property (nonatomic, strong) LWPatientRecordsBaseModel *patientRecordsModel;
 @end
 
 @implementation LWPatientCententCtr
@@ -32,8 +32,26 @@
     // Do any additional setup after loading the view.
     
     setExtraCellLineHidden(self.tableView);
+    [self loadPatientRecords];
+    
 }
-
+- (void)loadPatientRecords
+{
+    if (!self.patientRecordsModel){
+        [LWProgressHUD displayProgressHUD:self.view displayText:@"加载中..."];
+    }
+    [LWHttpRequestManager httpPantientArchivesWithPantientID:self.patient.patientId success:^(LWPatientRecordsBaseModel *patientRecordsBaseModel) {
+//        [self.tableView.mj_header endRefreshing];
+        [LWProgressHUD closeProgressHUD:self.view];
+        self.patientRecordsModel = patientRecordsBaseModel;
+        [self.tableView reloadData];
+        
+    } failure:^(NSString *errorMes) {
+//        [self.tableView.mj_header endRefreshing];
+        [LWProgressHUD closeProgressHUD:self.view.window];
+        [LWProgressHUD showALAlertBannerWithView:self.view.window Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+    }];
+}
 #pragma mark -
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -45,7 +63,7 @@
     UITableViewCell *cell = nil;
     if (indexPath.row == 0) {
         LWPatientCenterCell *patientCenterCell = [tableView dequeueReusableCellWithIdentifier:@"LWPatientCenterCell" forIndexPath:indexPath];
-        [patientCenterCell setPatient:self.patient];
+        [patientCenterCell setPatientRecordsModel:self.patientRecordsModel];
         cell = patientCenterCell;
         
     }else

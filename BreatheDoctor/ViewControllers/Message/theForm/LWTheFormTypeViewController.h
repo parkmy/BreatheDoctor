@@ -9,5 +9,5 @@
 #import "LWBaseViewController.h"
 
 @interface LWTheFormTypeViewController : LWBaseViewController
-
+@property (nonatomic, copy) NSString *patientId;
 @end

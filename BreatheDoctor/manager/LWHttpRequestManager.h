@@ -131,4 +131,9 @@
                                          Success:(void (^)())success
                                 failure:(void (^)(NSString * errorMes))failure;
 
+#pragma mark 加载首次诊断表单信息
++ (void)httploadFirstDiagnosticInfowithdiagnosticId:(NSString *)diagnosticId
+                                            Success:(void (^)(NSMutableArray *models))success
+                                failure:(void (^)(NSString * errorMes))failure;
+
 @end

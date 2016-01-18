@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *typeWidth;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *patientDataLabels;
 
-@property (nonatomic, strong) LWPatientRows *patient;
+@property (nonatomic, strong) LWPatientRecordsBaseModel *patientRecordsModel;
+//@property (nonatomic, strong) LWPatientRows *patient;
 @end

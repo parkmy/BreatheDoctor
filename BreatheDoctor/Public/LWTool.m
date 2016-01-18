@@ -662,6 +662,13 @@
             content = [NSString stringWithFormat:@"记录时间:%@\nPEF值:%@L/min\nPEF水平:%@",model.insertDt,kNSNumDouble(model.pEFValue),model.pEFLevel];
         }
             break;
+        case WSChatMessageType_BiaoDan:
+        {
+            title = @"哮喘诊断判定表";
+            content = [NSString stringWithFormat:@"记录时间:%@",model.insertDt];
+        }
+            break;
+
         default:
             break;
     }

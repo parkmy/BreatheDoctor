@@ -34,12 +34,14 @@
     self.tableView.rowHeight = 65;
     self.tableView.backgroundColor = [UIColor whiteColor];
     setExtraCellLineHidden(self.tableView);
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 
 

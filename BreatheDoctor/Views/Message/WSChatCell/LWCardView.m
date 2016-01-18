@@ -56,7 +56,7 @@
         [_mBubbleView addSubview:lineView2];
         
         UILabel *xiangq = [[UILabel alloc] initWithFrame:CGRectZero];
-        xiangq.textColor = [UIColor blackColor];
+        xiangq.textColor = [LWThemeManager shareInstance].navBackgroundColor;
         xiangq.font = [UIFont systemFontOfSize:15];
         xiangq.text = @"详情";
         [_mBubbleView addSubview:xiangq];
@@ -65,6 +65,11 @@
         UIImageView *jiantou = [[UIImageView alloc] initWithFrame:CGRectZero];
         jiantou.image =  [UIImage imageNamed:@"yishengzhushou_14"];
         [_mBubbleView addSubview:jiantou];
+        
+        
+        _starImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
+        _starImageView.image = [UIImage imageNamed:@"weitianxie_"];
+        [_mBubbleView addSubview:_starImageView];
         
         
         _mBubbleView.sd_layout.leftSpaceToView(self,20).rightSpaceToView(self,20).topSpaceToView(self,40).bottomSpaceToView(self,10);
@@ -81,6 +86,8 @@
         
         jiantou.sd_layout.rightSpaceToView(_mBubbleView,10).bottomSpaceToView(_mBubbleView,10).widthIs(10).heightIs(13);
         
+        _starImageView.sd_layout.topSpaceToView(_mBubbleView,0).rightSpaceToView(_mBubbleView,0).widthIs(40).heightIs(40);
+        
     }
     
     return self;
@@ -92,6 +99,15 @@
     _modelFram = modelFram;
     
     LWChatModel *model  = _modelFram.model;
+    
+    
+    if (model.chatMessageType == 21) {
+        self.starImageView.image = model.isDispose == 1?kImage(@"yitianxie_"):kImage(@"weitianxie_");
+    }else
+    {
+        self.starImageView.image = model.isDispose == 0?kImage(@"weiwancheng_"):kImage(@"yiwanchen_");
+    }
+    
     NSDictionary *dic = [LWTool chatMessageCardModel:model];
     
     _titleLabel.text = dic[@"title"];

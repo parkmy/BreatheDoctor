@@ -79,6 +79,12 @@
 		7919B8BA1BFADC670058853F /* LWPatientRecordsBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919B8B31BFADC670058853F /* LWPatientRecordsBaseModel.m */; };
 		7919B8BB1BFADC670058853F /* LWPatientRecordsBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919B8B51BFADC670058853F /* LWPatientRecordsBody.m */; };
 		7919B8BD1BFADC670058853F /* LWPatientRecordsPatientArchives.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919B8B91BFADC670058853F /* LWPatientRecordsPatientArchives.m */; };
+		792736D11C48D2EB00D17C5B /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 792736CB1C48D2EB00D17C5B /* add@2x.png */; };
+		792736D21C48D2EB00D17C5B /* add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 792736CC1C48D2EB00D17C5B /* add@3x.png */; };
+		792736D31C48D2EB00D17C5B /* keyBoard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 792736CD1C48D2EB00D17C5B /* keyBoard@2x.png */; };
+		792736D41C48D2EB00D17C5B /* keyBoard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 792736CE1C48D2EB00D17C5B /* keyBoard@3x.png */; };
+		792736D51C48D2EB00D17C5B /* speaker@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 792736CF1C48D2EB00D17C5B /* speaker@2x.png */; };
+		792736D61C48D2EB00D17C5B /* speaker@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 792736D01C48D2EB00D17C5B /* speaker@3x.png */; };
 		7929ACA81C33AEBF002712EC /* LWTheFormTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7929ACA71C33AEBF002712EC /* LWTheFormTypeViewController.m */; };
 		7929ACB61C33B1F8002712EC /* LWChatMessageInputBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 7929ACAB1C33B1F8002712EC /* LWChatMessageInputBar.m */; };
 		7929ACB71C33B1F8002712EC /* LWChatMessageMoreCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7929ACAD1C33B1F8002712EC /* LWChatMessageMoreCollectionCell.m */; };
@@ -166,8 +172,6 @@
 		7945570C1C0BDA15005C0E10 /* left_blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556771C0BDA15005C0E10 /* left_blue@3x.png */; };
 		7945570D1C0BDA15005C0E10 /* p_q_b_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556791C0BDA15005C0E10 /* p_q_b_@2x.png */; };
 		7945570E1C0BDA15005C0E10 /* p_q_w_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945567A1C0BDA15005C0E10 /* p_q_w_@2x.png */; };
-		7945570F1C0BDA15005C0E10 /* package@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945567B1C0BDA15005C0E10 /* package@2x.png */; };
-		794557101C0BDA15005C0E10 /* package@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945567C1C0BDA15005C0E10 /* package@3x.png */; };
 		794557111C0BDA15005C0E10 /* packageDetail.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945567D1C0BDA15005C0E10 /* packageDetail.png */; };
 		794557121C0BDA15005C0E10 /* Patient_03-03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945567E1C0BDA15005C0E10 /* Patient_03-03@2x.png */; };
 		794557131C0BDA15005C0E10 /* Patient_03-04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945567F1C0BDA15005C0E10 /* Patient_03-04@2x.png */; };
@@ -185,7 +189,6 @@
 		7945571F1C0BDA15005C0E10 /* yisheng_4s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945568B1C0BDA15005C0E10 /* yisheng_4s@2x.png */; };
 		794557201C0BDA15005C0E10 /* yisheng_@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945568C1C0BDA15005C0E10 /* yisheng_@3x.png */; };
 		794557211C0BDA15005C0E10 /* yishengzhushousy_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945568D1C0BDA15005C0E10 /* yishengzhushousy_03@2x.png */; };
-		794557221C0BDA15005C0E10 /* yishengzhushousy_68.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945568E1C0BDA15005C0E10 /* yishengzhushousy_68.png */; };
 		794557231C0BDA15005C0E10 /* ysiheng_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945568F1C0BDA15005C0E10 /* ysiheng_03@2x.png */; };
 		794557241C0BDA15005C0E10 /* 120-120.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556911C0BDA15005C0E10 /* 120-120.png */; };
 		794557271C0BDA15005C0E10 /* newLoingNav_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556951C0BDA15005C0E10 /* newLoingNav_@2x.png */; };
@@ -616,6 +619,12 @@
 		7919B8B51BFADC670058853F /* LWPatientRecordsBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRecordsBody.m; sourceTree = "<group>"; };
 		7919B8B81BFADC670058853F /* LWPatientRecordsPatientArchives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRecordsPatientArchives.h; sourceTree = "<group>"; };
 		7919B8B91BFADC670058853F /* LWPatientRecordsPatientArchives.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRecordsPatientArchives.m; sourceTree = "<group>"; };
+		792736CB1C48D2EB00D17C5B /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
+		792736CC1C48D2EB00D17C5B /* add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@3x.png"; sourceTree = "<group>"; };
+		792736CD1C48D2EB00D17C5B /* keyBoard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyBoard@2x.png"; sourceTree = "<group>"; };
+		792736CE1C48D2EB00D17C5B /* keyBoard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyBoard@3x.png"; sourceTree = "<group>"; };
+		792736CF1C48D2EB00D17C5B /* speaker@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "speaker@2x.png"; sourceTree = "<group>"; };
+		792736D01C48D2EB00D17C5B /* speaker@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "speaker@3x.png"; sourceTree = "<group>"; };
 		7929ACA61C33AEBF002712EC /* LWTheFormTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTheFormTypeViewController.h; sourceTree = "<group>"; };
 		7929ACA71C33AEBF002712EC /* LWTheFormTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTheFormTypeViewController.m; sourceTree = "<group>"; };
 		7929ACAA1C33B1F8002712EC /* LWChatMessageInputBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatMessageInputBar.h; sourceTree = "<group>"; };
@@ -737,8 +746,6 @@
 		794556771C0BDA15005C0E10 /* left_blue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_blue@3x.png"; sourceTree = "<group>"; };
 		794556791C0BDA15005C0E10 /* p_q_b_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p_q_b_@2x.png"; sourceTree = "<group>"; };
 		7945567A1C0BDA15005C0E10 /* p_q_w_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p_q_w_@2x.png"; sourceTree = "<group>"; };
-		7945567B1C0BDA15005C0E10 /* package@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package@2x.png"; sourceTree = "<group>"; };
-		7945567C1C0BDA15005C0E10 /* package@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "package@3x.png"; sourceTree = "<group>"; };
 		7945567D1C0BDA15005C0E10 /* packageDetail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = packageDetail.png; sourceTree = "<group>"; };
 		7945567E1C0BDA15005C0E10 /* Patient_03-03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Patient_03-03@2x.png"; sourceTree = "<group>"; };
 		7945567F1C0BDA15005C0E10 /* Patient_03-04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Patient_03-04@2x.png"; sourceTree = "<group>"; };
@@ -756,7 +763,6 @@
 		7945568B1C0BDA15005C0E10 /* yisheng_4s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yisheng_4s@2x.png"; sourceTree = "<group>"; };
 		7945568C1C0BDA15005C0E10 /* yisheng_@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yisheng_@3x.png"; sourceTree = "<group>"; };
 		7945568D1C0BDA15005C0E10 /* yishengzhushousy_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yishengzhushousy_03@2x.png"; sourceTree = "<group>"; };
-		7945568E1C0BDA15005C0E10 /* yishengzhushousy_68.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = yishengzhushousy_68.png; sourceTree = "<group>"; };
 		7945568F1C0BDA15005C0E10 /* ysiheng_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ysiheng_03@2x.png"; sourceTree = "<group>"; };
 		794556911C0BDA15005C0E10 /* 120-120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "120-120.png"; sourceTree = "<group>"; };
 		794556951C0BDA15005C0E10 /* newLoingNav_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newLoingNav_@2x.png"; sourceTree = "<group>"; };
@@ -2000,8 +2006,6 @@
 				794556781C0BDA15005C0E10 /* newParientCenter */,
 				794556791C0BDA15005C0E10 /* p_q_b_@2x.png */,
 				7945567A1C0BDA15005C0E10 /* p_q_w_@2x.png */,
-				7945567B1C0BDA15005C0E10 /* package@2x.png */,
-				7945567C1C0BDA15005C0E10 /* package@3x.png */,
 				7945567D1C0BDA15005C0E10 /* packageDetail.png */,
 				7945567E1C0BDA15005C0E10 /* Patient_03-03@2x.png */,
 				7945567F1C0BDA15005C0E10 /* Patient_03-04@2x.png */,
@@ -2019,7 +2023,6 @@
 				7945568B1C0BDA15005C0E10 /* yisheng_4s@2x.png */,
 				7945568C1C0BDA15005C0E10 /* yisheng_@3x.png */,
 				7945568D1C0BDA15005C0E10 /* yishengzhushousy_03@2x.png */,
-				7945568E1C0BDA15005C0E10 /* yishengzhushousy_68.png */,
 				7945568F1C0BDA15005C0E10 /* ysiheng_03@2x.png */,
 			);
 			path = Patient;
@@ -2055,6 +2058,12 @@
 		7945569B1C0BDA15005C0E10 /* Question list */ = {
 			isa = PBXGroup;
 			children = (
+				792736CB1C48D2EB00D17C5B /* add@2x.png */,
+				792736CC1C48D2EB00D17C5B /* add@3x.png */,
+				792736CD1C48D2EB00D17C5B /* keyBoard@2x.png */,
+				792736CE1C48D2EB00D17C5B /* keyBoard@3x.png */,
+				792736CF1C48D2EB00D17C5B /* speaker@2x.png */,
+				792736D01C48D2EB00D17C5B /* speaker@3x.png */,
 				7945569C1C0BDA15005C0E10 /* kuaijiehuifu_@2x.png */,
 				7945569D1C0BDA15005C0E10 /* kuaijiehuifu_@3x.png */,
 				7945569E1C0BDA15005C0E10 /* patienHeadImage@2x.png */,
@@ -2911,21 +2920,21 @@
 				794557121C0BDA15005C0E10 /* Patient_03-03@2x.png in Resources */,
 				7969917D1C4498E400A3A2C6 /* bufenkongzhi@2x.png in Resources */,
 				79084E161C27945D0002BBF2 /* sendFail.png in Resources */,
-				7945570F1C0BDA15005C0E10 /* package@2x.png in Resources */,
 				79EA5D4E1C16705B001F0EE3 /* log_pg_1.png in Resources */,
 				7945572D1C0BDA15005C0E10 /* kuaijiehuifu_@2x.png in Resources */,
 				7969917F1C4498E400A3A2C6 /* weikongzhi@2x.png in Resources */,
 				797986A01C435350005052DF /* nanguo2@3x.png in Resources */,
 				796991661C448D9A00A3A2C6 /* 02_act_@3x.png in Resources */,
 				7979867F1C435350005052DF /* kuaijiehuifu@2x.png in Resources */,
+				792736D21C48D2EB00D17C5B /* add@3x.png in Resources */,
 				794557001C0BDA15005C0E10 /* tab_up_1@2x.png in Resources */,
 				797986931C435350005052DF /* biaodan2@3x.png in Resources */,
 				794557151C0BDA15005C0E10 /* right_blue@3x.png in Resources */,
+				792736D51C48D2EB00D17C5B /* speaker@2x.png in Resources */,
 				794556F91C0BDA15005C0E10 /* yishenHomePageSystem-4_@2x.png in Resources */,
 				794557231C0BDA15005C0E10 /* ysiheng_03@2x.png in Resources */,
 				794556EB1C0BDA15005C0E10 /* yishengzhushou_35@2x.png in Resources */,
 				79FEA4FE1C0EEAB7007418E9 /* jiankangzixun_62-08@2x.png in Resources */,
-				794557101C0BDA15005C0E10 /* package@3x.png in Resources */,
 				79EA5D4F1C16705B001F0EE3 /* log_pg_2.png in Resources */,
 				797986AA1C435350005052DF /* yongyao@3x.png in Resources */,
 				794556F71C0BDA15005C0E10 /* yishengzhushousy_70@3x.png in Resources */,
@@ -2937,7 +2946,6 @@
 				797986951C435350005052DF /* bingqing@3x.png in Resources */,
 				794557271C0BDA15005C0E10 /* newLoingNav_@2x.png in Resources */,
 				7979869F1C435350005052DF /* kuaijiehuifu@3x.png in Resources */,
-				794557221C0BDA15005C0E10 /* yishengzhushousy_68.png in Resources */,
 				794556DE1C0BDA15005C0E10 /* newPatient@2x.png in Resources */,
 				794557131C0BDA15005C0E10 /* Patient_03-04@2x.png in Resources */,
 				795E0A311C118C92001699DF /* Main.storyboard in Resources */,
@@ -2964,6 +2972,7 @@
 				797986991C435350005052DF /* duoxuan@3x.png in Resources */,
 				7945572E1C0BDA15005C0E10 /* kuaijiehuifu_@3x.png in Resources */,
 				794556F21C0BDA15005C0E10 /* yishengzhushousy_105-05@2x.png in Resources */,
+				792736D61C48D2EB00D17C5B /* speaker@3x.png in Resources */,
 				796991D51C44CF8200A3A2C6 /* chat_recive_press_pic@2x.png in Resources */,
 				797986A41C435350005052DF /* tianjia@3x.png in Resources */,
 				797986941C435350005052DF /* biaodan@3x.png in Resources */,
@@ -2978,6 +2987,7 @@
 				794556FA1C0BDA15005C0E10 /* tab_down_1@2x.png in Resources */,
 				794557051C0BDA15005C0E10 /* tab_up_3@3x.png in Resources */,
 				794556FC1C0BDA15005C0E10 /* tab_down_2@2x.png in Resources */,
+				792736D11C48D2EB00D17C5B /* add@2x.png in Resources */,
 				797986B01C435350005052DF /* zhengzhuang@3x.png in Resources */,
 				797986A81C435350005052DF /* xinhaoyou@3x.png in Resources */,
 				79FEA4FF1C0EEAB7007418E9 /* jiankangzixun_62-09@2x.png in Resources */,
@@ -2986,6 +2996,7 @@
 				797986861C435350005052DF /* wenjuan@2x.png in Resources */,
 				79FEA4FB1C0EEAB7007418E9 /* jiankangzixun_62-05@2x.png in Resources */,
 				794556EE1C0BDA15005C0E10 /* yishengzhushou_58@2x.png in Resources */,
+				792736D41C48D2EB00D17C5B /* keyBoard@3x.png in Resources */,
 				7969916F1C448DAB00A3A2C6 /* jiankangzixun_57@2x.png in Resources */,
 				7945574B1C0C261B005C0E10 /* YS-2_@2x.png in Resources */,
 				797986A51C435350005052DF /* tupian@3x.png in Resources */,
@@ -3011,6 +3022,7 @@
 				794556DF1C0BDA15005C0E10 /* newPatient@3x.png in Resources */,
 				7979867B1C435350005052DF /* huanzherizhi@2x.png in Resources */,
 				7945573C1C0BDA15005C0E10 /* weiwancheng_@2x.png in Resources */,
+				792736D31C48D2EB00D17C5B /* keyBoard@2x.png in Resources */,
 				794556FF1C0BDA15005C0E10 /* tab_down_3@3x.png in Resources */,
 				7945570D1C0BDA15005C0E10 /* p_q_b_@2x.png in Resources */,
 				79F75E8D1BF4253800AE75AB /* Localizable.strings in Resources */,

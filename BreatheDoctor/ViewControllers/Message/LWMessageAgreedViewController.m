@@ -13,8 +13,7 @@
 @interface LWMessageAgreedViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray *titleArray;
-
-
+@property (nonatomic, strong) LWPatientRecordsBaseModel *patientRecordsModel;
 @end
 
 @implementation LWMessageAgreedViewController
@@ -34,6 +33,27 @@
                         @"性        别",
                         @"身        高",
                         @"体        重"];
+    
+    [self loadPatientRecords];
+    
+}
+
+#pragma mark - void
+
+- (void)loadPatientRecords
+{
+    if (!self.patientRecordsModel){
+        [LWProgressHUD displayProgressHUD:self.view displayText:@"加载中..."];
+    }
+    [LWHttpRequestManager httpPantientArchivesWithPantientID:self.patientId success:^(LWPatientRecordsBaseModel *patientRecordsBaseModel) {
+        [LWProgressHUD closeProgressHUD:self.view];
+        self.patientRecordsModel = patientRecordsBaseModel;
+        [self.tableView reloadData];
+        
+    } failure:^(NSString *errorMes) {
+        [LWProgressHUD closeProgressHUD:self.view.window];
+        [LWProgressHUD showALAlertBannerWithView:self.view.window Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -91,22 +111,22 @@
         
         cell.textLabel.text = self.titleArray[indexPath.row];
         if (indexPath.row == 0) {
-            cell.detailTextLabel.text = @"lang";
+            cell.detailTextLabel.text = @"";
         }else if (indexPath.row == 1)
         {
-            cell.detailTextLabel.text = @"lang";
+            cell.detailTextLabel.text = @"";
             
         }else if (indexPath.row == 2)
         {
-            cell.detailTextLabel.text = @"lang";
+            cell.detailTextLabel.text = @"";
             
         }else if (indexPath.row == 3)
         {
-            cell.detailTextLabel.text = @"lang";
+            cell.detailTextLabel.text = @"";
 
         }else if (indexPath.row == 4)
         {
-            cell.detailTextLabel.text = @"lang";
+            cell.detailTextLabel.text = @"";
             line.sd_layout.leftSpaceToView(cell,0);
         }
         

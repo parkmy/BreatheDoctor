@@ -80,45 +80,44 @@
     CGFloat ww = w*2+margin;
     
     
-    for (int i = 0; i < _types.count; i++)
-    {
+    @autoreleasepool {
         
-        int b = i/3;
-        int a = i%3;
-        
-        LWTheFromRowArray *model = _types[i];
-        NSString *title = model.content;
-        LWTheFormTypeViewItm *btn = [[LWTheFormTypeViewItm alloc] initWithFrame:CGRectZero withType:self.showType];
-        btn.itmLabel.text = title;
-        [btn setCornerRadius:5.0f];
-        CGFloat width = [title sizeWithFont:[UIFont systemFontOfSize:14] constrainedToHeight:CGFLOAT_MAX].width + 20;
-        
-        btn.width = width > w?ww:w;
-        btn.xOrigin = a*(w + margin) + margin;
-        btn.yOrigin = b*(btnHigh + margin) + margin;
-        btn.height = btnHigh;
-    
-        [self addSubview:btn];
-
-        if (self.showType == showTheFormTypeBiaoDan) {
-            UIButton *itm = [UIButton buttonWithType:UIButtonTypeCustom];
-            [itm setImage:kImage(@"duoxuan") forState:UIControlStateNormal];
-            itm.backgroundColor = [UIColor clearColor];
-            [self addSubview:itm];
-            itm.frame = CGRectZero;
+        for (int i = 0; i < _types.count; i++)
+        {
             
-            itm.width = 20;
-            itm.height = 20;
-            itm.xOrigin = btn.maxX-10;
-            itm.yOrigin = btn.yOrigin-10;
+            int b = i/3;
+            int a = i%3;
+            
+            LWTheFromRowArray *model = _types[i];
+            NSString *title = model.content;
+            LWTheFormTypeViewItm *btn = [[LWTheFormTypeViewItm alloc] initWithFrame:CGRectZero withType:self.showType];
+            btn.itmLabel.text = title;
+            [btn setCornerRadius:5.0f];
+            CGFloat width = [title sizeWithFont:[UIFont systemFontOfSize:14] constrainedToHeight:CGFLOAT_MAX].width + 20;
+            
+            btn.width = width > w?ww:w;
+            btn.xOrigin = a*(w + margin) + margin;
+            btn.yOrigin = b*(btnHigh + margin) + margin;
+            btn.height = btnHigh;
+            
+            [self addSubview:btn];
+            
+            if (self.showType == showTheFormTypeBiaoDan) {
+                UIButton *itm = [UIButton buttonWithType:UIButtonTypeCustom];
+                [itm setImage:kImage(@"duoxuan") forState:UIControlStateNormal];
+                itm.backgroundColor = [UIColor clearColor];
+                [self addSubview:itm];
+                itm.frame = CGRectZero;
+                
+                itm.width = 20;
+                itm.height = 20;
+                itm.xOrigin = btn.maxX-10;
+                itm.yOrigin = btn.yOrigin-10;
+            }
+
         }
-
-        
-        
-        
-        
     }
-
+    
     
 }
 

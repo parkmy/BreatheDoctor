@@ -16,5 +16,7 @@
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UITextView *contentTexView;
 
+@property (nonatomic, strong) UIImageView *starImageView;
+
 @property (nonatomic, strong) UUMessageFrame *modelFram;
 @end

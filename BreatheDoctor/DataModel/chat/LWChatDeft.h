@@ -67,7 +67,10 @@ typedef NS_OPTIONS(NSInteger,WSChatMessageType)
      *  @brief  PEF记录通知
      */
     WSChatMessageType_PEFRecord  = 12,
-    
+    /**
+     *  @brief  初诊表单
+     */
+    WSChatMessageType_BiaoDan  = 21,
 };
 
 

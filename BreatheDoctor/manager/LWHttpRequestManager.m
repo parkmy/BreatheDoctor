@@ -300,6 +300,7 @@
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_PANTIENTARCHIVES] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",requestParams.JSONString);
         LWPatientRecordsBaseModel *model = [[LWPatientRecordsBaseModel alloc] initWithDictionary:responseObject];
         if (success){ success(model);}
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
@@ -355,6 +356,8 @@
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_DOCTORREPLY] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        
+        NSLog(@"%@",[responseObject JSONString]);
         LWSenderResBaseModel *senderResBaseModel = [[LWSenderResBaseModel alloc] initWithDictionary:responseObject];
         if ([senderResBaseModel.body.sid isEqualToString:@""] || !senderResBaseModel.body.sid) {
             if (failure) {
@@ -600,6 +603,22 @@
         failure?failure(errorMessage):nil;
     } isCache:NO];
     
+}
+
+#pragma mark 加载首次诊断表单信息
++ (void)httploadFirstDiagnosticInfowithdiagnosticId:(NSString *)diagnosticId
+                                            Success:(void (^)(NSMutableArray *models))success
+                                            failure:(void (^)(NSString * errorMes))failure
+{
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    [requestParams setObject:stringJudgeNull(diagnosticId) forKey:@"diagnosticId"];
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADFIRSTDIAGNOSTICINFO] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        success?success(nil):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];
 }
 
 @end

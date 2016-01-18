@@ -4,7 +4,7 @@
 //
 //  Created by weida on 15/8/19.
 //  Copyright (c) 2015年 weida. All rights reserved.
-//  https://github.com/weida-studio/QQ
+//  
 
 #import <UIKit/UIKit.h>
 
@@ -41,6 +41,10 @@ typedef NS_OPTIONS(NSInteger, EventChatCellType)
      *  @brief  语音播放事件
      */
     EventChatCellTypeVoicePlayEvent,
+    /**
+     *  @brief  发送表单
+     */
+    EventChatCellTypeSenderBiaoDan,
 };
 
 #define kModelKey      (@"model")

@@ -76,6 +76,7 @@
     if (indexPath.row == 0) {
         LWTheFormViewController *vc = (LWTheFormViewController *)[UIViewController CreateControllerWithTag:CtrlTag_TheForm];
         vc.showType = showTheFormTypeMouKuai;
+        vc.patientId = self.patientId;
         [self.navigationController pushViewController:vc animated:YES];
     }
     

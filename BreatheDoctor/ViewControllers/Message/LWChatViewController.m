@@ -26,6 +26,8 @@
 #import "NSDate+Extension.h"
 #import "LWPatientLogViewController.h"
 #import "MJPhotoBrowser.h"
+#import "LWTheFormTypeViewController.h"
+#import "LWTheFormViewController.h"
 
 #define kBkColorTableView    ([UIColor colorWithRed:0.773 green:0.855 blue:0.824 alpha:1])
 
@@ -131,6 +133,15 @@ typedef NS_ENUM(NSInteger , SenderType) {
                                              selector:@selector(appNotificationss:)
                                                  name:UIApplicationDidBecomeActiveNotification object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(senderZhenduanMokuai:) name:APP_PUSH_TYPE_SENDERZHENGDUANMOKUAISUCC object:nil];
+    
+    
+    
+}
+- (void)senderZhenduanMokuai:(NSNotification *)sender
+{
+     LWSenderResBaseModel *model = (LWSenderResBaseModel *)sender.userInfo[@"message"];
+    [self addSenderModel:model];
 }
 - (void)appNotificationss:(NSNotification *)sender
 {
@@ -307,6 +318,11 @@ typedef NS_ENUM(NSInteger , SenderType) {
         case EventChatCellTypeVoicePlayEvent:
             NSLog(@"播放。。。。");
             [[LWVoiceManager shareInstance] playVoiceWithModel:model withCell:[userInfo objectForKey:@"self"]];
+            break;
+        case EventChatCellTypeSenderBiaoDan:
+            
+            [self senderJsAliYunType:21 WithDic:nil withContent:nil withVocMain:0];
+
             break;
         default:
             break;
@@ -595,6 +611,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
     
     chatModel.contentType = cType;
     chatModel.content = cont;
+    chatModel.chatMessageType = model.body.msgType;
     
     if (model.body.ownerType == 1) {
         chatModel.ownerType = NO;
@@ -608,7 +625,11 @@ typedef NS_ENUM(NSInteger , SenderType) {
     }else if (chatModel.contentType == 2)//图片
     {
         chatModel.chatCellType = WSChatCellType_Image;
-    }else//语音
+    }else if (chatModel.contentType == 21)
+    {
+        chatModel.chatCellType = WSChatCellType_Card;
+    }
+    else//语音
     {
         chatModel.chatCellType = WSChatCellType_Audio;
     }
@@ -637,7 +658,11 @@ typedef NS_ENUM(NSInteger , SenderType) {
     
     if (type == 1) { //文字
         content = cont;
-    }else
+    }else if (type == 21)
+    {
+        
+    }
+    else
     {
         NSArray *body = dic[@"body"];
         if (body.count <= 0) {
@@ -711,7 +736,9 @@ typedef NS_ENUM(NSInteger , SenderType) {
             break;
         case 3://biaodan
         {
-            UIViewController *vc = [UIViewController CreateControllerWithTag:CtrlTag_TheFormType];
+            
+            LWTheFormTypeViewController *vc = (LWTheFormTypeViewController *)[UIViewController CreateControllerWithTag:CtrlTag_TheFormType];
+            vc.patientId = self.patient.memberId;
             [self.navigationController pushViewController:vc animated:YES];
 
         }
@@ -778,6 +805,14 @@ typedef NS_ENUM(NSInteger , SenderType) {
             patientLog.patientName = self.patient.patientName;
             patientLog.intDate = model.insertDt;
             [self.navigationController pushViewController:patientLog animated:YES];
+        }
+            break;
+        case WSChatMessageType_BiaoDan: //完成哮喘评估
+        {
+            LWTheFormViewController *vc = (LWTheFormViewController *)[UIViewController CreateControllerWithTag:CtrlTag_TheForm];
+            vc.foreignId = model.foreignId;
+            vc.showType = model.isDispose == 0?showTheFormTypeMouKuaiNoSucc:showTheFormTypeBiaoDan;
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         default:
