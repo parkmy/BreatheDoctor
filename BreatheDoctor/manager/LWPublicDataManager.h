@@ -34,4 +34,10 @@ NSString * stringJudgeNull(NSString *string);
 //隐藏多余的tableview 分割线
 void setExtraCellLineHidden(UITableView *tableView);
 
+//添加患者
++ (void)AcceptButtonEventClick:(LWMainRows *)row
+                       success:(void(^)())success
+                       failure:(void(^)(NSString *errorMes))failure;
+
+
 @end

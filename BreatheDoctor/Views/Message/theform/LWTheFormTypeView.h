@@ -7,11 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef NS_ENUM(NSInteger ,showTheFormType) {
-    showTheFormTypeBiaoDan = 0, //表单
-    showTheFormTypeMouKuai , //模块
-    showTheFormTypeMouKuaiNoSucc ,//未完成
-};
+
 @class LWTheFormTypeView;
 
 @interface LWTheFormTypeViewItm : UIView

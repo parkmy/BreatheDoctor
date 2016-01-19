@@ -181,5 +181,15 @@ static NSString * APP_UPDATEPATIENT_SUCC    = @"APP_UPDATEPATIENT_SUCC";
 
 
 
+typedef NS_ENUM(NSInteger ,showTheFormType) {
+    showTheFormTypeBiaoDan = 0, //表单
+    showTheFormTypeMouKuai , //模块
+    showTheFormTypeMouKuaiNoSucc ,//未完成
+    showTheFormTypeMouKuaiSucc ,//完成
+
+};
+
+
+
 #endif
 

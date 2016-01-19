@@ -105,7 +105,7 @@
         self.starImageView.image = model.isDispose == 1?kImage(@"yitianxie_"):kImage(@"weitianxie_");
     }else
     {
-        self.starImageView.image = model.isDispose == 0?kImage(@"weiwancheng_"):kImage(@"yiwanchen_");
+        self.starImageView.image = model.isDispose == 0?kImage(@""):kImage(@"");
     }
     
     NSDictionary *dic = [LWTool chatMessageCardModel:model];

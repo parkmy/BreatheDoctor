@@ -12,9 +12,12 @@
 #import "LWHttpDefine.h"
 #import "YRJSONAdapter.h"
 #import "CODataCacheManager.h"
-#import "LWChatModel.h"
+
 #import "NSDate+Extension.h"
 #import "KSCache.h"
+
+#import "LWChatModel.h"
+#import "LWPatientBiaoDanBody.h"
 
 @implementation LWHttpRequestManager
 
@@ -43,7 +46,7 @@
         [requestParams setObject:pushTokenKey forKey:@"pushTokenKey"];
     }
     [requestParams setObject:[OpenUDID value] forKey:@"dev"]; //udid
-    NSString *systemVersionStr=[NSString stringWithFormat:@"%0.2f",[[[UIDevice currentDevice] systemVersion] floatValue]];
+    NSString *systemVersionStr=[NSString stringWithFormat:@"%0.2f",systemVersion];
     [requestParams setObject:systemVersionStr forKey:@"sys"];
     [requestParams setObject:@"ios" forKey:@"dev_type"];
     [requestParams setObject:[NSString appVersion] forKey:@"ver"];
@@ -300,7 +303,7 @@
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_PANTIENTARCHIVES] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
-        NSLog(@"%@",requestParams.JSONString);
+        NSLog(@"%@",[responseObject JSONString]);
         LWPatientRecordsBaseModel *model = [[LWPatientRecordsBaseModel alloc] initWithDictionary:responseObject];
         if (success){ success(model);}
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
@@ -607,18 +610,55 @@
 
 #pragma mark 加载首次诊断表单信息
 + (void)httploadFirstDiagnosticInfowithdiagnosticId:(NSString *)diagnosticId
-                                            Success:(void (^)(NSMutableArray *models))success
+                                            Success:(void (^)(LWPatientBiaoDanBody *model))success
                                             failure:(void (^)(NSString * errorMes))failure
 {
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
-    [requestParams setObject:stringJudgeNull(diagnosticId) forKey:@"diagnosticId"];
+        [requestParams setObject:stringJudgeNull(diagnosticId) forKey:@"diagnosticId"];
+
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADFIRSTDIAGNOSTICINFO] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSDictionary *body = [responseObject objectForKey:res_body];
+        LWPatientBiaoDanBody *model = [[LWPatientBiaoDanBody alloc] initWithDictionary:body];
         NSLog(@"%@",[responseObject JSONString]);
-        success?success(nil):nil;
+        success?success(model):nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
-    } isCache:NO];
+    } isCache:YES];
+}
+#pragma mark 加载表单日志信息
++ (void)httploadPatientFirstDiagnosticList:(NSString *)patientId
+                                   Success:(void (^)(NSMutableArray *models))success
+                                   failure:(void (^)(NSString * errorMes))failure{
+
+
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    
+    [requestParams setObject:stringJudgeNull(patientId) forKey:@"patientId"];
+    
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADPATIENTFIRSTDIAGNOSTICLIST] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        
+        NSLog(@"%@",[responseObject JSONString]);
+
+        NSArray *body = [responseObject objectForKey:res_body];
+        NSMutableArray *array = [NSMutableArray array];
+        
+        for (NSDictionary *dic in body)
+        {
+            LWPatientBiaoDanBody *model = [[LWPatientBiaoDanBody alloc] initWithDictionary:dic];
+            [array addObject:model];
+        }
+        
+        success?success(array):nil;        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:YES];
+
+
+
+
+
 }
 
 @end

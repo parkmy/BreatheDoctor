@@ -8,6 +8,7 @@
 
 #import "LWNewFriendsViewController.h"
 #import "LWMessageTakeCell.h"
+#import "LWMessageAgreedViewController.h"
 
 @interface LWNewFriendsViewController ()<LWMessageTakeCellDelegate>
 
@@ -74,8 +75,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    LWMainRows *message = self.requsetArray[indexPath.row];
-    [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_PatientAgreed] animated:YES];
+    LWMainRows *message = self.requsetArray[indexPath.row];
+    LWMessageAgreedViewController *vc = (LWMessageAgreedViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientAgreed];
+    vc.patientModel = message;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    [vc setAddPatientSuccBlock:^{
+        _addSuccBlock?_addSuccBlock():nil;
+        [self.requsetArray removeObject:message];
+        [self.tableView reloadData];
+    }];
     
 }
 #pragma mark 滑动表格删除行
@@ -105,19 +114,14 @@
 #pragma mark -LWMessageTakeCellDelegate
 - (void)tapAcceptButtonEventWith:(LWMainRows *)row
 {
-    [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
-    [LWHttpRequestManager httpagreeAttentionWithPatientId:row.memberId sid:row.sid Success:^{
-        [LWProgressHUD closeProgressHUD:self.view];
-        
-        [[LKDBHelper getUsingLKDBHelper] deleteToDB:row];
-        
+    [LWPublicDataManager AcceptButtonEventClick:row success:^{
         _addSuccBlock?_addSuccBlock():nil;
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:APP_ADDPATIENT_SUCC object:nil];
+        [self.requsetArray removeObject:row];
+        [self.tableView reloadData];
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD closeProgressHUD:self.view];
         [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
+    
 }
 
 

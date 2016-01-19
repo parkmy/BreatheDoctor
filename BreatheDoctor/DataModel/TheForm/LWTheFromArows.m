@@ -37,7 +37,8 @@ NSString *const kLWTheFromArowsRowArray = @"rowArray";
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
-            self.title = [self objectOrNilForKey:kLWTheFromArowsTitle fromDictionary:dict];
+        self.title = [self objectOrNilForKey:kLWTheFromArowsTitle fromDictionary:dict];
+        self.isMulti = [[self objectOrNilForKey:@"multi" fromDictionary:dict] boolValue];
     NSObject *receivedLWTheFromRowArray = [dict objectForKey:kLWTheFromArowsRowArray];
     NSMutableArray *parsedLWTheFromRowArray = [NSMutableArray array];
     if ([receivedLWTheFromRowArray isKindOfClass:[NSArray class]]) {

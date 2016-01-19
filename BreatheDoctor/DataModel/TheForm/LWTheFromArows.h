@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSArray *rowArray;
+@property (nonatomic, assign) BOOL  isMulti;
+
 
 @property (nonatomic, assign) CGFloat rowHight;
 

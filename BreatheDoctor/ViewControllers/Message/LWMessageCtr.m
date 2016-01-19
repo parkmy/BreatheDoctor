@@ -14,6 +14,8 @@
 #import "NSDate+Extension.h"
 #import "LWNewFriendsViewController.h"
 
+#define NEWTYPE 110
+
 @interface LWMessageCtr ()<LWMessageTakeCellDelegate>
 @property (nonatomic, strong) NSMutableArray *messageArray;
 @property (nonatomic, copy) NSString *refreshTime;
@@ -126,21 +128,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    
-    
     LWMainRows *message = self.messageArray[indexPath.row];
     
-//    if (message.msgType != 2) {
-        LWMessageCell *messageCell = [tableView dequeueReusableCellWithIdentifier:@"LWMessageCell" forIndexPath:indexPath];
+    LWMessageCell *messageCell = [tableView dequeueReusableCellWithIdentifier:@"LWMessageCell" forIndexPath:indexPath];
         
-        [messageCell setMessage:message];
-    
-//    }else
-//    {
-//        LWMessageTakeCell *messageTakeCell = [tableView dequeueReusableCellWithIdentifier:@"LWMessageTakeCell" forIndexPath:indexPath];
-//        messageTakeCell.delegate = self;
-//        [messageTakeCell setMessage:message];
-//        cell = messageTakeCell;
-//    }
+    [messageCell setMessage:message];
+
     return messageCell;
 }
 
@@ -149,7 +142,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     LWMainRows *message = self.messageArray[indexPath.row];
     
-    if (message.msgType == 110) {
+    if (message.msgType == NEWTYPE) {
         LWNewFriendsViewController *newFirends = (LWNewFriendsViewController *)[UIViewController CreateControllerWithTag:CtrlTag_newFriends];
         newFirends.requsetArray = self.requestMessageArray;
         [self.navigationController pushViewController:newFirends animated:YES];
@@ -198,7 +191,7 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LWMainRows *message = self.messageArray[indexPath.row];
-    if (message.msgType == 110) {
+    if (message.msgType == NEWTYPE) {
         
         NSInteger value = [self.navigationController.tabBarItem.badgeValue integerValue]-self.requestMessageArray.count;
         if (value <= 0) {
@@ -245,7 +238,7 @@
     {
         if (row.msgType == 2) { //请求消息
             [self.requestMessageArray addObject:row];
-        }else if (row.msgType == 110) //新朋友
+        }else if (row.msgType == NEWTYPE) //新朋友
         {
             requestModel = row;
             [array1 addObject:row];
@@ -270,7 +263,7 @@
             model.patientName = @"新朋友";
             model.count = self.requestMessageArray.count;
             model.memberId = @"requestmessage";
-            model.msgType = 110;
+            model.msgType = NEWTYPE;
             [array1 addObject:model];
             
             NSInteger count = [[LKDBHelper getUsingLKDBHelper] rowCount:[LWMainRows class] where:wheres];
@@ -360,7 +353,6 @@
     {
         self.navigationController.tabBarItem.badgeValue=[NSString stringWithFormat:@"%@",kNSNumInteger(value)];
     }
-    
 }
 #pragma mark - nav
 - (void)navRightButtonAction

@@ -83,7 +83,10 @@ static  NSString *HTTP_POST_LOADDOCTORSERVERTIM     = @"mobile/doctor/loadDoctor
 // *-- 提交医生服务时间
 static  NSString *HTTP_POST_SUBMITDOCTORSERVERTIME  = @"mobile/doctor/submitDoctorServerTime.do";
 
-// *-- 加载首次诊断表单信息
-static  NSString *HTTP_POST_LOADFIRSTDIAGNOSTICINFO = @"mobile/doctor/loadFirstDiagnosticInfo.do";
+// *-- 加载诊断表单详细信息
+static  NSString *HTTP_POST_LOADFIRSTDIAGNOSTICINFO = @"mobile/patient/loadFirstDiagnosticInfo.do";
+
+// *-- 加载表单日至信息
+static  NSString *HTTP_POST_LOADPATIENTFIRSTDIAGNOSTICLIST = @"mobile/patient/loadPatientFirstDiagnosticList.do";
 
 #endif /* LWHttpDefine_h */

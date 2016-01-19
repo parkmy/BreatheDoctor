@@ -12,7 +12,7 @@
 @interface LWTheFormView : UIView
 
 @property (nonatomic, copy)  NSString *title;
-
+@property (nonatomic, assign) BOOL isMulti;
 - (void)setTypes:(NSMutableArray *)array andShowType:(showTheFormType)type;
 
 @end

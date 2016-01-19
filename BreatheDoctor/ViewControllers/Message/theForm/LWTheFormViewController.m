@@ -24,6 +24,7 @@
 #import "LWTheFormViewController.h"
 #import "YRJSONAdapter.h"
 #import "UIResponder+Router.h"
+#import "LWTool.h"
 
 @interface LWTheFormViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -48,15 +49,24 @@
 
 - (void)loadData
 {
-    if (self.showType == showTheFormTypeMouKuaiNoSucc) {
-        [LWHttpRequestManager httploadFirstDiagnosticInfowithdiagnosticId:self.foreignId Success:^(NSMutableArray *models) {
-            
+    if (self.showType == showTheFormTypeMouKuaiSucc) {
+        [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
+        [LWHttpRequestManager httploadFirstDiagnosticInfowithdiagnosticId:self.foreignId Success:^(LWPatientBiaoDanBody *model) {
+            [LWProgressHUD closeProgressHUD:self.view];
+            self.baseModel = [LWTool BiaoDanDataFenXiModel:model];
+            [self baseModelgetrowHight];
+            [self.tableView reloadData];
         } failure:^(NSString *errorMes) {
-            
+            [LWProgressHUD closeProgressHUD:self.view];
         }];
-    }else
+    }else if (self.showType == showTheFormTypeMouKuai || self.showType == showTheFormTypeMouKuaiNoSucc)
     {
         [self setData];
+    }else
+    {
+        self.baseModel = [LWTool BiaoDanDataFenXiModel:self.model];
+        [self baseModelgetrowHight];
+        [self.tableView reloadData];
     }
 }
 
@@ -65,7 +75,14 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"LWVisitList" ofType:@"plist"];
     NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
     _baseModel = [[LWTheFromBaseModel alloc] initWithDictionary:dic];
+    [self baseModelgetrowHight];
     
+    
+//    NSLog(@"%@",[dic JSONString]);
+}
+
+- (void)baseModelgetrowHight
+{
     for (LWTheFromMrows *mMrow in _baseModel.mrows) {
         
         for (LWTheFromArows *arow in mMrow.arows) {
@@ -84,9 +101,9 @@
         }
         
     }
-    
-//    NSLog(@"%@",[dic JSONString]);
+
 }
+
 - (void)setUI
 {
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64) style:UITableViewStyleGrouped];
@@ -142,7 +159,9 @@
     
         LWTheFormCell *theFormCell = [tableView dequeueReusableCellWithIdentifier:@"LWTheFormCell" forIndexPath:indexPath];
         LWTheFromMrows *model = _baseModel.mrows[indexPath.section];
-        [theFormCell setModel:model.arows[indexPath.row] withType:self.showType];
+        LWTheFromArows *aModel = model.arows[indexPath.row];
+        [theFormCell setModel:aModel withType:self.showType];
+        [theFormCell setIsMulti:aModel.isMulti];
         cell = theFormCell;
     }
     return cell;
@@ -155,7 +174,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return section == _baseModel.mrows.count?60:40;
+    if (self.showType == showTheFormTypeMouKuai) {
+        return section == _baseModel.mrows.count?60:40;
+    }
+    return section == _baseModel.mrows.count?.1:40;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {

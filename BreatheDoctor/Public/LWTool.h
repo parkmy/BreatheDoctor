@@ -38,6 +38,7 @@
 //卡片类型对话消息处理
 + (NSDictionary *)chatMessageCardModel:(LWChatModel *)model;
 
-
+//表单数据分析
++ (LWTheFromBaseModel *)BiaoDanDataFenXiModel:(LWPatientBiaoDanBody *)model;
 
 @end

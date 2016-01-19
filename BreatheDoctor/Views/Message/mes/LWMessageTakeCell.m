@@ -15,6 +15,8 @@
     // Initialization code
     [self.userIcon setCornerRadius:5.0f];
     
+    self.refuseLabel.hidden = YES;
+    
     self.acceptButton.layer.borderColor = [UIColor colorWithHexString:@"#9cc75e"].CGColor;
     self.acceptButton.layer.borderWidth = .8;
     [self.acceptButton setCornerRadius:5.f];

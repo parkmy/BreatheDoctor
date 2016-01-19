@@ -26,7 +26,6 @@ PODS:
   - SDWebImage (3.7.4):
     - SDWebImage/Core (= 3.7.4)
   - SDWebImage/Core (3.7.4)
-  - ZMWImagePicker (1.0.6)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
@@ -34,7 +33,6 @@ DEPENDENCIES:
   - MJRefresh
   - OpenUDID
   - SDWebImage
-  - ZMWImagePicker
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
@@ -42,6 +40,5 @@ SPEC CHECKSUMS:
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
-  ZMWImagePicker: 84434379e74243350634aea0455b60f435056156
 
 COCOAPODS: 0.39.0

@@ -12,4 +12,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *leftbutton;
 @property (weak, nonatomic) IBOutlet UIButton *rightButton;
 
+@property (nonatomic, copy) void(^TongYiBlock)();
+@property (nonatomic, copy) void(^JuJueBlock)();
+
 @end

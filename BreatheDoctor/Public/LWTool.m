@@ -12,6 +12,7 @@
 #import "LWPatientListModel.h"
 #import "LWACTAssessmentModel.h"
 #import "UUMessageFrame.h"
+#import "LWTheFromBaseModel.h"
 
 @implementation LWTool
 //控制等级 1 未确认 2 已控制 3 部分控制 4 未控制
@@ -20,7 +21,7 @@
     NSString *title = nil;
     UIColor *color = nil;
     NSString *bgImageNmae = nil;
-
+    
     if (controLevel == 1) {
         title = @"未确认";
         color = RGBA(203, 203, 203, 1);
@@ -30,25 +31,25 @@
         color = RGBA(119, 204, 78, 1);
         title = @"完全控制";
         bgImageNmae = @"wanquankongzhi";
-
+        
     }else if (controLevel == 3)
     {
         title = @"部分控制";
         color = RGBA(251, 186, 94, 1);
         bgImageNmae = @"bufenkongzhi";
-
+        
     }else if (controLevel == 4)
     {
         title = @"未控制";
         color = RGBA(248, 140, 143, 1);
         bgImageNmae = @"weikongzhi";
-
+        
     }else
     {
         title = @"";
         color = [UIColor clearColor];
         bgImageNmae = @"weiqueren";
-
+        
     }
     
     CGSize size = [title sizeWithFont:[UIFont systemFontOfSize:13] constrainedToHeight:20];
@@ -67,7 +68,7 @@
         
     }
     traint.constant = size.width+20;
-
+    
 }
 
 
@@ -322,7 +323,7 @@
             return result;
         }else
         {
-    
+            
             LWChatModel *model1 = obj1;
             LWChatModel *model2 = obj2;
             
@@ -508,7 +509,7 @@
         UILabel *label = [[self class] createLabelWithBackgroundColor:RGBA(0, 0, 0, .3) withText:@"夜间憋醒"];
         [array addObject:label];
     }
-        
+    
     return array;
     
 }
@@ -563,7 +564,7 @@
             }
             assessmentModel.content = content;
             [array addObject:assessmentModel];
-        }        
+        }
     }
     
     
@@ -583,18 +584,18 @@
 + (NSDictionary *)patientPEFDateLineSx:(NSString *)date
 {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-
+    
     if (!date) { //如果没有日期就默认当前日期
         NSString *star = [NSDate stringWithDate:[NSDate dateAfterDate:[NSDate date] day:-6] format:[NSDate ymdFormat]];
         NSString *end = [NSDate stringWithDate:[NSDate date] format:[NSDate ymdFormat]];
         [dic setObject:star forKey:@"star"];
         [dic setObject:end forKey:@"end"];
-
+        
     }else //有日期 进行分析
     {
         NSDate *xsDate = [NSDate dateWithString:date format:[NSDate ymdHmsFormat]];
         NSInteger count = [NSDate daysAgo:xsDate];//传入日期和当前时间相差多少天
-        NSInteger wek = count/6;//相差多少周
+        NSInteger wek = count/7;//相差多少周
         //算出存在那一周的最后日期 也就是那周的结尾日期
         NSString *end = [NSDate stringWithDate:[NSDate dateAfterDate:[NSDate date] day:(-(wek*7))] format:[NSDate ymdFormat]];
         //根据结尾日期算出开始日期
@@ -608,7 +609,7 @@
 
 + (NSDictionary *)chatMessageCardModel:(LWChatModel *)model
 {
-        
+    
     NSString *title = @"";
     NSString *content = @"";
     
@@ -668,13 +669,114 @@
             content = [NSString stringWithFormat:@"记录时间:%@",model.insertDt];
         }
             break;
-
+            
         default:
             break;
     }
     
     return @{@"title":title,@"content":content};
     
+}
+
+//表单数据分析
++ (LWTheFromBaseModel *)BiaoDanDataFenXiModel:(LWPatientBiaoDanBody *)model
+{
+    
+    //    symptom 症状
+    //    cause  诱因
+    //    day_symptoms  日间症状
+    //    night_symptoms 夜间症状
+    //    activity 活动受限
+    //    acute 急性发作
+    //    urgent_medicine 使用应急缓解药物
+    //    make_medicine 是否服用以下药物
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"LWVisitList" ofType:@"plist"];
+    NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
+    LWTheFromBaseModel *theFromModel = [[LWTheFromBaseModel alloc] initWithDictionary:dic];
+        // 外3数组[ 区头 ， 数组[标题， 是否多选 ，数组[ID 标题] ] ]
+
+    NSArray *symptoms           = [[self class] stringBayArrayWithString:model.symptom];
+    NSArray *cause              = [[self class] stringBayArrayWithString:model.cause];
+    NSArray *day_symptoms       = [[self class] stringBayArrayWithString:model.daySymptoms];
+    NSArray *night_symptoms     = [[self class] stringBayArrayWithString:model.nightSymptoms];
+    NSArray *activity           = [[self class] stringBayArrayWithString:model.activity];
+    NSArray *acute              = [[self class] stringBayArrayWithString:model.acute];
+    NSArray *urgent_medicine    = [[self class] stringBayArrayWithString:model.urgentMedicine];
+    NSArray *make_medicine      = [[self class] stringBayArrayWithString:model.makeMedicine];
+    
+    for (int i = 0; i < theFromModel.mrows.count; i++)
+    {
+        LWTheFromMrows *mModel = theFromModel.mrows[i];
+        
+        for (int a = 0; a < mModel.arows.count; a++)
+        {
+            LWTheFromArows *aModel = mModel.arows[a];
+            
+            NSMutableArray *array = [NSMutableArray array];
+            
+            for (LWTheFromRowArray *row in aModel.rowArray)
+            {
+                if (i == 0 && a == 0)
+                {
+                    [[self class] forAreDataArray:symptoms addArray:array row:row];
+                    
+                }else if (i == 0 && a == 1)
+                {
+                    [[self class] forAreDataArray:cause addArray:array row:row];
+                }else if (i == 1 && a == 0)
+                {
+                    [[self class] forAreDataArray:day_symptoms addArray:array row:row];
+
+                }else if (i == 1 && a == 1)
+                {
+                    [[self class] forAreDataArray:night_symptoms addArray:array row:row];
+                    
+                }else if (i == 1 && a == 2)
+                {
+                    [[self class] forAreDataArray:activity addArray:array row:row];
+                    
+                }else if (i == 1 && a == 3)
+                {
+                    [[self class] forAreDataArray:acute addArray:array row:row];
+                    
+                }else if (i == 2 && a == 0)
+                {
+                    [[self class] forAreDataArray:urgent_medicine addArray:array row:row];
+                    
+                }else if (i == 2 && a == 1)
+                {
+                    [[self class] forAreDataArray:make_medicine addArray:array row:row];
+                    
+                }
+            }
+            
+            aModel.rowArray = array; //替换
+        }
+    }
+
+    
+    return theFromModel;//返回
+    
+    
+}
+// 包含的添加进去
++ (void)forAreDataArray:(NSArray *)array addArray:(NSMutableArray *)addArray row:(LWTheFromRowArray  *)row
+{
+    for (NSString *mid in array)
+    {
+        if ([mid isEqualToString:row.mid])
+        {
+            [addArray addObject:row];
+        }
+        
+    }
+}
+
+
++ (NSArray *)stringBayArrayWithString:(NSString *)string
+{
+    return [stringJudgeNull(string) componentsSeparatedByString:@"|"];
 }
 
 

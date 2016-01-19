@@ -44,4 +44,22 @@ void setExtraCellLineHidden(UITableView *tableView)
     [tableView setTableFooterView:view];
 }
 
+
++ (void)AcceptButtonEventClick:(LWMainRows *)row
+                       success:(void(^)())success
+                       failure:(void(^)(NSString *errorMes))failure
+{
+    [LWProgressHUD displayProgressHUD:nil displayText:@"请稍后..."];
+    [LWHttpRequestManager httpagreeAttentionWithPatientId:row.memberId sid:row.sid Success:^{
+        [LWProgressHUD closeProgressHUD:nil];
+        
+        [[LKDBHelper getUsingLKDBHelper] deleteToDB:row];
+        success?success():nil;
+        [[NSNotificationCenter defaultCenter] postNotificationName:APP_ADDPATIENT_SUCC object:nil];
+    } failure:^(NSString *errorMes) {
+        [LWProgressHUD closeProgressHUD:nil];
+        failure?failure(errorMes):nil;
+    }];
+}
+
 @end

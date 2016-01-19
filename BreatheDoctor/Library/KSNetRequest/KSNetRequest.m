@@ -117,6 +117,7 @@
         }
         else
         {
+            NSLog(@"%@",responseObject);
             failure?failure(task,[KSNetRequest failureMes:responseObject[res_msg]]):nil;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

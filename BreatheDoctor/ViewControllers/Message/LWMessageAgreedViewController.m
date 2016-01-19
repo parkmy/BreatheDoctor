@@ -9,6 +9,7 @@
 #import "LWMessageAgreedViewController.h"
 #import "LWMessageAgreedCell.h"
 #import "LWAgreedHeadCell.h"
+#import <UIButton+WebCache.h>
 
 @interface LWMessageAgreedViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -45,7 +46,7 @@
     if (!self.patientRecordsModel){
         [LWProgressHUD displayProgressHUD:self.view displayText:@"加载中..."];
     }
-    [LWHttpRequestManager httpPantientArchivesWithPantientID:self.patientId success:^(LWPatientRecordsBaseModel *patientRecordsBaseModel) {
+    [LWHttpRequestManager httpPantientArchivesWithPantientID:self.patientModel.memberId success:^(LWPatientRecordsBaseModel *patientRecordsBaseModel) {
         [LWProgressHUD closeProgressHUD:self.view];
         self.patientRecordsModel = patientRecordsBaseModel;
         [self.tableView reloadData];
@@ -85,10 +86,23 @@
     
     if (indexPath.section == 0) {
         LWAgreedHeadCell *agreedHeadCell = [tableView dequeueReusableCellWithIdentifier:@"LWAgreedHeadCell" forIndexPath:indexPath];
+        [agreedHeadCell.headButton sd_setImageWithURL:[NSURL URLWithString:stringJudgeNull(self.patientRecordsModel.body.patientArchives.headImgUrl)] forState:UIControlStateNormal];
+        agreedHeadCell.patientNameLabel.text = stringJudgeNull(self.patientRecordsModel.body.patientArchives.patientName);
         cell = agreedHeadCell;
     }else if (indexPath.section == 2)
     {
         LWMessageAgreedCell *agreedButtonCell = [tableView dequeueReusableCellWithIdentifier:@"LWMessageAgreedCell" forIndexPath:indexPath];
+        [agreedButtonCell setTongYiBlock:^{
+            [LWPublicDataManager AcceptButtonEventClick:self.patientModel success:^{
+                _addPatientSuccBlock?_addPatientSuccBlock():nil;
+                [self.navigationController popViewControllerAnimated:YES];
+            } failure:^(NSString *errorMes) {
+                [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+            }];
+        }];
+        [agreedButtonCell setJuJueBlock:^{
+            
+        }];
         cell = agreedButtonCell;
     }else
     {
@@ -111,22 +125,22 @@
         
         cell.textLabel.text = self.titleArray[indexPath.row];
         if (indexPath.row == 0) {
-            cell.detailTextLabel.text = @"";
+            cell.detailTextLabel.text = stringJudgeNull(self.patientRecordsModel.body.patientArchives.patientName);
         }else if (indexPath.row == 1)
         {
-            cell.detailTextLabel.text = @"";
+            cell.detailTextLabel.text = stringJudgeNull(self.patientRecordsModel.body.patientArchives.birthday);;
             
         }else if (indexPath.row == 2)
         {
-            cell.detailTextLabel.text = @"";
+            cell.detailTextLabel.text = self.patientRecordsModel.body.patientArchives.sex == 1?@"男":@"女";
             
         }else if (indexPath.row == 3)
         {
-            cell.detailTextLabel.text = @"";
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@cm",kNSString(kNSNumDouble(self.patientRecordsModel.body.patientArchives.height))];
 
         }else if (indexPath.row == 4)
         {
-            cell.detailTextLabel.text = @"";
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@cm",kNSString(kNSNumDouble(self.patientRecordsModel.body.patientArchives.weight))];
             line.sd_layout.leftSpaceToView(cell,0);
         }
         

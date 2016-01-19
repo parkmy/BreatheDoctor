@@ -11,6 +11,6 @@
 
 @interface LWTheFormCell : UITableViewCell
 @property (nonatomic, strong) LWTheFormView *theFormView;
-
+@property (nonatomic, assign) BOOL isMulti;
 - (void)setModel:(LWTheFromArows *)model withType:(showTheFormType)type;
 @end

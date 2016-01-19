@@ -8,6 +8,8 @@
 			<key>arows</key>
 			<array>
 				<dict>
+					<key>multi</key>
+					<true/>
 					<key>title</key>
 					<string>是否有以下症状</string>
 					<key>rowArray</key>
@@ -45,6 +47,8 @@
 					</array>
 				</dict>
 				<dict>
+					<key>multi</key>
+					<true/>
 					<key>title</key>
 					<string>症状诱因</string>
 					<key>rowArray</key>
@@ -109,21 +113,29 @@
 			<key>arows</key>
 			<array>
 				<dict>
+					<key>multi</key>
+					<false/>
 					<key>title</key>
 					<string>日间症状</string>
 					<key>rowArray</key>
 					<array>
 						<dict>
 							<key>content</key>
-							<string>小于2天/周</string>
+							<string>无</string>
 							<key>mid</key>
 							<string>1</string>
 						</dict>
 						<dict>
 							<key>content</key>
-							<string>大于2天/周</string>
+							<string>小于2天/周</string>
 							<key>mid</key>
 							<string>2</string>
+						</dict>
+						<dict>
+							<key>content</key>
+							<string>大于2天/周</string>
+							<key>mid</key>
+							<string>3</string>
 						</dict>
 						<dict>
 							<key>content</key>
@@ -140,6 +152,8 @@
 					</array>
 				</dict>
 				<dict>
+					<key>multi</key>
+					<false/>
 					<key>title</key>
 					<string>夜间症状／憋醒</string>
 					<key>rowArray</key>
@@ -148,29 +162,31 @@
 							<key>content</key>
 							<string>无</string>
 							<key>mid</key>
-							<string>0</string>
+							<string>1</string>
 						</dict>
 						<dict>
 							<key>content</key>
 							<string>1~2次/月</string>
 							<key>mid</key>
-							<string>1</string>
+							<string>2</string>
 						</dict>
 						<dict>
 							<key>content</key>
 							<string>3~4次/月</string>
 							<key>mid</key>
-							<string>2</string>
+							<string>3</string>
 						</dict>
 						<dict>
 							<key>content</key>
 							<string>经常出现,通常每晚均有症状</string>
 							<key>mid</key>
-							<string>3</string>
+							<string>4</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
+					<key>multi</key>
+					<false/>
 					<key>title</key>
 					<string>活动受限</string>
 					<key>rowArray</key>
@@ -179,29 +195,31 @@
 							<key>content</key>
 							<string>无</string>
 							<key>mid</key>
-							<string>0</string>
+							<string>1</string>
 						</dict>
 						<dict>
 							<key>content</key>
 							<string>轻微受限</string>
 							<key>mid</key>
-							<string>1</string>
+							<string>2</string>
 						</dict>
 						<dict>
 							<key>content</key>
 							<string>部分受限</string>
 							<key>mid</key>
-							<string>2</string>
+							<string>3</string>
 						</dict>
 						<dict>
 							<key>content</key>
 							<string>严重受限</string>
 							<key>mid</key>
-							<string>3</string>
+							<string>4</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
+					<key>multi</key>
+					<false/>
 					<key>title</key>
 					<string>急性发作</string>
 					<key>rowArray</key>
@@ -210,13 +228,13 @@
 							<key>content</key>
 							<string>无</string>
 							<key>mid</key>
-							<string>0</string>
+							<string>1</string>
 						</dict>
 						<dict>
 							<key>content</key>
 							<string>有</string>
 							<key>mid</key>
-							<string>1</string>
+							<string>2</string>
 						</dict>
 					</array>
 				</dict>
@@ -228,37 +246,41 @@
 			<key>arows</key>
 			<array>
 				<dict>
+					<key>multi</key>
+					<false/>
 					<key>title</key>
 					<string>使用应急缓解药物</string>
 					<key>rowArray</key>
 					<array>
 						<dict>
 							<key>content</key>
-							<string>小于2天/周</string>
+							<string>无</string>
 							<key>mid</key>
 							<string>1</string>
 						</dict>
 						<dict>
 							<key>content</key>
-							<string>大于2天/周</string>
+							<string>小于2天/周</string>
 							<key>mid</key>
 							<string>2</string>
 						</dict>
 						<dict>
 							<key>content</key>
-							<string>每天使用</string>
+							<string>大于2天/周</string>
 							<key>mid</key>
 							<string>3</string>
 						</dict>
 						<dict>
 							<key>content</key>
-							<string>其他</string>
+							<string>每天使用</string>
 							<key>mid</key>
-							<string>5</string>
+							<string>4</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
+					<key>multi</key>
+					<true/>
 					<key>title</key>
 					<string>是否服用以下药物</string>
 					<key>rowArray</key>
@@ -286,6 +308,12 @@
 							<string>孟鲁司特</string>
 							<key>mid</key>
 							<string>4</string>
+						</dict>
+						<dict>
+							<key>content</key>
+							<string>其他</string>
+							<key>mid</key>
+							<string>5</string>
 						</dict>
 					</array>
 				</dict>

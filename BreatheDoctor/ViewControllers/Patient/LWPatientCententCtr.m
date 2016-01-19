@@ -12,6 +12,7 @@
 #import "LWPatientRemarksCtr.h"
 #import "LWPatientLogViewController.h"
 #import "LWTheFormViewController.h"
+#import "LWTheFormTypeViewController.h"
 
 @interface LWPatientCententCtr ()
 @property (nonatomic, strong) LWPatientRecordsBaseModel *patientRecordsModel;
@@ -41,13 +42,13 @@
         [LWProgressHUD displayProgressHUD:self.view displayText:@"加载中..."];
     }
     [LWHttpRequestManager httpPantientArchivesWithPantientID:self.patient.patientId success:^(LWPatientRecordsBaseModel *patientRecordsBaseModel) {
-//        [self.tableView.mj_header endRefreshing];
+        //        [self.tableView.mj_header endRefreshing];
         [LWProgressHUD closeProgressHUD:self.view];
         self.patientRecordsModel = patientRecordsBaseModel;
         [self.tableView reloadData];
         
     } failure:^(NSString *errorMes) {
-//        [self.tableView.mj_header endRefreshing];
+        //        [self.tableView.mj_header endRefreshing];
         [LWProgressHUD closeProgressHUD:self.view.window];
         [LWProgressHUD showALAlertBannerWithView:self.view.window Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
@@ -98,30 +99,35 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.row == 1)
-    {
-        LWTheFormViewController *vc = (LWTheFormViewController *)[UIViewController CreateControllerWithTag:CtrlTag_TheForm];
+    {        
+        LWTheFormTypeViewController *vc = (LWTheFormTypeViewController *)[UIViewController CreateControllerWithTag:CtrlTag_TheFormType];
+        vc.patientId = self.patient.patientId;
         vc.showType = showTheFormTypeBiaoDan;
         [self.navigationController pushViewController:vc animated:YES];
+        
+//        LWTheFormViewController *vc = (LWTheFormViewController *)[UIViewController CreateControllerWithTag:CtrlTag_TheForm];
+//        vc.showType = showTheFormTypeBiaoDan;
+//        [self.navigationController pushViewController:vc animated:YES];
     }else if (indexPath.row == 0){
         
         LWPatientRemarksCtr *patientRemarks = (LWPatientRemarksCtr *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRemarks];
         [patientRemarks setPatient:self.patient];
-
+        
         [self.navigationController pushViewController:patientRemarks animated:YES];
     }else if (indexPath.row == 2)
     {
-
+        
         
         [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_PatientRelated] animated:YES];
         
-
+        
         
     }else if (indexPath.row == 3)
     {
-                LWPatientLogViewController *patientLog = (LWPatientLogViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];
-                patientLog.patientId = self.patient.patientId;
-                patientLog.patientName = self.patient.patientName;
-                [self.navigationController pushViewController:patientLog animated:YES];
+        LWPatientLogViewController *patientLog = (LWPatientLogViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];
+        patientLog.patientId = self.patient.patientId;
+        patientLog.patientName = self.patient.patientName;
+        [self.navigationController pushViewController:patientLog animated:YES];
     }
 }
 
@@ -141,13 +147,13 @@
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

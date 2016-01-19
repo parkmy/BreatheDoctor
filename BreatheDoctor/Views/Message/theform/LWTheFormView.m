@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) LWTheFormTypeView  *typesView;
-
+@property (nonatomic, strong) UILabel *starLabel;
 @end
 
 @implementation LWTheFormView
@@ -26,9 +26,11 @@
         
         [self addSubview:self.typesView];
         
-        self.titleLabel.sd_layout.leftSpaceToView(self,10).rightSpaceToView(self,0).topSpaceToView(self,15).heightIs(20);
-        self.typesView.sd_layout.leftSpaceToView(self,0).topSpaceToView(self.titleLabel,5).rightSpaceToView(self,0).bottomSpaceToView(self,5);
+        [self addSubview:self.starLabel];
         
+        self.titleLabel.sd_layout.leftSpaceToView(self,10).widthIs(100).topSpaceToView(self,15).heightIs(20);
+        self.typesView.sd_layout.leftSpaceToView(self,0).topSpaceToView(self.titleLabel,5).rightSpaceToView(self,0).bottomSpaceToView(self,5);
+        self.starLabel.sd_layout.leftSpaceToView(self.titleLabel,10).topSpaceToView(self,15).widthIs(45).heightIs(20);
         
     }
     return self;
@@ -50,11 +52,35 @@
     }
     return _titleLabel;
 }
+- (UILabel *)starLabel
+{
+    if (!_starLabel) {
+        _starLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _starLabel.font = [UIFont systemFontOfSize:13];
+        _starLabel.textAlignment = 1;
 
+    }
+    return _starLabel;
+}
 - (void)setTitle:(NSString *)title
 {
     _title = title;
     self.titleLabel.text = stringJudgeNull(_title);
+    CGFloat w = [self.titleLabel.text sizeWithFont:self.titleLabel.font constrainedToHeight:20].width + 10;
+    self.titleLabel.sd_layout.widthIs(w);
+}
+
+- (void)setIsMulti:(BOOL)isMulti
+{
+    _isMulti = isMulti;
+    
+    self.starLabel.text = _isMulti?@"多选":@"单选";
+    [self.starLabel setCornerRadius:5.0f];
+    self.starLabel.layer.borderWidth = .5;
+    self.starLabel.layer.borderColor = _isMulti?[UIColor colorWithHexString:@"#ff3333"].CGColor:[UIColor colorWithHexString:@"#fcb53a"].CGColor;
+    self.starLabel.textColor = [UIColor colorWithCGColor:self.starLabel.layer.borderColor];
+
+    
 }
 
 - (void)setTypes:(NSMutableArray *)array andShowType:(showTheFormType)type

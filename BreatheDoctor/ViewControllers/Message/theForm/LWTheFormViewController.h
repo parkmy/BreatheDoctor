@@ -8,9 +8,12 @@
 
 #import "BaseViewController.h"
 #import "LWTheFormCell.h"
+#import "LWPatientBiaoDanBody.h"
 
 @interface LWTheFormViewController : BaseViewController
 @property (nonatomic, assign) showTheFormType showType;
 @property (nonatomic,   copy) NSString *foreignId;
 @property (nonatomic, copy) NSString *patientId;
+@property (nonatomic, strong) LWPatientBiaoDanBody *model;
+
 @end

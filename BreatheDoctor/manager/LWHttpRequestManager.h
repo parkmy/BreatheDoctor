@@ -131,9 +131,13 @@
                                          Success:(void (^)())success
                                 failure:(void (^)(NSString * errorMes))failure;
 
-#pragma mark 加载首次诊断表单信息
+#pragma mark 加载表单详细信息
 + (void)httploadFirstDiagnosticInfowithdiagnosticId:(NSString *)diagnosticId
-                                            Success:(void (^)(NSMutableArray *models))success
+                                            Success:(void (^)(LWPatientBiaoDanBody *model))success
                                 failure:(void (^)(NSString * errorMes))failure;
+#pragma mark 加载表单日志信息
++ (void)httploadPatientFirstDiagnosticList:(NSString *)patientId
+                                   Success:(void (^)(NSMutableArray *models))success
+                                   failure:(void (^)(NSString * errorMes))failure;
 
 @end

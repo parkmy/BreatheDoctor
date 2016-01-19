@@ -9,5 +9,7 @@
 #import "LWBaseViewController.h"
 
 @interface LWMessageAgreedViewController : LWBaseViewController
-@property (nonatomic, copy) NSString *patientId;
+@property (nonatomic, strong) LWMainRows *patientModel;
+
+@property (nonatomic, copy) void(^addPatientSuccBlock)();
 @end

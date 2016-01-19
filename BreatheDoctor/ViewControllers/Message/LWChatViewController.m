@@ -706,7 +706,6 @@ typedef NS_ENUM(NSInteger , SenderType) {
 - (void)voicEndRecord:(NSData *)voiceData count:(NSInteger)cout
 {
     [self httpUpLoadData:voiceData withType:3 withVocMain:cout];
-
 }
 
 - (void)moreButtonEventClick:(NSInteger)tag
@@ -739,6 +738,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
             
             LWTheFormTypeViewController *vc = (LWTheFormTypeViewController *)[UIViewController CreateControllerWithTag:CtrlTag_TheFormType];
             vc.patientId = self.patient.memberId;
+            vc.showType = showTheFormTypeMouKuai;
             [self.navigationController pushViewController:vc animated:YES];
 
         }
@@ -761,7 +761,6 @@ typedef NS_ENUM(NSInteger , SenderType) {
 #pragma mark - LWChatViewControllerDataSourceDelegate
 - (void)didSelectRowAtIndexPath:(LWChatModel *)model
 {
-    
     [self.inputBar removeFromMoreView];
     
     switch (model.chatMessageType) {
@@ -807,11 +806,11 @@ typedef NS_ENUM(NSInteger , SenderType) {
             [self.navigationController pushViewController:patientLog animated:YES];
         }
             break;
-        case WSChatMessageType_BiaoDan: //完成哮喘评估
+        case WSChatMessageType_BiaoDan: //表单
         {
             LWTheFormViewController *vc = (LWTheFormViewController *)[UIViewController CreateControllerWithTag:CtrlTag_TheForm];
             vc.foreignId = model.foreignId;
-            vc.showType = model.isDispose == 0?showTheFormTypeMouKuaiNoSucc:showTheFormTypeBiaoDan;
+            vc.showType = model.isDispose == 0?showTheFormTypeMouKuaiNoSucc:showTheFormTypeMouKuaiSucc;
             [self.navigationController pushViewController:vc animated:YES];
         }
             break;

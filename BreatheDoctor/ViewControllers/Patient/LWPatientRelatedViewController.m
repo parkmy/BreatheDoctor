@@ -8,10 +8,10 @@
 
 #import "LWPatientRelatedViewController.h"
 #import "LWPatientRelatedView.h"
-#import <DNImagePickerController.h>
-#import <DNAsset.h>
+#import "ZZPhotoKit.h"
+#import "ALActionSheetView.h"
 
-@interface LWPatientRelatedViewController ()<LWPatientRelatedViewDelegate,DNImagePickerControllerDelegate>
+@interface LWPatientRelatedViewController ()<LWPatientRelatedViewDelegate>
 @property (nonatomic, strong) UIView *saveView;
 @property (nonatomic, strong) UIScrollView *mScrollView;
 
@@ -74,7 +74,6 @@
     
     _mScrollView.contentHeight = 115*2+h+15*2+60+10;
     
-    
 
 }
 
@@ -116,9 +115,42 @@
 {
     if (indexPath.row == self.relatedImages.count)
     {
-        DNImagePickerController *imagePicker = [[DNImagePickerController alloc] init];
-        imagePicker.imagePickerDelegate = self;
-        [self presentViewController:imagePicker animated:YES completion:nil];
+        
+        ALActionSheetView *view = [[ALActionSheetView alloc] initWithTitle:@"上传图片" cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@[@"相册",@"相机"] handler:^(ALActionSheetView *actionSheetView, NSInteger buttonIndex) {
+            
+            if (buttonIndex == 0) {
+                
+                ZZPhotoController *photoController = [[ZZPhotoController alloc]init];
+                photoController.selectPhotoOfMax = 9;
+                
+                [photoController showIn:self result:^(id responseObject){
+                    
+                    NSArray *array = (NSArray *)responseObject;
+                    [self.relatedImages addObjectsFromArray:array];
+                    [self.patientRelatedView3 setImages:self.relatedImages];
+                    
+                }];
+
+                
+            }else if (buttonIndex == 1)
+            {
+                ZZCameraController *cameraController = [[ZZCameraController alloc]init];
+                cameraController.takePhotoOfMax = 9;
+                [cameraController showIn:self result:^(id responseObject){
+                    
+                    NSArray *array = (NSArray *)responseObject;
+                    [self.relatedImages addObjectsFromArray:array];
+                    [self.patientRelatedView3 setImages:self.relatedImages];
+                }];
+
+            }
+            
+        }];
+        
+        [view show];
+//        DNImagePickerController *imagePicker = [[DNImagePickerController alloc] init];
+//        imagePicker.imagePickerDelegate = self;
+//        [self presentViewController:imagePicker animated:YES completion:nil];
     }
 
 }
@@ -126,38 +158,6 @@
 {
     [self.relatedImages removeObject:image];
     [collectionView reloadData];
-}
-
-#pragma mark -DNImagePickerControllerDelegate----返回的代理。
--(void)dnImagePickerController:(DNImagePickerController *)imagePickerController sendImages:(NSArray *)imageAssets isFullImage:(BOOL)fullImage imageArray:(NSArray *)imageArray {
-    
-//    for (DNAsset *dnasset in imageAssets)
-//    {
-//        if (self.mimageAssets.count > 0) {
-//            for (NSInteger i = self.mimageAssets.count; i == 0; i--) {
-//                DNAsset *Asset = self.mimageAssets[i];
-//                if ([dnasset isEqualToAsset:Asset]) {
-//                    [self.mimageAssets removeObject:Asset];
-//                }
-//            }
-//        }
-//    }
-//    [self.mimageAssets addObjectsFromArray:imageAssets];
-    
-    [self.relatedImages removeAllObjects];
-    [self.relatedImages addObjectsFromArray:imageArray];
-//    for (DNAsset *dnasset in self.mimageAssets) {
-//        UIImage *image = [UIImage imageWithCGImage:dnasset.asset.thumbnail];
-//        [self.relatedImages addObject:image];
-//    }
-
-    [self.patientRelatedView3 setImages:self.relatedImages];
-    
-}
-
--(void)dnImagePickerControllerDidCancel:(DNImagePickerController *)imagePicker { [imagePicker dismissViewControllerAnimated:YES completion:^{
-    
-}];
 }
 
 #pragma mark -nav

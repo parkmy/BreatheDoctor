@@ -7,6 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		790243711C4DEB470010B1D9 /* ZZBrowserPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243401C4DEB470010B1D9 /* ZZBrowserPickerViewController.m */; };
+		790243721C4DEB470010B1D9 /* ZZCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243421C4DEB470010B1D9 /* ZZCameraController.m */; };
+		790243731C4DEB470010B1D9 /* ZZCameraPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243441C4DEB470010B1D9 /* ZZCameraPickerViewController.m */; };
+		790243741C4DEB470010B1D9 /* ZZPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243461C4DEB470010B1D9 /* ZZPhotoController.m */; };
+		790243751C4DEB470010B1D9 /* ZZPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243481C4DEB470010B1D9 /* ZZPhotoListViewController.m */; };
+		790243761C4DEB470010B1D9 /* ZZPhotoPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7902434A1C4DEB470010B1D9 /* ZZPhotoPickerViewController.m */; };
+		790243771C4DEB470010B1D9 /* UIImageHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 7902434E1C4DEB470010B1D9 /* UIImageHandle.m */; };
+		790243781C4DEB470010B1D9 /* ZZBrowerAnimate.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243501C4DEB470010B1D9 /* ZZBrowerAnimate.m */; };
+		790243791C4DEB470010B1D9 /* ZZPhotoDatas.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243521C4DEB470010B1D9 /* ZZPhotoDatas.m */; };
+		7902437A1C4DEB470010B1D9 /* camera_focus_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 790243551C4DEB470010B1D9 /* camera_focus_pic.png */; };
+		7902437B1C4DEB470010B1D9 /* change_camera_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 790243561C4DEB470010B1D9 /* change_camera_pic.png */; };
+		7902437C1C4DEB470010B1D9 /* flash_close_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 790243571C4DEB470010B1D9 /* flash_close_pic.png */; };
+		7902437D1C4DEB470010B1D9 /* flash_open_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 790243581C4DEB470010B1D9 /* flash_open_pic.png */; };
+		7902437E1C4DEB470010B1D9 /* no_data.png in Resources */ = {isa = PBXBuildFile; fileRef = 790243591C4DEB470010B1D9 /* no_data.png */; };
+		7902437F1C4DEB470010B1D9 /* photo_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 7902435A1C4DEB470010B1D9 /* photo_add.png */; };
+		790243801C4DEB470010B1D9 /* remove_btn_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 7902435B1C4DEB470010B1D9 /* remove_btn_pic.png */; };
+		790243811C4DEB470010B1D9 /* select_no.png in Resources */ = {isa = PBXBuildFile; fileRef = 7902435C1C4DEB470010B1D9 /* select_no.png */; };
+		790243831C4DEB470010B1D9 /* take_photo_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 7902435E1C4DEB470010B1D9 /* take_photo_pic.png */; };
+		790243841C4DEB470010B1D9 /* take_photo_pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7902435F1C4DEB470010B1D9 /* take_photo_pic@2x.png */; };
+		790243851C4DEB470010B1D9 /* trash_btn_pic.png in Resources */ = {isa = PBXBuildFile; fileRef = 790243601C4DEB470010B1D9 /* trash_btn_pic.png */; };
+		790243861C4DEB470010B1D9 /* zz_alumb_rightCell.png in Resources */ = {isa = PBXBuildFile; fileRef = 790243611C4DEB470010B1D9 /* zz_alumb_rightCell.png */; };
+		790243871C4DEB470010B1D9 /* ZZBrowserPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243641C4DEB470010B1D9 /* ZZBrowserPickerCell.m */; };
+		790243881C4DEB470010B1D9 /* ZZCameraFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243661C4DEB470010B1D9 /* ZZCameraFocusView.m */; };
+		790243891C4DEB470010B1D9 /* ZZCameraPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243681C4DEB470010B1D9 /* ZZCameraPickerCell.m */; };
+		7902438A1C4DEB470010B1D9 /* ZZPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 7902436A1C4DEB470010B1D9 /* ZZPageControl.m */; };
+		7902438B1C4DEB470010B1D9 /* ZZPhotoHud.m in Sources */ = {isa = PBXBuildFile; fileRef = 7902436C1C4DEB470010B1D9 /* ZZPhotoHud.m */; };
+		7902438C1C4DEB470010B1D9 /* ZZPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7902436E1C4DEB470010B1D9 /* ZZPhotoListCell.m */; };
+		7902438D1C4DEB470010B1D9 /* ZZPhotoPickerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243701C4DEB470010B1D9 /* ZZPhotoPickerCell.m */; };
+		790243901C4DEC2E0010B1D9 /* ALActionSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7902438F1C4DEC2E0010B1D9 /* ALActionSheetView.m */; };
+		790243931C4E0D810010B1D9 /* select_yes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 790243911C4E0D810010B1D9 /* select_yes@2x.png */; };
+		790243941C4E0D810010B1D9 /* select_yes@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 790243921C4E0D810010B1D9 /* select_yes@3x.png */; };
 		790515701BFDB16E001D5F33 /* LWSenderResBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7905156D1BFDB16E001D5F33 /* LWSenderResBaseModel.m */; };
 		790515711BFDB16E001D5F33 /* LWSenderResBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7905156F1BFDB16E001D5F33 /* LWSenderResBody.m */; };
 		79084E121C2792060002BBF2 /* LWChatLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79084E111C2792060002BBF2 /* LWChatLoadingView.m */; };
@@ -261,6 +292,7 @@
 		7955C2961C03F705003D6836 /* NSObject+LKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7955C28B1C03F705003D6836 /* NSObject+LKModel.m */; };
 		7955C2981C03F95F003D6836 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7955C2971C03F95F003D6836 /* libsqlite3.tbd */; };
 		7955C29B1C044BB4003D6836 /* LWACTModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7955C29A1C044BB4003D6836 /* LWACTModel.m */; };
+		7955DC081C4CDCAA00314221 /* LWPatientBiaoDanBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7955DC071C4CDCAA00314221 /* LWPatientBiaoDanBody.m */; };
 		795964901C06E2BC001C18D8 /* LWMedicationLogCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7959648F1C06E2BC001C18D8 /* LWMedicationLogCountCell.m */; };
 		795964931C06E2D8001C18D8 /* LWMedicationLogHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 795964921C06E2D8001C18D8 /* LWMedicationLogHeadCell.m */; };
 		795964961C06E2EC001C18D8 /* LWMedicationLogTimerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 795964951C06E2EC001C18D8 /* LWMedicationLogTimerCell.m */; };
@@ -478,6 +510,56 @@
 
 /* Begin PBXFileReference section */
 		43FB9645AE7A12FB4874D22F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		7902433F1C4DEB470010B1D9 /* ZZBrowserPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowserPickerViewController.h; sourceTree = "<group>"; };
+		790243401C4DEB470010B1D9 /* ZZBrowserPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowserPickerViewController.m; sourceTree = "<group>"; };
+		790243411C4DEB470010B1D9 /* ZZCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraController.h; sourceTree = "<group>"; };
+		790243421C4DEB470010B1D9 /* ZZCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraController.m; sourceTree = "<group>"; };
+		790243431C4DEB470010B1D9 /* ZZCameraPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraPickerViewController.h; sourceTree = "<group>"; };
+		790243441C4DEB470010B1D9 /* ZZCameraPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraPickerViewController.m; sourceTree = "<group>"; };
+		790243451C4DEB470010B1D9 /* ZZPhotoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoController.h; sourceTree = "<group>"; };
+		790243461C4DEB470010B1D9 /* ZZPhotoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoController.m; sourceTree = "<group>"; };
+		790243471C4DEB470010B1D9 /* ZZPhotoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoListViewController.h; sourceTree = "<group>"; };
+		790243481C4DEB470010B1D9 /* ZZPhotoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoListViewController.m; sourceTree = "<group>"; };
+		790243491C4DEB470010B1D9 /* ZZPhotoPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoPickerViewController.h; sourceTree = "<group>"; };
+		7902434A1C4DEB470010B1D9 /* ZZPhotoPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoPickerViewController.m; sourceTree = "<group>"; };
+		7902434C1C4DEB470010B1D9 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		7902434D1C4DEB470010B1D9 /* UIImageHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIImageHandle.h; sourceTree = "<group>"; };
+		7902434E1C4DEB470010B1D9 /* UIImageHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageHandle.m; sourceTree = "<group>"; };
+		7902434F1C4DEB470010B1D9 /* ZZBrowerAnimate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowerAnimate.h; sourceTree = "<group>"; };
+		790243501C4DEB470010B1D9 /* ZZBrowerAnimate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowerAnimate.m; sourceTree = "<group>"; };
+		790243511C4DEB470010B1D9 /* ZZPhotoDatas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoDatas.h; sourceTree = "<group>"; };
+		790243521C4DEB470010B1D9 /* ZZPhotoDatas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoDatas.m; sourceTree = "<group>"; };
+		790243531C4DEB470010B1D9 /* ZZPhotoKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoKit.h; sourceTree = "<group>"; };
+		790243551C4DEB470010B1D9 /* camera_focus_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_focus_pic.png; sourceTree = "<group>"; };
+		790243561C4DEB470010B1D9 /* change_camera_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = change_camera_pic.png; sourceTree = "<group>"; };
+		790243571C4DEB470010B1D9 /* flash_close_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flash_close_pic.png; sourceTree = "<group>"; };
+		790243581C4DEB470010B1D9 /* flash_open_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flash_open_pic.png; sourceTree = "<group>"; };
+		790243591C4DEB470010B1D9 /* no_data.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_data.png; sourceTree = "<group>"; };
+		7902435A1C4DEB470010B1D9 /* photo_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photo_add.png; sourceTree = "<group>"; };
+		7902435B1C4DEB470010B1D9 /* remove_btn_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove_btn_pic.png; sourceTree = "<group>"; };
+		7902435C1C4DEB470010B1D9 /* select_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_no.png; sourceTree = "<group>"; };
+		7902435E1C4DEB470010B1D9 /* take_photo_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = take_photo_pic.png; sourceTree = "<group>"; };
+		7902435F1C4DEB470010B1D9 /* take_photo_pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "take_photo_pic@2x.png"; sourceTree = "<group>"; };
+		790243601C4DEB470010B1D9 /* trash_btn_pic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trash_btn_pic.png; sourceTree = "<group>"; };
+		790243611C4DEB470010B1D9 /* zz_alumb_rightCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zz_alumb_rightCell.png; sourceTree = "<group>"; };
+		790243631C4DEB470010B1D9 /* ZZBrowserPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowserPickerCell.h; sourceTree = "<group>"; };
+		790243641C4DEB470010B1D9 /* ZZBrowserPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowserPickerCell.m; sourceTree = "<group>"; };
+		790243651C4DEB470010B1D9 /* ZZCameraFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraFocusView.h; sourceTree = "<group>"; };
+		790243661C4DEB470010B1D9 /* ZZCameraFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraFocusView.m; sourceTree = "<group>"; };
+		790243671C4DEB470010B1D9 /* ZZCameraPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraPickerCell.h; sourceTree = "<group>"; };
+		790243681C4DEB470010B1D9 /* ZZCameraPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZCameraPickerCell.m; sourceTree = "<group>"; };
+		790243691C4DEB470010B1D9 /* ZZPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPageControl.h; sourceTree = "<group>"; };
+		7902436A1C4DEB470010B1D9 /* ZZPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPageControl.m; sourceTree = "<group>"; };
+		7902436B1C4DEB470010B1D9 /* ZZPhotoHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoHud.h; sourceTree = "<group>"; };
+		7902436C1C4DEB470010B1D9 /* ZZPhotoHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoHud.m; sourceTree = "<group>"; };
+		7902436D1C4DEB470010B1D9 /* ZZPhotoListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoListCell.h; sourceTree = "<group>"; };
+		7902436E1C4DEB470010B1D9 /* ZZPhotoListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoListCell.m; sourceTree = "<group>"; };
+		7902436F1C4DEB470010B1D9 /* ZZPhotoPickerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZPhotoPickerCell.h; sourceTree = "<group>"; };
+		790243701C4DEB470010B1D9 /* ZZPhotoPickerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZPhotoPickerCell.m; sourceTree = "<group>"; };
+		7902438E1C4DEC2E0010B1D9 /* ALActionSheetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ALActionSheetView.h; sourceTree = "<group>"; };
+		7902438F1C4DEC2E0010B1D9 /* ALActionSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ALActionSheetView.m; sourceTree = "<group>"; };
+		790243911C4E0D810010B1D9 /* select_yes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select_yes@2x.png"; sourceTree = "<group>"; };
+		790243921C4E0D810010B1D9 /* select_yes@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "select_yes@3x.png"; sourceTree = "<group>"; };
 		7905156C1BFDB16E001D5F33 /* LWSenderResBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSenderResBaseModel.h; sourceTree = "<group>"; };
 		7905156D1BFDB16E001D5F33 /* LWSenderResBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWSenderResBaseModel.m; sourceTree = "<group>"; };
 		7905156E1BFDB16E001D5F33 /* LWSenderResBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSenderResBody.h; sourceTree = "<group>"; };
@@ -881,6 +963,8 @@
 		7955C2971C03F95F003D6836 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		7955C2991C044BB4003D6836 /* LWACTModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWACTModel.h; sourceTree = "<group>"; };
 		7955C29A1C044BB4003D6836 /* LWACTModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWACTModel.m; sourceTree = "<group>"; };
+		7955DC061C4CDCAA00314221 /* LWPatientBiaoDanBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientBiaoDanBody.h; sourceTree = "<group>"; };
+		7955DC071C4CDCAA00314221 /* LWPatientBiaoDanBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientBiaoDanBody.m; sourceTree = "<group>"; };
 		7959648E1C06E2BC001C18D8 /* LWMedicationLogCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMedicationLogCountCell.h; sourceTree = "<group>"; };
 		7959648F1C06E2BC001C18D8 /* LWMedicationLogCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMedicationLogCountCell.m; sourceTree = "<group>"; };
 		795964911C06E2D8001C18D8 /* LWMedicationLogHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMedicationLogHeadCell.h; sourceTree = "<group>"; };
@@ -1218,6 +1302,93 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		7902433D1C4DEB470010B1D9 /* ZZPhotoRE */ = {
+			isa = PBXGroup;
+			children = (
+				7902433E1C4DEB470010B1D9 /* Controller */,
+				7902434B1C4DEB470010B1D9 /* Model */,
+				790243541C4DEB470010B1D9 /* Resources */,
+				790243621C4DEB470010B1D9 /* View */,
+			);
+			path = ZZPhotoRE;
+			sourceTree = "<group>";
+		};
+		7902433E1C4DEB470010B1D9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7902433F1C4DEB470010B1D9 /* ZZBrowserPickerViewController.h */,
+				790243401C4DEB470010B1D9 /* ZZBrowserPickerViewController.m */,
+				790243411C4DEB470010B1D9 /* ZZCameraController.h */,
+				790243421C4DEB470010B1D9 /* ZZCameraController.m */,
+				790243431C4DEB470010B1D9 /* ZZCameraPickerViewController.h */,
+				790243441C4DEB470010B1D9 /* ZZCameraPickerViewController.m */,
+				790243451C4DEB470010B1D9 /* ZZPhotoController.h */,
+				790243461C4DEB470010B1D9 /* ZZPhotoController.m */,
+				790243471C4DEB470010B1D9 /* ZZPhotoListViewController.h */,
+				790243481C4DEB470010B1D9 /* ZZPhotoListViewController.m */,
+				790243491C4DEB470010B1D9 /* ZZPhotoPickerViewController.h */,
+				7902434A1C4DEB470010B1D9 /* ZZPhotoPickerViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7902434B1C4DEB470010B1D9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7902434C1C4DEB470010B1D9 /* Common.h */,
+				7902434D1C4DEB470010B1D9 /* UIImageHandle.h */,
+				7902434E1C4DEB470010B1D9 /* UIImageHandle.m */,
+				7902434F1C4DEB470010B1D9 /* ZZBrowerAnimate.h */,
+				790243501C4DEB470010B1D9 /* ZZBrowerAnimate.m */,
+				790243511C4DEB470010B1D9 /* ZZPhotoDatas.h */,
+				790243521C4DEB470010B1D9 /* ZZPhotoDatas.m */,
+				790243531C4DEB470010B1D9 /* ZZPhotoKit.h */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		790243541C4DEB470010B1D9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				790243911C4E0D810010B1D9 /* select_yes@2x.png */,
+				790243921C4E0D810010B1D9 /* select_yes@3x.png */,
+				790243551C4DEB470010B1D9 /* camera_focus_pic.png */,
+				790243561C4DEB470010B1D9 /* change_camera_pic.png */,
+				790243571C4DEB470010B1D9 /* flash_close_pic.png */,
+				790243581C4DEB470010B1D9 /* flash_open_pic.png */,
+				790243591C4DEB470010B1D9 /* no_data.png */,
+				7902435A1C4DEB470010B1D9 /* photo_add.png */,
+				7902435B1C4DEB470010B1D9 /* remove_btn_pic.png */,
+				7902435C1C4DEB470010B1D9 /* select_no.png */,
+				7902435E1C4DEB470010B1D9 /* take_photo_pic.png */,
+				7902435F1C4DEB470010B1D9 /* take_photo_pic@2x.png */,
+				790243601C4DEB470010B1D9 /* trash_btn_pic.png */,
+				790243611C4DEB470010B1D9 /* zz_alumb_rightCell.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		790243621C4DEB470010B1D9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				790243631C4DEB470010B1D9 /* ZZBrowserPickerCell.h */,
+				790243641C4DEB470010B1D9 /* ZZBrowserPickerCell.m */,
+				790243651C4DEB470010B1D9 /* ZZCameraFocusView.h */,
+				790243661C4DEB470010B1D9 /* ZZCameraFocusView.m */,
+				790243671C4DEB470010B1D9 /* ZZCameraPickerCell.h */,
+				790243681C4DEB470010B1D9 /* ZZCameraPickerCell.m */,
+				790243691C4DEB470010B1D9 /* ZZPageControl.h */,
+				7902436A1C4DEB470010B1D9 /* ZZPageControl.m */,
+				7902436B1C4DEB470010B1D9 /* ZZPhotoHud.h */,
+				7902436C1C4DEB470010B1D9 /* ZZPhotoHud.m */,
+				7902436D1C4DEB470010B1D9 /* ZZPhotoListCell.h */,
+				7902436E1C4DEB470010B1D9 /* ZZPhotoListCell.m */,
+				7902436F1C4DEB470010B1D9 /* ZZPhotoPickerCell.h */,
+				790243701C4DEB470010B1D9 /* ZZPhotoPickerCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		7905156A1BFDB16E001D5F33 /* senderSucc */ = {
 			isa = PBXGroup;
 			children = (
@@ -1524,6 +1695,8 @@
 		791214A91BF1CD9C004166C5 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				7902438E1C4DEC2E0010B1D9 /* ALActionSheetView.h */,
+				7902438F1C4DEC2E0010B1D9 /* ALActionSheetView.m */,
 				790A67181BFC07AF007E6DD6 /* PushMgrInfo.h */,
 				790A67191BFC07AF007E6DD6 /* PushMgrInfo.m */,
 				794712C01BF9D0FA0083CE6E /* LGReachability.h */,
@@ -1769,6 +1942,8 @@
 		7929ACBC1C33B26E002712EC /* theform */ = {
 			isa = PBXGroup;
 			children = (
+				7955DC061C4CDCAA00314221 /* LWPatientBiaoDanBody.h */,
+				7955DC071C4CDCAA00314221 /* LWPatientBiaoDanBody.m */,
 				7929ACBD1C33B2FF002712EC /* LWTheFormView.h */,
 				7929ACBE1C33B2FF002712EC /* LWTheFormView.m */,
 				7929ACC31C33BE99002712EC /* LWTheFormTypeView.h */,
@@ -2456,6 +2631,7 @@
 		79A697621BF572E300A28671 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7902433D1C4DEB470010B1D9 /* ZZPhotoRE */,
 				79084E341C27AFBE0002BBF2 /* SVProgressHUD */,
 				79084E2C1C27AF530002BBF2 /* YLGIFImage */,
 				79084E171C27AEA00002BBF2 /* MJPhotoBrowser */,
@@ -2868,6 +3044,7 @@
 				7979867E1C435350005052DF /* jilu@2x.png in Resources */,
 				7945572C1C0BDA15005C0E10 /* yishenPersonalCenter-11_@2x.png in Resources */,
 				7945570B1C0BDA15005C0E10 /* left_blue@2x.png in Resources */,
+				790243931C4E0D810010B1D9 /* select_yes@2x.png in Resources */,
 				7979869A1C435350005052DF /* gengduo@3x.png in Resources */,
 				794557361C0BDA15005C0E10 /* suifangjihua_@2x.png in Resources */,
 				794557211C0BDA15005C0E10 /* yishengzhushousy_03@2x.png in Resources */,
@@ -2875,6 +3052,7 @@
 				797986901C435350005052DF /* zhengzhuang@2x.png in Resources */,
 				796991791C4498DB00A3A2C6 /* weikongzhi@3x.png in Resources */,
 				790A67311BFC591B007E6DD6 /* mic_4.png in Resources */,
+				790243831C4DEB470010B1D9 /* take_photo_pic.png in Resources */,
 				797986891C435350005052DF /* xuanze@2x.png in Resources */,
 				797986AD1C435350005052DF /* zan2@3x.png in Resources */,
 				7979869C1C435350005052DF /* huifu@3x.png in Resources */,
@@ -2919,9 +3097,11 @@
 				794556E21C0BDA15005C0E10 /* patientHead@2x.png in Resources */,
 				794557121C0BDA15005C0E10 /* Patient_03-03@2x.png in Resources */,
 				7969917D1C4498E400A3A2C6 /* bufenkongzhi@2x.png in Resources */,
+				790243801C4DEB470010B1D9 /* remove_btn_pic.png in Resources */,
 				79084E161C27945D0002BBF2 /* sendFail.png in Resources */,
 				79EA5D4E1C16705B001F0EE3 /* log_pg_1.png in Resources */,
 				7945572D1C0BDA15005C0E10 /* kuaijiehuifu_@2x.png in Resources */,
+				7902437C1C4DEB470010B1D9 /* flash_close_pic.png in Resources */,
 				7969917F1C4498E400A3A2C6 /* weikongzhi@2x.png in Resources */,
 				797986A01C435350005052DF /* nanguo2@3x.png in Resources */,
 				796991661C448D9A00A3A2C6 /* 02_act_@3x.png in Resources */,
@@ -2941,9 +3121,11 @@
 				794556FB1C0BDA15005C0E10 /* tab_down_1@3x.png in Resources */,
 				797986A91C435350005052DF /* xuanze@3x.png in Resources */,
 				794556DC1C0BDA15005C0E10 /* login_account_img@2x.png in Resources */,
+				7902437F1C4DEB470010B1D9 /* photo_add.png in Resources */,
 				796991D91C44D0B800A3A2C6 /* weiqueren@3x.png in Resources */,
 				794557301C0BDA15005C0E10 /* patienHeadImage@3x.png in Resources */,
 				797986951C435350005052DF /* bingqing@3x.png in Resources */,
+				790243851C4DEB470010B1D9 /* trash_btn_pic.png in Resources */,
 				794557271C0BDA15005C0E10 /* newLoingNav_@2x.png in Resources */,
 				7979869F1C435350005052DF /* kuaijiehuifu@3x.png in Resources */,
 				794556DE1C0BDA15005C0E10 /* newPatient@2x.png in Resources */,
@@ -2951,6 +3133,7 @@
 				795E0A311C118C92001699DF /* Main.storyboard in Resources */,
 				79CCF5E31C3FA0B900A00104 /* LWVisitList.plist in Resources */,
 				797986721C435350005052DF /* bianji@2x.png in Resources */,
+				7902437B1C4DEB470010B1D9 /* change_camera_pic.png in Resources */,
 				794556EF1C0BDA15005C0E10 /* yishengzhushousy_05@2x.png in Resources */,
 				796991781C4498DB00A3A2C6 /* wanquankongzhi@3x.png in Resources */,
 				794557041C0BDA15005C0E10 /* tab_up_3@2x.png in Resources */,
@@ -2976,6 +3159,7 @@
 				796991D51C44CF8200A3A2C6 /* chat_recive_press_pic@2x.png in Resources */,
 				797986A41C435350005052DF /* tianjia@3x.png in Resources */,
 				797986941C435350005052DF /* biaodan@3x.png in Resources */,
+				7902437A1C4DEB470010B1D9 /* camera_focus_pic.png in Resources */,
 				79EA5D4D1C16705B001F0EE3 /* log_act_yao.png in Resources */,
 				797986741C435350005052DF /* biaodan@2x.png in Resources */,
 				797986801C435350005052DF /* nanguo2@2x.png in Resources */,
@@ -2993,6 +3177,7 @@
 				79FEA4FF1C0EEAB7007418E9 /* jiankangzixun_62-09@2x.png in Resources */,
 				794556E71C0BDA15005C0E10 /* yishengzhushou-1_23@2x.png in Resources */,
 				7945570C1C0BDA15005C0E10 /* left_blue@3x.png in Resources */,
+				790243861C4DEB470010B1D9 /* zz_alumb_rightCell.png in Resources */,
 				797986861C435350005052DF /* wenjuan@2x.png in Resources */,
 				79FEA4FB1C0EEAB7007418E9 /* jiankangzixun_62-05@2x.png in Resources */,
 				794556EE1C0BDA15005C0E10 /* yishengzhushou_58@2x.png in Resources */,
@@ -3011,12 +3196,16 @@
 				796991651C448D9A00A3A2C6 /* 01_act_@3x.png in Resources */,
 				79EA5D4A1C16705B001F0EE3 /* 4.5.6-切图.png in Resources */,
 				7945571C1C0BDA15005C0E10 /* yisheng_09@2x.png in Resources */,
+				7902437E1C4DEB470010B1D9 /* no_data.png in Resources */,
 				797986A71C435350005052DF /* xiangji@3x.png in Resources */,
 				794557161C0BDA15005C0E10 /* time_g@2x.png in Resources */,
+				7902437D1C4DEB470010B1D9 /* flash_open_pic.png in Resources */,
 				79FFBB581C0D8EB10072FDCB /* ProgressHUD.bundle in Resources */,
+				790243811C4DEB470010B1D9 /* select_no.png in Resources */,
 				794557351C0BDA15005C0E10 /* sendFail.png in Resources */,
 				79FEA4FD1C0EEAB7007418E9 /* jiankangzixun_62-07@2x.png in Resources */,
 				7979868F1C435350005052DF /* zhaopian@2x.png in Resources */,
+				790243841C4DEB470010B1D9 /* take_photo_pic@2x.png in Resources */,
 				794556EA1C0BDA15005C0E10 /* yishengzhushou_14@2x.png in Resources */,
 				794557031C0BDA15005C0E10 /* tab_up_2@3x.png in Resources */,
 				794556DF1C0BDA15005C0E10 /* newPatient@3x.png in Resources */,
@@ -3029,6 +3218,7 @@
 				7929ACB91C33B1F8002712EC /* LWMoreImageTitles.plist in Resources */,
 				7938E57A1C0EE5FE00AD043F /* yuyin-2_22@2x.png in Resources */,
 				794556ED1C0BDA15005C0E10 /* yishengzhushou_56@2x.png in Resources */,
+				790243941C4E0D810010B1D9 /* select_yes@3x.png in Resources */,
 				794556FD1C0BDA15005C0E10 /* tab_down_2@3x.png in Resources */,
 				7945571B1C0BDA15005C0E10 /* yisheng_06@2x.png in Resources */,
 				7945571D1C0BDA15005C0E10 /* yisheng_11@2x.png in Resources */,
@@ -3125,6 +3315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				790243761C4DEB470010B1D9 /* ZZPhotoPickerViewController.m in Sources */,
 				79E573651C002EE500797B2E /* LWCustomMenu.m in Sources */,
 				7912466D1C16D5F000B1B968 /* LWWEBViewController.m in Sources */,
 				79AD91E51BF31BE00098D6CD /* LWLoginViewController.m in Sources */,
@@ -3132,6 +3323,7 @@
 				7941A8A21C351AE400B8ACC7 /* LWOrderDetailsCell.m in Sources */,
 				79084E2A1C27AEA00002BBF2 /* MJPhotoToolbar.m in Sources */,
 				790BE93C1C02EBCE00BD1D67 /* LWACTAssessmentViewController.m in Sources */,
+				7902438C1C4DEB470010B1D9 /* ZZPhotoListCell.m in Sources */,
 				7938E5761C0EE1B900AD043F /* NSDate+Utils.m in Sources */,
 				79C27D721C3CE85C00E464D0 /* LWOrderModel.m in Sources */,
 				7979862E1C434774005052DF /* LWPersonalMenuButton.m in Sources */,
@@ -3176,6 +3368,7 @@
 				7955C2951C03F705003D6836 /* NSObject+LKDBHelper.m in Sources */,
 				791215621BF1CFD0004166C5 /* LWMainRows.m in Sources */,
 				791214A21BF1CB6A004166C5 /* LWPersonalCell.m in Sources */,
+				790243791C4DEB470010B1D9 /* ZZPhotoDatas.m in Sources */,
 				79CEEDF51C01B7FF004D6786 /* LWPatientLogSymptomsCountCell.m in Sources */,
 				79F75E881BF4226B00AE75AB /* CDPromptView.m in Sources */,
 				79084E271C27AEA00002BBF2 /* MJPhotoBrowser.m in Sources */,
@@ -3192,6 +3385,7 @@
 				7955C2931C03F705003D6836 /* LKDBHelper.m in Sources */,
 				79BB5F0E1C1038F600E7046B /* UIViewController+Factory.m in Sources */,
 				7955C2901C03F705003D6836 /* FMDatabaseQueue.m in Sources */,
+				790243731C4DEB470010B1D9 /* ZZCameraPickerViewController.m in Sources */,
 				7945554B1C0BD98F005C0E10 /* NSString+RegexCategory.m in Sources */,
 				7912155E1BF1CFD0004166C5 /* LWMainBody.m in Sources */,
 				797986271C43384D005052DF /* FastReplyVC.m in Sources */,
@@ -3214,6 +3408,7 @@
 				79F21EBF1BF9765F00F6A465 /* LWChatPager.m in Sources */,
 				795964931C06E2D8001C18D8 /* LWMedicationLogHeadCell.m in Sources */,
 				791214DA1BF1CE9E004166C5 /* LWPersonalCtr.m in Sources */,
+				790243901C4DEC2E0010B1D9 /* ALActionSheetView.m in Sources */,
 				791215741BF1EA71004166C5 /* LWPatientCenterCell.m in Sources */,
 				79084E291C27AEA00002BBF2 /* MJPhotoProgressView.m in Sources */,
 				7945576C1C0C323E005C0E10 /* MZBlurEffectAdapter.m in Sources */,
@@ -3223,10 +3418,12 @@
 				790A672C1BFC591B007E6DD6 /* D3RecordButton.m in Sources */,
 				79BA9FAE1C45E18600D9236A /* UITextView+placeholder.m in Sources */,
 				795964991C06F09A001C18D8 /* LWMedicationLogTimerOneCell.m in Sources */,
+				790243751C4DEB470010B1D9 /* ZZPhotoListViewController.m in Sources */,
 				791214D81BF1CE9E004166C5 /* LWBaseViewController.m in Sources */,
 				791214DC1BF1CE9E004166C5 /* LWPatientRecordsCtr.m in Sources */,
 				79FFBB251C0D46530072FDCB /* LWAsthmaLineBaseModel.m in Sources */,
 				798922BE1BFEB523002C695C /* HMFileManager.m in Sources */,
+				7902438D1C4DEB470010B1D9 /* ZZPhotoPickerCell.m in Sources */,
 				7941A8921C34B99F00B8ACC7 /* LWTimerRemindIndexView.m in Sources */,
 				79F7C2011BF71C6B00D618AE /* LWChatViewController.m in Sources */,
 				7929ACBA1C33B1F8002712EC /* LWMessageCell.m in Sources */,
@@ -3256,6 +3453,7 @@
 				7945576E1C0C323E005C0E10 /* MZFormSheetContentSizingNavigationControllerAnimator.m in Sources */,
 				7919B8BD1BFADC670058853F /* LWPatientRecordsPatientArchives.m in Sources */,
 				79FFBB521C0D8EB10072FDCB /* KSCache.m in Sources */,
+				790243781C4DEB470010B1D9 /* ZZBrowerAnimate.m in Sources */,
 				79AD91B31BF2D5D60098D6CD /* LWPatientRemarksTFCell.m in Sources */,
 				79CEEDE41C018156004D6786 /* LWPatientAssessmentLogVC.m in Sources */,
 				795964961C06E2EC001C18D8 /* LWMedicationLogTimerCell.m in Sources */,
@@ -3270,11 +3468,14 @@
 				791215571BF1CFD0004166C5 /* LBLoginBaseModel.m in Sources */,
 				794557491C0C1C12005C0E10 /* LWLineButton.m in Sources */,
 				790A67351BFC591B007E6DD6 /* Mp3Recorder.m in Sources */,
+				7902438B1C4DEB470010B1D9 /* ZZPhotoHud.m in Sources */,
 				7945577C1C0C3271005C0E10 /* NSInvocation+Copy.m in Sources */,
 				790BE9391C02EBB200BD1D67 /* LWACTStateAssessmentCell.m in Sources */,
 				79FFBB5A1C0D8EB10072FDCB /* UIViewController+KSNoNetController.m in Sources */,
+				790243871C4DEB470010B1D9 /* ZZBrowserPickerCell.m in Sources */,
 				7952F1011C0582880030B279 /* LWPEFLineModel.m in Sources */,
 				79CEEDD81C017E0F004D6786 /* SegmentTapView.m in Sources */,
+				7902438A1C4DEB470010B1D9 /* ZZPageControl.m in Sources */,
 				795FE0941C08295200B2EA2A /* LWAsthmaAssessLogBody.m in Sources */,
 				791215051BF1CF56004166C5 /* CODataCacheManager.m in Sources */,
 				79FFBB591C0D8EB10072FDCB /* ProgressHUD.m in Sources */,
@@ -3288,8 +3489,10 @@
 				7912155C1BF1CFD0004166C5 /* LWPatientRows.m in Sources */,
 				7912155B1BF1CFD0004166C5 /* LWPatientPager.m in Sources */,
 				794555491C0BD98F005C0E10 /* NSString+Hash.m in Sources */,
+				790243741C4DEB470010B1D9 /* ZZPhotoController.m in Sources */,
 				79AD91F51BF33CCB0098D6CD /* YRJSONAdapter.m in Sources */,
 				794557731C0C323E005C0E10 /* MZFormSheetPresentationViewControllerSegue.m in Sources */,
+				790243881C4DEB470010B1D9 /* ZZCameraFocusView.m in Sources */,
 				79BA9FDE1C46688B00D9236A /* LWTheFromMrows.m in Sources */,
 				791211321BF1A6A6004166C5 /* AppDelegate.m in Sources */,
 				79BA9FDD1C46688B00D9236A /* LWTheFromBaseModel.m in Sources */,
@@ -3300,6 +3503,7 @@
 				79AD91A41BF2CEF60098D6CD /* CDDatePickerView.m in Sources */,
 				79BA9FDC1C46688B00D9236A /* LWTheFromArows.m in Sources */,
 				7945577B1C0C3271005C0E10 /* MZAppearance.m in Sources */,
+				7955DC081C4CDCAA00314221 /* LWPatientBiaoDanBody.m in Sources */,
 				7955C28D1C03F705003D6836 /* FMDatabase.m in Sources */,
 				79CEEDE11C018127004D6786 /* LWPatientPEFLogVC.m in Sources */,
 				7952F1021C0582880030B279 /* LWPEFRecordList.m in Sources */,
@@ -3315,6 +3519,8 @@
 				79F75E8B1BF422E500AE75AB /* LWPublicDataManager.m in Sources */,
 				7945554C1C0BD98F005C0E10 /* NSString+Size.m in Sources */,
 				791215601BF1CFD0004166C5 /* LWMainPager.m in Sources */,
+				790243771C4DEB470010B1D9 /* UIImageHandle.m in Sources */,
+				790243891C4DEB470010B1D9 /* ZZCameraPickerCell.m in Sources */,
 				791214D91BF1CE9E004166C5 /* LWMessageCtr.m in Sources */,
 				794712E51BF9D1F30083CE6E /* WHC_ClientAccount.m in Sources */,
 				7912155F1BF1CFD0004166C5 /* LWMainMessageBaseModel.m in Sources */,
@@ -3341,12 +3547,14 @@
 				7941A8951C34BEEC00B8ACC7 /* LWTimerButtonCell.m in Sources */,
 				79F21EC01BF9765F00F6A465 /* LWChatRows.m in Sources */,
 				79FFBB1F1C0D375A0072FDCB /* LWLineACTAssessmentVC.m in Sources */,
+				790243721C4DEB470010B1D9 /* ZZCameraController.m in Sources */,
 				790A673D1BFC64A0007E6DD6 /* UIView+SDAutoLayout.m in Sources */,
 				7912149F1BF1CB5B004166C5 /* LWPersonalHeardCell.m in Sources */,
 				794555481C0BD98F005C0E10 /* NSString+Contains.m in Sources */,
 				795964901C06E2BC001C18D8 /* LWMedicationLogCountCell.m in Sources */,
 				7952F0F41C05563C0030B279 /* LWPEFCountCell.m in Sources */,
 				7952F0E81C0550C90030B279 /* BaseChartView.m in Sources */,
+				790243711C4DEB470010B1D9 /* ZZBrowserPickerViewController.m in Sources */,
 				7912150A1BF1CF56004166C5 /* NavManager.m in Sources */,
 				793DE42B1C04697D000CE2BE /* LCDownloadManager.m in Sources */,
 				790BE94C1C02FAFC00BD1D67 /* LWACTAssessmentModel.m in Sources */,

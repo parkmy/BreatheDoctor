@@ -21,6 +21,11 @@
     }
     return self;
 }
+- (void)setIsMulti:(BOOL)isMulti
+{
+    _isMulti = isMulti;
+    self.theFormView.isMulti = _isMulti;
+}
 
 - (void)setModel:(LWTheFromArows *)model withType:(showTheFormType)type
 {

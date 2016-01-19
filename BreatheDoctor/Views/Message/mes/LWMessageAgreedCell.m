@@ -26,8 +26,10 @@
     // Configure the view for the selected state
 }
 - (IBAction)leftButtonClick:(id)sender {
+    _JuJueBlock?_JuJueBlock():nil;
 }
 - (IBAction)rightButtonClick:(id)sender {
+    _TongYiBlock?_TongYiBlock():nil;
 }
 
 @end
