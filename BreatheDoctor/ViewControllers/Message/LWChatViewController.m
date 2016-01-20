@@ -11,7 +11,6 @@
 #import "PureLayout.h"
 #import <IQKeyboardManager.h>
 #import "LWChatViewControllerDataSource.h"
-#import "UITableView+FDTemplateLayoutCell.h"
 #import "UIResponder+Router.h"
 #import "YRJSONAdapter.h"
 #import "LWVoiceManager.h"
@@ -74,6 +73,8 @@ typedef NS_ENUM(NSInteger , SenderType) {
     [super addBackButton:@"nav_btnBack"];
     [super addRightButton:@"newR_.png"];
     [LWPublicDataManager shareInstance].currentPatientID = self.patient.memberId; //记录对话ID
+    self.fd_interactivePopDisabled = YES;
+
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -82,11 +83,13 @@ typedef NS_ENUM(NSInteger , SenderType) {
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
     [[LWPublicDataManager shareInstance] cloesCurrentPatientID]; //清除对话ID
-
+    self.fd_interactivePopDisabled = NO;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
     [self initProperty];
     [self setUI];
     [self loadSQLData];
@@ -425,7 +428,6 @@ typedef NS_ENUM(NSInteger , SenderType) {
     }
     
     _tableView                      =   [UITableView newAutoLayoutView];
-    _tableView.fd_debugLogEnabled   =   NO;
     _tableView.separatorStyle       =   UITableViewCellSeparatorStyleNone;
     _tableView.backgroundColor      =   RGBA(245, 245, 245, 1);
     _tableView.keyboardDismissMode  =   UIScrollViewKeyboardDismissModeOnDrag;

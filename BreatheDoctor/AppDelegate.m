@@ -21,6 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    NSLog(@"%@",NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES));
+    
     //主题
     [LWThemeManager shareInstance].themeType = themeTypeDefault;
     
@@ -96,7 +98,6 @@
 {
     [[PushMgrInfo sharedInstance] showLocalPushAction:notification];
 }
-
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {

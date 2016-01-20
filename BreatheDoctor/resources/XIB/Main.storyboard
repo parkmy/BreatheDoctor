@@ -2441,6 +2441,9 @@
                                                         <constraint firstAttribute="width" constant="35" id="RGt-9t-A2P"/>
                                                     </constraints>
                                                     <state key="normal" image="bianji.png"/>
+                                                    <connections>
+                                                        <action selector="editorbuttonClick:" destination="MJe-4J-95Q" eventType="touchUpInside" id="zQ6-gd-X0Q"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ohd-Bg-ahB">
                                                     <rect key="frame" x="5" y="0.0" width="160" height="35"/>

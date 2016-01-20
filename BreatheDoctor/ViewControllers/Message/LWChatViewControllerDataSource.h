@@ -4,7 +4,7 @@
 //
 //  Created by comv on 15/11/16.
 //  Copyright © 2015年 lwh. All rights reserved.
-//
+// 对话表单代理
 
 #import <Foundation/Foundation.h>
 #import "LWChatViewController.h"

@@ -23,7 +23,17 @@ static KSDataBaseManager* dataBase;
 
 + (BOOL)cleanCache
 {
-    return [dataBase dropTable:CACHETABLE];
+    NSString *cachePath = [NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES) firstObject];
+    NSArray *contents = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[cachePath stringByAppendingString:@"/Caches"] error:NULL];
+    NSEnumerator *e = [contents objectEnumerator];
+    NSString *filename;
+    while ((filename = [e nextObject])) {
+        
+        [[NSFileManager defaultManager] removeItemAtPath:[[cachePath stringByAppendingString:@"/Caches"] stringByAppendingPathComponent:filename] error:NULL];
+        
+    }
+    return YES;
+//    return [dataBase dropTable:CACHETABLE];
 }
 
 /**

@@ -4,7 +4,7 @@
 //
 //  Created by comv on 16/1/11.
 //  Copyright © 2016年 lwh. All rights reserved.
-//
+// 星期选择界面
 
 #import "BaseViewController.h"
 

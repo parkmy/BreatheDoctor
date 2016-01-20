@@ -7,14 +7,11 @@
 //
 
 #import "LWVoiceManager.h"
-#import "WHC_Download.h"
-#import "WHC_ClientAccount.h"
-#import "WHC_DownloadFileCenter.h"
 #import "NSString+Contains.h"
 #import "LCDownloadManager.h"
-#
 
-@interface LWVoiceManager ()<WHCDownloadDelegate,AVAudioPlayerDelegate>
+
+@interface LWVoiceManager ()<AVAudioPlayerDelegate>
 @property (nonatomic, strong) AVAudioPlayer * mm_player;
 @property (nonatomic, strong) LWChatModel *chatModel;
 @property (nonatomic, strong) UUMessageCell *starCell;
@@ -34,6 +31,10 @@
         [_mm_player stop];
         [self.starCell.btnContent stopPlay];
     }
+}
+- (void)clearChae
+{
+    [[NSFileManager defaultManager] removeItemAtPath:[self downloadPath] error:nil];
 }
 - (void)playVoiceWithModel:(LWChatModel *)model withCell:(UUMessageCell *)cell{
     
@@ -102,14 +103,23 @@
 }
 - (NSData *)voicData
 {
-    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-    
-    NSString *videoDir = [NSString stringWithFormat:@"%@/Download/Video/%@",docPath,[self fileName1]];
+    NSString *videoDir = [NSString stringWithFormat:@"%@/%@",[self downloadPath],[self fileName1]];
     
     NSData *data = [NSData dataWithContentsOfFile:videoDir];
 
     return data;
 }
+
+- (NSString *)downloadPath
+{
+
+    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    
+    NSString *videoDir = [NSString stringWithFormat:@"%@/Download/Video",docPath];
+    
+    return videoDir;
+}
+
 -(void)playWav:(NSData*)wavdata
 {
     [self.starCell.btnContent didLoadVoice];

@@ -21,6 +21,10 @@
     }
     
 }
+- (IBAction)editorbuttonClick:(id)sender
+{
+    _editorButtonEventBlock?_editorButtonEventBlock():nil;
+}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -32,19 +36,18 @@
     _patientRecordsModel = patientRecordsModel;
     LWPatientRecordsPatientArchives *model = _patientRecordsModel.body.patientArchives;
     
-//_patientRecordsModel.body.patientArchives.controlLevel
-    [LWTool atientControlLevel:[model.controlLevel doubleValue] withLayoutConstraint:self.typeWidth withLabel:self.patientTypeButton];
+//    [LWTool atientControlLevel:[model.controlLevel doubleValue] withLayoutConstraint:self.typeWidth withLabel:self.patientTypeButton];
+//    
+//    if ([model.remark isEqualToString:@""] || !model.remark) {
+//        self.patientNameLabel.text = stringJudgeNull(model.patientName);
+//    }else
+//    {
+//        self.patientNameLabel.text = [NSString stringWithFormat:@"%@(%@)",stringJudgeNull(model.patientName),stringJudgeNull(model.remark)];
+//    }
+//    CGFloat w = [self.patientNameLabel.text sizeWithFont:[UIFont systemFontOfSize:16] constrainedToHeight:24].width;
+//    self.patientNameWidth.constant = w + 10 + 45;
     
-    if ([model.remark isEqualToString:@""] || !model.remark) {
-        self.patientNameLabel.text = stringJudgeNull(model.patientName);
-    }else
-    {
-        self.patientNameLabel.text = [NSString stringWithFormat:@"%@(%@)",stringJudgeNull(model.patientName),stringJudgeNull(model.remark)];
-    }
-    CGFloat w = [self.patientNameLabel.text sizeWithFont:[UIFont systemFontOfSize:16] constrainedToHeight:24].width;
-    self.patientNameWidth.constant = w + 10 + 45;
-    
-    [self.patientIcon sd_setImageWithURL:kNSURL(stringJudgeNull(model.headImgUrl)) placeholderImage:kImage(@"yishengzhushousy_03.png")];
+//    [self.patientIcon sd_setImageWithURL:kNSURL(stringJudgeNull(model.headImgUrl)) placeholderImage:kImage(@"yishengzhushousy_03.png")];
 
     for (int i = 0; i < self.patientDataLabels.count; i++)
     {
@@ -69,22 +72,22 @@
     
 }
 
-//- (void)setPatient:(LWPatientRows *)patient
-//{
-//    _patient = patient;
-//    
-//    [LWTool atientControlLevel:_patient.controlLevel withLayoutConstraint:self.typeWidth withLabel:self.patientTypeButton];
-//    if ([_patient.remark isEqualToString:@""] || !_patient.remark) {
-//        self.patientNameLabel.text = stringJudgeNull(_patient.patientName);
-//    }else
-//    {
-//        self.patientNameLabel.text = [NSString stringWithFormat:@"%@(%@)",stringJudgeNull(_patient.patientName),stringJudgeNull(_patient.remark)];
-//    }
-//    CGFloat w = [self.patientNameLabel.text sizeWithFont:[UIFont systemFontOfSize:16] constrainedToHeight:24].width;
-//    self.patientNameWidth.constant = w + 10 + 45;
-//    
-//    [self.patientIcon sd_setImageWithURL:kNSURL(stringJudgeNull(_patient.headImgUrl)) placeholderImage:kImage(@"yishengzhushousy_03.png")];
-//    
-//}
+- (void)setPatient:(LWPatientRows *)patient
+{
+    _patient = patient;
+    
+    [LWTool atientControlLevel:_patient.controlLevel withLayoutConstraint:self.typeWidth withLabel:self.patientTypeButton];
+    if ([_patient.remark isEqualToString:@""] || !_patient.remark) {
+        self.patientNameLabel.text = stringJudgeNull(_patient.patientName);
+    }else
+    {
+        self.patientNameLabel.text = [NSString stringWithFormat:@"%@(%@)",stringJudgeNull(_patient.patientName),stringJudgeNull(_patient.remark)];
+    }
+    CGFloat w = [self.patientNameLabel.text sizeWithFont:[UIFont systemFontOfSize:16] constrainedToHeight:24].width;
+    self.patientNameWidth.constant = w + 10 + 45;
+    
+    [self.patientIcon sd_setImageWithURL:kNSURL(stringJudgeNull(_patient.headImgUrl)) placeholderImage:kImage(@"yishengzhushousy_03.png")];
+    
+}
 
 @end

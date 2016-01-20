@@ -19,4 +19,6 @@
 
 - (void)stopVoice;
 
+- (void)clearChae;
+
 @end

@@ -38,7 +38,7 @@
     [self dismissPickerView];
 }
 - (IBAction)close:(id)sender {
-    _completeChooseBlock?_completeChooseBlock(@"添加时间"):nil;
+    _completeChooseBlock?_completeChooseBlock(@"00:00"):nil;
 
 }
 - (IBAction)comper:(id)sender {

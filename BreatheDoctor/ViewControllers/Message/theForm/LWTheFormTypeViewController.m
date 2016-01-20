@@ -106,6 +106,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     LWTheFormViewController *vc = (LWTheFormViewController *)[UIViewController CreateControllerWithTag:CtrlTag_TheForm];
     vc.showType = self.showType;
+    vc.patientId = self.patientId;
     if (self.showType != showTheFormTypeMouKuai)
     {
         LWPatientBiaoDanBody *model = self.dataArray[indexPath.row];

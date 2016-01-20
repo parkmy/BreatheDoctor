@@ -12,6 +12,8 @@
 #import "LWMessageCtr.h"
 #import "GJMFileHelper.h"
 #import <SDImageCache.h>
+#import "LWVoiceManager.h"
+#import "KSCache.h"
 
 @interface LWLoginManager ()<LWLoginViewControllerDelegate>
 
@@ -43,9 +45,14 @@
  
     [[SDImageCache sharedImageCache] clearDisk]; //清除图片缓存
     
+    [[LWVoiceManager shareInstance] clearChae]; //清除多媒体
+    
+    [KSCache cleanCache]; //清除AFNetWoking缓存
+    
     [[NSFileManager defaultManager] removeItemAtPath:[LKDBHelper getDBPathWithDBName:[LKDBHelper baseTableName]] error:nil]; //删除数据库
     
     [[CODataCacheManager shareInstance] clearUserModel]; //删除用户信息
+    
     
     [self showLoginViewNav:vc]; //回到登陆
     

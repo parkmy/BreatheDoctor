@@ -68,11 +68,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BreatheDoctor/ViewControllers/Message/LWChatViewController.m"
-            timestampString = "474531978.591915"
+            timestampString = "474970823.173247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
             landmarkName = "-routerEventWithType:userInfo:"
             landmarkType = "5">
          </BreakpointContent>

@@ -19,7 +19,8 @@
     [super viewWillAppear:animated];
     [super addNavBar:@"重复"];
     [super addBackButton:@"nav_btnBack.png"];
-    
+    self.fd_interactivePopDisabled = YES;
+
 }
 - (void)navLeftButtonAction
 {
@@ -35,9 +36,17 @@
     }
     return _tableView;
 }
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.fd_interactivePopDisabled = NO;
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+    
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.tableView.frame = CGRectMake(0, 64, screenWidth, screenHeight-64);
     [self.view addSubview:self.tableView];

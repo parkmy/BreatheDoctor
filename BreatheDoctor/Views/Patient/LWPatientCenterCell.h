@@ -17,5 +17,7 @@
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *patientDataLabels;
 
 @property (nonatomic, strong) LWPatientRecordsBaseModel *patientRecordsModel;
-//@property (nonatomic, strong) LWPatientRows *patient;
+@property (nonatomic, strong) LWPatientRows *patient;
+
+@property (nonatomic, copy) void(^editorButtonEventBlock)();
 @end

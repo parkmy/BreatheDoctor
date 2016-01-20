@@ -4,7 +4,7 @@
 //
 //  Created by comv on 16/1/6.
 //  Copyright © 2016年 lwh. All rights reserved.
-//
+//  新朋友界面
 
 #import "BaseViewController.h"
 

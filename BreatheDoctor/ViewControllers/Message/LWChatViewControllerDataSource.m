@@ -7,7 +7,6 @@
 //
 
 #import "LWChatViewControllerDataSource.h"
-#import "UITableView+FDTemplateLayoutCell.h"
 #import "LWChatRows.h"
 #import "LWChatModel.h"
 #import "UUMessageCell.h"

@@ -14,6 +14,7 @@
 #import "NSString+Contains.h"
 #import "YRJSONAdapter.h"
 #import "SVProgressHUD.h"
+#import "LWPopAlatView.h"
 
 @interface LWTimerRemindViewController ()<LWTimerRemindIndexViewDeleagte,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 @property (nonatomic, strong) LWTimerRemindIndexView *indexView;
@@ -43,6 +44,7 @@
 
     [self setUI];
     [self loadData];
+    
 }
 
 - (void)setUI
@@ -56,7 +58,9 @@
 
     [LWHttpRequestManager httploadDoctorServerTimeSuccess:^(NSMutableArray *models) {
         [SVProgressHUD dismiss];
-
+        if (models.count <= 0) {
+            [LWPopAlatView showView:nil];
+        }
         [self.models removeAllObjects];
         [self.models addObjectsFromArray:models];
         

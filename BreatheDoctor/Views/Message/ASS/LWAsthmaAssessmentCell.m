@@ -29,7 +29,7 @@
 
 - (UIColor *)isYesColor:(double)type
 {
-    return type == 0?[UIColor colorWithHexString:@"#ff3b4a"]:[UIColor colorWithHexString:@"#6396ea"];
+    return type == 0?[LWThemeManager shareInstance].navBackgroundColor:[UIColor colorWithHexString:@"#febf47"];
 }
 - (void)setModel:(LWAsthmaModel *)model
 {

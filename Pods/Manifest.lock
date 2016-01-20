@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.6.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - FDFullscreenPopGesture (1.1)
   - IQKeyboardManager (3.3.5)
   - MJRefresh (3.1.0)
   - OpenUDID (1.0.0)
@@ -29,6 +30,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
+  - FDFullscreenPopGesture
   - IQKeyboardManager
   - MJRefresh
   - OpenUDID
@@ -36,6 +38,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
   IQKeyboardManager: 128bcb96b3ec03ff87942cdd7fa7f44491aa3d08
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
