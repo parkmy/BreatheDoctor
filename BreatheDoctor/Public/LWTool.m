@@ -758,7 +758,6 @@
     
     return theFromModel;//返回
     
-    
 }
 // 包含的添加进去
 + (void)forAreDataArray:(NSArray *)array addArray:(NSMutableArray *)addArray row:(LWTheFromRowArray  *)row
@@ -772,7 +771,6 @@
         
     }
 }
-
 
 + (NSArray *)stringBayArrayWithString:(NSString *)string
 {

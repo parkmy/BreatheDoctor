@@ -12,7 +12,7 @@
 
 @optional
 - (void)didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
-- (void)deleteimage:(UIImage *)image withCollectionView:(UICollectionView *)collectionView;
+- (void)deleteimage:(id )object withCollectionView:(UICollectionView *)collectionView;
 
 @end
 

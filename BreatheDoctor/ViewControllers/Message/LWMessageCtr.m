@@ -87,7 +87,7 @@
 
 - (void)setUI
 {
-    self.tableView.rowHeight = 65;
+    self.tableView.rowHeight = 60*(iPhone6Plus?1.15:1);
     self.tableView.backgroundColor = [UIColor whiteColor];
     setExtraCellLineHidden(self.tableView);
     

@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface LWPatientRelatedViewController : BaseViewController
-
+@property (nonatomic, copy) NSString *patientId;
 @end

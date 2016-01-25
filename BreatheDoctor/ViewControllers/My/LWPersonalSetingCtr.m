@@ -25,7 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.tableView.rowHeight = 44*MULTIPLE;
     self.tableView.sectionFooterHeight = .1;
 }
 - (void)navLeftButtonAction

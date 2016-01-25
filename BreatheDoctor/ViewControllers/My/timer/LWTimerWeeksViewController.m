@@ -19,7 +19,6 @@
     [super viewWillAppear:animated];
     [super addNavBar:@"重复"];
     [super addBackButton:@"nav_btnBack.png"];
-    self.fd_interactivePopDisabled = YES;
 
 }
 - (void)navLeftButtonAction
@@ -39,7 +38,6 @@
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
-    self.fd_interactivePopDisabled = NO;
 
 }
 - (void)viewDidLoad {

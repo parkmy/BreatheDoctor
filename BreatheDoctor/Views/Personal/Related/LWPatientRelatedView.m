@@ -8,7 +8,6 @@
 
 #import "LWPatientRelatedView.h"
 #import "LWPatientRelatedPhotoView.h"
-#import "UITextView+placeholder.h"
 
 @interface LWPatientRelatedView ()<UITextViewDelegate,LWPatientRelatedPhotoViewDelegate>
 
@@ -16,7 +15,6 @@
 @property (nonatomic, strong) UILabel *relatedTitleLabel;
 @property (nonatomic, strong) UIView *relatedcontentView;
 @property (nonatomic, strong) LWPatientRelatedPhotoView *patientRelatedPhotoView;
-@property (nonatomic, strong) UITextView *contentTextView;
 
 @property (nonatomic, assign) CGFloat contentH;
 @end
@@ -127,13 +125,11 @@
         
     }else if (_patientRelatedType == PatientRelatedTypecondition)
     {
-        self.contentTextView.placeholder = @"请描述患者基本病情...";
         self.relatedTitleLabel.text = @"基本病情";
         self.iconImgaeView.image = kImage(@"bingqing");
         
     }else
     {
-        self.contentTextView.placeholder = @"请填写诊断结果...";
         self.relatedTitleLabel.text = @"诊断结果";
         self.iconImgaeView.image = kImage(@"jieguo");
         
@@ -169,6 +165,11 @@
     }
     _contentH = ch;
 }
+- (void)setContentTextViewText:(NSString *)text
+{
+    self.contentTextView.text = text;
+    [self textViewDidChange:self.contentTextView];
+}
 
 #pragma mark -LWPatientRelatedPhotoViewDelegate
 - (void)didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -177,10 +178,10 @@
         [_delegate selectItemAtIndexPath:indexPath];
     }
 }
-- (void)deleteimage:(UIImage *)image withCollectionView:(UICollectionView *)collectionView;
+- (void)deleteimage:(id )object withCollectionView:(UICollectionView *)collectionView
 {
     if (_delegate && [_delegate respondsToSelector:@selector(deleteItemWithImage:withCollectionView:)]) {
-        [_delegate deleteItemWithImage:image withCollectionView:collectionView];
+        [_delegate deleteItemWithImage:object withCollectionView:collectionView];
     }
 }
 

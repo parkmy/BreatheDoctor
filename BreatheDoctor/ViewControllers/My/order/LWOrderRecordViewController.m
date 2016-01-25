@@ -155,7 +155,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.section == 0?150:64;
+    return indexPath.section == 0?150*MULTIPLE:64*MULTIPLE;
 }
 
 #pragma mark - LWYerChangIndexViewDeleagte

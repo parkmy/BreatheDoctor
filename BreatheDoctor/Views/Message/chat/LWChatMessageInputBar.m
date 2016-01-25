@@ -16,10 +16,10 @@
 #define kBkColor               ([UIColor colorWithRed:0.922 green:0.925 blue:0.929 alpha:1])
 
 //输入框最小高度
-#define kMinHeightTextView          (34)
+#define kMinHeightTextView          (34*MULTIPLE)
 
 //输入框最大高度
-#define kMaxHeightTextView   (84)
+#define kMaxHeightTextView   (84*MULTIPLE)
 
 //默认输入框和父控件底部间隔
 #define kDefaultBottomTextView_SupView  (5)
@@ -27,7 +27,7 @@
 #define kDefaultTopTextView_SupView  (5)
 
 //按钮大小
-#define kSizeBtn                 (CGSizeMake(34, 34))
+#define kSizeBtn                 (CGSizeMake(34*MULTIPLE, 34*MULTIPLE))
 
 @interface LWChatMessageInputBar ()<UITextViewDelegate,LWChatMessageMoreViewDelegate,D3RecordDelegate>
 {
@@ -121,7 +121,7 @@
         [self addSubview:self.longButtonVoice];
         [self.longButtonVoice autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:kDefaultTopTextView_SupView];
         [self.longButtonVoice autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.mVoiceBtn withOffset:0];
-        [self.longButtonVoice autoSetDimension:ALDimensionHeight toSize:34.0f];
+        [self.longButtonVoice autoSetDimension:ALDimensionHeight toSize:34.0f*MULTIPLE];
         self.longButtonVoice.hidden = YES;
         //        /**
         //         *  @brief  增加表情按钮
@@ -482,17 +482,20 @@
     CGFloat contentHeight;
     
     //输入框的高度不能超过最大高度
-    if (size.height > kMaxHeightTextView)
+    if (size.height > kMinHeightTextView)
     {
-        contentHeight = kMaxHeightTextView;
+        if (size.height > kMaxHeightTextView) {
+            contentHeight = kMaxHeightTextView;
+        }else
+        {
+            contentHeight = size.height;
+        }
         textView.scrollEnabled = YES;
     }else
     {
-        contentHeight = size.height;
+        contentHeight = kMinHeightTextView;
         textView.scrollEnabled = NO;
     }
-    
-    
     if (mHeightTextView != contentHeight)
     {//如果当前高度需要调整，就调整，避免多做无用功
         mHeightTextView = contentHeight ;//重新设置自己的高度

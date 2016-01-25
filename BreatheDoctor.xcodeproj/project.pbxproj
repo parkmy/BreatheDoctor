@@ -118,6 +118,7 @@
 		7919B8BA1BFADC670058853F /* LWPatientRecordsBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919B8B31BFADC670058853F /* LWPatientRecordsBaseModel.m */; };
 		7919B8BB1BFADC670058853F /* LWPatientRecordsBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919B8B51BFADC670058853F /* LWPatientRecordsBody.m */; };
 		7919B8BD1BFADC670058853F /* LWPatientRecordsPatientArchives.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919B8B91BFADC670058853F /* LWPatientRecordsPatientArchives.m */; };
+		7926F7791C561729009C4807 /* nav_btnBack@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7926F7781C561729009C4807 /* nav_btnBack@3x.png */; };
 		792736D11C48D2EB00D17C5B /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 792736CB1C48D2EB00D17C5B /* add@2x.png */; };
 		792736D21C48D2EB00D17C5B /* add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 792736CC1C48D2EB00D17C5B /* add@3x.png */; };
 		792736D31C48D2EB00D17C5B /* keyBoard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 792736CD1C48D2EB00D17C5B /* keyBoard@2x.png */; };
@@ -445,6 +446,8 @@
 		79F7C5E01BF7296B00D618AE /* PatientAddVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F7C5DF1BF7296B00D618AE /* PatientAddVC.m */; };
 		79F7C5E61BF745FF00D618AE /* AboutUsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F7C5E31BF745FF00D618AE /* AboutUsVC.m */; };
 		79F7C5E71BF745FF00D618AE /* PersonalPassModifyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F7C5E51BF745FF00D618AE /* PersonalPassModifyVC.m */; };
+		79FE2B6E1C508E52000C1E08 /* LWUpLoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FE2B6D1C508E52000C1E08 /* LWUpLoadingManager.m */; };
+		79FE2B711C50D156000C1E08 /* LWPatientRelatedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FE2B701C50D156000C1E08 /* LWPatientRelatedModel.m */; };
 		79FEA4FB1C0EEAB7007418E9 /* jiankangzixun_62-05@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79FEA4F31C0EEAB7007418E9 /* jiankangzixun_62-05@2x.png */; };
 		79FEA4FC1C0EEAB7007418E9 /* jiankangzixun_62-06@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79FEA4F41C0EEAB7007418E9 /* jiankangzixun_62-06@2x.png */; };
 		79FEA4FD1C0EEAB7007418E9 /* jiankangzixun_62-07@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79FEA4F51C0EEAB7007418E9 /* jiankangzixun_62-07@2x.png */; };
@@ -693,6 +696,7 @@
 		7919B8B51BFADC670058853F /* LWPatientRecordsBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRecordsBody.m; sourceTree = "<group>"; };
 		7919B8B81BFADC670058853F /* LWPatientRecordsPatientArchives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRecordsPatientArchives.h; sourceTree = "<group>"; };
 		7919B8B91BFADC670058853F /* LWPatientRecordsPatientArchives.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRecordsPatientArchives.m; sourceTree = "<group>"; };
+		7926F7781C561729009C4807 /* nav_btnBack@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_btnBack@3x.png"; sourceTree = "<group>"; };
 		792736CB1C48D2EB00D17C5B /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
 		792736CC1C48D2EB00D17C5B /* add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@3x.png"; sourceTree = "<group>"; };
 		792736CD1C48D2EB00D17C5B /* keyBoard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "keyBoard@2x.png"; sourceTree = "<group>"; };
@@ -1181,6 +1185,10 @@
 		79F7C5E31BF745FF00D618AE /* AboutUsVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsVC.m; sourceTree = "<group>"; };
 		79F7C5E41BF745FF00D618AE /* PersonalPassModifyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalPassModifyVC.h; sourceTree = "<group>"; };
 		79F7C5E51BF745FF00D618AE /* PersonalPassModifyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalPassModifyVC.m; sourceTree = "<group>"; };
+		79FE2B6C1C508E52000C1E08 /* LWUpLoadingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWUpLoadingManager.h; sourceTree = "<group>"; };
+		79FE2B6D1C508E52000C1E08 /* LWUpLoadingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWUpLoadingManager.m; sourceTree = "<group>"; };
+		79FE2B6F1C50D156000C1E08 /* LWPatientRelatedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRelatedModel.h; sourceTree = "<group>"; };
+		79FE2B701C50D156000C1E08 /* LWPatientRelatedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRelatedModel.m; sourceTree = "<group>"; };
 		79FEA4F31C0EEAB7007418E9 /* jiankangzixun_62-05@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiankangzixun_62-05@2x.png"; sourceTree = "<group>"; };
 		79FEA4F41C0EEAB7007418E9 /* jiankangzixun_62-06@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiankangzixun_62-06@2x.png"; sourceTree = "<group>"; };
 		79FEA4F51C0EEAB7007418E9 /* jiankangzixun_62-07@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiankangzixun_62-07@2x.png"; sourceTree = "<group>"; };
@@ -1786,6 +1794,8 @@
 				794712E71BF9D3CC0083CE6E /* LWVoiceManager.m */,
 				7929ACC01C33B66D002712EC /* LWThemeManager.h */,
 				7929ACC11C33B66D002712EC /* LWThemeManager.m */,
+				79FE2B6C1C508E52000C1E08 /* LWUpLoadingManager.h */,
+				79FE2B6D1C508E52000C1E08 /* LWUpLoadingManager.m */,
 			);
 			path = manager;
 			sourceTree = "<group>";
@@ -1821,6 +1831,8 @@
 		791215291BF1CFD0004166C5 /* LWPatient */ = {
 			isa = PBXGroup;
 			children = (
+				79FE2B6F1C50D156000C1E08 /* LWPatientRelatedModel.h */,
+				79FE2B701C50D156000C1E08 /* LWPatientRelatedModel.m */,
 				7912152A1BF1CFD0004166C5 /* LWPatientBaseModel.h */,
 				7912152B1BF1CFD0004166C5 /* LWPatientBaseModel.m */,
 				7912152C1BF1CFD0004166C5 /* LWPatientBody.h */,
@@ -2117,6 +2129,7 @@
 		7945566F1C0BDA15005C0E10 /* Nav */ = {
 			isa = PBXGroup;
 			children = (
+				7926F7781C561729009C4807 /* nav_btnBack@3x.png */,
 				794556701C0BDA15005C0E10 /* nav_btnAdd@2x.png */,
 				794556711C0BDA15005C0E10 /* nav_btnBack@2x.png */,
 			);
@@ -3155,6 +3168,7 @@
 				796991651C448D9A00A3A2C6 /* 01_act_@3x.png in Resources */,
 				79EA5D4A1C16705B001F0EE3 /* 4.5.6-切图.png in Resources */,
 				7902437E1C4DEB470010B1D9 /* no_data.png in Resources */,
+				7926F7791C561729009C4807 /* nav_btnBack@3x.png in Resources */,
 				797986A71C435350005052DF /* xiangji@3x.png in Resources */,
 				794557161C0BDA15005C0E10 /* time_g@2x.png in Resources */,
 				7902437D1C4DEB470010B1D9 /* flash_open_pic.png in Resources */,
@@ -3339,6 +3353,7 @@
 				7955C2931C03F705003D6836 /* LKDBHelper.m in Sources */,
 				79BB5F0E1C1038F600E7046B /* UIViewController+Factory.m in Sources */,
 				7955C2901C03F705003D6836 /* FMDatabaseQueue.m in Sources */,
+				79FE2B6E1C508E52000C1E08 /* LWUpLoadingManager.m in Sources */,
 				790243731C4DEB470010B1D9 /* ZZCameraPickerViewController.m in Sources */,
 				7945554B1C0BD98F005C0E10 /* NSString+RegexCategory.m in Sources */,
 				7912155E1BF1CFD0004166C5 /* LWMainBody.m in Sources */,
@@ -3394,6 +3409,7 @@
 				79CEEDF81C01B82D004D6786 /* LWPatientLogSymptomsDescribeCell.m in Sources */,
 				79AD91B91BF2E3290098D6CD /* LWPersonalSetingCtr.m in Sources */,
 				795FE09F1C082A6400B2EA2A /* LWLineChartView.m in Sources */,
+				79FE2B711C50D156000C1E08 /* LWPatientRelatedModel.m in Sources */,
 				79084E3F1C27AFBE0002BBF2 /* SVProgressHUD.m in Sources */,
 				791215151BF1CFB1004166C5 /* COUserDefaultsManager.m in Sources */,
 				7929ACBB1C33B1F8002712EC /* LWMessageTakeCell.m in Sources */,

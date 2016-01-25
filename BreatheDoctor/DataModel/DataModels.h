@@ -56,3 +56,5 @@
 
 #import "LWDoctorTimerModel.h"
 #import "LWPatientBiaoDanBody.h"
+
+#import "LWPatientRelatedModel.h"

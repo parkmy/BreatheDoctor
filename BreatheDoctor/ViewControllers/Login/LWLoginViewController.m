@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-        
+    self.navigationItem.hidesBackButton = YES;
     [self setUI];
 }
 
@@ -40,6 +40,7 @@
     [self.loginButton setCornerRadius:5.0f];
     self.bgView.layer.borderWidth = .5;
     self.bgView.layer.borderColor = CUSTOM_COLOR(191, 191, 191, 1).CGColor;
+    self.centerYh.constant = -35*MULTIPLE;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -94,7 +94,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 - (void)setUI
 {
     self.tableView.backgroundColor = [UIColor whiteColor];
-    self.tableView.rowHeight  = 60;
+    self.tableView.rowHeight  = 60*(iPhone6Plus?1.15:1);
     self.tableView.tableHeaderView = self.searchBar;
     setExtraCellLineHidden(self.tableView);
     

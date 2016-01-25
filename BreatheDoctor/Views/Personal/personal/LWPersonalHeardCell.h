@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LWPersonalHeardCell : UITableViewCell
+@property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *iconwhs;
 @property (weak, nonatomic) IBOutlet UIImageView *doctorIcon;
 @property (weak, nonatomic) IBOutlet UILabel *doctorNameLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *doctorTypeWidth;

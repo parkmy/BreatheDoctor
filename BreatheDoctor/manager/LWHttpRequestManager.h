@@ -13,6 +13,12 @@
 
 @interface LWHttpRequestManager : NSObject
 
+#pragma mark 获取http管理者
++ (AFHTTPRequestOperationManager*)httpRequestManager;
+#pragma mark - 全局接口变量对象
++ (void )addPublicHeaderPost:(NSMutableDictionary *)requestParams;
++ (NSMutableDictionary *)dic;
+
 #pragma mark 登录
 + (void)httpLoginWithPhoneNumber:(NSString *)phoneNumber
                         password:(NSString*)password
@@ -38,25 +44,25 @@
 
 #pragma mark 患者列表
 + (void)httpPatientListWithPage:(NSInteger )page
-                          size:(NSInteger)size
-                   refreshDate:(NSString *)refreshDate
-                       success:(void (^)(LWPatientBaseModel *patientBaseModel))success
-                       failure:(void (^)(NSString * errorMes))failure;
+                           size:(NSInteger)size
+                    refreshDate:(NSString *)refreshDate
+                        success:(void (^)(LWPatientBaseModel *patientBaseModel))success
+                        failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark 对话列表
 + (void)httpChatPatientListWithPatientId:(NSString *)patientId
                                     Page:(NSInteger )page
                                     type:(NSInteger )type
-                           size:(NSInteger)size
-                    refreshDate:(NSString *)refreshDate
-                        success:(void (^)(NSMutableArray *chats, LWChatBaseModel *baseModel))success
-                        failure:(void (^)(NSString * errorMes))failure;
+                                    size:(NSInteger)size
+                             refreshDate:(NSString *)refreshDate
+                                 success:(void (^)(NSMutableArray *chats, LWChatBaseModel *baseModel))success
+                                 failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark 修改密码
 + (void)httpChangeThePasswordWitholdPwd:(NSString *)oldPwd
-                             newPwd:(NSString *)newPwd
-                                 success:(void (^)(NSDictionary *dic))success
-                                 failure:(void (^)(NSString * errorMes))failure;
+                                 newPwd:(NSString *)newPwd
+                                success:(void (^)(NSDictionary *dic))success
+                                failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark 患者基本档案
 + (void)httpPantientArchivesWithPantientID:(NSString *)pid
@@ -92,8 +98,8 @@
 
 #pragma mark 哮喘评估
 + (void)httpLoadAsthmaAssessmentById:(NSString *)byid
-                success:(void (^)(LWAsthmaModel *model))success
-                failure:(void (^)(NSString * errorMes))failure;
+                             success:(void (^)(LWAsthmaModel *model))success
+                             failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark PEF记录
 + (void)httpLoadPEFRecordWithPatientId:(NSString *)patientId
@@ -104,10 +110,10 @@
 
 #pragma mark 加载哮喘症状评估日志录
 + (void)httpLoadAsthmaAssessLogWithPatientId:(NSString *)patientId
-                               year:(NSString *)year
-                                 month:(NSString *)month
-                               success:(void (^)(LWAsthmaAssessLogModel *model))success
-                               failure:(void (^)(NSString * errorMes))failure;
+                                        year:(NSString *)year
+                                       month:(NSString *)month
+                                     success:(void (^)(LWAsthmaAssessLogModel *model))success
+                                     failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark 加载ACT曲线评估日志
 + (void)httpLoadAsthmaAssessLogWithPatientId:(NSString *)pid
@@ -118,26 +124,47 @@
 
 #pragma mark 加载购买记录
 + (void)httpLoadShopOrderLogWithDate:(NSString *)date
-                                     success:(void (^)(NSMutableArray *models))success
-                                     failure:(void (^)(NSString * errorMes))failure;
+                             success:(void (^)(NSMutableArray *models))success
+                             failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark 获取医生服务时间
 + (void)httploadDoctorServerTimeSuccess:(void (^)(NSMutableArray *models))success
-                             failure:(void (^)(NSString * errorMes))failure;
+                                failure:(void (^)(NSString * errorMes))failure;
 
 
 #pragma mark 提交医生服务时间
 + (void)httpsubmitDoctorServerTimeWithJsonString:(NSString *)array
                                          Success:(void (^)())success
-                                failure:(void (^)(NSString * errorMes))failure;
+                                         failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark 加载表单详细信息
 + (void)httploadFirstDiagnosticInfowithdiagnosticId:(NSString *)diagnosticId
                                             Success:(void (^)(LWPatientBiaoDanBody *model))success
-                                failure:(void (^)(NSString * errorMes))failure;
+                                            failure:(void (^)(NSString * errorMes))failure;
 #pragma mark 加载表单日志信息
 + (void)httploadPatientFirstDiagnosticList:(NSString *)patientId
                                    Success:(void (^)(NSMutableArray *models))success
                                    failure:(void (^)(NSString * errorMes))failure;
+
+#pragma mark 提交患者病情相关
++ (void)httpsubmitDiseaseRelateWithPatientId:(NSString *)patientId
+ treatmentResult:(NSString *)treatmentResult
+  basicCondition:(NSString *)basicCondition
+          images:(NSString *)images
+         Success:(void (^)(NSMutableArray *models))success
+         failure:(void (^)(NSString * errorMes))failure;
+
+#pragma mark  加载患者病情相关
++ (void)httploadDiseaseRelate:(NSString *)patientId
+                                   Success:(void (^)(LWPatientRelatedModel *model))success
+                                   failure:(void (^)(NSString * errorMes))failure;
+
+#pragma mark  修改患者病情相关
++ (void)httpupdateDiseaseRelateWithSid:(NSString *)sid
+                       treatmentResult:(NSString *)treatmentResult
+                       basicCondition:(NSString *)basicCondition
+                       images:(NSString *)images
+                      Success:(void (^)(NSMutableArray *models))success
+                      failure:(void (^)(NSString * errorMes))failure;
 
 @end

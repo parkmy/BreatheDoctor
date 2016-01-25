@@ -79,7 +79,6 @@
     self.starLabel.layer.borderWidth = .5;
     self.starLabel.layer.borderColor = _isMulti?[UIColor colorWithHexString:@"#ff3333"].CGColor:[UIColor colorWithHexString:@"#fcb53a"].CGColor;
     self.starLabel.textColor = [UIColor colorWithCGColor:self.starLabel.layer.borderColor];
-
     
 }
 

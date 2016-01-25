@@ -13,10 +13,12 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    [self.doctorIcon setCornerRadius:self.doctorIcon.width/2];
     self.doctorTypeLabel.backgroundColor = RGBA(0, 0, 0, .3);
     [self.doctorTypeLabel setCornerRadius:self.doctorTypeLabel.height/2];
-    
+    for (NSLayoutConstraint *constraint in self.iconwhs) {
+        constraint.constant =  constraint.constant*(iPhone6Plus?1.15:1);
+        [self.doctorIcon setCornerRadius:constraint.constant/2];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

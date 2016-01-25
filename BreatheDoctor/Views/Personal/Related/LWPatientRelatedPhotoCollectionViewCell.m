@@ -7,8 +7,9 @@
 //
 
 #import "LWPatientRelatedPhotoCollectionViewCell.h"
+#import <UIImageView+WebCache.h>
+
 @interface LWPatientRelatedPhotoCollectionViewCell ()
-@property (nonatomic, strong) UIImageView *mImageView;
 @end
 @implementation LWPatientRelatedPhotoCollectionViewCell
 
@@ -36,14 +37,20 @@
     }
     return self;
 }
-- (void)setContentImage:(UIImage *)contentImage
+- (void)setObject:(id)object
 {
-    _contentImage = contentImage;
-    self.mImageView.image = _contentImage;
+    _object = object;
+    if ([object isKindOfClass:[UIImage class]]) {
+        self.mImageView.image = (UIImage *)object;
+    }else if ([object isKindOfClass:[NSString class]])
+    {
+        [self.mImageView sd_setImageWithURL:[NSURL URLWithString:stringJudgeNull((NSString *)object)]placeholderImage:kImage(@"defaultIconImage")];
+    }
+
 }
 - (void)cnacelButtonClick:(id)sender
 {
-    _deleButtonTapBlock?_deleButtonTapBlock(self.contentImage):nil;
+    _deleButtonimageTapBlock?_deleButtonimageTapBlock(self.object):nil;
 }
 
 - (UIImageView *)mImageView

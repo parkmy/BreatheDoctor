@@ -13,6 +13,7 @@
 #import "LWPatientLogViewController.h"
 #import "LWTheFormViewController.h"
 #import "LWTheFormTypeViewController.h"
+#import "LWPatientRelatedViewController.h"
 
 @interface LWPatientCententCtr ()
 @property (nonatomic, strong) LWPatientRecordsBaseModel *patientRecordsModel;
@@ -101,9 +102,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 180;
+        return 180*MULTIPLE;
     }
-    return 60;
+    return 60*MULTIPLE;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -120,9 +121,9 @@
         
     }else if (indexPath.row == 2)
     {
-        
-        
-        [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_PatientRelated] animated:YES];
+        LWPatientRelatedViewController *vc = (LWPatientRelatedViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRelated];
+        vc.patientId = self.patient.patientId;
+        [self.navigationController pushViewController:vc animated:YES];
         
         
         

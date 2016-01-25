@@ -8,6 +8,7 @@
 
 #import "LWPatientRelatedPhotoView.h"
 #import "LWPatientRelatedPhotoCollectionViewCell.h"
+#import <UIImageView+WebCache.h>
 
 @interface LWPatientRelatedPhotoView ()<UICollectionViewDataSource,UICollectionViewDelegate>
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -62,17 +63,22 @@
     LWPatientRelatedPhotoCollectionViewCell*cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LWPatientRelatedPhotoCollectionViewCell" forIndexPath:indexPath];
     if (indexPath.row == self.images.count) {
         cell.cancelButton.hidden = YES;
-        cell.contentImage = kImage(@"tianjia");
+        cell.mImageView.image = kImage(@"tianjia");
+//        cell.contentImage = kImage(@"tianjia");
     }else
     {
         cell.cancelButton.hidden = NO;
-        cell.contentImage = self.images[indexPath.row];
+        id objc = self.images[indexPath.row];
+        cell.object = objc;
     }
-    [cell setDeleButtonTapBlock:^(UIImage *image) {
+    
+    [cell setDeleButtonimageTapBlock:^(id object) {
         if (_delegate && [_delegate respondsToSelector:@selector(deleteimage: withCollectionView:)]) {
-            [_delegate deleteimage:image withCollectionView:self.collectionView];
+            [_delegate deleteimage:object withCollectionView:self.collectionView];
         }
+
     }];
+
     return cell;
 }
 

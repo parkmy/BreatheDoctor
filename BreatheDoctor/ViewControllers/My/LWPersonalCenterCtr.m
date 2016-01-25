@@ -115,15 +115,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 && indexPath.row == 0) {
-        return 80;
+        return 80*(iPhone6Plus?1.15:1);
     }else if (indexPath.section == 1 && indexPath.row == 3)//专长
     {
         LBLoginBaseModel *user = [CODataCacheManager shareInstance].userModel;
         NSString *perSpacil = user.body.perSpacil;
         CGFloat h = [perSpacil sizeWithFont:[UIFont systemFontOfSize:14] constrainedToWidth:160].height + 10;
-        return MAX(h, 44);
+        return MAX(h, 44)*(iPhone6Plus?1.15:1);
     }
-    return 44;
+    return 44*(iPhone6Plus?1.15:1);
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

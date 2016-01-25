@@ -18,15 +18,17 @@ typedef NS_ENUM(NSInteger, PatientRelatedType) {
 
 @optional
 - (void)selectItemAtIndexPath:(NSIndexPath *)indexPath;
-- (void)deleteItemWithImage:(UIImage *)image withCollectionView:(UICollectionView *)collectionView;;
+- (void)deleteItemWithImage:(id )objc withCollectionView:(UICollectionView *)collectionView;;
 
 @end
 
 @interface LWPatientRelatedView : UIView
+@property (nonatomic, strong) UITextView *contentTextView;
 @property (nonatomic, assign) PatientRelatedType patientRelatedType;
 @property (nonatomic, strong) UIScrollView *mScrollView;
 @property (nonatomic, weak) id<LWPatientRelatedViewDelegate>delegate;
 
 - (void)setImages:(NSMutableArray *)array;
+- (void)setContentTextViewText:(NSString *)text;
 
 @end

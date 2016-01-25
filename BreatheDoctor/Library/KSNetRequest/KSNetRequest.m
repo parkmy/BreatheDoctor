@@ -11,6 +11,7 @@
 #import <AFNetworking.h>
 #import "ProgressHUD.h"
 #import "UIViewController+KSNoNetController.h"
+#import "YRJSONAdapter.h"
 
 //===========================请求超时时间==========================//
 #define TIMEOUTINTERVAL 10
@@ -117,7 +118,7 @@
         }
         else
         {
-            NSLog(@"%@",responseObject);
+            NSLog(@"%@",[responseObject JSONString]);
             failure?failure(task,[KSNetRequest failureMes:responseObject[res_msg]]):nil;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

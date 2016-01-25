@@ -73,7 +73,6 @@ typedef NS_ENUM(NSInteger , SenderType) {
     [super addBackButton:@"nav_btnBack"];
     [super addRightButton:@"newR_.png"];
     [LWPublicDataManager shareInstance].currentPatientID = self.patient.memberId; //记录对话ID
-    self.fd_interactivePopDisabled = YES;
 
 }
 - (void)viewWillDisappear:(BOOL)animated
@@ -83,7 +82,6 @@ typedef NS_ENUM(NSInteger , SenderType) {
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
     [[LWPublicDataManager shareInstance] cloesCurrentPatientID]; //清除对话ID
-    self.fd_interactivePopDisabled = NO;
 }
 
 - (void)viewDidLoad {
@@ -682,7 +680,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
         content =[NSString stringWithFormat:@"%@/%@",url,key];
         
         content = [content stringByReplacingOccurrencesOfString:@" " withString:@""];
-        [content stringByReplacingOccurrencesOfString:@"\\" withString:@""];;
+        [content stringByReplacingOccurrencesOfString:@"\\" withString:@""];
     }
     [LWHttpRequestManager httpDoctorReply:self.patient.memberId content:content contentType:type voiceMin:vocMain success:^(LWSenderResBaseModel *senderResBaseModel) {
   

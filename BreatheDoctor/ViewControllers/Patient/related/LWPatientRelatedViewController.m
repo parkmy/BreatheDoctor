@@ -10,8 +10,13 @@
 #import "LWPatientRelatedView.h"
 #import "ZZPhotoKit.h"
 #import "ALActionSheetView.h"
+#import "LWUpLoadingManager.h"
+#import "ZZPhotoHud.h"
+#import "SVProgressHUD.h"
+#import "UITextView+placeholder.h"
+#import "ZZBrowserPickerViewController.h"
 
-@interface LWPatientRelatedViewController ()<LWPatientRelatedViewDelegate>
+@interface LWPatientRelatedViewController ()<LWPatientRelatedViewDelegate,ZZBrowserPickerDelegate>
 @property (nonatomic, strong) UIView *saveView;
 @property (nonatomic, strong) UIScrollView *mScrollView;
 
@@ -20,6 +25,15 @@
 @property (nonatomic, strong) LWPatientRelatedView *patientRelatedView3;//相关照片
 @property (nonatomic, strong) NSMutableArray *mimageAssets;
 @property (nonatomic, strong) NSMutableArray *relatedImages;
+@property (nonatomic, strong) NSMutableArray *imageStrings;
+
+@property (nonatomic, strong) LWPatientRelatedModel *model;
+
+@property (nonatomic, copy) NSMutableString *imagesString;
+@property (nonatomic, copy) NSString *treatmentResult;
+@property (nonatomic, copy) NSString *basicCondition;
+
+@property (nonatomic, strong) ZZBrowserPickerViewController *browserPicker;
 @end
 
 @implementation LWPatientRelatedViewController
@@ -34,8 +48,16 @@
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self setUI];
+    
+    [self loadRelated];
 }
-
+- (NSMutableString *)imagesString
+{
+    if (!_imagesString) {
+        _imagesString = [[NSMutableString alloc] initWithString:@""];
+    }
+    return _imagesString;
+}
 - (void)setUI
 {
     _mScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64)];
@@ -43,6 +65,7 @@
     
     _patientRelatedView1 = [[LWPatientRelatedView alloc] init];
     _patientRelatedView1.patientRelatedType = PatientRelatedTypediagnosis;
+
     [_mScrollView addSubview:_patientRelatedView1];
     _patientRelatedView1.mScrollView = _mScrollView;
     
@@ -89,6 +112,7 @@
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:16];
         btn.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
+        [btn addTarget:self action:@selector(baocunButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [_saveView addSubview:btn];
         
         
@@ -103,6 +127,13 @@
     }
     return _relatedImages;
 }
+- (NSMutableArray *)imageStrings
+{
+    if (!_imageStrings) {
+        _imageStrings = [NSMutableArray array];
+    }
+    return _imageStrings;
+}
 - (NSMutableArray *)mimageAssets
 {
     if (!_mimageAssets) {
@@ -110,6 +141,156 @@
     }
     return _mimageAssets;
 }
+
+#pragma mark - click
+- (void)baocunButtonClick:(UIButton *)sender
+{
+    self.treatmentResult = _patientRelatedView1.contentTextView.text;
+    self.basicCondition = _patientRelatedView2.contentTextView.text;
+
+    [self uploadImagesSuccess:^(NSMutableArray *models) {
+        
+        for (NSDictionary *dic in models) {
+            NSArray *body = dic[@"body"];
+            if (body.count <= 0) {
+                return;
+            }
+            NSDictionary *dicDic = body[0];
+            NSString *key = dicDic[@"key"];
+            NSString *url = dicDic[@"url"];
+            NSString *contentString =[NSString stringWithFormat:@"%@/%@",url,key];
+            contentString = [contentString stringByReplacingOccurrencesOfString:@" " withString:@""];
+            [contentString stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+            [self.imageStrings addObject:contentString];
+        }
+        
+        [self updateImages];
+        if (self.model.sid) {
+            [self updateRelated];
+        }else{
+            [self senderRelated];
+        }
+    }];
+}
+- (NSMutableArray *)traverseimages
+{
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (id objc in self.relatedImages)
+    {
+        if ([objc isKindOfClass:[UIImage class]]) {
+            [array addObject:objc];
+        }
+    }
+    return array;
+}
+- (void)updateImages
+{
+    NSMutableString *string = [[NSMutableString alloc] initWithString:@""];
+    for (id objc in self.relatedImages) {
+        if ([objc isKindOfClass:[NSString class]]) {
+            [string appendString:[NSString stringWithFormat:@"%@|",objc]];
+        }
+    }
+    for (NSString *url in self.imageStrings) {
+        [string appendString:[NSString stringWithFormat:@"%@|",url]];
+    }
+    if (string.length > 0) {
+        if ([[string substringWithRange:NSMakeRange(string.length-1, 1)] isEqualToString:@"|"]) {
+            [string deleteCharactersInRange:NSMakeRange(string.length-1, 1)];
+        }
+    }
+    self.imagesString = string;
+}
+- (void)uploadImagesSuccess:(void (^)(NSMutableArray *models))success
+{
+    if ([(NSMutableArray *)[self traverseimages] count] > 0)
+    {
+        [ZZPhotoHud showActiveHudWithTitle:@"正在保存..."];
+        [LWUpLoadingManager startMultiPartUploadTaskWithURL:nil imagesArray:[self traverseimages] WithType:WSChatCellType_Image compressionRatio:.3 success:^(NSMutableArray *models)
+        {
+            success?success(models):nil;
+        } failure:^(NSString *errorMes) {
+            [ZZPhotoHud hideActiveHud];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:errorMes delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
+            [alert show];
+        }];
+    }else{
+        if (self.model.sid) {
+            [self updateImages];
+            [self updateRelated];
+        }else{
+            [ZZPhotoHud showActiveHudWithTitle:@"正在保存..."];
+            [self senderRelated];
+        }
+    }
+
+}
+
+- (void)senderRelated
+{
+    [LWHttpRequestManager httpsubmitDiseaseRelateWithPatientId:self.patientId treatmentResult:self.treatmentResult basicCondition:self.basicCondition images:self.imagesString Success:^(NSMutableArray *models) {
+        [ZZPhotoHud hideActiveHud];
+        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+    } failure:^(NSString *errorMes) {
+        [ZZPhotoHud hideActiveHud];
+        [SVProgressHUD showErrorWithStatus:errorMes];
+    }];
+    
+}
+- (void)updateRelated
+{
+    [ZZPhotoHud showActiveHudWithTitle:@"正在修改..."];
+    [LWHttpRequestManager httpupdateDiseaseRelateWithSid:self.model.sid treatmentResult:self.treatmentResult basicCondition:self.basicCondition images:self.imagesString Success:^(NSMutableArray *models) {
+        [ZZPhotoHud hideActiveHud];
+        [SVProgressHUD showSuccessWithStatus:@"修改成功"];
+    } failure:^(NSString *errorMes) {
+        [ZZPhotoHud hideActiveHud];
+        [SVProgressHUD showErrorWithStatus:errorMes];
+    }];
+
+}
+
+- (void)loadRelated
+{
+    [ZZPhotoHud showActiveHudWithTitle:@"正在加载..."];
+    [LWHttpRequestManager httploadDiseaseRelate:self.patientId Success:^(LWPatientRelatedModel *model) {
+        [ZZPhotoHud hideActiveHud];
+        self.model = model;
+        
+        if (self.model.treatmentResult.length > 0) {
+            [_patientRelatedView1 setContentTextViewText:stringJudgeNull(self.model.treatmentResult)];
+        }else
+        {
+            _patientRelatedView1.contentTextView.placeholder = @"请描述患者基本病情...";
+        }
+        if (self.model.basicCondition.length > 0) {
+            [_patientRelatedView2 setContentTextViewText:stringJudgeNull(self.model.basicCondition)];
+        }else
+        {
+            _patientRelatedView2.contentTextView.placeholder = @"请填写诊断结果...";
+
+        }
+        self.imagesString = [[NSMutableString alloc] initWithString:stringJudgeNull(self.model.images)];
+        [self.relatedImages removeAllObjects];
+        if (self.model.images.length > 0) {
+            for (NSString *url in [NSMutableArray arrayWithArray:[stringJudgeNull(self.model.images) componentsSeparatedByString:@"|"]])
+            {
+                if (url.length > 0) {
+                    [self.relatedImages addObject:url];
+                }
+            }
+        }
+        
+        [_patientRelatedView3 setImages:self.relatedImages ];
+        
+    } failure:^(NSString *errorMes) {
+        [ZZPhotoHud hideActiveHud];
+        
+    }];
+}
+
+
 #pragma mark -LWPatientRelatedViewDelegate
 - (void)selectItemAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -148,18 +329,39 @@
         }];
         
         [view show];
-//        DNImagePickerController *imagePicker = [[DNImagePickerController alloc] init];
-//        imagePicker.imagePickerDelegate = self;
-//        [self presentViewController:imagePicker animated:YES completion:nil];
+    }else
+    {
+        self.browserPicker = [[ZZBrowserPickerViewController alloc]init];
+        self.browserPicker.delegate = self;
+        [self.browserPicker reloadData];
+        [self.browserPicker showIn:self animation:ShowAnimationOfPresent];
+    
     }
 
 }
-- (void)deleteItemWithImage:(UIImage *)image withCollectionView:(UICollectionView *)collectionView
+- (void)deleteItemWithImage:(id )objc withCollectionView:(UICollectionView *)collectionView
 {
-    [self.relatedImages removeObject:image];
+    [self.relatedImages removeObject:objc];
     [collectionView reloadData];
 }
 
+#pragma mark -
+
+-(NSInteger)zzbrowserPickerPhotoNum:(ZZBrowserPickerViewController *)controller
+{
+    return self.relatedImages.count;
+}
+-(NSArray *)zzbrowserPickerPhotoContent:(ZZBrowserPickerViewController *)controller
+{
+    return self.relatedImages;
+}
+-(void)zzbrowerPickerPhotoRemove:(NSInteger) indexPath
+{
+    if (self.relatedImages.count > indexPath) {
+        [self.relatedImages removeObjectAtIndex:indexPath];
+    }
+    [self.patientRelatedView3 setImages:self.relatedImages];
+}
 #pragma mark -nav
 - (void)navLeftButtonAction
 {

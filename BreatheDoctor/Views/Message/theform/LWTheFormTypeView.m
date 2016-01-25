@@ -20,19 +20,24 @@
         self.backgroundColor = [UIColor whiteColor];
         _itmLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.layer.borderWidth = .5;
-        self.layer.borderColor = type == showTheFormTypeBiaoDan?[LWThemeManager shareInstance].navBackgroundColor.CGColor:RGBA(0, 0, 0, .3).CGColor;
+        if (type == showTheFormTypeBiaoDan || type == showTheFormTypeMouKuaiSucc) {
+            self.layer.borderColor = [LWThemeManager shareInstance].navBackgroundColor.CGColor;
+        }else
+        {
+            self.layer.borderColor = RGBA(0, 0, 0, .3).CGColor;
+        }
         _itmLabel.userInteractionEnabled = YES;
         _itmLabel.font = [UIFont systemFontOfSize:14];
         _itmLabel.textAlignment = 1;
-        _itmLabel.textColor = type == showTheFormTypeBiaoDan?[LWThemeManager shareInstance].navBackgroundColor:RGBA(0, 0, 0, .6);
+        if (type == showTheFormTypeBiaoDan || type == showTheFormTypeMouKuaiSucc) {
+            _itmLabel.textColor = [LWThemeManager shareInstance].navBackgroundColor;
+        }else
+        {
+            _itmLabel.textColor = RGBA(0, 0, 0, .6);
+        }
         [self addSubview:_itmLabel];
         _itmLabel.sd_layout.topSpaceToView(self,0).leftSpaceToView(self,0).rightSpaceToView(self,0).bottomSpaceToView(self,0);
         
-//        _seleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [_seleButton setImage:kImage(@"duoxuan") forState:UIControlStateNormal];
-//        _seleButton.backgroundColor = [UIColor clearColor];
-//        [self addSubview:_seleButton];
-//        _seleButton.sd_layout.topSpaceToView(self,-10).rightSpaceToView(self,-10).widthIs(20).heightIs(20);
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapItmClick)];
         [self addGestureRecognizer:tap];
@@ -93,7 +98,7 @@
             LWTheFormTypeViewItm *btn = [[LWTheFormTypeViewItm alloc] initWithFrame:CGRectZero withType:self.showType];
             btn.itmLabel.text = title;
             [btn setCornerRadius:5.0f];
-            CGFloat width = [title sizeWithFont:[UIFont systemFontOfSize:14] constrainedToHeight:CGFLOAT_MAX].width + 20;
+            CGFloat width = [title sizeWithFont:[UIFont systemFontOfSize:14] constrainedToHeight:CGFLOAT_MAX].width + 10;
             
             btn.width = width > w?ww:w;
             btn.xOrigin = a*(w + margin) + margin;
@@ -102,7 +107,7 @@
             
             [self addSubview:btn];
             
-            if (self.showType == showTheFormTypeBiaoDan) {
+           if (self.showType == showTheFormTypeBiaoDan || self.showType == showTheFormTypeMouKuaiSucc) {
                 UIButton *itm = [UIButton buttonWithType:UIButtonTypeCustom];
                 [itm setImage:kImage(@"duoxuan") forState:UIControlStateNormal];
                 itm.backgroundColor = [UIColor clearColor];

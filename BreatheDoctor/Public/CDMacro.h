@@ -85,7 +85,7 @@
 
 #define sizeScaleX ((screenHeight<=480)?1.0f:screenWidth/320)
 #define sizeScaleY ((screenHeight<=480)?1.0f:screenHeight/568)
-#define FontScale iPhone6Plus?1.8:1
+#define FontScale iPhone6Plus?1.5:1
 
 CG_INLINE CGRect CGRectMakeFit(CGFloat x, CGFloat y, CGFloat width, CGFloat height)
 {

@@ -13,5 +13,6 @@
 @end
 
 @interface LWLoginViewController : UIViewController
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *centerYh;
 @property (nonatomic, weak) id<LWLoginViewControllerDelegate>delegate;
 @end

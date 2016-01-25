@@ -654,11 +654,82 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
     } isCache:YES];
+}
 
+#pragma mark 提交患者病情相关
++ (void)httpsubmitDiseaseRelateWithPatientId:(NSString *)patientId
+                             treatmentResult:(NSString *)treatmentResult
+                              basicCondition:(NSString *)basicCondition
+                                      images:(NSString *)images
+                                     Success:(void (^)(NSMutableArray *models))success
+                                     failure:(void (^)(NSString * errorMes))failure
+{
 
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    
+    [requestParams setObject:stringJudgeNull(patientId) forKey:@"patientId"];
+    [requestParams setObject:stringJudgeNull(treatmentResult) forKey:@"treatmentResult"];
+    [requestParams setObject:stringJudgeNull(basicCondition) forKey:@"basicCondition"];
+    [requestParams setObject:stringJudgeNull(images) forKey:@"images"];
 
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_SUBMITDISEASERELATE] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        success?success(nil):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];
 
 
 }
+
+#pragma mark  加载患者病情相关
++ (void)httploadDiseaseRelate:(NSString *)patientId
+                      Success:(void (^)(LWPatientRelatedModel *model))success
+                      failure:(void (^)(NSString * errorMes))failure
+{
+
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    
+    [requestParams setObject:stringJudgeNull(patientId) forKey:@"patientId"];
+    
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADDISEASERELATE] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {        
+        NSLog(@"%@",[responseObject JSONString]);
+        NSDictionary *body = [responseObject objectForKey:res_body];
+        LWPatientRelatedModel *model = [[LWPatientRelatedModel alloc] initWithDictionary:body];
+        success?success(model):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:YES];
+}
+
+#pragma mark  修改患者病情相关
++ (void)httpupdateDiseaseRelateWithSid:(NSString *)sid
+                       treatmentResult:(NSString *)treatmentResult
+                        basicCondition:(NSString *)basicCondition
+                                images:(NSString *)images
+                               Success:(void (^)(NSMutableArray *models))success
+                               failure:(void (^)(NSString * errorMes))failure
+{
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    
+    [requestParams setObject:stringJudgeNull(sid) forKey:@"sid"];
+    [requestParams setObject:stringJudgeNull(treatmentResult) forKey:@"treatmentResult"];
+    [requestParams setObject:stringJudgeNull(basicCondition) forKey:@"basicCondition"];
+    [requestParams setObject:stringJudgeNull(images) forKey:@"images"];
+
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_UPDATEDISEASERELATE] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        success?success(nil):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];
+}
+
 
 @end

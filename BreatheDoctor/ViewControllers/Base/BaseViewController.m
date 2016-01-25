@@ -28,7 +28,7 @@
     {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
-        
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated

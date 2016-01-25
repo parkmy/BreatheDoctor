@@ -23,7 +23,9 @@
 //呼吸测试
 
 #define comveeUpload_URL @"http://img.mamibon.com:8080/fileuploader/uploader.do"
-
+//199 测试
+//105 正式
+#define platCode @"199"
 //01 商店 03 企业 99 测试
 #define LOADFROMKEY @"99"
 
@@ -89,4 +91,10 @@ static  NSString *HTTP_POST_LOADFIRSTDIAGNOSTICINFO = @"mobile/patient/loadFirst
 // *-- 加载表单日至信息
 static  NSString *HTTP_POST_LOADPATIENTFIRSTDIAGNOSTICLIST = @"mobile/patient/loadPatientFirstDiagnosticList.do";
 
+// *-- 提交患者病情相关
+static  NSString *HTTP_POST_SUBMITDISEASERELATE     = @"mobile/doctor/submitDiseaseRelate.do";
+// *-- 加载患者病情相关
+static  NSString *HTTP_POST_LOADDISEASERELATE       = @"mobile/doctor/loadDiseaseRelate.do";
+// *-- 修改患者病情相关
+static  NSString *HTTP_POST_UPDATEDISEASERELATE     = @"mobile/doctor/updateDiseaseRelate.do";
 #endif /* LWHttpDefine_h */
