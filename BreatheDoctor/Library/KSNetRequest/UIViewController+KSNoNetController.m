@@ -17,6 +17,7 @@
     [self hiddenNonetWork];
     
     KSNoNetView* view = [KSNoNetView instanceNoNetView];
+    view.frame = self.view.frame;
     view.ErrorButton.hidden = isShow;
     view.ErrorButton.tag = type;
     if (!isShow)

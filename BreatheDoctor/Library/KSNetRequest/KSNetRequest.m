@@ -55,7 +55,9 @@
             [self requestProgress:URLString parameters:parameters success:success failure:failure];
         }
     }else{
-        success?success(nil,[KSCache selectObjectWithURL:URLString parameter:parameters]):nil;
+        if ([KSCache selectObjectWithURL:URLString parameter:parameters]) {
+            success?success(nil,[KSCache selectObjectWithURL:URLString parameter:parameters]):nil;
+        }
         failure?failure(nil,@"网络连接错误"):nil;
     }
 }

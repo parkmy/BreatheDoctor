@@ -25,6 +25,7 @@
 #import "YRJSONAdapter.h"
 #import "UIResponder+Router.h"
 #import "LWTool.h"
+#import "SVProgressHUD.h"
 
 @interface LWTheFormViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -106,12 +107,40 @@
 
 - (void)setUI
 {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.rowHeight = 110;
     [_tableView registerClass:[LWTheFormCell class] forCellReuseIdentifier:@"LWTheFormCell"];
     [self.view addSubview:_tableView];
+    
+    
+    
+    if (self.showType == showTheFormTypeMouKuai)
+    {
+        UIView *footView = [[UIView alloc] initWithFrame:CGRectZero];
+        footView.backgroundColor = [UIColor whiteColor];
+        [self.view addSubview:footView];
+        
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setCornerRadius:5.0f];
+        [btn setTitle:@"提交" forState:UIControlStateNormal];
+        btn.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
+        [btn addTarget:self action:@selector(uploadBiaoDan) forControlEvents:UIControlEventTouchUpInside];
+        [footView addSubview:btn];
+        footView.sd_layout.heightIs(55).leftSpaceToView(self.view,0).rightSpaceToView(self.view,0).bottomSpaceToView(self.view,0);
+
+        btn.sd_layout.leftSpaceToView(footView,20).topSpaceToView(footView,5).rightSpaceToView(footView,20).bottomSpaceToView(footView,5);
+
+        _tableView.sd_layout.topSpaceToView(self.view,64).leftSpaceToView(self.view,0).rightSpaceToView(self.view,0).bottomSpaceToView(footView,0);
+
+    }else
+    {
+        _tableView.sd_layout.topSpaceToView(self.view,64).leftSpaceToView(self.view,0).rightSpaceToView(self.view,0).bottomSpaceToView(self.view,0);
+
+    }
+
+    
 }
 - (void)navLeftButtonAction
 {
@@ -174,9 +203,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if (self.showType == showTheFormTypeMouKuai) {
-        return section == _baseModel.mrows.count?60:40;
-    }
     return section == _baseModel.mrows.count?.1:40;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
@@ -204,29 +230,16 @@
         label.frame = CGRectMake(icon.maxX+10, 0, screenWidth-50, 40);
         
         
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [btn setCornerRadius:5.0f];
-        [btn setTitle:@"提交" forState:UIControlStateNormal];
-        btn.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
-        [view addSubview:btn];
-        btn.tag = 10086;
-        btn.sd_layout.leftSpaceToView(view,20).topSpaceToView(view,10).rightSpaceToView(view,20).bottomSpaceToView(view,10);
-        
     }
     UILabel *label = [view viewWithTag:888];
     UIImageView *icon = [view viewWithTag:999];
-    UIButton *btn = [view viewWithTag:10086];
-    btn.hidden = YES;
+
     label.hidden = NO;
     icon.hidden = NO;
     
     if (section == _baseModel.mrows.count) {
         label.hidden = YES;
         icon.hidden = YES;
-            if (self.showType == showTheFormTypeMouKuai) {
-                btn.hidden = NO;
-                [btn addTarget:self action:@selector(uploadBiaoDan) forControlEvents:UIControlEventTouchUpInside];
-            }
         return view;
     }
 
@@ -242,9 +255,11 @@
     [LWHttpRequestManager httpDoctorReply:self.patientId content:@"哮喘诊断判定表" contentType:21 voiceMin:0 success:^(LWSenderResBaseModel *senderResBaseModel) {
         [LWProgressHUD closeProgressHUD:self.view];
         [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_SENDERZHENGDUANMOKUAISUCC object:nil userInfo:@{@"message":senderResBaseModel}];
-        UIViewController *vc = self.navigationController.viewControllers[1];
-        [self.navigationController popToViewController:vc animated:YES];
-        
+        [SVProgressHUD showSuccessWithStatus:@"发送成功"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            UIViewController *vc = self.navigationController.viewControllers[1];
+            [self.navigationController popToViewController:vc animated:YES];
+        });
     } failure:^(NSString *errorMes) {
         [LWProgressHUD closeProgressHUD:self.view];
         [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];

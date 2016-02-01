@@ -10,6 +10,7 @@
 #import "CODataCacheManager.h"
 #import "CDMacro.h"
 #import "PushMgrInfo.h"
+#import "UMSAgent.h"
 
 @interface AppDelegate ()
 
@@ -24,6 +25,9 @@
 
     NSLog(@"%@",NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES));
     
+    //统计
+    [UMSAgent startWithAppkey:@""];
+    
     //主题
     [LWThemeManager shareInstance].themeType = themeTypeDefault;
     
@@ -35,7 +39,6 @@
     
     return YES;
 }
-
 
 
 - (void)registerUserNotification:(UIApplication *)application  withLaunchOptions:(NSDictionary *)launchOptions

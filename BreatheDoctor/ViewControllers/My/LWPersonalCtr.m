@@ -113,9 +113,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 170*(iPhone6Plus?1.15:1);
+        return 170*MULTIPLE;
     }
-    return 90*(iPhone6Plus?1.15:1);
+    return 90*MULTIPLE;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

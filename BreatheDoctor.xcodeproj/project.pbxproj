@@ -80,8 +80,6 @@
 		790A67341BFC591B007E6DD6 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 790A67271BFC591B007E6DD6 /* libmp3lame.a */; };
 		790A67351BFC591B007E6DD6 /* Mp3Recorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 790A67291BFC591B007E6DD6 /* Mp3Recorder.m */; };
 		790A67361BFC591B007E6DD6 /* RecordHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 790A672B1BFC591B007E6DD6 /* RecordHUD.m */; };
-		790A673C1BFC64A0007E6DD6 /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 790A67391BFC64A0007E6DD6 /* UITableView+SDAutoTableViewCellHeight.m */; };
-		790A673D1BFC64A0007E6DD6 /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 790A673B1BFC64A0007E6DD6 /* UIView+SDAutoLayout.m */; };
 		790A67401BFC7314007E6DD6 /* LWChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790A673F1BFC7314007E6DD6 /* LWChatModel.m */; };
 		790BE9321C02EA2600BD1D67 /* LWAsthmaAssessmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790BE9311C02EA2600BD1D67 /* LWAsthmaAssessmentViewController.m */; };
 		790BE9391C02EBB200BD1D67 /* LWACTStateAssessmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790BE9381C02EBB200BD1D67 /* LWACTStateAssessmentCell.m */; };
@@ -379,6 +377,17 @@
 		798922BE1BFEB523002C695C /* HMFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 798922BB1BFEB523002C695C /* HMFileManager.m */; };
 		798922BF1BFEB523002C695C /* NSObject+Encodeing.m in Sources */ = {isa = PBXBuildFile; fileRef = 798922BD1BFEB523002C695C /* NSObject+Encodeing.m */; };
 		798922C21BFEB6A2002C695C /* GJMFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 798922C11BFEB6A2002C695C /* GJMFileHelper.m */; };
+		7994D5A71C57256200E41865 /* UMSDataMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D58E1C57256200E41865 /* UMSDataMgr.m */; };
+		7994D5A81C57256200E41865 /* UMSNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5901C57256200E41865 /* UMSNetwork.m */; };
+		7994D5A91C57256200E41865 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5941C57256200E41865 /* SFHFKeychainUtils.m */; };
+		7994D5AA1C57256200E41865 /* ActivityLogObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5971C57256200E41865 /* ActivityLogObj.m */; };
+		7994D5AB1C57256200E41865 /* CheckUpdateReturn.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5991C57256200E41865 /* CheckUpdateReturn.m */; };
+		7994D5AC1C57256200E41865 /* CommonReturn.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D59B1C57256200E41865 /* CommonReturn.m */; };
+		7994D5AD1C57256200E41865 /* DeviceInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D59D1C57256200E41865 /* DeviceInfoObj.m */; };
+		7994D5AE1C57256200E41865 /* ErrorLogObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D59F1C57256200E41865 /* ErrorLogObj.m */; };
+		7994D5AF1C57256200E41865 /* EventInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5A11C57256200E41865 /* EventInfoObj.m */; };
+		7994D5B01C57256200E41865 /* UMSAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5A31C57256200E41865 /* UMSAgent.m */; };
+		7994D5B31C57263400E41865 /* NSMutableArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5B21C57263400E41865 /* NSMutableArray+Sort.m */; };
 		79AD86101C4F300E00EBE224 /* LWPatientCententCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD85F21C4F300E00EBE224 /* LWPatientCententCtr.m */; };
 		79AD86111C4F300E00EBE224 /* LWPatientGroupsCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD85F41C4F300E00EBE224 /* LWPatientGroupsCtr.m */; };
 		79AD86121C4F300E00EBE224 /* LWPatientListCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD85F81C4F300E00EBE224 /* LWPatientListCtr.m */; };
@@ -615,10 +624,6 @@
 		790A67291BFC591B007E6DD6 /* Mp3Recorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mp3Recorder.m; sourceTree = "<group>"; };
 		790A672A1BFC591B007E6DD6 /* RecordHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordHUD.h; sourceTree = "<group>"; };
 		790A672B1BFC591B007E6DD6 /* RecordHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordHUD.m; sourceTree = "<group>"; };
-		790A67381BFC64A0007E6DD6 /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
-		790A67391BFC64A0007E6DD6 /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
-		790A673A1BFC64A0007E6DD6 /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
-		790A673B1BFC64A0007E6DD6 /* UIView+SDAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDAutoLayout.m"; sourceTree = "<group>"; };
 		790A673E1BFC7314007E6DD6 /* LWChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatModel.h; sourceTree = "<group>"; };
 		790A673F1BFC7314007E6DD6 /* LWChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatModel.m; sourceTree = "<group>"; };
 		790BE9301C02EA2600BD1D67 /* LWAsthmaAssessmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWAsthmaAssessmentViewController.h; sourceTree = "<group>"; };
@@ -1056,6 +1061,28 @@
 		798922BD1BFEB523002C695C /* NSObject+Encodeing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Encodeing.m"; sourceTree = "<group>"; };
 		798922C01BFEB6A2002C695C /* GJMFileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJMFileHelper.h; sourceTree = "<group>"; };
 		798922C11BFEB6A2002C695C /* GJMFileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJMFileHelper.m; sourceTree = "<group>"; };
+		7994D58D1C57256200E41865 /* UMSDataMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSDataMgr.h; sourceTree = "<group>"; };
+		7994D58E1C57256200E41865 /* UMSDataMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSDataMgr.m; sourceTree = "<group>"; };
+		7994D58F1C57256200E41865 /* UMSNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSNetwork.h; sourceTree = "<group>"; };
+		7994D5901C57256200E41865 /* UMSNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSNetwork.m; sourceTree = "<group>"; };
+		7994D5931C57256200E41865 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		7994D5941C57256200E41865 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		7994D5961C57256200E41865 /* ActivityLogObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityLogObj.h; sourceTree = "<group>"; };
+		7994D5971C57256200E41865 /* ActivityLogObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityLogObj.m; sourceTree = "<group>"; };
+		7994D5981C57256200E41865 /* CheckUpdateReturn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckUpdateReturn.h; sourceTree = "<group>"; };
+		7994D5991C57256200E41865 /* CheckUpdateReturn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckUpdateReturn.m; sourceTree = "<group>"; };
+		7994D59A1C57256200E41865 /* CommonReturn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonReturn.h; sourceTree = "<group>"; };
+		7994D59B1C57256200E41865 /* CommonReturn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonReturn.m; sourceTree = "<group>"; };
+		7994D59C1C57256200E41865 /* DeviceInfoObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInfoObj.h; sourceTree = "<group>"; };
+		7994D59D1C57256200E41865 /* DeviceInfoObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInfoObj.m; sourceTree = "<group>"; };
+		7994D59E1C57256200E41865 /* ErrorLogObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorLogObj.h; sourceTree = "<group>"; };
+		7994D59F1C57256200E41865 /* ErrorLogObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorLogObj.m; sourceTree = "<group>"; };
+		7994D5A01C57256200E41865 /* EventInfoObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInfoObj.h; sourceTree = "<group>"; };
+		7994D5A11C57256200E41865 /* EventInfoObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInfoObj.m; sourceTree = "<group>"; };
+		7994D5A21C57256200E41865 /* UMSAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSAgent.h; sourceTree = "<group>"; };
+		7994D5A31C57256200E41865 /* UMSAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSAgent.m; sourceTree = "<group>"; };
+		7994D5B11C57263400E41865 /* NSMutableArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Sort.h"; sourceTree = "<group>"; };
+		7994D5B21C57263400E41865 /* NSMutableArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Sort.m"; sourceTree = "<group>"; };
 		79AD85F11C4F300E00EBE224 /* LWPatientCententCtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientCententCtr.h; sourceTree = "<group>"; };
 		79AD85F21C4F300E00EBE224 /* LWPatientCententCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientCententCtr.m; sourceTree = "<group>"; };
 		79AD85F31C4F300E00EBE224 /* LWPatientGroupsCtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientGroupsCtr.h; sourceTree = "<group>"; };
@@ -1487,17 +1514,6 @@
 			path = imgs;
 			sourceTree = "<group>";
 		};
-		790A67371BFC64A0007E6DD6 /* SDAutoLayout */ = {
-			isa = PBXGroup;
-			children = (
-				790A67381BFC64A0007E6DD6 /* UITableView+SDAutoTableViewCellHeight.h */,
-				790A67391BFC64A0007E6DD6 /* UITableView+SDAutoTableViewCellHeight.m */,
-				790A673A1BFC64A0007E6DD6 /* UIView+SDAutoLayout.h */,
-				790A673B1BFC64A0007E6DD6 /* UIView+SDAutoLayout.m */,
-			);
-			path = SDAutoLayout;
-			sourceTree = "<group>";
-		};
 		790BE92C1C02E9A000BD1D67 /* Assessment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1610,6 +1626,8 @@
 		7912148B1BF1C15D004166C5 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				7994D5B11C57263400E41865 /* NSMutableArray+Sort.h */,
+				7994D5B21C57263400E41865 /* NSMutableArray+Sort.m */,
 				79BA9FAB1C45E18600D9236A /* UITextView */,
 				79BB5F0B1C1038F600E7046B /* UIViewController */,
 				794555291C0BD98F005C0E10 /* NSDate */,
@@ -2572,9 +2590,77 @@
 			path = HMFileManager;
 			sourceTree = "<group>";
 		};
+		7994D5831C57256200E41865 /* UMeng */ = {
+			isa = PBXGroup;
+			children = (
+				7994D58B1C57256200E41865 /* UMSAgent */,
+			);
+			path = UMeng;
+			sourceTree = "<group>";
+		};
+		7994D58B1C57256200E41865 /* UMSAgent */ = {
+			isa = PBXGroup;
+			children = (
+				7994D58C1C57256200E41865 /* Common */,
+				7994D5911C57256200E41865 /* Library */,
+				7994D5951C57256200E41865 /* Models */,
+				7994D5A21C57256200E41865 /* UMSAgent.h */,
+				7994D5A31C57256200E41865 /* UMSAgent.m */,
+			);
+			path = UMSAgent;
+			sourceTree = "<group>";
+		};
+		7994D58C1C57256200E41865 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				7994D58D1C57256200E41865 /* UMSDataMgr.h */,
+				7994D58E1C57256200E41865 /* UMSDataMgr.m */,
+				7994D58F1C57256200E41865 /* UMSNetwork.h */,
+				7994D5901C57256200E41865 /* UMSNetwork.m */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		7994D5911C57256200E41865 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				7994D5921C57256200E41865 /* Security */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		7994D5921C57256200E41865 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				7994D5931C57256200E41865 /* SFHFKeychainUtils.h */,
+				7994D5941C57256200E41865 /* SFHFKeychainUtils.m */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		7994D5951C57256200E41865 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7994D5961C57256200E41865 /* ActivityLogObj.h */,
+				7994D5971C57256200E41865 /* ActivityLogObj.m */,
+				7994D5981C57256200E41865 /* CheckUpdateReturn.h */,
+				7994D5991C57256200E41865 /* CheckUpdateReturn.m */,
+				7994D59A1C57256200E41865 /* CommonReturn.h */,
+				7994D59B1C57256200E41865 /* CommonReturn.m */,
+				7994D59C1C57256200E41865 /* DeviceInfoObj.h */,
+				7994D59D1C57256200E41865 /* DeviceInfoObj.m */,
+				7994D59E1C57256200E41865 /* ErrorLogObj.h */,
+				7994D59F1C57256200E41865 /* ErrorLogObj.m */,
+				7994D5A01C57256200E41865 /* EventInfoObj.h */,
+				7994D5A11C57256200E41865 /* EventInfoObj.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		79A697621BF572E300A28671 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				7994D5831C57256200E41865 /* UMeng */,
 				7902433D1C4DEB470010B1D9 /* ZZPhotoRE */,
 				79084E341C27AFBE0002BBF2 /* SVProgressHUD */,
 				79084E2C1C27AF530002BBF2 /* YLGIFImage */,
@@ -2582,7 +2668,6 @@
 				79FFBB271C0D8EB10072FDCB /* KSNetRequest */,
 				794557511C0C323D005C0E10 /* MZFormSheetPresentationController */,
 				7955C2711C03F705003D6836 /* LKDBHelp */,
-				790A67371BFC64A0007E6DD6 /* SDAutoLayout */,
 				790A671B1BFC591B007E6DD6 /* D3RecordBtutton */,
 				79F7C1EF1BF71A4400D618AE /* PureLayout */,
 			);
@@ -3333,12 +3418,14 @@
 				79AD86321C4F30C200EBE224 /* LWPEFRecordView.m in Sources */,
 				79084E3D1C27AFBE0002BBF2 /* SVIndefiniteAnimatedView.m in Sources */,
 				791211351BF1A6A6004166C5 /* ViewController.m in Sources */,
+				7994D5AB1C57256200E41865 /* CheckUpdateReturn.m in Sources */,
 				7955C2951C03F705003D6836 /* NSObject+LKDBHelper.m in Sources */,
 				791215621BF1CFD0004166C5 /* LWMainRows.m in Sources */,
 				790243791C4DEB470010B1D9 /* ZZPhotoDatas.m in Sources */,
 				79CEEDF51C01B7FF004D6786 /* LWPatientLogSymptomsCountCell.m in Sources */,
 				79AD86141C4F300E00EBE224 /* LWPatientRecordsCtr.m in Sources */,
 				79F75E881BF4226B00AE75AB /* CDPromptView.m in Sources */,
+				7994D5B31C57263400E41865 /* NSMutableArray+Sort.m in Sources */,
 				79084E271C27AEA00002BBF2 /* MJPhotoBrowser.m in Sources */,
 				7929ACB81C33B1F8002712EC /* LWChatMessageMoreView.m in Sources */,
 				794555501C0BD98F005C0E10 /* UIView+BorderLine.m in Sources */,
@@ -3421,19 +3508,23 @@
 				790BE93F1C02EC1A00BD1D67 /* LWACTAssessmentCell.m in Sources */,
 				7941A8981C34DF8100B8ACC7 /* LWPickerViewController.m in Sources */,
 				7929ACB61C33B1F8002712EC /* LWChatMessageInputBar.m in Sources */,
+				7994D5B01C57256200E41865 /* UMSAgent.m in Sources */,
 				7955C2941C03F705003D6836 /* LKDBUtils.m in Sources */,
 				7955C2961C03F705003D6836 /* NSObject+LKModel.m in Sources */,
+				7994D5A71C57256200E41865 /* UMSDataMgr.m in Sources */,
 				7945576E1C0C323E005C0E10 /* MZFormSheetContentSizingNavigationControllerAnimator.m in Sources */,
 				7919B8BD1BFADC670058853F /* LWPatientRecordsPatientArchives.m in Sources */,
+				7994D5AF1C57256200E41865 /* EventInfoObj.m in Sources */,
 				79FFBB521C0D8EB10072FDCB /* KSCache.m in Sources */,
 				790243781C4DEB470010B1D9 /* ZZBrowerAnimate.m in Sources */,
 				79AD91B31BF2D5D60098D6CD /* LWPatientRemarksTFCell.m in Sources */,
 				795964961C06E2EC001C18D8 /* LWMedicationLogTimerCell.m in Sources */,
-				790A673C1BFC64A0007E6DD6 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
+				7994D5AC1C57256200E41865 /* CommonReturn.m in Sources */,
 				798922BF1BFEB523002C695C /* NSObject+Encodeing.m in Sources */,
 				79AD91E81BF31D250098D6CD /* LWLoginManager.m in Sources */,
 				79084E121C2792060002BBF2 /* LWChatLoadingView.m in Sources */,
 				7919B8BB1BFADC670058853F /* LWPatientRecordsBody.m in Sources */,
+				7994D5A81C57256200E41865 /* UMSNetwork.m in Sources */,
 				790A67361BFC591B007E6DD6 /* RecordHUD.m in Sources */,
 				791215571BF1CFD0004166C5 /* LBLoginBaseModel.m in Sources */,
 				794557491C0C1C12005C0E10 /* LWLineButton.m in Sources */,
@@ -3452,6 +3543,7 @@
 				79F7C1FB1BF71A4400D618AE /* NSLayoutConstraint+PureLayout.m in Sources */,
 				79AD862F1C4F30C200EBE224 /* LWPatientMedicationLogVC.m in Sources */,
 				79F21EC31BF9777700F6A465 /* LWChatViewControllerDataSource.m in Sources */,
+				7994D5AE1C57256200E41865 /* ErrorLogObj.m in Sources */,
 				794712C21BF9D0FA0083CE6E /* LGReachability.m in Sources */,
 				795FE0871C0807D700B2EA2A /* LWAssessmentLineCell.m in Sources */,
 				794712E81BF9D3CC0083CE6E /* LWVoiceManager.m in Sources */,
@@ -3478,6 +3570,7 @@
 				794555471C0BD98F005C0E10 /* NSDate+Extension.m in Sources */,
 				79CEEDED1C0184A0004D6786 /* LWPatientLogDateIndexView.m in Sources */,
 				7938E5701C0EDBA800AD043F /* UUMessageFrame.m in Sources */,
+				7994D5AA1C57256200E41865 /* ActivityLogObj.m in Sources */,
 				7929ACB71C33B1F8002712EC /* LWChatMessageMoreCollectionCell.m in Sources */,
 				79F7C5E61BF745FF00D618AE /* AboutUsVC.m in Sources */,
 				7929ACC51C33BE99002712EC /* LWTheFormTypeView.m in Sources */,
@@ -3492,6 +3585,7 @@
 				790243891C4DEB470010B1D9 /* ZZCameraPickerCell.m in Sources */,
 				791214D91BF1CE9E004166C5 /* LWMessageCtr.m in Sources */,
 				79AD86101C4F300E00EBE224 /* LWPatientCententCtr.m in Sources */,
+				7994D5A91C57256200E41865 /* SFHFKeychainUtils.m in Sources */,
 				7912155F1BF1CFD0004166C5 /* LWMainMessageBaseModel.m in Sources */,
 				794557761C0C323E005C0E10 /* UIViewController+TargetViewController.m in Sources */,
 				79AD862D1C4F30C200EBE224 /* LWPatientAssessmentLogVC.m in Sources */,
@@ -3515,7 +3609,6 @@
 				79F7C1FA1BF71A4400D618AE /* NSArray+PureLayout.m in Sources */,
 				79F21EC01BF9765F00F6A465 /* LWChatRows.m in Sources */,
 				790243721C4DEB470010B1D9 /* ZZCameraController.m in Sources */,
-				790A673D1BFC64A0007E6DD6 /* UIView+SDAutoLayout.m in Sources */,
 				794555481C0BD98F005C0E10 /* NSString+Contains.m in Sources */,
 				790243B11C4E302E0010B1D9 /* LWOrderCountCell.m in Sources */,
 				795964901C06E2BC001C18D8 /* LWMedicationLogCountCell.m in Sources */,
@@ -3523,6 +3616,7 @@
 				7952F0E81C0550C90030B279 /* BaseChartView.m in Sources */,
 				790243711C4DEB470010B1D9 /* ZZBrowserPickerViewController.m in Sources */,
 				7912150A1BF1CF56004166C5 /* NavManager.m in Sources */,
+				7994D5AD1C57256200E41865 /* DeviceInfoObj.m in Sources */,
 				793DE42B1C04697D000CE2BE /* LCDownloadManager.m in Sources */,
 				790243BB1C4E302E0010B1D9 /* LWTimerButtonCell.m in Sources */,
 				790BE94C1C02FAFC00BD1D67 /* LWACTAssessmentModel.m in Sources */,
@@ -3652,8 +3746,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: happy guo (8686B9XXR6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: happy guo (8686B9XXR6)";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BreatheDoctor/BreatheDoctor.pch";
@@ -3663,10 +3757,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BreatheDoctor/Library/D3RecordBtutton",
+					"$(PROJECT_DIR)/BreatheDoctor/Library/UMeng/UMAnalytics_Sdk_3.1.2",
+					"$(PROJECT_DIR)/BreatheDoctor/Library/UMeng/UMFeedback",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.comvee.breatheDoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "99224c83-7497-443c-ac4b-29e95a434d05";
 			};
 			name = Debug;
 		};
@@ -3676,8 +3772,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: happy guo (8686B9XXR6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: happy guo (8686B9XXR6)";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BreatheDoctor/BreatheDoctor.pch";
@@ -3687,10 +3783,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BreatheDoctor/Library/D3RecordBtutton",
+					"$(PROJECT_DIR)/BreatheDoctor/Library/UMeng/UMAnalytics_Sdk_3.1.2",
+					"$(PROJECT_DIR)/BreatheDoctor/Library/UMeng/UMFeedback",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.comvee.breatheDoctor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "99224c83-7497-443c-ac4b-29e95a434d05";
 			};
 			name = Release;
 		};

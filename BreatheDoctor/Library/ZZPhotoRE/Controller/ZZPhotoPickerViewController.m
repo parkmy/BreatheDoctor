@@ -158,6 +158,7 @@
         [self showPhotoPickerAlertView:@"提醒" message:@"您还没有选中图片，不需要预览"];
     }else{
         self.browserController = [[ZZBrowserPickerViewController alloc]init];
+        self.browserController.showType = showTypeDf;
         self.browserController.delegate = self;
         [self.browserController reloadData];
         [self.browserController showIn:self animation:ShowAnimationOfPresent];

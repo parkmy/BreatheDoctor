@@ -23,15 +23,17 @@ PODS:
   - IQKeyboardManager (3.3.6)
   - MJRefresh (3.1.0)
   - OpenUDID (1.0.0)
-  - SDWebImage (3.7.4):
-    - SDWebImage/Core (= 3.7.4)
-  - SDWebImage/Core (3.7.4)
+  - SDAutoLayout (1.3)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.6.3)
   - IQKeyboardManager
   - MJRefresh
   - OpenUDID
+  - SDAutoLayout
   - SDWebImage
 
 SPEC CHECKSUMS:
@@ -39,6 +41,7 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 037cf3aec1d0a045108859a47818714eb1bfc149
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
-  SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
+  SDAutoLayout: 5cf822185eaf1c8d236ccda010b890912f9baeba
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
 
 COCOAPODS: 0.39.0

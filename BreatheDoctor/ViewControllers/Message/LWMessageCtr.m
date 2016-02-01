@@ -21,6 +21,8 @@
 @property (nonatomic, copy) NSString *refreshTime;
 @property (nonatomic, strong) NSMutableArray *requestMessageArray;
 @property (nonatomic, strong) LWMainMessageBaseModel *mainMessageModel;
+
+@property (nonatomic, strong) UIView *headerErrorView;
 @end
 
 @implementation LWMessageCtr
@@ -91,6 +93,38 @@
     self.tableView.backgroundColor = [UIColor whiteColor];
     setExtraCellLineHidden(self.tableView);
     
+    [self httpReachabilityStatusChange];
+}
+- (void)httpReachabilityStatusChange
+{
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        if (status <= 0) {
+            self.tableView.tableHeaderView = self.headerErrorView;
+        }else
+        {
+            self.tableView.tableHeaderView = nil;
+        }
+    }];
+}
+- (UIView *)headerErrorView
+{
+    if (!_headerErrorView) {
+        _headerErrorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, 35)];
+        _headerErrorView.backgroundColor = RGBA(252, 240, 184, 1);
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+        label.textColor = RGBA(0, 0, 0, 6);
+        label.font = [UIFont systemFontOfSize:14];
+        UIImageView *erroricon = [[UIImageView alloc] initWithFrame:CGRectZero];
+        erroricon.image = kImage(@"sendFail");
+        [_headerErrorView addSubview:erroricon];
+        [_headerErrorView addSubview:label];
+        
+        erroricon.sd_layout.leftSpaceToView(_headerErrorView,5).centerYEqualToView(_headerErrorView).widthIs(20).heightIs(20);
+        label.text = @"世界上最遥远的距离就是没网～";
+        label.sd_layout.leftSpaceToView(erroricon,5).rightSpaceToView(_headerErrorView,5).topSpaceToView(_headerErrorView,0).bottomSpaceToView(_headerErrorView,0);
+
+    }
+    return _headerErrorView;
 }
 - (void)loginjudge
 {    
@@ -329,7 +363,7 @@
         self.mainMessageModel = mainMessageBaseModel;
         [self loadCacheMes];
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];        
+//        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];        
     }];
 }
 #pragma mark 处理角标

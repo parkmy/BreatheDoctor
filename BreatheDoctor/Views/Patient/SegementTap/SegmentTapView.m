@@ -20,8 +20,8 @@
         
         //默认
         self.textNomalColor    = RGBA(0, 0, 0, .5);
-        self.textSelectedColor = [UIColor colorWithHexString:@"#42b1ff"];
-        self.lineColor = [UIColor colorWithHexString:@"#42b1ff"];
+        self.textSelectedColor = [LWThemeManager shareInstance].navBackgroundColor;
+        self.lineColor = [LWThemeManager shareInstance].navBackgroundColor;
         
         [self addSubSegmentView];
     }

@@ -27,6 +27,9 @@
 
 + (LWPublicDataManager *)shareInstance;
 
+
++ (BOOL)IntoTheBackGroundtimeIsMoreThan:(NSInteger)time WithKey:(NSString *)key;
+
 - (void)cloesCurrentPatientID;
 
 NSString * stringJudgeNull(NSString *string);

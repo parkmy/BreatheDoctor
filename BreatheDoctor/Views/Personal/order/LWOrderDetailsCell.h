@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIView *bgView;
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *labelWidths;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *Labels;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *lins;
 
 @end

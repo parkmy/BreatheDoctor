@@ -13,9 +13,9 @@
 - (void)awakeFromNib {
     // Initialization code
     self.buyCountLabel.layer.borderWidth = .5;
-    self.buyCountLabel.layer.borderColor = RGBA(0, 0, 0, .3).CGColor;
+    self.buyCountLabel.layer.borderColor = [LWThemeManager shareInstance].navBackgroundColor.CGColor;
     self.orederCountLabel.layer.borderWidth = .5;
-    self.orederCountLabel.layer.borderColor = RGBA(0, 0, 0, .3).CGColor;
+    self.orederCountLabel.layer.borderColor = [LWThemeManager shareInstance].navBackgroundColor.CGColor;
     [self.buyCountLabel setCornerRadius:self.buyCountLabel.width/2];
     [self.orederCountLabel setCornerRadius:self.buyCountLabel.width/2];
     

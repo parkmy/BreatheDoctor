@@ -50,10 +50,21 @@
             [self.dataArray removeAllObjects];
             [self.dataArray addObjectsFromArray:models];
             [self.tableView reloadData];
+            if (self.dataArray.count <= 0) {
+                [self showErrorMessage:@"暂无已填表单～" isShowButton:YES type:showErrorTypeMore];
+            }else
+            {
+                [self hiddenNonetWork];
+            }
         } failure:^(NSString *errorMes) {
             [LWProgressHUD closeProgressHUD:self.view];
+            [self showErrorMessage:@"链接服务器失败～" isShowButton:NO type:showErrorTypeHttp];
         }];
     }
+}
+- (void)reloadRequestWithSender:(UIButton *)sender
+{
+    [self loadData];
 }
 - (void)navLeftButtonAction
 {

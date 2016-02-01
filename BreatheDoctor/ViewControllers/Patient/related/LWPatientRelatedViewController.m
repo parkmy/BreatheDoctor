@@ -260,16 +260,17 @@
         
         if (self.model.treatmentResult.length > 0) {
             [_patientRelatedView1 setContentTextViewText:stringJudgeNull(self.model.treatmentResult)];
+            _patientRelatedView1.contentTextView.placeholder = @"";
         }else
         {
             _patientRelatedView1.contentTextView.placeholder = @"请描述患者基本病情...";
         }
         if (self.model.basicCondition.length > 0) {
             [_patientRelatedView2 setContentTextViewText:stringJudgeNull(self.model.basicCondition)];
+            _patientRelatedView2.contentTextView.placeholder = @"";
         }else
         {
             _patientRelatedView2.contentTextView.placeholder = @"请填写诊断结果...";
-
         }
         self.imagesString = [[NSMutableString alloc] initWithString:stringJudgeNull(self.model.images)];
         [self.relatedImages removeAllObjects];
@@ -303,7 +304,6 @@
                 
                 ZZPhotoController *photoController = [[ZZPhotoController alloc]init];
                 photoController.selectPhotoOfMax = 9;
-                
                 [photoController showIn:self result:^(id responseObject){
                     
                     NSArray *array = (NSArray *)responseObject;
@@ -323,15 +323,14 @@
                     [self.relatedImages addObjectsFromArray:array];
                     [self.patientRelatedView3 setImages:self.relatedImages];
                 }];
-
             }
-            
         }];
         
         [view show];
     }else
     {
         self.browserPicker = [[ZZBrowserPickerViewController alloc]init];
+        self.browserPicker.showType = showTypeWindow;
         self.browserPicker.delegate = self;
         [self.browserPicker reloadData];
         [self.browserPicker showIn:self animation:ShowAnimationOfPresent];

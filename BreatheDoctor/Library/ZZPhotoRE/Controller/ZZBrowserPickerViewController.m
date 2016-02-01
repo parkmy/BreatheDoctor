@@ -22,6 +22,7 @@
 //照片的总数
 @property (nonatomic, assign) NSInteger numberOfItems;
 
+@property (nonatomic, strong) UIButton *deleButton;
 @end
 
 @implementation ZZBrowserPickerViewController
@@ -39,7 +40,10 @@
     _flowLayout.minimumLineSpacing = 0;
     _flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-    _picBrowse = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-45) collectionViewLayout:_flowLayout];
+    CGFloat h = 0;
+    h = _showType == showTypeWindow?45:0;
+    
+    _picBrowse = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-h) collectionViewLayout:_flowLayout];
     _picBrowse.backgroundColor = [UIColor clearColor];
     _picBrowse.pagingEnabled = YES;
     _picBrowse.scrollEnabled = YES;
@@ -55,16 +59,25 @@
     
     [self.view addSubview:_picBrowse];
     
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setImage:kImage(@"trash_btn_pic") forState:UIControlStateNormal];
-    btn.backgroundColor = [UIColor clearColor];
-    [btn addTarget:self action:@selector(dBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
+    if (_showType == showTypeWindow) {
+        _deleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_deleButton setImage:kImage(@"trash_btn_pic") forState:UIControlStateNormal];
+        _deleButton.backgroundColor = [UIColor clearColor];
+        [_deleButton addTarget:self action:@selector(dBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:_deleButton];
+        
+        _deleButton.sd_layout.rightSpaceToView(self.view,15).bottomSpaceToView(self.view,0).widthIs(50).heightIs(45);
+    }
     
-    btn.sd_layout.rightSpaceToView(self.view,15).bottomSpaceToView(self.view,0).widthIs(50).heightIs(45);
-
 }
-
+- (void)setShowType:(showType)showType
+{
+    _showType = showType;
+    if (_showType == showTypeDf) {
+        _deleButton.hidden = YES;
+        _picBrowse.height = +45;
+    }
+}
 -(void)setPageControlUI
 {
     /*

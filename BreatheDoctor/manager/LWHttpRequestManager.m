@@ -153,7 +153,7 @@
         }
         if (success){ success(mainMessageBaseModel);}
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
-//        failure?failure(errorMessage):nil;
+        failure?failure(errorMessage):nil;
     } isCache:NO];
     
 }

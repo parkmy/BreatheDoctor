@@ -770,6 +770,9 @@
         }
         
     }
+    if (array.count <= 0) {
+        
+    }
 }
 
 + (NSArray *)stringBayArrayWithString:(NSString *)string

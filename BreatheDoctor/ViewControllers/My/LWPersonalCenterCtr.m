@@ -47,7 +47,7 @@
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return section == 0?3:4;
+    return section == 0?3:5;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -91,7 +91,12 @@
             }else if (indexPath.row == 2) //职称
             {
                 textLabelTitle = @"职称";
-                detailTextLabelTitle = stringJudgeNull(user.body.position);
+                detailTextLabelTitle = stringJudgeNull(user.body.positionText);
+            }else if (indexPath.row == 4)
+            {
+                textLabelTitle = @"签名";
+                detailTextLabelTitle = [stringJudgeNull(user.body.signature) stringByReplacingOccurrencesOfString:@"^$%" withString:@"，"];
+
             }
         }else
         {
@@ -115,15 +120,15 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0 && indexPath.row == 0) {
-        return 80*(iPhone6Plus?1.15:1);
+        return 80*MULTIPLE;
     }else if (indexPath.section == 1 && indexPath.row == 3)//专长
     {
         LBLoginBaseModel *user = [CODataCacheManager shareInstance].userModel;
         NSString *perSpacil = user.body.perSpacil;
         CGFloat h = [perSpacil sizeWithFont:[UIFont systemFontOfSize:14] constrainedToWidth:160].height + 10;
-        return MAX(h, 44)*(iPhone6Plus?1.15:1);
+        return MAX(h, 44)*MULTIPLE;
     }
-    return 44*(iPhone6Plus?1.15:1);
+    return 44*MULTIPLE;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

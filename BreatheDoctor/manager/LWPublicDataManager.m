@@ -7,6 +7,7 @@
 //
 
 #import "LWPublicDataManager.h"
+#import "NSDate+Extension.h"
 
 @implementation LWPublicDataManager
 
@@ -23,6 +24,20 @@
     if (self.currentPatientID) {
         self.currentPatientID = nil;
     }
+}
+
++ (BOOL)IntoTheBackGroundtimeIsMoreThan:(NSInteger)time WithKey:(NSString *)key
+{
+    
+    NSDate *oldDate = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    
+    NSDate *newDate = [NSDate date];
+    
+    
+    if (([oldDate second] - [newDate second]) >= time){
+        return YES;
+    }
+    return NO;
 }
 
 NSString * stringJudgeNull(NSString *string)

@@ -94,6 +94,7 @@
     if (!_contentTextView) {
         _contentTextView = [[UITextView alloc] initWithFrame:CGRectZero];
         _contentTextView.font = [UIFont systemFontOfSize:14];
+        _contentTextView.textColor = [UIColor colorWithHexString:@"#333333"];
         _contentTextView.delegate = self;
     }
     return _contentTextView;

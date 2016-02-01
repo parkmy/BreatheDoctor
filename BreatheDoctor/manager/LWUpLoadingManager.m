@@ -92,14 +92,15 @@
         NSLog(@"%lu of %lu complete", numberOfFinishedOperations, totalNumberOfOperations);
     } completionBlock:^(NSArray *operations) {
         NSMutableArray *array = [NSMutableArray array];
+        BOOL isFailur = NO;
         for (AFHTTPRequestOperation *operation in operations)
         {
             NSLog(@"%@",operation.error);
             if (operation.error) {
-                failure(operation.error.domain);
+                isFailur = YES;
             }else{
                 if (!operation.responseObject) {
-                    failure(operation.error.domain);
+                    isFailur = YES;
                     return ;
                 }
                 NSDictionary *jsDic = [NSJSONSerialization JSONObjectWithData:operation.responseObject options:NSJSONReadingAllowFragments error:nil];
@@ -114,6 +115,10 @@
                 }
                 NSLog(@"%@",[jsDic JSONString]);
             }
+        }
+        if (isFailur) {
+            AFHTTPRequestOperation *oper = (AFHTTPRequestOperation *)operations[0];
+            failure(oper.error.domain);
         }
         NSLog(@"All operations in batch complete");
         success?success(array):nil;

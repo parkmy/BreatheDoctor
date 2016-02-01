@@ -16,6 +16,11 @@ typedef NS_ENUM(NSInteger, ShowAnimation){
     ShowAnimationOfPresent
     
 };
+
+typedef NS_ENUM(NSInteger , showType) {
+    showTypeDf = 1,
+    showTypeWindow ,
+};
 @class ZZBrowserPickerViewController;
 
 @protocol ZZBrowserPickerDelegate <NSObject>
@@ -40,6 +45,7 @@ typedef NS_ENUM(NSInteger, ShowAnimation){
 //滚动到指定位置(滚动到那张图片，通过下面属性)
 @property (strong, nonatomic) NSIndexPath *indexPath;
 
+@property (assign, nonatomic) showType showType;
 -(void)reloadData;
 
 -(void)showIn:(UIViewController *)controller animation:(ShowAnimation)animation;

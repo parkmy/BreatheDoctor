@@ -118,10 +118,18 @@
         LWOrderDetailsCell *OrderDetailsCell = [tableView dequeueReusableCellWithIdentifier:@"LWOrderDetailsCell" forIndexPath:indexPath];
 
         if (indexPath.row != 0) {
+            
              LWOrderModel *model = self.dataArray[indexPath.row - 1];
+            
+            for (UILabel *lin in OrderDetailsCell.lins) {
+                lin.backgroundColor = RGBA(170, 170, 170, 1);
+            }
             
             for (int i = 0; i < OrderDetailsCell.Labels.count; i++) {
                 UILabel *label = OrderDetailsCell.Labels[i];
+                label.textColor = RGBA(0, 0, 0, .5);
+                label.backgroundColor = [UIColor whiteColor];
+
                 if (i == 0) {
                     label.text = [NSString stringWithFormat:@"%ld",indexPath.row];
                 }else if (i == 1)
@@ -139,10 +147,21 @@
                 }else if (i == 4)
                 {
                     label.text = [NSString stringWithFormat:@"%@",kNSNumDouble(model.quantity)];
-
                 }
                 
             }
+        }else
+        {
+            
+            for (UILabel *label in OrderDetailsCell.Labels) {
+                label.textColor = RGBA(0, 0, 0, .5);
+                label.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
+            }
+            
+            for (UILabel *lin in OrderDetailsCell.lins) {
+                lin.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
+            }
+        
         }
 
     
@@ -155,7 +174,15 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.section == 0?150*MULTIPLE:64*MULTIPLE;
+    if (indexPath.section == 0) {
+        return 150*MULTIPLE;
+    }else
+    {
+        if (indexPath.row == 0) {
+            return 44;
+        }
+        return 64*MULTIPLE;
+    }
 }
 
 #pragma mark - LWYerChangIndexViewDeleagte

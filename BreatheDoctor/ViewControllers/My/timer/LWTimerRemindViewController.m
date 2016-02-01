@@ -49,7 +49,7 @@
 
 - (void)setUI
 {
-    self.tableView.rowHeight = 90*(iPhone6Plus?1.15:1);
+    self.tableView.rowHeight = 90*MULTIPLE;
 }
 
 - (void)loadData

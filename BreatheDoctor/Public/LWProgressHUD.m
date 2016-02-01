@@ -109,6 +109,7 @@ UIView* showView = nil;
         CDPromptView * PromptView = [[CDPromptView alloc]initWithFrame:CGRectMake(view.frame.size.width/2-size.width/2 -10,
                                                                                   y, size.width + 20, size.height + 20)];
         PromptView.ifDelegate = YES;
+        
         [view addSubview:PromptView];
         [PromptView showViewWithMsg:subtitle];
         
