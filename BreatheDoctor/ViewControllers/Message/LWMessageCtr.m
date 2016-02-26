@@ -259,10 +259,7 @@
 {
     NSString *wheres = [NSString stringWithFormat:@"memberId = %@",@"requestmessage"];
     
-    
-    
     NSMutableArray *array = [[LKDBHelper getUsingLKDBHelper] search:[LWMainRows class] where:nil orderBy:@"insertDt DESC" offset:0 count:100000];
-    
     
     [self.requestMessageArray removeAllObjects];
     NSMutableArray *array1 = [NSMutableArray array];
@@ -271,7 +268,9 @@
     for (LWMainRows *row in array) //遍历得到请求消息和对话消息以及新朋友
     {
         if (row.msgType == 2) { //请求消息
-            [self.requestMessageArray addObject:row];
+            if (row.isDispose != 2) { //拒绝的患者不添加
+                [self.requestMessageArray addObject:row];
+            }
         }else if (row.msgType == NEWTYPE) //新朋友
         {
             requestModel = row;
@@ -318,10 +317,8 @@
     }
     
     [array1 sortUsingComparator:^NSComparisonResult(LWMainRows * obj1, LWMainRows * obj2) { //时间排序
-    
             NSDate *time1 = [NSDate dateWithString:obj1.insertDt format:[NSDate ymdHmsFormat]];
             NSDate *time2 = [NSDate dateWithString:obj2.insertDt format:[NSDate ymdHmsFormat]];
-        
             NSComparisonResult result = [time2 compare:time1];
         return result;
     }];

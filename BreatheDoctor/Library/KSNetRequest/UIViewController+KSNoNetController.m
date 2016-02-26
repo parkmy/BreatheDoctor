@@ -32,10 +32,10 @@
 
     view.delegate = self;
     view.messageLabel.text = message;
-    if (type == showErrorType64Hight) {
-        view.frame = self.view.bounds;
-        view.yOrigin = 64+40;
-    }
+//    if (type == showErrorType64Hight) {
+//        view.frame = self.view.bounds;
+//        view.yOrigin = 64+40;
+//    }
     [self.view addSubview:view];
 }
 - (void)hiddenNonetWork

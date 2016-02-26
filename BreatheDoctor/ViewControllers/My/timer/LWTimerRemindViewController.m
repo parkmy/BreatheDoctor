@@ -15,6 +15,7 @@
 #import "YRJSONAdapter.h"
 #import "SVProgressHUD.h"
 #import "LWPopAlatView.h"
+#import "NSDate+Extension.h"
 
 @interface LWTimerRemindViewController ()<LWTimerRemindIndexViewDeleagte,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 @property (nonatomic, strong) LWTimerRemindIndexView *indexView;
@@ -290,9 +291,23 @@
             self.navRightButton.hidden = NO;
         }
         if (isStar) {
+            
+            NSDate *starDate = [NSDate dateWithString:stringJudgeNull(string) format:[NSDate hmFormat]];
+            NSDate *endDate  = [NSDate dateWithString:stringJudgeNull(model.endTime) format:[NSDate hmFormat]];
+            if (endDate > starDate) {
+                SHOWAlertView(@"提示", @"您选择的时间段不符合，请重新选择！")
+                return ;
+            }
+            
             model.startTime = string;
         }else
         {
+            NSDate *starDate = [NSDate dateWithString:stringJudgeNull(model.startTime) format:[NSDate hmFormat]];
+            NSDate *endDate  = [NSDate dateWithString:stringJudgeNull(string) format:[NSDate hmFormat]];
+            if (endDate > starDate) {
+                SHOWAlertView(@"提示", @"您选择的时间段不符合，请重新选择！")
+                return ;
+            }
             model.endTime = string;
         }
         label.text = string;
@@ -305,7 +320,9 @@
     [self.view addSubview:vc.view];
     
     
+
 }
+
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 //{

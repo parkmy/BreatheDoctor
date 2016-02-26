@@ -40,6 +40,7 @@
     
     if ([self.chatModel.sid isEqualToString:model.sid] && _mm_player.isPlaying) //相同的取消在播放不播放
     {
+        model.voiceIsPlay = NO;
         [_mm_player stop];
         [self.starCell.btnContent stopPlay];
         return;
@@ -54,9 +55,9 @@
     }
     self.starCell = cell;
     [cell.btnContent benginLoadVoice];  //下载圈圈
+    model.voiceIsPlay = YES;
+    //    NSString * saveFilePath = Account.videoFolder;
     
-//    NSString * saveFilePath = Account.videoFolder;
-
     NSData *data = [self voicData]; //判断如果本地有了 就直接播放
     if (data) {
         [self playWav:data];
@@ -65,12 +66,12 @@
     
     
     /*
-        ||
-        || 下载
-        ||
+     ||
+     || 下载
+     ||
      
      */
-
+    
     NSString *url = model.content;
     
     [LCDownloadManager downloadFileWithURLString:url cachePath:[NSString stringWithFormat:@"%@%@",[CODataCacheManager shareInstance].userModel.sessionId,self.chatModel.sid] progress:^(CGFloat progress, CGFloat totalMBRead, CGFloat totalMBExpectedToRead) {
@@ -86,10 +87,10 @@
         
         if (error.code == -999) NSLog(@"Task1 -> Maybe you pause download.");
         [self.starCell.btnContent stopPlay];
-
+        
     }];
     
-//    [WHCDownloadCenter startDownloadWithURL:[NSURL URLWithString:url] savePath:saveFilePath savefileName:[NSString stringWithFormat:@"%@%@",[CODataCacheManager shareInstance].userModel.sessionId,self.chatModel.sid] delegate:self];
+    //    [WHCDownloadCenter startDownloadWithURL:[NSURL URLWithString:url] savePath:saveFilePath savefileName:[NSString stringWithFormat:@"%@%@",[CODataCacheManager shareInstance].userModel.sessionId,self.chatModel.sid] delegate:self];
     
 }
 
@@ -106,13 +107,13 @@
     NSString *videoDir = [NSString stringWithFormat:@"%@/%@",[self downloadPath],[self fileName1]];
     
     NSData *data = [NSData dataWithContentsOfFile:videoDir];
-
+    
     return data;
 }
 
 - (NSString *)downloadPath
 {
-
+    
     NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     
     NSString *videoDir = [NSString stringWithFormat:@"%@/Download/Video",docPath];
@@ -161,10 +162,12 @@
 // 音频播放完成时
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
+    self.chatModel.voiceIsPlay = NO;
     [self.starCell.btnContent stopPlay];
 }
 - (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError * __nullable)error
 {
+    self.chatModel.voiceIsPlay = NO;
     [self.starCell.btnContent stopPlay];
 }
 

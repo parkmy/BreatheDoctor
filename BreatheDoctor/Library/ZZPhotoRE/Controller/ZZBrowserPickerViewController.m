@@ -26,7 +26,18 @@
 @end
 
 @implementation ZZBrowserPickerViewController
-
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:TRUE];
+    
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:false];
+    
+}
 
 -(void)setupCollectionViewUI
 {

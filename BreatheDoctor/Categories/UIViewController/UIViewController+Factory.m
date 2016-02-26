@@ -20,6 +20,8 @@
 #import "LWTheFormTypeViewController.h"
 #import "LWTheFormViewController.h"
 #import "LWPatientRelatedViewController.h"
+#import "LWReservationDetailedViewController.h"
+#import "LWOrderDetailedListViewController.h"
 
 @implementation UIViewController (Factory)
 
@@ -156,11 +158,23 @@
             resCtrl = [[LWTheFormTypeViewController alloc] init];
             break;
         }
+        case CtrlTag_ReservationDetailed:
+        {
+            resCtrl = [[LWReservationDetailedViewController alloc] init];
+            break;
+        }
+        case CtrlTag_orderListDetailed:
+        {
+            resCtrl = [[LWOrderDetailedListViewController alloc] init];
+            break;
+        }
+            
+            
         default:
             break;
     }
     resCtrl.hidesBottomBarWhenPushed = YES;
-
+    
     return resCtrl;
 }
 

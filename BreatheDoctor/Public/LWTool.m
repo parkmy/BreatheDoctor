@@ -715,7 +715,7 @@
             
             NSMutableArray *array = [NSMutableArray array];
             
-            for (LWTheFromRowArray *row in aModel.rowArray)
+            for (LWTheFromRowArray *row in aModel.rowArray)// i 表示区 a表示row  详细见 LWVisitList.plist 文件
             {
                 if (i == 0 && a == 0)
                 {
@@ -768,7 +768,6 @@
         {
             [addArray addObject:row];
         }
-        
     }
     if (array.count <= 0) {
         

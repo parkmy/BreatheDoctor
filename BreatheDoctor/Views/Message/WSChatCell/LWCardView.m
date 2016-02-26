@@ -12,6 +12,11 @@
 #import "NSString+Size.h"
 #import "LWTool.h"
 
+
+@interface LWCardView ()
+
+@end
+
 @implementation LWCardView
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -27,7 +32,6 @@
         [_mBubbleView setCornerRadius:3.0f];
         _mBubbleView.layer.borderWidth = .3f;
         _mBubbleView.layer.borderColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.2].CGColor;
-        
         [self addSubview:_mBubbleView];
         
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];

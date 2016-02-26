@@ -703,7 +703,7 @@
         success?success(model):nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
-    } isCache:YES];
+    } isCache:NO];
 }
 
 #pragma mark  修改患者病情相关
@@ -731,5 +731,27 @@
     } isCache:NO];
 }
 
+#pragma mark  拒绝患者添加
++ (void)httprefuseAttentionWithSid:(NSString *)sid
+                         patientID:(NSString *)pid
+                           Success:(void (^)())success
+                           failure:(void (^)(NSString * errorMes))failure
+{
+
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    
+    [requestParams setObject:stringJudgeNull(sid) forKey:@"sid"];
+    [requestParams setObject:stringJudgeNull(pid) forKey:@"patientId"];
+    
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_REFUSEATTENTION] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        success?success():nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];  
+
+}
 
 @end

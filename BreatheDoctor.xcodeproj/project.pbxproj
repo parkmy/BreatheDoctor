@@ -87,6 +87,7 @@
 		790BE93F1C02EC1A00BD1D67 /* LWACTAssessmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790BE93E1C02EC1A00BD1D67 /* LWACTAssessmentCell.m */; };
 		790BE9421C02EC4500BD1D67 /* LWAsthmaAssessmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790BE9411C02EC4500BD1D67 /* LWAsthmaAssessmentCell.m */; };
 		790BE94C1C02FAFC00BD1D67 /* LWACTAssessmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790BE94B1C02FAFC00BD1D67 /* LWACTAssessmentModel.m */; };
+		790EE5541C7EA261004ABC78 /* LWReservationDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790EE5531C7EA261004ABC78 /* LWReservationDetailedViewController.m */; };
 		7912112F1BF1A6A6004166C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912112E1BF1A6A6004166C5 /* main.m */; };
 		791211321BF1A6A6004166C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211311BF1A6A6004166C5 /* AppDelegate.m */; };
 		791211351BF1A6A6004166C5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211341BF1A6A6004166C5 /* ViewController.m */; };
@@ -113,6 +114,21 @@
 		791215621BF1CFD0004166C5 /* LWMainRows.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912153E1BF1CFD0004166C5 /* LWMainRows.m */; };
 		791215741BF1EA71004166C5 /* LWPatientCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 791215731BF1EA71004166C5 /* LWPatientCenterCell.m */; };
 		7912466D1C16D5F000B1B968 /* LWWEBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912466C1C16D5F000B1B968 /* LWWEBViewController.m */; };
+		791935C01C7C093300EF4FFA /* dianhuadingdan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935B91C7C093300EF4FFA /* dianhuadingdan@3x.png */; };
+		791935C11C7C093300EF4FFA /* dianhuazixun@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935BA1C7C093300EF4FFA /* dianhuazixun@3x.png */; };
+		791935C21C7C093300EF4FFA /* quxiaodianhuazixun@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935BB1C7C093300EF4FFA /* quxiaodianhuazixun@3x.png */; };
+		791935C31C7C093300EF4FFA /* rili@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935BC1C7C093300EF4FFA /* rili@3x.png */; };
+		791935C41C7C093300EF4FFA /* shangpindingdan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935BD1C7C093300EF4FFA /* shangpindingdan@3x.png */; };
+		791935C51C7C093300EF4FFA /* shubanlogo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935BE1C7C093300EF4FFA /* shubanlogo@3x.png */; };
+		791935C61C7C093300EF4FFA /* tuwendingdan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935BF1C7C093300EF4FFA /* tuwendingdan@3x.png */; };
+		791935CE1C7C093B00EF4FFA /* dianhuadingdan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935C71C7C093B00EF4FFA /* dianhuadingdan@2x.png */; };
+		791935CF1C7C093B00EF4FFA /* dianhuazixun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935C81C7C093B00EF4FFA /* dianhuazixun@2x.png */; };
+		791935D01C7C093B00EF4FFA /* quxiaodianhuazixun@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935C91C7C093B00EF4FFA /* quxiaodianhuazixun@2x.png */; };
+		791935D11C7C093B00EF4FFA /* rili@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935CA1C7C093B00EF4FFA /* rili@2x.png */; };
+		791935D21C7C093B00EF4FFA /* shangpindingdan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935CB1C7C093B00EF4FFA /* shangpindingdan@2x.png */; };
+		791935D31C7C093B00EF4FFA /* shubanlogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935CC1C7C093B00EF4FFA /* shubanlogo@2x.png */; };
+		791935D41C7C093B00EF4FFA /* tuwendingdan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935CD1C7C093B00EF4FFA /* tuwendingdan@2x.png */; };
+		791935D81C7C589000EF4FFA /* DZ_ScaleCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 791935D71C7C589000EF4FFA /* DZ_ScaleCircle.m */; };
 		7919B8BA1BFADC670058853F /* LWPatientRecordsBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919B8B31BFADC670058853F /* LWPatientRecordsBaseModel.m */; };
 		7919B8BB1BFADC670058853F /* LWPatientRecordsBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919B8B51BFADC670058853F /* LWPatientRecordsBody.m */; };
 		7919B8BD1BFADC670058853F /* LWPatientRecordsPatientArchives.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919B8B91BFADC670058853F /* LWPatientRecordsPatientArchives.m */; };
@@ -145,6 +161,8 @@
 		793DE42B1C04697D000CE2BE /* LCDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 793DE42A1C04697D000CE2BE /* LCDownloadManager.m */; };
 		7941A8981C34DF8100B8ACC7 /* LWPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7941A8971C34DF8100B8ACC7 /* LWPickerViewController.m */; };
 		7941A89C1C3518C700B8ACC7 /* LWOrderRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7941A89B1C3518C700B8ACC7 /* LWOrderRecordViewController.m */; };
+		7942755E1C7D5FD300E42F87 /* PickerDateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7942755D1C7D5FD300E42F87 /* PickerDateViewController.m */; };
+		794275611C7D891300E42F87 /* LWOrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 794275601C7D891300E42F87 /* LWOrderListModel.m */; };
 		794555471C0BD98F005C0E10 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 7945552B1C0BD98F005C0E10 /* NSDate+Extension.m */; };
 		794555481C0BD98F005C0E10 /* NSString+Contains.m in Sources */ = {isa = PBXBuildFile; fileRef = 7945552E1C0BD98F005C0E10 /* NSString+Contains.m */; };
 		794555491C0BD98F005C0E10 /* NSString+Hash.m in Sources */ = {isa = PBXBuildFile; fileRef = 794555301C0BD98F005C0E10 /* NSString+Hash.m */; };
@@ -159,7 +177,6 @@
 		794556DA1C0BDA15005C0E10 /* DefaultDiscover.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556411C0BDA15005C0E10 /* DefaultDiscover.png */; };
 		794556DB1C0BDA15005C0E10 /* DefaultLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 794556421C0BDA15005C0E10 /* DefaultLogo.jpg */; };
 		794556DC1C0BDA15005C0E10 /* login_account_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556441C0BDA15005C0E10 /* login_account_img@2x.png */; };
-		794556DD1C0BDA15005C0E10 /* loginIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556451C0BDA15005C0E10 /* loginIcon@2x.png */; };
 		794556DE1C0BDA15005C0E10 /* newPatient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556461C0BDA15005C0E10 /* newPatient@2x.png */; };
 		794556DF1C0BDA15005C0E10 /* newPatient@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556471C0BDA15005C0E10 /* newPatient@3x.png */; };
 		794556E01C0BDA15005C0E10 /* newR_@2x 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556481C0BDA15005C0E10 /* newR_@2x 2.png */; };
@@ -255,6 +272,8 @@
 		794712C21BF9D0FA0083CE6E /* LGReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 794712C11BF9D0FA0083CE6E /* LGReachability.m */; };
 		794712E81BF9D3CC0083CE6E /* LWVoiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 794712E71BF9D3CC0083CE6E /* LWVoiceManager.m */; };
 		7947160E1BF48A1600C4D2E8 /* LWTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947160D1BF48A1600C4D2E8 /* LWTool.m */; };
+		794D51521C7EE46900403767 /* LWOrderDetailedLisetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D51511C7EE46900403767 /* LWOrderDetailedLisetCell.m */; };
+		794D51551C7EE9CE00403767 /* LWOrderDetailedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D51541C7EE9CE00403767 /* LWOrderDetailedListViewController.m */; };
 		7952F0E81C0550C90030B279 /* BaseChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0E21C0550C90030B279 /* BaseChartView.m */; };
 		7952F0E91C0550C90030B279 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0E41C0550C90030B279 /* LineChartView.m */; };
 		7952F0ED1C0550FB0030B279 /* CoordinateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0EC1C0550FB0030B279 /* CoordinateItem.m */; };
@@ -377,6 +396,10 @@
 		798922BE1BFEB523002C695C /* HMFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 798922BB1BFEB523002C695C /* HMFileManager.m */; };
 		798922BF1BFEB523002C695C /* NSObject+Encodeing.m in Sources */ = {isa = PBXBuildFile; fileRef = 798922BD1BFEB523002C695C /* NSObject+Encodeing.m */; };
 		798922C21BFEB6A2002C695C /* GJMFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 798922C11BFEB6A2002C695C /* GJMFileHelper.m */; };
+		7990D7AD1C7AF17500127A28 /* LWOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990D7AC1C7AF17500127A28 /* LWOrderCell.m */; };
+		7990D7AF1C7AF19000127A28 /* LWOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7990D7AE1C7AF19000127A28 /* LWOrderCell.xib */; };
+		7990D7B31C7AF76A00127A28 /* RFLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990D7B21C7AF76A00127A28 /* RFLayout.m */; };
+		7990D7B61C7AF9D400127A28 /* LWOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990D7B51C7AF9D400127A28 /* LWOrderCollectionViewCell.m */; };
 		7994D5A71C57256200E41865 /* UMSDataMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D58E1C57256200E41865 /* UMSDataMgr.m */; };
 		7994D5A81C57256200E41865 /* UMSNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5901C57256200E41865 /* UMSNetwork.m */; };
 		7994D5A91C57256200E41865 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5941C57256200E41865 /* SFHFKeychainUtils.m */; };
@@ -430,8 +453,6 @@
 		79E52B2F1C3CAA230079CE14 /* LWNewFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E52B2E1C3CAA230079CE14 /* LWNewFriendsViewController.m */; };
 		79E573651C002EE500797B2E /* LWCustomMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E573641C002EE500797B2E /* LWCustomMenu.m */; };
 		79E573681C003A2C00797B2E /* LWPatientListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E573671C003A2C00797B2E /* LWPatientListModel.m */; };
-		79EA5D4A1C16705B001F0EE3 /* 4.5.6-切图.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EA5D431C16705B001F0EE3 /* 4.5.6-切图.png */; };
-		79EA5D4B1C16705B001F0EE3 /* 6P-切图.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EA5D441C16705B001F0EE3 /* 6P-切图.png */; };
 		79EA5D4C1C16705B001F0EE3 /* log_act_naoz.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EA5D451C16705B001F0EE3 /* log_act_naoz.png */; };
 		79EA5D4D1C16705B001F0EE3 /* log_act_yao.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EA5D461C16705B001F0EE3 /* log_act_yao.png */; };
 		79EA5D4E1C16705B001F0EE3 /* log_pg_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EA5D471C16705B001F0EE3 /* log_pg_1.png */; };
@@ -444,6 +465,7 @@
 		79F21EBF1BF9765F00F6A465 /* LWChatPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F21EB91BF9765F00F6A465 /* LWChatPager.m */; };
 		79F21EC01BF9765F00F6A465 /* LWChatRows.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F21EBB1BF9765F00F6A465 /* LWChatRows.m */; };
 		79F21EC31BF9777700F6A465 /* LWChatViewControllerDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F21EC21BF9777700F6A465 /* LWChatViewControllerDataSource.m */; };
+		79F346641C8022440064BBC6 /* LWChatConventionCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F346631C8022440064BBC6 /* LWChatConventionCardView.m */; };
 		79F75E851BF421F400AE75AB /* LWProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F75E841BF421F400AE75AB /* LWProgressHUD.m */; };
 		79F75E881BF4226B00AE75AB /* CDPromptView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F75E871BF4226B00AE75AB /* CDPromptView.m */; };
 		79F75E8B1BF422E500AE75AB /* LWPublicDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F75E8A1BF422E500AE75AB /* LWPublicDataManager.m */; };
@@ -638,6 +660,8 @@
 		790BE9411C02EC4500BD1D67 /* LWAsthmaAssessmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWAsthmaAssessmentCell.m; sourceTree = "<group>"; };
 		790BE94A1C02FAFC00BD1D67 /* LWACTAssessmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWACTAssessmentModel.h; sourceTree = "<group>"; };
 		790BE94B1C02FAFC00BD1D67 /* LWACTAssessmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWACTAssessmentModel.m; sourceTree = "<group>"; };
+		790EE5521C7EA261004ABC78 /* LWReservationDetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWReservationDetailedViewController.h; sourceTree = "<group>"; };
+		790EE5531C7EA261004ABC78 /* LWReservationDetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWReservationDetailedViewController.m; sourceTree = "<group>"; };
 		7912112A1BF1A6A6004166C5 /* BreatheDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreatheDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7912112E1BF1A6A6004166C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		791211301BF1A6A6004166C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -695,6 +719,22 @@
 		791215731BF1EA71004166C5 /* LWPatientCenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientCenterCell.m; sourceTree = "<group>"; };
 		7912466B1C16D5F000B1B968 /* LWWEBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWEBViewController.h; sourceTree = "<group>"; };
 		7912466C1C16D5F000B1B968 /* LWWEBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWWEBViewController.m; sourceTree = "<group>"; };
+		791935B91C7C093300EF4FFA /* dianhuadingdan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dianhuadingdan@3x.png"; sourceTree = "<group>"; };
+		791935BA1C7C093300EF4FFA /* dianhuazixun@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dianhuazixun@3x.png"; sourceTree = "<group>"; };
+		791935BB1C7C093300EF4FFA /* quxiaodianhuazixun@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quxiaodianhuazixun@3x.png"; sourceTree = "<group>"; };
+		791935BC1C7C093300EF4FFA /* rili@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rili@3x.png"; sourceTree = "<group>"; };
+		791935BD1C7C093300EF4FFA /* shangpindingdan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shangpindingdan@3x.png"; sourceTree = "<group>"; };
+		791935BE1C7C093300EF4FFA /* shubanlogo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shubanlogo@3x.png"; sourceTree = "<group>"; };
+		791935BF1C7C093300EF4FFA /* tuwendingdan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuwendingdan@3x.png"; sourceTree = "<group>"; };
+		791935C71C7C093B00EF4FFA /* dianhuadingdan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dianhuadingdan@2x.png"; sourceTree = "<group>"; };
+		791935C81C7C093B00EF4FFA /* dianhuazixun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dianhuazixun@2x.png"; sourceTree = "<group>"; };
+		791935C91C7C093B00EF4FFA /* quxiaodianhuazixun@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quxiaodianhuazixun@2x.png"; sourceTree = "<group>"; };
+		791935CA1C7C093B00EF4FFA /* rili@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rili@2x.png"; sourceTree = "<group>"; };
+		791935CB1C7C093B00EF4FFA /* shangpindingdan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shangpindingdan@2x.png"; sourceTree = "<group>"; };
+		791935CC1C7C093B00EF4FFA /* shubanlogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shubanlogo@2x.png"; sourceTree = "<group>"; };
+		791935CD1C7C093B00EF4FFA /* tuwendingdan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuwendingdan@2x.png"; sourceTree = "<group>"; };
+		791935D61C7C589000EF4FFA /* DZ_ScaleCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZ_ScaleCircle.h; sourceTree = "<group>"; };
+		791935D71C7C589000EF4FFA /* DZ_ScaleCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZ_ScaleCircle.m; sourceTree = "<group>"; };
 		7919B8B21BFADC670058853F /* LWPatientRecordsBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRecordsBaseModel.h; sourceTree = "<group>"; };
 		7919B8B31BFADC670058853F /* LWPatientRecordsBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRecordsBaseModel.m; sourceTree = "<group>"; };
 		7919B8B41BFADC670058853F /* LWPatientRecordsBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRecordsBody.h; sourceTree = "<group>"; };
@@ -749,6 +789,10 @@
 		7941A8971C34DF8100B8ACC7 /* LWPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPickerViewController.m; sourceTree = "<group>"; };
 		7941A89A1C3518C700B8ACC7 /* LWOrderRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderRecordViewController.h; sourceTree = "<group>"; };
 		7941A89B1C3518C700B8ACC7 /* LWOrderRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderRecordViewController.m; sourceTree = "<group>"; };
+		7942755C1C7D5FD300E42F87 /* PickerDateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerDateViewController.h; sourceTree = "<group>"; };
+		7942755D1C7D5FD300E42F87 /* PickerDateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerDateViewController.m; sourceTree = "<group>"; };
+		7942755F1C7D891300E42F87 /* LWOrderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderListModel.h; sourceTree = "<group>"; };
+		794275601C7D891300E42F87 /* LWOrderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderListModel.m; sourceTree = "<group>"; };
 		7945552A1C0BD98F005C0E10 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
 		7945552B1C0BD98F005C0E10 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
 		7945552D1C0BD98F005C0E10 /* NSString+Contains.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Contains.h"; sourceTree = "<group>"; };
@@ -774,7 +818,6 @@
 		794556411C0BDA15005C0E10 /* DefaultDiscover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultDiscover.png; sourceTree = "<group>"; };
 		794556421C0BDA15005C0E10 /* DefaultLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DefaultLogo.jpg; sourceTree = "<group>"; };
 		794556441C0BDA15005C0E10 /* login_account_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_account_img@2x.png"; sourceTree = "<group>"; };
-		794556451C0BDA15005C0E10 /* loginIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginIcon@2x.png"; sourceTree = "<group>"; };
 		794556461C0BDA15005C0E10 /* newPatient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newPatient@2x.png"; sourceTree = "<group>"; };
 		794556471C0BDA15005C0E10 /* newPatient@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newPatient@3x.png"; sourceTree = "<group>"; };
 		794556481C0BDA15005C0E10 /* newR_@2x 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newR_@2x 2.png"; sourceTree = "<group>"; };
@@ -891,6 +934,10 @@
 		794712E71BF9D3CC0083CE6E /* LWVoiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWVoiceManager.m; sourceTree = "<group>"; };
 		7947160C1BF48A1600C4D2E8 /* LWTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTool.h; sourceTree = "<group>"; };
 		7947160D1BF48A1600C4D2E8 /* LWTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTool.m; sourceTree = "<group>"; };
+		794D51501C7EE46900403767 /* LWOrderDetailedLisetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderDetailedLisetCell.h; sourceTree = "<group>"; };
+		794D51511C7EE46900403767 /* LWOrderDetailedLisetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderDetailedLisetCell.m; sourceTree = "<group>"; };
+		794D51531C7EE9CE00403767 /* LWOrderDetailedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderDetailedListViewController.h; sourceTree = "<group>"; };
+		794D51541C7EE9CE00403767 /* LWOrderDetailedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderDetailedListViewController.m; sourceTree = "<group>"; };
 		7952F0E11C0550C90030B279 /* BaseChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseChartView.h; sourceTree = "<group>"; };
 		7952F0E21C0550C90030B279 /* BaseChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseChartView.m; sourceTree = "<group>"; };
 		7952F0E31C0550C90030B279 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartView.h; sourceTree = "<group>"; };
@@ -1061,6 +1108,13 @@
 		798922BD1BFEB523002C695C /* NSObject+Encodeing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Encodeing.m"; sourceTree = "<group>"; };
 		798922C01BFEB6A2002C695C /* GJMFileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GJMFileHelper.h; sourceTree = "<group>"; };
 		798922C11BFEB6A2002C695C /* GJMFileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GJMFileHelper.m; sourceTree = "<group>"; };
+		7990D7AB1C7AF17500127A28 /* LWOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderCell.h; sourceTree = "<group>"; };
+		7990D7AC1C7AF17500127A28 /* LWOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderCell.m; sourceTree = "<group>"; };
+		7990D7AE1C7AF19000127A28 /* LWOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LWOrderCell.xib; sourceTree = "<group>"; };
+		7990D7B11C7AF76A00127A28 /* RFLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFLayout.h; sourceTree = "<group>"; };
+		7990D7B21C7AF76A00127A28 /* RFLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLayout.m; sourceTree = "<group>"; };
+		7990D7B41C7AF9D400127A28 /* LWOrderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderCollectionViewCell.h; sourceTree = "<group>"; };
+		7990D7B51C7AF9D400127A28 /* LWOrderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderCollectionViewCell.m; sourceTree = "<group>"; };
 		7994D58D1C57256200E41865 /* UMSDataMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSDataMgr.h; sourceTree = "<group>"; };
 		7994D58E1C57256200E41865 /* UMSDataMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSDataMgr.m; sourceTree = "<group>"; };
 		7994D58F1C57256200E41865 /* UMSNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSNetwork.h; sourceTree = "<group>"; };
@@ -1167,8 +1221,6 @@
 		79E573641C002EE500797B2E /* LWCustomMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWCustomMenu.m; sourceTree = "<group>"; };
 		79E573661C003A2C00797B2E /* LWPatientListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientListModel.h; sourceTree = "<group>"; };
 		79E573671C003A2C00797B2E /* LWPatientListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientListModel.m; sourceTree = "<group>"; };
-		79EA5D431C16705B001F0EE3 /* 4.5.6-切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4.5.6-切图.png"; sourceTree = "<group>"; };
-		79EA5D441C16705B001F0EE3 /* 6P-切图.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "6P-切图.png"; sourceTree = "<group>"; };
 		79EA5D451C16705B001F0EE3 /* log_act_naoz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = log_act_naoz.png; sourceTree = "<group>"; };
 		79EA5D461C16705B001F0EE3 /* log_act_yao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = log_act_yao.png; sourceTree = "<group>"; };
 		79EA5D471C16705B001F0EE3 /* log_pg_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = log_pg_1.png; sourceTree = "<group>"; };
@@ -1188,6 +1240,8 @@
 		79F21EC11BF9777700F6A465 /* LWChatViewControllerDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatViewControllerDataSource.h; sourceTree = "<group>"; };
 		79F21EC21BF9777700F6A465 /* LWChatViewControllerDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatViewControllerDataSource.m; sourceTree = "<group>"; };
 		79F21ECB1BF9BAFB00F6A465 /* LWChatDeft.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWChatDeft.h; sourceTree = "<group>"; };
+		79F346621C8022440064BBC6 /* LWChatConventionCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatConventionCardView.h; sourceTree = "<group>"; };
+		79F346631C8022440064BBC6 /* LWChatConventionCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatConventionCardView.m; sourceTree = "<group>"; };
 		79F75E831BF421F400AE75AB /* LWProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWProgressHUD.h; sourceTree = "<group>"; };
 		79F75E841BF421F400AE75AB /* LWProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWProgressHUD.m; sourceTree = "<group>"; };
 		79F75E861BF4226B00AE75AB /* CDPromptView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDPromptView.h; sourceTree = "<group>"; };
@@ -1665,6 +1719,7 @@
 		791214921BF1C6AB004166C5 /* Patient */ = {
 			isa = PBXGroup;
 			children = (
+				7990D7AA1C7AF11C00127A28 /* order */,
 				795FE0961C082A6400B2EA2A /* ChartViews */,
 				7952F0DE1C0550C90030B279 /* LineViews */,
 				79CEEDEE1C01B78D004D6786 /* Log */,
@@ -1888,6 +1943,15 @@
 			path = MESSAGE;
 			sourceTree = "<group>";
 		};
+		791935D51C7C589000EF4FFA /* DZ_Scale_Circle */ = {
+			isa = PBXGroup;
+			children = (
+				791935D61C7C589000EF4FFA /* DZ_ScaleCircle.h */,
+				791935D71C7C589000EF4FFA /* DZ_ScaleCircle.m */,
+			);
+			path = DZ_Scale_Circle;
+			sourceTree = "<group>";
+		};
 		7919B8B01BFADC670058853F /* patientRecords */ = {
 			isa = PBXGroup;
 			children = (
@@ -1973,8 +2037,13 @@
 		7941A8991C3518AB00B8ACC7 /* order */ = {
 			isa = PBXGroup;
 			children = (
+				7990D7B01C7AF76A00127A28 /* Class */,
 				7941A89A1C3518C700B8ACC7 /* LWOrderRecordViewController.h */,
 				7941A89B1C3518C700B8ACC7 /* LWOrderRecordViewController.m */,
+				790EE5521C7EA261004ABC78 /* LWReservationDetailedViewController.h */,
+				790EE5531C7EA261004ABC78 /* LWReservationDetailedViewController.m */,
+				794D51531C7EE9CE00403767 /* LWOrderDetailedListViewController.h */,
+				794D51541C7EE9CE00403767 /* LWOrderDetailedListViewController.m */,
 			);
 			path = order;
 			sourceTree = "<group>";
@@ -2105,7 +2174,6 @@
 			isa = PBXGroup;
 			children = (
 				794556441C0BDA15005C0E10 /* login_account_img@2x.png */,
-				794556451C0BDA15005C0E10 /* loginIcon@2x.png */,
 				794556461C0BDA15005C0E10 /* newPatient@2x.png */,
 				794556471C0BDA15005C0E10 /* newPatient@3x.png */,
 				794556481C0BDA15005C0E10 /* newR_@2x 2.png */,
@@ -2157,8 +2225,6 @@
 		794556721C0BDA15005C0E10 /* Patient */ = {
 			isa = PBXGroup;
 			children = (
-				79EA5D431C16705B001F0EE3 /* 4.5.6-切图.png */,
-				79EA5D441C16705B001F0EE3 /* 6P-切图.png */,
 				79EA5D451C16705B001F0EE3 /* log_act_naoz.png */,
 				79EA5D461C16705B001F0EE3 /* log_act_yao.png */,
 				79EA5D471C16705B001F0EE3 /* log_pg_1.png */,
@@ -2424,6 +2490,8 @@
 			children = (
 				795B6C201C47539B00612AF6 /* LWDoctorTimerModel.h */,
 				795B6C211C47539B00612AF6 /* LWDoctorTimerModel.m */,
+				7942755F1C7D891300E42F87 /* LWOrderListModel.h */,
+				794275601C7D891300E42F87 /* LWOrderListModel.m */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -2497,6 +2565,13 @@
 		797986301C435350005052DF /* @2x */ = {
 			isa = PBXGroup;
 			children = (
+				791935C71C7C093B00EF4FFA /* dianhuadingdan@2x.png */,
+				791935C81C7C093B00EF4FFA /* dianhuazixun@2x.png */,
+				791935C91C7C093B00EF4FFA /* quxiaodianhuazixun@2x.png */,
+				791935CA1C7C093B00EF4FFA /* rili@2x.png */,
+				791935CB1C7C093B00EF4FFA /* shangpindingdan@2x.png */,
+				791935CC1C7C093B00EF4FFA /* shubanlogo@2x.png */,
+				791935CD1C7C093B00EF4FFA /* tuwendingdan@2x.png */,
 				796991D61C44D0B000A3A2C6 /* weiqueding@2x.png */,
 				7969917A1C4498E400A3A2C6 /* bufenkongzhi@2x.png */,
 				7969917B1C4498E400A3A2C6 /* wanquankongzhi@2x.png */,
@@ -2539,6 +2614,13 @@
 		797986511C435350005052DF /* @3x */ = {
 			isa = PBXGroup;
 			children = (
+				791935B91C7C093300EF4FFA /* dianhuadingdan@3x.png */,
+				791935BA1C7C093300EF4FFA /* dianhuazixun@3x.png */,
+				791935BB1C7C093300EF4FFA /* quxiaodianhuazixun@3x.png */,
+				791935BC1C7C093300EF4FFA /* rili@3x.png */,
+				791935BD1C7C093300EF4FFA /* shangpindingdan@3x.png */,
+				791935BE1C7C093300EF4FFA /* shubanlogo@3x.png */,
+				791935BF1C7C093300EF4FFA /* tuwendingdan@3x.png */,
 				796991D81C44D0B800A3A2C6 /* weiqueren@3x.png */,
 				796991741C4498DB00A3A2C6 /* bufenkongzhi@3x.png */,
 				796991751C4498DB00A3A2C6 /* wanquankongzhi@3x.png */,
@@ -2588,6 +2670,32 @@
 				798922BD1BFEB523002C695C /* NSObject+Encodeing.m */,
 			);
 			path = HMFileManager;
+			sourceTree = "<group>";
+		};
+		7990D7AA1C7AF11C00127A28 /* order */ = {
+			isa = PBXGroup;
+			children = (
+				791935D51C7C589000EF4FFA /* DZ_Scale_Circle */,
+				7990D7AB1C7AF17500127A28 /* LWOrderCell.h */,
+				7990D7AC1C7AF17500127A28 /* LWOrderCell.m */,
+				7990D7AE1C7AF19000127A28 /* LWOrderCell.xib */,
+				7990D7B41C7AF9D400127A28 /* LWOrderCollectionViewCell.h */,
+				7990D7B51C7AF9D400127A28 /* LWOrderCollectionViewCell.m */,
+				7942755C1C7D5FD300E42F87 /* PickerDateViewController.h */,
+				7942755D1C7D5FD300E42F87 /* PickerDateViewController.m */,
+				794D51501C7EE46900403767 /* LWOrderDetailedLisetCell.h */,
+				794D51511C7EE46900403767 /* LWOrderDetailedLisetCell.m */,
+			);
+			path = order;
+			sourceTree = "<group>";
+		};
+		7990D7B01C7AF76A00127A28 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				7990D7B11C7AF76A00127A28 /* RFLayout.h */,
+				7990D7B21C7AF76A00127A28 /* RFLayout.m */,
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 		7994D5831C57256200E41865 /* UMeng */ = {
@@ -2873,6 +2981,8 @@
 		79F7C2021BF71D1D00D618AE /* WSChatCell */ = {
 			isa = PBXGroup;
 			children = (
+				79F346621C8022440064BBC6 /* LWChatConventionCardView.h */,
+				79F346631C8022440064BBC6 /* LWChatConventionCardView.m */,
 				7938E5711C0EDC0F00AD043F /* UUMessageContentButton.h */,
 				7938E5721C0EDC0F00AD043F /* UUMessageContentButton.m */,
 				7938E5681C0EDBA800AD043F /* LWCardView.h */,
@@ -3096,6 +3206,7 @@
 				7945573F1C0BDA15005C0E10 /* yitianxie_@2x.png in Resources */,
 				7979867D1C435350005052DF /* jieguo@2x.png in Resources */,
 				79FEA5001C0EEAB7007418E9 /* jiankangzixun_62-10@2x.png in Resources */,
+				791935D01C7C093B00EF4FFA /* quxiaodianhuazixun@2x.png in Resources */,
 				7979869D1C435350005052DF /* jieguo@3x.png in Resources */,
 				797986AF1C435350005052DF /* zhaopian@3x.png in Resources */,
 				7945573A1C0BDA15005C0E10 /* weichuli_@2x.png in Resources */,
@@ -3104,7 +3215,6 @@
 				797986881C435350005052DF /* xinhaoyou@2x.png in Resources */,
 				794556FE1C0BDA15005C0E10 /* tab_down_3@2x.png in Resources */,
 				797986911C435350005052DF /* zhuanjiaguwen@2x.png in Resources */,
-				794556DD1C0BDA15005C0E10 /* loginIcon@2x.png in Resources */,
 				796991D31C44CF8200A3A2C6 /* chat_recive_imagemask@2x.png in Resources */,
 				796991671C448D9A00A3A2C6 /* 03_act_@3x.png in Resources */,
 				794556DA1C0BDA15005C0E10 /* DefaultDiscover.png in Resources */,
@@ -3122,6 +3232,7 @@
 				796991D41C44CF8200A3A2C6 /* chat_recive_nor@2x.png in Resources */,
 				797986901C435350005052DF /* zhengzhuang@2x.png in Resources */,
 				796991791C4498DB00A3A2C6 /* weikongzhi@3x.png in Resources */,
+				791935C31C7C093300EF4FFA /* rili@3x.png in Resources */,
 				790A67311BFC591B007E6DD6 /* mic_4.png in Resources */,
 				790243831C4DEB470010B1D9 /* take_photo_pic.png in Resources */,
 				797986891C435350005052DF /* xuanze@2x.png in Resources */,
@@ -3130,7 +3241,6 @@
 				7945574D1C0C2695005C0E10 /* pef_lin_@2x.png in Resources */,
 				7945571F1C0BDA15005C0E10 /* yisheng_4s@2x.png in Resources */,
 				790A672F1BFC591B007E6DD6 /* mic_2.png in Resources */,
-				79EA5D4B1C16705B001F0EE3 /* 6P-切图.png in Resources */,
 				7945570E1C0BDA15005C0E10 /* p_q_w_@2x.png in Resources */,
 				7969917E1C4498E400A3A2C6 /* wanquankongzhi@2x.png in Resources */,
 				794557011C0BDA15005C0E10 /* tab_up_1@3x.png in Resources */,
@@ -3141,6 +3251,7 @@
 				796991D71C44D0B000A3A2C6 /* weiqueding@2x.png in Resources */,
 				7938E5791C0EE5FE00AD043F /* jiankangzixun_57@2x.png in Resources */,
 				79FFBB551C0D8EB10072FDCB /* KSNoNetView.xib in Resources */,
+				791935C11C7C093300EF4FFA /* dianhuazixun@3x.png in Resources */,
 				795E0A321C118C92001699DF /* PatientLog.storyboard in Resources */,
 				797986841C435350005052DF /* tianjia@2x.png in Resources */,
 				797986781C435350005052DF /* chenggong@2x.png in Resources */,
@@ -3162,6 +3273,7 @@
 				797986921C435350005052DF /* bianji@3x.png in Resources */,
 				794556E21C0BDA15005C0E10 /* patientHead@2x.png in Resources */,
 				794557121C0BDA15005C0E10 /* Patient_03-03@2x.png in Resources */,
+				791935C01C7C093300EF4FFA /* dianhuadingdan@3x.png in Resources */,
 				7969917D1C4498E400A3A2C6 /* bufenkongzhi@2x.png in Resources */,
 				790243801C4DEB470010B1D9 /* remove_btn_pic.png in Resources */,
 				79084E161C27945D0002BBF2 /* sendFail.png in Resources */,
@@ -3173,12 +3285,14 @@
 				7979867F1C435350005052DF /* kuaijiehuifu@2x.png in Resources */,
 				792736D21C48D2EB00D17C5B /* add@3x.png in Resources */,
 				794557001C0BDA15005C0E10 /* tab_up_1@2x.png in Resources */,
+				791935D21C7C093B00EF4FFA /* shangpindingdan@2x.png in Resources */,
 				797986931C435350005052DF /* biaodan2@3x.png in Resources */,
 				794557151C0BDA15005C0E10 /* right_blue@3x.png in Resources */,
 				792736D51C48D2EB00D17C5B /* speaker@2x.png in Resources */,
 				794557231C0BDA15005C0E10 /* ysiheng_03@2x.png in Resources */,
 				794556EB1C0BDA15005C0E10 /* yishengzhushou_35@2x.png in Resources */,
 				79FEA4FE1C0EEAB7007418E9 /* jiankangzixun_62-08@2x.png in Resources */,
+				791935D31C7C093B00EF4FFA /* shubanlogo@2x.png in Resources */,
 				79EA5D4F1C16705B001F0EE3 /* log_pg_2.png in Resources */,
 				797986AA1C435350005052DF /* yongyao@3x.png in Resources */,
 				794556FB1C0BDA15005C0E10 /* tab_down_1@3x.png in Resources */,
@@ -3186,12 +3300,14 @@
 				794556DC1C0BDA15005C0E10 /* login_account_img@2x.png in Resources */,
 				7902437F1C4DEB470010B1D9 /* photo_add.png in Resources */,
 				796991D91C44D0B800A3A2C6 /* weiqueren@3x.png in Resources */,
+				791935D11C7C093B00EF4FFA /* rili@2x.png in Resources */,
 				794557301C0BDA15005C0E10 /* patienHeadImage@3x.png in Resources */,
 				797986951C435350005052DF /* bingqing@3x.png in Resources */,
 				790243851C4DEB470010B1D9 /* trash_btn_pic.png in Resources */,
 				794557271C0BDA15005C0E10 /* newLoingNav_@2x.png in Resources */,
 				7979869F1C435350005052DF /* kuaijiehuifu@3x.png in Resources */,
 				794556DE1C0BDA15005C0E10 /* newPatient@2x.png in Resources */,
+				791935CE1C7C093B00EF4FFA /* dianhuadingdan@2x.png in Resources */,
 				794557131C0BDA15005C0E10 /* Patient_03-04@2x.png in Resources */,
 				795E0A311C118C92001699DF /* Main.storyboard in Resources */,
 				79CCF5E31C3FA0B900A00104 /* LWVisitList.plist in Resources */,
@@ -3228,6 +3344,7 @@
 				79EA5D521C168267001F0EE3 /* Images.xcassets in Resources */,
 				7979868A1C435350005052DF /* yongyao@2x.png in Resources */,
 				794556FA1C0BDA15005C0E10 /* tab_down_1@2x.png in Resources */,
+				791935CF1C7C093B00EF4FFA /* dianhuazixun@2x.png in Resources */,
 				794557051C0BDA15005C0E10 /* tab_up_3@3x.png in Resources */,
 				794556FC1C0BDA15005C0E10 /* tab_down_2@2x.png in Resources */,
 				792736D11C48D2EB00D17C5B /* add@2x.png in Resources */,
@@ -3237,21 +3354,25 @@
 				794556E71C0BDA15005C0E10 /* yishengzhushou-1_23@2x.png in Resources */,
 				7945570C1C0BDA15005C0E10 /* left_blue@3x.png in Resources */,
 				790243861C4DEB470010B1D9 /* zz_alumb_rightCell.png in Resources */,
+				791935D41C7C093B00EF4FFA /* tuwendingdan@2x.png in Resources */,
 				797986861C435350005052DF /* wenjuan@2x.png in Resources */,
 				79FEA4FB1C0EEAB7007418E9 /* jiankangzixun_62-05@2x.png in Resources */,
 				794556EE1C0BDA15005C0E10 /* yishengzhushou_58@2x.png in Resources */,
+				791935C21C7C093300EF4FFA /* quxiaodianhuazixun@3x.png in Resources */,
 				792736D41C48D2EB00D17C5B /* keyBoard@3x.png in Resources */,
 				7969916F1C448DAB00A3A2C6 /* jiankangzixun_57@2x.png in Resources */,
 				7945574B1C0C261B005C0E10 /* YS-2_@2x.png in Resources */,
 				797986A51C435350005052DF /* tupian@3x.png in Resources */,
 				794557331C0BDA15005C0E10 /* richengtixing_@2x.png in Resources */,
+				791935C41C7C093300EF4FFA /* shangpindingdan@3x.png in Resources */,
+				7990D7AF1C7AF19000127A28 /* LWOrderCell.xib in Resources */,
 				794557201C0BDA15005C0E10 /* yisheng_@3x.png in Resources */,
 				794557171C0BDA15005C0E10 /* time_g@3x.png in Resources */,
 				797986871C435350005052DF /* xiangji@2x.png in Resources */,
 				794557291C0BDA15005C0E10 /* personalcenter_14@2x.png in Resources */,
+				791935C61C7C093300EF4FFA /* tuwendingdan@3x.png in Resources */,
 				7945573D1C0BDA15005C0E10 /* xiangji_@2x.png in Resources */,
 				796991651C448D9A00A3A2C6 /* 01_act_@3x.png in Resources */,
-				79EA5D4A1C16705B001F0EE3 /* 4.5.6-切图.png in Resources */,
 				7902437E1C4DEB470010B1D9 /* no_data.png in Resources */,
 				7926F7791C561729009C4807 /* nav_btnBack@3x.png in Resources */,
 				797986A71C435350005052DF /* xiangji@3x.png in Resources */,
@@ -3268,6 +3389,7 @@
 				794556DF1C0BDA15005C0E10 /* newPatient@3x.png in Resources */,
 				7979867B1C435350005052DF /* huanzherizhi@2x.png in Resources */,
 				7945573C1C0BDA15005C0E10 /* weiwancheng_@2x.png in Resources */,
+				791935C51C7C093300EF4FFA /* shubanlogo@3x.png in Resources */,
 				792736D31C48D2EB00D17C5B /* keyBoard@2x.png in Resources */,
 				794556FF1C0BDA15005C0E10 /* tab_down_3@3x.png in Resources */,
 				7945570D1C0BDA15005C0E10 /* p_q_b_@2x.png in Resources */,
@@ -3374,6 +3496,7 @@
 				79E573651C002EE500797B2E /* LWCustomMenu.m in Sources */,
 				7912466D1C16D5F000B1B968 /* LWWEBViewController.m in Sources */,
 				79AD91E51BF31BE00098D6CD /* LWLoginViewController.m in Sources */,
+				7990D7B61C7AF9D400127A28 /* LWOrderCollectionViewCell.m in Sources */,
 				7929ACA81C33AEBF002712EC /* LWTheFormTypeViewController.m in Sources */,
 				79084E2A1C27AEA00002BBF2 /* MJPhotoToolbar.m in Sources */,
 				790BE93C1C02EBCE00BD1D67 /* LWACTAssessmentViewController.m in Sources */,
@@ -3386,6 +3509,7 @@
 				79BA9FDF1C46688B00D9236A /* LWTheFromRowArray.m in Sources */,
 				7952F0F11C0556240030B279 /* LWPEFLineCell.m in Sources */,
 				79F75E851BF421F400AE75AB /* LWProgressHUD.m in Sources */,
+				790EE5541C7EA261004ABC78 /* LWReservationDetailedViewController.m in Sources */,
 				7959649C1C06F1F4001C18D8 /* LWMedicationModel.m in Sources */,
 				7929ACBF1C33B2FF002712EC /* LWTheFormView.m in Sources */,
 				797986B41C4393D9005052DF /* LWTimerWeeksViewController.m in Sources */,
@@ -3434,9 +3558,11 @@
 				794557751C0C323E005C0E10 /* MZTransition.m in Sources */,
 				791215591BF1CFD0004166C5 /* LWPatientBaseModel.m in Sources */,
 				79E52B2F1C3CAA230079CE14 /* LWNewFriendsViewController.m in Sources */,
+				794D51521C7EE46900403767 /* LWOrderDetailedLisetCell.m in Sources */,
 				79AD91BC1BF2E7B90098D6CD /* LWPersonalCenterCtr.m in Sources */,
 				794555511C0BD98F005C0E10 /* UIView+TKGeometry.m in Sources */,
 				79AD86131C4F300E00EBE224 /* LWPatientRelatedViewController.m in Sources */,
+				7942755E1C7D5FD300E42F87 /* PickerDateViewController.m in Sources */,
 				7955C2931C03F705003D6836 /* LKDBHelper.m in Sources */,
 				79BB5F0E1C1038F600E7046B /* UIViewController+Factory.m in Sources */,
 				7955C2901C03F705003D6836 /* FMDatabaseQueue.m in Sources */,
@@ -3540,6 +3666,7 @@
 				795FE0941C08295200B2EA2A /* LWAsthmaAssessLogBody.m in Sources */,
 				791215051BF1CF56004166C5 /* CODataCacheManager.m in Sources */,
 				79FFBB591C0D8EB10072FDCB /* ProgressHUD.m in Sources */,
+				79F346641C8022440064BBC6 /* LWChatConventionCardView.m in Sources */,
 				79F7C1FB1BF71A4400D618AE /* NSLayoutConstraint+PureLayout.m in Sources */,
 				79AD862F1C4F30C200EBE224 /* LWPatientMedicationLogVC.m in Sources */,
 				79F21EC31BF9777700F6A465 /* LWChatViewControllerDataSource.m in Sources */,
@@ -3563,15 +3690,18 @@
 				797986281C43384D005052DF /* FastReplyVCCell.m in Sources */,
 				79AD91A31BF2CEF60098D6CD /* CDCheckBox.m in Sources */,
 				79BA9FDC1C46688B00D9236A /* LWTheFromArows.m in Sources */,
+				794275611C7D891300E42F87 /* LWOrderListModel.m in Sources */,
 				7945577B1C0C3271005C0E10 /* MZAppearance.m in Sources */,
 				7955DC081C4CDCAA00314221 /* LWPatientBiaoDanBody.m in Sources */,
 				7955C28D1C03F705003D6836 /* FMDatabase.m in Sources */,
 				7952F1021C0582880030B279 /* LWPEFRecordList.m in Sources */,
 				794555471C0BD98F005C0E10 /* NSDate+Extension.m in Sources */,
 				79CEEDED1C0184A0004D6786 /* LWPatientLogDateIndexView.m in Sources */,
+				7990D7AD1C7AF17500127A28 /* LWOrderCell.m in Sources */,
 				7938E5701C0EDBA800AD043F /* UUMessageFrame.m in Sources */,
 				7994D5AA1C57256200E41865 /* ActivityLogObj.m in Sources */,
 				7929ACB71C33B1F8002712EC /* LWChatMessageMoreCollectionCell.m in Sources */,
+				7990D7B31C7AF76A00127A28 /* RFLayout.m in Sources */,
 				79F7C5E61BF745FF00D618AE /* AboutUsVC.m in Sources */,
 				7929ACC51C33BE99002712EC /* LWTheFormTypeView.m in Sources */,
 				79AD91EB1BF3257B0098D6CD /* LWHttpRequestManager.m in Sources */,
@@ -3583,9 +3713,11 @@
 				790243771C4DEB470010B1D9 /* UIImageHandle.m in Sources */,
 				79AD862E1C4F30C200EBE224 /* LWPatientLogViewController.m in Sources */,
 				790243891C4DEB470010B1D9 /* ZZCameraPickerCell.m in Sources */,
+				794D51551C7EE9CE00403767 /* LWOrderDetailedListViewController.m in Sources */,
 				791214D91BF1CE9E004166C5 /* LWMessageCtr.m in Sources */,
 				79AD86101C4F300E00EBE224 /* LWPatientCententCtr.m in Sources */,
 				7994D5A91C57256200E41865 /* SFHFKeychainUtils.m in Sources */,
+				791935D81C7C589000EF4FFA /* DZ_ScaleCircle.m in Sources */,
 				7912155F1BF1CFD0004166C5 /* LWMainMessageBaseModel.m in Sources */,
 				794557761C0C323E005C0E10 /* UIViewController+TargetViewController.m in Sources */,
 				79AD862D1C4F30C200EBE224 /* LWPatientAssessmentLogVC.m in Sources */,

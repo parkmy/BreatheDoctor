@@ -101,7 +101,15 @@
             }];
         }];
         [agreedButtonCell setJuJueBlock:^{
-            
+            [LWProgressHUD displayProgressHUD:nil displayText:@"请稍后..."];
+            [LWHttpRequestManager httprefuseAttentionWithSid:self.patientModel.sid patientID:self.patientModel.memberId Success:^{
+                [LWProgressHUD closeProgressHUD:nil];
+                [[LKDBHelper getUsingLKDBHelper] deleteToDB:self.patientModel];
+                _addPatientFaileBlock?_addPatientFaileBlock():nil;
+                [self.navigationController popViewControllerAnimated:YES];
+            } failure:^(NSString *errorMes) {
+                [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+            }];
         }];
         cell = agreedButtonCell;
     }else
@@ -137,7 +145,7 @@
         }else if (indexPath.row == 3)
         {
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@cm",kNSString(kNSNumDouble(self.patientRecordsModel.body.patientArchives.height))];
-
+            
         }else if (indexPath.row == 4)
         {
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@cm",kNSString(kNSNumDouble(self.patientRecordsModel.body.patientArchives.weight))];

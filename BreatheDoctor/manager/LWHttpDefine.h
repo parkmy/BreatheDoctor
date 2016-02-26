@@ -19,7 +19,7 @@
 //"http://comvee.3322.org:8084/comveebreath/"
 
 //正式 "http://breathintf.izhangkong.com/
-#define Comvee_Url @"http://comvee.3322.org:8084/comveebreath/"
+#define Comvee_Url @"http://comvvpn.6655.la:8084/comveebreath/"
 //呼吸测试
 
 #define comveeUpload_URL @"http://img.mamibon.com:8080/fileuploader/uploader.do"
@@ -97,4 +97,8 @@ static  NSString *HTTP_POST_SUBMITDISEASERELATE     = @"mobile/doctor/submitDise
 static  NSString *HTTP_POST_LOADDISEASERELATE       = @"mobile/doctor/loadDiseaseRelate.do";
 // *-- 修改患者病情相关
 static  NSString *HTTP_POST_UPDATEDISEASERELATE     = @"mobile/doctor/updateDiseaseRelate.do";
+// *-- 拒绝患者
+static  NSString *HTTP_POST_REFUSEATTENTION     = @"/mobile/doctor/refuseAttention.do";
+
+
 #endif /* LWHttpDefine_h */

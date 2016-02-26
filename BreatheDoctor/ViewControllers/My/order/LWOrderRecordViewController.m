@@ -6,200 +6,197 @@
 //  Copyright © 2015年 lwh. All rights reserved.
 //
 
+
 #import "LWOrderRecordViewController.h"
 #import "LWYerChangIndexView.h"
-#import "LWOrderCountCell.h"
+#import "LWOrderCollectionViewCell.h"
 #import "LWOrderDetailsCell.h"
 #import "NSDate+Extension.h"
+#import "RFLayout.h"
+#import "PickerDateViewController.h"
+#import "LWOrderListModel.h"
 
-@interface LWOrderRecordViewController ()
-@property (nonatomic, strong) LWYerChangIndexView *yerIndexView;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, copy) NSString *loadDate;
-@property (nonatomic, strong) NSMutableArray *dataArray;
+@interface LWOrderRecordViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,LWOrderCollectionViewCellDelegate
+>
+
+@property (strong, nonatomic) UICollectionView *collectionView;
+@property (strong, nonatomic) RFLayout *collectionLayout;
+@property (nonatomic, assign) CGPoint lwContentOffset;
+
+@property (nonatomic, strong) PickerDateViewController *pickView;
+
+@property (nonatomic, strong) NSMutableArray *orderArray;
+
+@property (nonatomic, assign) BOOL isMove;
+
 @end
 
 @implementation LWOrderRecordViewController
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [super addNavBar:@"购买记录"];
     [super addBackButton:@"nav_btnBack.png"];
+    [super addRightButton:@"rili.png"];
+    
 }
+
+- (RFLayout *)collectionLayout
+{
+    if (!_collectionLayout) {
+        _collectionLayout = [[RFLayout alloc] initWithItmSize:CGSizeMake(self.view.width-80, self.view.height-64-80)];
+    }
+    return _collectionLayout;
+}
+
+- (UICollectionView *)collectionView
+{
+    if (!_collectionView) {
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 64, self.view.width, self.view.height-64) collectionViewLayout:self.collectionLayout];
+    }
+    return _collectionView;
+}
+
+- (void)initData
+{
+    _orderArray = [NSMutableArray array];
+    
+    for (int i = 0; i < 12; i++)
+    {
+        NSDate *date = [[NSDate date] offsetMonths:-i];
+        
+        LWOrderListModel *model = [[LWOrderListModel alloc] init];
+        model.year = [date year];
+        model.month = [date month];
+        model.orderDate = [NSString stringWithFormat:@"%ld月/%ld年",model.month,model.year];
+        
+        [_orderArray addObject:model];
+        
+    }
+    
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.tableView.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    [self initData];
     
-    [self initDateView];
-    [self initProperty];
-    [self loadData];
-}
-- (void)initProperty
-{
-    self.loadDate = [NSDate stringWithDate:[NSDate date] format:[NSDate ymdHmsFormat]];
-}
-- (void)initDateView
-{
-    self.yerIndexView = [[LWYerChangIndexView alloc] initWithFrame:CGRectZero WithDelegate:self];
-    self.yerIndexView.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.yerIndexView];
-    self.yerIndexView.sd_layout.leftSpaceToView(self.view,0).rightSpaceToView(self.view,0).topSpaceToView(self.view,64).heightIs(40);
-}
-
-- (NSMutableArray *)dataArray
-{
-    if (!_dataArray) {
-        _dataArray = [NSMutableArray array];
-    }
-    return _dataArray;
-}
-- (void)loadData
-{
-    [self hiddenNonetWork];
-
-    [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
-    [LWHttpRequestManager httpLoadShopOrderLogWithDate:self.loadDate success:^(NSMutableArray *models) {
-        [LWProgressHUD closeProgressHUD:self.view];
-        [self.dataArray removeAllObjects];
-        [self.dataArray addObjectsFromArray:models];
-        [self.tableView reloadData];
-        if (self.dataArray.count <= 0) {
-            [self showErrorMessage:@"本月无购买记录哦~" isShowButton:YES type:showErrorType64Hight];
-        }else{
-            [self hiddenNonetWork];
-        }
-    } failure:^(NSString *errorMes) {
-        [self showErrorMessage:@"请求失败，点击刷新~" isShowButton:NO type:showErrorType64Hight];
-        [LWProgressHUD closeProgressHUD:self.view];
+    __weak typeof(self) weakSelf = self;
+    
+    [self.collectionLayout setChangeOfsetBlock:^(CGPoint point) {
+        weakSelf.lwContentOffset = point;
     }];
+    
+    [self.view addSubview:self.collectionView];
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    //    self.collectionView.bounces = NO;
+    //    self.collectionView.pagingEnabled = YES;
+    [self.collectionView registerClass:[LWOrderCollectionViewCell class] forCellWithReuseIdentifier:@"LWOrderCollectionViewCell"];
+    self.collectionView.backgroundColor =  [UIColor groupTableViewBackgroundColor];
+    self.collectionView.showsHorizontalScrollIndicator = NO;
+    
 }
-- (void)reloadRequestWithSender:(UIButton *)sender
+
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    [self hiddenNonetWork];
-    [self loadData];
+    return self.orderArray.count;
 }
+
+- (UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    LWOrderCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LWOrderCollectionViewCell" forIndexPath:indexPath];
+    cell.delegate = self;
+    LWOrderListModel *model = self.orderArray[indexPath.row];
+    [cell.orderCell setLW_DateLabelText:model.orderDate];
+    return cell;
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self.collectionView setContentOffset:self.lwContentOffset animated:YES];
+    
+}
+
+#pragma mark - nav
+
 - (void)navLeftButtonAction
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (void)navRightButtonAction
+{
+    [self showDateChooseView];
 }
 
-#pragma mark - tableviewDelegate
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
-}             // Default is 1 if not implemented
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (void)showDateChooseView
 {
-    if (self.dataArray.count > 0) {
-        return section == 0?1:self.dataArray.count+1;
+    if (self.pickView) {
+        return;
     }
-    return section == 0?0:0;
-}
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = nil;
+    __weak typeof(self) weakSelf = self;
     
-    if (indexPath.section == 0) {
-        LWOrderModel *model = self.dataArray[0];
-        LWOrderCountCell *OrderCountCell = [tableView dequeueReusableCellWithIdentifier:@"LWOrderCountCell" forIndexPath:indexPath];
-        OrderCountCell.buyCountLabel.text = [NSString stringWithFormat:@"%lld",model.buyPeopleNum];
-        OrderCountCell.orederCountLabel.text = [NSString stringWithFormat:@"%ld",self.dataArray.count];
-        cell = OrderCountCell;
-    }else
-    {
-       
-        
-        LWOrderDetailsCell *OrderDetailsCell = [tableView dequeueReusableCellWithIdentifier:@"LWOrderDetailsCell" forIndexPath:indexPath];
-
-        if (indexPath.row != 0) {
-            
-             LWOrderModel *model = self.dataArray[indexPath.row - 1];
-            
-            for (UILabel *lin in OrderDetailsCell.lins) {
-                lin.backgroundColor = RGBA(170, 170, 170, 1);
-            }
-            
-            for (int i = 0; i < OrderDetailsCell.Labels.count; i++) {
-                UILabel *label = OrderDetailsCell.Labels[i];
-                label.textColor = RGBA(0, 0, 0, .5);
-                label.backgroundColor = [UIColor whiteColor];
-
-                if (i == 0) {
-                    label.text = [NSString stringWithFormat:@"%ld",indexPath.row];
-                }else if (i == 1)
-                {
-                    label.text = stringJudgeNull(model.patientName);
-
-                }else if (i == 2)
-                {
-                    label.text = stringJudgeNull(model.createDt);
-
-                }else if (i == 3)
-                {
-                    label.text = stringJudgeNull(model.fullName);
-
-                }else if (i == 4)
-                {
-                    label.text = [NSString stringWithFormat:@"%@",kNSNumDouble(model.quantity)];
-                }
-                
-            }
-        }else
+    self.pickView = [PickerDateViewController new];
+    [self addChildViewController:self.pickView];
+    [self.view addSubview:self.pickView.view];
+    
+    [self.pickView setSelectedBlock:^(NSString *date) {
+        [weakSelf moveDate:[NSDate dateWithString:date format:@"yyyy年MM月"]];
+    }];
+    
+    [self.pickView setDismissBlock:^{
+        weakSelf.pickView = nil;
+    }];
+}
+- (void)moveDate:(NSDate *)date
+{
+    self.isMove = NO;
+    
+    [self.orderArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        LWOrderListModel *model = obj;
+        if (model.month == [date month] && model.year == [date year])
         {
+            [self.collectionView scrollRectToVisible:CGRectMake((self.collectionView.contentWidth/12)*idx- 5*idx, 0, self.collectionView.width, self.collectionView.height) animated:YES];
             
-            for (UILabel *label in OrderDetailsCell.Labels) {
-                label.textColor = RGBA(0, 0, 0, .5);
-                label.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
-            }
-            
-            for (UILabel *lin in OrderDetailsCell.lins) {
-                lin.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
-            }
-        
+            self.isMove = YES;
         }
-
+        
+    }];
     
-        
-        
-        cell = OrderDetailsCell;
-    }
-    return cell;
-}
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0) {
-        return 150*MULTIPLE;
+    if (!self.isMove) {
+        SHOWAlertView(@"提示", @"选择日期不在范围内！")
     }else
     {
-        if (indexPath.row == 0) {
-            return 44;
-        }
-        return 64*MULTIPLE;
+        [self.pickView cancelButtonClick];
+    }
+
+    
+//    for (LWOrderListModel *model in self.orderArray)
+//    {
+//        if (model.month == [date month] && model.year == [date year])
+//        {
+//            
+//            
+//        }
+//        
+//    }
+}
+#pragma mark -LWOrderCollectionViewCellDelegate
+- (void)didSelectRowIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row == 0) {
+        [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_ReservationDetailed] animated:YES];
+    }else
+    {
+        [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_orderListDetailed] animated:YES];
     }
 }
 
-#pragma mark - LWYerChangIndexViewDeleagte
-- (void)indexDateChnagecenterLabelDate:(NSDate *)date
-{
-    self.loadDate = [NSDate stringWithDate:date format:[NSDate ymdHmsFormat]];
-    [self loadData];
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

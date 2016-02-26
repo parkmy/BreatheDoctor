@@ -34,6 +34,9 @@
 @property (nonatomic, copy) NSString *basicCondition;
 
 @property (nonatomic, strong) ZZBrowserPickerViewController *browserPicker;
+
+@property (nonatomic, assign) BOOL isChange;
+
 @end
 
 @implementation LWPatientRelatedViewController
@@ -142,9 +145,28 @@
     return _mimageAssets;
 }
 
+- (void)textIsChange
+{
+    if (!self.isChange) {
+        if (self.treatmentResult.length <= 0 && _patientRelatedView1.contentTextView.text.length <= 0) {
+        }else{
+            self.isChange = ![self.treatmentResult isEqualToString:_patientRelatedView1.contentTextView.text];
+        }
+    }
+    if (!self.isChange) {
+        if (self.basicCondition.length <= 0 && _patientRelatedView2.contentTextView.text.length <= 0) {
+        }else{
+            self.isChange = ![self.basicCondition isEqualToString:_patientRelatedView2.contentTextView.text];
+        }
+    }
+
+}
+
 #pragma mark - click
 - (void)baocunButtonClick:(UIButton *)sender
 {
+    [self textIsChange];
+    
     self.treatmentResult = _patientRelatedView1.contentTextView.text;
     self.basicCondition = _patientRelatedView2.contentTextView.text;
 
@@ -236,7 +258,7 @@
         [ZZPhotoHud hideActiveHud];
         [SVProgressHUD showErrorWithStatus:errorMes];
     }];
-    
+    self.isChange = NO;
 }
 - (void)updateRelated
 {
@@ -249,6 +271,7 @@
         [SVProgressHUD showErrorWithStatus:errorMes];
     }];
 
+    self.isChange = NO;
 }
 
 - (void)loadRelated
@@ -261,6 +284,7 @@
         if (self.model.treatmentResult.length > 0) {
             [_patientRelatedView1 setContentTextViewText:stringJudgeNull(self.model.treatmentResult)];
             _patientRelatedView1.contentTextView.placeholder = @"";
+            self.treatmentResult = _patientRelatedView1.contentTextView.text;
         }else
         {
             _patientRelatedView1.contentTextView.placeholder = @"请描述患者基本病情...";
@@ -268,6 +292,7 @@
         if (self.model.basicCondition.length > 0) {
             [_patientRelatedView2 setContentTextViewText:stringJudgeNull(self.model.basicCondition)];
             _patientRelatedView2.contentTextView.placeholder = @"";
+            self.basicCondition = _patientRelatedView2.contentTextView.text;
         }else
         {
             _patientRelatedView2.contentTextView.placeholder = @"请填写诊断结果...";
@@ -297,7 +322,6 @@
 {
     if (indexPath.row == self.relatedImages.count)
     {
-        
         ALActionSheetView *view = [[ALActionSheetView alloc] initWithTitle:@"上传图片" cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@[@"相册",@"相机"] handler:^(ALActionSheetView *actionSheetView, NSInteger buttonIndex) {
             
             if (buttonIndex == 0) {
@@ -309,6 +333,9 @@
                     NSArray *array = (NSArray *)responseObject;
                     [self.relatedImages addObjectsFromArray:array];
                     [self.patientRelatedView3 setImages:self.relatedImages];
+                    if (array.count > 0) {
+                        self.isChange = YES;
+                    }
                     
                 }];
 
@@ -322,6 +349,9 @@
                     NSArray *array = (NSArray *)responseObject;
                     [self.relatedImages addObjectsFromArray:array];
                     [self.patientRelatedView3 setImages:self.relatedImages];
+                    if (array.count > 0) {
+                        self.isChange = YES;
+                    }
                 }];
             }
         }];
@@ -342,6 +372,7 @@
 {
     [self.relatedImages removeObject:objc];
     [collectionView reloadData];
+    self.isChange = YES;
 }
 
 #pragma mark -
@@ -364,7 +395,30 @@
 #pragma mark -nav
 - (void)navLeftButtonAction
 {
+    [self textIsChange];
+    
+    if (self.isChange) {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您没有保存，是否保存？" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
+        [alert show];
+        return;
+    }
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    }else
+    {
+        if (self.model.sid) {
+            [self updateImages];
+            [self updateRelated];
+        }else{
+            [self senderRelated];
+        }
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

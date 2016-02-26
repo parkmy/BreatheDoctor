@@ -177,8 +177,21 @@ typedef void(^codeBlock)();
     [self setTopViewUI];
     [self setDownViewUI];
     [self setupCollectionViewUI];
-    
+ 
 }
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:TRUE];
+
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:false];
+
+}
+
 
 -(void)removePicItem:(UIButton *)btn
 {

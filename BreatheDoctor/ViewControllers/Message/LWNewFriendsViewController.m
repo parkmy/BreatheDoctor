@@ -86,6 +86,12 @@
         [self.tableView reloadData];
     }];
     
+    [vc setAddPatientFaileBlock:^{
+        _backBlock?_backBlock():nil;
+        [self.requsetArray removeObject:message];
+        [self.tableView reloadData];
+    }];
+    
 }
 #pragma mark 滑动表格删除行
 

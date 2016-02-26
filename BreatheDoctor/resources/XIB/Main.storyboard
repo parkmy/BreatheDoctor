@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BXO-cD-ETp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BXO-cD-ETp">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -592,10 +592,10 @@
             </objects>
             <point key="canvasLocation" x="-1037" y="1788"/>
         </scene>
-        <!--Order Record View Controller-->
+        <!--View Controller-->
         <scene sceneID="fDd-bl-V3A">
             <objects>
-                <viewController storyboardIdentifier="LWOrderRecordViewController" id="sHr-Gx-GFW" customClass="LWOrderRecordViewController" sceneMemberID="viewController">
+                <viewController id="sHr-Gx-GFW" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mXF-Bb-hej"/>
                         <viewControllerLayoutGuide type="bottom" id="d29-ii-3KZ"/>
@@ -918,6 +918,25 @@
             </objects>
             <point key="canvasLocation" x="-1037" y="2350"/>
         </scene>
+        <!--Order Record View Controller-->
+        <scene sceneID="5ta-UP-QgF">
+            <objects>
+                <viewController storyboardIdentifier="LWOrderRecordViewController" id="u7h-GV-AeO" customClass="LWOrderRecordViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wSl-DL-KQx"/>
+                        <viewControllerLayoutGuide type="bottom" id="Neo-c7-zNp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="sOZ-UC-eAX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gxo-sG-aaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-690" y="2350"/>
+        </scene>
         <!--Personal Center Ctr-->
         <scene sceneID="LOD-c8-tVK">
             <objects>
@@ -1026,17 +1045,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Axd-HA-GL4">
-                                <rect key="frame" x="0.0" y="45" width="320" height="320"/>
+                                <rect key="frame" x="0.0" y="30" width="320" height="360"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dmn-ZI-PNn">
-                                        <rect key="frame" x="122" y="0.0" width="75" height="75"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shubanlogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dmn-ZI-PNn">
+                                        <rect key="frame" x="107" y="0.0" width="107" height="122"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="CW8-XH-SIa"/>
-                                            <constraint firstAttribute="height" constant="75" id="ceS-fX-Sm3"/>
+                                            <constraint firstAttribute="width" constant="107" id="CW8-XH-SIa"/>
+                                            <constraint firstAttribute="height" constant="122" id="ceS-fX-Sm3"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpd-3Z-ZMc">
-                                        <rect key="frame" x="0.0" y="110" width="320" height="100"/>
+                                        <rect key="frame" x="0.0" y="157" width="320" height="100"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zXK-hP-BhO">
                                                 <rect key="frame" x="15" y="50" width="305" height="1"/>
@@ -1098,7 +1117,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jlB-Li-NSp">
-                                        <rect key="frame" x="15" y="255" width="290" height="50"/>
+                                        <rect key="frame" x="15" y="295" width="290" height="50"/>
                                         <color key="backgroundColor" red="0.61176470589999998" green="0.78039215689999997" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="bRu-i0-s68"/>
@@ -1118,7 +1137,7 @@
                                     <constraint firstItem="Jpd-3Z-ZMc" firstAttribute="leading" secondItem="Axd-HA-GL4" secondAttribute="leading" id="Q3q-K9-bNO"/>
                                     <constraint firstItem="Dmn-ZI-PNn" firstAttribute="centerX" secondItem="Axd-HA-GL4" secondAttribute="centerX" id="aqz-iM-5vk"/>
                                     <constraint firstAttribute="trailing" secondItem="jlB-Li-NSp" secondAttribute="trailing" constant="15" id="bNR-UK-sGk"/>
-                                    <constraint firstAttribute="height" constant="320" id="cSZ-8t-unX"/>
+                                    <constraint firstAttribute="height" constant="360" id="cSZ-8t-unX"/>
                                     <constraint firstAttribute="trailing" secondItem="Jpd-3Z-ZMc" secondAttribute="trailing" id="eeu-Gu-hAF"/>
                                     <constraint firstItem="Dmn-ZI-PNn" firstAttribute="top" secondItem="Axd-HA-GL4" secondAttribute="top" id="ujo-3c-Yra"/>
                                 </constraints>
@@ -1128,7 +1147,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Axd-HA-GL4" secondAttribute="trailing" id="C6G-he-ufw"/>
                             <constraint firstItem="Axd-HA-GL4" firstAttribute="leading" secondItem="78c-DL-kU8" secondAttribute="leading" id="LNp-Ad-MaY"/>
-                            <constraint firstItem="Axd-HA-GL4" firstAttribute="centerY" secondItem="78c-DL-kU8" secondAttribute="centerY" constant="-35" id="bz9-vK-T1f"/>
+                            <constraint firstItem="Axd-HA-GL4" firstAttribute="centerY" secondItem="78c-DL-kU8" secondAttribute="centerY" constant="-30" id="bz9-vK-T1f"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
@@ -2664,9 +2683,9 @@
     <resources>
         <image name="bianji.png" width="12" height="12"/>
         <image name="huanzhezhongxinbeijing.png" width="320" height="137"/>
-        <image name="loginIcon.png" width="75" height="74"/>
         <image name="login_account_img.png" width="18" height="21"/>
         <image name="personalcenter_14.png" width="60" height="60"/>
+        <image name="shubanlogo.png" width="107" height="122"/>
         <image name="yishengzhushou_56.png" width="12" height="16"/>
         <image name="yishengzhushou_58.png" width="18" height="21"/>
         <image name="yishengzhushousy_03.png" width="40" height="40"/>

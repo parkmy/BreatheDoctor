@@ -96,7 +96,6 @@
             {
                 textLabelTitle = @"签名";
                 detailTextLabelTitle = [stringJudgeNull(user.body.signature) stringByReplacingOccurrencesOfString:@"^$%" withString:@"，"];
-
             }
         }else
         {

@@ -13,10 +13,12 @@
 #import <UIButton+WebCache.h>
 #import <UIImageView+WebCache.h>
 #import "LWChatLoadingView.h"
+#import "LWChatConventionCardView.h"
 
 @interface UUMessageCell ()
 {
     UIView *headImageBackView;
+    LWChatConventionCardView *chatConventionCardView;
 }
 @end
 
@@ -77,11 +79,11 @@
         [self.btnContent addTarget:self action:@selector(btnContentClick)  forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:self.btnContent];
         
-        
-        
         _cardView = [[LWCardView alloc] initWithFrame:self.bounds];
         [self.contentView addSubview:_cardView];
         
+        chatConventionCardView = [[LWChatConventionCardView alloc] initWithFrame:self.bounds];
+        [self addSubview:chatConventionCardView];
 //        
 //        _chatLoadingView = [[LWChatLoadingView alloc] initWithFrame:CGRectZero];
 //        [self.contentView addSubview:_chatLoadingView];
@@ -102,10 +104,8 @@
     self.agreedView.xCenter = self.xCenter;
     self.agreedView.yCenter = self.yCenter + 15;
     
+    chatConventionCardView.frame = self.bounds;
 }
-
-
-
 - (void)setMessageFrame:(UUMessageFrame *)messageFrame
 {
     _messageFrame = messageFrame;
@@ -117,7 +117,8 @@
     self.btnHeadImage.hidden = YES;
     headImageBackView.hidden = YES;
     self.agreedView.hidden = YES;
-    
+    chatConventionCardView.hidden = YES;
+
     // 1、设置时间
     self.labelTime.text = model.insertDt;
     self.labelTime.frame = messageFrame.timeF;
@@ -133,9 +134,6 @@
     self.btnContent.frame = messageFrame.contentF;
     
 //    self.chatLoadingView.frame = CGRectMake(self.btnContent.xCenter - self.btnContent.width/2 - 25, self.btnContent.yCenter-20, 40, 40);
-    
-    
-    
     
     if (model.ownerType) {
         self.btnContent.isMyMessage = YES;
@@ -205,14 +203,29 @@
             headImageBackView.hidden = NO;
             self.btnContent.voiceBackView.hidden = NO;
             self.btnContent.second.text = [NSString stringWithFormat:@"%@'s",kNSNumDouble(model.voiceMin)];
+            if (_messageFrame.model.voiceIsPlay) {
+                [self.btnContent didLoadVoice];
+            }else
+            {
+                [self.btnContent stopPlay];
+            }
         }
             break;
         case WSChatCellType_Card:
         {
 //            self.chatLoadingView.hidden = YES;
-            self.cardView.modelFram = _messageFrame;
+            if (_messageFrame.model.chatMessageType == WSChatMessageType_conventionDan) {
+                chatConventionCardView.hidden = NO;
+                self.cardView.hidden = YES;
+                [chatConventionCardView setModel:_messageFrame.model.content];
+
+            }else
+            {
+                chatConventionCardView.hidden = YES;
+                self.cardView.hidden = NO;
+                self.cardView.modelFram = _messageFrame;
+            }
             self.btnContent.hidden = YES;
-            self.cardView.hidden = NO;
             self.btnHeadImage.hidden = YES;
             headImageBackView.hidden = YES;
         }
@@ -231,9 +244,6 @@
         default:
             break;
     }
-    
-    
-    
 }
 
 - (void)makeMaskView:(UIView *)view withImage:(UIImage *)image
@@ -242,8 +252,6 @@
     imageViewMask.frame = CGRectInset(view.frame, 0.0f, 0.0f);
     view.layer.mask = imageViewMask.layer;
 }
-
-
 - (void)btnContentClick{
     
     //play audio

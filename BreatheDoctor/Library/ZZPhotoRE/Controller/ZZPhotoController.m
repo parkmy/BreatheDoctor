@@ -42,8 +42,6 @@
     }
     return _photoPickerController;
 }
-
-
 #pragma mark ---- 弹出控制器
 -(void)showIn:(UIViewController *)controller result:(ZZPhotoResult)result{
     

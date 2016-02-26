@@ -67,24 +67,17 @@
     
     UIImageView *labView = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width-128)/2,75, 128, 118)];
     
-    labView.frame = CGRectMake(self.view.frame.size.width/2-90/2, 75,90, 132);
+    labView.frame = CGRectMake(self.view.frame.size.width/2-107/2, 75,107, 122);
 
     int distanceH = 132-118;
 
-    
-    if (!iPhone6Plus)
-    {        labView.image = [UIImage imageNamed:@"4.5.6-切图.png"];
-        
-    }
-    else
-    {//270,396
-        labView.image = [UIImage imageNamed:@"6P-切图.png"];
-    }
+    labView.image = [UIImage imageNamed:@"shubanlogo"];
+
     
     [m_view addSubview:labView];
     
     
-    [CommentConvenient creatLable:CGRectMake(0, labView.frame.origin.y+labView.frame.size.height-5, m_view.frame.size.width, 14) text:[NSString stringWithFormat:@"V%@",XcodeAppVersion] Color:[UIColor grayColor]  Font:[UIFont systemFontOfSize:14] textAliment:1 Sv:m_view];
+    [CommentConvenient creatLable:CGRectMake(0, labView.frame.origin.y+labView.frame.size.height+10, m_view.frame.size.width, 14) text:[NSString stringWithFormat:@"V%@",XcodeAppVersion] Color:[UIColor grayColor]  Font:[UIFont systemFontOfSize:14] textAliment:1 Sv:m_view];
     
     CGSize constraint = CGSizeMake(self.view.frame.size.width-2*Blank, 1000.f);
     CGSize size= [content sizeWithFont:[UIFont systemFontOfSize:10] constrainedToWidth:constraint.width];

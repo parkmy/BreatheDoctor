@@ -34,6 +34,18 @@
     [self setUI];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+}
 - (void)setUI
 {
     self.lineHight.constant = .5;

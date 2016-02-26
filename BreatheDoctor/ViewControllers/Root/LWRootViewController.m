@@ -52,7 +52,7 @@
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     //nav_third
     NSArray *NavConnections=[[NSArray alloc] initWithObjects:nav1,nav2,nav3, nil];
-    self.viewControllers=NavConnections;
+    self.viewControllers = NavConnections;
     
     if (systemVersion>=7.0) {
         [self.tabBar setTintAdjustmentMode:UIViewTintAdjustmentModeNormal];

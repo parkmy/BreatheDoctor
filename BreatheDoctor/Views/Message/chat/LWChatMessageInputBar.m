@@ -154,8 +154,6 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
-
 //获取自己和父控件底部约束，控制该约束可以让自己伴随键盘移动
 -(void)updateConstraints
 {
@@ -173,7 +171,6 @@
             if (constraint.firstItem == self && constraint.firstAttribute == NSLayoutAttributeBottom && constraint.secondAttribute == NSLayoutAttributeBottom)
             {//获取自己和父控件底部约束
                 mBottomConstraintWithSupView = constraint;
-                
                 break;
             }
         }
@@ -215,7 +212,6 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:animationDuration];
     [UIView setAnimationCurve:animationCurve];
-    
     
     if (notification.name == UIKeyboardWillShowNotification)
     {

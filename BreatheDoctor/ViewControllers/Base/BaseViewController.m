@@ -121,7 +121,7 @@
 -(void)addRightButton:(NSString*)rightImg
 {
     if ([rightImg containsaString:@"png"]) {
-        [self.navRightButton setBackgroundImage:[UIImage imageNamed:rightImg] forState:UIControlStateNormal];
+        [self.navRightButton setImage:[UIImage imageNamed:rightImg] forState:UIControlStateNormal];
     }else
     {
         self.navRightButton.titleLabel.textAlignment = NSTextAlignmentRight;

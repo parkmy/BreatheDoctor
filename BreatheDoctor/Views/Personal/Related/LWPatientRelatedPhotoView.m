@@ -63,8 +63,7 @@
     LWPatientRelatedPhotoCollectionViewCell*cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LWPatientRelatedPhotoCollectionViewCell" forIndexPath:indexPath];
     if (indexPath.row == self.images.count) {
         cell.cancelButton.hidden = YES;
-        cell.mImageView.image = kImage(@"tianjia");
-//        cell.contentImage = kImage(@"tianjia");
+        cell.object = kImage(@"tianjia");
     }else
     {
         cell.cancelButton.hidden = NO;

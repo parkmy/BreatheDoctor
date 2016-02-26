@@ -42,7 +42,6 @@
         label.numberOfLines = 0;
         
         [self addSubview:label];
-        
         //关联到自身
         objc_setAssociatedObject(self, @"label", label, OBJC_ASSOCIATION_RETAIN);
        

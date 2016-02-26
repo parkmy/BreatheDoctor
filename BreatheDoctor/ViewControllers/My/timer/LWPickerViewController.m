@@ -79,8 +79,6 @@
 }
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-
-    
     if (component == 0) {
         if (row < 10) {
             _str1 = [NSString stringWithFormat:@"0%ld",row];

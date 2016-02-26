@@ -12,4 +12,5 @@
 @property (nonatomic, strong) LWMainRows *patientModel;
 
 @property (nonatomic, copy) void(^addPatientSuccBlock)();
+@property (nonatomic, copy) void(^addPatientFaileBlock)();
 @end

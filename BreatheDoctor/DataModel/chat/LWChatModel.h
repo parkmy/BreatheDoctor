@@ -76,6 +76,8 @@
 @property (nonatomic, strong) NSString *voiceFileName;
 @property (nonatomic, assign) BOOL showDateLabel;
 
+@property (nonatomic, assign) BOOL voiceIsPlay;
+
 + (LWChatModel *)modelWith:(LWChatBaseModel *)model WithRow:(LWChatRows *)row;
 
 

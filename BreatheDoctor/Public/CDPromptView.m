@@ -52,7 +52,6 @@
 
 - (void)showViewWithMsg:(NSString *)Msg
 {
-    
     self.transform = CGAffineTransformMakeScale(1.2f, 1.2f);//将要显示的view按照正常比例显示出来
     [UIView beginAnimations:nil context:UIGraphicsGetCurrentContext()];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut]; //InOut 表示进入和出去时都启动动画

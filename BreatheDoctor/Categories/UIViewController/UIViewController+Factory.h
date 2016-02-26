@@ -61,6 +61,10 @@ typedef enum {
     CtrlTag_PatientRelated,
     ///选择表
     CtrlTag_TheFormType,
+    ///预约详情
+    CtrlTag_ReservationDetailed,
+    ///订单详情列表
+    CtrlTag_orderListDetailed,
 }CtrlTag;
 
 

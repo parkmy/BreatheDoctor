@@ -220,6 +220,7 @@
 - (NSString *)ymdHmsFormat;
 + (NSString *)ymdFormat;
 + (NSString *)hmsFormat;
++ (NSString *)hmFormat;
 + (NSString *)ymdHmsFormat;
 
 @end

@@ -167,4 +167,10 @@
                       Success:(void (^)(NSMutableArray *models))success
                       failure:(void (^)(NSString * errorMes))failure;
 
+#pragma mark  拒绝患者添加
++ (void)httprefuseAttentionWithSid:(NSString *)sid
+                       patientID:(NSString *)pid
+                               Success:(void (^)())success
+                               failure:(void (^)(NSString * errorMes))failure;
+
 @end

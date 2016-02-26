@@ -18,12 +18,10 @@
 
 + (PushMgrInfo *) sharedInstance
 {
-    
     static dispatch_once_t onceToken;
     static PushMgrInfo *pushMgrInfoSingleton = nil;
     dispatch_once(&onceToken, ^{
         pushMgrInfoSingleton = [[PushMgrInfo alloc] init];
-
     });
     
     return pushMgrInfoSingleton;
@@ -105,13 +103,11 @@
         case 5://首诊
         {
             [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_FIRST_DIAGNOSE object:nil];
-
         }
             break;
         case 6://复诊通知
         {
             [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_REPEAT_TREATMENT_INFORM object:nil];
-
         }
             break;
         case 7://患者添加对话

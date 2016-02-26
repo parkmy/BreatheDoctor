@@ -71,6 +71,10 @@ typedef NS_OPTIONS(NSInteger,WSChatMessageType)
      *  @brief  初诊表单
      */
     WSChatMessageType_BiaoDan  = 21,
+    /**
+     *  @brief  预约单
+     */
+    WSChatMessageType_conventionDan  = 31,
 };
 
 
