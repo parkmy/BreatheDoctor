@@ -20,8 +20,4 @@
 +(void)removeFileByFileName:(NSString*)fileName;
 
 
-
-
-
-
 @end

@@ -61,7 +61,8 @@
         
         UILabel *xiangq = [[UILabel alloc] initWithFrame:CGRectZero];
         xiangq.textColor = [LWThemeManager shareInstance].navBackgroundColor;
-        xiangq.font = [UIFont systemFontOfSize:15];
+        xiangq.textAlignment = NSTextAlignmentRight;
+        xiangq.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(30)];
         xiangq.text = @"详情";
         [_mBubbleView addSubview:xiangq];
         
@@ -76,7 +77,7 @@
         [_mBubbleView addSubview:_starImageView];
         
         
-        _mBubbleView.sd_layout.leftSpaceToView(self,20).rightSpaceToView(self,20).topSpaceToView(self,40).bottomSpaceToView(self,10);
+        _mBubbleView.sd_layout.leftSpaceToView(self,10).rightSpaceToView(self,10).topSpaceToView(self,50).bottomSpaceToView(self,10);
         
         _titleLabel.sd_layout.leftSpaceToView(_mBubbleView,0).rightSpaceToView(_mBubbleView,0).topSpaceToView(_mBubbleView,10).heightIs(20);
         
@@ -85,10 +86,9 @@
         _contentTexView.sd_layout.leftSpaceToView(_mBubbleView,5).rightSpaceToView(_mBubbleView,5).topSpaceToView(lineView1,5).heightIs(100);
         
         lineView2.sd_layout.leftSpaceToView(_mBubbleView,5).rightSpaceToView(_mBubbleView,5).topSpaceToView(_contentTexView,10).heightIs(.5);
-
-        xiangq.sd_layout.leftSpaceToView(_mBubbleView,10).rightSpaceToView(_mBubbleView,10).bottomSpaceToView(_mBubbleView,10).heightIs(13);
         
-        jiantou.sd_layout.rightSpaceToView(_mBubbleView,10).bottomSpaceToView(_mBubbleView,10).widthIs(10).heightIs(13);
+        jiantou.sd_layout.rightSpaceToView(_mBubbleView,10).bottomSpaceToView(_mBubbleView,10).widthIs(15).heightIs(18);
+        xiangq.sd_layout.rightSpaceToView(jiantou,10).bottomSpaceToView(_mBubbleView,10).heightIs(18).widthIs(60);
         
         _starImageView.sd_layout.topSpaceToView(_mBubbleView,0).rightSpaceToView(_mBubbleView,0).widthIs(40).heightIs(40);
         

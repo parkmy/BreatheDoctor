@@ -17,6 +17,7 @@
     // Initialization code
     [self.patientIcon setCornerRadius:self.patientIcon.height/2];
     for (UILabel *label in self.patientDataLabels) {
+        label.backgroundColor = [UIColor colorWithHexString:@"#84b54a"];
         [label setCornerRadius:label.height/2];
     }
     
@@ -76,6 +77,7 @@
 {
     _patient = patient;
     
+    self.patientTypeButton.titleLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(26)];
     [LWTool atientControlLevel:_patient.controlLevel withLayoutConstraint:self.typeWidth withLabel:self.patientTypeButton];
     if ([_patient.remark isEqualToString:@""] || !_patient.remark) {
         self.patientNameLabel.text = stringJudgeNull(_patient.patientName);

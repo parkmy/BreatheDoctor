@@ -19,8 +19,7 @@
     
     for (NSLayoutConstraint *layout in self.whs) {
         layout.constant = .5;
-    }
-    
+    }    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

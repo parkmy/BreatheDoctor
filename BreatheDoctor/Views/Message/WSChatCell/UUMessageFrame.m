@@ -85,7 +85,7 @@
         CGFloat height = [dic[@"content"] sizeWithFont:[UIFont systemFontOfSize:14] constrainedToWidth:[UIScreen mainScreen].bounds.size.width-50].height+30;
         height = MAX(height, 30);
         _cardContentHigh = height;
-        _cellHeight = height+110 + 35;
+        _cellHeight = height+110 + 40;
         _contentF = CGRectZero;
         
     }else if (model.chatCellType == WSChatCellType_Agreed)

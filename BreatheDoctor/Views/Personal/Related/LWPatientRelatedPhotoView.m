@@ -26,7 +26,7 @@
         
         [layout setItemSize:CGSizeMake(w,w)];
         [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
-        layout.sectionInset = UIEdgeInsetsMake(4, 5,4, 5);
+        layout.sectionInset = UIEdgeInsetsMake(15, 5,4, 5);
         
         _collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
         _collectionView.pagingEnabled = YES;

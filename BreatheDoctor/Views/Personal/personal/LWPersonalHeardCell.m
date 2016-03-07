@@ -13,7 +13,7 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    self.doctorTypeLabel.backgroundColor = RGBA(0, 0, 0, .3);
+    self.doctorTypeLabel.backgroundColor = [UIColor colorWithHexString:@"#84b54a"];
     [self.doctorTypeLabel setCornerRadius:self.doctorTypeLabel.height/2];
     for (NSLayoutConstraint *constraint in self.iconwhs) {
         constraint.constant =  constraint.constant*(iPhone6Plus?1.15:1);

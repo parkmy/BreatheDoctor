@@ -9,5 +9,6 @@
 #import "BaseViewController.h"
 
 @interface LWReservationDetailedViewController : BaseViewController
-
+@property (nonatomic, copy) NSString *requestId;
+@property (nonatomic, assign) NSInteger isDispose;
 @end

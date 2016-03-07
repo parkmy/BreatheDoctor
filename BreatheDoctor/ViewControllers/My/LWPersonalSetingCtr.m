@@ -43,9 +43,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {
-        return .1;
-    }else if (section == 2)
-    {
         return 20;
     }
     return 15;
@@ -54,9 +51,9 @@
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    if (indexPath.section == 2) {
+    if (indexPath.section == 1) {
         [[LWLoginManager shareInstance] exitLoginViewVc:self];
-    }else if (indexPath.section == 1)
+    }else if (indexPath.section == 0)
     {
         UIViewController *vc = [UIViewController CreateControllerWithTag:CtrlTag_PassModify];
         vc.hidesBottomBarWhenPushed = YES;

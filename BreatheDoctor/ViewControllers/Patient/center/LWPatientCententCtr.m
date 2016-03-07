@@ -69,42 +69,56 @@
         [patientCenterCell setPatient:self.patient];
         cell = patientCenterCell;
         
-        
         [patientCenterCell setEditorButtonEventBlock:^{
-            
             LWPatientRemarksCtr *patientRemarks = (LWPatientRemarksCtr *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRemarks];
             [patientRemarks setPatient:self.patient];
-            
             [self.navigationController pushViewController:patientRemarks animated:YES];
-
-            
         }];
     }else
     {
         cell = [tableView dequeueReusableCellWithIdentifier:@"CELL"];
         if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CELL"];
-            
             UIView *line = [[UIView alloc] initWithFrame:CGRectZero];
-            line.backgroundColor = RGBA(0, 0, 0, .2);
+            line.backgroundColor = [UIColor  colorWithHexString:@"#cccccc"];
             [cell addSubview:line];
-            cell.accessoryType = 1;
-            
-            cell.textLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+
             line.sd_layout.leftSpaceToView(cell,0).rightSpaceToView(cell,0).bottomSpaceToView(cell,0).heightIs(.5);
+            
+            
+            UIImageView *typeimageView = [UIImageView new];
+            typeimageView.tag = 999;
+            [cell addSubview:typeimageView];
+            
+            UIImage *image = kImage(@"bingqingxiangguan");
+            typeimageView.sd_layout.leftSpaceToView(cell,10).centerYEqualToView(cell).widthIs(image.size.width).heightIs(image.size.height);
+            
+            UIImageView *rightImageView = [UIImageView new];
+            rightImageView.image = kImage(@"yishengzhushou_14");
+            [cell addSubview:rightImageView];
+            rightImageView.sd_layout.rightSpaceToView(cell,10).centerYEqualToView(cell).widthIs(15).heightIs(18);
+
+            UILabel *label = [UILabel new];
+            label.tag = 888;
+            [cell addSubview:label];
+            label.font = [UIFont systemFontOfSize:14];
+            label.textColor = [UIColor colorWithHexString:@"#333333"];
+            label.sd_layout.rightSpaceToView(rightImageView,10).centerYEqualToView(cell).leftSpaceToView(typeimageView,10).heightIs(18);
         }
-        cell.imageView.image = indexPath.row == 1?kImage(@"biaodan2"):indexPath.row == 2?kImage(@"bingqingxiangguan"):kImage(@"huanzherizhi");
-        cell.textLabel.text = indexPath.row == 1?@"已填表单":indexPath.row == 2?@"患者病情相关":@"患者日志";
+        UILabel *label = [cell viewWithTag:888];
+        UIImageView *typeimageView  = [cell viewWithTag:999];
         
+        typeimageView.image = indexPath.row == 1?kImage(@"biaodan2"):indexPath.row == 2?kImage(@"bingqingxiangguan"):kImage(@"huanzherizhi");
+        label.text = indexPath.row == 1?@"已填表单":indexPath.row == 2?@"患者病情相关":@"患者日志";
     }
     return cell;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 180*MULTIPLE;
+        return (280/2)*MULTIPLE;
     }
-    return 60*MULTIPLE;
+    return 50*MULTIPLE;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -116,7 +130,6 @@
         vc.patientId = self.patient.patientId;
         vc.showType = showTheFormTypeBiaoDan;
         [self.navigationController pushViewController:vc animated:YES];
-        
     }else if (indexPath.row == 0){
         
     }else if (indexPath.row == 2)
@@ -124,9 +137,6 @@
         LWPatientRelatedViewController *vc = (LWPatientRelatedViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRelated];
         vc.patientId = self.patient.patientId;
         [self.navigationController pushViewController:vc animated:YES];
-        
-        
-        
     }else if (indexPath.row == 3)
     {
         LWPatientLogViewController *patientLog = (LWPatientLogViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];

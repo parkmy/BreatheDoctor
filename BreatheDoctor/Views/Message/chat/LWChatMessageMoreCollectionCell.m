@@ -33,9 +33,10 @@
         
         [mImageView autoAlignAxisToSuperviewAxis:ALAxisVertical];
         [mImageView autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.contentView withOffset:-8];
-        [mImageView autoSetDimensionsToSize:CGSizeMake(40, 40)];
+        [mImageView autoSetDimensionsToSize:CGSizeMake(50, 50)];
         
         mTitle = [[UILabel alloc]initForAutoLayout];
+        mTitle.textColor = [UIColor grayColor];
         mTitle.backgroundColor = [UIColor clearColor];
         mTitle.font = [UIFont systemFontOfSize:12];
         [self.contentView addSubview:mTitle];

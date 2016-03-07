@@ -11,7 +11,7 @@
 
 @property (strong ,nonatomic) UIView *hudView;
 @property (strong ,nonatomic) UIButton *comButton;
-@property (strong ,nonatomic) UILabel *contentLabel;
+@property (strong ,nonatomic) UITextView *contentLabel;
 @end
 @implementation LWPopAlatView
 
@@ -37,7 +37,7 @@
 - (void)setUI
 {
     
-    _hudView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 255, 140)];
+    _hudView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 500/2, 340/2)];
     _hudView.center = CGPointMake([UIScreen mainScreen].bounds.size.width / 2, [UIScreen mainScreen].bounds.size.height / 2);
     _hudView.layer.cornerRadius = 10;
     _hudView.clipsToBounds = YES;
@@ -45,16 +45,28 @@
     [self addSubview:_hudView];
     
     
-    _contentLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-    _contentLabel.numberOfLines = 0;
+    _contentLabel = [UITextView new];
     _contentLabel.textColor = [UIColor colorWithHexString:@"#666666"];
-    _contentLabel.font = [UIFont systemFontOfSize:15];
+    _contentLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(32)];
     _contentLabel.text = @"回复时间的设置，意味着在此时间段内您将对患者的提问进行解答。不设置将无法接受患者咨询。";
+    _contentLabel.editable = NO;
     [_hudView addSubview:_contentLabel];
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineSpacing = 4;// 字体的行间距
+    
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont systemFontOfSize:kNSPXFONTFLOAT(34)],
+                                 NSParagraphStyleAttributeName:paragraphStyle,
+                                 NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#666666"]
+                                 };
+    
+    _contentLabel.attributedText = [[NSAttributedString alloc] initWithString:_contentLabel.text attributes:attributes];
     
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [btn setTitle:@"确定" forState:UIControlStateNormal];
+    btn.titleLabel.font = [UIFont boldSystemFontOfSize:kNSPXFONTFLOAT(32)];
+    [btn setTitle:@"我知道了" forState:UIControlStateNormal];
     [btn setTitleColor:[LWThemeManager shareInstance].navBackgroundColor forState:UIControlStateNormal];
     [btn addTarget:self action:@selector(hiddenView) forControlEvents:UIControlEventTouchUpInside];
 //    btn.layer.borderColor = [LWThemeManager shareInstance].navBackgroundColor.CGColor;
@@ -63,7 +75,7 @@
     [_hudView addSubview:btn];
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectZero];
-    line.backgroundColor = RGBA(0, 0, 0, .3);
+    line.backgroundColor = [UIColor colorWithHexString:@"#cccccc"];
     [_hudView addSubview:line];
     
     

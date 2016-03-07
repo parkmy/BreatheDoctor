@@ -16,6 +16,9 @@
     for (NSLayoutConstraint *layout in self.whs) {
         layout.constant = .5;
     }
+    self.leftmenuTitleLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(32)];
+    self.rightMenuLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(32)];
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

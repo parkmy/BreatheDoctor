@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>image</key>
-		<string>tupian_</string>
+		<string>tupian</string>
 		<key>title</key>
 		<string>照片</string>
 	</dict>
@@ -16,13 +16,13 @@
 	</dict>
 	<dict>
 		<key>image</key>
-		<string>kuaijiehuifu_</string>
+		<string>kuaijiehuifu</string>
 		<key>title</key>
 		<string>快捷回复</string>
 	</dict>
 	<dict>
 		<key>image</key>
-		<string>suifangjihua_</string>
+		<string>biaodan</string>
 		<key>title</key>
 		<string>表单</string>
 	</dict>

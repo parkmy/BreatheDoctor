@@ -28,9 +28,9 @@
         
         [self addSubview:self.starLabel];
         
-        self.titleLabel.sd_layout.leftSpaceToView(self,10).widthIs(100).topSpaceToView(self,15).heightIs(20);
-        self.typesView.sd_layout.leftSpaceToView(self,0).topSpaceToView(self.titleLabel,5).rightSpaceToView(self,0).bottomSpaceToView(self,5);
-        self.starLabel.sd_layout.leftSpaceToView(self.titleLabel,10).topSpaceToView(self,15).widthIs(45).heightIs(20);
+        self.titleLabel.sd_layout.leftSpaceToView(self,10).widthIs(100).topSpaceToView(self,20).heightIs(15);
+        self.typesView.sd_layout.leftSpaceToView(self,5).topSpaceToView(self.titleLabel,0).rightSpaceToView(self,0).bottomSpaceToView(self,10);
+        self.starLabel.sd_layout.leftSpaceToView(self.titleLabel,10).topSpaceToView(self,20).widthIs(35).heightIs(15);
         
     }
     return self;
@@ -56,7 +56,7 @@
 {
     if (!_starLabel) {
         _starLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _starLabel.font = [UIFont systemFontOfSize:13];
+        _starLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(22)];
         _starLabel.textAlignment = 1;
 
     }
@@ -66,7 +66,7 @@
 {
     _title = title;
     self.titleLabel.text = stringJudgeNull(_title);
-    CGFloat w = [self.titleLabel.text sizeWithFont:self.titleLabel.font constrainedToHeight:20].width + 10;
+    CGFloat w = [self.titleLabel.text sizeWithFont:self.titleLabel.font constrainedToHeight:20].width;
     self.titleLabel.sd_layout.widthIs(w);
 }
 
@@ -75,7 +75,7 @@
     _isMulti = isMulti;
     
     self.starLabel.text = _isMulti?@"多选":@"单选";
-    [self.starLabel setCornerRadius:5.0f];
+    [self.starLabel setCornerRadius:2.0f];
     self.starLabel.layer.borderWidth = .5;
     self.starLabel.layer.borderColor = _isMulti?[UIColor colorWithHexString:@"#ff3333"].CGColor:[UIColor colorWithHexString:@"#fcb53a"].CGColor;
     self.starLabel.textColor = [UIColor colorWithCGColor:self.starLabel.layer.borderColor];

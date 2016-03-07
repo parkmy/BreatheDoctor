@@ -52,7 +52,7 @@
         
     }
     
-    CGSize size = [title sizeWithFont:[UIFont systemFontOfSize:13] constrainedToHeight:20];
+    CGSize size = [title sizeWithFont:[UIFont systemFontOfSize:kNSPXFONTFLOAT(26)] constrainedToHeight:20];
     
     if ([objc isKindOfClass:[UILabel class]]) {
         UILabel *label = (UILabel *)objc;

@@ -122,10 +122,6 @@
                                      success:(void (^)(NSMutableArray *models))success
                                      failure:(void (^)(NSString * errorMes))failure;
 
-#pragma mark 加载购买记录
-+ (void)httpLoadShopOrderLogWithDate:(NSString *)date
-                             success:(void (^)(NSMutableArray *models))success
-                             failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark 获取医生服务时间
 + (void)httploadDoctorServerTimeSuccess:(void (^)(NSMutableArray *models))success
@@ -172,5 +168,21 @@
                        patientID:(NSString *)pid
                                Success:(void (^)())success
                                failure:(void (^)(NSString * errorMes))failure;
+
+#pragma mark  加载订单记录首页
++ (void)httpLoadDoctorRelateOrderIndexWithDate:(NSString *)date
+                                       Success:(void (^)(NSMutableArray *models))success
+                                       failure:(void (^)(NSString * errorMes))failure;
+
+#pragma mark  加载购买记录(根据订单类型)
++ (void)httpLoadOrderListWithDate:(NSString *)date
+                   andProductType:(NSString *)productType
+                          andPage:(NSInteger)page
+                                       Success:(void (^)(NSMutableArray *models))success
+                                       failure:(void (^)(NSString * errorMes))failure;
+#pragma mark  加载预约详情
++ (void)httpLoadOrderAppointmentInfoWithOrdAppid:(NSString *)ordAppid
+                                       Success:(void (^)(LWReservationDetailedModel *model))success
+                                       failure:(void (^)(NSString * errorMes))failure;
 
 @end

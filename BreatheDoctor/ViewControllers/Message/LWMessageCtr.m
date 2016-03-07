@@ -21,7 +21,6 @@
 @property (nonatomic, copy) NSString *refreshTime;
 @property (nonatomic, strong) NSMutableArray *requestMessageArray;
 @property (nonatomic, strong) LWMainMessageBaseModel *mainMessageModel;
-
 @property (nonatomic, strong) UIView *headerErrorView;
 @end
 
@@ -47,7 +46,6 @@
     [self setUI];
     [self registNotificationCenter];
     [self loginjudge];
-
 }
 - (void)registNotificationCenter
 {
@@ -89,7 +87,7 @@
 
 - (void)setUI
 {
-    self.tableView.rowHeight = 60*(iPhone6Plus?1.15:1);
+    self.tableView.rowHeight = 65;
     self.tableView.backgroundColor = [UIColor whiteColor];
     setExtraCellLineHidden(self.tableView);
     
@@ -103,6 +101,7 @@
         }else
         {
             self.tableView.tableHeaderView = nil;
+            [self refreshHomeMsg];
         }
     }];
 }
@@ -161,13 +160,9 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   
     LWMainRows *message = self.messageArray[indexPath.row];
-    
     LWMessageCell *messageCell = [tableView dequeueReusableCellWithIdentifier:@"LWMessageCell" forIndexPath:indexPath];
-        
     [messageCell setMessage:message];
-
     return messageCell;
 }
 
@@ -204,9 +199,6 @@
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    
-
-    
 }
 #pragma mark 滑动表格删除行
 
@@ -215,13 +207,10 @@
 {
     return @"删除";
 }
-
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return YES;
-    
 }
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LWMainRows *message = self.messageArray[indexPath.row];
@@ -233,7 +222,6 @@
         }else{
             self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%@",kNSNumInteger(value)];
         }
-        
     }
     [[LKDBHelper getUsingLKDBHelper] deleteToDB:message];
     [self.messageArray removeObject:message];
@@ -282,7 +270,6 @@
         }
     }
 
-
     if (self.requestMessageArray.count > 0) { //当请求消息
         
         if (requestModel) {//如果有新朋友对象直接修改
@@ -307,7 +294,6 @@
                 [[LKDBHelper getUsingLKDBHelper] insertToDB:model];
             }
         }
-  
     }else //没有请求消息删除新朋友
     {
         if (requestModel) {
@@ -322,9 +308,6 @@
             NSComparisonResult result = [time2 compare:time1];
         return result;
     }];
-    
-
-    
     return array1;
 }
 
@@ -345,6 +328,7 @@
 
 -(void)refreshHomeMsg
 {
+
     self.refreshTime = nil;
     if (self.mainMessageModel) {
         self.refreshTime = self.mainMessageModel.body.refreshDate;
@@ -360,9 +344,12 @@
         self.mainMessageModel = mainMessageBaseModel;
         [self loadCacheMes];
     } failure:^(NSString *errorMes) {
-//        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];        
     }];
 }
+//- (void)reloadRequestWithSender:(UIButton *)sender
+//{
+//    [self refreshHomeMsg];
+//}
 #pragma mark 处理角标
 -(void)setBadgeValue:(NSMutableArray *)models
 {

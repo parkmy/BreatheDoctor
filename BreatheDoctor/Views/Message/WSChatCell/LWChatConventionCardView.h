@@ -10,6 +10,6 @@
 
 @interface LWChatConventionCardView : UIView
 
-@property (nonatomic, strong) id model;
+@property (nonatomic, strong) LWChatModel *model;
 
 @end

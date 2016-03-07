@@ -15,6 +15,7 @@
 #import "RFLayout.h"
 #import "PickerDateViewController.h"
 #import "LWOrderListModel.h"
+#import "LWOrderDetailedListViewController.h"
 
 @interface LWOrderRecordViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,LWOrderCollectionViewCellDelegate
 >
@@ -22,11 +23,8 @@
 @property (strong, nonatomic) UICollectionView *collectionView;
 @property (strong, nonatomic) RFLayout *collectionLayout;
 @property (nonatomic, assign) CGPoint lwContentOffset;
-
 @property (nonatomic, strong) PickerDateViewController *pickView;
-
 @property (nonatomic, strong) NSMutableArray *orderArray;
-
 @property (nonatomic, assign) BOOL isMove;
 
 @end
@@ -69,12 +67,46 @@
         LWOrderListModel *model = [[LWOrderListModel alloc] init];
         model.year = [date year];
         model.month = [date month];
-        model.orderDate = [NSString stringWithFormat:@"%ld月/%ld年",model.month,model.year];
+        NSString *monthString = nil;
+        if (model.month < 10) {
+            monthString = [NSString stringWithFormat:@"0%@",kNSNumInteger(model.month)];
+        }else
+        {
+            monthString = [NSString stringWithFormat:@"%@",kNSNumInteger(model.month)];
+        }
+        model.orderDate = [NSString stringWithFormat:@"%@月/%ld年",monthString,model.year];
         
         [_orderArray addObject:model];
         
     }
-    
+    _orderArray = (NSMutableArray *)[[_orderArray reverseObjectEnumerator] allObjects];
+}
+- (void)httpRequestData
+{
+    [LWProgressHUD displayProgressHUD:self.view displayText:@""];
+    [LWHttpRequestManager httpLoadDoctorRelateOrderIndexWithDate:[NSDate stringWithDate:[NSDate date] format:[NSDate ymdHmsFormat]] Success:^(NSMutableArray *models) {
+        [LWProgressHUD closeProgressHUD:self.view];
+        for (LWOrderListModel *model2 in _orderArray)
+        {
+            for (LWOrderListModel *model1 in models)
+            {
+                if (model1.year == model2.year && model1.month == model2.month)
+                {
+                    model2.phoneOrderNum = model1.phoneOrderNum;
+                    model2.productOrderNum = model1.productOrderNum;
+                    model2.graphicOrderNum = model1.graphicOrderNum;
+                    model2.orderSum = model1.orderSum;
+                    model2.date = model1.date;
+                }
+            }
+            
+        }
+        [self.collectionView reloadData];
+        [self moveDate:[NSDate date] animated:NO];
+    } failure:^(NSString *errorMes) {
+        [LWProgressHUD closeProgressHUD:self.view];
+        [self moveDate:[NSDate date] animated:NO];
+    }];
     
 }
 
@@ -99,6 +131,8 @@
     self.collectionView.backgroundColor =  [UIColor groupTableViewBackgroundColor];
     self.collectionView.showsHorizontalScrollIndicator = NO;
     
+    [self httpRequestData];
+    
 }
 
 
@@ -112,7 +146,7 @@
     LWOrderCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LWOrderCollectionViewCell" forIndexPath:indexPath];
     cell.delegate = self;
     LWOrderListModel *model = self.orderArray[indexPath.row];
-    [cell.orderCell setLW_DateLabelText:model.orderDate];
+    [cell.orderCell setOrderCellData:model];
     return cell;
 }
 
@@ -146,14 +180,14 @@
     [self.view addSubview:self.pickView.view];
     
     [self.pickView setSelectedBlock:^(NSString *date) {
-        [weakSelf moveDate:[NSDate dateWithString:date format:@"yyyy年MM月"]];
+        [weakSelf moveDate:[NSDate dateWithString:date format:@"yyyy年MM月"] animated:YES];
     }];
     
     [self.pickView setDismissBlock:^{
         weakSelf.pickView = nil;
     }];
 }
-- (void)moveDate:(NSDate *)date
+- (void)moveDate:(NSDate *)date animated:(BOOL)animated
 {
     self.isMove = NO;
     
@@ -161,14 +195,13 @@
         LWOrderListModel *model = obj;
         if (model.month == [date month] && model.year == [date year])
         {
-            [self.collectionView scrollRectToVisible:CGRectMake((self.collectionView.contentWidth/12)*idx- 5*idx, 0, self.collectionView.width, self.collectionView.height) animated:YES];
+            [self.collectionView scrollRectToVisible:CGRectMake((self.collectionView.contentWidth/12)*idx- 5*idx, 0, self.collectionView.width, self.collectionView.height) animated:animated];
             
             self.isMove = YES;
         }
         
     }];
     
-
     if (!self.isMove) {
         SHOWAlertView(@"提示", @"选择日期不在范围内！")
     }else
@@ -188,14 +221,22 @@
 //    }
 }
 #pragma mark -LWOrderCollectionViewCellDelegate
-- (void)didSelectRowIndexPath:(NSIndexPath *)indexPath
+- (void)didSelectRowIndexPath:(NSIndexPath *)indexPath andOrderModel:(LWOrderListModel *)model
 {
-    if (indexPath.row == 0) {
-        [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_ReservationDetailed] animated:YES];
-    }else
+    LWOrderDetailedListViewController *vc = (LWOrderDetailedListViewController *)[UIViewController CreateControllerWithTag:CtrlTag_orderListDetailed];
+    if (indexPath.row == 0) { //商品
+        vc.productType = ProductTypeProductOrder;
+    }else if (indexPath.row == 1)//图文
     {
-        [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_orderListDetailed] animated:YES];
+        vc.productType = ProductTypeGraphicOrder;
+    }else if (indexPath.row == 2)//电话
+    {
+        vc.productType = ProductTypePhoneOrder;
     }
+    
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 
 

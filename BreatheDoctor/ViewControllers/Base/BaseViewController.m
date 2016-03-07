@@ -29,6 +29,8 @@
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
     
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -56,14 +58,15 @@
     
     [self.navBar addSubview:self.navTitle];
     
+//    self.navTitle.sd_layout.centerXEqualToView(self.navBar).widthIs(200).heightIs(45).centerYEqualToView(self.navBar);
 }
 - (UILabel *)navTitle
 {
     if (!_navTitle) {
         //标题
         _navTitle = [[UILabel alloc] init];
-        _navTitle.frame=CGRectMake(55, 0, self.view.frame.size.width-120, systemNavHeight);
-        _navTitle.lineBreakMode = NSLineBreakByTruncatingMiddle;
+        _navTitle.frame=CGRectMake(50, 0, self.view.frame.size.width-54-50, systemNavHeight);
+//        _navTitle.lineBreakMode = NSLineBreakByTruncatingMiddle;
         _navTitle.font = [UIFont systemFontOfSize:18];
         _navTitle.textAlignment = NSTextAlignmentCenter;
         _navTitle.backgroundColor = [UIColor clearColor];
@@ -87,7 +90,7 @@
 {
     if (!_navRightButton) {
         _navRightButton= [UIButton buttonWithType:UIButtonTypeCustom];
-        _navRightButton.frame = CGRectMake(self.view.frame.size.width-54, 0, 44, systemNavHeight);//CGRectMake(5, 15, 50.5, 38/2);
+        _navRightButton.frame = CGRectMake(self.view.frame.size.width-54, 0, 54, systemNavHeight);//CGRectMake(5, 15, 50.5, 38/2);
         [_navRightButton addTarget:self action:@selector(navRightButtonAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _navRightButton;

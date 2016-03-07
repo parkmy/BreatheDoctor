@@ -26,8 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +44,7 @@
     UITableViewCell *cell = nil;
     if (indexPath.row == 0) {
         LWPersonalHeardCell *personalHeardCell = [tableView dequeueReusableCellWithIdentifier:@"LWPersonalHeardCell" forIndexPath:indexPath];
+        personalHeardCell.backgroundColor = [UIColor colorWithPatternImage:kImage(@"huanzhezhongxinbeijing")];
         LBLoginBaseModel *user = [CODataCacheManager shareInstance].userModel;
         [personalHeardCell setDoctorIconImage:user.body.perRealPhoto];
         [personalHeardCell setDoctordoctorName:user.body.perName];
@@ -113,9 +112,9 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == 0) {
-        return 170*MULTIPLE;
+        return (270/2)*MULTIPLE;
     }
-    return 90*MULTIPLE;
+    return (230/2)*MULTIPLE;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -123,8 +122,6 @@
     if (indexPath.row == 0) {
         [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_PersonalCenter] animated:YES];
     }
-    
-    
 }
 
 /*

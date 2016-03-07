@@ -41,7 +41,7 @@ static  NSString *HTTP_POST_SETPUSHKEY              = @"mobile/info/setPushKey.d
 static  NSString *HTTP_POST_LOADHOMEPAGE            = @"mobile/dialogue/loadHomePage.do";
 
 // *-- 同意消息
-static  NSString *HTTP_POST_AGREEATTENTION         = @"mobile/doctor/agreeAttention.do";
+static  NSString *HTTP_POST_AGREEATTENTION          = @"mobile/doctor/agreeAttention.do";
 
 // *-- 患者列表
 static  NSString *HTTP_POST_LOADPATIENTLIST         = @"mobile/doctor/loadPatientList.do";
@@ -98,7 +98,14 @@ static  NSString *HTTP_POST_LOADDISEASERELATE       = @"mobile/doctor/loadDiseas
 // *-- 修改患者病情相关
 static  NSString *HTTP_POST_UPDATEDISEASERELATE     = @"mobile/doctor/updateDiseaseRelate.do";
 // *-- 拒绝患者
-static  NSString *HTTP_POST_REFUSEATTENTION     = @"/mobile/doctor/refuseAttention.do";
+static  NSString *HTTP_POST_REFUSEATTENTION         = @"/mobile/doctor/refuseAttention.do";
+
+// *-- 加载订单记录首页
+static  NSString *HTTP_POST_LOADDOCTORRELATEORDERINDEX     = @"/mobile/shop/loadDoctorRelateOrderIndex.do";
+// *-- 加载购买记录(根据订单类型)
+static  NSString *HTTP_POST_LOADORDERLIST                  = @"/mobile/shop/loadOrderList.do";
+// *-- 加载预约详情
+static  NSString *HTTP_POST_LOADORDERAPPOINTMENTINFO       = @"/mobile/shop/loadOrderAppointmentInfo.do";
 
 
 #endif /* LWHttpDefine_h */

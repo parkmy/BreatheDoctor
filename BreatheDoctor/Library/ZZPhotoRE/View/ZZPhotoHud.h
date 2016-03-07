@@ -16,4 +16,6 @@
 +(void)showActiveHudWithTitle:(NSString *)title;
 +(void)hideActiveHud;
 
++(void)showErrorView:(NSString *)error;
+
 @end

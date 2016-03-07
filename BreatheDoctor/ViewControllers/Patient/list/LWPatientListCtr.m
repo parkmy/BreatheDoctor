@@ -445,7 +445,6 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.5];
-    
     self.pullDownView.transform = CGAffineTransformMakeTranslation(0,6);
     _pullImg.image = [UIImage imageNamed:@"V-7_.png"];
     

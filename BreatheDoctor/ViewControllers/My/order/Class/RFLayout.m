@@ -25,7 +25,7 @@
         self.contentItmSize = size;
         self.itemSize = size;
         self.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        self.minimumLineSpacing = 15;
+        self.minimumLineSpacing = 20;
         self.sectionInset = UIEdgeInsetsMake(64, 35, 0, 35);
     }
     return self;

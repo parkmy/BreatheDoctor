@@ -50,11 +50,13 @@
     [self.view addSubview:self.tableView];
     
 
-    if ((screenHeight-10)/7 > 60) {
-        self.tableView.rowHeight = 60;
-    }else{
-        self.tableView.rowHeight = (screenHeight-10)/7;
-    }
+//    if ((screenHeight-10)/7 > 60) {
+//        self.tableView.rowHeight = 60;
+//    }else{
+//        self.tableView.rowHeight = (screenHeight-10)/7;
+//    }
+    self.tableView.rowHeight = 44;
+
     self.tableView.scrollEnabled = NO;
     setExtraCellLineHidden(self.tableView);
 }
@@ -85,8 +87,8 @@
         UIImageView *itmImageView = [[UIImageView alloc] initWithImage:kImage(@"xuanze@2x")];
         itmImageView.tag = 888;
         [cell addSubview:itmImageView];
-        cell.textLabel.font = [UIFont systemFontOfSize:15];
         cell.textLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+        cell.textLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(30)];
         itmImageView.sd_layout.topSpaceToView(cell,(cell.height-16)/2).rightSpaceToView(cell,10).widthIs(16).heightIs(16);
     }
     

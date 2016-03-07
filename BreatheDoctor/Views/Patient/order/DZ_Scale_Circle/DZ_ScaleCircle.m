@@ -24,6 +24,7 @@
 @property(nonatomic) CGFloat endAngle;
 @property(nonatomic) BOOL clockwise;
 
+@property (nonatomic, strong) NSMutableArray *layerArray;
 @end
 
 
@@ -37,19 +38,26 @@
     }
     return self;
 }
+- (NSMutableArray *)layerArray
+{
+    if (!_layerArray) {
+        _layerArray = [NSMutableArray array];
+    }
+    return _layerArray;
+}
 - (void)loadView
 {
     [self initCenterLabel];
     
-    self.lineWith = 10.0;
-    self.unfillColor = [UIColor lightGrayColor];
+    self.lineWith = 5.0f;
+    self.unfillColor = RGBA(119, 199, 93, .3);
     self.clockwise = YES;
     self.backgroundColor = [UIColor clearColor];
     
     self.firstColor = [UIColor colorWithHexString:@"#77c75e"];
     self.secondColor = [UIColor colorWithHexString:@"#febf47"];
     self.thirdColor = [UIColor colorWithHexString:@"#ff6666"];
-    self.fourthColor = [UIColor blueColor];
+    self.fourthColor = [UIColor colorWithHexString:@"#77c75e"];
     
     self.animation_time = 5.0;
     
@@ -71,6 +79,13 @@
  *  @param rect rect description
  */
 -(void)drawRect:(CGRect)rect{
+    
+    for (CAShapeLayer *layer in self.layerArray)
+    {
+        [layer removeFromSuperlayer];
+    }
+    [self.layerArray removeAllObjects];
+    
     
     [self initData];
     [self drawMiddlecircle];
@@ -110,22 +125,20 @@
     self.CGPoinCerter = CGPointMake(center, center);
     
     _orderCountView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 2*center, 2*center)];
-    
-    
     [self addSubview: _orderCountView];
 
-    self.centerLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 35, 2*center, center)];
+    self.centerLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 2*center, center)];
     self.centerLable.textAlignment = NSTextAlignmentCenter;
-    self.centerLable.font = [UIFont boldSystemFontOfSize:45];
+    self.centerLable.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(72)];
     self.centerLable.textColor = [UIColor colorWithHexString:@"#77c75e"];
     self.centerLable.backgroundColor = [UIColor clearColor];
-    self.centerLable.adjustsFontSizeToFitWidth = YES;
-    self.centerLable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    self.contentMode = UIViewContentModeRedraw;
+//    self.centerLable.adjustsFontSizeToFitWidth = YES;
+//    self.centerLable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//    self.contentMode = UIViewContentModeRedraw;
     [_orderCountView addSubview: self.centerLable];
     
-    UILabel *yerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, center, 2*center, center)];
-    yerLabel.font = [UIFont systemFontOfSize:13];
+    UILabel *yerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, center-5, 2*center, center)];
+    yerLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(26)];
     yerLabel.textColor = [UIColor colorWithHexString:@"#999999"];
     yerLabel.text = @"本月订单";
     yerLabel.textAlignment = NSTextAlignmentCenter;
@@ -147,7 +160,7 @@
     fourth_animation_time = self.animation_time * self.fourthScale;
     //半径计算
     radius = MIN(self.bounds.size.height/2-self.lineWith/2, self.bounds.size.width/2-self.lineWith/2);
-    self.centerLable.font = [UIFont systemFontOfSize:radius/3];
+//    self.centerLable.font = [UIFont systemFontOfSize:radius/3];
 }
 
 /**
@@ -169,6 +182,7 @@
     ani.duration = first_animation_time;
     [lineLayer_first addAnimation:ani forKey:NSStringFromSelector(@selector(strokeEnd))];
     [self.layer addSublayer: lineLayer_first];
+    [self.layerArray addObject:lineLayer_first];
 }
 /**
  *  显示圆环 -- second
@@ -189,6 +203,7 @@
     ani.duration = second_animation_time;
     [lineLayer_second addAnimation:ani forKey:NSStringFromSelector(@selector(strokeEnd))];
     [self.layer addSublayer: lineLayer_second];
+    [self.layerArray addObject:lineLayer_second];
 }
 /**
  *  显示圆环 -- third
@@ -209,12 +224,13 @@
     ani.duration = third_animation_time;
     [lineLayer_third addAnimation:ani forKey:NSStringFromSelector(@selector(strokeEnd))];
     [self.layer addSublayer: lineLayer_third];
+    [self.layerArray addObject:lineLayer_third];
 }
 /**
  *  显示圆环 -- fourth
  */
 -(void )drawOutCCircle_fourth{
-    UIBezierPath *bPath_fourth = [UIBezierPath bezierPathWithArcCenter: self.CGPoinCerter radius:radius+8 startAngle: 0 endAngle: M_PI * 2  clockwise: self.clockwise];
+    UIBezierPath *bPath_fourth = [UIBezierPath bezierPathWithArcCenter: self.CGPoinCerter radius:radius+7 startAngle: 0 endAngle: M_PI * 2  clockwise: self.clockwise];
     
     CAShapeLayer *lineLayer_fourth = [CAShapeLayer layer];
     lineLayer_fourth.frame = _orderCountView.frame;
@@ -229,6 +245,8 @@
     ani.duration = fourth_animation_time;
     [lineLayer_fourth addAnimation:ani forKey:NSStringFromSelector(@selector(strokeEnd))];
     [self.layer addSublayer: lineLayer_fourth];
+    [self.layerArray addObject:lineLayer_fourth];
+
 }
 /**
  *  辅助圆环

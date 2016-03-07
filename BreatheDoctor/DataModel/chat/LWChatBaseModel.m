@@ -165,7 +165,6 @@ NSString *const kLWChatBaseModelJoinId = @"join_id";
             }
             if (model2)
             {
-                
                 [[self class] minuteOffSetStart:model1 end:model2];
             }
         }

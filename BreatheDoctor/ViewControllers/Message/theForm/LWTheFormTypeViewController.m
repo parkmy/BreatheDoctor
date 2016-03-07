@@ -58,7 +58,7 @@
             }
         } failure:^(NSString *errorMes) {
             [LWProgressHUD closeProgressHUD:self.view];
-            [self showErrorMessage:@"链接服务器失败～" isShowButton:NO type:showErrorTypeHttp];
+            [self showErrorMessage:errorMes isShowButton:NO type:showErrorTypeHttp];
         }];
     }
 }
@@ -86,28 +86,44 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-        cell.accessoryType = 1;
-        cell.textLabel.font = [UIFont systemFontOfSize:16];
+//        cell.accessoryType = 1;
+        cell.textLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(30)];
         cell.textLabel.textColor  = [UIColor colorWithHexString:@"#333333"];
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
-        cell.detailTextLabel.adjustsFontSizeToFitWidth = YES;
+//        cell.detailTextLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(30)];
         UIView *line = [[UIView alloc] initWithFrame:CGRectZero];
-        line.backgroundColor = RGBA(0, 0, 0, .3);
+        line.backgroundColor = [UIColor colorWithHexString:@"#cccccc"];
         [cell addSubview:line];
         
         line.sd_layout.bottomSpaceToView(cell,0).leftSpaceToView(cell,0).rightSpaceToView(cell,0).heightIs(.5);
+        
+        UIImageView *rightImageView = [UIImageView new];
+        rightImageView.image = kImage(@"yishengzhushou_14");
+        [cell addSubview:rightImageView];
+        rightImageView.sd_layout.rightSpaceToView(cell,10).centerYEqualToView(cell).widthIs(15).heightIs(18);
+        
+        UILabel *countLabel = [UILabel new];
+        countLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+        countLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(30)];
+        countLabel.textAlignment = NSTextAlignmentRight;
+        [cell addSubview:countLabel];
+        countLabel.tag = 888;
+        countLabel.sd_layout.rightSpaceToView(rightImageView,5).centerYEqualToView(cell).widthIs(100).heightIs(20);
+        
     }
+    UILabel *countLabel = (UILabel *)[cell viewWithTag:888];
+    
     if (self.showType == showTheFormTypeMouKuai)
     {
         if (indexPath.row == 0) {
             cell.textLabel.text = @"哮喘患者初诊模块";
             cell.imageView.image = kImage(@"biaodan2");
         }
+        countLabel.text = @"";
     }else{
         LWPatientBiaoDanBody *model = self.dataArray[indexPath.row];
         cell.textLabel.text = @"哮喘患者初诊模块";
         cell.imageView.image = kImage(@"biaodan2");
-        cell.detailTextLabel.text = model.createDt;
+        countLabel.text = model.createDt;
     }
     return cell;
 }

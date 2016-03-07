@@ -27,6 +27,7 @@
 #import "MJPhotoBrowser.h"
 #import "LWTheFormTypeViewController.h"
 #import "LWTheFormViewController.h"
+#import "LWReservationDetailedViewController.h"
 
 #define kBkColorTableView    ([UIColor colorWithRed:0.773 green:0.855 blue:0.824 alpha:1])
 
@@ -53,11 +54,9 @@ typedef NS_ENUM(NSInteger , SenderType) {
 
 @property (nonatomic, strong) LWChatViewControllerDataSource *chatViewControllerDataSource;
 
-
 @property (nonatomic, assign) SenderType senderType;
 
 @property (nonatomic, assign) NSInteger page;
-
 
 @property (nonatomic, copy) NSString *refTimer;
 //@property (nonatomic, assign) long long mesageRows;
@@ -186,7 +185,6 @@ typedef NS_ENUM(NSInteger , SenderType) {
         }else
         {
             [weakSelf loadHttpChatList];
- 
         }
     }];
 
@@ -297,7 +295,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
     {
         case EventChatCellTypeSendMsgEvent:
             
-            [self.view endEditing:YES];
+//            [self.view endEditing:YES];
             [self SendMessage:userInfo];
             
             break;
@@ -812,6 +810,15 @@ typedef NS_ENUM(NSInteger , SenderType) {
             vc.foreignId = model.foreignId;
             vc.showType = model.isDispose == 0?showTheFormTypeMouKuaiNoSucc:showTheFormTypeMouKuaiSucc;
             [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
+        case WSChatMessageType_conventionDan:
+        {
+            LWReservationDetailedViewController *vc = (LWReservationDetailedViewController *)[UIViewController CreateControllerWithTag:CtrlTag_ReservationDetailed];
+            vc.requestId = model.foreignId;
+            vc.isDispose = model.isDispose;
+            [self.navigationController pushViewController:vc animated:YES];
+        
         }
             break;
         default:

@@ -35,9 +35,9 @@
         // 0、创建同意请求类型
         
         self.agreedView = [[UIView alloc] initWithFrame:CGRectZero];
-        self.agreedView.backgroundColor = RGBA(0, 0, 0, .2);
+        self.agreedView.backgroundColor = [UIColor colorWithHexString:@"#cfcfcf"];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-        label.textColor = [UIColor whiteColor];
+        label.textColor = [UIColor colorWithHexString:@"#ffffff"];
         label.text = @"您已通过患者请求，可以开始交流啦";
         label.font = [UIFont systemFontOfSize:13];
         [self.agreedView addSubview:label];
@@ -217,7 +217,7 @@
             if (_messageFrame.model.chatMessageType == WSChatMessageType_conventionDan) {
                 chatConventionCardView.hidden = NO;
                 self.cardView.hidden = YES;
-                [chatConventionCardView setModel:_messageFrame.model.content];
+                [chatConventionCardView setModel:_messageFrame.model];
 
             }else
             {

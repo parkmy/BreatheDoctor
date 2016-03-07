@@ -16,8 +16,7 @@
 #import "NSDate+Extension.h"
 #import "KSCache.h"
 
-#import "LWChatModel.h"
-#import "LWPatientBiaoDanBody.h"
+
 
 @implementation LWHttpRequestManager
 
@@ -52,7 +51,7 @@
     [requestParams setObject:[NSString appVersion] forKey:@"ver"];
     //01 商店 03 企业 99 测试
     [requestParams setObject:[NSString stringWithFormat:@"10202%@",LOADFROMKEY] forKey:@"loadFrom"];
-
+    
 }
 
 + (NSMutableDictionary *)dic
@@ -139,7 +138,7 @@
         NSLog(@"%@",[responseObject
                      JSONString]);
         LWMainMessageBaseModel *mainMessageBaseModel = [[LWMainMessageBaseModel alloc] initWithDictionary:responseObject];
-
+        
         for (LWMainRows *row in mainMessageBaseModel.body.rows)
         {
             NSString *wheres = [NSString stringWithFormat:@"memberId = %@",row.memberId];
@@ -264,7 +263,7 @@
         {
             where = [NSString stringWithFormat:@"insertDt < '%@' and memberId = %@",[NSDate stringWithDate:[NSDate date] format:[NSDate ymdHmsFormat]],patientId];
         }
-
+        
         if (success){ success([LWChatBaseModel LoadSqliteDataWhere:where Offset:0 count:size],chat);}
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
@@ -391,7 +390,7 @@
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     //199 测试
     //105 正式
-    [requestParams setObject:@"199" forKey:@"platCode"];
+    [requestParams setObject:platCode forKey:@"platCode"];
     [requestParams setObject:[NSDate stringWithDate:[NSDate date] format:@"yyyy-MM-dd HH:mm:ss"] forKey:@"req_num"];
     [httpManager POST:comveeUpload_URL parameters:requestParams constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:data name:type==2?@"testimage.jpg":@"testaudio.mp3" fileName:type==2?@"testimage.jpg":@"testaudio.mp3" mimeType:type==2?@"image/jpg":@"audio/mp3"];
@@ -423,7 +422,7 @@
                 success:(void (^)(LWACTModel *model))success
                 failure:(void (^)(NSString * errorMes))failure
 {
-        
+    
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     
     [requestParams setObject:stringJudgeNull(byid) forKey:@"id"];
@@ -435,7 +434,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
     } isCache:YES];
-
+    
 }
 
 #pragma mark 哮喘评估
@@ -531,50 +530,19 @@
     
 }
 
-#pragma mark 加载购买记录 //参数:date 日期格式   按YYYY-MM-DD 这种格式传
-+ (void)httpLoadShopOrderLogWithDate:(NSString *)date
-                             success:(void (^)(NSMutableArray *models))success
-                             failure:(void (^)(NSString * errorMes))failure
-{
-    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
-    
-    [requestParams setObject:stringJudgeNull(date) forKey:@"date"];
-
-    [LWHttpRequestManager addPublicHeaderPost:requestParams];
-    NSLog(@"%@",requestParams.JSONString);
-
-    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADSHOPORDERLOG] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
-        NSLog(@"%@",[responseObject JSONString]);
-        
-        NSDictionary *body = [responseObject objectForKey:res_body];
-        NSArray *orderList = [body objectForKey:@"orderList"];
-        
-        NSMutableArray *array = [NSMutableArray array];
-        
-        for (NSDictionary *dic in orderList) {
-            LWOrderModel *model = [[LWOrderModel alloc] initWithDictionary:dic];
-            model.buyPeopleNum = [[body objectForKey:@"buyPeopleNum"] longLongValue];
-            [array addObject:model];
-        }
-        success?success(array):nil;
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
-        failure?failure(errorMessage):nil;
-    } isCache:YES];
-}
-
 #pragma mark 获取医生服务时间
 + (void)httploadDoctorServerTimeSuccess:(void (^)(NSMutableArray *models))success
                                 failure:(void (^)(NSString * errorMes))failure
 {
-
+    
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
-
+    
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADDOCTORSERVERTIM] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         NSLog(@"%@",[responseObject JSONString]);
         NSArray *body = [responseObject objectForKey:res_body];
         NSMutableArray *array = [NSMutableArray array];
-
+        
         for (NSDictionary *dic in body)
         {
             LWDoctorTimerModel *model = [[LWDoctorTimerModel alloc] initWithDictionary:dic];
@@ -585,7 +553,7 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
     } isCache:YES];
-
+    
 }
 
 #pragma mark 提交医生服务时间
@@ -593,11 +561,11 @@
                                          Success:(void (^)())success
                                          failure:(void (^)(NSString * errorMes))failure
 {
-
+    
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     [requestParams setObject:array forKey:@"jsonData"];
-
+    
     NSLog(@"%@",requestParams.JSONString);
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_SUBMITDOCTORSERVERTIME] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         NSLog(@"%@",[responseObject JSONString]);
@@ -615,8 +583,8 @@
 {
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
-        [requestParams setObject:stringJudgeNull(diagnosticId) forKey:@"diagnosticId"];
-
+    [requestParams setObject:stringJudgeNull(diagnosticId) forKey:@"diagnosticId"];
+    
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADFIRSTDIAGNOSTICINFO] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         NSDictionary *body = [responseObject objectForKey:res_body];
         LWPatientBiaoDanBody *model = [[LWPatientBiaoDanBody alloc] initWithDictionary:body];
@@ -630,8 +598,8 @@
 + (void)httploadPatientFirstDiagnosticList:(NSString *)patientId
                                    Success:(void (^)(NSMutableArray *models))success
                                    failure:(void (^)(NSString * errorMes))failure{
-
-
+    
+    
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
@@ -640,7 +608,7 @@
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADPATIENTFIRSTDIAGNOSTICLIST] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         
         NSLog(@"%@",[responseObject JSONString]);
-
+        
         NSArray *body = [responseObject objectForKey:res_body];
         NSMutableArray *array = [NSMutableArray array];
         
@@ -650,7 +618,7 @@
             [array addObject:model];
         }
         
-        success?success(array):nil;        
+        success?success(array):nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
     } isCache:YES];
@@ -664,7 +632,7 @@
                                      Success:(void (^)(NSMutableArray *models))success
                                      failure:(void (^)(NSString * errorMes))failure
 {
-
+    
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
@@ -672,7 +640,7 @@
     [requestParams setObject:stringJudgeNull(treatmentResult) forKey:@"treatmentResult"];
     [requestParams setObject:stringJudgeNull(basicCondition) forKey:@"basicCondition"];
     [requestParams setObject:stringJudgeNull(images) forKey:@"images"];
-
+    
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_SUBMITDISEASERELATE] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         
         NSLog(@"%@",[responseObject JSONString]);
@@ -681,8 +649,8 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
     } isCache:NO];
-
-
+    
+    
 }
 
 #pragma mark  加载患者病情相关
@@ -690,13 +658,13 @@
                       Success:(void (^)(LWPatientRelatedModel *model))success
                       failure:(void (^)(NSString * errorMes))failure
 {
-
+    
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
     [requestParams setObject:stringJudgeNull(patientId) forKey:@"patientId"];
     
-    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADDISEASERELATE] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {        
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADDISEASERELATE] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         NSLog(@"%@",[responseObject JSONString]);
         NSDictionary *body = [responseObject objectForKey:res_body];
         LWPatientRelatedModel *model = [[LWPatientRelatedModel alloc] initWithDictionary:body];
@@ -721,7 +689,7 @@
     [requestParams setObject:stringJudgeNull(treatmentResult) forKey:@"treatmentResult"];
     [requestParams setObject:stringJudgeNull(basicCondition) forKey:@"basicCondition"];
     [requestParams setObject:stringJudgeNull(images) forKey:@"images"];
-
+    
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_UPDATEDISEASERELATE] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         NSLog(@"%@",[responseObject JSONString]);
         
@@ -737,7 +705,7 @@
                            Success:(void (^)())success
                            failure:(void (^)(NSString * errorMes))failure
 {
-
+    
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
@@ -750,8 +718,92 @@
         success?success():nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
-    } isCache:NO];  
+    } isCache:NO];
+    
+}
 
+#pragma mark  加载订单记录首页
++ (void)httpLoadDoctorRelateOrderIndexWithDate:(NSString *)date
+                                       Success:(void (^)(NSMutableArray *models))success
+                                       failure:(void (^)(NSString * errorMes))failure
+{
+    
+    
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    
+    [requestParams setObject:stringJudgeNull(date) forKey:@"date"];
+    
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADDOCTORRELATEORDERINDEX] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        NSMutableArray *array = [NSMutableArray array];
+        for (NSDictionary *dic in (NSArray *)responseObject[res_body])
+        {
+            LWOrderListModel *model = [[LWOrderListModel alloc] initWithOrderLisetModelDic:dic];
+            NSDate *orderDate = [NSDate dateWithString:dic[@"date"] format:[NSDate ymdHmsFormat]];
+            model.year = [orderDate year];
+            model.month = [orderDate month];
+            model.orderDate = [NSString stringWithFormat:@"%ld月/%ld年",model.month,model.year];
+            [array addObject:model];
+        }
+        success?success(array):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];
+    
+    
+}
+
+#pragma mark  加载购买记录(根据订单类型)
++ (void)httpLoadOrderListWithDate:(NSString *)date
+                   andProductType:(NSString *)productType
+                          andPage:(NSInteger)page
+                          Success:(void (^)(NSMutableArray *models))success
+                          failure:(void (^)(NSString * errorMes))failure
+{
+    
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    
+    [requestParams setObject:stringJudgeNull(date) forKey:@"date"];
+    [requestParams setObject:stringJudgeNull(productType) forKey:@"productType"];
+    [requestParams setObject:stringJudgeNull(kNSString(kNSNumInteger(page))) forKey:@"page"];
+    
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADORDERLIST] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        NSMutableArray *array = [NSMutableArray array];
+        for (NSDictionary *dic in (NSArray *)[responseObject objectForKey:res_body])
+        {
+            LWDetailedOrderListModel *model = [[LWDetailedOrderListModel alloc] initWithDetailedOrderlistModelDic:dic];
+            [array addObject:model];
+        }
+        success?success(array):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];
+    
+}
+#pragma mark  加载预约详情
++ (void)httpLoadOrderAppointmentInfoWithOrdAppid:(NSString *)ordAppid
+                                         Success:(void (^)(LWReservationDetailedModel *model))success
+                                         failure:(void (^)(NSString * errorMes))failure
+{
+    
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    [requestParams setObject:stringJudgeNull(ordAppid) forKey:@"ordAppId"];
+    
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADORDERAPPOINTMENTINFO] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        success?success([[LWReservationDetailedModel alloc] initWithDictionary:responseObject[res_body]]):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];
+    
+    
 }
 
 @end

@@ -84,21 +84,21 @@
     _patientRelatedView3.mScrollView = _mScrollView;
     _patientRelatedView3.delegate = self;
     
-    _patientRelatedView1.sd_layout.topSpaceToView(_mScrollView,0).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(115);
+    _patientRelatedView1.sd_layout.topSpaceToView(_mScrollView,0).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(240/2);
     
-    _patientRelatedView2.sd_layout.topSpaceToView(_patientRelatedView1,15).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(115);
+    _patientRelatedView2.sd_layout.topSpaceToView(_patientRelatedView1,10).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(240/2);
     
-    CGFloat h = 204;
+    CGFloat h = (340/2);
     if (screenHeight > 570) {
-        h = _mScrollView.height-60-115*2-70;
+        h = _mScrollView.height-20-(240/2)*2-70;
     }
-    _patientRelatedView3.sd_layout.topSpaceToView(_patientRelatedView2,15).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(h);
+    _patientRelatedView3.sd_layout.topSpaceToView(_patientRelatedView2,10).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(h);
     
     [_mScrollView addSubview:self.saveView];
     
-    self.saveView.sd_layout.topSpaceToView(_patientRelatedView3,10).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(60);
+    self.saveView.sd_layout.topSpaceToView(_patientRelatedView3,10).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(70);
     
-    _mScrollView.contentHeight = 115*2+h+15*2+60+10;
+    _mScrollView.contentHeight = (240/2)*2+h+10*2+70+10;
     
 
 }
@@ -119,7 +119,7 @@
         [_saveView addSubview:btn];
         
         
-        btn.sd_layout.topSpaceToView(_saveView,5).leftSpaceToView(_saveView,15).rightSpaceToView(_saveView,15).bottomSpaceToView(_saveView,5);
+        btn.sd_layout.topSpaceToView(_saveView,(70-45)/2).leftSpaceToView(_saveView,15).rightSpaceToView(_saveView,15).bottomSpaceToView(_saveView,(70-45)/2);
     }
     return _saveView;
 }
@@ -167,8 +167,7 @@
 {
     [self textIsChange];
     
-    self.treatmentResult = _patientRelatedView1.contentTextView.text;
-    self.basicCondition = _patientRelatedView2.contentTextView.text;
+
 
     [self uploadImagesSuccess:^(NSMutableArray *models) {
         
@@ -251,24 +250,36 @@
 
 - (void)senderRelated
 {
+    self.treatmentResult = _patientRelatedView1.contentTextView.text;
+    self.basicCondition = _patientRelatedView2.contentTextView.text;
+    
     [LWHttpRequestManager httpsubmitDiseaseRelateWithPatientId:self.patientId treatmentResult:self.treatmentResult basicCondition:self.basicCondition images:self.imagesString Success:^(NSMutableArray *models) {
         [ZZPhotoHud hideActiveHud];
-        [SVProgressHUD showSuccessWithStatus:@"保存成功"];
+        [LCCoolHUD showSuccess:@"保存成功" zoom:YES shadow:NO];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
     } failure:^(NSString *errorMes) {
         [ZZPhotoHud hideActiveHud];
-        [SVProgressHUD showErrorWithStatus:errorMes];
+        [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];
     }];
     self.isChange = NO;
 }
 - (void)updateRelated
 {
+    self.treatmentResult = _patientRelatedView1.contentTextView.text;
+    self.basicCondition = _patientRelatedView2.contentTextView.text;
+    
     [ZZPhotoHud showActiveHudWithTitle:@"正在修改..."];
     [LWHttpRequestManager httpupdateDiseaseRelateWithSid:self.model.sid treatmentResult:self.treatmentResult basicCondition:self.basicCondition images:self.imagesString Success:^(NSMutableArray *models) {
         [ZZPhotoHud hideActiveHud];
-        [SVProgressHUD showSuccessWithStatus:@"修改成功"];
+        [LCCoolHUD showSuccess:@"修改成功" zoom:YES shadow:NO];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.navigationController popViewControllerAnimated:YES];
+        });
     } failure:^(NSString *errorMes) {
         [ZZPhotoHud hideActiveHud];
-        [SVProgressHUD showErrorWithStatus:errorMes];
+        [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];
     }];
 
     self.isChange = NO;
@@ -312,7 +323,7 @@
         
     } failure:^(NSString *errorMes) {
         [ZZPhotoHud hideActiveHud];
-        
+        [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];
     }];
 }
 

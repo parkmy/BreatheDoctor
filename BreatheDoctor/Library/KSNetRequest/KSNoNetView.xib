@@ -11,28 +11,28 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="03_act_.png" translatesAutoresizingMaskIntoConstraints="NO" id="btS-0u-3Ef">
-                    <rect key="frame" x="155" y="224" width="65" height="100"/>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nanguo2.png" translatesAutoresizingMaskIntoConstraints="NO" id="btS-0u-3Ef">
+                    <rect key="frame" x="118" y="196" width="140" height="155"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="100" id="FfL-If-dg0"/>
-                        <constraint firstAttribute="width" constant="65" id="X7G-GM-jAf"/>
+                        <constraint firstAttribute="height" constant="155" id="FfL-If-dg0"/>
+                        <constraint firstAttribute="width" constant="140" id="X7G-GM-jAf"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALD-rF-piu">
-                    <rect key="frame" x="0.0" y="329" width="375" height="45"/>
+                    <rect key="frame" x="0.0" y="356" width="375" height="45"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="vmb-cD-Bsd"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RTU-3i-rkQ">
-                    <rect key="frame" x="127" y="379" width="120" height="45"/>
+                    <rect key="frame" x="125" y="406" width="125" height="40"/>
                     <color key="backgroundColor" red="0.61176470589999998" green="0.78039215689999997" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="120" id="MK0-Wn-bpg"/>
-                        <constraint firstAttribute="height" constant="45" id="RdS-uo-cbE"/>
+                        <constraint firstAttribute="width" constant="125" id="MK0-Wn-bpg"/>
+                        <constraint firstAttribute="height" constant="40" id="RdS-uo-cbE"/>
                     </constraints>
                     <state key="normal" title="添加患者">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,6 +61,6 @@
         </view>
     </objects>
     <resources>
-        <image name="03_act_.png" width="65" height="102"/>
+        <image name="nanguo2.png" width="140" height="155"/>
     </resources>
 </document>

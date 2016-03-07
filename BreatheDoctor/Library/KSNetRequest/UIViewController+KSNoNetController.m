@@ -42,7 +42,9 @@
 {
     for (UIView* view in self.view.subviews) {
         if ([view isKindOfClass:[KSNoNetView class]]) {
-            [view removeFromSuperview];
+            if (view) {
+                [view removeFromSuperview];
+            }
         }
     }
 }

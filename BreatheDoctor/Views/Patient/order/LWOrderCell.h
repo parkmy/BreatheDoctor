@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LWOrderListModel.h"
 
 @protocol LWOrderCellDelegate <NSObject>
 
 @optional
-- (void)didSelectRowIndex:(NSIndexPath *)index;
+- (void)didSelectRowIndex:(NSIndexPath *)index andOrderModel:(LWOrderListModel *)model;
 
 @end
 
@@ -23,6 +24,8 @@
 
 @property (nonatomic, strong) LWOrderCell *orderView;
 
-- (void)setLW_DateLabelText:(NSString *)string;
+@property (nonatomic, strong) LWOrderListModel *model;
+
+- (void)setOrderCellData:(LWOrderListModel *)model;
 
 @end

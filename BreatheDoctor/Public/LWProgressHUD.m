@@ -89,35 +89,36 @@ UIView* showView = nil;
 
 +(void)showALAlertBannerWithView:(UIView*)view Style:(int)style Position:(int)position Subtitle:(NSString*)subtitle{
     
+    [LCCoolHUD showFailureOblong:subtitle zoom:YES shadow:NO];
     
-    if ([LWPublicDataManager shareInstance].ifRemoveFromSuperview==NO)
-    {
-        
-        CGSize size = [subtitle sizeWithFont:[UIFont systemFontOfSize:13] constrainedToWidth:screenWidth-40];
-        
-        int y = view.height-59-systemTabbarHeight;
-        
-        if (position==0)
-        {
-            y-= 66;
-            
-        }
-        if (position==1)
-        {
-            y-= 170;
-        }
-        CDPromptView * PromptView = [[CDPromptView alloc]initWithFrame:CGRectMake(view.frame.size.width/2-size.width/2 -10,
-                                                                                  y, size.width + 20, size.height + 20)];
-        PromptView.ifDelegate = YES;
-        
-        [view addSubview:PromptView];
-        [PromptView showViewWithMsg:subtitle];
-        
-        
-//        sender.userInteractionEnabled = NO;
-        [LWPublicDataManager shareInstance].ifRemoveFromSuperview=YES;
-        [LWPublicDataManager shareInstance].alther = PromptView;
-    }
+//    if ([LWPublicDataManager shareInstance].ifRemoveFromSuperview==NO)
+//    {
+//        
+//        CGSize size = [subtitle sizeWithFont:[UIFont systemFontOfSize:13] constrainedToWidth:screenWidth-40];
+//        
+//        int y = view.height-59-systemTabbarHeight;
+//        
+//        if (position==0)
+//        {
+//            y-= 66;
+//            
+//        }
+//        if (position==1)
+//        {
+//            y-= 170;
+//        }
+//        CDPromptView * PromptView = [[CDPromptView alloc]initWithFrame:CGRectMake(view.frame.size.width/2-size.width/2 -10,
+//                                                                                  y, size.width + 20, size.height + 20)];
+//        PromptView.ifDelegate = YES;
+//        
+//        [view addSubview:PromptView];
+//        [PromptView showViewWithMsg:subtitle];
+//        
+//        
+////        sender.userInteractionEnabled = NO;
+//        [LWPublicDataManager shareInstance].ifRemoveFromSuperview=YES;
+//        [LWPublicDataManager shareInstance].alther = PromptView;
+//    }
     
 }
 

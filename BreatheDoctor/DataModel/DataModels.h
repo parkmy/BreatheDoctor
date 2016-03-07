@@ -47,8 +47,6 @@
 #import "LWAsthmaLineBaseModel.h"
 #import "LWAsthmaLineBody.h"
 
-#import "LWOrderModel.h"
-
 #import "LWTheFromBaseModel.h"
 #import "LWTheFromRowArray.h"
 #import "LWTheFromArows.h"
@@ -58,3 +56,9 @@
 #import "LWPatientBiaoDanBody.h"
 
 #import "LWPatientRelatedModel.h"
+
+#import "LWChatModel.h"
+#import "LWPatientBiaoDanBody.h"
+#import "LWOrderListModel.h"
+#import "LWDetailedOrderListModel.h"
+#import "LWReservationDetailedModel.h"

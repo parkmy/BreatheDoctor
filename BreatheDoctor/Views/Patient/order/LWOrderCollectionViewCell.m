@@ -31,10 +31,10 @@
     }
     return self;
 }
-- (void)didSelectRowIndex:(NSIndexPath *)index
+- (void)didSelectRowIndex:(NSIndexPath *)index andOrderModel:(LWOrderListModel *)model
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectRowIndexPath:)]) {
-        [self.delegate didSelectRowIndexPath:index];
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didSelectRowIndexPath:andOrderModel:)]) {
+        [self.delegate didSelectRowIndexPath:index andOrderModel:model];
     }
 }
 

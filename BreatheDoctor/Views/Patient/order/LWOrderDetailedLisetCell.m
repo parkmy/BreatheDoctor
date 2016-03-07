@@ -7,6 +7,8 @@
 //
 
 #import "LWOrderDetailedLisetCell.h"
+#import "LWDetailedOrderListModel.h"
+#import <UIImageView+WebCache.h>
 
 @interface LWOrderDetailedLisetCell ()
 {
@@ -15,7 +17,6 @@
     UILabel     *moneyLabel;
     UILabel     *orderTimerLabel;
     UILabel     *orderTotalMoneyLabel;
-    
 }
 
 @end
@@ -34,28 +35,29 @@
         
         orderNamelLabel = [UILabel new];
         orderNamelLabel.numberOfLines = 0;
-        orderNamelLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:16];
+        orderNamelLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:kNSPXFONTFLOAT(30)];
         orderNamelLabel.textColor = [UIColor colorWithHexString:@"#333333"];
         [self addSubview:orderNamelLabel];
 
         moneyLabel = [UILabel new];
-        moneyLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:15];
+        moneyLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:kNSPXFONTFLOAT(28)];
         moneyLabel.textColor = [UIColor colorWithHexString:@"#666666"];
         [self addSubview:moneyLabel];
         
         orderTimerLabel = [UILabel new];
+        orderTimerLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(30)];
         orderTimerLabel.textColor = orderNamelLabel.textColor;
         [self addSubview:orderTimerLabel];
 
         orderTotalMoneyLabel = [UILabel new];
-        orderTotalMoneyLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:16];
+        orderTotalMoneyLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:kNSPXFONTFLOAT(34)];
         orderTotalMoneyLabel.textColor = orderNamelLabel.textColor;
         [self addSubview:orderTotalMoneyLabel];
 
         UIView *topLine = [UIView new];
-        topLine.backgroundColor = RGBA(0, 0, 0, .2);
+        topLine.backgroundColor = [UIColor colorWithHexString:@"#cccccc"];
         UIView *bottomLine = [UIView new];
-        bottomLine.backgroundColor = RGBA(0, 0, 0, .2);
+        bottomLine.backgroundColor = [UIColor colorWithHexString:@"#cccccc"];
         [self addSubview:topLine];
         [self addSubview:bottomLine];
         
@@ -76,11 +78,30 @@
 - (void)setModel:(id)model
 {
     _model = model;
+    LWDetailedOrderListModel *detailedOrderListModel = _model;
     
-    orderNamelLabel.text = @"欧茉莉雾化器NE-C32S家用儿童雾化器欧茉莉雾化器NE-C32S家用儿童";
-    orderTimerLabel.text = @"订单时间 ：1026-22-33 12：22";
-    orderTotalMoneyLabel.text = @"总价：¥1700000";
-    moneyLabel.text = @"价格：¥144444 数量：333";
+    [iconImageView sd_setImageWithURL:kNSURL(detailedOrderListModel.imageUrl) placeholderImage:kImage(@"defaultIconImage@2x")];
+    orderNamelLabel.text = stringJudgeNull(detailedOrderListModel.fullName);
+    orderTimerLabel.text = [NSString stringWithFormat:@"订单时间：%@",detailedOrderListModel.createDt];
+    
+    NSInteger  quantity = [detailedOrderListModel.quantity integerValue];
+    double  accountPaid = [detailedOrderListModel.accountPaid doubleValue];
+    
+    orderTotalMoneyLabel.text = [NSString stringWithFormat:@"总价：¥ %.2f",(accountPaid/100.0)];
+    moneyLabel.text = [NSString stringWithFormat:@"价格： ¥ %.2f  数量：%@",(accountPaid/quantity)/100.0,detailedOrderListModel.quantity];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:orderTotalMoneyLabel.text];
+    
+    CGFloat moneyLabelheight = [moneyLabel.text sizeWithFont:[UIFont fontWithName:@"Helvetica-Light" size:kNSPXFONTFLOAT(34)] constrainedToWidth:moneyLabel.width].height;
+    moneyLabel.sd_layout.heightIs(moneyLabelheight*2);
+    
+    CGFloat orderNamelLabelheight = [orderNamelLabel.text sizeWithFont:[UIFont systemFontOfSize:kNSPXFONTFLOAT(30)] constrainedToWidth:orderNamelLabel.width].height;
+    orderNamelLabel.sd_layout.heightIs(orderNamelLabelheight*2);
+    
+//    NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#666666"]]
+    
+    [attributedString addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:kNSPXFONTFLOAT(26)],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#666666"]} range:NSMakeRange(0, 3)];
+    
+    orderTotalMoneyLabel.attributedText = attributedString;
 }
 
 - (void)awakeFromNib {

@@ -12,7 +12,7 @@
 @protocol LWOrderCollectionViewCellDelegate <NSObject>
 
 @optional
-- (void)didSelectRowIndexPath:(NSIndexPath *)indexPath;
+- (void)didSelectRowIndexPath:(NSIndexPath *)indexPath andOrderModel:(LWOrderListModel *)model;
 
 @end
 

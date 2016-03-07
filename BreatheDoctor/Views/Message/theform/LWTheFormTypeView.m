@@ -22,18 +22,19 @@
         self.layer.borderWidth = .5;
         if (type == showTheFormTypeBiaoDan || type == showTheFormTypeMouKuaiSucc) {
             self.layer.borderColor = [LWThemeManager shareInstance].navBackgroundColor.CGColor;
+            self.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
         }else
         {
-            self.layer.borderColor = RGBA(0, 0, 0, .3).CGColor;
+            self.layer.borderColor = [UIColor colorWithHexString:@"#cccccc"].CGColor;
         }
         _itmLabel.userInteractionEnabled = YES;
-        _itmLabel.font = [UIFont systemFontOfSize:14];
+        _itmLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(30)];
         _itmLabel.textAlignment = 1;
         if (type == showTheFormTypeBiaoDan || type == showTheFormTypeMouKuaiSucc) {
-            _itmLabel.textColor = [LWThemeManager shareInstance].navBackgroundColor;
+            _itmLabel.textColor = [UIColor whiteColor];
         }else
         {
-            _itmLabel.textColor = RGBA(0, 0, 0, .6);
+            _itmLabel.textColor = [UIColor colorWithHexString:@"#999999"];
         }
         [self addSubview:_itmLabel];
         _itmLabel.sd_layout.topSpaceToView(self,0).leftSpaceToView(self,0).rightSpaceToView(self,0).bottomSpaceToView(self,0);
@@ -76,12 +77,12 @@
         [view removeFromSuperview];
     }
     
-    CGFloat margin = 15.f;
-    CGFloat btnHigh = 35.0f;
+    CGFloat margin = 10;
+    CGFloat btnHigh = 30.f*MULTIPLE;
     
 //    int afterCount = 0;
     
-    CGFloat w = (Screen_SIZE.width-margin*4)/3;
+    CGFloat w = (Screen_SIZE.width-margin*4-5)/3;
     CGFloat ww = w*2+margin;
     
     
@@ -97,27 +98,33 @@
             NSString *title = model.content;
             LWTheFormTypeViewItm *btn = [[LWTheFormTypeViewItm alloc] initWithFrame:CGRectZero withType:self.showType];
             btn.itmLabel.text = title;
-            [btn setCornerRadius:5.0f];
-            CGFloat width = [title sizeWithFont:[UIFont systemFontOfSize:14] constrainedToHeight:CGFLOAT_MAX].width + 10;
+            [btn setCornerRadius:2.0f];
+            CGFloat width = [title sizeWithFont:[UIFont systemFontOfSize:kNSPXFONTFLOAT(30)] constrainedToHeight:CGFLOAT_MAX].width + 10;
             
             btn.width = width > w?ww:w;
             btn.xOrigin = a*(w + margin) + margin;
-            btn.yOrigin = b*(btnHigh + margin) + margin;
+            btn.yOrigin = b*(btnHigh + (margin*2)) + margin*2;
             btn.height = btnHigh;
             
             [self addSubview:btn];
             
            if (self.showType == showTheFormTypeBiaoDan || self.showType == showTheFormTypeMouKuaiSucc) {
                 UIButton *itm = [UIButton buttonWithType:UIButtonTypeCustom];
+
+               UIImage *image = kImage(@"duoxuan");
+               
                 [itm setImage:kImage(@"duoxuan") forState:UIControlStateNormal];
                 itm.backgroundColor = [UIColor clearColor];
                 [self addSubview:itm];
                 itm.frame = CGRectZero;
                 
-                itm.width = 20;
-                itm.height = 20;
-                itm.xOrigin = btn.maxX-10;
-                itm.yOrigin = btn.yOrigin-10;
+                itm.width = image.size.width;
+                itm.height = image.size.height;
+                itm.xOrigin = btn.maxX-itm.width/2;
+                itm.yOrigin = btn.yOrigin-itm.height/2;
+               [itm setCornerRadius:itm.width/2];
+               itm.layer.borderWidth = .5;
+               itm.layer.borderColor = [UIColor whiteColor].CGColor;
             }
 
         }

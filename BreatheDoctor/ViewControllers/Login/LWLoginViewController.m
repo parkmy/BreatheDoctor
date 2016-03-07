@@ -49,9 +49,9 @@
 - (void)setUI
 {
     self.lineHight.constant = .5;
-    [self.loginButton setCornerRadius:5.0f];
+    [self.loginButton setCornerRadius:3.0f];
     self.bgView.layer.borderWidth = .5;
-    self.bgView.layer.borderColor = CUSTOM_COLOR(191, 191, 191, 1).CGColor;
+    self.bgView.layer.borderColor = [UIColor colorWithHexString:@"#cccccc"].CGColor;
     self.centerYh.constant = -35*MULTIPLE;
 }
 

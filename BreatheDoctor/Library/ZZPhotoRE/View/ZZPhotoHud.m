@@ -95,4 +95,10 @@
     [[self sharedHud] removeHudUI];
 }
 
++(void)showErrorView:(NSString *)error
+{
+
+
+}
+
 @end

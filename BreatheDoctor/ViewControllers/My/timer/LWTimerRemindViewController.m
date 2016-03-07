@@ -16,6 +16,7 @@
 #import "SVProgressHUD.h"
 #import "LWPopAlatView.h"
 #import "NSDate+Extension.h"
+#import "ZZPhotoHud.h"
 
 @interface LWTimerRemindViewController ()<LWTimerRemindIndexViewDeleagte,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 @property (nonatomic, strong) LWTimerRemindIndexView *indexView;
@@ -42,7 +43,7 @@
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.navRightButton.hidden = YES;
-
+    
     [self setUI];
     [self loadData];
     
@@ -50,16 +51,17 @@
 
 - (void)setUI
 {
-    self.tableView.rowHeight = 90*MULTIPLE;
+    self.tableView.rowHeight = 95*MULTIPLE;
 }
 
 - (void)loadData
 {
-    [SVProgressHUD showProgress:60 status:@"正在获取..." maskType:SVProgressHUDMaskTypeBlack];
-
+    
+    [ZZPhotoHud showActiveHudWithTitle:@"正在获取..."];
     [LWHttpRequestManager httploadDoctorServerTimeSuccess:^(NSMutableArray *models) {
-        [SVProgressHUD dismiss];
-        if (models.count <= 0) {
+        [ZZPhotoHud hideActiveHud];
+        if (![[NSUserDefaults standardUserDefaults] objectForKey:@"LWPopAlatView"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:@"11111" forKey:@"LWPopAlatView"];
             [LWPopAlatView showView:nil];
         }
         [self.models removeAllObjects];
@@ -71,12 +73,13 @@
         }
         [self.tableView reloadData];
     } failure:^(NSString *errorMes) {
-        [SVProgressHUD showErrorWithStatus:errorMes];
+        [ZZPhotoHud hideActiveHud];
+        [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];
     }];
 }
 - (void)saveSeting
 {
-
+    
     NSMutableString *requestString = [[NSMutableString alloc] initWithString:@""];
     for (int i = 0; i < self.models.count; i++)
     {
@@ -96,24 +99,24 @@
     }
     
     NSLog(@"%@",requestString);
-
+    
     requestString = [requestString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];  //去除掉首尾的空白字符和换行字符
     requestString = [requestString stringByReplacingOccurrencesOfString:@"\r" withString:@""];
     requestString = [requestString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-//    NSLog(@"%@",self.models.JSONString);
+    //    NSLog(@"%@",self.models.JSONString);
     
-    [SVProgressHUD showProgress:60 status:@"正在保存..." maskType:SVProgressHUDMaskTypeBlack];
+    [ZZPhotoHud showActiveHudWithTitle:@"正在保存..."];
+    
     [LWHttpRequestManager httpsubmitDoctorServerTimeWithJsonString:requestString Success:^() {
-        [SVProgressHUD showSuccessWithStatus:@"设置成功"];
+        [ZZPhotoHud hideActiveHud];
+        [LCCoolHUD showSuccess:@"设置成功" zoom:YES shadow:NO];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self.navigationController popViewControllerAnimated:YES];
         });
     } failure:^(NSString *errorMes) {
-        [SVProgressHUD showErrorWithStatus:errorMes];
+        [ZZPhotoHud hideActiveHud];
+        [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];
     }];
-    
-    
-    
 }
 
 - (NSMutableArray *)models
@@ -145,7 +148,7 @@
 {
     if (buttonIndex == 0) {
         [self.navigationController popViewControllerAnimated:YES];
-
+        
     }else
     {
         [self saveSeting];
@@ -162,7 +165,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return section == 0?.1:15;
+    return section == 0?.1:10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
@@ -172,7 +175,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LWTimerButtonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LWTimerButtonCell" forIndexPath:indexPath];
-
+    
     LWDoctorTimerModel *model = self.models[indexPath.section];
     cell.starLabel.text = model.startTime;
     cell.endLabel.text = model.endTime;
@@ -214,9 +217,8 @@
                         
                     }
                 }
-            
+                
             }
-
             
             NSMutableString *weekString = [[NSMutableString alloc] initWithString:@""];
             for (NSString *str in weeks)
@@ -278,7 +280,6 @@
     label.text = [self getWeekString:[self weekArray:string]];
     
 }
-
 - (void)showPickView:(UILabel *)label withIndexPath:(NSIndexPath *)indexPath withModel:(LWDoctorTimerModel *)model isStar:(BOOL)isStar
 {
     __weak LWPickerViewController *vc = (LWPickerViewController *)StoryboardCtr(@"LWPickerViewController");
@@ -294,7 +295,7 @@
             
             NSDate *starDate = [NSDate dateWithString:stringJudgeNull(string) format:[NSDate hmFormat]];
             NSDate *endDate  = [NSDate dateWithString:stringJudgeNull(model.endTime) format:[NSDate hmFormat]];
-            if (endDate > starDate) {
+            if ([starDate timeIntervalSinceReferenceDate] > [endDate timeIntervalSinceReferenceDate]) {
                 SHOWAlertView(@"提示", @"您选择的时间段不符合，请重新选择！")
                 return ;
             }
@@ -304,7 +305,7 @@
         {
             NSDate *starDate = [NSDate dateWithString:stringJudgeNull(model.startTime) format:[NSDate hmFormat]];
             NSDate *endDate  = [NSDate dateWithString:stringJudgeNull(string) format:[NSDate hmFormat]];
-            if (endDate > starDate) {
+            if ([starDate timeIntervalSinceReferenceDate] > [endDate timeIntervalSinceReferenceDate]) {
                 SHOWAlertView(@"提示", @"您选择的时间段不符合，请重新选择！")
                 return ;
             }
@@ -320,7 +321,7 @@
     [self.view addSubview:vc.view];
     
     
-
+    
 }
 
 

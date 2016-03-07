@@ -8,9 +8,13 @@
 
 #import "LWOrderDetailedListViewController.h"
 #import "LWOrderDetailedLisetCell.h"
+#import <MJRefresh.h>
 
 @interface LWOrderDetailedListViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tabelView;
+@property (nonatomic, assign) NSInteger   page;
+@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, assign) BOOL isPull;
 @end
 
 @implementation LWOrderDetailedListViewController
@@ -19,15 +23,90 @@
     [super viewWillAppear:animated];
     [super addNavBar:@"订单详情"];
     [super addBackButton:@"nav_btnBack.png"];
-    
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self loadUI];
+    [self initProperty];
+    [self xialarefreshData];
 }
+- (void)initProperty
+{
+    self.page = 1;
+    self.isPull = YES;
+}
+- (void)loadData
+{
+    [LWHttpRequestManager httpLoadOrderListWithDate:self.model.date andProductType:kNSString(kNSNumInteger(self.productType)) andPage:self.page Success:^(NSMutableArray *models) {
+        [self.tabelView.mj_header endRefreshing];
+        [self.tabelView.mj_footer endRefreshing];
+        [self hiddenNonetWork];
+        if (self.isPull) {
+            [self.dataArray removeAllObjects];
+            [self.dataArray addObjectsFromArray:models];
+        }else
+        {
+            if(models.count > 0){
+                [self.dataArray addObjectsFromArray:models];
+            }else
+            {
+                [self.tabelView.mj_footer endRefreshingWithNoMoreData];
+            }
+        }
+        [self.tabelView reloadData];
+        if (self.dataArray.count <= 0) {
+            [self showErrorMessage:@"暂无购买记录" isShowButton:YES type:showErrorTypeMore];
+        }
+    } failure:^(NSString *errorMes) {
+        [self.tabelView.mj_header endRefreshing];
+        [self.tabelView.mj_footer endRefreshing];
+        if (self.dataArray.count <= 0) {
+            [self showErrorMessage:errorMes isShowButton:NO type:showErrorTypeHttp];
+        }
+    }];
+}
+- (void)reloadRequestWithSender:(UIButton *)sender
+{
+    [self hiddenNonetWork];
+    [self.tabelView.mj_header beginRefreshing];
+}
+- (NSMutableArray *)dataArray
+{
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
+#pragma mark - loadChatList
 
+- (void)xialarefreshData
+{
+    __weak typeof(self) weakSelf = self;
+    // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        weakSelf.isPull = YES;
+        weakSelf.page = 1;
+        [weakSelf loadData];
+    }];
+    
+    MJRefreshAutoFooter *footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        weakSelf.isPull = NO;
+        weakSelf.page ++;
+        [weakSelf loadData];
+    }];
+    
+    [header beginRefreshing];
+    
+    // 设置文字
+//    [header setTitle:@"下拉加载数据" forState:MJRefreshStateIdle];
+//    [header setTitle:@"正在加载 ..." forState:MJRefreshStateRefreshing];
+    // 隐藏时间
+//    header.lastUpdatedTimeLabel.hidden = YES;
+    [self.tabelView setMj_header:header];
+    [self.tabelView setMj_footer:footer];
+    
+}
 - (void)loadUI
 {
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -54,7 +133,7 @@
 #pragma mark - table delegate datasource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 5;
+    return self.dataArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -63,7 +142,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LWOrderDetailedLisetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LWOrderDetailedLisetCell" forIndexPath:indexPath];
-    [cell setModel:nil];
+    [cell setModel:self.dataArray[indexPath.section]];
     return cell;
     
 }
@@ -73,7 +152,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return section == 0?.1:15;
+    return section == 0?.1:10;
 }
 
 

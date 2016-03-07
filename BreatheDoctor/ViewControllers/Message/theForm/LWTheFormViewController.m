@@ -97,7 +97,7 @@
             {
                 a = 1;
             }
-            CGFloat h = (35 + 15)*a + 60;
+            CGFloat h = (30 + 20)*a + 58;
             arow.rowHight = h;
         }
         
@@ -203,7 +203,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return section == _baseModel.mrows.count?.1:40;
+    return section == _baseModel.mrows.count?.1:50;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
@@ -222,12 +222,12 @@
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.tag = 888;
-        label.textColor = RGBA(0, 0, 0, .5);
-        label.font = [UIFont systemFontOfSize:15];
+        label.textColor = [UIColor colorWithHexString:@"#666666"];
+        label.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(32)];
         [view addSubview:label];
         icon.centerX = 20;
-        icon.centerY = 40/2;
-        label.frame = CGRectMake(icon.maxX+10, 0, screenWidth-50, 40);
+        icon.centerY = 50/2;
+        label.frame = CGRectMake(icon.maxX+10, 0, screenWidth-50, 50);
         
         
     }
@@ -245,7 +245,7 @@
 
     LWTheFromMrows *model = _baseModel.mrows[section];
     label.text = model.sectiontitle;
-    icon.image = section == 0?kImage(@"jilu"):section == 1?kImage(@"bingqingkongzhi"):kImage(@"yongyao");
+    icon.image = section == 0?kImage(@"zhengzhuang"):section == 1?kImage(@"bingqingkongzhi"):kImage(@"yongyao");
     return view;
 }
 

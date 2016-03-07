@@ -21,12 +21,12 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
-
 @property (strong, nonatomic) IBOutletCollection(NSLayoutConstraint) NSArray *scWith;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHight;
 @property (weak, nonatomic) IBOutlet UIView *typeView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *typeTop;
 @property (weak, nonatomic) IBOutlet UIView *typeView4;
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *typeLabels;
 
 @end
 
@@ -51,8 +51,37 @@
     NSString *str1 = strArray[0];
     
     NSMutableAttributedString *attributed = [[NSMutableAttributedString alloc] initWithString:string];
-    [attributed addAttributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:25],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#333333"]} range:NSMakeRange(0, str1.length)];
+    [attributed addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:kNSPXFONTFLOAT(40)],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#333333"]} range:NSMakeRange(0, str1.length)];
     _orderView.dateLabel.attributedText = attributed;
+    
+}
+- (void)setOrderCellData:(LWOrderListModel *)model
+{
+    self.orderView.model = model;
+    
+    if (model.orderSum > 0) {
+        _orderView.ScaleCircle.centerLable.text = [NSString stringWithFormat:@"%ld",model.orderSum];
+        _orderView.ScaleCircle.centerLable.textColor = [UIColor colorWithHexString:@"#77c75a"];
+        NSLog(@"--%f----%f-----%f",model.productOrderNum/(CGFloat)model.orderSum,model.graphicOrderNum/(CGFloat)model.orderSum,model.phoneOrderNum/(CGFloat)model.orderSum);
+        
+        _orderView.ScaleCircle.firstScale =  model.productOrderNum/(CGFloat)model.orderSum;
+        _orderView.ScaleCircle.secondScale = model.graphicOrderNum/(CGFloat)model.orderSum;
+        _orderView.ScaleCircle.thirdScale = model.phoneOrderNum/(CGFloat)model.orderSum;
+        [self.orderView.ScaleCircle setNeedsDisplay];
+        
+    }else
+    {
+        _orderView.ScaleCircle.centerLable.text = @"--";
+        _orderView.ScaleCircle.centerLable.textColor = [UIColor colorWithHexString:@"#cccccc"];
+
+        _orderView.ScaleCircle.firstScale = 0;
+        _orderView.ScaleCircle.secondScale = 0;
+        _orderView.ScaleCircle.thirdScale = 0;
+        [self.orderView.ScaleCircle setNeedsDisplay];
+    }
+    [self setLW_DateLabelText:model.orderDate];
+    [self.orderView.tableView reloadData];
+
     
 }
 
@@ -78,24 +107,24 @@
     _orderView.ScaleCircle.thirdScale = 0.7;
     //    circle.fourthScale = 0.4;
     //  线宽
-    _orderView.ScaleCircle.lineWith = 6.0f;
+    _orderView.ScaleCircle.lineWith = 5.0f;
     _orderView.ScaleCircle.animation_time = .1;
     
-    _orderView.ScaleCircle.centerLable.text = @"1234";
-    _orderView.tableView.rowHeight = 40;
-    if (iPhone6) {
-        _orderView.tableHeight.constant = 150;
-        _orderView.tableView.rowHeight = 150/3;
+    _orderView.ScaleCircle.centerLable.text = @"--";
+    _orderView.tableView.rowHeight = 45*MULTIPLE;
+    _orderView.tableHeight.constant = 45*3*MULTIPLE;
 
-    }else if (iPhone6Add){
-        _orderView.tableHeight.constant = 165;
-        _orderView.tableView.rowHeight = 165/3;
-
-    }
+    _orderView.dateLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(24)];
+//    if (iPhone6) {
+//
+//    }else if (iPhone6Add){
+//        _orderView.tableHeight.constant = 165;
+//
+//    }
     if (screenHeight < 490) {
-//        for (NSLayoutConstraint *constraint in _orderView.scWith) {
-//            constraint.constant = 100;
-//        }
+
+        _orderView.tableView.rowHeight = 43;
+        _orderView.tableHeight.constant = 43*3;
 //        _orderView.bottomHight.constant = 10.0f;
         _orderView.typeTop.constant = 5;
         _orderView.typeView.hidden = YES;
@@ -110,6 +139,9 @@
         {
             _orderView.typeTop.constant = 55;
             _orderView.bottomHight.constant = 55;
+//            for (NSLayoutConstraint *constraint in _orderView.scWith) {
+//                constraint.constant = 180;
+//            }
         }else if (iPhone5){
             _orderView.bottomHight.constant -= 10;
         }
@@ -129,6 +161,10 @@
         }
         view.backgroundColor = color;
     }
+//    for (UILabel *label in _orderView.typeLabels)
+//    {
+//        label.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(26)];
+//    }
     _orderView.frame = self.bounds;
     [self addSubview:_orderView];
 
@@ -156,32 +192,67 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Cell"];
-        cell.textLabel.textColor = [UIColor colorWithHexString:@"#666666"];
-        cell.detailTextLabel.textColor = [UIColor colorWithHexString:@"#333333"];
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
-        cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
-        cell.accessoryType = 1;
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+
         cell.selectionStyle = 0;
+        
+        
+        UIImageView *typeimageView = [UIImageView new];
+        typeimageView.tag = 1000;
+        [cell addSubview:typeimageView];
+        
+        UIImage *image = kImage(@"tuwendingdan");
+        typeimageView.sd_layout.leftSpaceToView(cell,10).centerYEqualToView(cell).widthIs(image.size.width).heightIs(image.size.height);
+
+        UIImageView *rightImageView = [UIImageView new];
+        rightImageView.image = kImage(@"yishengzhushou_14");
+        [cell addSubview:rightImageView];
+        UIView *line = [UIView new];
+        line.backgroundColor = [UIColor colorWithHexString:@"#eeeeee"];
+        line.tag = 999;
+        [cell addSubview:line];
+        
+        rightImageView.sd_layout.rightSpaceToView(cell,8).centerYEqualToView(cell).widthIs(15).heightIs(18);
+        line.sd_layout.rightSpaceToView(cell,0).leftSpaceToView(cell,0).bottomSpaceToView(cell,0).heightIs(1);
+        
+        UILabel *countLabel = [UILabel new];
+        countLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+        countLabel.font = [UIFont fontWithName:@"Helvetica-Light" size:kNSPXFONTFLOAT(30)];
+        countLabel.textAlignment = NSTextAlignmentRight;
+        [cell addSubview:countLabel];
+        countLabel.tag = 888;
+        countLabel.sd_layout.rightSpaceToView(rightImageView,5).centerYEqualToView(cell).widthIs(80).heightIs(20);
+        
+        UILabel *label = [UILabel new];
+        label.tag = 777;
+        [cell addSubview:label];
+        label.font = [UIFont fontWithName:@"Helvetica-Light" size:kNSPXFONTFLOAT(30)];
+        label.textColor = [UIColor colorWithHexString:@"#666666"];
+        label.sd_layout.rightSpaceToView(countLabel,10).centerYEqualToView(cell).leftSpaceToView(typeimageView,8).heightIs(18);
     }
     
+    UILabel *countLabel = (UILabel *)[cell viewWithTag:888];
+    UIView *line = [cell viewWithTag:999];
+    UILabel *titleLabel = (UILabel *)[cell viewWithTag:777];
+    UIImageView *typeimageView = [cell viewWithTag:1000];
+
     if (indexPath.row == 0) {
     
-        cell.imageView.image = kImage(@"shangpindingdan");
-        cell.textLabel.text = @"商品订单";
-        cell.detailTextLabel.text = @"4单";
-
+        typeimageView.image = kImage(@"shangpindingdan");
+        titleLabel.text = @"商品订单";
+        countLabel.text = [NSString stringWithFormat:@"%@单",kNSNumInteger(self.model.productOrderNum)];
+        line.sd_layout.leftSpaceToView(cell,10);
     }else if (indexPath.row == 1)
     {
-        cell.imageView.image = kImage(@"tuwendingdan");
-        cell.textLabel.text = @"图文订单";
-        cell.detailTextLabel.text = @"4单";
-
+        typeimageView.image = kImage(@"tuwendingdan");
+        titleLabel.text = @"图文订单";
+        countLabel.text = [NSString stringWithFormat:@"%@单",kNSNumInteger(self.model.graphicOrderNum)];
+        line.sd_layout.leftSpaceToView(cell,10);
     }else if (indexPath.row == 2)
     {
-        cell.imageView.image = kImage(@"dianhuadingdan");
-        cell.textLabel.text = @"电话订单";
-        cell.detailTextLabel.text = @"4单";
+        typeimageView.image = kImage(@"dianhuadingdan");
+        titleLabel.text = @"电话订单";
+        countLabel.text = [NSString stringWithFormat:@"%@单",kNSNumInteger(self.model.phoneOrderNum)];
     
     }
     
@@ -191,8 +262,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 //    _orderView.didSelectRowBlock?_orderView.didSelectRowBlock(indexPath):nil;
-    if (_delegate && [_delegate respondsToSelector:@selector(didSelectRowIndex:)]) {
-        [_delegate didSelectRowIndex:indexPath];
+    if (_delegate && [_delegate respondsToSelector:@selector(didSelectRowIndex:andOrderModel:)]) {
+        [_delegate didSelectRowIndex:indexPath andOrderModel:self.model];
     }
 
 }

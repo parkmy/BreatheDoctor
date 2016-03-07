@@ -15,7 +15,7 @@
 - (void)awakeFromNib {
     // Initialization code
     [self.messageCountLabel setCornerRadius:self.messageCountLabel.height/2];
-    [self.userIcon setCornerRadius:5.0f];
+    [self.userIcon setCornerRadius:3.0f];
     self.messageCountLabel.hidden = YES;
 }
 

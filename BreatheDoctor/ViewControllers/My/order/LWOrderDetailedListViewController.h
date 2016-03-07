@@ -7,7 +7,14 @@
 // 订单详情列表
 
 #import "BaseViewController.h"
+#import "LWOrderListModel.h"
 
+typedef NS_ENUM(NSInteger ,ProductType) {
+    ProductTypeProductOrder  = 1,
+    ProductTypeGraphicOrder = 2,
+    ProductTypePhoneOrder   = 3,
+};
 @interface LWOrderDetailedListViewController : BaseViewController
-
+@property (nonatomic, assign) ProductType productType;
+@property (nonatomic, strong) LWOrderListModel *model;
 @end

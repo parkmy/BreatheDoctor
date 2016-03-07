@@ -30,8 +30,8 @@
         
         UIView *line1 = [[UIView alloc] initWithFrame:CGRectZero];
         UIView *line2 = [[UIView alloc] initWithFrame:CGRectZero];
-        line1.backgroundColor = RGBA(0, 0, 0, .3);
-        line2.backgroundColor = RGBA(0, 0, 0, .3);
+        line1.backgroundColor = [UIColor colorWithHexString:@"#cccccc"];
+        line2.backgroundColor = [UIColor colorWithHexString:@"#cccccc"];
         [self addSubview:line1];
         [self addSubview:line2];
         
@@ -43,18 +43,19 @@
         [self addSubview:self.relatedTitleLabel];
         
         UIView *line = [[UIView alloc] initWithFrame:CGRectZero];
-        line.backgroundColor = RGBA(0, 0, 0, .3);
+        line.backgroundColor = [UIColor colorWithHexString:@"#cccccc"];
         [self addSubview:line];
         [self addSubview:self.relatedcontentView];
         
+        UIImage *image = kImage(@"zhaopian");
         
-        self.iconImgaeView.sd_layout.topSpaceToView(self,15).leftSpaceToView(self,15).widthIs(18).heightIs(18);
-        self.relatedTitleLabel.sd_layout.topSpaceToView(self,15).leftSpaceToView(self.iconImgaeView,15).rightSpaceToView(self,5).heightIs(20);
-        line.sd_layout.topSpaceToView(self.iconImgaeView,15).leftSpaceToView(self,15).rightSpaceToView(self,0).heightIs(.5);
-        self.relatedcontentView.sd_layout.topSpaceToView(line,10).leftSpaceToView(self,15).rightSpaceToView(self,15).bottomSpaceToView(self,5);
+        self.iconImgaeView.sd_layout.topSpaceToView(self,18).leftSpaceToView(self,10).widthIs(image.size.width).heightIs(image.size.height);
+        self.relatedTitleLabel.sd_layout.topSpaceToView(self,18).leftSpaceToView(self.iconImgaeView,10).rightSpaceToView(self,5).heightIs(image.size.height);
+        line.sd_layout.topSpaceToView(self.iconImgaeView,18).leftSpaceToView(self,10).rightSpaceToView(self,0).heightIs(.5);
+        self.relatedcontentView.sd_layout.topSpaceToView(line,3).leftSpaceToView(self,10).rightSpaceToView(self,10).bottomSpaceToView(self,3);
         
         [self.relatedcontentView addSubview:self.patientRelatedPhotoView];
-        self.patientRelatedPhotoView.sd_layout.topSpaceToView(self.relatedcontentView,0).leftSpaceToView(self.relatedcontentView,0).rightSpaceToView(self.relatedcontentView,0).bottomSpaceToView(self.relatedcontentView,0);
+        self.patientRelatedPhotoView.sd_layout.topSpaceToView(self.relatedcontentView,0).leftSpaceToView(self.relatedcontentView,-10).rightSpaceToView(self.relatedcontentView,0).bottomSpaceToView(self.relatedcontentView,0);
         
         [self.relatedcontentView addSubview:self.contentTextView];
         self.contentTextView.sd_layout.topSpaceToView(self.relatedcontentView,0).leftSpaceToView(self.relatedcontentView,0).rightSpaceToView(self.relatedcontentView,0).bottomSpaceToView(self.relatedcontentView,0);
@@ -84,7 +85,7 @@
 {
     if (!_relatedTitleLabel) {
         _relatedTitleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _relatedTitleLabel.font = [UIFont systemFontOfSize:16];
+        _relatedTitleLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(32)];
         _relatedTitleLabel.textColor = [UIColor colorWithHexString:@"#333333"];
     }
     return _relatedTitleLabel;
@@ -93,8 +94,8 @@
 {
     if (!_contentTextView) {
         _contentTextView = [[UITextView alloc] initWithFrame:CGRectZero];
-        _contentTextView.font = [UIFont systemFontOfSize:14];
-        _contentTextView.textColor = [UIColor colorWithHexString:@"#333333"];
+        _contentTextView.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(30)];
+        _contentTextView.textColor = [UIColor colorWithHexString:@"#999999"];
         _contentTextView.delegate = self;
     }
     return _contentTextView;

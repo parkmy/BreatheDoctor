@@ -86,6 +86,7 @@
  */
 @property (nonatomic, strong)D3RecordButton *longButtonVoice;
 
+@property (nonatomic, strong) UIView *line;
 @end
 
 
@@ -98,8 +99,10 @@
     self = [super init];
     if (self)
     {
-        self.backgroundColor = kBkColor;
+        self.backgroundColor = [UIColor colorWithHexString:@"#f6f6f6"];
         mHeightTextView = kMinHeightTextView; //默认设置输入框最小高度
+        self.layer.borderWidth = 1.0;
+        self.layer.borderColor = [UIColor colorWithHexString:@"#eeeeee"].CGColor;
         
         /**
          *  @brief  增加录音按钮
@@ -139,6 +142,15 @@
         [_mMoreBtn  autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.mInputTextView withOffset:0];
         [_mMoreBtn  autoPinEdge:ALEdgeLeading toEdge:ALEdgeTrailing ofView:self.longButtonVoice withOffset:0];
         
+        _line = [UIView new];
+        _line.translatesAutoresizingMaskIntoConstraints = NO;
+        _line.backgroundColor = [UIColor colorWithHexString:@"#eeeeee"];
+        [self addSubview:_line];
+        [_line autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:0];
+        [_line autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:0];
+        [_line autoSetDimension:ALDimensionHeight toSize:1];
+        [_line  autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:self.longButtonVoice withOffset:5];
+
         /**
          *  @brief  监听键盘显示、隐藏变化，让自己伴随键盘移动
          */
@@ -215,6 +227,7 @@
     
     if (notification.name == UIKeyboardWillShowNotification)
     {
+        self.line.hidden = YES;
         mBottomConstraintWithSupView.constant = -(keyboardEndFrame.size.height);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(animationDuration * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if (self.baseTbaleView.contentHeight > self.baseTbaleView.height) {
@@ -250,9 +263,7 @@
         [self.mInputTextView resignFirstResponder];
         self.longButtonVoice.hidden = NO;
         self.mInputTextView.hidden = YES;
-        
     }
-    
     sender.selected = !sender.selected;
     
     [self removeFromMoreView];
@@ -284,7 +295,7 @@
         //        [self.mInputTextView becomeFirstResponder];
     }else
     {//隐藏键盘，显示更多界面
-        
+        self.line.hidden = NO;
         mMoreView = [[LWChatMessageMoreView alloc]init];
         mMoreView.delegate = self;
         mMoreView.translatesAutoresizingMaskIntoConstraints = NO;

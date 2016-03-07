@@ -12,7 +12,7 @@
 #import "LWChatMessageMoreCollectionCell.h"
 
 //自己的高度
-#define kHeightMoreView      (170)
+#define kHeightMoreView      (235/2)
 
 //可重用ID
 #define kReuseID             (@"unique")
@@ -46,9 +46,9 @@
         
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
         
-        [layout setItemSize:CGSizeMake([UIScreen mainScreen].bounds.size.width/3-10, (kHeightMoreView-kBottomCollectionView)/2-10)];
-        [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
-        layout.sectionInset = UIEdgeInsetsMake(4, 5,4, 5);
+        [layout setItemSize:CGSizeMake([UIScreen mainScreen].bounds.size.width/4-10, kHeightMoreView)];
+        [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+        layout.sectionInset = UIEdgeInsetsMake(0, 0,0, 0);
         
         mCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
         mCollectionView.pagingEnabled = YES;
@@ -60,7 +60,7 @@
         [mCollectionView registerClass:[LWChatMessageMoreCollectionCell class] forCellWithReuseIdentifier:kReuseID];
         
         [self addSubview:mCollectionView];
-        UIEdgeInsets inset = UIEdgeInsetsMake(0, 0,20, 0);
+        UIEdgeInsets inset = UIEdgeInsetsMake(0, 8,0, 0);
         
         [mCollectionView autoPinEdgesToSuperviewEdgesWithInsets:inset];
         
@@ -94,6 +94,7 @@
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     LWChatMessageMoreCollectionCell*cell = [collectionView dequeueReusableCellWithReuseIdentifier:kReuseID forIndexPath:indexPath];
+//    cell.backgroundColor = RGBA(arc4random_uniform(250), arc4random_uniform(35), arc4random_uniform(222), 1);
     cell.model = self.DataSource[indexPath.row];
     return cell;
 }
