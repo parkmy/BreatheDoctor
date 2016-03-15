@@ -22,7 +22,7 @@ typedef enum {
 + (void)startWithAppkey:(NSString *)appKey;
 + (void)startWithAppkey:(NSString *)appKey reportPolicy:(ReportPolicy)rp channelId:(NSString *)cid;
 
-+(void)bindUserIdentifier:(NSString *)userid;
+//+(void)bindUserIdentifier:(NSString *)userid;
 
 +(void)startTracPage:(NSString*)page_name;
 +(void)endTracPage:(NSString*)page_name;

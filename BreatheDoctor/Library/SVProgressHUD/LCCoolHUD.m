@@ -43,7 +43,15 @@
 }
 
 
-
++ (void)disMiss
+{
+    for (UIView *view in [UIApplication sharedApplication].keyWindow.subviews) {
+        if ([view isKindOfClass:[JGProgressHUD class]]) {
+            [view removeFromSuperview];
+        }
+    }
+    
+}
 #pragma mark - Success
 
 + (void)showSuccess:(NSString *)text zoom:(BOOL)zoom shadow:(BOOL)shadow {
@@ -53,6 +61,8 @@
 
 + (void)showSuccess:(NSString *)text inView:(UIView *)view zoom:(BOOL)zoom shadow:(BOOL)shadow {
     
+    [[self class] disMiss];
+
     JGProgressHUD *HUD =  [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
     
     if (zoom) {
@@ -84,6 +94,8 @@
 }
 
 + (void)showSuccessOblong:(NSString *)text inView:(UIView *)view zoom:(BOOL)zoom shadow:(BOOL)shadow {
+    
+    [[self class] disMiss];
     
     JGProgressHUD *HUD =  [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
     
@@ -119,6 +131,8 @@
 
 + (void)showFailure:(NSString *)text inView:(UIView *)view zoom:(BOOL)zoom shadow:(BOOL)shadow {
     
+    [[self class] disMiss];
+    
     JGProgressHUD *HUD =  [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
     
     if (zoom) {
@@ -150,6 +164,8 @@
 }
 
 + (void)showFailureOblong:(NSString *)text inView:(UIView *)view zoom:(BOOL)zoom shadow:(BOOL)shadow {
+    
+    [[self class] disMiss];
     
     JGProgressHUD *HUD =  [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
     

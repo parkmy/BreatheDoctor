@@ -18,9 +18,9 @@
         self.backgroundColor = [UIColor clearColor];
         self.contentView.backgroundColor = [UIColor clearColor];
         
-        _orderCell = [[LWOrderCell alloc] initWithFrame:self.bounds];
+        _orderCell = [[LWOrderViewCell alloc] initWithFrame:self.bounds];
         [self addSubview:_orderCell];
-        _orderCell.orderView.delegate = self;
+        _orderCell.delegate = self;
         //        __weak typeof(self)weakSelf = self;
         //        [_orderCell setDidSelectRowBlock:^(NSIndexPath *indexPath) {
         //            if (weakSelf.delegate && [weakSelf.delegate respondsToSelector:@selector(didSelectRowIndexPath:)]) {

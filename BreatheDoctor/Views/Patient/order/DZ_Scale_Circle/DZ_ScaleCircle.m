@@ -16,7 +16,7 @@
     CGFloat second_animation_time;
     CGFloat third_animation_time;
     CGFloat fourth_animation_time;
-    
+    UILabel *yerLabel;
     UIView *_orderCountView;
 }
 
@@ -45,11 +45,22 @@
     }
     return _layerArray;
 }
+//- (void)ifModel
+//{
+//    if (self.model && self.model.orderSum > 0)
+//    {
+//        self.centerLable.text = [NSString stringWithFormat:@"%ld",self.model.orderSum];
+//        self.centerLable.textColor = [UIColor colorWithHexString:@"#77c75a"];
+//    }else
+//    {
+//        self.centerLable.text = @"--";
+//        self.centerLable.textColor = [UIColor colorWithHexString:@"#cccccc"];
+//    }
+//}
 - (void)loadView
 {
     [self initCenterLabel];
     
-    self.lineWith = 5.0f;
     self.unfillColor = RGBA(119, 199, 93, .3);
     self.clockwise = YES;
     self.backgroundColor = [UIColor clearColor];
@@ -58,10 +69,6 @@
     self.secondColor = [UIColor colorWithHexString:@"#febf47"];
     self.thirdColor = [UIColor colorWithHexString:@"#ff6666"];
     self.fourthColor = [UIColor colorWithHexString:@"#77c75e"];
-    
-    self.animation_time = 5.0;
-    
-    self.centerLable.text = @"请初始化...";
 }
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -116,28 +123,42 @@
     });
 }
 
+- (void)layoutSubviews
+{
+    CGFloat center =MIN(self.bounds.size.height/2, self.bounds.size.width/2);
+    self.CGPoinCerter = CGPointMake(center, center);
+ 
+    _orderCountView.frame = CGRectMake(0, 0, 2*center, 2*center);
+    self.centerLable.frame = CGRectMake(0, 30*MULTIPLE, 2*center, center);
+    yerLabel.frame = CGRectMake(0, center-5, 2*center, center);
+    
+}
+
 /*
  *中心标签设置
  */
 - (void)initCenterLabel {
+    
     CGFloat center =MIN(self.bounds.size.height/2, self.bounds.size.width/2);
+    NSLog(@"---%@",NSStringFromCGRect(self.frame));
 
     self.CGPoinCerter = CGPointMake(center, center);
     
     _orderCountView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 2*center, 2*center)];
     [self addSubview: _orderCountView];
 
-    self.centerLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 30, 2*center, center)];
+    self.centerLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 30*MULTIPLE, 2*center, center)];
     self.centerLable.textAlignment = NSTextAlignmentCenter;
     self.centerLable.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(72)];
     self.centerLable.textColor = [UIColor colorWithHexString:@"#77c75e"];
     self.centerLable.backgroundColor = [UIColor clearColor];
+
 //    self.centerLable.adjustsFontSizeToFitWidth = YES;
 //    self.centerLable.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 //    self.contentMode = UIViewContentModeRedraw;
     [_orderCountView addSubview: self.centerLable];
     
-    UILabel *yerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, center-5, 2*center, center)];
+    yerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, center-5, 2*center, center)];
     yerLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(26)];
     yerLabel.textColor = [UIColor colorWithHexString:@"#999999"];
     yerLabel.text = @"本月订单";

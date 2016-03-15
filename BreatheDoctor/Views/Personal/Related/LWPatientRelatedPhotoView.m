@@ -48,6 +48,9 @@
 - (void)setImages:(NSMutableArray *)images
 {
     _images = images;
+    if (_delegate && [_delegate respondsToSelector:@selector(imagesChangeHeight:)]) {
+        [_delegate imagesChangeHeight:images];
+    }
     [self.collectionView reloadData];
 }
 #pragma mark - Collection Delegate
@@ -61,6 +64,7 @@
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     LWPatientRelatedPhotoCollectionViewCell*cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LWPatientRelatedPhotoCollectionViewCell" forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor redColor];
     if (indexPath.row == self.images.count) {
         cell.cancelButton.hidden = YES;
         cell.object = kImage(@"tianjia");

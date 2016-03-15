@@ -29,6 +29,9 @@
 @property (nonatomic, assign)float fourthScale;
 //动画时长
 @property (nonatomic, assign)float animation_time;
+
+@property (nonatomic, strong) LWOrderListModel *model;
+
 - (instancetype) initWithFrame:(CGRect)frame;
 
 @end

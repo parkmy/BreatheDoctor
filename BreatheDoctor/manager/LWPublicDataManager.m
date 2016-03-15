@@ -28,13 +28,16 @@
 
 + (BOOL)IntoTheBackGroundtimeIsMoreThan:(NSInteger)time WithKey:(NSString *)key
 {
-    
     NSDate *oldDate = [[NSUserDefaults standardUserDefaults] objectForKey:key];
-    
+    if(!oldDate)
+    {
+        return YES;
+    }
     NSDate *newDate = [NSDate date];
     
+    double xc = ([newDate timeIntervalSinceReferenceDate] - [oldDate timeIntervalSinceReferenceDate]);
     
-    if (([oldDate second] - [newDate second]) >= time){
+    if (xc >= time){
         return YES;
     }
     return NO;

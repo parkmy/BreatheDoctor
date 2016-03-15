@@ -50,7 +50,7 @@
         // 1、创建时间
         self.labelTime = [[UILabel alloc] init];
         self.labelTime.textAlignment = NSTextAlignmentCenter;
-        self.labelTime.textColor = [UIColor grayColor];
+        self.labelTime.textColor = [UIColor colorWithHexString:@"#cfcfcf"];
         self.labelTime.font = ChatTimeFont;
         [self.contentView addSubview:self.labelTime];
         
@@ -139,7 +139,8 @@
         self.btnContent.isMyMessage = YES;
         [self.btnContent setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         self.btnContent.contentEdgeInsets = UIEdgeInsetsMake(ChatContentTop, ChatContentRight, ChatContentBottom, ChatContentLeft);
-        [self.btnHeadImage sd_setBackgroundImageWithURL:[NSURL URLWithString:model.headImgUrl] forState:UIControlStateNormal placeholderImage:kImage(@"yishengzhushou_35")];
+        LBLoginBaseModel *user = [CODataCacheManager shareInstance].userModel;
+        [self.btnHeadImage sd_setBackgroundImageWithURL:[NSURL URLWithString:user.body.perRealPhoto] forState:UIControlStateNormal placeholderImage:kImage(@"yishengzhushou_35")];
 
     }else{
         self.btnContent.isMyMessage = NO;
@@ -180,6 +181,7 @@
     
     switch (model.chatCellType) {
         case WSChatCellType_Text:
+            self.agreedView.hidden = YES;
             self.btnContent.hidden = NO;
             self.btnHeadImage.hidden = NO;
             headImageBackView.hidden = NO;
@@ -187,6 +189,7 @@
             break;
         case WSChatCellType_Image:
         {
+            self.agreedView.hidden = YES;
             self.btnContent.hidden = NO;
             self.btnHeadImage.hidden = NO;
             headImageBackView.hidden = NO;
@@ -198,6 +201,7 @@
             break;
         case WSChatCellType_Audio:
         {
+            self.agreedView.hidden = YES;
             self.btnContent.hidden = NO;
             self.btnHeadImage.hidden = NO;
             headImageBackView.hidden = NO;
@@ -213,6 +217,7 @@
             break;
         case WSChatCellType_Card:
         {
+            self.agreedView.hidden = YES;
 //            self.chatLoadingView.hidden = YES;
             if (_messageFrame.model.chatMessageType == WSChatMessageType_conventionDan) {
                 chatConventionCardView.hidden = NO;

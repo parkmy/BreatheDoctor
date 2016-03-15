@@ -115,6 +115,9 @@
     [self starTimerLoding];
     
     [LWHttpRequestManager httpLoginWithPhoneNumber:self.accountTF.text password:[self.passwordTF.text md5String] success:^(LBLoginBaseModel *userModel) {
+        //统计
+        [UMSAgent startWithAppkey:@""];
+        
         if (_delegate && [_delegate respondsToSelector:@selector(loginSucc)]) {
             [_delegate loginSucc];
         }

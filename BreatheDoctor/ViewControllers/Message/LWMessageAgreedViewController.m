@@ -43,16 +43,15 @@
 
 - (void)loadPatientRecords
 {
-    if (!self.patientRecordsModel){
-        [LWProgressHUD displayProgressHUD:self.view displayText:@"加载中..."];
-    }
+    [LWProgressHUD displayProgressHUD:self.view displayText:@"加载中..."];
+
     [LWHttpRequestManager httpPantientArchivesWithPantientID:self.patientModel.memberId success:^(LWPatientRecordsBaseModel *patientRecordsBaseModel) {
         [LWProgressHUD closeProgressHUD:self.view];
         self.patientRecordsModel = patientRecordsBaseModel;
         [self.tableView reloadData];
         
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD closeProgressHUD:self.view.window];
+        [LWProgressHUD closeProgressHUD:self.view];
         [LWProgressHUD showALAlertBannerWithView:self.view.window Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
 }
@@ -93,12 +92,15 @@
     {
         LWMessageAgreedCell *agreedButtonCell = [tableView dequeueReusableCellWithIdentifier:@"LWMessageAgreedCell" forIndexPath:indexPath];
         [agreedButtonCell setTongYiBlock:^{
+
             [LWPublicDataManager AcceptButtonEventClick:self.patientModel success:^{
                 _addPatientSuccBlock?_addPatientSuccBlock():nil;
                 [self.navigationController popViewControllerAnimated:YES];
             } failure:^(NSString *errorMes) {
                 [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
             }];
+            [UMSAgent event:@"AgreedTonewfriend" label:@"同意新朋友"];
+
         }];
         [agreedButtonCell setJuJueBlock:^{
             [LWProgressHUD displayProgressHUD:nil displayText:@"请稍后..."];
@@ -110,6 +112,8 @@
             } failure:^(NSString *errorMes) {
                 [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
             }];
+            [UMSAgent event:@"RefusedTonewfriend" label:@"拒绝新朋友"];
+
         }];
         cell = agreedButtonCell;
     }else

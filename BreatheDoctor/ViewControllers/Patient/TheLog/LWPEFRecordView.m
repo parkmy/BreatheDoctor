@@ -46,7 +46,7 @@
     
     
     self.PEFVelueLabel.text = [NSString stringWithFormat:@"%@ L/min",kNSNumDouble(Record.pefValue)];
-    
+    self.PEFVelueLabel.textColor = [LWThemeManager shareInstance].navBackgroundColor;
     NSMutableAttributedString *AttributedString = [[NSMutableAttributedString alloc] initWithString:self.PEFVelueLabel.text];
     [AttributedString addAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:14]} range:NSMakeRange(AttributedString.length-5, 5)];
     
@@ -123,17 +123,17 @@
     }
     
     
-    for (int a = 0; a < 3; a++) {
+    for (int a = 0; a < 2; a++) {
         UIView *line = [[UIView alloc] initWithFrame:CGRectZero];
-        line.backgroundColor = RGBA(0, 0, 0, .4);
-        line.size = CGSizeMake(self.view.width, .5);
+        line.backgroundColor = appLineColor;
+        line.size = CGSizeMake(self.view.width, .8);
         line.centerX= self.view.width/2;
-        if (a == 0) {
+        if (a == 4) {
             line.yCenter = self.timerTitleLabel.maxY +10;
-        }else if (a == 1)
+        }else if (a == 0)
         {
             line.yCenter = self.zhengzhuangView.maxY+.5;
-        }else
+        }else if (a == 1)
         {
             line.yCenter = self.yongYaoView.maxY+.5;
         }
@@ -147,7 +147,7 @@
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
     view.size = CGSizeMake(110, 50);
-    view.backgroundColor = RGBA(46, 109, 252, .6);
+    view.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
     [view setCornerRadius:5.0f];
 
     UIImageView *leftimageView = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -179,7 +179,7 @@
     label.backgroundColor = RGBA(248, 140, 143, 1);
     label.textColor = [UIColor whiteColor];
     if (label.text.length >=4) {
-        label.font = [UIFont systemFontOfSize:12];
+        label.font = [UIFont systemFontOfSize:11.5];
     }else
     {
         label.font = [UIFont systemFontOfSize:14];

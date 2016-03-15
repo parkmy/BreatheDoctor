@@ -44,7 +44,6 @@
     [super viewWillAppear:animated];
     [super addNavBar:@"患者日志"];
     [super addBackButton:@"nav_btnBack.png"];
-    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

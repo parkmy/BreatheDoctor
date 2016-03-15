@@ -30,6 +30,7 @@
     _message = message;
     
     [self.userIcon sd_setImageWithURL:kNSURL(stringJudgeNull(_message.headImageUrl)) placeholderImage:kImage(@"yishengzhushousy_03.png")];
+
     if (_message.msgType == 110) {
         self.userIcon.image = kImage(@"xinhaoyou");
     }

@@ -14,6 +14,7 @@
 #import "LWTheFormViewController.h"
 #import "LWTheFormTypeViewController.h"
 #import "LWPatientRelatedViewController.h"
+#import "LWHistoricalRecordVC.h"
 
 @interface LWPatientCententCtr ()
 @property (nonatomic, strong) LWPatientRecordsBaseModel *patientRecordsModel;
@@ -32,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [UMSAgent event:@"patientCenter" label:@"患者个人中心"];
     
     setExtraCellLineHidden(self.tableView);
     [self loadPatientRecords];
@@ -73,6 +75,8 @@
             LWPatientRemarksCtr *patientRemarks = (LWPatientRemarksCtr *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRemarks];
             [patientRemarks setPatient:self.patient];
             [self.navigationController pushViewController:patientRemarks animated:YES];
+            [UMSAgent event:@"patientNote" label:@"患者备注"];
+
         }];
     }else
     {
@@ -130,6 +134,8 @@
         vc.patientId = self.patient.patientId;
         vc.showType = showTheFormTypeBiaoDan;
         [self.navigationController pushViewController:vc animated:YES];
+        [UMSAgent event:@"patientHaveTheform" label:@"患者已填表单"];
+
     }else if (indexPath.row == 0){
         
     }else if (indexPath.row == 2)
@@ -137,12 +143,19 @@
         LWPatientRelatedViewController *vc = (LWPatientRelatedViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRelated];
         vc.patientId = self.patient.patientId;
         [self.navigationController pushViewController:vc animated:YES];
+        [UMSAgent event:@"patientRelated" label:@"患者病情相关"];
+
     }else if (indexPath.row == 3)
     {
         LWPatientLogViewController *patientLog = (LWPatientLogViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];
         patientLog.patientId = self.patient.patientId;
         patientLog.patientName = self.patient.patientName;
         [self.navigationController pushViewController:patientLog animated:YES];
+        [UMSAgent event:@"patientLOG" label:@"患者日志"];
+
+//        LWHistoricalRecordVC *vc = [LWHistoricalRecordVC new];
+//        [self.navigationController pushViewController:vc animated:YES];
+
     }
 }
 

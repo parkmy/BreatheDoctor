@@ -37,7 +37,7 @@
 - (void)setUI
 {
     
-    _hudView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 500/2, 340/2)];
+    _hudView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 500/2, 360/2)];
     _hudView.center = CGPointMake([UIScreen mainScreen].bounds.size.width / 2, [UIScreen mainScreen].bounds.size.height / 2);
     _hudView.layer.cornerRadius = 10;
     _hudView.clipsToBounds = YES;
@@ -50,6 +50,7 @@
     _contentLabel.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(32)];
     _contentLabel.text = @"回复时间的设置，意味着在此时间段内您将对患者的提问进行解答。不设置将无法接受患者咨询。";
     _contentLabel.editable = NO;
+    _contentLabel.scrollEnabled = NO;
     [_hudView addSubview:_contentLabel];
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
@@ -81,7 +82,7 @@
     
     btn.sd_layout.bottomSpaceToView(_hudView,0).leftSpaceToView(_hudView,0).rightSpaceToView(_hudView,0).heightIs(45);
     line.sd_layout.bottomSpaceToView(btn,2).rightSpaceToView(_hudView,0).leftSpaceToView(_hudView,0).heightIs(.5);
-    _contentLabel.sd_layout.topSpaceToView(_hudView,15).leftSpaceToView(_hudView,15).rightSpaceToView(_hudView,15).bottomSpaceToView(line,10);
+    _contentLabel.sd_layout.topSpaceToView(_hudView,10).leftSpaceToView(_hudView,15).rightSpaceToView(_hudView,10).bottomSpaceToView(line,10);
     
 
 }

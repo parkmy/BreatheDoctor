@@ -14,8 +14,8 @@
     // Initialization code
     [self.controlCountLabel setCornerRadius:self.controlCountLabel.width/2];
     self.controlCountLabel.layer.borderWidth = .5;
-    self.controlCountLabel.layer.borderColor = [UIColor colorWithHexString:@"#6396ea"].CGColor;
-    self.controlCountLabel.textColor = [UIColor colorWithHexString:@"#6396ea"];
+    self.controlCountLabel.layer.borderColor = [LWThemeManager shareInstance].navBackgroundColor.CGColor;
+    self.controlCountLabel.textColor = [LWThemeManager shareInstance].navBackgroundColor;
     
     [self.emergencyCountLabel setCornerRadius:self.controlCountLabel.width/2];
     self.emergencyCountLabel.layer.borderWidth = .5;

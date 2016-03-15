@@ -14,6 +14,8 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
+        self.selectionStyle = 0;
+        
         _theFormView = [[LWTheFormView alloc] initWithFrame:CGRectZero];
         [self addSubview:_theFormView];
         

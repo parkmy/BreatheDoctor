@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef NS_ENUM(NSInteger ,ProductType) {
+    ProductTypeProductOrder  = 1,
+    ProductTypeGraphicOrder = 2,
+    ProductTypePhoneOrder   = 3,
+};
 @interface LWOrderDetailedLisetCell : UITableViewCell
 @property (nonatomic, strong) id model;
+@property (nonatomic, assign) ProductType productType;
+
 @end

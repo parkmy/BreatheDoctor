@@ -13,7 +13,7 @@
 @optional
 - (void)didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 - (void)deleteimage:(id )object withCollectionView:(UICollectionView *)collectionView;
-
+- (void)imagesChangeHeight:(NSMutableArray *)images;
 @end
 
 @interface LWPatientRelatedPhotoView : UIView

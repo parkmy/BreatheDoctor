@@ -20,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -38,12 +37,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [UMSAgent startTracPage:self.navTitle.text];
     self.navigationItem.title = @"";
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    
+    [UMSAgent endTracPage:self.navTitle.text];
     [self.navRightButton removeFromSuperview];
     [self.navLeftButton removeFromSuperview];
     [self.navTitle removeFromSuperview];

@@ -7,6 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#define RelatedViewHeight   120
+#define RelatedViewMAXHeight 200
+#define saveViewHeight      64
+#define patientRelatedView3Height 170
+#define margin 10
+#define iconImgaeViewtop 18
+
 typedef NS_ENUM(NSInteger, PatientRelatedType) {
     PatientRelatedTypediagnosis = 0, //诊断结果
     PatientRelatedTypecondition ,//基本病情
@@ -30,5 +38,6 @@ typedef NS_ENUM(NSInteger, PatientRelatedType) {
 
 - (void)setImages:(NSMutableArray *)array;
 - (void)setContentTextViewText:(NSString *)text;
+- (void)imagesChangeHeight:(NSMutableArray *)images;
 
 @end

@@ -31,6 +31,7 @@
 //#import "ShareFun.h"
 //#import "CDSetting.h"
 #import "NSMutableArray+Sort.h"
+#import "CODataCacheManager.h"
 
 @interface UMSAgent ()
 {
@@ -355,8 +356,8 @@ static UMSAgent *umsAgentInstance = nil;
     {
         deviceDataArray = [[NSMutableArray alloc] init];
     }
-    //第一次启动时不需要判断间隔是否超过30s
-    if ([LWPublicDataManager IntoTheBackGroundtimeIsMoreThan:30 WithKey:@"UMSAgent"]||[[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"])
+//    //判断间隔是否超过30s
+    if ([LWPublicDataManager IntoTheBackGroundtimeIsMoreThan:30 WithKey:@"UMSAgent"])
     {
         [deviceDataArray rewriteAddObject:deviceInfoObj];
          NSData *newData = [NSKeyedArchiver archivedDataWithRootObject:deviceDataArray];
@@ -364,7 +365,7 @@ static UMSAgent *umsAgentInstance = nil;
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         [self performSelector:@selector(processArchiveDeviceData)];
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
+//        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
     }
 }
 
@@ -784,13 +785,12 @@ void uncaughtExceptionHandler(NSException *exception) {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSArray *languages = [defaults objectForKey:@"AppleLanguages"];
     info.language = [languages objectAtIndex:0];
-    
-    NSString *userid = [[NSUserDefaults standardUserDefaults] objectForKey:@"userid"];
+#pragma 设置用户ID
+    NSString *userid = [[CODataCacheManager shareInstance] userModel].body.doctorId;
     if(userid==nil)
     {
         userid = @"";
     }
-    
     info.userid = userid;
     info.loadfrom = self.channelId;
     

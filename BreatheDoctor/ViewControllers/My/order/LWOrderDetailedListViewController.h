@@ -8,12 +8,9 @@
 
 #import "BaseViewController.h"
 #import "LWOrderListModel.h"
+#import "LWOrderDetailedLisetCell.h"
 
-typedef NS_ENUM(NSInteger ,ProductType) {
-    ProductTypeProductOrder  = 1,
-    ProductTypeGraphicOrder = 2,
-    ProductTypePhoneOrder   = 3,
-};
+
 @interface LWOrderDetailedListViewController : BaseViewController
 @property (nonatomic, assign) ProductType productType;
 @property (nonatomic, strong) LWOrderListModel *model;

@@ -36,6 +36,8 @@
     self.tableView.backgroundColor = [UIColor whiteColor];
     setExtraCellLineHidden(self.tableView);
     
+    [UMSAgent event:@"newfriend" label:@"新朋友"];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -75,22 +77,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
-    LWMainRows *message = self.requsetArray[indexPath.row];
-    LWMessageAgreedViewController *vc = (LWMessageAgreedViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientAgreed];
-    vc.patientModel = message;
-    [self.navigationController pushViewController:vc animated:YES];
-    
-    [vc setAddPatientSuccBlock:^{
-        _addSuccBlock?_addSuccBlock():nil;
-        [self.requsetArray removeObject:message];
-        [self.tableView reloadData];
-    }];
-    
-    [vc setAddPatientFaileBlock:^{
-        _backBlock?_backBlock():nil;
-        [self.requsetArray removeObject:message];
-        [self.tableView reloadData];
-    }];
+
     
 }
 #pragma mark 滑动表格删除行
@@ -120,12 +107,39 @@
 #pragma mark -LWMessageTakeCellDelegate
 - (void)tapAcceptButtonEventWith:(LWMainRows *)row
 {
-    [LWPublicDataManager AcceptButtonEventClick:row success:^{
+//    [LWPublicDataManager AcceptButtonEventClick:row success:^{
+//        _addSuccBlock?_addSuccBlock():nil;
+//        [self.requsetArray removeObject:row];
+//        [self.tableView reloadData];
+//    } failure:^(NSString *errorMes) {
+//        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+//    }];
+    
+    
+    LWMainRows *message = row;
+    
+    LWMessageAgreedViewController *vc = (LWMessageAgreedViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientAgreed];
+    vc.patientModel = message;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+    [vc setAddPatientSuccBlock:^{
         _addSuccBlock?_addSuccBlock():nil;
-        [self.requsetArray removeObject:row];
+        [self.requsetArray removeObject:message];
         [self.tableView reloadData];
-    } failure:^(NSString *errorMes) {
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        if(self.requsetArray.count <= 0)
+        {
+            [self showErrorMessage:@"暂无新朋友哦~" isShowButton:YES type:showErrorTypeMore];
+        }
+    }];
+    
+    [vc setAddPatientFaileBlock:^{
+        _backBlock?_backBlock():nil;
+        [self.requsetArray removeObject:message];
+        [self.tableView reloadData];
+        if(self.requsetArray.count <= 0)
+        {
+            [self showErrorMessage:@"暂无新朋友哦~" isShowButton:YES type:showErrorTypeMore];
+        }
     }];
     
 }

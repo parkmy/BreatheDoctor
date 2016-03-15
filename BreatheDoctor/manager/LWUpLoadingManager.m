@@ -13,7 +13,7 @@
 #import "YRJSONAdapter.h"
 
 @implementation LWUpLoadingManager
-
+/*
 #pragma mark 上传图片 语音
 + (void)httpUpLoadData:(NSData *)data
               WithType:(WSChatCellType )type
@@ -53,6 +53,8 @@
     }];
     
 }
+ */
+
 +(void)startMultiPartUploadTaskWithURL:(NSString *)url
                            imagesArray:(NSArray *)images
                               WithType:(WSChatCellType )type
@@ -104,6 +106,9 @@
                     return ;
                 }
                 NSDictionary *jsDic = [NSJSONSerialization JSONObjectWithData:operation.responseObject options:NSJSONReadingAllowFragments error:nil];
+                
+                NSLog(@"%@",[jsDic JSONString]);
+
                 if ([[[jsDic objectForKey:res_msg] objectForKey:res_code]integerValue] == 0) {
                     [array addObject:jsDic];
                 }else
@@ -113,7 +118,6 @@
                     }
                     return ;
                 }
-                NSLog(@"%@",[jsDic JSONString]);
             }
         }
         if (isFailur) {

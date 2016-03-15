@@ -433,7 +433,7 @@
 + (void)trarray:(NSArray *)array withModel:(LWACTAssessmentModel *)model withid:(double)dId
 {
     int index = dId;
-    if (index <= array.count) {
+    if (index <= array.count && index > 0) {
         model.daan = [NSString stringWithFormat:@"患者选项: %@",array[index-1]];
     }
 }

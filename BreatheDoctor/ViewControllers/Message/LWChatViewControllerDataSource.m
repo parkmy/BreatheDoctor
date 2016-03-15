@@ -39,6 +39,7 @@
 //                  }];
 //        
 //    }
+//    NSLog(@"%d",model.model.chatMessageType);
     
     return model.cellHeight;
 }

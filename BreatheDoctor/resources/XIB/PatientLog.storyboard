@@ -652,7 +652,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pef_lin_.png" translatesAutoresizingMaskIntoConstraints="NO" id="yql-rQ-DYx">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pef_lin.png" translatesAutoresizingMaskIntoConstraints="NO" id="yql-rQ-DYx">
                                 <rect key="frame" x="0.0" y="55" width="320" height="150"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="症状记录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4e-Nw-Ydr">
@@ -990,33 +990,34 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="日期" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Gg-Mj-1Bx">
                                                     <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
-                                                    <color key="backgroundColor" red="0.18823529411764706" green="0.42745098039215684" blue="1" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.61176470589999998" green="0.78039215689999997" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6P-Xx-fxw">
                                                     <rect key="frame" x="80" y="0.0" width="80" height="44"/>
-                                                    <color key="backgroundColor" red="0.18823529411764706" green="0.42745098039215684" blue="1" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.61176470589999998" green="0.78039215689999997" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="控制用药" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdi-9a-juS">
                                                     <rect key="frame" x="160" y="0.0" width="80" height="44"/>
-                                                    <color key="backgroundColor" red="0.18823529411764706" green="0.42745098039215684" blue="1" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.61176470589999998" green="0.78039215689999997" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="紧急用药" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56p-tl-7m7">
                                                     <rect key="frame" x="240" y="0.0" width="80" height="44"/>
-                                                    <color key="backgroundColor" red="0.18823529411764706" green="0.42745098039215684" blue="1" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.61176470589999998" green="0.78039215689999997" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="tintColor" red="0.61176470589999998" green="0.78039215689999997" blue="0.36862745099999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="A6P-Xx-fxw" firstAttribute="width" secondItem="5Gg-Mj-1Bx" secondAttribute="width" id="09T-lj-USL"/>
                                                 <constraint firstAttribute="bottom" secondItem="A6P-Xx-fxw" secondAttribute="bottom" id="113-ss-rJC"/>
@@ -1468,7 +1469,7 @@
     </scenes>
     <resources>
         <image name="YS-2_.png" width="22" height="22"/>
-        <image name="pef_lin_.png" width="320" height="129"/>
+        <image name="pef_lin.png" width="640" height="258"/>
         <image name="time_g.png" width="13" height="13"/>
     </resources>
 </document>

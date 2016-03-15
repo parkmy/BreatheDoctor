@@ -35,7 +35,6 @@
     [super addBackButton:@"nav_btnBack.png"];
     [super addRightButton:@"完成"];
     self.navRightButton.hidden = !self.isChange;
-    
 }
 
 - (void)viewDidLoad {
@@ -46,7 +45,6 @@
     
     [self setUI];
     [self loadData];
-    
 }
 
 - (void)setUI
@@ -66,15 +64,15 @@
         }
         [self.models removeAllObjects];
         [self.models addObjectsFromArray:models];
-        
-        for (int i = 0; i < (3 -self.models.count); i++) {
+        int a = 3 - (int)self.models.count;
+        for (int i = 0; i < a; i++) {
             LWDoctorTimerModel *model = [LWDoctorTimerModel getInitModel];
             [self.models addObject:model];
         }
         [self.tableView reloadData];
     } failure:^(NSString *errorMes) {
         [ZZPhotoHud hideActiveHud];
-        [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];
+        [LWProgressHUD showALAlertBannerWithView:nil Style:0 Position:0 Subtitle:errorMes];
     }];
 }
 - (void)saveSeting

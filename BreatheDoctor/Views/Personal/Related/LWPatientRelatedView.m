@@ -10,13 +10,15 @@
 #import "LWPatientRelatedPhotoView.h"
 
 @interface LWPatientRelatedView ()<UITextViewDelegate,LWPatientRelatedPhotoViewDelegate>
-
+{
+    CGFloat photoContentHeight;
+    CGFloat textContentH;
+}
 @property (nonatomic, strong) UIImageView *iconImgaeView;
 @property (nonatomic, strong) UILabel *relatedTitleLabel;
 @property (nonatomic, strong) UIView *relatedcontentView;
 @property (nonatomic, strong) LWPatientRelatedPhotoView *patientRelatedPhotoView;
 
-@property (nonatomic, assign) CGFloat contentH;
 @end
 @implementation LWPatientRelatedView
 
@@ -24,7 +26,6 @@
 {
     if (self = [super initWithFrame:frame]) {
         
-        _contentH = 115;
         
         self.backgroundColor = [UIColor whiteColor];
         
@@ -49,10 +50,12 @@
         
         UIImage *image = kImage(@"zhaopian");
         
-        self.iconImgaeView.sd_layout.topSpaceToView(self,18).leftSpaceToView(self,10).widthIs(image.size.width).heightIs(image.size.height);
-        self.relatedTitleLabel.sd_layout.topSpaceToView(self,18).leftSpaceToView(self.iconImgaeView,10).rightSpaceToView(self,5).heightIs(image.size.height);
-        line.sd_layout.topSpaceToView(self.iconImgaeView,18).leftSpaceToView(self,10).rightSpaceToView(self,0).heightIs(.5);
-        self.relatedcontentView.sd_layout.topSpaceToView(line,3).leftSpaceToView(self,10).rightSpaceToView(self,10).bottomSpaceToView(self,3);
+        textContentH = iconImgaeViewtop*2 + image.size.height;
+
+        self.iconImgaeView.sd_layout.topSpaceToView(self,iconImgaeViewtop).leftSpaceToView(self,margin).widthIs(image.size.width).heightIs(image.size.height);
+        self.relatedTitleLabel.sd_layout.topSpaceToView(self,iconImgaeViewtop).leftSpaceToView(self.iconImgaeView,margin).rightSpaceToView(self,5).heightIs(image.size.height);
+        line.sd_layout.topSpaceToView(self.iconImgaeView,iconImgaeViewtop).leftSpaceToView(self,margin).rightSpaceToView(self,0).heightIs(.5);
+        self.relatedcontentView.sd_layout.topSpaceToView(line,0).leftSpaceToView(self,margin).rightSpaceToView(self,margin).bottomSpaceToView(self,.5);
         
         [self.relatedcontentView addSubview:self.patientRelatedPhotoView];
         self.patientRelatedPhotoView.sd_layout.topSpaceToView(self.relatedcontentView,0).leftSpaceToView(self.relatedcontentView,-10).rightSpaceToView(self.relatedcontentView,0).bottomSpaceToView(self.relatedcontentView,0);
@@ -109,12 +112,12 @@
 }
 - (void)setImages:(NSMutableArray *)array
 {
+//    [self imagesChangeHeight:array];
     self.patientRelatedPhotoView.images = array;
 }
 - (void)setPatientRelatedType:(PatientRelatedType)patientRelatedType
 {
     _patientRelatedType = patientRelatedType;
-    
     
     self.contentTextView.hidden = NO;
     self.patientRelatedPhotoView.hidden = YES;
@@ -124,7 +127,11 @@
         self.contentTextView.hidden = YES;
         self.relatedTitleLabel.text = @"相关照片";
         self.iconImgaeView.image = kImage(@"zhaopian");
-        
+        CGFloat ih = patientRelatedView3Height;
+        if (screenHeight > 570) {
+            ih = _mScrollView.height-margin*3-RelatedViewHeight*2-saveViewHeight;
+        }
+        photoContentHeight = ih;
     }else if (_patientRelatedType == PatientRelatedTypecondition)
     {
         self.relatedTitleLabel.text = @"基本病情";
@@ -133,13 +140,9 @@
     }else
     {
         self.relatedTitleLabel.text = @"诊断结果";
-        self.iconImgaeView.image = kImage(@"jieguo");
-        
-        
+        self.iconImgaeView.image = kImage(@"jieguo");        
     }
-    
 }
-
 
 #pragma mark - UITextViewDelegate
 
@@ -147,25 +150,26 @@
 {
     NSLog(@"%@",self.contentTextView.text);
     
-    CGFloat h = [self.contentTextView.text sizeWithFont:self.contentTextView.font constrainedToWidth:self.contentTextView.width].height+8;
+    CGFloat h = [self.contentTextView.text sizeWithFont:self.contentTextView.font constrainedToWidth:self.contentTextView.width].height+30;
     
-    CGFloat ch = 15 + 15 + 20 + h;
+    UIImage *image = kImage(@"zhaopian");
+    CGFloat ch = iconImgaeViewtop*2 + image.size.height + h + 1;
     
-    if (ch > 115) {
-        if (ch > 220) {
-            self.sd_layout.heightIs(220);
-            ch = 220;
+    if (ch > RelatedViewHeight) {
+        if (ch > RelatedViewMAXHeight) {
+            self.sd_layout.heightIs(RelatedViewMAXHeight);
+            ch = RelatedViewMAXHeight;
         }else{
             self.sd_layout.heightIs(ch);
         }
-        _mScrollView.contentHeight =  _mScrollView.contentHeight + (ch-_contentH);
+        _mScrollView.contentHeight =  _mScrollView.contentHeight + (ch-textContentH);
     }else
     {
-        self.sd_layout.heightIs(115);
-        ch = 115;
-        _mScrollView.contentHeight =  _mScrollView.contentHeight + (ch-_contentH);
+        self.sd_layout.heightIs(RelatedViewHeight);
+        ch = RelatedViewHeight;
+        _mScrollView.contentHeight =  _mScrollView.contentHeight + (ch-textContentH);
     }
-    _contentH = ch;
+    textContentH = ch;
 }
 - (void)setContentTextViewText:(NSString *)text
 {
@@ -186,6 +190,31 @@
         [_delegate deleteItemWithImage:object withCollectionView:collectionView];
     }
 }
+- (void)imagesChangeHeight:(NSMutableArray *)images
+{
+    CGFloat wh = (Screen_SIZE.width - 30)/3 - 10;
+//    layout.sectionInset = UIEdgeInsetsMake(15, 5,4, 5);
+    
+    int count = images.count/3 + 1;
 
+    UIImage *image = kImage(@"zhaopian");
+    CGFloat ch =  iconImgaeViewtop*2 + image.size.height + count*(wh + 15 + 5);
+    
+    CGFloat ih = patientRelatedView3Height;
+    if (screenHeight > 570) {
+        ih = _mScrollView.height-margin*3-RelatedViewHeight*2-saveViewHeight;
+    }
+    if (ch > ih) {
+        self.sd_layout.heightIs(ch);
+        _mScrollView.contentHeight =  _mScrollView.contentHeight + (ch-photoContentHeight);
+    }else
+    {
+        self.sd_layout.heightIs(ih);
+        ch = ih;
+        _mScrollView.contentHeight =  _mScrollView.contentHeight + (ch-photoContentHeight);
+    }
+    photoContentHeight = ch;
+    
+}
 
 @end

@@ -16,6 +16,7 @@
 #import "UITextView+placeholder.h"
 #import "ZZBrowserPickerViewController.h"
 
+
 @interface LWPatientRelatedViewController ()<LWPatientRelatedViewDelegate,ZZBrowserPickerDelegate>
 @property (nonatomic, strong) UIView *saveView;
 @property (nonatomic, strong) UIScrollView *mScrollView;
@@ -68,7 +69,7 @@
     
     _patientRelatedView1 = [[LWPatientRelatedView alloc] init];
     _patientRelatedView1.patientRelatedType = PatientRelatedTypediagnosis;
-
+    
     [_mScrollView addSubview:_patientRelatedView1];
     _patientRelatedView1.mScrollView = _mScrollView;
     
@@ -77,30 +78,29 @@
     _patientRelatedView2.patientRelatedType = PatientRelatedTypecondition;
     [_mScrollView addSubview:_patientRelatedView2];
     _patientRelatedView2.mScrollView = _mScrollView;
-
+    
     _patientRelatedView3 = [[LWPatientRelatedView alloc] init];
     _patientRelatedView3.patientRelatedType = PatientRelatedTypephoto;
     [_mScrollView addSubview:_patientRelatedView3];
     _patientRelatedView3.mScrollView = _mScrollView;
     _patientRelatedView3.delegate = self;
     
-    _patientRelatedView1.sd_layout.topSpaceToView(_mScrollView,0).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(240/2);
+    _patientRelatedView1.sd_layout.topSpaceToView(_mScrollView,0).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(RelatedViewHeight);
     
-    _patientRelatedView2.sd_layout.topSpaceToView(_patientRelatedView1,10).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(240/2);
+    _patientRelatedView2.sd_layout.topSpaceToView(_patientRelatedView1,margin).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(RelatedViewHeight);
     
-    CGFloat h = (340/2);
+    CGFloat h = patientRelatedView3Height;
     if (screenHeight > 570) {
-        h = _mScrollView.height-20-(240/2)*2-70;
+        h = _mScrollView.height-margin*3-RelatedViewHeight*2-saveViewHeight;
     }
-    _patientRelatedView3.sd_layout.topSpaceToView(_patientRelatedView2,10).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(h);
+    _patientRelatedView3.sd_layout.topSpaceToView(_patientRelatedView2,margin).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(h);
     
     [_mScrollView addSubview:self.saveView];
     
-    self.saveView.sd_layout.topSpaceToView(_patientRelatedView3,10).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(70);
+    self.saveView.sd_layout.topSpaceToView(_patientRelatedView3,margin).leftSpaceToView(_mScrollView,0).rightSpaceToView(_mScrollView,0).heightIs(saveViewHeight);
+    _mScrollView.contentHeight = 0;
     
-    _mScrollView.contentHeight = (240/2)*2+h+10*2+70+10;
     
-
 }
 
 - (UIView *)saveView
@@ -110,16 +110,14 @@
         _saveView.backgroundColor = [UIColor clearColor];
         
         UIButton *btn = [[UIButton alloc] initWithFrame:CGRectZero];
-        [btn setCornerRadius:5.0f];
+        [btn setCornerRadius:3.0f];
         [btn setTitle:@"保存" forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:16];
         btn.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
         [btn addTarget:self action:@selector(baocunButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         [_saveView addSubview:btn];
-        
-        
-        btn.sd_layout.topSpaceToView(_saveView,(70-45)/2).leftSpaceToView(_saveView,15).rightSpaceToView(_saveView,15).bottomSpaceToView(_saveView,(70-45)/2);
+        btn.sd_layout.topSpaceToView(_saveView,(saveViewHeight-45)/2).leftSpaceToView(_saveView,10).rightSpaceToView(_saveView,10).bottomSpaceToView(_saveView,(saveViewHeight-45)/2);
     }
     return _saveView;
 }
@@ -159,7 +157,7 @@
             self.isChange = ![self.basicCondition isEqualToString:_patientRelatedView2.contentTextView.text];
         }
     }
-
+    
 }
 
 #pragma mark - click
@@ -167,8 +165,6 @@
 {
     [self textIsChange];
     
-
-
     [self uploadImagesSuccess:^(NSMutableArray *models) {
         
         for (NSDictionary *dic in models) {
@@ -229,13 +225,13 @@
     {
         [ZZPhotoHud showActiveHudWithTitle:@"正在保存..."];
         [LWUpLoadingManager startMultiPartUploadTaskWithURL:nil imagesArray:[self traverseimages] WithType:WSChatCellType_Image compressionRatio:.3 success:^(NSMutableArray *models)
-        {
-            success?success(models):nil;
-        } failure:^(NSString *errorMes) {
-            [ZZPhotoHud hideActiveHud];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:errorMes delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
-            [alert show];
-        }];
+         {
+             success?success(models):nil;
+         } failure:^(NSString *errorMes) {
+             [ZZPhotoHud hideActiveHud];
+             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:errorMes delegate:nil cancelButtonTitle:@"确认" otherButtonTitles:nil];
+             [alert show];
+         }];
     }else{
         if (self.model.sid) {
             [self updateImages];
@@ -245,7 +241,7 @@
             [self senderRelated];
         }
     }
-
+    
 }
 
 - (void)senderRelated
@@ -281,7 +277,7 @@
         [ZZPhotoHud hideActiveHud];
         [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];
     }];
-
+    
     self.isChange = NO;
 }
 
@@ -318,7 +314,7 @@
                 }
             }
         }
-        
+        [_patientRelatedView3 imagesChangeHeight:self.relatedImages];
         [_patientRelatedView3 setImages:self.relatedImages ];
         
     } failure:^(NSString *errorMes) {
@@ -343,13 +339,14 @@
                     
                     NSArray *array = (NSArray *)responseObject;
                     [self.relatedImages addObjectsFromArray:array];
+                    [_patientRelatedView3 imagesChangeHeight:self.relatedImages];
                     [self.patientRelatedView3 setImages:self.relatedImages];
                     if (array.count > 0) {
                         self.isChange = YES;
                     }
                     
                 }];
-
+                
                 
             }else if (buttonIndex == 1)
             {
@@ -359,6 +356,7 @@
                     
                     NSArray *array = (NSArray *)responseObject;
                     [self.relatedImages addObjectsFromArray:array];
+                    [_patientRelatedView3 imagesChangeHeight:self.relatedImages];
                     [self.patientRelatedView3 setImages:self.relatedImages];
                     if (array.count > 0) {
                         self.isChange = YES;
@@ -375,13 +373,14 @@
         self.browserPicker.delegate = self;
         [self.browserPicker reloadData];
         [self.browserPicker showIn:self animation:ShowAnimationOfPresent];
-    
+        
     }
-
+    
 }
 - (void)deleteItemWithImage:(id )objc withCollectionView:(UICollectionView *)collectionView
 {
     [self.relatedImages removeObject:objc];
+    [_patientRelatedView3 imagesChangeHeight:self.relatedImages];
     [collectionView reloadData];
     self.isChange = YES;
 }
@@ -401,6 +400,7 @@
     if (self.relatedImages.count > indexPath) {
         [self.relatedImages removeObjectAtIndex:indexPath];
     }
+    [_patientRelatedView3 imagesChangeHeight:self.relatedImages];
     [self.patientRelatedView3 setImages:self.relatedImages];
 }
 #pragma mark -nav
@@ -423,12 +423,7 @@
         
     }else
     {
-        if (self.model.sid) {
-            [self updateImages];
-            [self updateRelated];
-        }else{
-            [self senderRelated];
-        }
+        [self baocunButtonClick:nil];
     }
 }
 - (void)didReceiveMemoryWarning {

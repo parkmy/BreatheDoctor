@@ -10,9 +10,9 @@
 #import "CODataCacheManager.h"
 #import "CDMacro.h"
 #import "PushMgrInfo.h"
-#import "UMSAgent.h"
 #import <objc/runtime.h>
 #import "LWLoginManager.h"
+#import "NSString+Contains.h"
 
 @interface AppDelegate ()
 
@@ -26,9 +26,10 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
     NSLog(@"%@",NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES));
-    
+
+//    300002         呼吸客户端IOS版
     //统计
-    [UMSAgent startWithAppkey:@""];
+    [UMSAgent startWithAppkey:@"300002"];
     
     //主题
     [LWThemeManager shareInstance].themeType = themeTypeDefault;

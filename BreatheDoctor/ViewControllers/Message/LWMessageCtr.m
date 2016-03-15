@@ -17,11 +17,12 @@
 #define NEWTYPE 110
 
 @interface LWMessageCtr ()<LWMessageTakeCellDelegate>
-@property (nonatomic, strong) NSMutableArray *messageArray;
-@property (nonatomic, copy) NSString *refreshTime;
-@property (nonatomic, strong) NSMutableArray *requestMessageArray;
-@property (nonatomic, strong) LWMainMessageBaseModel *mainMessageModel;
-@property (nonatomic, strong) UIView *headerErrorView;
+@property (nonatomic, strong)   NSMutableArray *messageArray;
+@property (nonatomic, copy)     NSString *refreshTime;
+@property (nonatomic, strong)   NSMutableArray *requestMessageArray;
+@property (nonatomic, strong)   LWMainMessageBaseModel *mainMessageModel;
+@property (nonatomic, strong)   UIView *headerErrorView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation LWMessageCtr
@@ -38,14 +39,15 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-//    [self refreshHomeMsg];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self setUI];
     [self registNotificationCenter];
     [self loginjudge];
+    
 }
 - (void)registNotificationCenter
 {
@@ -71,6 +73,7 @@
 }
 - (void)loginSucc:(NSNotification *)sender
 {
+    [self showErrorMessage:@"暂时没有新消息~" isShowButton:YES type:showErrorTypeMore];
     [self.messageArray removeAllObjects];
     [self.tableView reloadData];
     self.mainMessageModel = nil;
@@ -78,13 +81,11 @@
 }
 - (void)appNotification:(NSNotification *)sender
 {
-    if ([LWLoginManager isLogin]) {
-        dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            [self refreshHomeMsg];
-        });
+    if ([LWLoginManager isLogin])
+    {
+        [self refreshHomeMsg];
     }
 }
-
 - (void)setUI
 {
     self.tableView.rowHeight = 65;
@@ -128,19 +129,31 @@
 - (void)loginjudge
 {    
     BOOL isLogin = [LWLoginManager isLogin];
-    if (!isLogin) {
+    if (!isLogin)
+    {
         [[LWLoginManager shareInstance] showLoginViewNav:self];
     }else
     {
-        NSMutableArray *array = [self sqlCacheMessages];
-        if ([array count] > 0) {
-            [self.messageArray removeAllObjects];
-            [self.messageArray addObjectsFromArray:array];
-        }else
-        {
-            [self refreshHomeMsg];
-        }
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            NSMutableArray *array = [self sqlCacheMessages];
+            if ([array count] > 0) {
+                [self reloadTableView:array];
+            }else
+            {
+                [self showErrorMessage:@"暂时没有新消息~" isShowButton:YES type:showErrorTypeMore];
+                [self refreshHomeMsg];
+            }
+        });
     }
+}
+
+- (void)reloadTableView:(NSMutableArray *)array
+{
+    [self.messageArray removeAllObjects];
+    [self.messageArray addObjectsFromArray:array];
+    [self hiddenNonetWork];
+    [self.tableView reloadData];
+    [self setBadgeValue:self.messageArray];
 }
 
 #pragma mark - init
@@ -255,8 +268,10 @@
     
     for (LWMainRows *row in array) //遍历得到请求消息和对话消息以及新朋友
     {
-        if (row.msgType == 2) { //请求消息
-            if (row.isDispose != 2) { //拒绝的患者不添加
+        if (row.msgType == 2)
+        { //请求消息
+            if (row.isDispose == 0)
+            { //拒绝的患者不添加
                 [self.requestMessageArray addObject:row];
             }
         }else if (row.msgType == NEWTYPE) //新朋友
@@ -269,7 +284,10 @@
             [array1 addObject:row];
         }
     }
-
+//160310144600117
+    //160310144602010002
+    // "160310144500116",
+    // "160310144602010002",
     if (self.requestMessageArray.count > 0) { //当请求消息
         
         if (requestModel) {//如果有新朋友对象直接修改
@@ -313,43 +331,50 @@
 
 - (void)loadCacheMes
 {
-    NSMutableArray *array = [self sqlCacheMessages];
-    if (array.count <= 0) {
-        [self showErrorMessage:@"暂时没有新消息~" isShowButton:YES type:showErrorTypeMore];
-        return ;
-    }
-    [self.messageArray removeAllObjects];
-    [self.messageArray addObjectsFromArray:array];
-    [self hiddenNonetWork];
-    [self.tableView reloadData];
-    
-    [self setBadgeValue:self.messageArray];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSMutableArray *array = [self sqlCacheMessages];
+        if (array.count <= 0) {
+            [self showErrorMessage:@"暂时没有新消息~" isShowButton:YES type:showErrorTypeMore];
+            return ;
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self reloadTableView:array];
+        });
+    });
+
 }
 
 -(void)refreshHomeMsg
 {
-
     self.refreshTime = nil;
-    if (self.mainMessageModel) {
+    if (self.mainMessageModel)//内存对象
+    {
         self.refreshTime = self.mainMessageModel.body.refreshDate;
     }else
     {
-        NSMutableArray *array = [self sqlCacheMessages];
-        if ([array count] > 0) {
-            LWMainRows *model = [array firstObject];
-            self.refreshTime = model.refreshTime;
+        if (self.messageArray.count > 0) {//内存数组
+            LWMainRows *model = [self.messageArray firstObject];
+            self.refreshTime = model.refreshTime;;
+        }else
+        {
+            NSMutableArray *array = [self sqlCacheMessages];//本地缓存
+            if ([array count] > 0) {
+                LWMainRows *model = [array firstObject];
+                self.refreshTime = model.refreshTime;
+            }
         }
     }
     [LWHttpRequestManager httpMaiMesggaeWithPage:1 size:100000 refreshDate:self.refreshTime  success:^(LWMainMessageBaseModel *mainMessageBaseModel) {
         self.mainMessageModel = mainMessageBaseModel;
         [self loadCacheMes];
     } failure:^(NSString *errorMes) {
+//        [self showErrorMessage:errorMes isShowButton:NO type:showErrorTypeHttp];
     }];
 }
-//- (void)reloadRequestWithSender:(UIButton *)sender
-//{
-//    [self refreshHomeMsg];
-//}
+- (void)reloadRequestWithSender:(UIButton *)sender
+{
+    [self refreshHomeMsg];
+}
 #pragma mark 处理角标
 -(void)setBadgeValue:(NSMutableArray *)models
 {

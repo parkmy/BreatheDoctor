@@ -80,7 +80,16 @@
     _model = model;
     LWDetailedOrderListModel *detailedOrderListModel = _model;
     
-    [iconImageView sd_setImageWithURL:kNSURL(detailedOrderListModel.imageUrl) placeholderImage:kImage(@"defaultIconImage@2x")];
+    if (self.productType == ProductTypePhoneOrder) {
+        iconImageView.image = kImage(@"dianhuazixun");        
+    }else if (self.productType == ProductTypeGraphicOrder)
+    {
+        iconImageView.image = kImage(@"tuwenzixun");
+    }else
+    {
+        [iconImageView sd_setImageWithURL:kNSURL(detailedOrderListModel.imageUrl) placeholderImage:kImage(@"defaultIconImage@2x")];
+
+    }
     orderNamelLabel.text = stringJudgeNull(detailedOrderListModel.fullName);
     orderTimerLabel.text = [NSString stringWithFormat:@"订单时间：%@",detailedOrderListModel.createDt];
     

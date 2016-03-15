@@ -6,8 +6,9 @@
 //  Copyright © 2015年 lwh. All rights reserved.
 // 消息
 
-#import "LWBaseViewController.h"
+#import "BaseViewController.h"
 
-@interface LWMessageCtr : LWBaseViewController
+@interface LWMessageCtr : BaseViewController
 
 @end
+

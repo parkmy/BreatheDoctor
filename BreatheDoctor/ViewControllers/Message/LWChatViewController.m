@@ -460,6 +460,9 @@ typedef NS_ENUM(NSInteger , SenderType) {
         }else if (model.chatCellType == WSChatCellType_Text)
         {
             message = model.content;
+        }else
+        {
+            message = model.msgContent;
         }
         _backBlock?_backBlock(model.insertDt,message):nil;
     }else
@@ -507,13 +510,18 @@ typedef NS_ENUM(NSInteger , SenderType) {
     
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
     {
-        UIImagePickerController *controls = [[UIImagePickerController alloc] init];
-        controls.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        controls.delegate = self;
-        
-        [self.navigationController presentViewController:controls animated:YES completion:^
+        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+//        [controls.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//        [controls.navigationBar  setShadowImage:[UIImage new]];
+        picker.edgesForExtendedLayout = UIRectEdgeNone;
+
+        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        picker.delegate = self;
+          
+        [self.navigationController presentViewController:picker animated:YES completion:^
          {
-             
+             [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+
          }];
     }
     
@@ -534,7 +542,23 @@ typedef NS_ENUM(NSInteger , SenderType) {
     }
     else
     {
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:@"很抱歉，您的设备不支持摄像头"];
+//        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:@"很抱歉，您的设备不支持摄像头"];
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"很抱歉，您的设备不支持摄像头,是否设置？" delegate:self cancelButtonTitle:@"是" otherButtonTitles:@"否", nil];
+        [alert show];
+        
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0)
+    {
+        NSURL *url = [NSURL URLWithString:@"prefs:root=General"];
+        if ([[UIApplication sharedApplication] canOpenURL:url])
+        {
+            [[UIApplication sharedApplication] openURL:url];
+        }
     }
 }
 
@@ -543,7 +567,8 @@ typedef NS_ENUM(NSInteger , SenderType) {
 {
     [picker dismissViewControllerAnimated:NO completion:
      ^{
-         
+         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
      }];
 }
 
@@ -561,13 +586,23 @@ typedef NS_ENUM(NSInteger , SenderType) {
     UIGraphicsEndImageContext();
     return newImage;
 }
-
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated
+{
+    if ([navigationController isKindOfClass:[UIImagePickerController class]])
+    {
+        viewController.navigationController.navigationBar.translucent = NO;
+        viewController.edgesForExtendedLayout = UIRectEdgeNone;
+    }
+}
 //图片转换数据data上传
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
     [picker dismissViewControllerAnimated:NO completion:
      ^{
-         
+         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+
          UIImage *scale_image=[self resetSizeOfImage:image];
          NSData *imageData=nil;
          imageData = UIImageJPEGRepresentation(scale_image, 0.5);
@@ -729,6 +764,9 @@ typedef NS_ENUM(NSInteger , SenderType) {
                 
             }];
             [self.navigationController pushViewController:vc animated:YES];
+            
+            [UMSAgent event:@"FastReply" label:@"快捷回复"];
+            
         }
             break;
         case 3://biaodan
@@ -739,6 +777,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
             vc.showType = showTheFormTypeMouKuai;
             [self.navigationController pushViewController:vc animated:YES];
 
+            [UMSAgent event:@"TheForm" label:@"表单"];
         }
             break;
         default:

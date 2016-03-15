@@ -87,9 +87,8 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 }
 - (void)appNotification:(NSNotificationCenter *)sender
 {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        [self httploadPatientList];
-    });
+    [self httploadPatientList];
+
 }
 - (void)setUI
 {
@@ -179,10 +178,8 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
             
         }
         
-        
     }
-    
-    
+
     SEL sel = @selector(localizedCompare:);
     //对拼音排序
     self.keys = (NSMutableArray*)[self.patientDics.allKeys sortedArrayUsingSelector:sel];
@@ -367,7 +364,6 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     patientCentent.patient = model;
     [self.navigationController pushViewController:patientCentent animated:YES];
     
-    
     NSIndexPath *seleIndexPath = indexPath;
     
     //返回的时候刷新这行
@@ -416,8 +412,6 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 
 - (void)pullDownViewShowOrHide
 {
-    
-    
     __weak __typeof(self) weakSelf = self;
     if (!self.pullDownView) {
         
@@ -477,7 +471,6 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 
 - (void)loadCacheMes
 {
-
     NSMutableArray *array = [[LKDBHelper getUsingLKDBHelper] search:[LWPatientRows class] where:nil orderBy:nil offset:0 count:10000];
     if (array.count <= 0) {
         [self showErrorMessage:@"您还没有患者，去添加吧~" isShowButton:NO type:showErrorTypeMore];

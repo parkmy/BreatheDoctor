@@ -39,6 +39,7 @@
     NSString *tokenkey = [[deviceToken description] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
     NSString *token = [[tokenkey stringByReplacingOccurrencesOfString:@" " withString:@""] copy];
     NSLog(@"token%@",token);
+//    SHOWAlertView(@"", token)
     if (token) {
         [CODataCacheManager shareInstance].pushTokenKey = token;
         [[CODataCacheManager shareInstance] savePushKey];

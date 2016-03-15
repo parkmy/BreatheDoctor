@@ -142,12 +142,20 @@
         for (LWMainRows *row in mainMessageBaseModel.body.rows)
         {
             NSString *wheres = [NSString stringWithFormat:@"memberId = %@",row.memberId];
-            NSInteger count = [[LKDBHelper getUsingLKDBHelper] rowCount:[LWMainRows class] where:wheres];
-            if (count > 0) {
-                [[LKDBHelper getUsingLKDBHelper] updateToDB:row where:wheres];
-            }else
+            
+            LWMainRows *messageModel = [[LKDBHelper getUsingLKDBHelper] searchSingle:[row class] where:wheres orderBy:nil];
+            NSDate *oldDate = [NSDate dateWithString:messageModel.insertDt format:[NSDate ymdHmsFormat]];
+            NSDate *newDate = [NSDate dateWithString:row.insertDt format:[NSDate ymdHmsFormat]];
+            
+            if ([newDate timeIntervalSinceReferenceDate] > [oldDate timeIntervalSinceReferenceDate])
             {
-                [[LKDBHelper getUsingLKDBHelper] insertToDB:row];
+                NSInteger count = [[LKDBHelper getUsingLKDBHelper] rowCount:[LWMainRows class] where:wheres];
+                if (count > 0) {
+                    [[LKDBHelper getUsingLKDBHelper] updateToDB:row where:wheres];
+                }else
+                {
+                    [[LKDBHelper getUsingLKDBHelper] insertToDB:row];
+                }
             }
         }
         if (success){ success(mainMessageBaseModel);}
@@ -449,6 +457,8 @@
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_GETASTHMABYID] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+
         if (success){ success([[LWAsthmaModel alloc] initWithDictionary:responseObject[res_body]]);}
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;

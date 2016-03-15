@@ -7,7 +7,6 @@
 //
 
 #import "LWOrderDetailedListViewController.h"
-#import "LWOrderDetailedLisetCell.h"
 #import <MJRefresh.h>
 
 @interface LWOrderDetailedListViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -142,6 +141,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LWOrderDetailedLisetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LWOrderDetailedLisetCell" forIndexPath:indexPath];
+    cell.productType = self.productType;
     [cell setModel:self.dataArray[indexPath.section]];
     return cell;
     

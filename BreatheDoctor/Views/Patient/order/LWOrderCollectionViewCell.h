@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LWOrderCell.h"
+//#import "LWOrderCell.h"
+#import "LWOrderViewCell.h"
 
 @protocol LWOrderCollectionViewCellDelegate <NSObject>
 
@@ -16,9 +17,9 @@
 
 @end
 
-@interface LWOrderCollectionViewCell : UICollectionViewCell<LWOrderCellDelegate>
+@interface LWOrderCollectionViewCell : UICollectionViewCell<LWOrderViewCellDelegate>
 
 @property (nonatomic, weak) id<LWOrderCollectionViewCellDelegate>delegate;
-@property (nonatomic, strong) LWOrderCell *orderCell;
+@property (nonatomic, strong) LWOrderViewCell *orderCell;
 
 @end
