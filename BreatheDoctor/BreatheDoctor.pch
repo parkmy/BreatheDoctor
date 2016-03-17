@@ -41,6 +41,9 @@
 #define appMargin 10
 #define appLineColor [UIColor colorWithHexString:@"#eeeeee"]
 
+
+#define MULTIPLEVIEW (iPhone6Plus?1.35:iPhone6?1.15:1)
+
 #define MULTIPLE (iPhone6Plus?1.15:iPhone6?1.08:1)
 #define kNSPXFONTFLOAT(M) ((M/2)*MULTIPLE)
 #define kNSPXFONT(M) [UIFont systemFontOfSize:kNSPXFONTFLOAT(M)]

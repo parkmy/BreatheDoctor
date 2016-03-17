@@ -16,6 +16,8 @@ CGRect TKCGRectCenteredInRect(CGRect innerRect, CGRect outerRect);
 
 @interface UIView (TKGeometry)
 
++ (UIView *)allocAppLineView;
+
 - (void)setCornerRadius:(CGFloat)f;
 // origin
 

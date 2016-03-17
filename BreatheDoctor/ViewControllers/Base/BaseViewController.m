@@ -118,7 +118,7 @@
 -(void)addBackButton:(NSString*)backImg
 {
     //左按钮
-    [self.navLeftButton setBackgroundImage:[UIImage imageNamed:backImg] forState:UIControlStateNormal];
+    [self.navLeftButton setImage:[UIImage imageNamed:backImg] forState:UIControlStateNormal];
     [self.navBar addSubview:self.navLeftButton];
 }
 

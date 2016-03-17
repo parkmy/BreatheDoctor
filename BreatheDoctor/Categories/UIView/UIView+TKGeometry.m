@@ -34,6 +34,13 @@ CGRect TKCGRectCenteredInRect(CGRect innerRect, CGRect outerRect){
 
 @implementation UIView (TKGeometry)
 
++ (UIView *)allocAppLineView
+{
+    UIView *line = [UIView new];
+    line.backgroundColor = appLineColor;
+    return line;
+}
+
 - (void)setCornerRadius:(CGFloat)f{
     self.layer.cornerRadius = f;
     self.layer.masksToBounds = YES;

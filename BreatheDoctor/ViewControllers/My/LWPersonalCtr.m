@@ -99,7 +99,6 @@
             personalCell.rightButton.tapType = tapTypeStayTunedFor;
             
         }
-        
         personalCell.iconw.constant = personalCell.lefticon.image.size.width;
         personalCell.iconh.constant = personalCell.lefticon.image.size.height;
         personalCell.riconw.constant = personalCell.rightIcon.image.size.width;

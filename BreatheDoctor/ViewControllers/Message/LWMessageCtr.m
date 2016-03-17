@@ -335,6 +335,7 @@
         NSMutableArray *array = [self sqlCacheMessages];
         if (array.count <= 0) {
             [self showErrorMessage:@"暂时没有新消息~" isShowButton:YES type:showErrorTypeMore];
+            self.navigationController.tabBarItem.badgeValue = @"0";
             return ;
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -390,11 +391,11 @@
     }
     else if (value > 99)
     {
-        self.navigationController.tabBarItem.badgeValue=@"99+";
+        self.navigationController.tabBarItem.badgeValue = @"99+";
     }
     else
     {
-        self.navigationController.tabBarItem.badgeValue=[NSString stringWithFormat:@"%@",kNSNumInteger(value)];
+        self.navigationController.tabBarItem.badgeValue = [NSString stringWithFormat:@"%@",kNSNumInteger(value)];
     }
 }
 #pragma mark - nav

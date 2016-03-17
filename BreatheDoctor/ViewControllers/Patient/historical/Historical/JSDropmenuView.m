@@ -10,6 +10,7 @@
 #define MenuLineColor [UIColor colorWithRed:95/255.0 green:100/255.0 blue:104/255.0 alpha:1.0]
 
 #import "JSDropmenuView.h"
+#import "UIView+BorderLine.h"
 
 @interface JSDropmenuViewCell : UITableViewCell
 
@@ -17,7 +18,7 @@
 
 @property(nonatomic,strong) UILabel *titleLabel;
 
-@property(nonatomic,strong) UIView *lineView;
+@property(nonatomic,strong) UIView *bgView;
 @end
 
 @implementation JSDropmenuViewCell
@@ -25,6 +26,8 @@
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.backgroundColor = [UIColor clearColor];
+        self.selectionStyle = 0;
         [self setupView];
     }
     return self;
@@ -32,39 +35,15 @@
 
 - (void)setupView {
    
-    self.titleLabel = ({
-        UILabel *label = [[UILabel alloc] initWithFrame:self.bounds];
-        [self addSubview:label];
-        label.textColor = [UIColor whiteColor];
-        label.textAlignment = 1;
-        label.font = kNSPXFONT(28);
-        label;
-    });
-    
-    self.lineView = ({
-        UIView *lineView = [[UIView alloc] init];
-        lineView.backgroundColor = MenuLineColor;
-        [self.contentView addSubview:lineView];
+    self.titleLabel = [[UILabel alloc] initWithFrame:self.bounds];
+    [self.titleLabel setCornerRadius:5.0f];
+    self.titleLabel.textColor = [UIColor whiteColor];
+    self.titleLabel.textAlignment = 1;
+    self.titleLabel.font = kNSPXFONT(28);
+    [self addSubview:self.titleLabel];
 
-        lineView.translatesAutoresizingMaskIntoConstraints = NO;
-        
-        NSLayoutConstraint *b_c = [NSLayoutConstraint constraintWithItem:lineView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0];
-        
-        NSLayoutConstraint *l_c = [NSLayoutConstraint constraintWithItem:lineView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0];
-        
-        NSLayoutConstraint *r_c = [NSLayoutConstraint constraintWithItem:lineView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.contentView attribute:NSLayoutAttributeRight multiplier:1.0 constant:0];
-        
-        NSLayoutConstraint *h_c = [NSLayoutConstraint constraintWithItem:lineView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0.5];
-        
-        if (systemVersion >= 8.0) {
-            [NSLayoutConstraint activateConstraints:@[b_c, l_c, r_c, h_c]];
-        } else {
-            [self.contentView addConstraints:@[b_c, l_c, r_c]];
-            [lineView addConstraints:@[h_c]];
-        }
-        
-        lineView;
-    });
+    self.titleLabel.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
+    
 }
 
 @end
@@ -93,7 +72,7 @@
 
 - (void)setupView {
     
-    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+    self.backgroundColor = [UIColor clearColor];
     self.touchView = ({
         UIView *touchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
         [self addSubview:touchView];
@@ -102,38 +81,38 @@
     
     self.showContainerView = ({
         UIView *showContainerView = [[UIView alloc] initWithFrame:self.showContainerViewFrame];
-        showContainerView.layer.masksToBounds = YES;
         [self addSubview:showContainerView];
         showContainerView;
     });
     
     CAShapeLayer *layer = [CAShapeLayer new];
     UIBezierPath *path = [UIBezierPath new];
-    [path moveToPoint:CGPointMake(0, 10)];
-    [path addLineToPoint:CGPointMake(6, 0)];
-    [path addLineToPoint:CGPointMake(12, 10)];
+    [path moveToPoint:CGPointMake(0, 8)];
+    [path addLineToPoint:CGPointMake(8, 0)];
+    [path addLineToPoint:CGPointMake(16, 8)];
     [path closePath];
     layer.path = path.CGPath;
     layer.lineWidth = 1.0;
-    layer.fillColor = MenuBackgroundColor.CGColor;
+    layer.fillColor = RGBA(0, 0, 0, .8).CGColor;
     CGPathRef bound = CGPathCreateCopyByStrokingPath(layer.path, nil, layer.lineWidth, kCGLineCapButt, kCGLineJoinMiter, layer.miterLimit);
     layer.bounds = CGPathGetBoundingBox(bound);
     CGPathRelease(bound);
-    layer.position = CGPointMake(self.showContainerView.frame.size.width-20, 10);
+    layer.position = CGPointMake(self.showContainerView.frame.size.width-16, 8.5);
     [self.showContainerView.layer addSublayer:layer];
     
     self.mainTableView = ({
         UITableView *mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 12, self.showContainerView.frame.size.width, self.showContainerView.frame.size.height-12)];
-        mainTableView.backgroundColor = MenuBackgroundColor;
+        mainTableView.backgroundColor = [UIColor clearColor];
         mainTableView.delegate = self;
         mainTableView.dataSource = self;
         mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         mainTableView.backgroundColor = [UIColor clearColor];
-        mainTableView.layer.cornerRadius = 3;
-        mainTableView.layer.masksToBounds = YES;
+        mainTableView.scrollEnabled = NO;
         [self.showContainerView addSubview:mainTableView];
         mainTableView;
     });
+
+    self.mainTableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(12, 0, 0, 0));
     
     UIGestureRecognizer *tapBgViewGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeView:)];
     [self.touchView addGestureRecognizer:tapBgViewGesture];
@@ -149,7 +128,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 40*Screen320Scale;
+    return 35*MULTIPLE;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -159,19 +138,37 @@
     if (!cell) {
         cell = [[JSDropmenuViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:optionIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.contentView.backgroundColor = MenuBackgroundColor;
+
     }
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(dropmenuDataSource)]) {
         NSDictionary *itemDic = [[self.delegate dropmenuDataSource] objectAtIndex:indexPath.row];
-//        cell.icoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@", [itemDic objectForKey:@"imageName"]]];
         cell.titleLabel.text = [NSString stringWithFormat:@"%@", [itemDic objectForKey:@"title"]];
-        
-        if (indexPath.row == [[self.delegate dropmenuDataSource] count]-1) {
-            cell.lineView.hidden = YES;
-        } else {
-            cell.lineView.hidden = NO;
+        if([[itemDic objectForKey:@"isSele"] boolValue])
+        {
+            cell.backgroundColor = RGBA(1, 1, 1, 1);
+        }else
+        {
+            cell.backgroundColor = RGBA(0, 0, 0, .7);
         }
+
+    }
+    
+    if (indexPath.row == 0) {
+        CGRect f = cell.titleLabel.bounds;
+        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:f byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:CGSizeMake(5, 5)];
+        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+        maskLayer.frame = f;
+        maskLayer.path = maskPath.CGPath;
+        cell.titleLabel.layer.mask = maskLayer;
+    }else if (indexPath.row == 2)
+    {
+        CGRect f = cell.titleLabel.bounds;
+        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:f byRoundingCorners:UIRectCornerBottomLeft|UIRectCornerBottomRight cornerRadii:CGSizeMake(5, 5)];
+        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+        maskLayer.frame = f;
+        maskLayer.path = maskPath.CGPath;
+        cell.titleLabel.layer.mask = maskLayer;
     }
     
     return cell;

@@ -105,7 +105,7 @@
             UILabel *label = [UILabel new];
             label.tag = 888;
             [cell addSubview:label];
-            label.font = [UIFont systemFontOfSize:14];
+            label.font = [UIFont systemFontOfSize:kNSPXFONTFLOAT(28)];
             label.textColor = [UIColor colorWithHexString:@"#333333"];
             label.sd_layout.rightSpaceToView(rightImageView,10).centerYEqualToView(cell).leftSpaceToView(typeimageView,10).heightIs(18);
         }
@@ -147,14 +147,14 @@
 
     }else if (indexPath.row == 3)
     {
-        LWPatientLogViewController *patientLog = (LWPatientLogViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];
-        patientLog.patientId = self.patient.patientId;
-        patientLog.patientName = self.patient.patientName;
-        [self.navigationController pushViewController:patientLog animated:YES];
-        [UMSAgent event:@"patientLOG" label:@"患者日志"];
+//        LWPatientLogViewController *patientLog = (LWPatientLogViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];
+//        patientLog.patientId = self.patient.patientId;
+//        patientLog.patientName = self.patient.patientName;
+//        [self.navigationController pushViewController:patientLog animated:YES];
+//        [UMSAgent event:@"patientLOG" label:@"患者日志"];
 
-//        LWHistoricalRecordVC *vc = [LWHistoricalRecordVC new];
-//        [self.navigationController pushViewController:vc animated:YES];
+        LWHistoricalRecordVC *vc = [LWHistoricalRecordVC new];
+        [self.navigationController pushViewController:vc animated:YES];
 
     }
 }

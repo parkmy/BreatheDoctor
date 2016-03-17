@@ -50,11 +50,19 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdtifier];
         cell.transform = CGAffineTransformMakeRotation(M_PI/2);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.contentView.backgroundColor = [UIColor clearColor];
+        cell.contentView.backgroundColor = [UIColor orangeColor];
         
-        UIViewController *vc = [_dataArray objectAtIndex:indexPath.row];
-        vc.view.frame = cell.bounds;
-        [cell.contentView addSubview:vc.view];
+        id objc = [_dataArray objectAtIndex:indexPath.row];
+        UIView *view = nil;
+        if ([objc isKindOfClass:[UIViewController class]]) {
+            UIViewController *vc = (UIViewController *)objc;
+            view = vc.view;
+        }else if ([objc isKindOfClass:[UIView class]])
+        {
+            view = objc;
+        }
+        view.frame = cell.bounds;
+        [cell.contentView addSubview:view];
     }
     return cell;
 }

@@ -103,7 +103,6 @@
     self.cardView.frame = self.bounds;
     self.agreedView.xCenter = self.xCenter;
     self.agreedView.yCenter = self.yCenter + 15;
-    
     chatConventionCardView.frame = self.bounds;
 }
 - (void)setMessageFrame:(UUMessageFrame *)messageFrame
@@ -181,7 +180,6 @@
     
     switch (model.chatCellType) {
         case WSChatCellType_Text:
-            self.agreedView.hidden = YES;
             self.btnContent.hidden = NO;
             self.btnHeadImage.hidden = NO;
             headImageBackView.hidden = NO;
@@ -189,7 +187,6 @@
             break;
         case WSChatCellType_Image:
         {
-            self.agreedView.hidden = YES;
             self.btnContent.hidden = NO;
             self.btnHeadImage.hidden = NO;
             headImageBackView.hidden = NO;
@@ -201,7 +198,6 @@
             break;
         case WSChatCellType_Audio:
         {
-            self.agreedView.hidden = YES;
             self.btnContent.hidden = NO;
             self.btnHeadImage.hidden = NO;
             headImageBackView.hidden = NO;
@@ -217,8 +213,6 @@
             break;
         case WSChatCellType_Card:
         {
-            self.agreedView.hidden = YES;
-//            self.chatLoadingView.hidden = YES;
             if (_messageFrame.model.chatMessageType == WSChatMessageType_conventionDan) {
                 chatConventionCardView.hidden = NO;
                 self.cardView.hidden = YES;
@@ -230,20 +224,11 @@
                 self.cardView.hidden = NO;
                 self.cardView.modelFram = _messageFrame;
             }
-            self.btnContent.hidden = YES;
-            self.btnHeadImage.hidden = YES;
-            headImageBackView.hidden = YES;
         }
             break;
         case WSChatCellType_Agreed:
         {
-//            self.chatLoadingView.hidden = YES;
-            self.btnContent.hidden = YES;
-            self.cardView.hidden = YES;
-            self.btnHeadImage.hidden = YES;
-            headImageBackView.hidden = YES;
             self.agreedView.hidden = NO;
-            
         }
             break;
         default:

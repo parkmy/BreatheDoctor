@@ -20,17 +20,18 @@
 
 //正式 "https://breathintf.huxiweishi.cn
 //#define Comvee_Url @"http://comvvpn.6655.la:8084/comveebreath/"
+#define Comvee_Url @"http://wechat.comvee.cn/comveebreath/"
 
-#define Comvee_Url @"https://breathintf.huxiweishi.cn/"
+//#define Comvee_Url @"https://breathintf.huxiweishi.cn/"
 
 //呼吸测试
 
 #define comveeUpload_URL @"http://img.mamibon.com:8080/fileuploader/uploader.do"
 //199 测试
 //105 正式
-#define platCode @"105"
+#define platCode @"199"
 //01 商店 03 企业 99 测试
-#define LOADFROMKEY @"01"
+#define LOADFROMKEY @"99"
 
 
 #pragma mark 短接

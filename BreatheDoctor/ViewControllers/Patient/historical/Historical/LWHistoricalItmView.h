@@ -10,8 +10,8 @@
 
 @interface LWHistoricalItmView : UIView
 
-@property (nonatomic, copy) void(^timeButtonBlock)();
-@property (nonatomic, copy) void(^chartButtonBlock)();
-@property (nonatomic, copy) void(^logButtonBlock)();
+@property (nonatomic, copy) void(^leftButtonBlock)();
+@property (nonatomic, copy) void(^rightButtonBlock)();
 
+- (id)initWithSize:(CGSize)size leftTitle:(NSString *)left rightTitle:(NSString *)right;
 @end
