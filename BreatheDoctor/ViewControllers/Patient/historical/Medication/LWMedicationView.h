@@ -9,4 +9,7 @@
 #import "LWBaseHistoricalView.h"
 @interface LWMedicationView : LWBaseHistoricalView
 
+- (void)setLogDateText:(NSString *)string;
+- (void)reloadMedicationViewData:(KLPatientLogBodyModel *)model;
+
 @end

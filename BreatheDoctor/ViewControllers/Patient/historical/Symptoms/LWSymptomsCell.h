@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LWSymptomsCell : UICollectionViewCell
-
+- (void)setObjc:(id)objc;
 @end

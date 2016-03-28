@@ -10,4 +10,7 @@
 
 @interface LWSymptomsView : LWBaseHistoricalView
 
+- (void)setLogDateText:(NSString *)string;
+- (void)reloadSymptomsViewData:(KLPatientLogBodyModel *)model;
+
 @end

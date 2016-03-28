@@ -37,6 +37,7 @@
     LWHistoricalHeardView *view = [LWHistoricalHeardView new];
     return view;
 }
+
 //- (LWHistoricalHeardView *)historicalHeardView
 //{
 //    if (!_historicalHeardView) {

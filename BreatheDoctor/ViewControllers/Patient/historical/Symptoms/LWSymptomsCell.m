@@ -8,6 +8,7 @@
 
 #import "LWSymptomsCell.h"
 #import "LWSymptomsButton.h"
+#import "KLSymptomsLogModel.h"
 
 @interface LWSymptomsCell ()
 
@@ -29,7 +30,7 @@
         
         self.bgView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
         self.bgButton.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
-        self.countLabel.sd_layout.topSpaceToView(self.bgView,0).rightSpaceToView(self.bgView,0).widthIs(15*MULTIPLEVIEW).heightIs(15*MULTIPLEVIEW);
+        self.countLabel.sd_layout.topSpaceToView(self.bgView,0).rightSpaceToView(self.bgView,0).widthIs(16*MULTIPLEVIEW).heightIs(16*MULTIPLEVIEW);
         
 //        __weak typeof(self)weakSelf = self;
 //        [self.bgButton setDidFinishAutoLayoutBlock:^(CGRect rect)
@@ -45,6 +46,14 @@
 //        }];
     }
     return self;
+}
+- (void)setObjc:(id)objc
+{
+    KLSymptomsLogModel *model = objc;
+    
+    [self.bgButton setImage:kImage(model.iconName) forState:UIControlStateNormal];
+    [self.bgButton setTitle:stringJudgeNull(model.titleName) forState:UIControlStateNormal];
+    self.countLabel.text = kNSString(kNSNumInteger(model.count));
 }
 
 - (LWSymptomsButton *)bgButton

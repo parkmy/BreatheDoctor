@@ -289,7 +289,6 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     }
     [self isSearchShow];
     [self.tableView reloadData];
-
 }
 
 #pragma mark - tableviewdelegate

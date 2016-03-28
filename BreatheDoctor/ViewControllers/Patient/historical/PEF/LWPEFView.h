@@ -10,4 +10,7 @@
 
 @interface LWPEFView : LWBaseHistoricalView
 
+- (void)setLogDateText:(NSString *)string;
+- (void)reloadPEFViewData:(KLPatientLogBodyModel *)model;
+- (void)setPefDateList:(NSInteger)dateCount;
 @end

@@ -98,11 +98,32 @@
     //        [self.delegate headImageDidClick:self userId:self.messageFrame.message.strId];
     //    }
 }
+
+
+//{
+//    "modifyDt" : "2016-03-17 16:29:11",
+//    "isDispose" : 0,
+//    "isCount" : 0,
+//    "insertDt" : "2016-03-17 16:28:45",
+//    "ownerType" : 2,
+//    "msgContent" : "购买图文咨询成功",
+//    "msgType" : 1,
+//    "dataStruct" : {
+//        "contentType" : 1,
+//        "content" : "你好，为了更准确的诊断病情。建议您先对自己的症状进行描述，如有诊断经历请上传化验单，病历及相关图片"
+//    },
+//    "timeStamp" : 1458203325802,
+//    "sid" : "160317162800002",
+//    "foreignId" : "-1",
+//    "memberId" : "160112093939010002",
+//    "doctorId" : "201310018880603",
+//    "isValid" : 1
+//}
 - (void)layoutSubviews
 {
     self.cardView.frame = self.bounds;
-    self.agreedView.xCenter = self.xCenter;
-    self.agreedView.yCenter = self.yCenter + 15;
+    self.agreedView.xCenter = self.width/2;
+    self.agreedView.yCenter = self.height/2+18;
     chatConventionCardView.frame = self.bounds;
 }
 - (void)setMessageFrame:(UUMessageFrame *)messageFrame
@@ -180,6 +201,8 @@
     
     switch (model.chatCellType) {
         case WSChatCellType_Text:
+            
+            self.agreedView.hidden = YES;
             self.btnContent.hidden = NO;
             self.btnHeadImage.hidden = NO;
             headImageBackView.hidden = NO;
@@ -187,6 +210,7 @@
             break;
         case WSChatCellType_Image:
         {
+            self.agreedView.hidden = YES;
             self.btnContent.hidden = NO;
             self.btnHeadImage.hidden = NO;
             headImageBackView.hidden = NO;
@@ -198,6 +222,7 @@
             break;
         case WSChatCellType_Audio:
         {
+            self.agreedView.hidden = YES;
             self.btnContent.hidden = NO;
             self.btnHeadImage.hidden = NO;
             headImageBackView.hidden = NO;
@@ -213,6 +238,8 @@
             break;
         case WSChatCellType_Card:
         {
+            self.agreedView.hidden = YES;
+
             if (_messageFrame.model.chatMessageType == WSChatMessageType_conventionDan) {
                 chatConventionCardView.hidden = NO;
                 self.cardView.hidden = YES;

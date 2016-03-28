@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LWPEFHistorListCell : UITableViewCell
+@property (nonatomic, assign) double pefPredictedValue;
 - (void)setBackgroundColorWithTag:(int)tag;
+- (void)setModel:(id)model;
 @end

@@ -8,13 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LWHistoricalHeardView : UIView
-
-
-//
-//@property (nonatomic, strong) UILabel *fistLabel;
-//@property (nonatomic, strong) UILabel *secondLabel;
-//@property (nonatomic, strong) UILabel *thirdLabel;
+typedef NS_ENUM(NSInteger , showHistoricalType) {
+    showHistoricalTypePEF = 0,
+    showHistoricalTypeSymptoms,
+    showHistoricalTypeMedication,
+};
+@interface LWHistoricalHeardView : UIView<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic, strong) UIView *leftView;
 @property (nonatomic, strong) UIView *rightView;
@@ -22,5 +21,9 @@
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) UIView  *breadView;
+@property (nonatomic, assign) showHistoricalType historicalType;
 
+- (void)setFootLabelTitle:(NSString *)string;
+- (void)setScaleCircleWithObjc:(KLPatientLogBodyModel *)objc;
+- (void)setScaleCircleDateText:(NSString *)text;
 @end

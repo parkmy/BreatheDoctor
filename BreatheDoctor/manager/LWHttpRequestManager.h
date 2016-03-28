@@ -185,4 +185,10 @@
                                        Success:(void (^)(LWReservationDetailedModel *model))success
                                        failure:(void (^)(NSString * errorMes))failure;
 
+#pragma mark  加载患者历史记录
++ (void)httpLoadPatientRecordHistoryWithPatientId:(NSString *)pid
+                                       recentDays:(NSInteger)day
+                                         Success:(void (^)(KLPatientLogBodyModel *model))success
+                                         failure:(void (^)(NSString * errorMes))failure;
+
 @end

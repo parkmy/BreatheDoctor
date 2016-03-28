@@ -93,21 +93,24 @@
     [path closePath];
     layer.path = path.CGPath;
     layer.lineWidth = 1.0;
-    layer.fillColor = RGBA(0, 0, 0, .8).CGColor;
+    layer.fillColor = RGBA(0, 0, 0, 1).CGColor;
     CGPathRef bound = CGPathCreateCopyByStrokingPath(layer.path, nil, layer.lineWidth, kCGLineCapButt, kCGLineJoinMiter, layer.miterLimit);
     layer.bounds = CGPathGetBoundingBox(bound);
     CGPathRelease(bound);
-    layer.position = CGPointMake(self.showContainerView.frame.size.width-16, 8.5);
+    layer.position = CGPointMake(self.showContainerView.frame.size.width-17, 8.2);
     [self.showContainerView.layer addSublayer:layer];
+    
+
+    
     
     self.mainTableView = ({
         UITableView *mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 12, self.showContainerView.frame.size.width, self.showContainerView.frame.size.height-12)];
-        mainTableView.backgroundColor = [UIColor clearColor];
+        mainTableView.backgroundColor = RGBA(1, 1, 1, .7);
         mainTableView.delegate = self;
         mainTableView.dataSource = self;
         mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        mainTableView.backgroundColor = [UIColor clearColor];
         mainTableView.scrollEnabled = NO;
+        [mainTableView setCornerRadius:3.0f];
         [self.showContainerView addSubview:mainTableView];
         mainTableView;
     });
@@ -128,7 +131,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 35*MULTIPLE;
+    return 39 ;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -138,7 +141,6 @@
     if (!cell) {
         cell = [[JSDropmenuViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:optionIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
     }
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(dropmenuDataSource)]) {
@@ -149,26 +151,25 @@
             cell.backgroundColor = RGBA(1, 1, 1, 1);
         }else
         {
-            cell.backgroundColor = RGBA(0, 0, 0, .7);
+            cell.backgroundColor = [UIColor clearColor];
         }
-
     }
     
-    if (indexPath.row == 0) {
-        CGRect f = cell.titleLabel.bounds;
-        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:f byRoundingCorners:UIRectCornerTopLeft|UIRectCornerTopRight cornerRadii:CGSizeMake(5, 5)];
-        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-        maskLayer.frame = f;
-        maskLayer.path = maskPath.CGPath;
-        cell.titleLabel.layer.mask = maskLayer;
-    }else if (indexPath.row == 2)
+    if (self.seleIndex == 0) {
+        for (id objc in self.showContainerView.layer.sublayers) {
+            if ([objc isKindOfClass:[CAShapeLayer class]]) {
+                CAShapeLayer *sly = objc;
+                sly.fillColor = RGBA(0, 0, 0, 1).CGColor;
+            }
+        }
+    }else
     {
-        CGRect f = cell.titleLabel.bounds;
-        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:f byRoundingCorners:UIRectCornerBottomLeft|UIRectCornerBottomRight cornerRadii:CGSizeMake(5, 5)];
-        CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
-        maskLayer.frame = f;
-        maskLayer.path = maskPath.CGPath;
-        cell.titleLabel.layer.mask = maskLayer;
+        for (id objc in self.showContainerView.layer.sublayers) {
+            if ([objc isKindOfClass:[CAShapeLayer class]]) {
+                CAShapeLayer *sly = objc;
+                sly.fillColor = RGBA(0, 0, 0, .7).CGColor;
+            }
+        }
     }
     
     return cell;

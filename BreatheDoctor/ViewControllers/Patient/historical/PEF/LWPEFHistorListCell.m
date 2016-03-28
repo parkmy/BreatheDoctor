@@ -7,6 +7,8 @@
 //
 
 #import "LWPEFHistorListCell.h"
+#import "LWMedicationModel.h"
+#import "KLHistoricalOperation.h"
 
 @interface LWPEFHistorListCell ()
 {
@@ -56,6 +58,30 @@
     label.textColor = [UIColor colorWithHexString:@"#666666"];
     label.text = @"666666";
     return label;
+}
+- (void)setModel:(id)model
+{
+    LWMedicationModel *meModel = model;
+    timerLabel.text = meModel.recordDt;
+    
+    pefMorningLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+    pefEveningLabel.textColor = [UIColor colorWithHexString:@"#666666"];
+
+    
+    if (meModel.morningpefValue <= 0) {
+        pefMorningLabel.text = kNSString(@"- -");
+    }else{
+        pefMorningLabel.text = kNSString(kNSNumDouble(meModel.morningpefValue));
+        pefMorningLabel.textColor = [KLHistoricalOperation pefColorInfo:self.pefPredictedValue thePefValue:meModel.morningpefValue];
+    }
+    if (meModel.eveningpefValue <= 0) {
+        pefEveningLabel.text = kNSString(@"- -");
+    }else{
+        pefEveningLabel.text = kNSString(kNSNumDouble(meModel.eveningpefValue));
+        pefEveningLabel.textColor = [KLHistoricalOperation pefColorInfo:self.pefPredictedValue thePefValue:meModel.eveningpefValue];
+
+    }
+    
 }
 - (void)setBackgroundColorWithTag:(int)tag
 {

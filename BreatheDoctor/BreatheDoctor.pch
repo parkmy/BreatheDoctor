@@ -34,7 +34,8 @@
 #define StoryboardCtr(Identifier) [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:Identifier]
 
 
-
+#define TICK   NSDate *startTime = [NSDate date];
+#define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow]);
 
 #pragma mark - RGBA颜色
 

@@ -10,12 +10,11 @@
 
 @implementation LWPEFHistorListTitleCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithFrame:(CGRect)frame
 {
-    if ([super initWithStyle:style reuseIdentifier:reuseIdentifier])
+    if ([super initWithFrame:frame])
     {
-        
-        self.selectionStyle = 0;
+        self.backgroundColor = [UIColor whiteColor];
         
         UIView *line = [UIView allocAppLineView];
         [self addSubview:line];
@@ -53,16 +52,6 @@
     label.textAlignment = 1;
     label.textColor = [UIColor colorWithHexString:@"#333333"];
     return label;
-}
-
-- (void)awakeFromNib {
-    // Initialization code
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

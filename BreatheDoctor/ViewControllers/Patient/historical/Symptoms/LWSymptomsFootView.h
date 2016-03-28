@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface LWSymptomsFootView : UIView
-
+- (void)setFootSymptoms:(NSMutableArray *)array;
 @end

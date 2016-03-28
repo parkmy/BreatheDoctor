@@ -24,7 +24,6 @@
 
 //#define Comvee_Url @"https://breathintf.huxiweishi.cn/"
 
-//呼吸测试
 
 #define comveeUpload_URL @"http://img.mamibon.com:8080/fileuploader/uploader.do"
 //199 测试
@@ -108,6 +107,7 @@ static  NSString *HTTP_POST_REFUSEATTENTION         = @"/mobile/doctor/refuseAtt
 static  NSString *HTTP_POST_LOADDOCTORRELATEORDERINDEX     = @"/mobile/shop/loadDoctorRelateOrderIndex.do";
 /// *-- 加载购买记录(根据订单类型)
 static  NSString *HTTP_POST_LOADORDERLIST                  = @"/mobile/shop/loadOrderList.do";
+
 /// *-- 加载预约详情
 static  NSString *HTTP_POST_LOADORDERAPPOINTMENTINFO       = @"/mobile/shop/loadOrderAppointmentInfo.do";
 

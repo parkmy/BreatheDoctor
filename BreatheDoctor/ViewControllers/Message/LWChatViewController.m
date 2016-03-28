@@ -23,7 +23,6 @@
 #import "UUMessageCell.h"
 #import "UUMessageFrame.h"
 #import "NSDate+Extension.h"
-#import "LWPatientLogViewController.h"
 #import "MJPhotoBrowser.h"
 #import "LWTheFormTypeViewController.h"
 #import "LWTheFormViewController.h"
@@ -156,7 +155,6 @@ typedef NS_ENUM(NSInteger , SenderType) {
 {
     self.refreshType = RefreshTypeNew;
     self.page = 1;
-    
 }
 
 #pragma mark - loadChatList
@@ -215,11 +213,11 @@ typedef NS_ENUM(NSInteger , SenderType) {
     if (self.DataSource.count > 0) {
         [self.tableView reloadData];
         if (self.DataSource.count > 0 && self.DataSource.count > count && count != 0) {
-            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.DataSource.count-count inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.DataSource.count-count inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
         }else
         {
             if (self.DataSource.count > 0) {
-                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.DataSource.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
+                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.DataSource.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
             }
         }
     }
@@ -818,29 +816,29 @@ typedef NS_ENUM(NSInteger , SenderType) {
             break;
         case WSChatMessageType_PEFRecord: //PEF记录通知
         {
-            
-            LWPatientLogViewController *patientLog = (LWPatientLogViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];
-            //初始化时间建区
-            patientLog.refDateDic = [LWTool patientPEFDateLineSx:model.insertDt];
-            //初始化展示数据模型
-            LWPEFRecordList *record = [[LWPEFRecordList alloc] init];
-            record.recordDt = model.recordDt;
-            record.pefValue = model.pEFValue;
-            record.pharmacyControl = model.pharmacyControl;
-            record.symptomChestdistress = model.symptomChestdistress;
-            record.symptomDyspnea = model.symptomDyspnea;
-            record.symptomCough = model.symptomCough;
-            record.pharmacyControl = model.pharmacyControl;
-            record.remark = model.remark;
-            record.symptomNightWoke = model.symptomNightWoke;
-            record.symptomGood = model.symptomGood;
-            
-            patientLog.record = record;
-            
-            patientLog.patientId = self.patient.memberId;
-            patientLog.patientName = self.patient.patientName;
-            patientLog.intDate = model.insertDt;
-            [self.navigationController pushViewController:patientLog animated:YES];
+//            
+//            LWPatientLogViewController *patientLog = (LWPatientLogViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];
+//            //初始化时间建区
+//            patientLog.refDateDic = [LWTool patientPEFDateLineSx:model.insertDt];
+//            //初始化展示数据模型
+//            LWPEFRecordList *record = [[LWPEFRecordList alloc] init];
+//            record.recordDt = model.recordDt;
+//            record.pefValue = model.pEFValue;
+//            record.pharmacyControl = model.pharmacyControl;
+//            record.symptomChestdistress = model.symptomChestdistress;
+//            record.symptomDyspnea = model.symptomDyspnea;
+//            record.symptomCough = model.symptomCough;
+//            record.pharmacyControl = model.pharmacyControl;
+//            record.remark = model.remark;
+//            record.symptomNightWoke = model.symptomNightWoke;
+//            record.symptomGood = model.symptomGood;
+//            
+//            patientLog.record = record;
+//            
+//            patientLog.patientId = self.patient.memberId;
+//            patientLog.patientName = self.patient.patientName;
+//            patientLog.intDate = model.insertDt;
+//            [self.navigationController pushViewController:patientLog animated:YES];
         }
             break;
         case WSChatMessageType_BiaoDan: //表单

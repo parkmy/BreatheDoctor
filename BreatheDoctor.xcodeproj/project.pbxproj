@@ -47,7 +47,6 @@
 		790243B71C4E302E0010B1D9 /* LWPersonCenterIconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243A41C4E302E0010B1D9 /* LWPersonCenterIconCell.m */; };
 		790243B81C4E302E0010B1D9 /* LWPatientRelatedPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243A71C4E302E0010B1D9 /* LWPatientRelatedPhotoCollectionViewCell.m */; };
 		790243B91C4E302E0010B1D9 /* LWPatientRelatedPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243A91C4E302E0010B1D9 /* LWPatientRelatedPhotoView.m */; };
-		790243BA1C4E302E0010B1D9 /* LWPatientRelatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243AB1C4E302E0010B1D9 /* LWPatientRelatedView.m */; };
 		790243BB1C4E302E0010B1D9 /* LWTimerButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243AE1C4E302E0010B1D9 /* LWTimerButtonCell.m */; };
 		790243BC1C4E302E0010B1D9 /* LWTimerRemindIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243B01C4E302E0010B1D9 /* LWTimerRemindIndexView.m */; };
 		790243BF1C4E30B00010B1D9 /* LWPopAlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243BE1C4E30B00010B1D9 /* LWPopAlatView.m */; };
@@ -55,6 +54,8 @@
 		79025A791C8D569D00F71892 /* nanguo2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79025A781C8D569D00F71892 /* nanguo2@2x.png */; };
 		790515701BFDB16E001D5F33 /* LWSenderResBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7905156D1BFDB16E001D5F33 /* LWSenderResBaseModel.m */; };
 		790515711BFDB16E001D5F33 /* LWSenderResBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7905156F1BFDB16E001D5F33 /* LWSenderResBody.m */; };
+		790651181C9F9DAC004E13D0 /* LWSymptomsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 790651171C9F9DAC004E13D0 /* LWSymptomsList.plist */; };
+		7906511B1C9FC8E6004E13D0 /* LWScaleCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7906511A1C9FC8E6004E13D0 /* LWScaleCircleView.m */; };
 		79084E121C2792060002BBF2 /* LWChatLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79084E111C2792060002BBF2 /* LWChatLoadingView.m */; };
 		79084E161C27945D0002BBF2 /* sendFail.png in Resources */ = {isa = PBXBuildFile; fileRef = 79084E151C27945D0002BBF2 /* sendFail.png */; };
 		79084E251C27AEA00002BBF2 /* MJPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 79084E191C27AEA00002BBF2 /* MJPhoto.m */; };
@@ -90,6 +91,7 @@
 		790BE9421C02EC4500BD1D67 /* LWAsthmaAssessmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790BE9411C02EC4500BD1D67 /* LWAsthmaAssessmentCell.m */; };
 		790BE94C1C02FAFC00BD1D67 /* LWACTAssessmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790BE94B1C02FAFC00BD1D67 /* LWACTAssessmentModel.m */; };
 		790EE5541C7EA261004ABC78 /* LWReservationDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790EE5531C7EA261004ABC78 /* LWReservationDetailedViewController.m */; };
+		791148F51C9BE8460020AB2C /* LWHistoricalCountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 791148F41C9BE8460020AB2C /* LWHistoricalCountModel.m */; };
 		7912112F1BF1A6A6004166C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912112E1BF1A6A6004166C5 /* main.m */; };
 		791211321BF1A6A6004166C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211311BF1A6A6004166C5 /* AppDelegate.m */; };
 		791211351BF1A6A6004166C5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211341BF1A6A6004166C5 /* ViewController.m */; };
@@ -153,6 +155,7 @@
 		7929ACC21C33B66D002712EC /* LWThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7929ACC11C33B66D002712EC /* LWThemeManager.m */; };
 		7929ACC51C33BE99002712EC /* LWTheFormTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7929ACC41C33BE99002712EC /* LWTheFormTypeView.m */; };
 		7929ACC91C33CA93002712EC /* LWTimerRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7929ACC81C33CA93002712EC /* LWTimerRemindViewController.m */; };
+		792EF0CC1CA0EC9F001A69CC /* LWHistoricalLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EF0CB1CA0EC9F001A69CC /* LWHistoricalLogModel.m */; };
 		7938E56E1C0EDBA800AD043F /* LWCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7938E5691C0EDBA800AD043F /* LWCardView.m */; };
 		7938E56F1C0EDBA800AD043F /* UUMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7938E56B1C0EDBA800AD043F /* UUMessageCell.m */; };
 		7938E5701C0EDBA800AD043F /* UUMessageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7938E56D1C0EDBA800AD043F /* UUMessageFrame.m */; };
@@ -178,7 +181,6 @@
 		794555501C0BD98F005C0E10 /* UIView+BorderLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 794555421C0BD98F005C0E10 /* UIView+BorderLine.m */; };
 		794555511C0BD98F005C0E10 /* UIView+TKGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 794555441C0BD98F005C0E10 /* UIView+TKGeometry.m */; };
 		794556DA1C0BDA15005C0E10 /* DefaultDiscover.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556411C0BDA15005C0E10 /* DefaultDiscover.png */; };
-		794556DB1C0BDA15005C0E10 /* DefaultLogo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 794556421C0BDA15005C0E10 /* DefaultLogo.jpg */; };
 		794556DC1C0BDA15005C0E10 /* login_account_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556441C0BDA15005C0E10 /* login_account_img@2x.png */; };
 		794556DE1C0BDA15005C0E10 /* newPatient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556461C0BDA15005C0E10 /* newPatient@2x.png */; };
 		794556DF1C0BDA15005C0E10 /* newPatient@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556471C0BDA15005C0E10 /* newPatient@3x.png */; };
@@ -230,7 +232,6 @@
 		794557201C0BDA15005C0E10 /* yisheng_@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945568C1C0BDA15005C0E10 /* yisheng_@3x.png */; };
 		794557211C0BDA15005C0E10 /* yishengzhushousy_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945568D1C0BDA15005C0E10 /* yishengzhushousy_03@2x.png */; };
 		794557231C0BDA15005C0E10 /* ysiheng_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945568F1C0BDA15005C0E10 /* ysiheng_03@2x.png */; };
-		794557271C0BDA15005C0E10 /* newLoingNav_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556951C0BDA15005C0E10 /* newLoingNav_@2x.png */; };
 		794557291C0BDA15005C0E10 /* personalcenter_14@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556971C0BDA15005C0E10 /* personalcenter_14@2x.png */; };
 		7945572B1C0BDA15005C0E10 /* personalcenter_42@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556991C0BDA15005C0E10 /* personalcenter_42@2x.png */; };
 		7945572C1C0BDA15005C0E10 /* yishenPersonalCenter-11_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945569A1C0BDA15005C0E10 /* yishenPersonalCenter-11_@2x.png */; };
@@ -255,7 +256,6 @@
 		7945573F1C0BDA15005C0E10 /* yitianxie_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556AE1C0BDA15005C0E10 /* yitianxie_@2x.png */; };
 		794557401C0BDA15005C0E10 /* yiwanchen_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556AF1C0BDA15005C0E10 /* yiwanchen_@2x.png */; };
 		794557411C0BDA15005C0E10 /* defaultIconImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556B11C0BDA15005C0E10 /* defaultIconImage@2x.png */; };
-		794557491C0C1C12005C0E10 /* LWLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557481C0C1C12005C0E10 /* LWLineButton.m */; };
 		7945574B1C0C261B005C0E10 /* YS-2_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945574A1C0C261B005C0E10 /* YS-2_@2x.png */; };
 		7945576C1C0C323E005C0E10 /* MZBlurEffectAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557531C0C323D005C0E10 /* MZBlurEffectAdapter.m */; };
 		7945576D1C0C323E005C0E10 /* MZFormSheetContentSizingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557551C0C323D005C0E10 /* MZFormSheetContentSizingNavigationController.m */; };
@@ -275,12 +275,6 @@
 		7947160E1BF48A1600C4D2E8 /* LWTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947160D1BF48A1600C4D2E8 /* LWTool.m */; };
 		794D51521C7EE46900403767 /* LWOrderDetailedLisetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D51511C7EE46900403767 /* LWOrderDetailedLisetCell.m */; };
 		794D51551C7EE9CE00403767 /* LWOrderDetailedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D51541C7EE9CE00403767 /* LWOrderDetailedListViewController.m */; };
-		7952F0E81C0550C90030B279 /* BaseChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0E21C0550C90030B279 /* BaseChartView.m */; };
-		7952F0E91C0550C90030B279 /* LineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0E41C0550C90030B279 /* LineChartView.m */; };
-		7952F0ED1C0550FB0030B279 /* CoordinateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0EC1C0550FB0030B279 /* CoordinateItem.m */; };
-		7952F0F11C0556240030B279 /* LWPEFLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0F01C0556240030B279 /* LWPEFLineCell.m */; };
-		7952F0F41C05563C0030B279 /* LWPEFCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0F31C05563C0030B279 /* LWPEFCountCell.m */; };
-		7952F0F71C055B510030B279 /* DrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0F61C055B510030B279 /* DrawView.m */; };
 		7952F1001C0582880030B279 /* LWPEFBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0FB1C0582880030B279 /* LWPEFBody.m */; };
 		7952F1011C0582880030B279 /* LWPEFLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0FD1C0582880030B279 /* LWPEFLineModel.m */; };
 		7952F1021C0582880030B279 /* LWPEFRecordList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0FF1C0582880030B279 /* LWPEFRecordList.m */; };
@@ -300,23 +294,20 @@
 		7955C2981C03F95F003D6836 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7955C2971C03F95F003D6836 /* libsqlite3.tbd */; };
 		7955C29B1C044BB4003D6836 /* LWACTModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7955C29A1C044BB4003D6836 /* LWACTModel.m */; };
 		7955DC081C4CDCAA00314221 /* LWPatientBiaoDanBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7955DC071C4CDCAA00314221 /* LWPatientBiaoDanBody.m */; };
-		795964901C06E2BC001C18D8 /* LWMedicationLogCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7959648F1C06E2BC001C18D8 /* LWMedicationLogCountCell.m */; };
-		795964931C06E2D8001C18D8 /* LWMedicationLogHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 795964921C06E2D8001C18D8 /* LWMedicationLogHeadCell.m */; };
-		795964961C06E2EC001C18D8 /* LWMedicationLogTimerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 795964951C06E2EC001C18D8 /* LWMedicationLogTimerCell.m */; };
-		795964991C06F09A001C18D8 /* LWMedicationLogTimerOneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 795964981C06F09A001C18D8 /* LWMedicationLogTimerOneCell.m */; };
+		7958ED601CA143F000C7FE11 /* LWPEFLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7958ED5F1CA143F000C7FE11 /* LWPEFLineView.m */; };
+		7958ED631CA2907B00C7FE11 /* LWPatientRelatedVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7958ED621CA2907B00C7FE11 /* LWPatientRelatedVC.m */; };
+		7958ED661CA291D200C7FE11 /* LWBasePatientRelatedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7958ED651CA291D200C7FE11 /* LWBasePatientRelatedCell.m */; };
+		7958ED691CA2982600C7FE11 /* LWPatientRelatedPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7958ED681CA2982500C7FE11 /* LWPatientRelatedPhotoCell.m */; };
+		7958ED6C1CA3B0E800C7FE11 /* KLPatientRelatedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7958ED6B1CA3B0E800C7FE11 /* KLPatientRelatedModel.m */; };
+		7958EDC41CA3DCCD00C7FE11 /* KLPatientLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7958EDC31CA3DCCD00C7FE11 /* KLPatientLogModel.m */; };
+		7958EDC71CA4D55D00C7FE11 /* KLPatientLogBodyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7958EDC61CA4D55D00C7FE11 /* KLPatientLogBodyModel.m */; };
 		7959649C1C06F1F4001C18D8 /* LWMedicationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7959649B1C06F1F4001C18D8 /* LWMedicationModel.m */; };
 		795B6C221C47539B00612AF6 /* LWDoctorTimerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 795B6C211C47539B00612AF6 /* LWDoctorTimerModel.m */; };
 		795E0A311C118C92001699DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 795E0A2E1C118C92001699DF /* Main.storyboard */; };
-		795E0A321C118C92001699DF /* PatientLog.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 795E0A2F1C118C92001699DF /* PatientLog.storyboard */; };
 		795FE0831C07FD1800B2EA2A /* LWYerChangIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 795FE0821C07FD1800B2EA2A /* LWYerChangIndexView.m */; };
-		795FE0871C0807D700B2EA2A /* LWAssessmentLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 795FE0861C0807D700B2EA2A /* LWAssessmentLineCell.m */; };
-		795FE08A1C0807EA00B2EA2A /* LWAssessmentStarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 795FE0891C0807EA00B2EA2A /* LWAssessmentStarCell.m */; };
 		795FE08D1C080C2D00B2EA2A /* LWAssessmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 795FE08C1C080C2D00B2EA2A /* LWAssessmentModel.m */; };
 		795FE0941C08295200B2EA2A /* LWAsthmaAssessLogBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 795FE0911C08295200B2EA2A /* LWAsthmaAssessLogBody.m */; };
 		795FE0951C08295200B2EA2A /* LWAsthmaAssessLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 795FE0931C08295200B2EA2A /* LWAsthmaAssessLogModel.m */; };
-		795FE09D1C082A6400B2EA2A /* LWBaseChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 795FE0981C082A6400B2EA2A /* LWBaseChartView.m */; };
-		795FE09E1C082A6400B2EA2A /* LWDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 795FE09A1C082A6400B2EA2A /* LWDrawView.m */; };
-		795FE09F1C082A6400B2EA2A /* LWLineChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 795FE09C1C082A6400B2EA2A /* LWLineChartView.m */; };
 		796991651C448D9A00A3A2C6 /* 01_act_@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 796991621C448D9A00A3A2C6 /* 01_act_@3x.png */; };
 		796991661C448D9A00A3A2C6 /* 02_act_@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 796991631C448D9A00A3A2C6 /* 02_act_@3x.png */; };
 		796991671C448D9A00A3A2C6 /* 03_act_@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 796991641C448D9A00A3A2C6 /* 03_act_@3x.png */; };
@@ -402,6 +393,15 @@
 		798922C21BFEB6A2002C695C /* GJMFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 798922C11BFEB6A2002C695C /* GJMFileHelper.m */; };
 		7990D7B31C7AF76A00127A28 /* RFLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990D7B21C7AF76A00127A28 /* RFLayout.m */; };
 		7990D7B61C7AF9D400127A28 /* LWOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990D7B51C7AF9D400127A28 /* LWOrderCollectionViewCell.m */; };
+		7990DF1A1CA4EA880096DA4B /* KLHistoricalOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF191CA4EA880096DA4B /* KLHistoricalOperation.m */; };
+		7990DF1D1CA501E30096DA4B /* KLSymptomsLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF1C1CA501E30096DA4B /* KLSymptomsLogModel.m */; };
+		7990DF201CA647AC0096DA4B /* NSObject+ProperList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF1F1CA647AC0096DA4B /* NSObject+ProperList.m */; };
+		7990DF231CA7BC4C0096DA4B /* KLStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF221CA7BC4C0096DA4B /* KLStateView.m */; };
+		7990DF261CA7C3470096DA4B /* KLStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF251CA7C3470096DA4B /* KLStateCell.m */; };
+		7990DF291CA7C4350096DA4B /* KLStateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF281CA7C4350096DA4B /* KLStateModel.m */; };
+		7990DF2C1CA8F8160096DA4B /* KLPEFItmLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF2B1CA8F8160096DA4B /* KLPEFItmLineView.m */; };
+		7990DF2F1CA900A00096DA4B /* CoordinateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF2E1CA900A00096DA4B /* CoordinateItem.m */; };
+		7990DF321CA9018E0096DA4B /* LWLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF311CA9018E0096DA4B /* LWLineButton.m */; };
 		7994D5A71C57256200E41865 /* UMSDataMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D58E1C57256200E41865 /* UMSDataMgr.m */; };
 		7994D5A81C57256200E41865 /* UMSNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5901C57256200E41865 /* UMSNetwork.m */; };
 		7994D5A91C57256200E41865 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5941C57256200E41865 /* SFHFKeychainUtils.m */; };
@@ -463,8 +463,6 @@
 		799788491C96B22200E86B91 /* zhengzhuang@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799788191C96B22200E86B91 /* zhengzhuang@3x.png */; };
 		799788681C98F10600E86B91 /* LWBaseHistoricalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 799788671C98F10600E86B91 /* LWBaseHistoricalView.m */; };
 		799788851C9A42D100E86B91 /* LWMedicationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 799788741C9A42D100E86B91 /* LWMedicationView.m */; };
-		799788861C9A42D100E86B91 /* LWPEFHistoricalHeardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 799788771C9A42D100E86B91 /* LWPEFHistoricalHeardView.m */; };
-		799788871C9A42D100E86B91 /* LWPEFHistoricalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 799788791C9A42D100E86B91 /* LWPEFHistoricalView.m */; };
 		799788881C9A42D100E86B91 /* LWPEFHistorListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7997887B1C9A42D100E86B91 /* LWPEFHistorListCell.m */; };
 		799788891C9A42D100E86B91 /* LWPEFHistorListTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7997887D1C9A42D100E86B91 /* LWPEFHistorListTitleCell.m */; };
 		7997888A1C9A42D100E86B91 /* LWPEFListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7997887F1C9A42D100E86B91 /* LWPEFListView.m */; };
@@ -473,16 +471,8 @@
 		79AD86101C4F300E00EBE224 /* LWPatientCententCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD85F21C4F300E00EBE224 /* LWPatientCententCtr.m */; };
 		79AD86111C4F300E00EBE224 /* LWPatientGroupsCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD85F41C4F300E00EBE224 /* LWPatientGroupsCtr.m */; };
 		79AD86121C4F300E00EBE224 /* LWPatientListCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD85F81C4F300E00EBE224 /* LWPatientListCtr.m */; };
-		79AD86131C4F300E00EBE224 /* LWPatientRelatedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD85FB1C4F300E00EBE224 /* LWPatientRelatedViewController.m */; };
 		79AD86141C4F300E00EBE224 /* LWPatientRecordsCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD85FE1C4F300E00EBE224 /* LWPatientRecordsCtr.m */; };
 		79AD86151C4F300E00EBE224 /* LWPatientRemarksCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD86001C4F300E00EBE224 /* LWPatientRemarksCtr.m */; };
-		79AD862C1C4F30C200EBE224 /* LWLineACTAssessmentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD861F1C4F30C200EBE224 /* LWLineACTAssessmentVC.m */; };
-		79AD862D1C4F30C200EBE224 /* LWPatientAssessmentLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD86211C4F30C200EBE224 /* LWPatientAssessmentLogVC.m */; };
-		79AD862E1C4F30C200EBE224 /* LWPatientLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD86231C4F30C200EBE224 /* LWPatientLogViewController.m */; };
-		79AD862F1C4F30C200EBE224 /* LWPatientMedicationLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD86251C4F30C200EBE224 /* LWPatientMedicationLogVC.m */; };
-		79AD86301C4F30C200EBE224 /* LWPatientPEFLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD86271C4F30C200EBE224 /* LWPatientPEFLogVC.m */; };
-		79AD86311C4F30C200EBE224 /* LWPatientSymptomsLogVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD86291C4F30C200EBE224 /* LWPatientSymptomsLogVC.m */; };
-		79AD86321C4F30C200EBE224 /* LWPEFRecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD862B1C4F30C200EBE224 /* LWPEFRecordView.m */; };
 		79AD86361C4F320100EBE224 /* LWRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD86351C4F320100EBE224 /* LWRootViewController.m */; };
 		79AD91A31BF2CEF60098D6CD /* CDCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD91A01BF2CEF60098D6CD /* CDCheckBox.m */; };
 		79AD91A71BF2CF550098D6CD /* CDCommontConvenient.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD91A61BF2CF550098D6CD /* CDCommontConvenient.m */; };
@@ -494,6 +484,15 @@
 		79AD91E81BF31D250098D6CD /* LWLoginManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD91E71BF31D250098D6CD /* LWLoginManager.m */; };
 		79AD91EB1BF3257B0098D6CD /* LWHttpRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD91EA1BF3257B0098D6CD /* LWHttpRequestManager.m */; };
 		79AD91F51BF33CCB0098D6CD /* YRJSONAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD91F41BF33CCB0098D6CD /* YRJSONAdapter.m */; };
+		79B72D581C9B9F4C00E2920F /* LWHistoricalLogView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B72D571C9B9F4C00E2920F /* LWHistoricalLogView.m */; };
+		79B72D5B1C9BA46800E2920F /* LWHistoricalLogCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B72D5A1C9BA46800E2920F /* LWHistoricalLogCell.m */; };
+		79B72D5E1C9BAF9000E2920F /* LWLogStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B72D5D1C9BAF9000E2920F /* LWLogStateView.m */; };
+		79B72D621C9BB16900E2920F /* jiyongyao@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79B72D5F1C9BB16900E2920F /* jiyongyao@3x.png */; };
+		79B72D631C9BB16900E2920F /* jizhengzhuang@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79B72D601C9BB16900E2920F /* jizhengzhuang@3x.png */; };
+		79B72D641C9BB16900E2920F /* tianjiarizhi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79B72D611C9BB16900E2920F /* tianjiarizhi@3x.png */; };
+		79B72D681C9BB17600E2920F /* jiyongyao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79B72D651C9BB17600E2920F /* jiyongyao@2x.png */; };
+		79B72D691C9BB17600E2920F /* jizhengzhuang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79B72D661C9BB17600E2920F /* jizhengzhuang@2x.png */; };
+		79B72D6A1C9BB17600E2920F /* tianjiarizhi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79B72D671C9BB17600E2920F /* tianjiarizhi@2x.png */; };
 		79BA50E71C9A43D8006A5AE4 /* JSDropmenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50DC1C9A43D8006A5AE4 /* JSDropmenuView.m */; };
 		79BA50E91C9A43D8006A5AE4 /* LWHistoricalHeardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50E01C9A43D8006A5AE4 /* LWHistoricalHeardView.m */; };
 		79BA50EA1C9A43D8006A5AE4 /* LWHistoricalItmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50E21C9A43D8006A5AE4 /* LWHistoricalItmView.m */; };
@@ -502,8 +501,6 @@
 		79BA50EF1C9A4563006A5AE4 /* LWSymptomsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50EE1C9A4563006A5AE4 /* LWSymptomsCell.m */; };
 		79BA50F21C9A45EB006A5AE4 /* LWSymptomsFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50F11C9A45EB006A5AE4 /* LWSymptomsFootView.m */; };
 		79BA50F51C9A5A8E006A5AE4 /* LWSymptomsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50F41C9A5A8E006A5AE4 /* LWSymptomsButton.m */; };
-		79BA50F81C9A5E9A006A5AE4 /* UIViewMedicationFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50F71C9A5E9A006A5AE4 /* UIViewMedicationFootView.m */; };
-		79BA50FB1C9A5EFF006A5AE4 /* LWMedicationTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50FA1C9A5EFF006A5AE4 /* LWMedicationTitleCell.m */; };
 		79BA50FE1C9A5F28006A5AE4 /* LWMedicationContentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50FD1C9A5F28006A5AE4 /* LWMedicationContentCell.m */; };
 		79BA51011C9A7CF8006A5AE4 /* LWMedicationTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA51001C9A7CF8006A5AE4 /* LWMedicationTypeView.m */; };
 		79BA51041C9A83FC006A5AE4 /* LWMedicationTitleTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA51031C9A83FC006A5AE4 /* LWMedicationTitleTypeView.m */; };
@@ -523,11 +520,8 @@
 		79BB5F0E1C1038F600E7046B /* UIViewController+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BB5F0D1C1038F600E7046B /* UIViewController+Factory.m */; };
 		79BD63AC1C911BED00415D63 /* Statistical.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 79BD63AB1C911BED00415D63 /* Statistical.rtf */; };
 		79CCF5E31C3FA0B900A00104 /* LWVisitList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79CCF5E21C3FA0B900A00104 /* LWVisitList.plist */; };
-		79CEEDD71C017E0F004D6786 /* FlipTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CEEDD31C017E0F004D6786 /* FlipTableView.m */; };
 		79CEEDD81C017E0F004D6786 /* SegmentTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CEEDD61C017E0F004D6786 /* SegmentTapView.m */; };
 		79CEEDED1C0184A0004D6786 /* LWPatientLogDateIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CEEDEC1C0184A0004D6786 /* LWPatientLogDateIndexView.m */; };
-		79CEEDF51C01B7FF004D6786 /* LWPatientLogSymptomsCountCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CEEDF41C01B7FF004D6786 /* LWPatientLogSymptomsCountCell.m */; };
-		79CEEDF81C01B82D004D6786 /* LWPatientLogSymptomsDescribeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CEEDF71C01B82D004D6786 /* LWPatientLogSymptomsDescribeCell.m */; };
 		79E52B2F1C3CAA230079CE14 /* LWNewFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E52B2E1C3CAA230079CE14 /* LWNewFriendsViewController.m */; };
 		79E573651C002EE500797B2E /* LWCustomMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E573641C002EE500797B2E /* LWCustomMenu.m */; };
 		79E573681C003A2C00797B2E /* LWPatientListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E573671C003A2C00797B2E /* LWPatientListModel.m */; };
@@ -671,8 +665,6 @@
 		790243A71C4E302E0010B1D9 /* LWPatientRelatedPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRelatedPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		790243A81C4E302E0010B1D9 /* LWPatientRelatedPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRelatedPhotoView.h; sourceTree = "<group>"; };
 		790243A91C4E302E0010B1D9 /* LWPatientRelatedPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRelatedPhotoView.m; sourceTree = "<group>"; };
-		790243AA1C4E302E0010B1D9 /* LWPatientRelatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRelatedView.h; sourceTree = "<group>"; };
-		790243AB1C4E302E0010B1D9 /* LWPatientRelatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRelatedView.m; sourceTree = "<group>"; };
 		790243AD1C4E302E0010B1D9 /* LWTimerButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTimerButtonCell.h; sourceTree = "<group>"; };
 		790243AE1C4E302E0010B1D9 /* LWTimerButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTimerButtonCell.m; sourceTree = "<group>"; };
 		790243AF1C4E302E0010B1D9 /* LWTimerRemindIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTimerRemindIndexView.h; sourceTree = "<group>"; };
@@ -685,6 +677,9 @@
 		7905156D1BFDB16E001D5F33 /* LWSenderResBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWSenderResBaseModel.m; sourceTree = "<group>"; };
 		7905156E1BFDB16E001D5F33 /* LWSenderResBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSenderResBody.h; sourceTree = "<group>"; };
 		7905156F1BFDB16E001D5F33 /* LWSenderResBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWSenderResBody.m; sourceTree = "<group>"; };
+		790651171C9F9DAC004E13D0 /* LWSymptomsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LWSymptomsList.plist; sourceTree = "<group>"; };
+		790651191C9FC8E6004E13D0 /* LWScaleCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWScaleCircleView.h; sourceTree = "<group>"; };
+		7906511A1C9FC8E6004E13D0 /* LWScaleCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWScaleCircleView.m; sourceTree = "<group>"; };
 		79084E101C2792060002BBF2 /* LWChatLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatLoadingView.h; sourceTree = "<group>"; };
 		79084E111C2792060002BBF2 /* LWChatLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatLoadingView.m; sourceTree = "<group>"; };
 		79084E151C27945D0002BBF2 /* sendFail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sendFail.png; sourceTree = "<group>"; };
@@ -747,6 +742,8 @@
 		790BE94B1C02FAFC00BD1D67 /* LWACTAssessmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWACTAssessmentModel.m; sourceTree = "<group>"; };
 		790EE5521C7EA261004ABC78 /* LWReservationDetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWReservationDetailedViewController.h; sourceTree = "<group>"; };
 		790EE5531C7EA261004ABC78 /* LWReservationDetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWReservationDetailedViewController.m; sourceTree = "<group>"; };
+		791148F31C9BE8460020AB2C /* LWHistoricalCountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalCountModel.h; sourceTree = "<group>"; };
+		791148F41C9BE8460020AB2C /* LWHistoricalCountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWHistoricalCountModel.m; sourceTree = "<group>"; };
 		7912112A1BF1A6A6004166C5 /* BreatheDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreatheDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7912112E1BF1A6A6004166C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		791211301BF1A6A6004166C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -856,6 +853,8 @@
 		7929ACC41C33BE99002712EC /* LWTheFormTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTheFormTypeView.m; sourceTree = "<group>"; };
 		7929ACC71C33CA93002712EC /* LWTimerRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTimerRemindViewController.h; sourceTree = "<group>"; };
 		7929ACC81C33CA93002712EC /* LWTimerRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTimerRemindViewController.m; sourceTree = "<group>"; };
+		792EF0CA1CA0EC9F001A69CC /* LWHistoricalLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalLogModel.h; sourceTree = "<group>"; };
+		792EF0CB1CA0EC9F001A69CC /* LWHistoricalLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWHistoricalLogModel.m; sourceTree = "<group>"; };
 		7938E5681C0EDBA800AD043F /* LWCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWCardView.h; sourceTree = "<group>"; };
 		7938E5691C0EDBA800AD043F /* LWCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWCardView.m; sourceTree = "<group>"; };
 		7938E56A1C0EDBA800AD043F /* UUMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUMessageCell.h; sourceTree = "<group>"; };
@@ -903,7 +902,6 @@
 		794555431C0BD98F005C0E10 /* UIView+TKGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TKGeometry.h"; sourceTree = "<group>"; };
 		794555441C0BD98F005C0E10 /* UIView+TKGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TKGeometry.m"; sourceTree = "<group>"; };
 		794556411C0BDA15005C0E10 /* DefaultDiscover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DefaultDiscover.png; sourceTree = "<group>"; };
-		794556421C0BDA15005C0E10 /* DefaultLogo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DefaultLogo.jpg; sourceTree = "<group>"; };
 		794556441C0BDA15005C0E10 /* login_account_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_account_img@2x.png"; sourceTree = "<group>"; };
 		794556461C0BDA15005C0E10 /* newPatient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newPatient@2x.png"; sourceTree = "<group>"; };
 		794556471C0BDA15005C0E10 /* newPatient@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newPatient@3x.png"; sourceTree = "<group>"; };
@@ -955,7 +953,6 @@
 		7945568C1C0BDA15005C0E10 /* yisheng_@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yisheng_@3x.png"; sourceTree = "<group>"; };
 		7945568D1C0BDA15005C0E10 /* yishengzhushousy_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yishengzhushousy_03@2x.png"; sourceTree = "<group>"; };
 		7945568F1C0BDA15005C0E10 /* ysiheng_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ysiheng_03@2x.png"; sourceTree = "<group>"; };
-		794556951C0BDA15005C0E10 /* newLoingNav_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newLoingNav_@2x.png"; sourceTree = "<group>"; };
 		794556971C0BDA15005C0E10 /* personalcenter_14@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personalcenter_14@2x.png"; sourceTree = "<group>"; };
 		794556991C0BDA15005C0E10 /* personalcenter_42@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personalcenter_42@2x.png"; sourceTree = "<group>"; };
 		7945569A1C0BDA15005C0E10 /* yishenPersonalCenter-11_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yishenPersonalCenter-11_@2x.png"; sourceTree = "<group>"; };
@@ -980,8 +977,6 @@
 		794556AE1C0BDA15005C0E10 /* yitianxie_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yitianxie_@2x.png"; sourceTree = "<group>"; };
 		794556AF1C0BDA15005C0E10 /* yiwanchen_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yiwanchen_@2x.png"; sourceTree = "<group>"; };
 		794556B11C0BDA15005C0E10 /* defaultIconImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultIconImage@2x.png"; sourceTree = "<group>"; };
-		794557471C0C1C12005C0E10 /* LWLineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWLineButton.h; sourceTree = "<group>"; };
-		794557481C0C1C12005C0E10 /* LWLineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWLineButton.m; sourceTree = "<group>"; };
 		7945574A1C0C261B005C0E10 /* YS-2_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "YS-2_@2x.png"; sourceTree = "<group>"; };
 		794557521C0C323D005C0E10 /* MZBlurEffectAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBlurEffectAdapter.h; sourceTree = "<group>"; };
 		794557531C0C323D005C0E10 /* MZBlurEffectAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBlurEffectAdapter.m; sourceTree = "<group>"; };
@@ -1023,18 +1018,6 @@
 		794D51511C7EE46900403767 /* LWOrderDetailedLisetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderDetailedLisetCell.m; sourceTree = "<group>"; };
 		794D51531C7EE9CE00403767 /* LWOrderDetailedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderDetailedListViewController.h; sourceTree = "<group>"; };
 		794D51541C7EE9CE00403767 /* LWOrderDetailedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderDetailedListViewController.m; sourceTree = "<group>"; };
-		7952F0E11C0550C90030B279 /* BaseChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseChartView.h; sourceTree = "<group>"; };
-		7952F0E21C0550C90030B279 /* BaseChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseChartView.m; sourceTree = "<group>"; };
-		7952F0E31C0550C90030B279 /* LineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartView.h; sourceTree = "<group>"; };
-		7952F0E41C0550C90030B279 /* LineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartView.m; sourceTree = "<group>"; };
-		7952F0EB1C0550FB0030B279 /* CoordinateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateItem.h; sourceTree = "<group>"; };
-		7952F0EC1C0550FB0030B279 /* CoordinateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinateItem.m; sourceTree = "<group>"; };
-		7952F0EF1C0556240030B279 /* LWPEFLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFLineCell.h; sourceTree = "<group>"; };
-		7952F0F01C0556240030B279 /* LWPEFLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPEFLineCell.m; sourceTree = "<group>"; };
-		7952F0F21C05563C0030B279 /* LWPEFCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFCountCell.h; sourceTree = "<group>"; };
-		7952F0F31C05563C0030B279 /* LWPEFCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPEFCountCell.m; sourceTree = "<group>"; };
-		7952F0F51C055B510030B279 /* DrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawView.h; sourceTree = "<group>"; };
-		7952F0F61C055B510030B279 /* DrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawView.m; sourceTree = "<group>"; };
 		7952F0FA1C0582880030B279 /* LWPEFBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFBody.h; sourceTree = "<group>"; };
 		7952F0FB1C0582880030B279 /* LWPEFBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPEFBody.m; sourceTree = "<group>"; };
 		7952F0FC1C0582880030B279 /* LWPEFLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFLineModel.h; sourceTree = "<group>"; };
@@ -1072,39 +1055,34 @@
 		7955C29A1C044BB4003D6836 /* LWACTModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWACTModel.m; sourceTree = "<group>"; };
 		7955DC061C4CDCAA00314221 /* LWPatientBiaoDanBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientBiaoDanBody.h; sourceTree = "<group>"; };
 		7955DC071C4CDCAA00314221 /* LWPatientBiaoDanBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientBiaoDanBody.m; sourceTree = "<group>"; };
-		7959648E1C06E2BC001C18D8 /* LWMedicationLogCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMedicationLogCountCell.h; sourceTree = "<group>"; };
-		7959648F1C06E2BC001C18D8 /* LWMedicationLogCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMedicationLogCountCell.m; sourceTree = "<group>"; };
-		795964911C06E2D8001C18D8 /* LWMedicationLogHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMedicationLogHeadCell.h; sourceTree = "<group>"; };
-		795964921C06E2D8001C18D8 /* LWMedicationLogHeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMedicationLogHeadCell.m; sourceTree = "<group>"; };
-		795964941C06E2EC001C18D8 /* LWMedicationLogTimerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMedicationLogTimerCell.h; sourceTree = "<group>"; };
-		795964951C06E2EC001C18D8 /* LWMedicationLogTimerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMedicationLogTimerCell.m; sourceTree = "<group>"; };
-		795964971C06F09A001C18D8 /* LWMedicationLogTimerOneCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMedicationLogTimerOneCell.h; sourceTree = "<group>"; };
-		795964981C06F09A001C18D8 /* LWMedicationLogTimerOneCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMedicationLogTimerOneCell.m; sourceTree = "<group>"; };
+		7958ED5E1CA143F000C7FE11 /* LWPEFLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFLineView.h; sourceTree = "<group>"; };
+		7958ED5F1CA143F000C7FE11 /* LWPEFLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPEFLineView.m; sourceTree = "<group>"; };
+		7958ED611CA2907B00C7FE11 /* LWPatientRelatedVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRelatedVC.h; sourceTree = "<group>"; };
+		7958ED621CA2907B00C7FE11 /* LWPatientRelatedVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRelatedVC.m; sourceTree = "<group>"; };
+		7958ED641CA291D200C7FE11 /* LWBasePatientRelatedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWBasePatientRelatedCell.h; sourceTree = "<group>"; };
+		7958ED651CA291D200C7FE11 /* LWBasePatientRelatedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWBasePatientRelatedCell.m; sourceTree = "<group>"; };
+		7958ED671CA2982500C7FE11 /* LWPatientRelatedPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRelatedPhotoCell.h; sourceTree = "<group>"; };
+		7958ED681CA2982500C7FE11 /* LWPatientRelatedPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRelatedPhotoCell.m; sourceTree = "<group>"; };
+		7958ED6A1CA3B0E800C7FE11 /* KLPatientRelatedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientRelatedModel.h; sourceTree = "<group>"; };
+		7958ED6B1CA3B0E800C7FE11 /* KLPatientRelatedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPatientRelatedModel.m; sourceTree = "<group>"; };
+		7958EDC21CA3DCCD00C7FE11 /* KLPatientLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientLogModel.h; sourceTree = "<group>"; };
+		7958EDC31CA3DCCD00C7FE11 /* KLPatientLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPatientLogModel.m; sourceTree = "<group>"; };
+		7958EDC51CA4D55D00C7FE11 /* KLPatientLogBodyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientLogBodyModel.h; sourceTree = "<group>"; };
+		7958EDC61CA4D55D00C7FE11 /* KLPatientLogBodyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPatientLogBodyModel.m; sourceTree = "<group>"; };
 		7959649A1C06F1F4001C18D8 /* LWMedicationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMedicationModel.h; sourceTree = "<group>"; };
 		7959649B1C06F1F4001C18D8 /* LWMedicationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMedicationModel.m; sourceTree = "<group>"; };
 		795B6C1E1C47539B00612AF6 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
 		795B6C201C47539B00612AF6 /* LWDoctorTimerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWDoctorTimerModel.h; sourceTree = "<group>"; };
 		795B6C211C47539B00612AF6 /* LWDoctorTimerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWDoctorTimerModel.m; sourceTree = "<group>"; };
 		795E0A2E1C118C92001699DF /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		795E0A2F1C118C92001699DF /* PatientLog.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PatientLog.storyboard; sourceTree = "<group>"; };
 		795FE0811C07FD1800B2EA2A /* LWYerChangIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWYerChangIndexView.h; sourceTree = "<group>"; };
 		795FE0821C07FD1800B2EA2A /* LWYerChangIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWYerChangIndexView.m; sourceTree = "<group>"; };
-		795FE0851C0807D700B2EA2A /* LWAssessmentLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWAssessmentLineCell.h; sourceTree = "<group>"; };
-		795FE0861C0807D700B2EA2A /* LWAssessmentLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWAssessmentLineCell.m; sourceTree = "<group>"; };
-		795FE0881C0807EA00B2EA2A /* LWAssessmentStarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWAssessmentStarCell.h; sourceTree = "<group>"; };
-		795FE0891C0807EA00B2EA2A /* LWAssessmentStarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWAssessmentStarCell.m; sourceTree = "<group>"; };
 		795FE08B1C080C2D00B2EA2A /* LWAssessmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWAssessmentModel.h; sourceTree = "<group>"; };
 		795FE08C1C080C2D00B2EA2A /* LWAssessmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWAssessmentModel.m; sourceTree = "<group>"; };
 		795FE0901C08295200B2EA2A /* LWAsthmaAssessLogBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWAsthmaAssessLogBody.h; sourceTree = "<group>"; };
 		795FE0911C08295200B2EA2A /* LWAsthmaAssessLogBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWAsthmaAssessLogBody.m; sourceTree = "<group>"; };
 		795FE0921C08295200B2EA2A /* LWAsthmaAssessLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWAsthmaAssessLogModel.h; sourceTree = "<group>"; };
 		795FE0931C08295200B2EA2A /* LWAsthmaAssessLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWAsthmaAssessLogModel.m; sourceTree = "<group>"; };
-		795FE0971C082A6400B2EA2A /* LWBaseChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWBaseChartView.h; sourceTree = "<group>"; };
-		795FE0981C082A6400B2EA2A /* LWBaseChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWBaseChartView.m; sourceTree = "<group>"; };
-		795FE0991C082A6400B2EA2A /* LWDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWDrawView.h; sourceTree = "<group>"; };
-		795FE09A1C082A6400B2EA2A /* LWDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWDrawView.m; sourceTree = "<group>"; };
-		795FE09B1C082A6400B2EA2A /* LWLineChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWLineChartView.h; sourceTree = "<group>"; };
-		795FE09C1C082A6400B2EA2A /* LWLineChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWLineChartView.m; sourceTree = "<group>"; };
 		796991621C448D9A00A3A2C6 /* 01_act_@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01_act_@3x.png"; sourceTree = "<group>"; };
 		796991631C448D9A00A3A2C6 /* 02_act_@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02_act_@3x.png"; sourceTree = "<group>"; };
 		796991641C448D9A00A3A2C6 /* 03_act_@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "03_act_@3x.png"; sourceTree = "<group>"; };
@@ -1202,6 +1180,24 @@
 		7990D7B21C7AF76A00127A28 /* RFLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLayout.m; sourceTree = "<group>"; };
 		7990D7B41C7AF9D400127A28 /* LWOrderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderCollectionViewCell.h; sourceTree = "<group>"; };
 		7990D7B51C7AF9D400127A28 /* LWOrderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderCollectionViewCell.m; sourceTree = "<group>"; };
+		7990DF181CA4EA880096DA4B /* KLHistoricalOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLHistoricalOperation.h; sourceTree = "<group>"; };
+		7990DF191CA4EA880096DA4B /* KLHistoricalOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLHistoricalOperation.m; sourceTree = "<group>"; };
+		7990DF1B1CA501E30096DA4B /* KLSymptomsLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLSymptomsLogModel.h; sourceTree = "<group>"; };
+		7990DF1C1CA501E30096DA4B /* KLSymptomsLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSymptomsLogModel.m; sourceTree = "<group>"; };
+		7990DF1E1CA647AC0096DA4B /* NSObject+ProperList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ProperList.h"; sourceTree = "<group>"; };
+		7990DF1F1CA647AC0096DA4B /* NSObject+ProperList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ProperList.m"; sourceTree = "<group>"; };
+		7990DF211CA7BC4C0096DA4B /* KLStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLStateView.h; sourceTree = "<group>"; };
+		7990DF221CA7BC4C0096DA4B /* KLStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLStateView.m; sourceTree = "<group>"; };
+		7990DF241CA7C3470096DA4B /* KLStateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLStateCell.h; sourceTree = "<group>"; };
+		7990DF251CA7C3470096DA4B /* KLStateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLStateCell.m; sourceTree = "<group>"; };
+		7990DF271CA7C4350096DA4B /* KLStateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLStateModel.h; sourceTree = "<group>"; };
+		7990DF281CA7C4350096DA4B /* KLStateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLStateModel.m; sourceTree = "<group>"; };
+		7990DF2A1CA8F8160096DA4B /* KLPEFItmLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPEFItmLineView.h; sourceTree = "<group>"; };
+		7990DF2B1CA8F8160096DA4B /* KLPEFItmLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPEFItmLineView.m; sourceTree = "<group>"; };
+		7990DF2D1CA900A00096DA4B /* CoordinateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoordinateItem.h; sourceTree = "<group>"; };
+		7990DF2E1CA900A00096DA4B /* CoordinateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinateItem.m; sourceTree = "<group>"; };
+		7990DF301CA9018E0096DA4B /* LWLineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWLineButton.h; sourceTree = "<group>"; };
+		7990DF311CA9018E0096DA4B /* LWLineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWLineButton.m; sourceTree = "<group>"; };
 		7994D58D1C57256200E41865 /* UMSDataMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSDataMgr.h; sourceTree = "<group>"; };
 		7994D58E1C57256200E41865 /* UMSDataMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSDataMgr.m; sourceTree = "<group>"; };
 		7994D58F1C57256200E41865 /* UMSNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSNetwork.h; sourceTree = "<group>"; };
@@ -1276,10 +1272,6 @@
 		799788671C98F10600E86B91 /* LWBaseHistoricalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWBaseHistoricalView.m; sourceTree = "<group>"; };
 		799788731C9A42D100E86B91 /* LWMedicationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMedicationView.h; sourceTree = "<group>"; };
 		799788741C9A42D100E86B91 /* LWMedicationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMedicationView.m; sourceTree = "<group>"; };
-		799788761C9A42D100E86B91 /* LWPEFHistoricalHeardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFHistoricalHeardView.h; sourceTree = "<group>"; };
-		799788771C9A42D100E86B91 /* LWPEFHistoricalHeardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPEFHistoricalHeardView.m; sourceTree = "<group>"; };
-		799788781C9A42D100E86B91 /* LWPEFHistoricalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFHistoricalView.h; sourceTree = "<group>"; };
-		799788791C9A42D100E86B91 /* LWPEFHistoricalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPEFHistoricalView.m; sourceTree = "<group>"; };
 		7997887A1C9A42D100E86B91 /* LWPEFHistorListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFHistorListCell.h; sourceTree = "<group>"; };
 		7997887B1C9A42D100E86B91 /* LWPEFHistorListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPEFHistorListCell.m; sourceTree = "<group>"; };
 		7997887C1C9A42D100E86B91 /* LWPEFHistorListTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFHistorListTitleCell.h; sourceTree = "<group>"; };
@@ -1296,26 +1288,10 @@
 		79AD85F41C4F300E00EBE224 /* LWPatientGroupsCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientGroupsCtr.m; sourceTree = "<group>"; };
 		79AD85F71C4F300E00EBE224 /* LWPatientListCtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientListCtr.h; sourceTree = "<group>"; };
 		79AD85F81C4F300E00EBE224 /* LWPatientListCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientListCtr.m; sourceTree = "<group>"; };
-		79AD85FA1C4F300E00EBE224 /* LWPatientRelatedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRelatedViewController.h; sourceTree = "<group>"; };
-		79AD85FB1C4F300E00EBE224 /* LWPatientRelatedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRelatedViewController.m; sourceTree = "<group>"; };
 		79AD85FD1C4F300E00EBE224 /* LWPatientRecordsCtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRecordsCtr.h; sourceTree = "<group>"; };
 		79AD85FE1C4F300E00EBE224 /* LWPatientRecordsCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRecordsCtr.m; sourceTree = "<group>"; };
 		79AD85FF1C4F300E00EBE224 /* LWPatientRemarksCtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRemarksCtr.h; sourceTree = "<group>"; };
 		79AD86001C4F300E00EBE224 /* LWPatientRemarksCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRemarksCtr.m; sourceTree = "<group>"; };
-		79AD861E1C4F30C200EBE224 /* LWLineACTAssessmentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWLineACTAssessmentVC.h; sourceTree = "<group>"; };
-		79AD861F1C4F30C200EBE224 /* LWLineACTAssessmentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWLineACTAssessmentVC.m; sourceTree = "<group>"; };
-		79AD86201C4F30C200EBE224 /* LWPatientAssessmentLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientAssessmentLogVC.h; sourceTree = "<group>"; };
-		79AD86211C4F30C200EBE224 /* LWPatientAssessmentLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientAssessmentLogVC.m; sourceTree = "<group>"; };
-		79AD86221C4F30C200EBE224 /* LWPatientLogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientLogViewController.h; sourceTree = "<group>"; };
-		79AD86231C4F30C200EBE224 /* LWPatientLogViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientLogViewController.m; sourceTree = "<group>"; };
-		79AD86241C4F30C200EBE224 /* LWPatientMedicationLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientMedicationLogVC.h; sourceTree = "<group>"; };
-		79AD86251C4F30C200EBE224 /* LWPatientMedicationLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientMedicationLogVC.m; sourceTree = "<group>"; };
-		79AD86261C4F30C200EBE224 /* LWPatientPEFLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientPEFLogVC.h; sourceTree = "<group>"; };
-		79AD86271C4F30C200EBE224 /* LWPatientPEFLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientPEFLogVC.m; sourceTree = "<group>"; };
-		79AD86281C4F30C200EBE224 /* LWPatientSymptomsLogVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientSymptomsLogVC.h; sourceTree = "<group>"; };
-		79AD86291C4F30C200EBE224 /* LWPatientSymptomsLogVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientSymptomsLogVC.m; sourceTree = "<group>"; };
-		79AD862A1C4F30C200EBE224 /* LWPEFRecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFRecordView.h; sourceTree = "<group>"; };
-		79AD862B1C4F30C200EBE224 /* LWPEFRecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPEFRecordView.m; sourceTree = "<group>"; };
 		79AD86341C4F320100EBE224 /* LWRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWRootViewController.h; sourceTree = "<group>"; };
 		79AD86351C4F320100EBE224 /* LWRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWRootViewController.m; sourceTree = "<group>"; };
 		79AD919F1BF2CEF60098D6CD /* CDCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDCheckBox.h; sourceTree = "<group>"; };
@@ -1339,6 +1315,18 @@
 		79AD91EC1BF325A00098D6CD /* LWHttpDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LWHttpDefine.h; sourceTree = "<group>"; };
 		79AD91F31BF33CCB0098D6CD /* YRJSONAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YRJSONAdapter.h; sourceTree = "<group>"; };
 		79AD91F41BF33CCB0098D6CD /* YRJSONAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YRJSONAdapter.m; sourceTree = "<group>"; };
+		79B72D561C9B9F4C00E2920F /* LWHistoricalLogView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalLogView.h; sourceTree = "<group>"; };
+		79B72D571C9B9F4C00E2920F /* LWHistoricalLogView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWHistoricalLogView.m; sourceTree = "<group>"; };
+		79B72D591C9BA46800E2920F /* LWHistoricalLogCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalLogCell.h; sourceTree = "<group>"; };
+		79B72D5A1C9BA46800E2920F /* LWHistoricalLogCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWHistoricalLogCell.m; sourceTree = "<group>"; };
+		79B72D5C1C9BAF9000E2920F /* LWLogStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWLogStateView.h; sourceTree = "<group>"; };
+		79B72D5D1C9BAF9000E2920F /* LWLogStateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWLogStateView.m; sourceTree = "<group>"; };
+		79B72D5F1C9BB16900E2920F /* jiyongyao@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiyongyao@3x.png"; sourceTree = "<group>"; };
+		79B72D601C9BB16900E2920F /* jizhengzhuang@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jizhengzhuang@3x.png"; sourceTree = "<group>"; };
+		79B72D611C9BB16900E2920F /* tianjiarizhi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tianjiarizhi@3x.png"; sourceTree = "<group>"; };
+		79B72D651C9BB17600E2920F /* jiyongyao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiyongyao@2x.png"; sourceTree = "<group>"; };
+		79B72D661C9BB17600E2920F /* jizhengzhuang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jizhengzhuang@2x.png"; sourceTree = "<group>"; };
+		79B72D671C9BB17600E2920F /* tianjiarizhi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tianjiarizhi@2x.png"; sourceTree = "<group>"; };
 		79BA50DB1C9A43D8006A5AE4 /* JSDropmenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropmenuView.h; sourceTree = "<group>"; };
 		79BA50DC1C9A43D8006A5AE4 /* JSDropmenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropmenuView.m; sourceTree = "<group>"; };
 		79BA50DF1C9A43D8006A5AE4 /* LWHistoricalHeardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalHeardView.h; sourceTree = "<group>"; };
@@ -1355,10 +1343,6 @@
 		79BA50F11C9A45EB006A5AE4 /* LWSymptomsFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWSymptomsFootView.m; sourceTree = "<group>"; };
 		79BA50F31C9A5A8E006A5AE4 /* LWSymptomsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSymptomsButton.h; sourceTree = "<group>"; };
 		79BA50F41C9A5A8E006A5AE4 /* LWSymptomsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWSymptomsButton.m; sourceTree = "<group>"; };
-		79BA50F61C9A5E9A006A5AE4 /* UIViewMedicationFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewMedicationFootView.h; sourceTree = "<group>"; };
-		79BA50F71C9A5E9A006A5AE4 /* UIViewMedicationFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewMedicationFootView.m; sourceTree = "<group>"; };
-		79BA50F91C9A5EFF006A5AE4 /* LWMedicationTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMedicationTitleCell.h; sourceTree = "<group>"; };
-		79BA50FA1C9A5EFF006A5AE4 /* LWMedicationTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMedicationTitleCell.m; sourceTree = "<group>"; };
 		79BA50FC1C9A5F28006A5AE4 /* LWMedicationContentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMedicationContentCell.h; sourceTree = "<group>"; };
 		79BA50FD1C9A5F28006A5AE4 /* LWMedicationContentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMedicationContentCell.m; sourceTree = "<group>"; };
 		79BA50FF1C9A7CF8006A5AE4 /* LWMedicationTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMedicationTypeView.h; sourceTree = "<group>"; };
@@ -1389,16 +1373,10 @@
 		79BB5F0D1C1038F600E7046B /* UIViewController+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Factory.m"; sourceTree = "<group>"; };
 		79BD63AB1C911BED00415D63 /* Statistical.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Statistical.rtf; sourceTree = "<group>"; };
 		79CCF5E21C3FA0B900A00104 /* LWVisitList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LWVisitList.plist; sourceTree = "<group>"; };
-		79CEEDD21C017E0F004D6786 /* FlipTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlipTableView.h; sourceTree = "<group>"; };
-		79CEEDD31C017E0F004D6786 /* FlipTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlipTableView.m; sourceTree = "<group>"; };
 		79CEEDD51C017E0F004D6786 /* SegmentTapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentTapView.h; sourceTree = "<group>"; };
 		79CEEDD61C017E0F004D6786 /* SegmentTapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentTapView.m; sourceTree = "<group>"; };
 		79CEEDEB1C0184A0004D6786 /* LWPatientLogDateIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientLogDateIndexView.h; sourceTree = "<group>"; };
 		79CEEDEC1C0184A0004D6786 /* LWPatientLogDateIndexView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientLogDateIndexView.m; sourceTree = "<group>"; };
-		79CEEDF31C01B7FF004D6786 /* LWPatientLogSymptomsCountCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientLogSymptomsCountCell.h; sourceTree = "<group>"; };
-		79CEEDF41C01B7FF004D6786 /* LWPatientLogSymptomsCountCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientLogSymptomsCountCell.m; sourceTree = "<group>"; };
-		79CEEDF61C01B82D004D6786 /* LWPatientLogSymptomsDescribeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientLogSymptomsDescribeCell.h; sourceTree = "<group>"; };
-		79CEEDF71C01B82D004D6786 /* LWPatientLogSymptomsDescribeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientLogSymptomsDescribeCell.m; sourceTree = "<group>"; };
 		79E52B2D1C3CAA230079CE14 /* LWNewFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWNewFriendsViewController.h; sourceTree = "<group>"; };
 		79E52B2E1C3CAA230079CE14 /* LWNewFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWNewFriendsViewController.m; sourceTree = "<group>"; };
 		79E573631C002EE500797B2E /* LWCustomMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWCustomMenu.h; sourceTree = "<group>"; };
@@ -1652,8 +1630,6 @@
 				790243A71C4E302E0010B1D9 /* LWPatientRelatedPhotoCollectionViewCell.m */,
 				790243A81C4E302E0010B1D9 /* LWPatientRelatedPhotoView.h */,
 				790243A91C4E302E0010B1D9 /* LWPatientRelatedPhotoView.m */,
-				790243AA1C4E302E0010B1D9 /* LWPatientRelatedView.h */,
-				790243AB1C4E302E0010B1D9 /* LWPatientRelatedView.m */,
 			);
 			path = Related;
 			sourceTree = "<group>";
@@ -1876,6 +1852,8 @@
 			children = (
 				7994D5B11C57263400E41865 /* NSMutableArray+Sort.h */,
 				7994D5B21C57263400E41865 /* NSMutableArray+Sort.m */,
+				7990DF1E1CA647AC0096DA4B /* NSObject+ProperList.h */,
+				7990DF1F1CA647AC0096DA4B /* NSObject+ProperList.m */,
 				79BA9FAB1C45E18600D9236A /* UITextView */,
 				79BB5F0B1C1038F600E7046B /* UIViewController */,
 				794555291C0BD98F005C0E10 /* NSDate */,
@@ -1914,10 +1892,6 @@
 			isa = PBXGroup;
 			children = (
 				7990D7AA1C7AF11C00127A28 /* order */,
-				795FE0961C082A6400B2EA2A /* ChartViews */,
-				7952F0DE1C0550C90030B279 /* LineViews */,
-				79CEEDEE1C01B78D004D6786 /* Log */,
-				79CEEDD11C017E0F004D6786 /* FlipTableView */,
 				79CEEDD41C017E0F004D6786 /* SegementTap */,
 				79E573631C002EE500797B2E /* LWCustomMenu.h */,
 				79E573641C002EE500797B2E /* LWCustomMenu.m */,
@@ -2027,7 +2001,6 @@
 			isa = PBXGroup;
 			children = (
 				79ADACA11C9684FE001C02AC /* historical */,
-				79AD861D1C4F30C200EBE224 /* TheLog */,
 				79AD85F01C4F300E00EBE224 /* center */,
 				79AD85F61C4F300E00EBE224 /* list */,
 				79AD85F91C4F300E00EBE224 /* related */,
@@ -2142,6 +2115,8 @@
 			children = (
 				791935D61C7C589000EF4FFA /* DZ_ScaleCircle.h */,
 				791935D71C7C589000EF4FFA /* DZ_ScaleCircle.m */,
+				790651191C9FC8E6004E13D0 /* LWScaleCircleView.h */,
+				7906511A1C9FC8E6004E13D0 /* LWScaleCircleView.m */,
 			);
 			path = DZ_Scale_Circle;
 			sourceTree = "<group>";
@@ -2360,7 +2335,6 @@
 			isa = PBXGroup;
 			children = (
 				794556411C0BDA15005C0E10 /* DefaultDiscover.png */,
-				794556421C0BDA15005C0E10 /* DefaultLogo.jpg */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -2463,20 +2437,11 @@
 		794556901C0BDA15005C0E10 /* PersonalCenter */ = {
 			isa = PBXGroup;
 			children = (
-				794556941C0BDA15005C0E10 /* newLoing */,
 				794556971C0BDA15005C0E10 /* personalcenter_14@2x.png */,
 				794556991C0BDA15005C0E10 /* personalcenter_42@2x.png */,
 				7945569A1C0BDA15005C0E10 /* yishenPersonalCenter-11_@2x.png */,
 			);
 			path = PersonalCenter;
-			sourceTree = "<group>";
-		};
-		794556941C0BDA15005C0E10 /* newLoing */ = {
-			isa = PBXGroup;
-			children = (
-				794556951C0BDA15005C0E10 /* newLoingNav_@2x.png */,
-			);
-			path = newLoing;
 			sourceTree = "<group>";
 		};
 		7945569B1C0BDA15005C0E10 /* Question list */ = {
@@ -2555,34 +2520,6 @@
 				7945576B1C0C323E005C0E10 /* UIViewController+TargetViewController.m */,
 			);
 			path = MZFormSheetPresentationController;
-			sourceTree = "<group>";
-		};
-		7952F0DE1C0550C90030B279 /* LineViews */ = {
-			isa = PBXGroup;
-			children = (
-				7952F0F51C055B510030B279 /* DrawView.h */,
-				7952F0F61C055B510030B279 /* DrawView.m */,
-				7952F0EB1C0550FB0030B279 /* CoordinateItem.h */,
-				7952F0EC1C0550FB0030B279 /* CoordinateItem.m */,
-				7952F0E11C0550C90030B279 /* BaseChartView.h */,
-				7952F0E21C0550C90030B279 /* BaseChartView.m */,
-				7952F0E31C0550C90030B279 /* LineChartView.h */,
-				7952F0E41C0550C90030B279 /* LineChartView.m */,
-				794557471C0C1C12005C0E10 /* LWLineButton.h */,
-				794557481C0C1C12005C0E10 /* LWLineButton.m */,
-			);
-			path = LineViews;
-			sourceTree = "<group>";
-		};
-		7952F0EE1C0556090030B279 /* PEF */ = {
-			isa = PBXGroup;
-			children = (
-				7952F0EF1C0556240030B279 /* LWPEFLineCell.h */,
-				7952F0F01C0556240030B279 /* LWPEFLineCell.m */,
-				7952F0F21C05563C0030B279 /* LWPEFCountCell.h */,
-				7952F0F31C05563C0030B279 /* LWPEFCountCell.m */,
-			);
-			path = PEF;
 			sourceTree = "<group>";
 		};
 		7952F0F81C0582880030B279 /* PEF */ = {
@@ -2664,21 +2601,6 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
-		7959648D1C06E29D001C18D8 /* Medication */ = {
-			isa = PBXGroup;
-			children = (
-				7959648E1C06E2BC001C18D8 /* LWMedicationLogCountCell.h */,
-				7959648F1C06E2BC001C18D8 /* LWMedicationLogCountCell.m */,
-				795964911C06E2D8001C18D8 /* LWMedicationLogHeadCell.h */,
-				795964921C06E2D8001C18D8 /* LWMedicationLogHeadCell.m */,
-				795964941C06E2EC001C18D8 /* LWMedicationLogTimerCell.h */,
-				795964951C06E2EC001C18D8 /* LWMedicationLogTimerCell.m */,
-				795964971C06F09A001C18D8 /* LWMedicationLogTimerOneCell.h */,
-				795964981C06F09A001C18D8 /* LWMedicationLogTimerOneCell.m */,
-			);
-			path = Medication;
-			sourceTree = "<group>";
-		};
 		795B6C1F1C47539B00612AF6 /* My */ = {
 			isa = PBXGroup;
 			children = (
@@ -2696,20 +2618,8 @@
 			isa = PBXGroup;
 			children = (
 				795E0A2E1C118C92001699DF /* Main.storyboard */,
-				795E0A2F1C118C92001699DF /* PatientLog.storyboard */,
 			);
 			path = XIB;
-			sourceTree = "<group>";
-		};
-		795FE0841C0807C300B2EA2A /* Assessment */ = {
-			isa = PBXGroup;
-			children = (
-				795FE0851C0807D700B2EA2A /* LWAssessmentLineCell.h */,
-				795FE0861C0807D700B2EA2A /* LWAssessmentLineCell.m */,
-				795FE0881C0807EA00B2EA2A /* LWAssessmentStarCell.h */,
-				795FE0891C0807EA00B2EA2A /* LWAssessmentStarCell.m */,
-			);
-			path = Assessment;
 			sourceTree = "<group>";
 		};
 		795FE08E1C08295200B2EA2A /* AsthmaAssessLog */ = {
@@ -2721,19 +2631,6 @@
 				795FE0931C08295200B2EA2A /* LWAsthmaAssessLogModel.m */,
 			);
 			path = AsthmaAssessLog;
-			sourceTree = "<group>";
-		};
-		795FE0961C082A6400B2EA2A /* ChartViews */ = {
-			isa = PBXGroup;
-			children = (
-				795FE0971C082A6400B2EA2A /* LWBaseChartView.h */,
-				795FE0981C082A6400B2EA2A /* LWBaseChartView.m */,
-				795FE0991C082A6400B2EA2A /* LWDrawView.h */,
-				795FE09A1C082A6400B2EA2A /* LWDrawView.m */,
-				795FE09B1C082A6400B2EA2A /* LWLineChartView.h */,
-				795FE09C1C082A6400B2EA2A /* LWLineChartView.m */,
-			);
-			path = ChartViews;
 			sourceTree = "<group>";
 		};
 		797986221C43384D005052DF /* FastReplyVC */ = {
@@ -2979,6 +2876,9 @@
 		799787E81C96B22200E86B91 /* @2x */ = {
 			isa = PBXGroup;
 			children = (
+				79B72D651C9BB17600E2920F /* jiyongyao@2x.png */,
+				79B72D661C9BB17600E2920F /* jizhengzhuang@2x.png */,
+				79B72D671C9BB17600E2920F /* tianjiarizhi@2x.png */,
 				79BA510B1C9A87A3006A5AE4 /* medjilu@2x.png */,
 				79BA510C1C9A87A3006A5AE4 /* medweijilu@2x.png */,
 				79BA510D1C9A87A3006A5AE4 /* medweitian@2x.png */,
@@ -3013,6 +2913,9 @@
 		799788011C96B22200E86B91 /* @3x */ = {
 			isa = PBXGroup;
 			children = (
+				79B72D5F1C9BB16900E2920F /* jiyongyao@3x.png */,
+				79B72D601C9BB16900E2920F /* jizhengzhuang@3x.png */,
+				79B72D611C9BB16900E2920F /* tianjiarizhi@3x.png */,
 				79BA51051C9A8797006A5AE4 /* medjilu@3x.png */,
 				79BA51061C9A8797006A5AE4 /* medweijilu@3x.png */,
 				79BA51071C9A8797006A5AE4 /* medweitian@3x.png */,
@@ -3049,10 +2952,6 @@
 			children = (
 				799788731C9A42D100E86B91 /* LWMedicationView.h */,
 				799788741C9A42D100E86B91 /* LWMedicationView.m */,
-				79BA50F61C9A5E9A006A5AE4 /* UIViewMedicationFootView.h */,
-				79BA50F71C9A5E9A006A5AE4 /* UIViewMedicationFootView.m */,
-				79BA50F91C9A5EFF006A5AE4 /* LWMedicationTitleCell.h */,
-				79BA50FA1C9A5EFF006A5AE4 /* LWMedicationTitleCell.m */,
 				79BA51021C9A83FC006A5AE4 /* LWMedicationTitleTypeView.h */,
 				79BA51031C9A83FC006A5AE4 /* LWMedicationTitleTypeView.m */,
 				79BA50FC1C9A5F28006A5AE4 /* LWMedicationContentCell.h */,
@@ -3066,10 +2965,10 @@
 		799788751C9A42D100E86B91 /* PEF */ = {
 			isa = PBXGroup;
 			children = (
-				799788761C9A42D100E86B91 /* LWPEFHistoricalHeardView.h */,
-				799788771C9A42D100E86B91 /* LWPEFHistoricalHeardView.m */,
-				799788781C9A42D100E86B91 /* LWPEFHistoricalView.h */,
-				799788791C9A42D100E86B91 /* LWPEFHistoricalView.m */,
+				7990DF301CA9018E0096DA4B /* LWLineButton.h */,
+				7990DF311CA9018E0096DA4B /* LWLineButton.m */,
+				7990DF2D1CA900A00096DA4B /* CoordinateItem.h */,
+				7990DF2E1CA900A00096DA4B /* CoordinateItem.m */,
 				7997887A1C9A42D100E86B91 /* LWPEFHistorListCell.h */,
 				7997887B1C9A42D100E86B91 /* LWPEFHistorListCell.m */,
 				7997887C1C9A42D100E86B91 /* LWPEFHistorListTitleCell.h */,
@@ -3078,6 +2977,10 @@
 				7997887F1C9A42D100E86B91 /* LWPEFListView.m */,
 				799788801C9A42D100E86B91 /* LWPEFView.h */,
 				799788811C9A42D100E86B91 /* LWPEFView.m */,
+				7958ED5E1CA143F000C7FE11 /* LWPEFLineView.h */,
+				7958ED5F1CA143F000C7FE11 /* LWPEFLineView.m */,
+				7990DF2A1CA8F8160096DA4B /* KLPEFItmLineView.h */,
+				7990DF2B1CA8F8160096DA4B /* KLPEFItmLineView.m */,
 			);
 			path = PEF;
 			sourceTree = "<group>";
@@ -3087,12 +2990,15 @@
 			children = (
 				799788831C9A42D100E86B91 /* LWSymptomsView.h */,
 				799788841C9A42D100E86B91 /* LWSymptomsView.m */,
+				7990DF1B1CA501E30096DA4B /* KLSymptomsLogModel.h */,
+				7990DF1C1CA501E30096DA4B /* KLSymptomsLogModel.m */,
 				79BA50F01C9A45EB006A5AE4 /* LWSymptomsFootView.h */,
 				79BA50F11C9A45EB006A5AE4 /* LWSymptomsFootView.m */,
 				79BA50ED1C9A4563006A5AE4 /* LWSymptomsCell.h */,
 				79BA50EE1C9A4563006A5AE4 /* LWSymptomsCell.m */,
 				79BA50F31C9A5A8E006A5AE4 /* LWSymptomsButton.h */,
 				79BA50F41C9A5A8E006A5AE4 /* LWSymptomsButton.m */,
+				790651171C9F9DAC004E13D0 /* LWSymptomsList.plist */,
 			);
 			path = Symptoms;
 			sourceTree = "<group>";
@@ -3137,8 +3043,14 @@
 		79AD85F91C4F300E00EBE224 /* related */ = {
 			isa = PBXGroup;
 			children = (
-				79AD85FA1C4F300E00EBE224 /* LWPatientRelatedViewController.h */,
-				79AD85FB1C4F300E00EBE224 /* LWPatientRelatedViewController.m */,
+				7958ED611CA2907B00C7FE11 /* LWPatientRelatedVC.h */,
+				7958ED621CA2907B00C7FE11 /* LWPatientRelatedVC.m */,
+				7958ED6A1CA3B0E800C7FE11 /* KLPatientRelatedModel.h */,
+				7958ED6B1CA3B0E800C7FE11 /* KLPatientRelatedModel.m */,
+				7958ED641CA291D200C7FE11 /* LWBasePatientRelatedCell.h */,
+				7958ED651CA291D200C7FE11 /* LWBasePatientRelatedCell.m */,
+				7958ED671CA2982500C7FE11 /* LWPatientRelatedPhotoCell.h */,
+				7958ED681CA2982500C7FE11 /* LWPatientRelatedPhotoCell.m */,
 			);
 			path = related;
 			sourceTree = "<group>";
@@ -3152,27 +3064,6 @@
 				79AD86001C4F300E00EBE224 /* LWPatientRemarksCtr.m */,
 			);
 			path = set;
-			sourceTree = "<group>";
-		};
-		79AD861D1C4F30C200EBE224 /* TheLog */ = {
-			isa = PBXGroup;
-			children = (
-				79AD861E1C4F30C200EBE224 /* LWLineACTAssessmentVC.h */,
-				79AD861F1C4F30C200EBE224 /* LWLineACTAssessmentVC.m */,
-				79AD86201C4F30C200EBE224 /* LWPatientAssessmentLogVC.h */,
-				79AD86211C4F30C200EBE224 /* LWPatientAssessmentLogVC.m */,
-				79AD86221C4F30C200EBE224 /* LWPatientLogViewController.h */,
-				79AD86231C4F30C200EBE224 /* LWPatientLogViewController.m */,
-				79AD86241C4F30C200EBE224 /* LWPatientMedicationLogVC.h */,
-				79AD86251C4F30C200EBE224 /* LWPatientMedicationLogVC.m */,
-				79AD86261C4F30C200EBE224 /* LWPatientPEFLogVC.h */,
-				79AD86271C4F30C200EBE224 /* LWPatientPEFLogVC.m */,
-				79AD86281C4F30C200EBE224 /* LWPatientSymptomsLogVC.h */,
-				79AD86291C4F30C200EBE224 /* LWPatientSymptomsLogVC.m */,
-				79AD862A1C4F30C200EBE224 /* LWPEFRecordView.h */,
-				79AD862B1C4F30C200EBE224 /* LWPEFRecordView.m */,
-			);
-			path = TheLog;
 			sourceTree = "<group>";
 		};
 		79AD86331C4F320100EBE224 /* Root */ = {
@@ -3196,23 +3087,53 @@
 		79ADACA11C9684FE001C02AC /* historical */ = {
 			isa = PBXGroup;
 			children = (
+				79B72D551C9B9F3800E2920F /* Log */,
 				799788661C98F10600E86B91 /* LWBaseHistoricalView.h */,
 				799788671C98F10600E86B91 /* LWBaseHistoricalView.m */,
+				7990DF181CA4EA880096DA4B /* KLHistoricalOperation.h */,
+				7990DF191CA4EA880096DA4B /* KLHistoricalOperation.m */,
 				79BA50DA1C9A43D8006A5AE4 /* Historical */,
 				799788721C9A42D100E86B91 /* Medication */,
-				799788751C9A42D100E86B91 /* PEF */,
 				799788821C9A42D100E86B91 /* Symptoms */,
+				799788751C9A42D100E86B91 /* PEF */,
 			);
 			path = historical;
+			sourceTree = "<group>";
+		};
+		79B72D551C9B9F3800E2920F /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				79B72D561C9B9F4C00E2920F /* LWHistoricalLogView.h */,
+				79B72D571C9B9F4C00E2920F /* LWHistoricalLogView.m */,
+				79B72D591C9BA46800E2920F /* LWHistoricalLogCell.h */,
+				79B72D5A1C9BA46800E2920F /* LWHistoricalLogCell.m */,
+				79B72D5C1C9BAF9000E2920F /* LWLogStateView.h */,
+				79B72D5D1C9BAF9000E2920F /* LWLogStateView.m */,
+				7990DF211CA7BC4C0096DA4B /* KLStateView.h */,
+				7990DF221CA7BC4C0096DA4B /* KLStateView.m */,
+				7990DF241CA7C3470096DA4B /* KLStateCell.h */,
+				7990DF251CA7C3470096DA4B /* KLStateCell.m */,
+				7990DF271CA7C4350096DA4B /* KLStateModel.h */,
+				7990DF281CA7C4350096DA4B /* KLStateModel.m */,
+			);
+			path = Log;
 			sourceTree = "<group>";
 		};
 		79BA50DA1C9A43D8006A5AE4 /* Historical */ = {
 			isa = PBXGroup;
 			children = (
+				7958EDC21CA3DCCD00C7FE11 /* KLPatientLogModel.h */,
+				7958EDC31CA3DCCD00C7FE11 /* KLPatientLogModel.m */,
+				7958EDC51CA4D55D00C7FE11 /* KLPatientLogBodyModel.h */,
+				7958EDC61CA4D55D00C7FE11 /* KLPatientLogBodyModel.m */,
 				79BA50DB1C9A43D8006A5AE4 /* JSDropmenuView.h */,
 				79BA50DC1C9A43D8006A5AE4 /* JSDropmenuView.m */,
 				79BA50DF1C9A43D8006A5AE4 /* LWHistoricalHeardView.h */,
 				79BA50E01C9A43D8006A5AE4 /* LWHistoricalHeardView.m */,
+				791148F31C9BE8460020AB2C /* LWHistoricalCountModel.h */,
+				791148F41C9BE8460020AB2C /* LWHistoricalCountModel.m */,
+				792EF0CA1CA0EC9F001A69CC /* LWHistoricalLogModel.h */,
+				792EF0CB1CA0EC9F001A69CC /* LWHistoricalLogModel.m */,
 				79BA50E11C9A43D8006A5AE4 /* LWHistoricalItmView.h */,
 				79BA50E21C9A43D8006A5AE4 /* LWHistoricalItmView.m */,
 				79BA50E31C9A43D8006A5AE4 /* LWHistoricalRecordVC.h */,
@@ -3256,15 +3177,6 @@
 			path = UIViewController;
 			sourceTree = "<group>";
 		};
-		79CEEDD11C017E0F004D6786 /* FlipTableView */ = {
-			isa = PBXGroup;
-			children = (
-				79CEEDD21C017E0F004D6786 /* FlipTableView.h */,
-				79CEEDD31C017E0F004D6786 /* FlipTableView.m */,
-			);
-			path = FlipTableView;
-			sourceTree = "<group>";
-		};
 		79CEEDD41C017E0F004D6786 /* SegementTap */ = {
 			isa = PBXGroup;
 			children = (
@@ -3272,28 +3184,6 @@
 				79CEEDD61C017E0F004D6786 /* SegmentTapView.m */,
 			);
 			path = SegementTap;
-			sourceTree = "<group>";
-		};
-		79CEEDEE1C01B78D004D6786 /* Log */ = {
-			isa = PBXGroup;
-			children = (
-				795FE0841C0807C300B2EA2A /* Assessment */,
-				7959648D1C06E29D001C18D8 /* Medication */,
-				7952F0EE1C0556090030B279 /* PEF */,
-				79CEEDF21C01B7FF004D6786 /* symptoms */,
-			);
-			path = Log;
-			sourceTree = "<group>";
-		};
-		79CEEDF21C01B7FF004D6786 /* symptoms */ = {
-			isa = PBXGroup;
-			children = (
-				79CEEDF31C01B7FF004D6786 /* LWPatientLogSymptomsCountCell.h */,
-				79CEEDF41C01B7FF004D6786 /* LWPatientLogSymptomsCountCell.m */,
-				79CEEDF61C01B82D004D6786 /* LWPatientLogSymptomsDescribeCell.h */,
-				79CEEDF71C01B82D004D6786 /* LWPatientLogSymptomsDescribeCell.m */,
-			);
-			path = symptoms;
 			sourceTree = "<group>";
 		};
 		79F21EB01BF9765F00F6A465 /* chat */ = {
@@ -3563,6 +3453,7 @@
 				7997881E1C96B22200E86B91 /* dakudanao@2x.png in Resources */,
 				79FEA5001C0EEAB7007418E9 /* jiankangzixun_62-10@2x.png in Resources */,
 				791935D01C7C093B00EF4FFA /* quxiaodianhuazixun@2x.png in Resources */,
+				79B72D681C9BB17600E2920F /* jiyongyao@2x.png in Resources */,
 				7979869D1C435350005052DF /* jieguo@3x.png in Resources */,
 				797986AF1C435350005052DF /* zhaopian@3x.png in Resources */,
 				799788301C96B22200E86B91 /* yundong@2x.png in Resources */,
@@ -3573,6 +3464,7 @@
 				794556FE1C0BDA15005C0E10 /* tab_down_3@2x.png in Resources */,
 				797986911C435350005052DF /* zhuanjiaguwen@2x.png in Resources */,
 				796991D31C44CF8200A3A2C6 /* chat_recive_imagemask@2x.png in Resources */,
+				79B72D641C9BB16900E2920F /* tianjiarizhi@3x.png in Resources */,
 				796991671C448D9A00A3A2C6 /* 03_act_@3x.png in Resources */,
 				794556DA1C0BDA15005C0E10 /* DefaultDiscover.png in Resources */,
 				794557141C0BDA15005C0E10 /* right_blue@2x.png in Resources */,
@@ -3590,6 +3482,7 @@
 				794557211C0BDA15005C0E10 /* yishengzhushousy_03@2x.png in Resources */,
 				796991D41C44CF8200A3A2C6 /* chat_recive_nor@2x.png in Resources */,
 				797986901C435350005052DF /* zhengzhuang@2x.png in Resources */,
+				790651181C9F9DAC004E13D0 /* LWSymptomsList.plist in Resources */,
 				796991791C4498DB00A3A2C6 /* weikongzhi@3x.png in Resources */,
 				7997883D1C96B22200E86B91 /* huodongshouxian@3x.png in Resources */,
 				791935C31C7C093300EF4FFA /* rili@3x.png in Resources */,
@@ -3618,14 +3511,15 @@
 				79FFBB551C0D8EB10072FDCB /* KSNoNetView.xib in Resources */,
 				799788291C96B22200E86B91 /* qita@2x.png in Resources */,
 				791935C11C7C093300EF4FFA /* dianhuazixun@3x.png in Resources */,
-				795E0A321C118C92001699DF /* PatientLog.storyboard in Resources */,
 				797986841C435350005052DF /* tianjia@2x.png in Resources */,
 				799788391C96B22200E86B91 /* ganmaofare@3x.png in Resources */,
 				797986781C435350005052DF /* chenggong@2x.png in Resources */,
 				7945571A1C0BDA15005C0E10 /* yisheng_03@2x.png in Resources */,
 				797986821C435350005052DF /* shanchu@2x.png in Resources */,
 				794557411C0BDA15005C0E10 /* defaultIconImage@2x.png in Resources */,
+				79B72D621C9BB16900E2920F /* jiyongyao@3x.png in Resources */,
 				797986831C435350005052DF /* shezhi@2x.png in Resources */,
+				79B72D6A1C9BB17600E2920F /* tianjiarizhi@2x.png in Resources */,
 				797986851C435350005052DF /* tupian@2x.png in Resources */,
 				79BA510A1C9A8797006A5AE4 /* medweitian@3x.png in Resources */,
 				79EA5D501C16705B001F0EE3 /* log_pg_3.png in Resources */,
@@ -3687,13 +3581,13 @@
 				797986951C435350005052DF /* bingqing@3x.png in Resources */,
 				79BA51081C9A8797006A5AE4 /* medjilu@3x.png in Resources */,
 				790243851C4DEB470010B1D9 /* trash_btn_pic.png in Resources */,
-				794557271C0BDA15005C0E10 /* newLoingNav_@2x.png in Resources */,
 				7979869F1C435350005052DF /* kuaijiehuifu@3x.png in Resources */,
 				794556DE1C0BDA15005C0E10 /* newPatient@2x.png in Resources */,
 				799788411C96B22200E86B91 /* qita@3x.png in Resources */,
 				791935CE1C7C093B00EF4FFA /* dianhuadingdan@2x.png in Resources */,
 				794557131C0BDA15005C0E10 /* Patient_03-04@2x.png in Resources */,
 				795E0A311C118C92001699DF /* Main.storyboard in Resources */,
+				79B72D691C9BB17600E2920F /* jizhengzhuang@2x.png in Resources */,
 				79CCF5E31C3FA0B900A00104 /* LWVisitList.plist in Resources */,
 				797986721C435350005052DF /* bianji@2x.png in Resources */,
 				799788241C96B22200E86B91 /* huafen@2x.png in Resources */,
@@ -3715,7 +3609,6 @@
 				797986761C435350005052DF /* bingqingkongzhi@2x.png in Resources */,
 				7979867A1C435350005052DF /* gengduo@2x.png in Resources */,
 				799788481C96B22200E86B91 /* yundong@3x.png in Resources */,
-				794556DB1C0BDA15005C0E10 /* DefaultLogo.jpg in Resources */,
 				790A672D1BFC591B007E6DD6 /* mic_0.png in Resources */,
 				797986791C435350005052DF /* duoxuan@2x.png in Resources */,
 				79F710331C8807B6004FFAA8 /* quxiao_@2x.png in Resources */,
@@ -3738,6 +3631,7 @@
 				790A672E1BFC591B007E6DD6 /* mic_1.png in Resources */,
 				794557181C0BDA15005C0E10 /* V-1_@2x.png in Resources */,
 				79EA5D521C168267001F0EE3 /* Images.xcassets in Resources */,
+				79B72D631C9BB16900E2920F /* jizhengzhuang@3x.png in Resources */,
 				7979868A1C435350005052DF /* yongyao@2x.png in Resources */,
 				794556FA1C0BDA15005C0E10 /* tab_down_1@2x.png in Resources */,
 				791935CF1C7C093B00EF4FFA /* dianhuazixun@2x.png in Resources */,
@@ -3909,6 +3803,8 @@
 				79E573651C002EE500797B2E /* LWCustomMenu.m in Sources */,
 				7912466D1C16D5F000B1B968 /* LWWEBViewController.m in Sources */,
 				79F6D9021C854B6B00D94CDF /* LWDetailedOrderListModel.m in Sources */,
+				7958ED661CA291D200C7FE11 /* LWBasePatientRelatedCell.m in Sources */,
+				7990DF291CA7C4350096DA4B /* KLStateModel.m in Sources */,
 				79AD91E51BF31BE00098D6CD /* LWLoginViewController.m in Sources */,
 				7990D7B61C7AF9D400127A28 /* LWOrderCollectionViewCell.m in Sources */,
 				7929ACA81C33AEBF002712EC /* LWTheFormTypeViewController.m in Sources */,
@@ -3916,30 +3812,27 @@
 				790BE93C1C02EBCE00BD1D67 /* LWACTAssessmentViewController.m in Sources */,
 				7902438C1C4DEB470010B1D9 /* ZZPhotoListCell.m in Sources */,
 				7938E5761C0EE1B900AD043F /* NSDate+Utils.m in Sources */,
-				79CEEDD71C017E0F004D6786 /* FlipTableView.m in Sources */,
 				790243B41C4E302E0010B1D9 /* LWPersonalHeardCell.m in Sources */,
 				790515701BFDB16E001D5F33 /* LWSenderResBaseModel.m in Sources */,
 				79BA9FDF1C46688B00D9236A /* LWTheFromRowArray.m in Sources */,
-				7952F0F11C0556240030B279 /* LWPEFLineCell.m in Sources */,
 				79F75E851BF421F400AE75AB /* LWProgressHUD.m in Sources */,
 				790EE5541C7EA261004ABC78 /* LWReservationDetailedViewController.m in Sources */,
 				7959649C1C06F1F4001C18D8 /* LWMedicationModel.m in Sources */,
 				7929ACBF1C33B2FF002712EC /* LWTheFormView.m in Sources */,
 				797986B41C4393D9005052DF /* LWTimerWeeksViewController.m in Sources */,
 				7945554D1C0BD98F005C0E10 /* UIColor+HexString.m in Sources */,
-				79BA50FB1C9A5EFF006A5AE4 /* LWMedicationTitleCell.m in Sources */,
 				79BA50EF1C9A4563006A5AE4 /* LWSymptomsCell.m in Sources */,
 				7945554F1C0BD98F005C0E10 /* UIResponder+Router.m in Sources */,
 				79F7C5E71BF745FF00D618AE /* PersonalPassModifyVC.m in Sources */,
-				7952F0ED1C0550FB0030B279 /* CoordinateItem.m in Sources */,
 				79BA51011C9A7CF8006A5AE4 /* LWMedicationTypeView.m in Sources */,
 				799788851C9A42D100E86B91 /* LWMedicationView.m in Sources */,
 				79F21EBC1BF9765F00F6A465 /* LWChatBaseModel.m in Sources */,
-				7952F0E91C0550C90030B279 /* LineChartView.m in Sources */,
 				7945576F1C0C323E005C0E10 /* MZFormSheetPresentationController.m in Sources */,
 				791214D71BF1CE9E004166C5 /* BaseViewController.m in Sources */,
+				7958ED691CA2982600C7FE11 /* LWPatientRelatedPhotoCell.m in Sources */,
 				794557721C0C323E005C0E10 /* MZFormSheetPresentationViewControllerInteractiveAnimator.m in Sources */,
 				790A671A1BFC07AF007E6DD6 /* PushMgrInfo.m in Sources */,
+				7990DF261CA7C3470096DA4B /* KLStateCell.m in Sources */,
 				7912155A1BF1CFD0004166C5 /* LWPatientBody.m in Sources */,
 				79FFBB261C0D46530072FDCB /* LWAsthmaLineBody.m in Sources */,
 				79AD91B01BF2D5B70098D6CD /* LWPatientRemarksIconCell.m in Sources */,
@@ -3948,7 +3841,7 @@
 				79AD86151C4F300E00EBE224 /* LWPatientRemarksCtr.m in Sources */,
 				791215581BF1CFD0004166C5 /* LBLoginBody.m in Sources */,
 				7938E5731C0EDC0F00AD043F /* UUMessageContentButton.m in Sources */,
-				79AD86301C4F30C200EBE224 /* LWPatientPEFLogVC.m in Sources */,
+				7958ED631CA2907B00C7FE11 /* LWPatientRelatedVC.m in Sources */,
 				79AD86121C4F300E00EBE224 /* LWPatientListCtr.m in Sources */,
 				790515711BFDB16E001D5F33 /* LWSenderResBody.m in Sources */,
 				79AD86361C4F320100EBE224 /* LWRootViewController.m in Sources */,
@@ -3956,15 +3849,12 @@
 				7955C2921C03F705003D6836 /* LKDB+Mapping.m in Sources */,
 				7979862B1C433871005052DF /* PatientTaskDescribeVC.m in Sources */,
 				79084E281C27AEA00002BBF2 /* MJPhotoLoadingView.m in Sources */,
-				79AD86321C4F30C200EBE224 /* LWPEFRecordView.m in Sources */,
 				79084E3D1C27AFBE0002BBF2 /* SVIndefiniteAnimatedView.m in Sources */,
 				791211351BF1A6A6004166C5 /* ViewController.m in Sources */,
 				7994D5AB1C57256200E41865 /* CheckUpdateReturn.m in Sources */,
 				7955C2951C03F705003D6836 /* NSObject+LKDBHelper.m in Sources */,
-				799788871C9A42D100E86B91 /* LWPEFHistoricalView.m in Sources */,
 				791215621BF1CFD0004166C5 /* LWMainRows.m in Sources */,
 				790243791C4DEB470010B1D9 /* ZZPhotoDatas.m in Sources */,
-				79CEEDF51C01B7FF004D6786 /* LWPatientLogSymptomsCountCell.m in Sources */,
 				79AD86141C4F300E00EBE224 /* LWPatientRecordsCtr.m in Sources */,
 				79F75E881BF4226B00AE75AB /* CDPromptView.m in Sources */,
 				7994D5B31C57263400E41865 /* NSMutableArray+Sort.m in Sources */,
@@ -3981,7 +3871,6 @@
 				794D51521C7EE46900403767 /* LWOrderDetailedLisetCell.m in Sources */,
 				79AD91BC1BF2E7B90098D6CD /* LWPersonalCenterCtr.m in Sources */,
 				794555511C0BD98F005C0E10 /* UIView+TKGeometry.m in Sources */,
-				79AD86131C4F300E00EBE224 /* LWPatientRelatedViewController.m in Sources */,
 				7942755E1C7D5FD300E42F87 /* PickerDateViewController.m in Sources */,
 				7955C2931C03F705003D6836 /* LKDBHelper.m in Sources */,
 				79BB5F0E1C1038F600E7046B /* UIViewController+Factory.m in Sources */,
@@ -3995,40 +3884,37 @@
 				7947160E1BF48A1600C4D2E8 /* LWTool.m in Sources */,
 				79F21EBE1BF9765F00F6A465 /* LWChatDataStruct.m in Sources */,
 				793DE4281C045E61000CE2BE /* LWAsthmaModel.m in Sources */,
-				795FE08A1C0807EA00B2EA2A /* LWAssessmentStarCell.m in Sources */,
 				79FFBB531C0D8EB10072FDCB /* KSNetRequest.m in Sources */,
 				790243B71C4E302E0010B1D9 /* LWPersonCenterIconCell.m in Sources */,
 				7929ACC91C33CA93002712EC /* LWTimerRemindViewController.m in Sources */,
 				790243B91C4E302E0010B1D9 /* LWPatientRelatedPhotoView.m in Sources */,
 				795B6C221C47539B00612AF6 /* LWDoctorTimerModel.m in Sources */,
 				794557741C0C323E005C0E10 /* MZMethodSwizzler.m in Sources */,
-				79AD86311C4F30C200EBE224 /* LWPatientSymptomsLogVC.m in Sources */,
 				7984302F1C3A20BA00C79DCA /* LWMessageAgreedCell.m in Sources */,
-				795FE09E1C082A6400B2EA2A /* LWDrawView.m in Sources */,
 				79F7C5E01BF7296B00D618AE /* PatientAddVC.m in Sources */,
-				79AD862C1C4F30C200EBE224 /* LWLineACTAssessmentVC.m in Sources */,
 				79FFBB541C0D8EB10072FDCB /* KSNoNetView.m in Sources */,
 				7955C28C1C03F705003D6836 /* FMDatabase+InMemoryOnDiskIO.m in Sources */,
 				79F7C1F91BF71A4400D618AE /* ALView+PureLayout.m in Sources */,
 				79F21EBF1BF9765F00F6A465 /* LWChatPager.m in Sources */,
-				795964931C06E2D8001C18D8 /* LWMedicationLogHeadCell.m in Sources */,
 				791214DA1BF1CE9E004166C5 /* LWPersonalCtr.m in Sources */,
 				790243901C4DEC2E0010B1D9 /* ALActionSheetView.m in Sources */,
 				791215741BF1EA71004166C5 /* LWPatientCenterCell.m in Sources */,
+				7990DF2F1CA900A00096DA4B /* CoordinateItem.m in Sources */,
+				7990DF1A1CA4EA880096DA4B /* KLHistoricalOperation.m in Sources */,
 				799788681C98F10600E86B91 /* LWBaseHistoricalView.m in Sources */,
 				7997888A1C9A42D100E86B91 /* LWPEFListView.m in Sources */,
 				790243B61C4E302E0010B1D9 /* LWPersonalMessageCell.m in Sources */,
+				7958EDC41CA3DCCD00C7FE11 /* KLPatientLogModel.m in Sources */,
 				79084E291C27AEA00002BBF2 /* MJPhotoProgressView.m in Sources */,
 				7945576C1C0C323E005C0E10 /* MZBlurEffectAdapter.m in Sources */,
 				790BE9321C02EA2600BD1D67 /* LWAsthmaAssessmentViewController.m in Sources */,
 				7955C29B1C044BB4003D6836 /* LWACTModel.m in Sources */,
 				790A672C1BFC591B007E6DD6 /* D3RecordButton.m in Sources */,
-				790243BA1C4E302E0010B1D9 /* LWPatientRelatedView.m in Sources */,
 				79BA9FAE1C45E18600D9236A /* UITextView+placeholder.m in Sources */,
-				795964991C06F09A001C18D8 /* LWMedicationLogTimerOneCell.m in Sources */,
 				790243751C4DEB470010B1D9 /* ZZPhotoListViewController.m in Sources */,
 				79BA50E91C9A43D8006A5AE4 /* LWHistoricalHeardView.m in Sources */,
 				791214D81BF1CE9E004166C5 /* LWBaseViewController.m in Sources */,
+				7990DF231CA7BC4C0096DA4B /* KLStateView.m in Sources */,
 				79BA51041C9A83FC006A5AE4 /* LWMedicationTitleTypeView.m in Sources */,
 				790243B81C4E302E0010B1D9 /* LWPatientRelatedPhotoCollectionViewCell.m in Sources */,
 				79FFBB251C0D46530072FDCB /* LWAsthmaLineBaseModel.m in Sources */,
@@ -4047,13 +3933,13 @@
 				79BA50EA1C9A43D8006A5AE4 /* LWHistoricalItmView.m in Sources */,
 				7919B8BA1BFADC670058853F /* LWPatientRecordsBaseModel.m in Sources */,
 				79084E331C27AF530002BBF2 /* YLImageView.m in Sources */,
-				79CEEDF81C01B82D004D6786 /* LWPatientLogSymptomsDescribeCell.m in Sources */,
 				79AD91B91BF2E3290098D6CD /* LWPersonalSetingCtr.m in Sources */,
-				795FE09F1C082A6400B2EA2A /* LWLineChartView.m in Sources */,
+				79B72D5E1C9BAF9000E2920F /* LWLogStateView.m in Sources */,
 				79FE2B711C50D156000C1E08 /* LWPatientRelatedModel.m in Sources */,
 				79084E3F1C27AFBE0002BBF2 /* SVProgressHUD.m in Sources */,
 				791215151BF1CFB1004166C5 /* COUserDefaultsManager.m in Sources */,
 				7929ACBB1C33B1F8002712EC /* LWMessageTakeCell.m in Sources */,
+				7906511B1C9FC8E6004E13D0 /* LWScaleCircleView.m in Sources */,
 				79BA50EC1C9A43D8006A5AE4 /* LWScrollMenuView.m in Sources */,
 				79FFBB4B1C0D8EB10072FDCB /* KSDataBaseManager.m in Sources */,
 				79084E401C27AFBE0002BBF2 /* SVRadialGradientLayer.m in Sources */,
@@ -4066,6 +3952,7 @@
 				7994D5B01C57256200E41865 /* UMSAgent.m in Sources */,
 				7955C2941C03F705003D6836 /* LKDBUtils.m in Sources */,
 				7955C2961C03F705003D6836 /* NSObject+LKModel.m in Sources */,
+				7958ED6C1CA3B0E800C7FE11 /* KLPatientRelatedModel.m in Sources */,
 				7994D5A71C57256200E41865 /* UMSDataMgr.m in Sources */,
 				7945576E1C0C323E005C0E10 /* MZFormSheetContentSizingNavigationControllerAnimator.m in Sources */,
 				7919B8BD1BFADC670058853F /* LWPatientRecordsPatientArchives.m in Sources */,
@@ -4073,7 +3960,6 @@
 				79FFBB521C0D8EB10072FDCB /* KSCache.m in Sources */,
 				790243781C4DEB470010B1D9 /* ZZBrowerAnimate.m in Sources */,
 				79AD91B31BF2D5D60098D6CD /* LWPatientRemarksTFCell.m in Sources */,
-				795964961C06E2EC001C18D8 /* LWMedicationLogTimerCell.m in Sources */,
 				7994D5AC1C57256200E41865 /* CommonReturn.m in Sources */,
 				798922BF1BFEB523002C695C /* NSObject+Encodeing.m in Sources */,
 				79AD91E81BF31D250098D6CD /* LWLoginManager.m in Sources */,
@@ -4081,44 +3967,48 @@
 				7919B8BB1BFADC670058853F /* LWPatientRecordsBody.m in Sources */,
 				7994D5A81C57256200E41865 /* UMSNetwork.m in Sources */,
 				790A67361BFC591B007E6DD6 /* RecordHUD.m in Sources */,
+				791148F51C9BE8460020AB2C /* LWHistoricalCountModel.m in Sources */,
 				791215571BF1CFD0004166C5 /* LBLoginBaseModel.m in Sources */,
 				79BA50FE1C9A5F28006A5AE4 /* LWMedicationContentCell.m in Sources */,
-				794557491C0C1C12005C0E10 /* LWLineButton.m in Sources */,
 				790A67351BFC591B007E6DD6 /* Mp3Recorder.m in Sources */,
 				7902438B1C4DEB470010B1D9 /* ZZPhotoHud.m in Sources */,
 				7945577C1C0C3271005C0E10 /* NSInvocation+Copy.m in Sources */,
 				790BE9391C02EBB200BD1D67 /* LWACTStateAssessmentCell.m in Sources */,
 				79FFBB5A1C0D8EB10072FDCB /* UIViewController+KSNoNetController.m in Sources */,
 				790243871C4DEB470010B1D9 /* ZZBrowserPickerCell.m in Sources */,
+				79B72D581C9B9F4C00E2920F /* LWHistoricalLogView.m in Sources */,
 				7952F1011C0582880030B279 /* LWPEFLineModel.m in Sources */,
 				79CEEDD81C017E0F004D6786 /* SegmentTapView.m in Sources */,
 				7902438A1C4DEB470010B1D9 /* ZZPageControl.m in Sources */,
 				795FE0941C08295200B2EA2A /* LWAsthmaAssessLogBody.m in Sources */,
 				791215051BF1CF56004166C5 /* CODataCacheManager.m in Sources */,
 				79FFBB591C0D8EB10072FDCB /* ProgressHUD.m in Sources */,
+				7958EDC71CA4D55D00C7FE11 /* KLPatientLogBodyModel.m in Sources */,
 				79F346641C8022440064BBC6 /* LWChatConventionCardView.m in Sources */,
 				79F7C1FB1BF71A4400D618AE /* NSLayoutConstraint+PureLayout.m in Sources */,
 				7916E88C1C8D7A8300F891B3 /* LCCoolHUD.m in Sources */,
-				79AD862F1C4F30C200EBE224 /* LWPatientMedicationLogVC.m in Sources */,
+				7990DF2C1CA8F8160096DA4B /* KLPEFItmLineView.m in Sources */,
 				79F21EC31BF9777700F6A465 /* LWChatViewControllerDataSource.m in Sources */,
 				7994D5AE1C57256200E41865 /* ErrorLogObj.m in Sources */,
 				794712C21BF9D0FA0083CE6E /* LGReachability.m in Sources */,
-				795FE0871C0807D700B2EA2A /* LWAssessmentLineCell.m in Sources */,
 				794712E81BF9D3CC0083CE6E /* LWVoiceManager.m in Sources */,
 				7941A89C1C3518C700B8ACC7 /* LWOrderRecordViewController.m in Sources */,
 				7912155C1BF1CFD0004166C5 /* LWPatientRows.m in Sources */,
 				7912155B1BF1CFD0004166C5 /* LWPatientPager.m in Sources */,
 				794555491C0BD98F005C0E10 /* NSString+Hash.m in Sources */,
 				790243741C4DEB470010B1D9 /* ZZPhotoController.m in Sources */,
+				79B72D5B1C9BA46800E2920F /* LWHistoricalLogCell.m in Sources */,
 				79AD91F51BF33CCB0098D6CD /* YRJSONAdapter.m in Sources */,
+				7958ED601CA143F000C7FE11 /* LWPEFLineView.m in Sources */,
 				794557731C0C323E005C0E10 /* MZFormSheetPresentationViewControllerSegue.m in Sources */,
+				7990DF321CA9018E0096DA4B /* LWLineButton.m in Sources */,
 				790243881C4DEB470010B1D9 /* ZZCameraFocusView.m in Sources */,
 				79BA9FDE1C46688B00D9236A /* LWTheFromMrows.m in Sources */,
 				791211321BF1A6A6004166C5 /* AppDelegate.m in Sources */,
+				7990DF1D1CA501E30096DA4B /* KLSymptomsLogModel.m in Sources */,
 				79BA9FDD1C46688B00D9236A /* LWTheFromBaseModel.m in Sources */,
 				798922C21BFEB6A2002C695C /* GJMFileHelper.m in Sources */,
 				79BA50F21C9A45EB006A5AE4 /* LWSymptomsFootView.m in Sources */,
-				795FE09D1C082A6400B2EA2A /* LWBaseChartView.m in Sources */,
 				797986281C43384D005052DF /* FastReplyVCCell.m in Sources */,
 				79AD91A31BF2CEF60098D6CD /* CDCheckBox.m in Sources */,
 				79BA9FDC1C46688B00D9236A /* LWTheFromArows.m in Sources */,
@@ -4126,13 +4016,12 @@
 				7945577B1C0C3271005C0E10 /* MZAppearance.m in Sources */,
 				7955DC081C4CDCAA00314221 /* LWPatientBiaoDanBody.m in Sources */,
 				7955C28D1C03F705003D6836 /* FMDatabase.m in Sources */,
+				7990DF201CA647AC0096DA4B /* NSObject+ProperList.m in Sources */,
 				7952F1021C0582880030B279 /* LWPEFRecordList.m in Sources */,
-				79BA50F81C9A5E9A006A5AE4 /* UIViewMedicationFootView.m in Sources */,
 				794555471C0BD98F005C0E10 /* NSDate+Extension.m in Sources */,
 				79CEEDED1C0184A0004D6786 /* LWPatientLogDateIndexView.m in Sources */,
 				7938E5701C0EDBA800AD043F /* UUMessageFrame.m in Sources */,
 				7994D5AA1C57256200E41865 /* ActivityLogObj.m in Sources */,
-				799788861C9A42D100E86B91 /* LWPEFHistoricalHeardView.m in Sources */,
 				7929ACB71C33B1F8002712EC /* LWChatMessageMoreCollectionCell.m in Sources */,
 				7990D7B31C7AF76A00127A28 /* RFLayout.m in Sources */,
 				79F7C5E61BF745FF00D618AE /* AboutUsVC.m in Sources */,
@@ -4144,7 +4033,6 @@
 				7945554C1C0BD98F005C0E10 /* NSString+Size.m in Sources */,
 				791215601BF1CFD0004166C5 /* LWMainPager.m in Sources */,
 				790243771C4DEB470010B1D9 /* UIImageHandle.m in Sources */,
-				79AD862E1C4F30C200EBE224 /* LWPatientLogViewController.m in Sources */,
 				790243891C4DEB470010B1D9 /* ZZCameraPickerCell.m in Sources */,
 				794D51551C7EE9CE00403767 /* LWOrderDetailedListViewController.m in Sources */,
 				791214D91BF1CE9E004166C5 /* LWMessageCtr.m in Sources */,
@@ -4154,7 +4042,6 @@
 				791935D81C7C589000EF4FFA /* DZ_ScaleCircle.m in Sources */,
 				7912155F1BF1CFD0004166C5 /* LWMainMessageBaseModel.m in Sources */,
 				794557761C0C323E005C0E10 /* UIViewController+TargetViewController.m in Sources */,
-				79AD862D1C4F30C200EBE224 /* LWPatientAssessmentLogVC.m in Sources */,
 				791215071BF1CF56004166C5 /* ControllerExtraDataManager.m in Sources */,
 				7945554E1C0BD98F005C0E10 /* UIImage+color.m in Sources */,
 				791214991BF1C6D4004166C5 /* LWPatientCell.m in Sources */,
@@ -4170,19 +4057,16 @@
 				79BA50E71C9A43D8006A5AE4 /* JSDropmenuView.m in Sources */,
 				79084E321C27AF530002BBF2 /* YLGIFImage.m in Sources */,
 				790243B21C4E302E0010B1D9 /* LWOrderDetailsCell.m in Sources */,
-				7952F0F71C055B510030B279 /* DrawView.m in Sources */,
 				79F710311C87E216004FFAA8 /* LWReservationDetailedModel.m in Sources */,
 				79AD91A71BF2CF550098D6CD /* CDCommontConvenient.m in Sources */,
 				79FFBB561C0D8EB10072FDCB /* KSReachability.m in Sources */,
 				79F7C1FA1BF71A4400D618AE /* NSArray+PureLayout.m in Sources */,
 				79F21EC01BF9765F00F6A465 /* LWChatRows.m in Sources */,
 				790243721C4DEB470010B1D9 /* ZZCameraController.m in Sources */,
+				792EF0CC1CA0EC9F001A69CC /* LWHistoricalLogModel.m in Sources */,
 				794555481C0BD98F005C0E10 /* NSString+Contains.m in Sources */,
 				790243B11C4E302E0010B1D9 /* LWOrderCountCell.m in Sources */,
-				795964901C06E2BC001C18D8 /* LWMedicationLogCountCell.m in Sources */,
 				795553FF1C8FBAA60073F14C /* LWOrderViewCell.m in Sources */,
-				7952F0F41C05563C0030B279 /* LWPEFCountCell.m in Sources */,
-				7952F0E81C0550C90030B279 /* BaseChartView.m in Sources */,
 				790243711C4DEB470010B1D9 /* ZZBrowserPickerViewController.m in Sources */,
 				79BA50F51C9A5A8E006A5AE4 /* LWSymptomsButton.m in Sources */,
 				7912150A1BF1CF56004166C5 /* NavManager.m in Sources */,

@@ -62,3 +62,6 @@
 #import "LWOrderListModel.h"
 #import "LWDetailedOrderListModel.h"
 #import "LWReservationDetailedModel.h"
+
+#import "KLPatientLogModel.h"
+#import "KLPatientLogBodyModel.h"

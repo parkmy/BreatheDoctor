@@ -7,6 +7,16 @@
 //
 
 #import "LWHistoricalHeardView.h"
+#import "LWHistoricalCountModel.h"
+#import "LWScaleCircleView.h"
+#import "KLHistoricalOperation.h"
+
+static const CGFloat tableHeight = 90;
+
+@interface LWHistoricalHeardView ()
+@property (nonatomic, strong) LWScaleCircleView *scaleCircleView;
+@property (nonatomic, strong) NSMutableArray *dataArray;
+@end
 
 @implementation LWHistoricalHeardView
 
@@ -14,12 +24,13 @@
 {
     if ([super initWithFrame:frame])
     {
-        self.backgroundColor = [UIColor grayColor];
+        self.backgroundColor = [UIColor whiteColor];
         
         [self addSubview:self.footLabel];
         [self addSubview:self.leftView];
         [self addSubview:self.rightView];
         
+        [self.breadView addSubview:self.scaleCircleView];
         [self.leftView addSubview:self.breadView];
         [self.rightView addSubview:self.tableView];
         
@@ -27,56 +38,37 @@
         self.leftView.sd_layout.leftSpaceToView(self,0).widthRatioToView(self,.5).topSpaceToView(self,0).bottomSpaceToView(self.footLabel,15);
         self.rightView.sd_layout.rightSpaceToView(self,0).leftSpaceToView(self.leftView,0).topSpaceToView(self,0).bottomSpaceToView(self.footLabel,15);
         
-        self.breadView.sd_layout.widthIs(104).heightIs(104).centerYEqualToView(self.leftView).rightSpaceToView(self.leftView,10);
-        self.tableView.sd_layout.widthIs(104).heightIs(104).centerYEqualToView(self.rightView).leftSpaceToView(self.rightView,10);
+        self.breadView.sd_layout.widthIs(104*MULTIPLEVIEW).heightIs(104*MULTIPLEVIEW).centerYEqualToView(self.leftView).rightSpaceToView(self.leftView,10);
+        self.tableView.sd_layout.widthIs(145*MULTIPLEVIEW).heightIs(tableHeight*MULTIPLEVIEW).centerYEqualToView(self.rightView).leftSpaceToView(self.rightView,10);
+        self.scaleCircleView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
         
     }
     return self;
 }
 
-//- (UILabel *)fistLabel
-//{
-//    if (!_fistLabel) {
-//        _fistLabel = [self allocLabel];
-//    }
-//    return _fistLabel;
-//}
-//- (UILabel *)secondLabel
-//{
-//    if (!_secondLabel) {
-//        _secondLabel = [self allocLabel];
-//    }
-//    return _secondLabel;
-//}
-//- (UILabel *)thirdLabel
-//{
-//    if (!_thirdLabel) {
-//        _thirdLabel = [self allocLabel];
-//    }
-//    return _thirdLabel;
-//}
-//- (UILabel *)allocLabel
-//{
-//    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
-//    label.font = kNSPXFONT(30);
-//    label.textColor = [UIColor colorWithHexString:@"#333333"];
-//    return label;
-//}
 - (UIView *)breadView
 {
     if (!_breadView) {
         _breadView = [UIView new];
-        _breadView.backgroundColor = [UIColor redColor];
+        _breadView.backgroundColor = [UIColor whiteColor];
     }
     return _breadView;
+}
+- (LWScaleCircleView *)scaleCircleView
+{
+    if (!_scaleCircleView) {
+        _scaleCircleView = [LWScaleCircleView new];
+        _scaleCircleView.isFourth = NO;
+    }
+    return _scaleCircleView;
 }
 
 - (UIView *)leftView
 {
     if (!_leftView) {
         _leftView = [UIView new];
-        _leftView.backgroundColor = [UIColor orangeColor];
-
+        _leftView.backgroundColor = [UIColor whiteColor];
+        
     }
     return _leftView;
 }
@@ -84,7 +76,7 @@
 {
     if (!_rightView) {
         _rightView = [UIView new];
-        _rightView.backgroundColor = [UIColor greenColor];
+        _rightView.backgroundColor = [UIColor whiteColor];
     }
     return _rightView;
 }
@@ -93,6 +85,9 @@
 {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.separatorStyle = 0;
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
     }
     return _tableView;
 }
@@ -103,8 +98,115 @@
         _footLabel.textAlignment = 1;
         _footLabel.font = kNSPXFONT(28);
         _footLabel.textColor = [UIColor colorWithHexString:@"#333333"];
-        _footLabel.text = @"[[UILabel alloc] initWithFrame:CGRectZero]";
     }
     return _footLabel;
 }
+
+- (void)setFootLabelTitle:(NSString *)string
+{
+    self.footLabel.text = stringJudgeNull(string);
+}
+- (void)setHistoricalType:(showHistoricalType)historicalType
+{
+    _historicalType = historicalType;
+    self.dataArray = [LWHistoricalCountModel historicalType:_historicalType];
+    [self.tableView reloadData];
+}
+- (void)setScaleCircleWithObjc:(KLPatientLogBodyModel *)objc
+{
+    self.scaleCircleView.isShowBottomLabel = NO;
+
+    self.scaleCircleView.lineWith = 5.0f;
+    self.scaleCircleView.animation_time = 0;
+    
+    if (self.historicalType == showHistoricalTypePEF)
+    {
+        NSInteger count = [KLHistoricalOperation historicalCountInfo:objc.recordList];
+        
+        self.scaleCircleView.centerLable.attributedText = [self attributed:[NSString stringWithFormat:@"%@ 次",kNSNumInteger(count)]];
+        
+        self.scaleCircleView.firstColor = [LWHistoricalCountModel normalColor];
+        self.scaleCircleView.secondColor = [LWHistoricalCountModel abnormalColor];
+        self.scaleCircleView.thirdColor = [LWHistoricalCountModel warningColor];
+        //@{@"normal":kNSNumInteger(normal),@"abnormal":kNSNumInteger(abnormal),@"warning":kNSNumInteger(warning)}
+        
+        NSDictionary *pefDic = [KLHistoricalOperation historicalPefRecordCoutInfo:objc thepefDataArray:self.dataArray];
+        NSInteger  normal = [[pefDic objectForKey:@"normal"] integerValue];
+        NSInteger  abnormal = [[pefDic objectForKey:@"abnormal"] integerValue];
+        NSInteger  warning = [[pefDic objectForKey:@"warning"] integerValue];
+        
+        self.scaleCircleView.firstScale = (CGFloat)normal/count;
+        self.scaleCircleView.secondScale = (CGFloat)abnormal/count;
+        self.scaleCircleView.thirdScale = (CGFloat)warning/count;
+        
+    }else if (self.historicalType == showHistoricalTypeSymptoms)
+    {
+        self.scaleCircleView.firstColor = [LWHistoricalCountModel normalColor];
+        self.scaleCircleView.secondColor = [LWHistoricalCountModel abnormalColor];
+        
+        NSDictionary *symptomsdic  = [KLHistoricalOperation historicalSymptomsRecordCountInfo:objc.recordList theSymptomsLogArray:nil thehistoricalDataArray:self.dataArray];
+//@{@"normal":kNSNumInteger(normal),@"abnormal":kNSNumInteger(abnormal)}
+        NSInteger  normal = [[symptomsdic objectForKey:@"normal"] integerValue];
+        NSInteger  abnormal = [[symptomsdic objectForKey:@"abnormal"] integerValue];
+        NSInteger  count = [[symptomsdic objectForKey:@"count"] integerValue];
+        self.scaleCircleView.centerLable.attributedText = [self attributed:[NSString stringWithFormat:@"%@ 次",kNSNumInteger(count)]];
+        self.scaleCircleView.firstScale = (CGFloat)normal/count;
+        self.scaleCircleView.secondScale = (CGFloat)abnormal/count;
+    }else
+    {
+        self.scaleCircleView.firstColor = [LWHistoricalCountModel normalColor];
+        self.scaleCircleView.secondColor = [LWHistoricalCountModel warningColor];
+        self.scaleCircleView.thirdColor = [LWHistoricalCountModel noMeColor];
+        
+        NSDictionary *medicationDic  = [KLHistoricalOperation historicalMedicationRecordCountInfo:objc.recordList thehistoricalDataArray:self.dataArray];
+        //@{@"pharmacyControl":kNSNumInteger(pharmacyControl),@"pharmacyUrgency":kNSNumInteger(pharmacyUrgency),@"noPharmacy":kNSNumInteger(noPharmacy)}
+        NSInteger  pharmacyControl = [[medicationDic objectForKey:@"pharmacyControl"] integerValue];
+        NSInteger  pharmacyUrgency = [[medicationDic objectForKey:@"pharmacyUrgency"] integerValue];
+        NSInteger  noPharmacy = [[medicationDic objectForKey:@"noPharmacy"] integerValue];
+        NSInteger count = [[medicationDic objectForKey:@"count"] integerValue];
+
+        self.scaleCircleView.firstScale = (CGFloat)pharmacyControl/count;
+        self.scaleCircleView.secondScale = (CGFloat)pharmacyUrgency/count;
+        self.scaleCircleView.thirdScale = (CGFloat)noPharmacy/count;
+        self.scaleCircleView.centerLable.attributedText = [self attributed:[NSString stringWithFormat:@"%@ 次",kNSNumInteger(count)]];
+    }
+    [self.scaleCircleView setNeedsDisplay];
+    [self.tableView reloadData];
+}
+- (NSMutableAttributedString *)attributed:(NSString *)string
+{
+    if (string.length <= 0) {
+        return [[NSMutableAttributedString alloc] initWithString:@""];
+    }
+    NSMutableAttributedString *atr = [[NSMutableAttributedString alloc] initWithString:string];
+    [atr addAttributes:@{NSFontAttributeName:kNSPXFONT(18),NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#333333"]} range:NSMakeRange(atr.length-1, 1)];
+    return atr;
+}
+- (void)setScaleCircleDateText:(NSString *)text
+{
+    [self.scaleCircleView setdateText:text];
+}
+#pragma mark -dataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.dataArray.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell.textLabel.font = kNSPXFONT(30);
+        cell.textLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+        cell.selectionStyle = 0;
+    }
+    LWHistoricalCountModel *model = self.dataArray[indexPath.row];
+    cell.textLabel.attributedText = [model historicalCountAttributedString];
+    return cell;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return _historicalType==showHistoricalTypePEF?tableHeight/3.0*MULTIPLEVIEW:_historicalType==showHistoricalTypeSymptoms?tableHeight/2.0*MULTIPLEVIEW:tableHeight/3.0*MULTIPLEVIEW;
+}
+
 @end

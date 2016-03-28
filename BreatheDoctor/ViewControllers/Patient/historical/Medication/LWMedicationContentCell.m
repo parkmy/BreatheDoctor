@@ -8,6 +8,7 @@
 
 #import "LWMedicationContentCell.h"
 #import "LWMedicationTypeView.h"
+#import "LWMedicationModel.h"
 
 @interface LWMedicationContentCell ()
 {
@@ -30,9 +31,7 @@
         UIView *contenView = [UIView new];
         [self addSubview:contenView];
         contenView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 10, 0, 10));
-        
- 
-        
+  
          dateView = ({
             UIView *bg = [UIView new];
             bg.backgroundColor = [UIColor whiteColor];
@@ -45,7 +44,6 @@
             line.sd_layout.leftSpaceToView(bg,0).topSpaceToView(bg,10).bottomSpaceToView(bg,10).widthIs(4);
 
             dateLabel = [UILabel new];
-            dateLabel.text = @"2016-03-16";
             dateLabel.font = kNSPXFONT(22);
             dateLabel.textColor = [UIColor colorWithHexString:@"#666666"];
             dateLabel.textAlignment = 1;
@@ -89,6 +87,63 @@
     }
     return self;
 }
+
+- (void)setModel:(LWMedicationModel *)model
+{
+    _model = model;
+    dateLabel.text = model.recordDt;
+    
+    if (model.morningPharmacyControl == 1)
+    {
+        [morningTypeView setControlButtonType:1];
+        
+    }else if (model.morningPharmacyControl == 2)
+    {
+        [morningTypeView setControlButtonType:2];
+    }else
+    {
+        [morningTypeView setControlButtonType:3];
+    }
+    
+    if (model.morningPharmacyUrgency == 1)
+    {
+        [morningTypeView setEmergencyButtonType:1];
+        
+    }else if (model.morningPharmacyUrgency == 2)
+    {
+        [morningTypeView setEmergencyButtonType:2];
+    }else
+    {
+        [morningTypeView setEmergencyButtonType:3];
+    }
+
+    if (model.afternoonPharmacyControl == 1)
+    {
+        [eveningTypeView setControlButtonType:1];
+        
+    }else if (model.afternoonPharmacyControl == 2)
+    {
+        [eveningTypeView setControlButtonType:2];
+    }else
+    {
+        [eveningTypeView setControlButtonType:3];
+    }
+    
+    if (model.afternoonPharmacyUrgency == 1)
+    {
+        [eveningTypeView setEmergencyButtonType:1];
+        
+    }else if (model.afternoonPharmacyUrgency == 2)
+    {
+        [eveningTypeView setEmergencyButtonType:2];
+    }else
+    {
+        [eveningTypeView setEmergencyButtonType:3];
+    }
+    
+}
+
+
 - (void)awakeFromNib {
     // Initialization code
 }

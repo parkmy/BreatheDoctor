@@ -8,8 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LWPEFHistorListTitleCell : UITableViewCell
-
+@interface LWPEFHistorListTitleCell : UIView
 
 
 @end

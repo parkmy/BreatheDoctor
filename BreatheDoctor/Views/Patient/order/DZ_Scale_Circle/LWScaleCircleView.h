@@ -1,0 +1,43 @@
+//
+//  LWScaleCircleView.h
+//  BreatheDoctor
+//
+//  Created by comv on 16/3/21.
+//  Copyright © 2016年 lwh. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface LWScaleCircleView : UIView
+
+//线宽.
+@property(nonatomic)CGFloat lineWith;
+//基准圆环颜色
+@property(nonatomic, strong)UIColor *unfillColor;
+//中心数据显示标签
+@property (nonatomic, strong)UILabel *centerLable;
+
+//  四个区域的颜色
+@property (nonatomic, strong)UIColor *firstColor;
+@property (nonatomic, strong)UIColor *secondColor;
+@property (nonatomic, strong)UIColor *thirdColor;
+@property (nonatomic, strong)UIColor *fourthColor;
+//  四个区域所占的百分比
+@property (nonatomic, assign)float firstScale;
+@property (nonatomic, assign)float secondScale;
+@property (nonatomic, assign)float thirdScale;
+@property (nonatomic, assign)float fourthScale;
+//动画时长
+@property (nonatomic, assign)float animation_time;
+
+@property (nonatomic, assign)BOOL isFourth;
+@property (nonatomic, assign)BOOL isShowBottomLabel;
+
+@property (nonatomic, strong) UIColor *centerLabelColor;
+@property (nonatomic, strong) UIColor *centerTextColor;
+
+- (instancetype) initWithFrame:(CGRect)frame;
+
+- (void)setdateText:(NSString *)string;
+//- (void)setToptextString:(NSString *)string;
+@end

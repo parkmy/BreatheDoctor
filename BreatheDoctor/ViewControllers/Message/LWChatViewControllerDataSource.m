@@ -60,6 +60,7 @@
 //    
 //    [cell setModel:model];
     UUMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UUMessageCell" forIndexPath:indexPath];
+//    cell.backgroundColor = RGBA(arc4random_uniform(245), arc4random_uniform(222), arc4random_uniform(111), 1);
     cell.delegate = self;
     [cell setMessageFrame:self.dataSource[indexPath.row]];
     return cell;

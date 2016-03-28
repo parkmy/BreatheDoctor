@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+@class KLPatientLogModel;
 
 @interface LWMedicationTypeView : UIView
 
 - (void)setTimerString:(NSString *)string;
+- (void)setControlButtonType:(NSInteger)type;
+- (void)setEmergencyButtonType:(NSInteger)type;
 @end

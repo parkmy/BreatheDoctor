@@ -42,14 +42,36 @@
     }
     return self;
 }
+- (void)setEmergencyButtonType:(NSInteger)type{
 
+    if (type == 1) {
+
+        [_emergencyButton setImage:kImage(@"medjilu") forState:UIControlStateNormal];
+
+    }else if (type == 2)
+    {
+        [_emergencyButton setImage:kImage(@"medweitian") forState:UIControlStateNormal];
+
+    }else
+    {
+        [_emergencyButton setImage:kImage(@"medweijilu") forState:UIControlStateNormal];
+    }
+}
+- (void)setControlButtonType:(NSInteger)type{
+    if (type == 1) {
+        [_controlButton setImage:kImage(@"medjilu") forState:UIControlStateNormal];
+    }else if (type == 2)
+    {
+        [_controlButton setImage:kImage(@"medweitian") forState:UIControlStateNormal];
+    }else
+    {
+        [_controlButton setImage:kImage(@"medweijilu") forState:UIControlStateNormal];
+    }
+}
 - (UIButton *)allocStarButton
 {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     [btn setImage:kImage(@"medweitian") forState:UIControlStateNormal];
-    [btn setImage:kImage(@"medweijilu") forState:UIControlStateHighlighted];
-    [btn setImage:kImage(@"medjilu") forState:UIControlStateSelected];
-
     return btn;
 }
 

@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface LWPEFListView : UIView
-
+@property (nonatomic, assign) double pefPredictedValue;
+- (void)setPefHistorical:(NSMutableArray *)array;
+- (void)setLineViewYnumber:(double)pefPredictedValue;
+- (void)changePefDateList:(NSInteger)dateCount;
+- (void)setItmLineView:(KLPatientLogBodyModel *)body;
 @end

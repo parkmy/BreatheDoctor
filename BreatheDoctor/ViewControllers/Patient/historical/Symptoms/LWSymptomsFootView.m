@@ -12,6 +12,7 @@
 @interface LWSymptomsFootView ()<UICollectionViewDataSource,UICollectionViewDelegate>
 
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
@@ -21,14 +22,30 @@
 {
     if ([super initWithFrame:frame])
     {
+//        
+//        NSString *path = [[NSBundle mainBundle] pathForResource:@"LWSymptomsList" ofType:@"plist"];
+//        NSArray *array = [[NSArray alloc] initWithContentsOfFile:path];
+//        [self.dataArray removeAllObjects];
+//        [self.dataArray addObjectsFromArray:array];
         
         [self addSubview:self.collectionView];
         self.collectionView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(3, 7, 3, 7));
-        
     }
     return self;
 }
-
+- (NSMutableArray *)dataArray
+{
+    if (!_dataArray) {
+        _dataArray = [NSMutableArray array];
+    }
+    return _dataArray;
+}
+- (void)setFootSymptoms:(NSMutableArray *)array
+{
+    [self.dataArray removeAllObjects];
+    [self.dataArray addObjectsFromArray:array];
+    [self.collectionView reloadData];
+}
 - (UICollectionView *)collectionView
 {
     if (!_collectionView) {
@@ -51,13 +68,13 @@
 #pragma mark -UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 12;
+    return self.dataArray.count;
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
  
     LWSymptomsCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LWSymptomsCell" forIndexPath:indexPath];
-    
+    [cell setObjc:self.dataArray[indexPath.row]];
     return cell;
 }
 

@@ -10,11 +10,14 @@
 #import "LWHistoricalItmView.h"
 #import "LWPEFHistorListCell.h"
 #import "LWPEFHistorListTitleCell.h"
+#import "KLPEFItmLineView.h"
 
 @interface LWPEFListView ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *mTableView;
-
+    KLPEFItmLineView *pefLineView;
+    LWHistoricalItmView *itmView;
+    NSMutableArray *dataArray;
 }
 @end
 
@@ -34,8 +37,8 @@
             [self addSubview:label];
             label;
         });
-   
-        LWHistoricalItmView *itmView = ({
+        
+        itmView = ({
             LWHistoricalItmView *view = [[LWHistoricalItmView alloc] initWithSize:CGSizeMake(70*MULTIPLEVIEW, 20*MULTIPLEVIEW) leftTitle:@"曲线" rightTitle:@"列表"];
             [self addSubview:view];
             view;
@@ -50,59 +53,113 @@
         });
         
         mTableView = ({
-        
+            
             UITableView *table = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
             table.dataSource = self;
             table.delegate = self;
             table.separatorStyle = 0;
             [table registerClass:[LWPEFHistorListCell class] forCellReuseIdentifier:@"LWPEFHistorListCell"];
-            [table registerClass:[LWPEFHistorListTitleCell class] forCellReuseIdentifier:@"LWPEFHistorListTitleCell"];
+            
+            
+            table.hidden = YES;
+            table.alpha = 0;
             table;
         });
         
         [contentView addSubview:mTableView];
+        
+        pefLineView = [[KLPEFItmLineView alloc] initWithDataSource:nil withFram:CGRectZero];
+        [contentView addSubview:pefLineView];
         
         
         itmView.sd_layout.rightSpaceToView(self,10).topSpaceToView(self,5).widthIs(100).heightIs(30*MULTIPLEVIEW);
         titleLabel.sd_layout.rightSpaceToView(itmView,5).topSpaceToView(self,5).leftSpaceToView(self,10).heightIs(30*MULTIPLEVIEW);
         contentView.sd_layout.leftSpaceToView(self,10).rightSpaceToView(self,10).topSpaceToView(itmView,5).bottomSpaceToView(self,5);
         mTableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
+        pefLineView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
         
-        
+        [self setBlock];
     }
     return self;
 }
 
+- (void)setBlock
+{
+    __weak typeof(self)weakSelf = self;
+    
+    [itmView setLeftButtonBlock:^{
+        [weakSelf showLeft];
+    }];
+    
+    [itmView setRightButtonBlock:^{
+        [weakSelf showRight];
+    }];
+}
+
+- (void)showLeft
+{
+    [UIView animateWithDuration:.5 animations:^{
+        pefLineView.hidden = NO;
+        mTableView.alpha = 0;
+        pefLineView.alpha = 1;
+    } completion:^(BOOL finished) {
+        mTableView.hidden = YES;
+    }];
+}
+- (void)showRight
+{
+    [UIView animateWithDuration:.5 animations:^{
+        mTableView.hidden = NO;
+        pefLineView.alpha = 0;
+        mTableView.alpha = 1;
+    } completion:^(BOOL finished) {
+        pefLineView.hidden = YES;
+    }];
+    
+}
+- (void)setPefHistorical:(NSMutableArray *)array{
+    dataArray = array;
+    [mTableView reloadData];
+}
+- (void)setLineViewYnumber:(double)pefPredictedValue{
+    [pefLineView changeYnumber:pefPredictedValue];
+}
+- (void)changePefDateList:(NSInteger)dateCount{
+    [pefLineView changeDateList:dateCount];
+}
+- (void)setItmLineView:(KLPatientLogBodyModel *)body{
+    pefLineView.dataSource = [pefLineView getItms:body];
+    [pefLineView setNeedsDisplay];
+}
 #pragma mark -
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 8;
+    return dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = nil;
     
-    if (indexPath.row == 0)
-    {
-        LWPEFHistorListTitleCell *titleCell = [tableView dequeueReusableCellWithIdentifier:@"LWPEFHistorListTitleCell" forIndexPath:indexPath];
-        cell = titleCell;
-    }else
-    {
-        LWPEFHistorListCell *listCell = [tableView dequeueReusableCellWithIdentifier:@"LWPEFHistorListCell" forIndexPath:indexPath];
-        [listCell setBackgroundColorWithTag:(indexPath.row+1)%2];
-        cell = listCell;
-    }
-    return cell;
+    LWPEFHistorListCell *listCell = [tableView dequeueReusableCellWithIdentifier:@"LWPEFHistorListCell" forIndexPath:indexPath];
+    [listCell setBackgroundColorWithTag:(indexPath.row)%2];
+    listCell.pefPredictedValue = self.pefPredictedValue;
+    [listCell setModel:dataArray[indexPath.row]];
+    return listCell;
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    LWPEFHistorListTitleCell *view = [LWPEFHistorListTitleCell new];
+    view.frame = CGRectMake(0, 0, screenWidth, (72/2)*MULTIPLEVIEW);
+    return view;
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return (72/2)*MULTIPLEVIEW;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == 0) {
-        return (72/2)*MULTIPLEVIEW;
-    }else
-    {
-        return 22*MULTIPLEVIEW;
-    }
+    
+    return 22*MULTIPLEVIEW;
 }
 
 @end

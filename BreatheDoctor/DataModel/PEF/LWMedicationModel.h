@@ -24,7 +24,8 @@
 
 @property (nonatomic, assign) double timeFrame;
 
-+ (NSMutableArray *)MedicationModels;
+@property (nonatomic, assign) double morningpefValue;
+@property (nonatomic, assign) double eveningpefValue;
 
 
 @end

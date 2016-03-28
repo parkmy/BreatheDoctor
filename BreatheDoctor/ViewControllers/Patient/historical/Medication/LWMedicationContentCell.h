@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class LWMedicationModel;
 
 @interface LWMedicationContentCell : UITableViewCell
-
+@property (nonatomic, strong) LWMedicationModel *model;
 @end

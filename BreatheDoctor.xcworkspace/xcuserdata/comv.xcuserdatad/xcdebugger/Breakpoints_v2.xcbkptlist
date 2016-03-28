@@ -35,13 +35,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BreatheDoctor/Library/LKDBHelp/Helper/NSObject+LKDBHelper.m"
-            timestampString = "471405646.313476"
+            filePath = "BreatheDoctor/ViewControllers/Patient/historical/KLHistoricalOperation.m"
+            timestampString = "480777981.629267"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "123"
-            endingLineNumber = "123"
-            landmarkName = "+deleteToDB:"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
+            landmarkName = "+historicalSymptomsRecordCountInfo:theSymptomsLogArray:thehistoricalDataArray:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

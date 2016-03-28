@@ -10,10 +10,9 @@
 #import "LWPatientCenterCell.h"
 #import "LWPatientRecordsCtr.h"
 #import "LWPatientRemarksCtr.h"
-#import "LWPatientLogViewController.h"
 #import "LWTheFormViewController.h"
 #import "LWTheFormTypeViewController.h"
-#import "LWPatientRelatedViewController.h"
+#import "LWPatientRelatedVC.h"
 #import "LWHistoricalRecordVC.h"
 
 @interface LWPatientCententCtr ()
@@ -140,7 +139,7 @@
         
     }else if (indexPath.row == 2)
     {
-        LWPatientRelatedViewController *vc = (LWPatientRelatedViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRelated];
+        LWPatientRelatedVC *vc = (LWPatientRelatedVC *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRelated];
         vc.patientId = self.patient.patientId;
         [self.navigationController pushViewController:vc animated:YES];
         [UMSAgent event:@"patientRelated" label:@"患者病情相关"];

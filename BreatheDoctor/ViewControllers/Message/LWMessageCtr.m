@@ -258,6 +258,7 @@
 */
 - (NSMutableArray *)sqlCacheMessages
 {
+//    TICK
     NSString *wheres = [NSString stringWithFormat:@"memberId = %@",@"requestmessage"];
     
     NSMutableArray *array = [[LKDBHelper getUsingLKDBHelper] search:[LWMainRows class] where:nil orderBy:@"insertDt DESC" offset:0 count:100000];
@@ -326,6 +327,7 @@
             NSComparisonResult result = [time2 compare:time1];
         return result;
     }];
+//    TOCK
     return array1;
 }
 

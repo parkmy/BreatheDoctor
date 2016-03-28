@@ -12,5 +12,5 @@
 @interface LWBaseHistoricalView : UIView<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *mTableView;
 + (LWHistoricalHeardView *)historicalHeardView;
-
+- (void)reloadData:(NSMutableArray *)array;
 @end

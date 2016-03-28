@@ -36,6 +36,7 @@
 @interface JSDropmenuView : UIView
 
 @property(nonatomic,strong) id<JSDropmenuViewDelegate> delegate;
+@property (nonatomic, assign) NSInteger seleIndex;
 
 - (void)showViewInView:(UIView*)view;
 

@@ -20,7 +20,7 @@
         contenView.layer.borderWidth = .5;
         contenView.layer.borderColor = appLineColor.CGColor;
         [self addSubview:contenView];
-        contenView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 10, 0, 10));
+        contenView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(10, 10, 0, 10));
 
         
 //        UIView *line = [UIView allocAppLineView];

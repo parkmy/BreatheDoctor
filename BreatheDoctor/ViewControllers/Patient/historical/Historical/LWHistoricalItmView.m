@@ -59,7 +59,6 @@
         [_rightButton addTarget:self action:@selector(rightButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rightButton;
-    
 }
 - (UIView *)menuView
 {

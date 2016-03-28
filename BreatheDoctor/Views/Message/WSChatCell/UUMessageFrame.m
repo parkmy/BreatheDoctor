@@ -53,8 +53,7 @@
     CGSize contentSize;
     switch (_model.chatCellType) {
         case WSChatCellType_Text:
-            contentSize = [_model.msgContent sizeWithFont:ChatContentFont constrainedToWidth:screenW - ChatIconWH*3 -10];
-            
+            contentSize = [stringJudgeNull(_model.content) sizeWithFont:ChatContentFont constrainedToWidth:screenW - ChatIconWH*3 -10];
             break;
         case WSChatCellType_Image:
             contentSize = CGSizeMake(ChatPicWH, ChatPicWH);

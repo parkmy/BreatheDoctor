@@ -14,14 +14,13 @@
 #import "PersonalPassModifyVC.h"
 #import "PatientTaskDescribeVC.h"
 #import "FastReplyVC.h"
-#import "LWPatientLogViewController.h"
 #import "LWWEBViewController.h"
 #import "LWTimerRemindViewController.h"
 #import "LWTheFormTypeViewController.h"
 #import "LWTheFormViewController.h"
-#import "LWPatientRelatedViewController.h"
 #import "LWReservationDetailedViewController.h"
 #import "LWOrderDetailedListViewController.h"
+#import "LWPatientRelatedVC.h"
 
 @implementation UIViewController (Factory)
 
@@ -100,7 +99,7 @@
         }
         case CtrlTag_PatientLog:
         {
-            resCtrl = [[LWPatientLogViewController alloc] init];
+//            resCtrl = [[LWPatientLogViewController alloc] init];
             break;
         }
         case CtrlTag_ACTAssessment:
@@ -150,7 +149,7 @@
         }
         case CtrlTag_PatientRelated:
         {
-            resCtrl = [[LWPatientRelatedViewController alloc] init];
+            resCtrl = [[LWPatientRelatedVC alloc] init];
             break;
         }
         case CtrlTag_TheFormType:

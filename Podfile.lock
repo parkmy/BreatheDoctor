@@ -24,6 +24,13 @@ PODS:
   - JGProgressHUD (1.3.1)
   - MJRefresh (3.1.0)
   - OpenUDID (1.0.0)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
   - SDAutoLayout (1.31)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
@@ -35,6 +42,7 @@ DEPENDENCIES:
   - JGProgressHUD
   - MJRefresh
   - OpenUDID
+  - ReactiveCocoa
   - SDAutoLayout
   - SDWebImage
 
@@ -44,6 +52,7 @@ SPEC CHECKSUMS:
   JGProgressHUD: 153053a21d81208cb5f659691996bcefce6a9885
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   SDAutoLayout: 79b8977f863ba4722bb8f8f6f92981d0b8ae932a
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
 

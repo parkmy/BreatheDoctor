@@ -9,6 +9,15 @@
 #import "LWMedicationView.h"
 #import "LWMedicationContentCell.h"
 #import "LWMedicationTitleTypeView.h"
+#import "KLHistoricalOperation.h"
+
+@interface LWMedicationView ()
+{
+    NSString *_dateString;
+    KLPatientLogBodyModel *_model;
+    NSMutableArray  *_dataArray;
+}
+@end
 
 @implementation LWMedicationView
 
@@ -27,12 +36,22 @@
     }
     return self;
 }
-
+- (void)setLogDateText:(NSString *)string
+{
+    _dateString = string;
+    [self.mTableView reloadData];
+}
+- (void)reloadMedicationViewData:(KLPatientLogBodyModel *)model
+{
+    _model = model;
+    _dataArray = [KLHistoricalOperation mergeHistoricalListInfo:_model.recordList];
+    [self.mTableView reloadData];
+}
 #pragma mark - tableDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return section == 0?1:10;
+    return section == 0?1:_dataArray.count;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -46,14 +65,21 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"historicalHeardView"];
             cell.selectionStyle = 0;
             LWHistoricalHeardView *historicalHeardView = [LWBaseHistoricalView historicalHeardView];
+            historicalHeardView.tag = 888;
             [cell.contentView addSubview:historicalHeardView];
             historicalHeardView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
         }
+        LWHistoricalHeardView *historicalHeardView = (LWHistoricalHeardView *)[cell viewWithTag:888];
+        [historicalHeardView setFootLabelTitle:@"坚持规律用药，合理调整用药方案"];
+        [historicalHeardView setHistoricalType:showHistoricalTypeMedication];
+        [historicalHeardView setScaleCircleWithObjc:_model];
+        [historicalHeardView setScaleCircleDateText:_dateString];
+
         return cell;
     }else
     {
         LWMedicationContentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LWMedicationContentCell"];
-
+        [cell setModel:_dataArray[indexPath.row]];
         return cell;
     }
 }
@@ -63,7 +89,7 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return section == 0?5:.1;
+    return section == 0?5*MULTIPLEVIEW:.1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {

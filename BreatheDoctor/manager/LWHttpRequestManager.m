@@ -12,11 +12,8 @@
 #import "LWHttpDefine.h"
 #import "YRJSONAdapter.h"
 #import "CODataCacheManager.h"
-
 #import "NSDate+Extension.h"
 #import "KSCache.h"
-
-
 
 @implementation LWHttpRequestManager
 
@@ -814,6 +811,28 @@
     } isCache:NO];
     
     
+}
+
+#pragma mark  加载患者历史记录
++ (void)httpLoadPatientRecordHistoryWithPatientId:(NSString *)pid
+                                       recentDays:(NSInteger)day
+                                          Success:(void (^)(KLPatientLogBodyModel *model))success
+                                          failure:(void (^)(NSString * errorMes))failure
+{
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    [requestParams setObject:stringJudgeNull(@"160112093939010002") forKey:@"patientId"];
+    [requestParams setObject:stringJudgeNull(kNSString(kNSNumInteger(day))) forKey:@"recentDays"];
+
+    [KSNetRequest requestTargetPOST:@"http://192.168.199.235:8084/comveebreath/mobile/history/loadPatientRecordHistory.do" parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        KLPatientLogBodyModel *model = [[KLPatientLogBodyModel alloc] initWithDictionary:responseObject[res_body]];
+        
+        success?success(model):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:YES];
 }
 
 @end

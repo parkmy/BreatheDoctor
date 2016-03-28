@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ReactiveCocoa.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDAutoLayout.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,6 +52,16 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>05343D96A413356D4B4439CD8E34D3AF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>11936EB443B06C02A23D0CF4DB9534D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>3116F685117B044E8E119EA475203BA9</key>
 		<dict>
 			<key>primary</key>
@@ -62,27 +77,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>586A4D4F44DF06CE579CAF99F9D70E12</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5BA89F81430E549808DF0E61D164E268</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>822B09D3321B4A2F831111C7581E5CEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>88E82AB22265A1EDAD98E239750DC465</key>
+		<key>8F74D9EA91F4C43190670066BAC37D44</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F74D9EA91F4C43190670066BAC37D44</key>
+		<key>A2A18A4F610C186706F11A4FC63FD0D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C7FD4CD88A99B7F7590C9B36E2DE07C6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
