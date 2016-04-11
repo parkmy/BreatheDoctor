@@ -41,7 +41,7 @@
             UIView *line = [UIView new];
             line.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
             [bg addSubview:line];
-            line.sd_layout.leftSpaceToView(bg,0).topSpaceToView(bg,10).bottomSpaceToView(bg,10).widthIs(4);
+            line.sd_layout.leftSpaceToView(bg,0).topSpaceToView(bg,5).bottomSpaceToView(bg,5).widthIs(2.5);
 
             dateLabel = [UILabel new];
             dateLabel.font = kNSPXFONT(22);

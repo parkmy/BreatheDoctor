@@ -66,8 +66,8 @@ static NSString *const kUserFastReply = @"kUserFastReply";
 #pragma mark 删除用户数据
 - (void)removeUserModel
 {
-        [_ud removeObjectForKey:kUserModelKey];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+    [_ud removeObjectForKey:kUserModelKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
 }
 
@@ -93,7 +93,7 @@ static NSString *const kUserFastReply = @"kUserFastReply";
         return [self morens];
     }
     return [_ud objectForKey:kUserFastReply];
-
+    
 }
 
 @end

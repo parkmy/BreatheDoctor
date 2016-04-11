@@ -17,6 +17,7 @@
 #import "LWPatientListModel.h"
 #import "NSString+Pinyin.h"
 #import "NSString+Contains.h"
+#import <ReactiveCocoa.h>
 
 typedef NS_ENUM(NSInteger , ShowGroupingType) {
     ShowGroupingTypeAll = 0, //所有
@@ -25,7 +26,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     ShowGroupingTypePartControl ,//部分控制
     ShowGroupingTypeNoControl ,//为控制
 };
-@interface LWPatientListCtr ()<UISearchBarDelegate,LWCustomMenuDelegate>
+@interface LWPatientListCtr ()<UISearchBarDelegate,LWCustomMenuDelegate,UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, assign) ShowGroupingType showGroupingType;
 @property (strong, nonatomic) UISearchBar *searchBar;
@@ -42,7 +43,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 @property (nonatomic, strong) NSMutableArray *searchArray;
 
 @property (nonatomic, copy) NSString *refreshTime;
-
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -65,6 +66,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.automaticallyAdjustsScrollViewInsets = NO;
     [self initProperty];
     [self setUI];
     [self loadCacheMes];
@@ -351,6 +353,9 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    [MobClick event:@"patientCenter" label:@"患者个人中心按钮的点击量"];
+
     LWPatientCententCtr *patientCentent = (LWPatientCententCtr *)[UIViewController CreateControllerWithTag:CtrlTag_PatientCenter];
     LWPatientRows *model;
     if (self.isSearch) {
@@ -473,6 +478,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     NSMutableArray *array = [[LKDBHelper getUsingLKDBHelper] search:[LWPatientRows class] where:nil orderBy:nil offset:0 count:10000];
     if (array.count <= 0) {
         [self showErrorMessage:@"您还没有患者，去添加吧~" isShowButton:NO type:showErrorTypeMore];
+        self.tableView.hidden = YES;
         return;
     }
     LWPatientRows *model = array[0];
@@ -481,6 +487,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     [self.patients addObjectsFromArray:array];
 
     [self hiddenNonetWork];
+    self.tableView.hidden = NO;
     [self ToDealWithPatientList];
 }
 
@@ -488,11 +495,15 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 {
     [LWHttpRequestManager httpPatientListWithPage:1 size:100000 refreshDate:self.refreshTime success:^(LWPatientBaseModel *patientBaseModel) {
         [LWProgressHUD closeProgressHUD:self.view];
+        if (patientBaseModel.body.rows.count <= 0) {
+            return ;
+        }
         [self loadCacheMes];
     } failure:^(NSString *errorMes) {
         [LWProgressHUD closeProgressHUD:self.view];
         if (self.patients.count <= 0) {
             [self showErrorMessage:@"网络连接失败，点击重试~" isShowButton:NO type:showErrorTypeHttp];
+            self.tableView.hidden = YES;
         }
     }];
     
@@ -530,9 +541,11 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 
     if (!self.isSearch && self.patientDics.count <= 0) {
         [self showErrorMessage:@"该分组暂无患者~" isShowButton:YES type:showErrorTypeMore];
+        self.tableView.hidden = YES;
     }else
     {
         [self hiddenNonetWork];
+        self.tableView.hidden = NO;
     }
 }
 

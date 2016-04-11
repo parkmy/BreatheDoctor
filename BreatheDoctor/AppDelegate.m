@@ -13,6 +13,7 @@
 #import <objc/runtime.h>
 #import "LWLoginManager.h"
 #import "NSString+Contains.h"
+#import "LWHttpDefine.h"
 
 @interface AppDelegate ()
 
@@ -26,10 +27,12 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
     NSLog(@"%@",NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES));
-
+    
+    
 //    300002         呼吸客户端IOS版
     //统计
-    [UMSAgent startWithAppkey:@"300002"];
+    [MobClick startWithAppkey:UMKEY];
+    [MobClick setAppVersion:[NSString appVersion]];
     
     //主题
     [LWThemeManager shareInstance].themeType = themeTypeDefault;
@@ -40,43 +43,9 @@
     //注册通知
     [self registerUserNotification:application withLaunchOptions:launchOptions];
     
-    [self isRegisterUserNotification:application];
+    [[PushMgrInfo sharedInstance] isRegisterUserNotification:application theisInfoDate:YES];
     
     return YES;
-}
-
-- (void)isRegisterUserNotification:(UIApplication *)application
-{
-    
-    NSDate *olddate = [[NSUserDefaults standardUserDefaults] objectForKey:@"UIUserNotificationTypeNoneDate"];
-    NSDate *newDate = [NSDate date];
-    
-    double count = [newDate timeIntervalSinceReferenceDate] - [olddate timeIntervalSinceReferenceDate];
-    NSInteger h = count/120;
-    
-    if (![LWLoginManager isLogin] || h < 12) {
-        return;
-    }
-    UIUserNotificationSettings *userNotSet = [application currentUserNotificationSettings];
-    if (userNotSet.types == UIUserNotificationTypeNone)
-    {
-        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"UIUserNotificationTypeNoneDate"];
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您的通知消息功能受到限制，这将影响您的消息推送功能，是否设置？" delegate:self cancelButtonTitle:@"是" otherButtonTitles:@"否", nil];
-        [alert show];
-    }
-  
-}
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if(buttonIndex == 0)
-    {
-        NSURL *url = [NSURL URLWithString:@"prefs:root=NOTIFICATIONS_ID"];
-        if ([[UIApplication sharedApplication] canOpenURL:url])
-        {
-            [[UIApplication sharedApplication] openURL:url];
-        }
-    }
-
 }
 
 - (void)registerUserNotification:(UIApplication *)application  withLaunchOptions:(NSDictionary *)launchOptions
@@ -162,7 +131,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    [self isRegisterUserNotification:application];
+    [[PushMgrInfo sharedInstance] isRegisterUserNotification:application theisInfoDate:YES];
 
 }
 

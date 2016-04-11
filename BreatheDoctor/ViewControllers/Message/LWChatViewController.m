@@ -27,6 +27,8 @@
 #import "LWTheFormTypeViewController.h"
 #import "LWTheFormViewController.h"
 #import "LWReservationDetailedViewController.h"
+#import "LWHistoricalRecordVC.h"
+#import "PushMgrInfo.h"
 
 #define kBkColorTableView    ([UIColor colorWithRed:0.773 green:0.855 blue:0.824 alpha:1])
 
@@ -81,11 +83,16 @@ typedef NS_ENUM(NSInteger , SenderType) {
     [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
     [[LWPublicDataManager shareInstance] cloesCurrentPatientID]; //清除对话ID
 }
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    [[PushMgrInfo sharedInstance] isRegisterUserNotification:[UIApplication sharedApplication] theisInfoDate:NO];
+
     [self initProperty];
     [self setUI];
     [self loadSQLData];
@@ -763,7 +770,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
             }];
             [self.navigationController pushViewController:vc animated:YES];
             
-            [UMSAgent event:@"FastReply" label:@"快捷回复"];
+            [MobClick event:@"FastReply" label:@"快捷回复按钮的点击量"];
             
         }
             break;
@@ -775,7 +782,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
             vc.showType = showTheFormTypeMouKuai;
             [self.navigationController pushViewController:vc animated:YES];
 
-            [UMSAgent event:@"TheForm" label:@"表单"];
+            [MobClick event:@"TheForm" label:@"表单按钮的点击量"];
         }
             break;
         default:
@@ -817,7 +824,8 @@ typedef NS_ENUM(NSInteger , SenderType) {
         case WSChatMessageType_PEFRecord: //PEF记录通知
         {
 //            
-//            LWPatientLogViewController *patientLog = (LWPatientLogViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];
+            LWHistoricalRecordVC *patientLog = (LWHistoricalRecordVC *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];
+            patientLog.pid = self.patient.memberId;
 //            //初始化时间建区
 //            patientLog.refDateDic = [LWTool patientPEFDateLineSx:model.insertDt];
 //            //初始化展示数据模型
@@ -838,7 +846,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
 //            patientLog.patientId = self.patient.memberId;
 //            patientLog.patientName = self.patient.patientName;
 //            patientLog.intDate = model.insertDt;
-//            [self.navigationController pushViewController:patientLog animated:YES];
+            [self.navigationController pushViewController:patientLog animated:YES];
         }
             break;
         case WSChatMessageType_BiaoDan: //表单

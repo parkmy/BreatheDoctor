@@ -29,7 +29,8 @@
 #import "UITableView+SDAutoTableViewCellHeight.h"
 #import "CDMacro.h"
 #import "LCCoolHUD.h"
-#import "UMSAgent.h"
+#import <MobClick.h>
+#import "NSString+Contains.h"
 
 #define StoryboardCtr(Identifier) [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:Identifier]
 
@@ -43,7 +44,7 @@
 #define appLineColor [UIColor colorWithHexString:@"#eeeeee"]
 
 
-#define MULTIPLEVIEW (iPhone6Plus?1.35:iPhone6?1.15:1)
+#define MULTIPLEVIEW (iPhone6Plus?1.35:iPhone6?1.2:1)
 
 #define MULTIPLE (iPhone6Plus?1.15:iPhone6?1.08:1)
 #define kNSPXFONTFLOAT(M) ((M/2)*MULTIPLE)

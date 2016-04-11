@@ -462,28 +462,6 @@
     } isCache:YES];
 }
 
-#pragma mark PEF记录
-+ (void)httpLoadPEFRecordWithPatientId:(NSString *)patientId
-                               StartDt:(NSString *)startDt
-                                 EndDt:(NSString *)endDt
-                               success:(void (^)(LWPEFLineModel *model))success
-                               failure:(void (^)(NSString * errorMes))failure
-{
-    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
-    
-    [requestParams setObject:stringJudgeNull(patientId) forKey:@"patientId"];
-    [requestParams setObject:stringJudgeNull(startDt) forKey:@"startDt"];
-    [requestParams setObject:stringJudgeNull(endDt) forKey:@"endDt"];
-    
-    [LWHttpRequestManager addPublicHeaderPost:requestParams];
-    
-    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADPEFRECORD] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
-        if (success){ success([[LWPEFLineModel alloc] initWithDictionary:responseObject]);}
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
-        failure?failure(errorMessage):nil;
-    } isCache:YES];
-}
-
 #pragma mark 加载哮喘症状评估日志录
 + (void)httpLoadAsthmaAssessLogWithPatientId:(NSString *)patientId
                                         year:(NSString *)year
@@ -559,7 +537,7 @@
         success?success(array):nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
-    } isCache:YES];
+    } isCache:NO];
     
 }
 
@@ -745,6 +723,7 @@
         NSLog(@"%@",[responseObject JSONString]);
         
         NSMutableArray *array = [NSMutableArray array];
+            
         for (NSDictionary *dic in (NSArray *)responseObject[res_body])
         {
             LWOrderListModel *model = [[LWOrderListModel alloc] initWithOrderLisetModelDic:dic];
@@ -821,10 +800,10 @@
 {
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
-    [requestParams setObject:stringJudgeNull(@"160112093939010002") forKey:@"patientId"];
+    [requestParams setObject:stringJudgeNull(pid) forKey:@"patientId"];
     [requestParams setObject:stringJudgeNull(kNSString(kNSNumInteger(day))) forKey:@"recentDays"];
-
-    [KSNetRequest requestTargetPOST:@"http://192.168.199.235:8084/comveebreath/mobile/history/loadPatientRecordHistory.do" parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+    
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADPATIENTRECORDHISTORY] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         NSLog(@"%@",[responseObject JSONString]);
         
         KLPatientLogBodyModel *model = [[KLPatientLogBodyModel alloc] initWithDictionary:responseObject[res_body]];

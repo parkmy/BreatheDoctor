@@ -51,7 +51,7 @@
             [self.dataArray addObjectsFromArray:models];
             [self.tableView reloadData];
             if (self.dataArray.count <= 0) {
-                [self showErrorMessage:@"暂无已填表单～" isShowButton:YES type:showErrorTypeMore];
+                [self showErrorMessage:@"暂无已填表单～" isShowButton:YES type:showErrorType64Hight];
             }else
             {
                 [self hiddenNonetWork];

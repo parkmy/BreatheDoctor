@@ -23,16 +23,19 @@
 @interface KSNoNetView : UIView
 
 @property (nonatomic, strong) id<KSNoNetViewDelegate>delegate;
-
-@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
-@property (weak, nonatomic) IBOutlet UIButton *ErrorButton;
+@property (nonatomic, assign) BOOL isShowErrorButton;
+@property (nonatomic, assign) NSInteger ErrorButtonTag;
+//@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+//@property (weak, nonatomic) IBOutlet UIButton *ErrorButton;
+- (void)setErrorButtonTitleInfo:(NSString *)title;
+- (void)setErrorLabelMessageInfo:(NSString *)messgae;
 
 /**
  *  初始化方法,可以自定义,
  *
  *  @return KSNotNetView
  */
-+ (instancetype) instanceNoNetView;
+//+ (instancetype) instanceNoNetView;
 
 
 @end

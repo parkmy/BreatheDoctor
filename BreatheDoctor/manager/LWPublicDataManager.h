@@ -14,7 +14,6 @@
 #pragma mark - 日志
 @property (nonatomic, copy) NSString *starDate; //开始时间
 @property (nonatomic, copy) NSString *endDate; //结束时间
-@property (nonatomic, copy) LWPEFLineModel *logModle;
 
 @property (nonatomic, copy) NSString *yer;
 @property (nonatomic, copy) NSString *month;

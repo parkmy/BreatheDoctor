@@ -60,7 +60,45 @@
 {
     return component == 0?24:component == 1?1:60;
 }
+- (nullable NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    
+    if (component == 0) {
+        NSString *string = nil;
+        if (row < 10) {
+            string = [NSString stringWithFormat:@"0%ld时",row];
+        }else{
+            string = [NSString stringWithFormat:@"%ld时",row];
+        }
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:string];
+        
+        [attributedString addAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica-Light" size:kNSPXFONTFLOAT(28)],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#999999"]} range:NSMakeRange(attributedString.length-1, 1)];
+        [attributedString addAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica-Light" size:kNSPXFONTFLOAT(80)],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#333333"]} range:NSMakeRange(0, attributedString.length-1)];
 
+        return attributedString;
+        
+    }else if (component == 1)
+    {
+        return [[NSMutableAttributedString alloc] initWithString:@":"] ;
+    }else{
+    
+        NSString *string = nil;
+        if (row < 10) {
+            string = [NSString stringWithFormat:@"0%ld分",row];
+        }else{
+            string = [NSString stringWithFormat:@"%ld分",row];
+        }
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:string];
+        
+        [attributedString addAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica-Light" size:kNSPXFONTFLOAT(28)],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#999999"]} range:NSMakeRange(attributedString.length-1, 1)];
+        [attributedString addAttributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica-Light" size:kNSPXFONTFLOAT(80)],NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#333333"]} range:NSMakeRange(0, attributedString.length-1)];
+
+        return attributedString;
+    
+    }
+
+
+    
+}
 - (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     if (component == 0) {

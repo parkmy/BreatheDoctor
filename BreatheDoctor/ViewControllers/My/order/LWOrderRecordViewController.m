@@ -226,12 +226,18 @@
     LWOrderDetailedListViewController *vc = (LWOrderDetailedListViewController *)[UIViewController CreateControllerWithTag:CtrlTag_orderListDetailed];
     if (indexPath.row == 0) { //商品
         vc.productType = ProductTypeProductOrder;
+        [MobClick beginEvent:@"ProductTypeProductOrder" label:@"商品"];
+
     }else if (indexPath.row == 1)//图文
     {
         vc.productType = ProductTypeGraphicOrder;
+        [MobClick beginEvent:@"ProductTypeGraphicOrder" label:@"图文"];
+
     }else if (indexPath.row == 2)//电话
     {
         vc.productType = ProductTypePhoneOrder;
+        [MobClick beginEvent:@"ProductTypePhoneOrder" label:@"电话"];
+
     }
     
     vc.model = model;

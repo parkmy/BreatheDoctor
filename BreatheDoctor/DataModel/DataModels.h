@@ -35,10 +35,6 @@
 #import "LWACTModel.h"
 #import "LWAsthmaModel.h"
 
-#import "LWPEFRecordList.h"
-#import "LWPEFLineModel.h"
-#import "LWPEFBody.h"
-
 #import "LWAsthmaAssessLogModel.h"
 #import "LWAsthmaAssessLogBody.h"
 

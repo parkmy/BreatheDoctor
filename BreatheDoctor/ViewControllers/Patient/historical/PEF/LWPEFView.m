@@ -61,6 +61,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"historicalHeardView"];
             cell.selectionStyle = 0;
             LWHistoricalHeardView *historicalHeardView = [LWBaseHistoricalView historicalHeardView];
+            historicalHeardView.baseHistoricalView = self;
             [cell.contentView addSubview:historicalHeardView];
             historicalHeardView.tag = 888;
             historicalHeardView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));

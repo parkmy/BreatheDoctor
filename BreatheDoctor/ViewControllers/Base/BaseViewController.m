@@ -36,13 +36,20 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [UMSAgent startTracPage:self.navTitle.text];
+    
+    NSString *pageID = [NSString stringWithFormat:@"%@",NSStringFromClass([self class])];
+    NSLog(@"%@-----%@",pageID,[NSString stringWithFormat:@"page_%@",pageID]);
+    [MobClick event:pageID label:self.navTitle.text];
+    [MobClick beginEvent:[NSString stringWithFormat:@"page_%@",pageID] label:self.navTitle.text];
+    [MobClick beginLogPageView:self.navTitle.text];
     self.navigationItem.title = @"";
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [UMSAgent endTracPage:self.navTitle.text];
+    NSString *pageID = [NSString stringWithFormat:@"page_%@",NSStringFromClass([self class])];
+    [MobClick endEvent:[NSString stringWithFormat:@"page_%@",pageID] label:self.navTitle.text];
+    [MobClick endLogPageView:self.navTitle.text];
     [self.navRightButton removeFromSuperview];
     [self.navLeftButton removeFromSuperview];
     [self.navTitle removeFromSuperview];

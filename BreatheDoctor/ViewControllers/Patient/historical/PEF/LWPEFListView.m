@@ -71,7 +71,6 @@
         pefLineView = [[KLPEFItmLineView alloc] initWithDataSource:nil withFram:CGRectZero];
         [contentView addSubview:pefLineView];
         
-        
         itmView.sd_layout.rightSpaceToView(self,10).topSpaceToView(self,5).widthIs(100).heightIs(30*MULTIPLEVIEW);
         titleLabel.sd_layout.rightSpaceToView(itmView,5).topSpaceToView(self,5).leftSpaceToView(self,10).heightIs(30*MULTIPLEVIEW);
         contentView.sd_layout.leftSpaceToView(self,10).rightSpaceToView(self,10).topSpaceToView(itmView,5).bottomSpaceToView(self,5);
@@ -118,7 +117,7 @@
     
 }
 - (void)setPefHistorical:(NSMutableArray *)array{
-    dataArray = array;
+    dataArray = (NSMutableArray *)[[array reverseObjectEnumerator] allObjects];
     [mTableView reloadData];
 }
 - (void)setLineViewYnumber:(double)pefPredictedValue{

@@ -52,9 +52,10 @@
 		790243BF1C4E30B00010B1D9 /* LWPopAlatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243BE1C4E30B00010B1D9 /* LWPopAlatView.m */; };
 		79025A771C8D569300F71892 /* nanguo2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79025A761C8D569300F71892 /* nanguo2@3x.png */; };
 		79025A791C8D569D00F71892 /* nanguo2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79025A781C8D569D00F71892 /* nanguo2@2x.png */; };
+		790392DD1CB4A89F00B020C4 /* LCCoolHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 790392DC1CB4A89F00B020C4 /* LCCoolHUD.m */; };
+		790392E71CB50D0C00B020C4 /* KLMessageOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 790392E61CB50D0C00B020C4 /* KLMessageOperation.m */; };
 		790515701BFDB16E001D5F33 /* LWSenderResBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7905156D1BFDB16E001D5F33 /* LWSenderResBaseModel.m */; };
 		790515711BFDB16E001D5F33 /* LWSenderResBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7905156F1BFDB16E001D5F33 /* LWSenderResBody.m */; };
-		790651181C9F9DAC004E13D0 /* LWSymptomsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 790651171C9F9DAC004E13D0 /* LWSymptomsList.plist */; };
 		7906511B1C9FC8E6004E13D0 /* LWScaleCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7906511A1C9FC8E6004E13D0 /* LWScaleCircleView.m */; };
 		79084E121C2792060002BBF2 /* LWChatLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79084E111C2792060002BBF2 /* LWChatLoadingView.m */; };
 		79084E161C27945D0002BBF2 /* sendFail.png in Resources */ = {isa = PBXBuildFile; fileRef = 79084E151C27945D0002BBF2 /* sendFail.png */; };
@@ -67,10 +68,6 @@
 		79084E2B1C27AEA00002BBF2 /* MJPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79084E241C27AEA00002BBF2 /* MJPhotoView.m */; };
 		79084E321C27AF530002BBF2 /* YLGIFImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 79084E2E1C27AF530002BBF2 /* YLGIFImage.m */; };
 		79084E331C27AF530002BBF2 /* YLImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79084E311C27AF530002BBF2 /* YLImageView.m */; };
-		79084E3D1C27AFBE0002BBF2 /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79084E361C27AFBE0002BBF2 /* SVIndefiniteAnimatedView.m */; };
-		79084E3E1C27AFBE0002BBF2 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 79084E381C27AFBE0002BBF2 /* SVProgressHUD.bundle */; };
-		79084E3F1C27AFBE0002BBF2 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 79084E3A1C27AFBE0002BBF2 /* SVProgressHUD.m */; };
-		79084E401C27AFBE0002BBF2 /* SVRadialGradientLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 79084E3C1C27AFBE0002BBF2 /* SVRadialGradientLayer.m */; };
 		790A671A1BFC07AF007E6DD6 /* PushMgrInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 790A67191BFC07AF007E6DD6 /* PushMgrInfo.m */; };
 		790A672C1BFC591B007E6DD6 /* D3RecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 790A671D1BFC591B007E6DD6 /* D3RecordButton.m */; };
 		790A672D1BFC591B007E6DD6 /* mic_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 790A671F1BFC591B007E6DD6 /* mic_0.png */; };
@@ -91,7 +88,6 @@
 		790BE9421C02EC4500BD1D67 /* LWAsthmaAssessmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 790BE9411C02EC4500BD1D67 /* LWAsthmaAssessmentCell.m */; };
 		790BE94C1C02FAFC00BD1D67 /* LWACTAssessmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 790BE94B1C02FAFC00BD1D67 /* LWACTAssessmentModel.m */; };
 		790EE5541C7EA261004ABC78 /* LWReservationDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790EE5531C7EA261004ABC78 /* LWReservationDetailedViewController.m */; };
-		791148F51C9BE8460020AB2C /* LWHistoricalCountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 791148F41C9BE8460020AB2C /* LWHistoricalCountModel.m */; };
 		7912112F1BF1A6A6004166C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912112E1BF1A6A6004166C5 /* main.m */; };
 		791211321BF1A6A6004166C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211311BF1A6A6004166C5 /* AppDelegate.m */; };
 		791211351BF1A6A6004166C5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211341BF1A6A6004166C5 /* ViewController.m */; };
@@ -118,7 +114,6 @@
 		791215621BF1CFD0004166C5 /* LWMainRows.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912153E1BF1CFD0004166C5 /* LWMainRows.m */; };
 		791215741BF1EA71004166C5 /* LWPatientCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 791215731BF1EA71004166C5 /* LWPatientCenterCell.m */; };
 		7912466D1C16D5F000B1B968 /* LWWEBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912466C1C16D5F000B1B968 /* LWWEBViewController.m */; };
-		7916E88C1C8D7A8300F891B3 /* LCCoolHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7916E88B1C8D7A8300F891B3 /* LCCoolHUD.m */; };
 		791935C01C7C093300EF4FFA /* dianhuadingdan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935B91C7C093300EF4FFA /* dianhuadingdan@3x.png */; };
 		791935C11C7C093300EF4FFA /* dianhuazixun@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935BA1C7C093300EF4FFA /* dianhuazixun@3x.png */; };
 		791935C21C7C093300EF4FFA /* quxiaodianhuazixun@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 791935BB1C7C093300EF4FFA /* quxiaodianhuazixun@3x.png */; };
@@ -137,6 +132,16 @@
 		7919B8BA1BFADC670058853F /* LWPatientRecordsBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919B8B31BFADC670058853F /* LWPatientRecordsBaseModel.m */; };
 		7919B8BB1BFADC670058853F /* LWPatientRecordsBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919B8B51BFADC670058853F /* LWPatientRecordsBody.m */; };
 		7919B8BD1BFADC670058853F /* LWPatientRecordsPatientArchives.m in Sources */ = {isa = PBXBuildFile; fileRef = 7919B8B91BFADC670058853F /* LWPatientRecordsPatientArchives.m */; };
+		79220A981CACF2E900CFBEC2 /* KLDatePickNumberView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79220A931CACF2E900CFBEC2 /* KLDatePickNumberView.m */; };
+		79220A991CACF2E900CFBEC2 /* KLDatePickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79220A951CACF2E900CFBEC2 /* KLDatePickView.m */; };
+		79220A9A1CACF2E900CFBEC2 /* KLDatePickViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79220A971CACF2E900CFBEC2 /* KLDatePickViewController.m */; };
+		79220A9D1CAD15B300CFBEC2 /* KLTimerWeeksView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79220A9C1CAD15B300CFBEC2 /* KLTimerWeeksView.m */; };
+		79220AA01CAD17D300CFBEC2 /* KLTimerWeeksCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79220A9F1CAD17D300CFBEC2 /* KLTimerWeeksCell.m */; };
+		79220AA31CAD1F3A00CFBEC2 /* KLTimerWeeksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79220AA21CAD1F3A00CFBEC2 /* KLTimerWeeksViewController.m */; };
+		79220AAB1CAE21AA00CFBEC2 /* timer_kedu_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 79220AA61CAE21AA00CFBEC2 /* timer_kedu_left.png */; };
+		79220AAC1CAE21AA00CFBEC2 /* timer_kedu_right.png in Resources */ = {isa = PBXBuildFile; fileRef = 79220AA71CAE21AA00CFBEC2 /* timer_kedu_right.png */; };
+		79220AAD1CAE21AA00CFBEC2 /* timer_warning.png in Resources */ = {isa = PBXBuildFile; fileRef = 79220AA81CAE21AA00CFBEC2 /* timer_warning.png */; };
+		79220AAF1CAE4A3000CFBEC2 /* timer_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79220AAE1CAE4A3000CFBEC2 /* timer_gray@2x.png */; };
 		7926F7791C561729009C4807 /* nav_btnBack@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7926F7781C561729009C4807 /* nav_btnBack@3x.png */; };
 		792736D11C48D2EB00D17C5B /* add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 792736CB1C48D2EB00D17C5B /* add@2x.png */; };
 		792736D21C48D2EB00D17C5B /* add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 792736CC1C48D2EB00D17C5B /* add@3x.png */; };
@@ -155,7 +160,6 @@
 		7929ACC21C33B66D002712EC /* LWThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7929ACC11C33B66D002712EC /* LWThemeManager.m */; };
 		7929ACC51C33BE99002712EC /* LWTheFormTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7929ACC41C33BE99002712EC /* LWTheFormTypeView.m */; };
 		7929ACC91C33CA93002712EC /* LWTimerRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7929ACC81C33CA93002712EC /* LWTimerRemindViewController.m */; };
-		792EF0CC1CA0EC9F001A69CC /* LWHistoricalLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 792EF0CB1CA0EC9F001A69CC /* LWHistoricalLogModel.m */; };
 		7938E56E1C0EDBA800AD043F /* LWCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7938E5691C0EDBA800AD043F /* LWCardView.m */; };
 		7938E56F1C0EDBA800AD043F /* UUMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7938E56B1C0EDBA800AD043F /* UUMessageCell.m */; };
 		7938E5701C0EDBA800AD043F /* UUMessageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = 7938E56D1C0EDBA800AD043F /* UUMessageFrame.m */; };
@@ -211,22 +215,12 @@
 		794557051C0BDA15005C0E10 /* tab_up_3@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945566E1C0BDA15005C0E10 /* tab_up_3@3x.png */; };
 		794557061C0BDA15005C0E10 /* nav_btnAdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556701C0BDA15005C0E10 /* nav_btnAdd@2x.png */; };
 		794557071C0BDA15005C0E10 /* nav_btnBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556711C0BDA15005C0E10 /* nav_btnBack@2x.png */; };
-		7945570B1C0BDA15005C0E10 /* left_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556761C0BDA15005C0E10 /* left_blue@2x.png */; };
-		7945570C1C0BDA15005C0E10 /* left_blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556771C0BDA15005C0E10 /* left_blue@3x.png */; };
-		7945570D1C0BDA15005C0E10 /* p_q_b_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556791C0BDA15005C0E10 /* p_q_b_@2x.png */; };
-		7945570E1C0BDA15005C0E10 /* p_q_w_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945567A1C0BDA15005C0E10 /* p_q_w_@2x.png */; };
-		794557111C0BDA15005C0E10 /* packageDetail.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945567D1C0BDA15005C0E10 /* packageDetail.png */; };
-		794557121C0BDA15005C0E10 /* Patient_03-03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945567E1C0BDA15005C0E10 /* Patient_03-03@2x.png */; };
-		794557131C0BDA15005C0E10 /* Patient_03-04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945567F1C0BDA15005C0E10 /* Patient_03-04@2x.png */; };
-		794557141C0BDA15005C0E10 /* right_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556801C0BDA15005C0E10 /* right_blue@2x.png */; };
-		794557151C0BDA15005C0E10 /* right_blue@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556811C0BDA15005C0E10 /* right_blue@3x.png */; };
 		794557161C0BDA15005C0E10 /* time_g@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556821C0BDA15005C0E10 /* time_g@2x.png */; };
 		794557171C0BDA15005C0E10 /* time_g@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556831C0BDA15005C0E10 /* time_g@3x.png */; };
 		794557181C0BDA15005C0E10 /* V-1_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556841C0BDA15005C0E10 /* V-1_@2x.png */; };
 		794557191C0BDA15005C0E10 /* V-7_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556851C0BDA15005C0E10 /* V-7_@2x.png */; };
 		7945571A1C0BDA15005C0E10 /* yisheng_03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556861C0BDA15005C0E10 /* yisheng_03@2x.png */; };
 		7945571B1C0BDA15005C0E10 /* yisheng_06@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556871C0BDA15005C0E10 /* yisheng_06@2x.png */; };
-		7945571D1C0BDA15005C0E10 /* yisheng_11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556891C0BDA15005C0E10 /* yisheng_11@2x.png */; };
 		7945571E1C0BDA15005C0E10 /* yisheng_4s@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7945568A1C0BDA15005C0E10 /* yisheng_4s@2x.jpg */; };
 		7945571F1C0BDA15005C0E10 /* yisheng_4s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945568B1C0BDA15005C0E10 /* yisheng_4s@2x.png */; };
 		794557201C0BDA15005C0E10 /* yisheng_@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945568C1C0BDA15005C0E10 /* yisheng_@3x.png */; };
@@ -256,7 +250,6 @@
 		7945573F1C0BDA15005C0E10 /* yitianxie_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556AE1C0BDA15005C0E10 /* yitianxie_@2x.png */; };
 		794557401C0BDA15005C0E10 /* yiwanchen_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556AF1C0BDA15005C0E10 /* yiwanchen_@2x.png */; };
 		794557411C0BDA15005C0E10 /* defaultIconImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556B11C0BDA15005C0E10 /* defaultIconImage@2x.png */; };
-		7945574B1C0C261B005C0E10 /* YS-2_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7945574A1C0C261B005C0E10 /* YS-2_@2x.png */; };
 		7945576C1C0C323E005C0E10 /* MZBlurEffectAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557531C0C323D005C0E10 /* MZBlurEffectAdapter.m */; };
 		7945576D1C0C323E005C0E10 /* MZFormSheetContentSizingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557551C0C323D005C0E10 /* MZFormSheetContentSizingNavigationController.m */; };
 		7945576E1C0C323E005C0E10 /* MZFormSheetContentSizingNavigationControllerAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557571C0C323D005C0E10 /* MZFormSheetContentSizingNavigationControllerAnimator.m */; };
@@ -273,11 +266,10 @@
 		794712C21BF9D0FA0083CE6E /* LGReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 794712C11BF9D0FA0083CE6E /* LGReachability.m */; };
 		794712E81BF9D3CC0083CE6E /* LWVoiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 794712E71BF9D3CC0083CE6E /* LWVoiceManager.m */; };
 		7947160E1BF48A1600C4D2E8 /* LWTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947160D1BF48A1600C4D2E8 /* LWTool.m */; };
+		79472D2F1CB6075200451E23 /* KLHistoricalHeardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79472D2E1CB6075200451E23 /* KLHistoricalHeardCell.m */; };
+		794BC6091CB78D55009F29B2 /* KLTimerRemindViewOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 794BC6081CB78D55009F29B2 /* KLTimerRemindViewOperation.m */; };
 		794D51521C7EE46900403767 /* LWOrderDetailedLisetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D51511C7EE46900403767 /* LWOrderDetailedLisetCell.m */; };
 		794D51551C7EE9CE00403767 /* LWOrderDetailedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D51541C7EE9CE00403767 /* LWOrderDetailedListViewController.m */; };
-		7952F1001C0582880030B279 /* LWPEFBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0FB1C0582880030B279 /* LWPEFBody.m */; };
-		7952F1011C0582880030B279 /* LWPEFLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0FD1C0582880030B279 /* LWPEFLineModel.m */; };
-		7952F1021C0582880030B279 /* LWPEFRecordList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952F0FF1C0582880030B279 /* LWPEFRecordList.m */; };
 		795553FF1C8FBAA60073F14C /* LWOrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 795553FE1C8FBAA60073F14C /* LWOrderViewCell.m */; };
 		795554021C8FD0E20073F14C /* LWOrderCellTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 795554011C8FD0E20073F14C /* LWOrderCellTypeView.m */; };
 		7955C28C1C03F705003D6836 /* FMDatabase+InMemoryOnDiskIO.m in Sources */ = {isa = PBXBuildFile; fileRef = 7955C2751C03F705003D6836 /* FMDatabase+InMemoryOnDiskIO.m */; };
@@ -299,8 +291,6 @@
 		7958ED661CA291D200C7FE11 /* LWBasePatientRelatedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7958ED651CA291D200C7FE11 /* LWBasePatientRelatedCell.m */; };
 		7958ED691CA2982600C7FE11 /* LWPatientRelatedPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7958ED681CA2982500C7FE11 /* LWPatientRelatedPhotoCell.m */; };
 		7958ED6C1CA3B0E800C7FE11 /* KLPatientRelatedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7958ED6B1CA3B0E800C7FE11 /* KLPatientRelatedModel.m */; };
-		7958EDC41CA3DCCD00C7FE11 /* KLPatientLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7958EDC31CA3DCCD00C7FE11 /* KLPatientLogModel.m */; };
-		7958EDC71CA4D55D00C7FE11 /* KLPatientLogBodyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7958EDC61CA4D55D00C7FE11 /* KLPatientLogBodyModel.m */; };
 		7959649C1C06F1F4001C18D8 /* LWMedicationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7959649B1C06F1F4001C18D8 /* LWMedicationModel.m */; };
 		795B6C221C47539B00612AF6 /* LWDoctorTimerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 795B6C211C47539B00612AF6 /* LWDoctorTimerModel.m */; };
 		795E0A311C118C92001699DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 795E0A2E1C118C92001699DF /* Main.storyboard */; };
@@ -328,6 +318,7 @@
 		796991D51C44CF8200A3A2C6 /* chat_recive_press_pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 796991D21C44CF8200A3A2C6 /* chat_recive_press_pic@2x.png */; };
 		796991D71C44D0B000A3A2C6 /* weiqueding@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 796991D61C44D0B000A3A2C6 /* weiqueding@2x.png */; };
 		796991D91C44D0B800A3A2C6 /* weiqueren@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 796991D81C44D0B800A3A2C6 /* weiqueren@3x.png */; };
+		796EA6D51CA924CE00D40C19 /* KLPEFBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 796EA6D41CA924CE00D40C19 /* KLPEFBubbleView.m */; };
 		797986271C43384D005052DF /* FastReplyVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 797986241C43384D005052DF /* FastReplyVC.m */; };
 		797986281C43384D005052DF /* FastReplyVCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 797986261C43384D005052DF /* FastReplyVCCell.m */; };
 		7979862B1C433871005052DF /* PatientTaskDescribeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7979862A1C433871005052DF /* PatientTaskDescribeVC.m */; };
@@ -384,7 +375,6 @@
 		797986B01C435350005052DF /* zhengzhuang@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 797986701C435350005052DF /* zhengzhuang@3x.png */; };
 		797986B11C435350005052DF /* zhuanjiaguwen@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 797986711C435350005052DF /* zhuanjiaguwen@3x.png */; };
 		797986B41C4393D9005052DF /* LWTimerWeeksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 797986B31C4393D9005052DF /* LWTimerWeeksViewController.m */; };
-		7979C9CD1C92609500D1889A /* pef_lin.png in Resources */ = {isa = PBXBuildFile; fileRef = 7979C9CC1C92609500D1889A /* pef_lin.png */; };
 		7984302F1C3A20BA00C79DCA /* LWMessageAgreedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7984302E1C3A20BA00C79DCA /* LWMessageAgreedCell.m */; };
 		798430321C3A218D00C79DCA /* LWAgreedHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 798430311C3A218D00C79DCA /* LWAgreedHeadCell.m */; };
 		798430351C3A434C00C79DCA /* LWMessageAgreedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 798430341C3A434C00C79DCA /* LWMessageAgreedViewController.m */; };
@@ -393,8 +383,6 @@
 		798922C21BFEB6A2002C695C /* GJMFileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 798922C11BFEB6A2002C695C /* GJMFileHelper.m */; };
 		7990D7B31C7AF76A00127A28 /* RFLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990D7B21C7AF76A00127A28 /* RFLayout.m */; };
 		7990D7B61C7AF9D400127A28 /* LWOrderCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990D7B51C7AF9D400127A28 /* LWOrderCollectionViewCell.m */; };
-		7990DF1A1CA4EA880096DA4B /* KLHistoricalOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF191CA4EA880096DA4B /* KLHistoricalOperation.m */; };
-		7990DF1D1CA501E30096DA4B /* KLSymptomsLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF1C1CA501E30096DA4B /* KLSymptomsLogModel.m */; };
 		7990DF201CA647AC0096DA4B /* NSObject+ProperList.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF1F1CA647AC0096DA4B /* NSObject+ProperList.m */; };
 		7990DF231CA7BC4C0096DA4B /* KLStateView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF221CA7BC4C0096DA4B /* KLStateView.m */; };
 		7990DF261CA7C3470096DA4B /* KLStateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF251CA7C3470096DA4B /* KLStateCell.m */; };
@@ -402,16 +390,6 @@
 		7990DF2C1CA8F8160096DA4B /* KLPEFItmLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF2B1CA8F8160096DA4B /* KLPEFItmLineView.m */; };
 		7990DF2F1CA900A00096DA4B /* CoordinateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF2E1CA900A00096DA4B /* CoordinateItem.m */; };
 		7990DF321CA9018E0096DA4B /* LWLineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7990DF311CA9018E0096DA4B /* LWLineButton.m */; };
-		7994D5A71C57256200E41865 /* UMSDataMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D58E1C57256200E41865 /* UMSDataMgr.m */; };
-		7994D5A81C57256200E41865 /* UMSNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5901C57256200E41865 /* UMSNetwork.m */; };
-		7994D5A91C57256200E41865 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5941C57256200E41865 /* SFHFKeychainUtils.m */; };
-		7994D5AA1C57256200E41865 /* ActivityLogObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5971C57256200E41865 /* ActivityLogObj.m */; };
-		7994D5AB1C57256200E41865 /* CheckUpdateReturn.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5991C57256200E41865 /* CheckUpdateReturn.m */; };
-		7994D5AC1C57256200E41865 /* CommonReturn.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D59B1C57256200E41865 /* CommonReturn.m */; };
-		7994D5AD1C57256200E41865 /* DeviceInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D59D1C57256200E41865 /* DeviceInfoObj.m */; };
-		7994D5AE1C57256200E41865 /* ErrorLogObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D59F1C57256200E41865 /* ErrorLogObj.m */; };
-		7994D5AF1C57256200E41865 /* EventInfoObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5A11C57256200E41865 /* EventInfoObj.m */; };
-		7994D5B01C57256200E41865 /* UMSAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5A31C57256200E41865 /* UMSAgent.m */; };
 		7994D5B31C57263400E41865 /* NSMutableArray+Sort.m in Sources */ = {isa = PBXBuildFile; fileRef = 7994D5B21C57263400E41865 /* NSMutableArray+Sort.m */; };
 		7997881A1C96B22200E86B91 /* biyang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799787E91C96B22200E86B91 /* biyang@2x.png */; };
 		7997881B1C96B22200E86B91 /* buyimaorong@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799787EA1C96B22200E86B91 /* buyimaorong@2x.png */; };
@@ -461,7 +439,6 @@
 		799788471C96B22200E86B91 /* yejianbiexing@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799788171C96B22200E86B91 /* yejianbiexing@3x.png */; };
 		799788481C96B22200E86B91 /* yundong@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799788181C96B22200E86B91 /* yundong@3x.png */; };
 		799788491C96B22200E86B91 /* zhengzhuang@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 799788191C96B22200E86B91 /* zhengzhuang@3x.png */; };
-		799788681C98F10600E86B91 /* LWBaseHistoricalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 799788671C98F10600E86B91 /* LWBaseHistoricalView.m */; };
 		799788851C9A42D100E86B91 /* LWMedicationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 799788741C9A42D100E86B91 /* LWMedicationView.m */; };
 		799788881C9A42D100E86B91 /* LWPEFHistorListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7997887B1C9A42D100E86B91 /* LWPEFHistorListCell.m */; };
 		799788891C9A42D100E86B91 /* LWPEFHistorListTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7997887D1C9A42D100E86B91 /* LWPEFHistorListTitleCell.m */; };
@@ -493,11 +470,7 @@
 		79B72D681C9BB17600E2920F /* jiyongyao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79B72D651C9BB17600E2920F /* jiyongyao@2x.png */; };
 		79B72D691C9BB17600E2920F /* jizhengzhuang@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79B72D661C9BB17600E2920F /* jizhengzhuang@2x.png */; };
 		79B72D6A1C9BB17600E2920F /* tianjiarizhi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79B72D671C9BB17600E2920F /* tianjiarizhi@2x.png */; };
-		79BA50E71C9A43D8006A5AE4 /* JSDropmenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50DC1C9A43D8006A5AE4 /* JSDropmenuView.m */; };
-		79BA50E91C9A43D8006A5AE4 /* LWHistoricalHeardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50E01C9A43D8006A5AE4 /* LWHistoricalHeardView.m */; };
-		79BA50EA1C9A43D8006A5AE4 /* LWHistoricalItmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50E21C9A43D8006A5AE4 /* LWHistoricalItmView.m */; };
 		79BA50EB1C9A43D8006A5AE4 /* LWHistoricalRecordVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50E41C9A43D8006A5AE4 /* LWHistoricalRecordVC.m */; };
-		79BA50EC1C9A43D8006A5AE4 /* LWScrollMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50E61C9A43D8006A5AE4 /* LWScrollMenuView.m */; };
 		79BA50EF1C9A4563006A5AE4 /* LWSymptomsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50EE1C9A4563006A5AE4 /* LWSymptomsCell.m */; };
 		79BA50F21C9A45EB006A5AE4 /* LWSymptomsFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50F11C9A45EB006A5AE4 /* LWSymptomsFootView.m */; };
 		79BA50F51C9A5A8E006A5AE4 /* LWSymptomsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA50F41C9A5A8E006A5AE4 /* LWSymptomsButton.m */; };
@@ -519,17 +492,25 @@
 		79BA9FDF1C46688B00D9236A /* LWTheFromRowArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA9FDB1C46688B00D9236A /* LWTheFromRowArray.m */; };
 		79BB5F0E1C1038F600E7046B /* UIViewController+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BB5F0D1C1038F600E7046B /* UIViewController+Factory.m */; };
 		79BD63AC1C911BED00415D63 /* Statistical.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 79BD63AB1C911BED00415D63 /* Statistical.rtf */; };
+		79CCF4AA1CABAB500075FD2F /* KLPatientLogBodyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF49A1CABAB4F0075FD2F /* KLPatientLogBodyModel.m */; };
+		79CCF4AB1CABAB500075FD2F /* KLPatientLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF49C1CABAB4F0075FD2F /* KLPatientLogModel.m */; };
+		79CCF4AC1CABAB500075FD2F /* LWHistoricalCountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF49E1CABAB4F0075FD2F /* LWHistoricalCountModel.m */; };
+		79CCF4AD1CABAB500075FD2F /* LWHistoricalLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF4A01CABAB4F0075FD2F /* LWHistoricalLogModel.m */; };
+		79CCF4AE1CABAB500075FD2F /* JSDropmenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF4A31CABAB4F0075FD2F /* JSDropmenuView.m */; };
+		79CCF4AF1CABAB500075FD2F /* LWHistoricalHeardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF4A51CABAB4F0075FD2F /* LWHistoricalHeardView.m */; };
+		79CCF4B01CABAB500075FD2F /* LWHistoricalItmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF4A71CABAB500075FD2F /* LWHistoricalItmView.m */; };
+		79CCF4B11CABAB500075FD2F /* LWScrollMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF4A91CABAB500075FD2F /* LWScrollMenuView.m */; };
+		79CCF4B81CABAB6A0075FD2F /* LWBaseHistoricalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF4B41CABAB6A0075FD2F /* LWBaseHistoricalView.m */; };
+		79CCF4B91CABAB6A0075FD2F /* KLHistoricalOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF4B71CABAB6A0075FD2F /* KLHistoricalOperation.m */; };
+		79CCF4BE1CABAB8C0075FD2F /* KLSymptomsLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF4BC1CABAB8C0075FD2F /* KLSymptomsLogModel.m */; };
+		79CCF4BF1CABAB8C0075FD2F /* LWSymptomsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79CCF4BD1CABAB8C0075FD2F /* LWSymptomsList.plist */; };
 		79CCF5E31C3FA0B900A00104 /* LWVisitList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79CCF5E21C3FA0B900A00104 /* LWVisitList.plist */; };
+		79CD7FBE1CBB513300019A33 /* KLRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CD7FBD1CBB513300019A33 /* KLRootViewController.swift */; };
 		79CEEDD81C017E0F004D6786 /* SegmentTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CEEDD61C017E0F004D6786 /* SegmentTapView.m */; };
 		79CEEDED1C0184A0004D6786 /* LWPatientLogDateIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CEEDEC1C0184A0004D6786 /* LWPatientLogDateIndexView.m */; };
 		79E52B2F1C3CAA230079CE14 /* LWNewFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E52B2E1C3CAA230079CE14 /* LWNewFriendsViewController.m */; };
 		79E573651C002EE500797B2E /* LWCustomMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E573641C002EE500797B2E /* LWCustomMenu.m */; };
 		79E573681C003A2C00797B2E /* LWPatientListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E573671C003A2C00797B2E /* LWPatientListModel.m */; };
-		79EA5D4C1C16705B001F0EE3 /* log_act_naoz.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EA5D451C16705B001F0EE3 /* log_act_naoz.png */; };
-		79EA5D4D1C16705B001F0EE3 /* log_act_yao.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EA5D461C16705B001F0EE3 /* log_act_yao.png */; };
-		79EA5D4E1C16705B001F0EE3 /* log_pg_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EA5D471C16705B001F0EE3 /* log_pg_1.png */; };
-		79EA5D4F1C16705B001F0EE3 /* log_pg_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EA5D481C16705B001F0EE3 /* log_pg_2.png */; };
-		79EA5D501C16705B001F0EE3 /* log_pg_3.png in Resources */ = {isa = PBXBuildFile; fileRef = 79EA5D491C16705B001F0EE3 /* log_pg_3.png */; };
 		79EA5D521C168267001F0EE3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79EA5D511C168267001F0EE3 /* Images.xcassets */; };
 		79F21EBC1BF9765F00F6A465 /* LWChatBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F21EB31BF9765F00F6A465 /* LWChatBaseModel.m */; };
 		79F21EBD1BF9765F00F6A465 /* LWChatBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F21EB51BF9765F00F6A465 /* LWChatBody.m */; };
@@ -570,7 +551,6 @@
 		79FFBB521C0D8EB10072FDCB /* KSCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FFBB3B1C0D8EB10072FDCB /* KSCache.m */; };
 		79FFBB531C0D8EB10072FDCB /* KSNetRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FFBB3D1C0D8EB10072FDCB /* KSNetRequest.m */; };
 		79FFBB541C0D8EB10072FDCB /* KSNoNetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FFBB3F1C0D8EB10072FDCB /* KSNoNetView.m */; };
-		79FFBB551C0D8EB10072FDCB /* KSNoNetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 79FFBB401C0D8EB10072FDCB /* KSNoNetView.xib */; };
 		79FFBB561C0D8EB10072FDCB /* KSReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FFBB421C0D8EB10072FDCB /* KSReachability.m */; };
 		79FFBB581C0D8EB10072FDCB /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 79FFBB461C0D8EB10072FDCB /* ProgressHUD.bundle */; };
 		79FFBB591C0D8EB10072FDCB /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 79FFBB481C0D8EB10072FDCB /* ProgressHUD.m */; };
@@ -673,11 +653,14 @@
 		790243BE1C4E30B00010B1D9 /* LWPopAlatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPopAlatView.m; sourceTree = "<group>"; };
 		79025A761C8D569300F71892 /* nanguo2@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nanguo2@3x.png"; sourceTree = "<group>"; };
 		79025A781C8D569D00F71892 /* nanguo2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nanguo2@2x.png"; sourceTree = "<group>"; };
+		790392DB1CB4A89F00B020C4 /* LCCoolHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCoolHUD.h; sourceTree = "<group>"; };
+		790392DC1CB4A89F00B020C4 /* LCCoolHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCoolHUD.m; sourceTree = "<group>"; };
+		790392E51CB50D0C00B020C4 /* KLMessageOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLMessageOperation.h; sourceTree = "<group>"; };
+		790392E61CB50D0C00B020C4 /* KLMessageOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLMessageOperation.m; sourceTree = "<group>"; };
 		7905156C1BFDB16E001D5F33 /* LWSenderResBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSenderResBaseModel.h; sourceTree = "<group>"; };
 		7905156D1BFDB16E001D5F33 /* LWSenderResBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWSenderResBaseModel.m; sourceTree = "<group>"; };
 		7905156E1BFDB16E001D5F33 /* LWSenderResBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSenderResBody.h; sourceTree = "<group>"; };
 		7905156F1BFDB16E001D5F33 /* LWSenderResBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWSenderResBody.m; sourceTree = "<group>"; };
-		790651171C9F9DAC004E13D0 /* LWSymptomsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LWSymptomsList.plist; sourceTree = "<group>"; };
 		790651191C9FC8E6004E13D0 /* LWScaleCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWScaleCircleView.h; sourceTree = "<group>"; };
 		7906511A1C9FC8E6004E13D0 /* LWScaleCircleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWScaleCircleView.m; sourceTree = "<group>"; };
 		79084E101C2792060002BBF2 /* LWChatLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatLoadingView.h; sourceTree = "<group>"; };
@@ -701,14 +684,6 @@
 		79084E2F1C27AF530002BBF2 /* YLGIFImageInSwiftProjectDemo-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "YLGIFImageInSwiftProjectDemo-Bridging-Header.h"; sourceTree = "<group>"; };
 		79084E301C27AF530002BBF2 /* YLImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLImageView.h; sourceTree = "<group>"; };
 		79084E311C27AF530002BBF2 /* YLImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLImageView.m; sourceTree = "<group>"; };
-		79084E351C27AFBE0002BBF2 /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
-		79084E361C27AFBE0002BBF2 /* SVIndefiniteAnimatedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVIndefiniteAnimatedView.m; sourceTree = "<group>"; };
-		79084E371C27AFBE0002BBF2 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
-		79084E381C27AFBE0002BBF2 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		79084E391C27AFBE0002BBF2 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		79084E3A1C27AFBE0002BBF2 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
-		79084E3B1C27AFBE0002BBF2 /* SVRadialGradientLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVRadialGradientLayer.h; sourceTree = "<group>"; };
-		79084E3C1C27AFBE0002BBF2 /* SVRadialGradientLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVRadialGradientLayer.m; sourceTree = "<group>"; };
 		790A67181BFC07AF007E6DD6 /* PushMgrInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushMgrInfo.h; sourceTree = "<group>"; };
 		790A67191BFC07AF007E6DD6 /* PushMgrInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushMgrInfo.m; sourceTree = "<group>"; };
 		790A671C1BFC591B007E6DD6 /* D3RecordButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = D3RecordButton.h; sourceTree = "<group>"; };
@@ -742,8 +717,6 @@
 		790BE94B1C02FAFC00BD1D67 /* LWACTAssessmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWACTAssessmentModel.m; sourceTree = "<group>"; };
 		790EE5521C7EA261004ABC78 /* LWReservationDetailedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWReservationDetailedViewController.h; sourceTree = "<group>"; };
 		790EE5531C7EA261004ABC78 /* LWReservationDetailedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWReservationDetailedViewController.m; sourceTree = "<group>"; };
-		791148F31C9BE8460020AB2C /* LWHistoricalCountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalCountModel.h; sourceTree = "<group>"; };
-		791148F41C9BE8460020AB2C /* LWHistoricalCountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWHistoricalCountModel.m; sourceTree = "<group>"; };
 		7912112A1BF1A6A6004166C5 /* BreatheDoctor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BreatheDoctor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7912112E1BF1A6A6004166C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		791211301BF1A6A6004166C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -801,8 +774,6 @@
 		791215731BF1EA71004166C5 /* LWPatientCenterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientCenterCell.m; sourceTree = "<group>"; };
 		7912466B1C16D5F000B1B968 /* LWWEBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWWEBViewController.h; sourceTree = "<group>"; };
 		7912466C1C16D5F000B1B968 /* LWWEBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWWEBViewController.m; sourceTree = "<group>"; };
-		7916E88A1C8D7A8300F891B3 /* LCCoolHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCoolHUD.h; sourceTree = "<group>"; };
-		7916E88B1C8D7A8300F891B3 /* LCCoolHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCoolHUD.m; sourceTree = "<group>"; };
 		791935B91C7C093300EF4FFA /* dianhuadingdan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dianhuadingdan@3x.png"; sourceTree = "<group>"; };
 		791935BA1C7C093300EF4FFA /* dianhuazixun@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dianhuazixun@3x.png"; sourceTree = "<group>"; };
 		791935BB1C7C093300EF4FFA /* quxiaodianhuazixun@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quxiaodianhuazixun@3x.png"; sourceTree = "<group>"; };
@@ -825,6 +796,22 @@
 		7919B8B51BFADC670058853F /* LWPatientRecordsBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRecordsBody.m; sourceTree = "<group>"; };
 		7919B8B81BFADC670058853F /* LWPatientRecordsPatientArchives.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRecordsPatientArchives.h; sourceTree = "<group>"; };
 		7919B8B91BFADC670058853F /* LWPatientRecordsPatientArchives.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRecordsPatientArchives.m; sourceTree = "<group>"; };
+		79220A921CACF2E900CFBEC2 /* KLDatePickNumberView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLDatePickNumberView.h; sourceTree = "<group>"; };
+		79220A931CACF2E900CFBEC2 /* KLDatePickNumberView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLDatePickNumberView.m; sourceTree = "<group>"; };
+		79220A941CACF2E900CFBEC2 /* KLDatePickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLDatePickView.h; sourceTree = "<group>"; };
+		79220A951CACF2E900CFBEC2 /* KLDatePickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLDatePickView.m; sourceTree = "<group>"; };
+		79220A961CACF2E900CFBEC2 /* KLDatePickViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLDatePickViewController.h; sourceTree = "<group>"; };
+		79220A971CACF2E900CFBEC2 /* KLDatePickViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLDatePickViewController.m; sourceTree = "<group>"; };
+		79220A9B1CAD15B300CFBEC2 /* KLTimerWeeksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTimerWeeksView.h; sourceTree = "<group>"; };
+		79220A9C1CAD15B300CFBEC2 /* KLTimerWeeksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTimerWeeksView.m; sourceTree = "<group>"; };
+		79220A9E1CAD17D300CFBEC2 /* KLTimerWeeksCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTimerWeeksCell.h; sourceTree = "<group>"; };
+		79220A9F1CAD17D300CFBEC2 /* KLTimerWeeksCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTimerWeeksCell.m; sourceTree = "<group>"; };
+		79220AA11CAD1F3A00CFBEC2 /* KLTimerWeeksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTimerWeeksViewController.h; sourceTree = "<group>"; };
+		79220AA21CAD1F3A00CFBEC2 /* KLTimerWeeksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTimerWeeksViewController.m; sourceTree = "<group>"; };
+		79220AA61CAE21AA00CFBEC2 /* timer_kedu_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer_kedu_left.png; sourceTree = "<group>"; };
+		79220AA71CAE21AA00CFBEC2 /* timer_kedu_right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer_kedu_right.png; sourceTree = "<group>"; };
+		79220AA81CAE21AA00CFBEC2 /* timer_warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = timer_warning.png; sourceTree = "<group>"; };
+		79220AAE1CAE4A3000CFBEC2 /* timer_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timer_gray@2x.png"; sourceTree = "<group>"; };
 		7926F7781C561729009C4807 /* nav_btnBack@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_btnBack@3x.png"; sourceTree = "<group>"; };
 		792736CB1C48D2EB00D17C5B /* add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@2x.png"; sourceTree = "<group>"; };
 		792736CC1C48D2EB00D17C5B /* add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add@3x.png"; sourceTree = "<group>"; };
@@ -853,8 +840,6 @@
 		7929ACC41C33BE99002712EC /* LWTheFormTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTheFormTypeView.m; sourceTree = "<group>"; };
 		7929ACC71C33CA93002712EC /* LWTimerRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTimerRemindViewController.h; sourceTree = "<group>"; };
 		7929ACC81C33CA93002712EC /* LWTimerRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTimerRemindViewController.m; sourceTree = "<group>"; };
-		792EF0CA1CA0EC9F001A69CC /* LWHistoricalLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalLogModel.h; sourceTree = "<group>"; };
-		792EF0CB1CA0EC9F001A69CC /* LWHistoricalLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWHistoricalLogModel.m; sourceTree = "<group>"; };
 		7938E5681C0EDBA800AD043F /* LWCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWCardView.h; sourceTree = "<group>"; };
 		7938E5691C0EDBA800AD043F /* LWCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWCardView.m; sourceTree = "<group>"; };
 		7938E56A1C0EDBA800AD043F /* UUMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUMessageCell.h; sourceTree = "<group>"; };
@@ -932,22 +917,12 @@
 		7945566E1C0BDA15005C0E10 /* tab_up_3@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_up_3@3x.png"; sourceTree = "<group>"; };
 		794556701C0BDA15005C0E10 /* nav_btnAdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_btnAdd@2x.png"; sourceTree = "<group>"; };
 		794556711C0BDA15005C0E10 /* nav_btnBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_btnBack@2x.png"; sourceTree = "<group>"; };
-		794556761C0BDA15005C0E10 /* left_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_blue@2x.png"; sourceTree = "<group>"; };
-		794556771C0BDA15005C0E10 /* left_blue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_blue@3x.png"; sourceTree = "<group>"; };
-		794556791C0BDA15005C0E10 /* p_q_b_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p_q_b_@2x.png"; sourceTree = "<group>"; };
-		7945567A1C0BDA15005C0E10 /* p_q_w_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "p_q_w_@2x.png"; sourceTree = "<group>"; };
-		7945567D1C0BDA15005C0E10 /* packageDetail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = packageDetail.png; sourceTree = "<group>"; };
-		7945567E1C0BDA15005C0E10 /* Patient_03-03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Patient_03-03@2x.png"; sourceTree = "<group>"; };
-		7945567F1C0BDA15005C0E10 /* Patient_03-04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Patient_03-04@2x.png"; sourceTree = "<group>"; };
-		794556801C0BDA15005C0E10 /* right_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_blue@2x.png"; sourceTree = "<group>"; };
-		794556811C0BDA15005C0E10 /* right_blue@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_blue@3x.png"; sourceTree = "<group>"; };
 		794556821C0BDA15005C0E10 /* time_g@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_g@2x.png"; sourceTree = "<group>"; };
 		794556831C0BDA15005C0E10 /* time_g@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "time_g@3x.png"; sourceTree = "<group>"; };
 		794556841C0BDA15005C0E10 /* V-1_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "V-1_@2x.png"; sourceTree = "<group>"; };
 		794556851C0BDA15005C0E10 /* V-7_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "V-7_@2x.png"; sourceTree = "<group>"; };
 		794556861C0BDA15005C0E10 /* yisheng_03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yisheng_03@2x.png"; sourceTree = "<group>"; };
 		794556871C0BDA15005C0E10 /* yisheng_06@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yisheng_06@2x.png"; sourceTree = "<group>"; };
-		794556891C0BDA15005C0E10 /* yisheng_11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yisheng_11@2x.png"; sourceTree = "<group>"; };
 		7945568A1C0BDA15005C0E10 /* yisheng_4s@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "yisheng_4s@2x.jpg"; sourceTree = "<group>"; };
 		7945568B1C0BDA15005C0E10 /* yisheng_4s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yisheng_4s@2x.png"; sourceTree = "<group>"; };
 		7945568C1C0BDA15005C0E10 /* yisheng_@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yisheng_@3x.png"; sourceTree = "<group>"; };
@@ -977,7 +952,6 @@
 		794556AE1C0BDA15005C0E10 /* yitianxie_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yitianxie_@2x.png"; sourceTree = "<group>"; };
 		794556AF1C0BDA15005C0E10 /* yiwanchen_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yiwanchen_@2x.png"; sourceTree = "<group>"; };
 		794556B11C0BDA15005C0E10 /* defaultIconImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultIconImage@2x.png"; sourceTree = "<group>"; };
-		7945574A1C0C261B005C0E10 /* YS-2_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "YS-2_@2x.png"; sourceTree = "<group>"; };
 		794557521C0C323D005C0E10 /* MZBlurEffectAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBlurEffectAdapter.h; sourceTree = "<group>"; };
 		794557531C0C323D005C0E10 /* MZBlurEffectAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBlurEffectAdapter.m; sourceTree = "<group>"; };
 		794557541C0C323D005C0E10 /* MZFormSheetContentSizingNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetContentSizingNavigationController.h; sourceTree = "<group>"; };
@@ -1014,16 +988,14 @@
 		794712E71BF9D3CC0083CE6E /* LWVoiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWVoiceManager.m; sourceTree = "<group>"; };
 		7947160C1BF48A1600C4D2E8 /* LWTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTool.h; sourceTree = "<group>"; };
 		7947160D1BF48A1600C4D2E8 /* LWTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTool.m; sourceTree = "<group>"; };
+		79472D2D1CB6075200451E23 /* KLHistoricalHeardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLHistoricalHeardCell.h; sourceTree = "<group>"; };
+		79472D2E1CB6075200451E23 /* KLHistoricalHeardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLHistoricalHeardCell.m; sourceTree = "<group>"; };
+		794BC6071CB78D55009F29B2 /* KLTimerRemindViewOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTimerRemindViewOperation.h; sourceTree = "<group>"; };
+		794BC6081CB78D55009F29B2 /* KLTimerRemindViewOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTimerRemindViewOperation.m; sourceTree = "<group>"; };
 		794D51501C7EE46900403767 /* LWOrderDetailedLisetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderDetailedLisetCell.h; sourceTree = "<group>"; };
 		794D51511C7EE46900403767 /* LWOrderDetailedLisetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderDetailedLisetCell.m; sourceTree = "<group>"; };
 		794D51531C7EE9CE00403767 /* LWOrderDetailedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderDetailedListViewController.h; sourceTree = "<group>"; };
 		794D51541C7EE9CE00403767 /* LWOrderDetailedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderDetailedListViewController.m; sourceTree = "<group>"; };
-		7952F0FA1C0582880030B279 /* LWPEFBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFBody.h; sourceTree = "<group>"; };
-		7952F0FB1C0582880030B279 /* LWPEFBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPEFBody.m; sourceTree = "<group>"; };
-		7952F0FC1C0582880030B279 /* LWPEFLineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFLineModel.h; sourceTree = "<group>"; };
-		7952F0FD1C0582880030B279 /* LWPEFLineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPEFLineModel.m; sourceTree = "<group>"; };
-		7952F0FE1C0582880030B279 /* LWPEFRecordList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFRecordList.h; sourceTree = "<group>"; };
-		7952F0FF1C0582880030B279 /* LWPEFRecordList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPEFRecordList.m; sourceTree = "<group>"; };
 		795553FD1C8FBAA60073F14C /* LWOrderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderViewCell.h; sourceTree = "<group>"; };
 		795553FE1C8FBAA60073F14C /* LWOrderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderViewCell.m; sourceTree = "<group>"; };
 		795554001C8FD0E20073F14C /* LWOrderCellTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderCellTypeView.h; sourceTree = "<group>"; };
@@ -1065,10 +1037,6 @@
 		7958ED681CA2982500C7FE11 /* LWPatientRelatedPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRelatedPhotoCell.m; sourceTree = "<group>"; };
 		7958ED6A1CA3B0E800C7FE11 /* KLPatientRelatedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientRelatedModel.h; sourceTree = "<group>"; };
 		7958ED6B1CA3B0E800C7FE11 /* KLPatientRelatedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPatientRelatedModel.m; sourceTree = "<group>"; };
-		7958EDC21CA3DCCD00C7FE11 /* KLPatientLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientLogModel.h; sourceTree = "<group>"; };
-		7958EDC31CA3DCCD00C7FE11 /* KLPatientLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPatientLogModel.m; sourceTree = "<group>"; };
-		7958EDC51CA4D55D00C7FE11 /* KLPatientLogBodyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientLogBodyModel.h; sourceTree = "<group>"; };
-		7958EDC61CA4D55D00C7FE11 /* KLPatientLogBodyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPatientLogBodyModel.m; sourceTree = "<group>"; };
 		7959649A1C06F1F4001C18D8 /* LWMedicationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMedicationModel.h; sourceTree = "<group>"; };
 		7959649B1C06F1F4001C18D8 /* LWMedicationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMedicationModel.m; sourceTree = "<group>"; };
 		795B6C1E1C47539B00612AF6 /* DataModels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModels.h; sourceTree = "<group>"; };
@@ -1103,6 +1071,8 @@
 		796991D21C44CF8200A3A2C6 /* chat_recive_press_pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_recive_press_pic@2x.png"; sourceTree = "<group>"; };
 		796991D61C44D0B000A3A2C6 /* weiqueding@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weiqueding@2x.png"; sourceTree = "<group>"; };
 		796991D81C44D0B800A3A2C6 /* weiqueren@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weiqueren@3x.png"; sourceTree = "<group>"; };
+		796EA6D31CA924CE00D40C19 /* KLPEFBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPEFBubbleView.h; sourceTree = "<group>"; };
+		796EA6D41CA924CE00D40C19 /* KLPEFBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPEFBubbleView.m; sourceTree = "<group>"; };
 		797986231C43384D005052DF /* FastReplyVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastReplyVC.h; sourceTree = "<group>"; };
 		797986241C43384D005052DF /* FastReplyVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FastReplyVC.m; sourceTree = "<group>"; };
 		797986251C43384D005052DF /* FastReplyVCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FastReplyVCCell.h; sourceTree = "<group>"; };
@@ -1163,7 +1133,6 @@
 		797986711C435350005052DF /* zhuanjiaguwen@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zhuanjiaguwen@3x.png"; sourceTree = "<group>"; };
 		797986B21C4393D9005052DF /* LWTimerWeeksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWTimerWeeksViewController.h; sourceTree = "<group>"; };
 		797986B31C4393D9005052DF /* LWTimerWeeksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTimerWeeksViewController.m; sourceTree = "<group>"; };
-		7979C9CC1C92609500D1889A /* pef_lin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pef_lin.png; sourceTree = "<group>"; };
 		7984302D1C3A20BA00C79DCA /* LWMessageAgreedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMessageAgreedCell.h; sourceTree = "<group>"; };
 		7984302E1C3A20BA00C79DCA /* LWMessageAgreedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMessageAgreedCell.m; sourceTree = "<group>"; };
 		798430301C3A218D00C79DCA /* LWAgreedHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWAgreedHeadCell.h; sourceTree = "<group>"; };
@@ -1180,10 +1149,6 @@
 		7990D7B21C7AF76A00127A28 /* RFLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFLayout.m; sourceTree = "<group>"; };
 		7990D7B41C7AF9D400127A28 /* LWOrderCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderCollectionViewCell.h; sourceTree = "<group>"; };
 		7990D7B51C7AF9D400127A28 /* LWOrderCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderCollectionViewCell.m; sourceTree = "<group>"; };
-		7990DF181CA4EA880096DA4B /* KLHistoricalOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLHistoricalOperation.h; sourceTree = "<group>"; };
-		7990DF191CA4EA880096DA4B /* KLHistoricalOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLHistoricalOperation.m; sourceTree = "<group>"; };
-		7990DF1B1CA501E30096DA4B /* KLSymptomsLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLSymptomsLogModel.h; sourceTree = "<group>"; };
-		7990DF1C1CA501E30096DA4B /* KLSymptomsLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSymptomsLogModel.m; sourceTree = "<group>"; };
 		7990DF1E1CA647AC0096DA4B /* NSObject+ProperList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+ProperList.h"; sourceTree = "<group>"; };
 		7990DF1F1CA647AC0096DA4B /* NSObject+ProperList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+ProperList.m"; sourceTree = "<group>"; };
 		7990DF211CA7BC4C0096DA4B /* KLStateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLStateView.h; sourceTree = "<group>"; };
@@ -1198,26 +1163,6 @@
 		7990DF2E1CA900A00096DA4B /* CoordinateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoordinateItem.m; sourceTree = "<group>"; };
 		7990DF301CA9018E0096DA4B /* LWLineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWLineButton.h; sourceTree = "<group>"; };
 		7990DF311CA9018E0096DA4B /* LWLineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWLineButton.m; sourceTree = "<group>"; };
-		7994D58D1C57256200E41865 /* UMSDataMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSDataMgr.h; sourceTree = "<group>"; };
-		7994D58E1C57256200E41865 /* UMSDataMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSDataMgr.m; sourceTree = "<group>"; };
-		7994D58F1C57256200E41865 /* UMSNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSNetwork.h; sourceTree = "<group>"; };
-		7994D5901C57256200E41865 /* UMSNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSNetwork.m; sourceTree = "<group>"; };
-		7994D5931C57256200E41865 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
-		7994D5941C57256200E41865 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
-		7994D5961C57256200E41865 /* ActivityLogObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityLogObj.h; sourceTree = "<group>"; };
-		7994D5971C57256200E41865 /* ActivityLogObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityLogObj.m; sourceTree = "<group>"; };
-		7994D5981C57256200E41865 /* CheckUpdateReturn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckUpdateReturn.h; sourceTree = "<group>"; };
-		7994D5991C57256200E41865 /* CheckUpdateReturn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckUpdateReturn.m; sourceTree = "<group>"; };
-		7994D59A1C57256200E41865 /* CommonReturn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonReturn.h; sourceTree = "<group>"; };
-		7994D59B1C57256200E41865 /* CommonReturn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonReturn.m; sourceTree = "<group>"; };
-		7994D59C1C57256200E41865 /* DeviceInfoObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceInfoObj.h; sourceTree = "<group>"; };
-		7994D59D1C57256200E41865 /* DeviceInfoObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceInfoObj.m; sourceTree = "<group>"; };
-		7994D59E1C57256200E41865 /* ErrorLogObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorLogObj.h; sourceTree = "<group>"; };
-		7994D59F1C57256200E41865 /* ErrorLogObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorLogObj.m; sourceTree = "<group>"; };
-		7994D5A01C57256200E41865 /* EventInfoObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventInfoObj.h; sourceTree = "<group>"; };
-		7994D5A11C57256200E41865 /* EventInfoObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventInfoObj.m; sourceTree = "<group>"; };
-		7994D5A21C57256200E41865 /* UMSAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSAgent.h; sourceTree = "<group>"; };
-		7994D5A31C57256200E41865 /* UMSAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UMSAgent.m; sourceTree = "<group>"; };
 		7994D5B11C57263400E41865 /* NSMutableArray+Sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Sort.h"; sourceTree = "<group>"; };
 		7994D5B21C57263400E41865 /* NSMutableArray+Sort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Sort.m"; sourceTree = "<group>"; };
 		799787E91C96B22200E86B91 /* biyang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "biyang@2x.png"; sourceTree = "<group>"; };
@@ -1268,8 +1213,6 @@
 		799788171C96B22200E86B91 /* yejianbiexing@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yejianbiexing@3x.png"; sourceTree = "<group>"; };
 		799788181C96B22200E86B91 /* yundong@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yundong@3x.png"; sourceTree = "<group>"; };
 		799788191C96B22200E86B91 /* zhengzhuang@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zhengzhuang@3x.png"; sourceTree = "<group>"; };
-		799788661C98F10600E86B91 /* LWBaseHistoricalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWBaseHistoricalView.h; sourceTree = "<group>"; };
-		799788671C98F10600E86B91 /* LWBaseHistoricalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWBaseHistoricalView.m; sourceTree = "<group>"; };
 		799788731C9A42D100E86B91 /* LWMedicationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMedicationView.h; sourceTree = "<group>"; };
 		799788741C9A42D100E86B91 /* LWMedicationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMedicationView.m; sourceTree = "<group>"; };
 		7997887A1C9A42D100E86B91 /* LWPEFHistorListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPEFHistorListCell.h; sourceTree = "<group>"; };
@@ -1327,16 +1270,8 @@
 		79B72D651C9BB17600E2920F /* jiyongyao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiyongyao@2x.png"; sourceTree = "<group>"; };
 		79B72D661C9BB17600E2920F /* jizhengzhuang@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jizhengzhuang@2x.png"; sourceTree = "<group>"; };
 		79B72D671C9BB17600E2920F /* tianjiarizhi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tianjiarizhi@2x.png"; sourceTree = "<group>"; };
-		79BA50DB1C9A43D8006A5AE4 /* JSDropmenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropmenuView.h; sourceTree = "<group>"; };
-		79BA50DC1C9A43D8006A5AE4 /* JSDropmenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropmenuView.m; sourceTree = "<group>"; };
-		79BA50DF1C9A43D8006A5AE4 /* LWHistoricalHeardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalHeardView.h; sourceTree = "<group>"; };
-		79BA50E01C9A43D8006A5AE4 /* LWHistoricalHeardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWHistoricalHeardView.m; sourceTree = "<group>"; };
-		79BA50E11C9A43D8006A5AE4 /* LWHistoricalItmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalItmView.h; sourceTree = "<group>"; };
-		79BA50E21C9A43D8006A5AE4 /* LWHistoricalItmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWHistoricalItmView.m; sourceTree = "<group>"; };
 		79BA50E31C9A43D8006A5AE4 /* LWHistoricalRecordVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalRecordVC.h; sourceTree = "<group>"; };
 		79BA50E41C9A43D8006A5AE4 /* LWHistoricalRecordVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWHistoricalRecordVC.m; sourceTree = "<group>"; };
-		79BA50E51C9A43D8006A5AE4 /* LWScrollMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWScrollMenuView.h; sourceTree = "<group>"; };
-		79BA50E61C9A43D8006A5AE4 /* LWScrollMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWScrollMenuView.m; sourceTree = "<group>"; };
 		79BA50ED1C9A4563006A5AE4 /* LWSymptomsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSymptomsCell.h; sourceTree = "<group>"; };
 		79BA50EE1C9A4563006A5AE4 /* LWSymptomsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWSymptomsCell.m; sourceTree = "<group>"; };
 		79BA50F01C9A45EB006A5AE4 /* LWSymptomsFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSymptomsFootView.h; sourceTree = "<group>"; };
@@ -1372,7 +1307,32 @@
 		79BB5F0C1C1038F600E7046B /* UIViewController+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Factory.h"; sourceTree = "<group>"; };
 		79BB5F0D1C1038F600E7046B /* UIViewController+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Factory.m"; sourceTree = "<group>"; };
 		79BD63AB1C911BED00415D63 /* Statistical.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Statistical.rtf; sourceTree = "<group>"; };
+		79CCF4991CABAB4F0075FD2F /* KLPatientLogBodyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientLogBodyModel.h; sourceTree = "<group>"; };
+		79CCF49A1CABAB4F0075FD2F /* KLPatientLogBodyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPatientLogBodyModel.m; sourceTree = "<group>"; };
+		79CCF49B1CABAB4F0075FD2F /* KLPatientLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientLogModel.h; sourceTree = "<group>"; };
+		79CCF49C1CABAB4F0075FD2F /* KLPatientLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPatientLogModel.m; sourceTree = "<group>"; };
+		79CCF49D1CABAB4F0075FD2F /* LWHistoricalCountModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalCountModel.h; sourceTree = "<group>"; };
+		79CCF49E1CABAB4F0075FD2F /* LWHistoricalCountModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWHistoricalCountModel.m; sourceTree = "<group>"; };
+		79CCF49F1CABAB4F0075FD2F /* LWHistoricalLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalLogModel.h; sourceTree = "<group>"; };
+		79CCF4A01CABAB4F0075FD2F /* LWHistoricalLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWHistoricalLogModel.m; sourceTree = "<group>"; };
+		79CCF4A21CABAB4F0075FD2F /* JSDropmenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSDropmenuView.h; sourceTree = "<group>"; };
+		79CCF4A31CABAB4F0075FD2F /* JSDropmenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSDropmenuView.m; sourceTree = "<group>"; };
+		79CCF4A41CABAB4F0075FD2F /* LWHistoricalHeardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalHeardView.h; sourceTree = "<group>"; };
+		79CCF4A51CABAB4F0075FD2F /* LWHistoricalHeardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWHistoricalHeardView.m; sourceTree = "<group>"; };
+		79CCF4A61CABAB500075FD2F /* LWHistoricalItmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWHistoricalItmView.h; sourceTree = "<group>"; };
+		79CCF4A71CABAB500075FD2F /* LWHistoricalItmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWHistoricalItmView.m; sourceTree = "<group>"; };
+		79CCF4A81CABAB500075FD2F /* LWScrollMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWScrollMenuView.h; sourceTree = "<group>"; };
+		79CCF4A91CABAB500075FD2F /* LWScrollMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWScrollMenuView.m; sourceTree = "<group>"; };
+		79CCF4B31CABAB6A0075FD2F /* LWBaseHistoricalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWBaseHistoricalView.h; sourceTree = "<group>"; };
+		79CCF4B41CABAB6A0075FD2F /* LWBaseHistoricalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWBaseHistoricalView.m; sourceTree = "<group>"; };
+		79CCF4B61CABAB6A0075FD2F /* KLHistoricalOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLHistoricalOperation.h; sourceTree = "<group>"; };
+		79CCF4B71CABAB6A0075FD2F /* KLHistoricalOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLHistoricalOperation.m; sourceTree = "<group>"; };
+		79CCF4BB1CABAB8C0075FD2F /* KLSymptomsLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLSymptomsLogModel.h; sourceTree = "<group>"; };
+		79CCF4BC1CABAB8C0075FD2F /* KLSymptomsLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSymptomsLogModel.m; sourceTree = "<group>"; };
+		79CCF4BD1CABAB8C0075FD2F /* LWSymptomsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LWSymptomsList.plist; sourceTree = "<group>"; };
 		79CCF5E21C3FA0B900A00104 /* LWVisitList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LWVisitList.plist; sourceTree = "<group>"; };
+		79CD7FBA1CBB510500019A33 /* BreatheDoctor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BreatheDoctor-Bridging-Header.h"; sourceTree = "<group>"; };
+		79CD7FBD1CBB513300019A33 /* KLRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KLRootViewController.swift; sourceTree = "<group>"; };
 		79CEEDD51C017E0F004D6786 /* SegmentTapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentTapView.h; sourceTree = "<group>"; };
 		79CEEDD61C017E0F004D6786 /* SegmentTapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentTapView.m; sourceTree = "<group>"; };
 		79CEEDEB1C0184A0004D6786 /* LWPatientLogDateIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientLogDateIndexView.h; sourceTree = "<group>"; };
@@ -1383,11 +1343,6 @@
 		79E573641C002EE500797B2E /* LWCustomMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWCustomMenu.m; sourceTree = "<group>"; };
 		79E573661C003A2C00797B2E /* LWPatientListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientListModel.h; sourceTree = "<group>"; };
 		79E573671C003A2C00797B2E /* LWPatientListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientListModel.m; sourceTree = "<group>"; };
-		79EA5D451C16705B001F0EE3 /* log_act_naoz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = log_act_naoz.png; sourceTree = "<group>"; };
-		79EA5D461C16705B001F0EE3 /* log_act_yao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = log_act_yao.png; sourceTree = "<group>"; };
-		79EA5D471C16705B001F0EE3 /* log_pg_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = log_pg_1.png; sourceTree = "<group>"; };
-		79EA5D481C16705B001F0EE3 /* log_pg_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = log_pg_2.png; sourceTree = "<group>"; };
-		79EA5D491C16705B001F0EE3 /* log_pg_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = log_pg_3.png; sourceTree = "<group>"; };
 		79EA5D511C168267001F0EE3 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		79F21EB21BF9765F00F6A465 /* LWChatBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWChatBaseModel.h; sourceTree = "<group>"; };
 		79F21EB31BF9765F00F6A465 /* LWChatBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWChatBaseModel.m; sourceTree = "<group>"; };
@@ -1459,7 +1414,6 @@
 		79FFBB3D1C0D8EB10072FDCB /* KSNetRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSNetRequest.m; sourceTree = "<group>"; };
 		79FFBB3E1C0D8EB10072FDCB /* KSNoNetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSNoNetView.h; sourceTree = "<group>"; };
 		79FFBB3F1C0D8EB10072FDCB /* KSNoNetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSNoNetView.m; sourceTree = "<group>"; };
-		79FFBB401C0D8EB10072FDCB /* KSNoNetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KSNoNetView.xib; sourceTree = "<group>"; };
 		79FFBB411C0D8EB10072FDCB /* KSReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSReachability.h; sourceTree = "<group>"; };
 		79FFBB421C0D8EB10072FDCB /* KSReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSReachability.m; sourceTree = "<group>"; };
 		79FFBB461C0D8EB10072FDCB /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
@@ -1647,6 +1601,15 @@
 			path = timer;
 			sourceTree = "<group>";
 		};
+		790392DA1CB4A89F00B020C4 /* LCCoolHUD */ = {
+			isa = PBXGroup;
+			children = (
+				790392DB1CB4A89F00B020C4 /* LCCoolHUD.h */,
+				790392DC1CB4A89F00B020C4 /* LCCoolHUD.m */,
+			);
+			path = LCCoolHUD;
+			sourceTree = "<group>";
+		};
 		7905156A1BFDB16E001D5F33 /* senderSucc */ = {
 			isa = PBXGroup;
 			children = (
@@ -1688,23 +1651,6 @@
 				79084E311C27AF530002BBF2 /* YLImageView.m */,
 			);
 			path = YLGIFImage;
-			sourceTree = "<group>";
-		};
-		79084E341C27AFBE0002BBF2 /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				7916E88A1C8D7A8300F891B3 /* LCCoolHUD.h */,
-				7916E88B1C8D7A8300F891B3 /* LCCoolHUD.m */,
-				79084E351C27AFBE0002BBF2 /* SVIndefiniteAnimatedView.h */,
-				79084E361C27AFBE0002BBF2 /* SVIndefiniteAnimatedView.m */,
-				79084E371C27AFBE0002BBF2 /* SVProgressHUD-Prefix.pch */,
-				79084E381C27AFBE0002BBF2 /* SVProgressHUD.bundle */,
-				79084E391C27AFBE0002BBF2 /* SVProgressHUD.h */,
-				79084E3A1C27AFBE0002BBF2 /* SVProgressHUD.m */,
-				79084E3B1C27AFBE0002BBF2 /* SVRadialGradientLayer.h */,
-				79084E3C1C27AFBE0002BBF2 /* SVRadialGradientLayer.m */,
-			);
-			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		790A671B1BFC591B007E6DD6 /* D3RecordBtutton */ = {
@@ -1797,8 +1743,8 @@
 				791211301BF1A6A6004166C5 /* AppDelegate.h */,
 				791211311BF1A6A6004166C5 /* AppDelegate.m */,
 				791211331BF1A6A6004166C5 /* ViewController.h */,
-				79F75E8C1BF4253800AE75AB /* Localizable.strings */,
 				791211341BF1A6A6004166C5 /* ViewController.m */,
+				79F75E8C1BF4253800AE75AB /* Localizable.strings */,
 				79EA5D511C168267001F0EE3 /* Images.xcassets */,
 				7912112D1BF1A6A6004166C5 /* Supporting Files */,
 			);
@@ -1967,6 +1913,8 @@
 				790BE92C1C02E9A000BD1D67 /* Assessment */,
 				791214CD1BF1CE9E004166C5 /* LWMessageCtr.h */,
 				791214CE1BF1CE9E004166C5 /* LWMessageCtr.m */,
+				790392E51CB50D0C00B020C4 /* KLMessageOperation.h */,
+				790392E61CB50D0C00B020C4 /* KLMessageOperation.m */,
 				79F7C5DE1BF7296B00D618AE /* PatientAddVC.h */,
 				79F7C5DF1BF7296B00D618AE /* PatientAddVC.m */,
 				79F7C1FF1BF71C6B00D618AE /* LWChatViewController.h */,
@@ -2134,6 +2082,25 @@
 			path = patientRecords;
 			sourceTree = "<group>";
 		};
+		79220A911CACF2E900CFBEC2 /* KLDatePickViewController */ = {
+			isa = PBXGroup;
+			children = (
+				79220A921CACF2E900CFBEC2 /* KLDatePickNumberView.h */,
+				79220A931CACF2E900CFBEC2 /* KLDatePickNumberView.m */,
+				79220A941CACF2E900CFBEC2 /* KLDatePickView.h */,
+				79220A951CACF2E900CFBEC2 /* KLDatePickView.m */,
+				79220A961CACF2E900CFBEC2 /* KLDatePickViewController.h */,
+				79220A971CACF2E900CFBEC2 /* KLDatePickViewController.m */,
+				79220A9B1CAD15B300CFBEC2 /* KLTimerWeeksView.h */,
+				79220A9C1CAD15B300CFBEC2 /* KLTimerWeeksView.m */,
+				79220A9E1CAD17D300CFBEC2 /* KLTimerWeeksCell.h */,
+				79220A9F1CAD17D300CFBEC2 /* KLTimerWeeksCell.m */,
+				79220AA11CAD1F3A00CFBEC2 /* KLTimerWeeksViewController.h */,
+				79220AA21CAD1F3A00CFBEC2 /* KLTimerWeeksViewController.m */,
+			);
+			path = KLDatePickViewController;
+			sourceTree = "<group>";
+		};
 		7929ACA21C33AE5E002712EC /* theForm */ = {
 			isa = PBXGroup;
 			children = (
@@ -2193,8 +2160,11 @@
 		7929ACC61C33C58F002712EC /* timer */ = {
 			isa = PBXGroup;
 			children = (
+				79220A911CACF2E900CFBEC2 /* KLDatePickViewController */,
 				7929ACC71C33CA93002712EC /* LWTimerRemindViewController.h */,
 				7929ACC81C33CA93002712EC /* LWTimerRemindViewController.m */,
+				794BC6071CB78D55009F29B2 /* KLTimerRemindViewOperation.h */,
+				794BC6081CB78D55009F29B2 /* KLTimerRemindViewOperation.m */,
 				7941A8961C34DF8100B8ACC7 /* LWPickerViewController.h */,
 				7941A8971C34DF8100B8ACC7 /* LWPickerViewController.m */,
 				797986B21C4393D9005052DF /* LWTimerWeeksViewController.h */,
@@ -2394,30 +2364,16 @@
 		794556721C0BDA15005C0E10 /* Patient */ = {
 			isa = PBXGroup;
 			children = (
-				7979C9CC1C92609500D1889A /* pef_lin.png */,
-				79EA5D451C16705B001F0EE3 /* log_act_naoz.png */,
-				79EA5D461C16705B001F0EE3 /* log_act_yao.png */,
-				79EA5D471C16705B001F0EE3 /* log_pg_1.png */,
-				79EA5D481C16705B001F0EE3 /* log_pg_2.png */,
-				79EA5D491C16705B001F0EE3 /* log_pg_3.png */,
-				7945574A1C0C261B005C0E10 /* YS-2_@2x.png */,
-				794556761C0BDA15005C0E10 /* left_blue@2x.png */,
-				794556771C0BDA15005C0E10 /* left_blue@3x.png */,
-				794556781C0BDA15005C0E10 /* newParientCenter */,
-				794556791C0BDA15005C0E10 /* p_q_b_@2x.png */,
-				7945567A1C0BDA15005C0E10 /* p_q_w_@2x.png */,
-				7945567D1C0BDA15005C0E10 /* packageDetail.png */,
-				7945567E1C0BDA15005C0E10 /* Patient_03-03@2x.png */,
-				7945567F1C0BDA15005C0E10 /* Patient_03-04@2x.png */,
-				794556801C0BDA15005C0E10 /* right_blue@2x.png */,
-				794556811C0BDA15005C0E10 /* right_blue@3x.png */,
+				79220AA61CAE21AA00CFBEC2 /* timer_kedu_left.png */,
+				79220AA71CAE21AA00CFBEC2 /* timer_kedu_right.png */,
+				79220AA81CAE21AA00CFBEC2 /* timer_warning.png */,
+				79220AAE1CAE4A3000CFBEC2 /* timer_gray@2x.png */,
 				794556821C0BDA15005C0E10 /* time_g@2x.png */,
 				794556831C0BDA15005C0E10 /* time_g@3x.png */,
 				794556841C0BDA15005C0E10 /* V-1_@2x.png */,
 				794556851C0BDA15005C0E10 /* V-7_@2x.png */,
 				794556861C0BDA15005C0E10 /* yisheng_03@2x.png */,
 				794556871C0BDA15005C0E10 /* yisheng_06@2x.png */,
-				794556891C0BDA15005C0E10 /* yisheng_11@2x.png */,
 				7945568A1C0BDA15005C0E10 /* yisheng_4s@2x.jpg */,
 				7945568B1C0BDA15005C0E10 /* yisheng_4s@2x.png */,
 				7945568C1C0BDA15005C0E10 /* yisheng_@3x.png */,
@@ -2425,13 +2381,6 @@
 				7945568F1C0BDA15005C0E10 /* ysiheng_03@2x.png */,
 			);
 			path = Patient;
-			sourceTree = "<group>";
-		};
-		794556781C0BDA15005C0E10 /* newParientCenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = newParientCenter;
 			sourceTree = "<group>";
 		};
 		794556901C0BDA15005C0E10 /* PersonalCenter */ = {
@@ -2526,12 +2475,6 @@
 			isa = PBXGroup;
 			children = (
 				795FE08E1C08295200B2EA2A /* AsthmaAssessLog */,
-				7952F0FA1C0582880030B279 /* LWPEFBody.h */,
-				7952F0FB1C0582880030B279 /* LWPEFBody.m */,
-				7952F0FC1C0582880030B279 /* LWPEFLineModel.h */,
-				7952F0FD1C0582880030B279 /* LWPEFLineModel.m */,
-				7952F0FE1C0582880030B279 /* LWPEFRecordList.h */,
-				7952F0FF1C0582880030B279 /* LWPEFRecordList.m */,
 				7959649A1C06F1F4001C18D8 /* LWMedicationModel.h */,
 				7959649B1C06F1F4001C18D8 /* LWMedicationModel.m */,
 				795FE08B1C080C2D00B2EA2A /* LWAssessmentModel.h */,
@@ -2797,73 +2740,6 @@
 			path = Class;
 			sourceTree = "<group>";
 		};
-		7994D5831C57256200E41865 /* UMeng */ = {
-			isa = PBXGroup;
-			children = (
-				7994D58B1C57256200E41865 /* UMSAgent */,
-			);
-			path = UMeng;
-			sourceTree = "<group>";
-		};
-		7994D58B1C57256200E41865 /* UMSAgent */ = {
-			isa = PBXGroup;
-			children = (
-				7994D58C1C57256200E41865 /* Common */,
-				7994D5911C57256200E41865 /* Library */,
-				7994D5951C57256200E41865 /* Models */,
-				7994D5A21C57256200E41865 /* UMSAgent.h */,
-				7994D5A31C57256200E41865 /* UMSAgent.m */,
-			);
-			path = UMSAgent;
-			sourceTree = "<group>";
-		};
-		7994D58C1C57256200E41865 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				7994D58D1C57256200E41865 /* UMSDataMgr.h */,
-				7994D58E1C57256200E41865 /* UMSDataMgr.m */,
-				7994D58F1C57256200E41865 /* UMSNetwork.h */,
-				7994D5901C57256200E41865 /* UMSNetwork.m */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		7994D5911C57256200E41865 /* Library */ = {
-			isa = PBXGroup;
-			children = (
-				7994D5921C57256200E41865 /* Security */,
-			);
-			path = Library;
-			sourceTree = "<group>";
-		};
-		7994D5921C57256200E41865 /* Security */ = {
-			isa = PBXGroup;
-			children = (
-				7994D5931C57256200E41865 /* SFHFKeychainUtils.h */,
-				7994D5941C57256200E41865 /* SFHFKeychainUtils.m */,
-			);
-			path = Security;
-			sourceTree = "<group>";
-		};
-		7994D5951C57256200E41865 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				7994D5961C57256200E41865 /* ActivityLogObj.h */,
-				7994D5971C57256200E41865 /* ActivityLogObj.m */,
-				7994D5981C57256200E41865 /* CheckUpdateReturn.h */,
-				7994D5991C57256200E41865 /* CheckUpdateReturn.m */,
-				7994D59A1C57256200E41865 /* CommonReturn.h */,
-				7994D59B1C57256200E41865 /* CommonReturn.m */,
-				7994D59C1C57256200E41865 /* DeviceInfoObj.h */,
-				7994D59D1C57256200E41865 /* DeviceInfoObj.m */,
-				7994D59E1C57256200E41865 /* ErrorLogObj.h */,
-				7994D59F1C57256200E41865 /* ErrorLogObj.m */,
-				7994D5A01C57256200E41865 /* EventInfoObj.h */,
-				7994D5A11C57256200E41865 /* EventInfoObj.m */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		799787E71C96B1E900E86B91 /* log */ = {
 			isa = PBXGroup;
 			children = (
@@ -2981,6 +2857,8 @@
 				7958ED5F1CA143F000C7FE11 /* LWPEFLineView.m */,
 				7990DF2A1CA8F8160096DA4B /* KLPEFItmLineView.h */,
 				7990DF2B1CA8F8160096DA4B /* KLPEFItmLineView.m */,
+				796EA6D31CA924CE00D40C19 /* KLPEFBubbleView.h */,
+				796EA6D41CA924CE00D40C19 /* KLPEFBubbleView.m */,
 			);
 			path = PEF;
 			sourceTree = "<group>";
@@ -2990,15 +2868,13 @@
 			children = (
 				799788831C9A42D100E86B91 /* LWSymptomsView.h */,
 				799788841C9A42D100E86B91 /* LWSymptomsView.m */,
-				7990DF1B1CA501E30096DA4B /* KLSymptomsLogModel.h */,
-				7990DF1C1CA501E30096DA4B /* KLSymptomsLogModel.m */,
 				79BA50F01C9A45EB006A5AE4 /* LWSymptomsFootView.h */,
 				79BA50F11C9A45EB006A5AE4 /* LWSymptomsFootView.m */,
 				79BA50ED1C9A4563006A5AE4 /* LWSymptomsCell.h */,
 				79BA50EE1C9A4563006A5AE4 /* LWSymptomsCell.m */,
 				79BA50F31C9A5A8E006A5AE4 /* LWSymptomsButton.h */,
 				79BA50F41C9A5A8E006A5AE4 /* LWSymptomsButton.m */,
-				790651171C9F9DAC004E13D0 /* LWSymptomsList.plist */,
+				79CCF4BA1CABAB8C0075FD2F /* SymptomsModel */,
 			);
 			path = Symptoms;
 			sourceTree = "<group>";
@@ -3006,9 +2882,8 @@
 		79A697621BF572E300A28671 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				7994D5831C57256200E41865 /* UMeng */,
+				790392DA1CB4A89F00B020C4 /* LCCoolHUD */,
 				7902433D1C4DEB470010B1D9 /* ZZPhotoRE */,
-				79084E341C27AFBE0002BBF2 /* SVProgressHUD */,
 				79084E2C1C27AF530002BBF2 /* YLGIFImage */,
 				79084E171C27AEA00002BBF2 /* MJPhotoBrowser */,
 				79FFBB271C0D8EB10072FDCB /* KSNetRequest */,
@@ -3071,6 +2946,8 @@
 			children = (
 				79AD86341C4F320100EBE224 /* LWRootViewController.h */,
 				79AD86351C4F320100EBE224 /* LWRootViewController.m */,
+				79CD7FBA1CBB510500019A33 /* BreatheDoctor-Bridging-Header.h */,
+				79CD7FBD1CBB513300019A33 /* KLRootViewController.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -3087,11 +2964,9 @@
 		79ADACA11C9684FE001C02AC /* historical */ = {
 			isa = PBXGroup;
 			children = (
+				79CCF4B21CABAB6A0075FD2F /* HistoricalBase */,
+				79CCF4B51CABAB6A0075FD2F /* Operation */,
 				79B72D551C9B9F3800E2920F /* Log */,
-				799788661C98F10600E86B91 /* LWBaseHistoricalView.h */,
-				799788671C98F10600E86B91 /* LWBaseHistoricalView.m */,
-				7990DF181CA4EA880096DA4B /* KLHistoricalOperation.h */,
-				7990DF191CA4EA880096DA4B /* KLHistoricalOperation.m */,
 				79BA50DA1C9A43D8006A5AE4 /* Historical */,
 				799788721C9A42D100E86B91 /* Medication */,
 				799788821C9A42D100E86B91 /* Symptoms */,
@@ -3122,24 +2997,10 @@
 		79BA50DA1C9A43D8006A5AE4 /* Historical */ = {
 			isa = PBXGroup;
 			children = (
-				7958EDC21CA3DCCD00C7FE11 /* KLPatientLogModel.h */,
-				7958EDC31CA3DCCD00C7FE11 /* KLPatientLogModel.m */,
-				7958EDC51CA4D55D00C7FE11 /* KLPatientLogBodyModel.h */,
-				7958EDC61CA4D55D00C7FE11 /* KLPatientLogBodyModel.m */,
-				79BA50DB1C9A43D8006A5AE4 /* JSDropmenuView.h */,
-				79BA50DC1C9A43D8006A5AE4 /* JSDropmenuView.m */,
-				79BA50DF1C9A43D8006A5AE4 /* LWHistoricalHeardView.h */,
-				79BA50E01C9A43D8006A5AE4 /* LWHistoricalHeardView.m */,
-				791148F31C9BE8460020AB2C /* LWHistoricalCountModel.h */,
-				791148F41C9BE8460020AB2C /* LWHistoricalCountModel.m */,
-				792EF0CA1CA0EC9F001A69CC /* LWHistoricalLogModel.h */,
-				792EF0CB1CA0EC9F001A69CC /* LWHistoricalLogModel.m */,
-				79BA50E11C9A43D8006A5AE4 /* LWHistoricalItmView.h */,
-				79BA50E21C9A43D8006A5AE4 /* LWHistoricalItmView.m */,
+				79CCF4981CABAB4F0075FD2F /* HistoricalModel */,
+				79CCF4A11CABAB4F0075FD2F /* HistoricalView */,
 				79BA50E31C9A43D8006A5AE4 /* LWHistoricalRecordVC.h */,
 				79BA50E41C9A43D8006A5AE4 /* LWHistoricalRecordVC.m */,
-				79BA50E51C9A43D8006A5AE4 /* LWScrollMenuView.h */,
-				79BA50E61C9A43D8006A5AE4 /* LWScrollMenuView.m */,
 			);
 			path = Historical;
 			sourceTree = "<group>";
@@ -3175,6 +3036,66 @@
 				79BB5F0D1C1038F600E7046B /* UIViewController+Factory.m */,
 			);
 			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		79CCF4981CABAB4F0075FD2F /* HistoricalModel */ = {
+			isa = PBXGroup;
+			children = (
+				79CCF4991CABAB4F0075FD2F /* KLPatientLogBodyModel.h */,
+				79CCF49A1CABAB4F0075FD2F /* KLPatientLogBodyModel.m */,
+				79CCF49B1CABAB4F0075FD2F /* KLPatientLogModel.h */,
+				79CCF49C1CABAB4F0075FD2F /* KLPatientLogModel.m */,
+				79CCF49D1CABAB4F0075FD2F /* LWHistoricalCountModel.h */,
+				79CCF49E1CABAB4F0075FD2F /* LWHistoricalCountModel.m */,
+				79CCF49F1CABAB4F0075FD2F /* LWHistoricalLogModel.h */,
+				79CCF4A01CABAB4F0075FD2F /* LWHistoricalLogModel.m */,
+			);
+			path = HistoricalModel;
+			sourceTree = "<group>";
+		};
+		79CCF4A11CABAB4F0075FD2F /* HistoricalView */ = {
+			isa = PBXGroup;
+			children = (
+				79CCF4A21CABAB4F0075FD2F /* JSDropmenuView.h */,
+				79CCF4A31CABAB4F0075FD2F /* JSDropmenuView.m */,
+				79CCF4A41CABAB4F0075FD2F /* LWHistoricalHeardView.h */,
+				79CCF4A51CABAB4F0075FD2F /* LWHistoricalHeardView.m */,
+				79CCF4A61CABAB500075FD2F /* LWHistoricalItmView.h */,
+				79CCF4A71CABAB500075FD2F /* LWHistoricalItmView.m */,
+				79CCF4A81CABAB500075FD2F /* LWScrollMenuView.h */,
+				79CCF4A91CABAB500075FD2F /* LWScrollMenuView.m */,
+				79472D2D1CB6075200451E23 /* KLHistoricalHeardCell.h */,
+				79472D2E1CB6075200451E23 /* KLHistoricalHeardCell.m */,
+			);
+			path = HistoricalView;
+			sourceTree = "<group>";
+		};
+		79CCF4B21CABAB6A0075FD2F /* HistoricalBase */ = {
+			isa = PBXGroup;
+			children = (
+				79CCF4B31CABAB6A0075FD2F /* LWBaseHistoricalView.h */,
+				79CCF4B41CABAB6A0075FD2F /* LWBaseHistoricalView.m */,
+			);
+			path = HistoricalBase;
+			sourceTree = "<group>";
+		};
+		79CCF4B51CABAB6A0075FD2F /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				79CCF4B61CABAB6A0075FD2F /* KLHistoricalOperation.h */,
+				79CCF4B71CABAB6A0075FD2F /* KLHistoricalOperation.m */,
+			);
+			path = Operation;
+			sourceTree = "<group>";
+		};
+		79CCF4BA1CABAB8C0075FD2F /* SymptomsModel */ = {
+			isa = PBXGroup;
+			children = (
+				79CCF4BB1CABAB8C0075FD2F /* KLSymptomsLogModel.h */,
+				79CCF4BC1CABAB8C0075FD2F /* KLSymptomsLogModel.m */,
+				79CCF4BD1CABAB8C0075FD2F /* LWSymptomsList.plist */,
+			);
+			path = SymptomsModel;
 			sourceTree = "<group>";
 		};
 		79CEEDD41C017E0F004D6786 /* SegementTap */ = {
@@ -3274,7 +3195,6 @@
 				79FFBB3D1C0D8EB10072FDCB /* KSNetRequest.m */,
 				79FFBB3E1C0D8EB10072FDCB /* KSNoNetView.h */,
 				79FFBB3F1C0D8EB10072FDCB /* KSNoNetView.m */,
-				79FFBB401C0D8EB10072FDCB /* KSNoNetView.xib */,
 				79FFBB411C0D8EB10072FDCB /* KSReachability.h */,
 				79FFBB421C0D8EB10072FDCB /* KSReachability.m */,
 				79FFBB441C0D8EB10072FDCB /* ProgressHUD */,
@@ -3395,6 +3315,7 @@
 		791211221BF1A6A6004166C5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = lwh;
 				TargetAttributes = {
@@ -3467,14 +3388,11 @@
 				79B72D641C9BB16900E2920F /* tianjiarizhi@3x.png in Resources */,
 				796991671C448D9A00A3A2C6 /* 03_act_@3x.png in Resources */,
 				794556DA1C0BDA15005C0E10 /* DefaultDiscover.png in Resources */,
-				794557141C0BDA15005C0E10 /* right_blue@2x.png in Resources */,
 				790A67301BFC591B007E6DD6 /* mic_3.png in Resources */,
 				7979869E1C435350005052DF /* jilu@3x.png in Resources */,
 				7997883A1C96B22200E86B91 /* guominyinsu@3x.png in Resources */,
-				794557111C0BDA15005C0E10 /* packageDetail.png in Resources */,
 				7979867E1C435350005052DF /* jilu@2x.png in Resources */,
 				7945572C1C0BDA15005C0E10 /* yishenPersonalCenter-11_@2x.png in Resources */,
-				7945570B1C0BDA15005C0E10 /* left_blue@2x.png in Resources */,
 				790243931C4E0D810010B1D9 /* select_yes@2x.png in Resources */,
 				799788251C96B22200E86B91 /* huodongshouxian@2x.png in Resources */,
 				7979869A1C435350005052DF /* gengduo@3x.png in Resources */,
@@ -3482,10 +3400,10 @@
 				794557211C0BDA15005C0E10 /* yishengzhushousy_03@2x.png in Resources */,
 				796991D41C44CF8200A3A2C6 /* chat_recive_nor@2x.png in Resources */,
 				797986901C435350005052DF /* zhengzhuang@2x.png in Resources */,
-				790651181C9F9DAC004E13D0 /* LWSymptomsList.plist in Resources */,
 				796991791C4498DB00A3A2C6 /* weikongzhi@3x.png in Resources */,
 				7997883D1C96B22200E86B91 /* huodongshouxian@3x.png in Resources */,
 				791935C31C7C093300EF4FFA /* rili@3x.png in Resources */,
+				79220AAC1CAE21AA00CFBEC2 /* timer_kedu_right.png in Resources */,
 				790A67311BFC591B007E6DD6 /* mic_4.png in Resources */,
 				790243831C4DEB470010B1D9 /* take_photo_pic.png in Resources */,
 				797986891C435350005052DF /* xuanze@2x.png in Resources */,
@@ -3495,8 +3413,8 @@
 				794556E01C0BDA15005C0E10 /* newR_@2x 2.png in Resources */,
 				7945571F1C0BDA15005C0E10 /* yisheng_4s@2x.png in Resources */,
 				799788311C96B22200E86B91 /* zhengzhuang@2x.png in Resources */,
+				79220AAB1CAE21AA00CFBEC2 /* timer_kedu_left.png in Resources */,
 				790A672F1BFC591B007E6DD6 /* mic_2.png in Resources */,
-				7945570E1C0BDA15005C0E10 /* p_q_w_@2x.png in Resources */,
 				7969917E1C4498E400A3A2C6 /* wanquankongzhi@2x.png in Resources */,
 				794557011C0BDA15005C0E10 /* tab_up_1@3x.png in Resources */,
 				79FEA5011C0EEAB7007418E9 /* jiankangzixun_62-11@2x.png in Resources */,
@@ -3508,7 +3426,6 @@
 				796991D71C44D0B000A3A2C6 /* weiqueding@2x.png in Resources */,
 				7938E5791C0EE5FE00AD043F /* jiankangzixun_57@2x.png in Resources */,
 				79BA51101C9A87A3006A5AE4 /* medweitian@2x.png in Resources */,
-				79FFBB551C0D8EB10072FDCB /* KSNoNetView.xib in Resources */,
 				799788291C96B22200E86B91 /* qita@2x.png in Resources */,
 				791935C11C7C093300EF4FFA /* dianhuazixun@3x.png in Resources */,
 				797986841C435350005052DF /* tianjia@2x.png in Resources */,
@@ -3522,7 +3439,6 @@
 				79B72D6A1C9BB17600E2920F /* tianjiarizhi@2x.png in Resources */,
 				797986851C435350005052DF /* tupian@2x.png in Resources */,
 				79BA510A1C9A8797006A5AE4 /* medweitian@3x.png in Resources */,
-				79EA5D501C16705B001F0EE3 /* log_pg_3.png in Resources */,
 				7945571E1C0BDA15005C0E10 /* yisheng_4s@2x.jpg in Resources */,
 				794557371C0BDA15005C0E10 /* suifangjihua_@3x.png in Resources */,
 				7997883B1C96B22200E86B91 /* hanleng@3x.png in Resources */,
@@ -3539,7 +3455,6 @@
 				799788371C96B22200E86B91 /* dapenti@3x.png in Resources */,
 				794556E21C0BDA15005C0E10 /* patientHead@2x.png in Resources */,
 				799788471C96B22200E86B91 /* yejianbiexing@3x.png in Resources */,
-				794557121C0BDA15005C0E10 /* Patient_03-03@2x.png in Resources */,
 				791935C01C7C093300EF4FFA /* dianhuadingdan@3x.png in Resources */,
 				799788381C96B22200E86B91 /* ganjuelianghao@3x.png in Resources */,
 				7969917D1C4498E400A3A2C6 /* bufenkongzhi@2x.png in Resources */,
@@ -3547,7 +3462,6 @@
 				7997881A1C96B22200E86B91 /* biyang@2x.png in Resources */,
 				790243801C4DEB470010B1D9 /* remove_btn_pic.png in Resources */,
 				79084E161C27945D0002BBF2 /* sendFail.png in Resources */,
-				79EA5D4E1C16705B001F0EE3 /* log_pg_1.png in Resources */,
 				799788331C96B22200E86B91 /* buyimaorong@3x.png in Resources */,
 				7945572D1C0BDA15005C0E10 /* kuaijiehuifu_@2x.png in Resources */,
 				7902437C1C4DEB470010B1D9 /* flash_close_pic.png in Resources */,
@@ -3561,13 +3475,12 @@
 				797986931C435350005052DF /* biaodan2@3x.png in Resources */,
 				7997882F1C96B22200E86B91 /* yejianbiexing@2x.png in Resources */,
 				7997882D1C96B22200E86B91 /* xiongmen@2x.png in Resources */,
-				794557151C0BDA15005C0E10 /* right_blue@3x.png in Resources */,
 				792736D51C48D2EB00D17C5B /* speaker@2x.png in Resources */,
 				794557231C0BDA15005C0E10 /* ysiheng_03@2x.png in Resources */,
+				79220AAD1CAE21AA00CFBEC2 /* timer_warning.png in Resources */,
 				794556EB1C0BDA15005C0E10 /* yishengzhushou_35@2x.png in Resources */,
 				79FEA4FE1C0EEAB7007418E9 /* jiankangzixun_62-08@2x.png in Resources */,
 				791935D31C7C093B00EF4FFA /* shubanlogo@2x.png in Resources */,
-				79EA5D4F1C16705B001F0EE3 /* log_pg_2.png in Resources */,
 				797986AA1C435350005052DF /* yongyao@3x.png in Resources */,
 				7997882E1C96B22200E86B91 /* xiyanhuanjing@2x.png in Resources */,
 				794556FB1C0BDA15005C0E10 /* tab_down_1@3x.png in Resources */,
@@ -3585,7 +3498,6 @@
 				794556DE1C0BDA15005C0E10 /* newPatient@2x.png in Resources */,
 				799788411C96B22200E86B91 /* qita@3x.png in Resources */,
 				791935CE1C7C093B00EF4FFA /* dianhuadingdan@2x.png in Resources */,
-				794557131C0BDA15005C0E10 /* Patient_03-04@2x.png in Resources */,
 				795E0A311C118C92001699DF /* Main.storyboard in Resources */,
 				79B72D691C9BB17600E2920F /* jizhengzhuang@2x.png in Resources */,
 				79CCF5E31C3FA0B900A00104 /* LWVisitList.plist in Resources */,
@@ -3626,7 +3538,6 @@
 				797986A41C435350005052DF /* tianjia@3x.png in Resources */,
 				797986941C435350005052DF /* biaodan@3x.png in Resources */,
 				7902437A1C4DEB470010B1D9 /* camera_focus_pic.png in Resources */,
-				79EA5D4D1C16705B001F0EE3 /* log_act_yao.png in Resources */,
 				797986741C435350005052DF /* biaodan@2x.png in Resources */,
 				790A672E1BFC591B007E6DD6 /* mic_1.png in Resources */,
 				794557181C0BDA15005C0E10 /* V-1_@2x.png in Resources */,
@@ -3643,7 +3554,6 @@
 				79FEA4FF1C0EEAB7007418E9 /* jiankangzixun_62-09@2x.png in Resources */,
 				794556E71C0BDA15005C0E10 /* yishengzhushou-1_23@2x.png in Resources */,
 				799788341C96B22200E86B91 /* chongwu@3x.png in Resources */,
-				7945570C1C0BDA15005C0E10 /* left_blue@3x.png in Resources */,
 				790243861C4DEB470010B1D9 /* zz_alumb_rightCell.png in Resources */,
 				791935D41C7C093B00EF4FFA /* tuwendingdan@2x.png in Resources */,
 				799788281C96B22200E86B91 /* liuqingti@2x.png in Resources */,
@@ -3654,7 +3564,6 @@
 				791935C21C7C093300EF4FFA /* quxiaodianhuazixun@3x.png in Resources */,
 				792736D41C48D2EB00D17C5B /* keyBoard@3x.png in Resources */,
 				7969916F1C448DAB00A3A2C6 /* jiankangzixun_57@2x.png in Resources */,
-				7945574B1C0C261B005C0E10 /* YS-2_@2x.png in Resources */,
 				797986A51C435350005052DF /* tupian@3x.png in Resources */,
 				79025A791C8D569D00F71892 /* nanguo2@2x.png in Resources */,
 				794557331C0BDA15005C0E10 /* richengtixing_@2x.png in Resources */,
@@ -3691,7 +3600,6 @@
 				792736D31C48D2EB00D17C5B /* keyBoard@2x.png in Resources */,
 				794556FF1C0BDA15005C0E10 /* tab_down_3@3x.png in Resources */,
 				7997881F1C96B22200E86B91 /* dapenti@2x.png in Resources */,
-				7945570D1C0BDA15005C0E10 /* p_q_b_@2x.png in Resources */,
 				79F75E8D1BF4253800AE75AB /* Localizable.strings in Resources */,
 				7929ACB91C33B1F8002712EC /* LWMoreImageTitles.plist in Resources */,
 				7997882C1C96B22200E86B91 /* teshuqiwei@2x.png in Resources */,
@@ -3700,14 +3608,11 @@
 				790243941C4E0D810010B1D9 /* select_yes@3x.png in Resources */,
 				794556FD1C0BDA15005C0E10 /* tab_down_2@3x.png in Resources */,
 				7945571B1C0BDA15005C0E10 /* yisheng_06@2x.png in Resources */,
-				7945571D1C0BDA15005C0E10 /* yisheng_11@2x.png in Resources */,
-				7979C9CD1C92609500D1889A /* pef_lin.png in Resources */,
 				7997881B1C96B22200E86B91 /* buyimaorong@2x.png in Resources */,
 				797986751C435350005052DF /* bingqing@2x.png in Resources */,
-				79EA5D4C1C16705B001F0EE3 /* log_act_naoz.png in Resources */,
 				799788211C96B22200E86B91 /* ganmaofare@2x.png in Resources */,
-				79084E3E1C27AFBE0002BBF2 /* SVProgressHUD.bundle in Resources */,
 				79FEA4FC1C0EEAB7007418E9 /* jiankangzixun_62-06@2x.png in Resources */,
+				79220AAF1CAE4A3000CFBEC2 /* timer_gray@2x.png in Resources */,
 				799788261C96B22200E86B91 /* huxikunnan@2x.png in Resources */,
 				797986A61C435350005052DF /* wenjuan@3x.png in Resources */,
 				7979867C1C435350005052DF /* huifu@2x.png in Resources */,
@@ -3721,6 +3626,7 @@
 				7945573B1C0BDA15005C0E10 /* weitianxie_@2x.png in Resources */,
 				790A67321BFC591B007E6DD6 /* mic_5.png in Resources */,
 				7945572F1C0BDA15005C0E10 /* patienHeadImage@2x.png in Resources */,
+				79CCF4BF1CABAB8C0075FD2F /* LWSymptomsList.plist in Resources */,
 				796991711C448FD600A3A2C6 /* huanzhezhongxinbeijing@2x.png in Resources */,
 				7945573E1C0BDA15005C0E10 /* xiangji_@3x.png in Resources */,
 				794557191C0BDA15005C0E10 /* V-7_@2x.png in Resources */,
@@ -3813,6 +3719,7 @@
 				7902438C1C4DEB470010B1D9 /* ZZPhotoListCell.m in Sources */,
 				7938E5761C0EE1B900AD043F /* NSDate+Utils.m in Sources */,
 				790243B41C4E302E0010B1D9 /* LWPersonalHeardCell.m in Sources */,
+				79220A9A1CACF2E900CFBEC2 /* KLDatePickViewController.m in Sources */,
 				790515701BFDB16E001D5F33 /* LWSenderResBaseModel.m in Sources */,
 				79BA9FDF1C46688B00D9236A /* LWTheFromRowArray.m in Sources */,
 				79F75E851BF421F400AE75AB /* LWProgressHUD.m in Sources */,
@@ -3830,7 +3737,9 @@
 				7945576F1C0C323E005C0E10 /* MZFormSheetPresentationController.m in Sources */,
 				791214D71BF1CE9E004166C5 /* BaseViewController.m in Sources */,
 				7958ED691CA2982600C7FE11 /* LWPatientRelatedPhotoCell.m in Sources */,
+				79CCF4AA1CABAB500075FD2F /* KLPatientLogBodyModel.m in Sources */,
 				794557721C0C323E005C0E10 /* MZFormSheetPresentationViewControllerInteractiveAnimator.m in Sources */,
+				79220A981CACF2E900CFBEC2 /* KLDatePickNumberView.m in Sources */,
 				790A671A1BFC07AF007E6DD6 /* PushMgrInfo.m in Sources */,
 				7990DF261CA7C3470096DA4B /* KLStateCell.m in Sources */,
 				7912155A1BF1CFD0004166C5 /* LWPatientBody.m in Sources */,
@@ -3849,9 +3758,7 @@
 				7955C2921C03F705003D6836 /* LKDB+Mapping.m in Sources */,
 				7979862B1C433871005052DF /* PatientTaskDescribeVC.m in Sources */,
 				79084E281C27AEA00002BBF2 /* MJPhotoLoadingView.m in Sources */,
-				79084E3D1C27AFBE0002BBF2 /* SVIndefiniteAnimatedView.m in Sources */,
 				791211351BF1A6A6004166C5 /* ViewController.m in Sources */,
-				7994D5AB1C57256200E41865 /* CheckUpdateReturn.m in Sources */,
 				7955C2951C03F705003D6836 /* NSObject+LKDBHelper.m in Sources */,
 				791215621BF1CFD0004166C5 /* LWMainRows.m in Sources */,
 				790243791C4DEB470010B1D9 /* ZZPhotoDatas.m in Sources */,
@@ -3861,6 +3768,7 @@
 				79084E271C27AEA00002BBF2 /* MJPhotoBrowser.m in Sources */,
 				7929ACB81C33B1F8002712EC /* LWChatMessageMoreView.m in Sources */,
 				794555501C0BD98F005C0E10 /* UIView+BorderLine.m in Sources */,
+				79220AA01CAD17D300CFBEC2 /* KLTimerWeeksCell.m in Sources */,
 				79AD86111C4F300E00EBE224 /* LWPatientGroupsCtr.m in Sources */,
 				799788891C9A42D100E86B91 /* LWPEFHistorListTitleCell.m in Sources */,
 				7945576D1C0C323E005C0E10 /* MZFormSheetContentSizingNavigationController.m in Sources */,
@@ -3889,6 +3797,7 @@
 				7929ACC91C33CA93002712EC /* LWTimerRemindViewController.m in Sources */,
 				790243B91C4E302E0010B1D9 /* LWPatientRelatedPhotoView.m in Sources */,
 				795B6C221C47539B00612AF6 /* LWDoctorTimerModel.m in Sources */,
+				79CCF4AF1CABAB500075FD2F /* LWHistoricalHeardView.m in Sources */,
 				794557741C0C323E005C0E10 /* MZMethodSwizzler.m in Sources */,
 				7984302F1C3A20BA00C79DCA /* LWMessageAgreedCell.m in Sources */,
 				79F7C5E01BF7296B00D618AE /* PatientAddVC.m in Sources */,
@@ -3900,19 +3809,17 @@
 				790243901C4DEC2E0010B1D9 /* ALActionSheetView.m in Sources */,
 				791215741BF1EA71004166C5 /* LWPatientCenterCell.m in Sources */,
 				7990DF2F1CA900A00096DA4B /* CoordinateItem.m in Sources */,
-				7990DF1A1CA4EA880096DA4B /* KLHistoricalOperation.m in Sources */,
-				799788681C98F10600E86B91 /* LWBaseHistoricalView.m in Sources */,
 				7997888A1C9A42D100E86B91 /* LWPEFListView.m in Sources */,
 				790243B61C4E302E0010B1D9 /* LWPersonalMessageCell.m in Sources */,
-				7958EDC41CA3DCCD00C7FE11 /* KLPatientLogModel.m in Sources */,
 				79084E291C27AEA00002BBF2 /* MJPhotoProgressView.m in Sources */,
+				79CCF4AB1CABAB500075FD2F /* KLPatientLogModel.m in Sources */,
 				7945576C1C0C323E005C0E10 /* MZBlurEffectAdapter.m in Sources */,
 				790BE9321C02EA2600BD1D67 /* LWAsthmaAssessmentViewController.m in Sources */,
 				7955C29B1C044BB4003D6836 /* LWACTModel.m in Sources */,
+				79220A991CACF2E900CFBEC2 /* KLDatePickView.m in Sources */,
 				790A672C1BFC591B007E6DD6 /* D3RecordButton.m in Sources */,
 				79BA9FAE1C45E18600D9236A /* UITextView+placeholder.m in Sources */,
 				790243751C4DEB470010B1D9 /* ZZPhotoListViewController.m in Sources */,
-				79BA50E91C9A43D8006A5AE4 /* LWHistoricalHeardView.m in Sources */,
 				791214D81BF1CE9E004166C5 /* LWBaseViewController.m in Sources */,
 				7990DF231CA7BC4C0096DA4B /* KLStateView.m in Sources */,
 				79BA51041C9A83FC006A5AE4 /* LWMedicationTitleTypeView.m in Sources */,
@@ -3927,71 +3834,67 @@
 				79BA9FBD1C4642D800D9236A /* LWTheFormViewController.m in Sources */,
 				790243BC1C4E302E0010B1D9 /* LWTimerRemindIndexView.m in Sources */,
 				7955C28E1C03F705003D6836 /* FMDatabaseAdditions.m in Sources */,
+				79CCF4B01CABAB500075FD2F /* LWHistoricalItmView.m in Sources */,
 				7997888B1C9A42D100E86B91 /* LWPEFView.m in Sources */,
 				790243BF1C4E30B00010B1D9 /* LWPopAlatView.m in Sources */,
+				79CCF4AE1CABAB500075FD2F /* JSDropmenuView.m in Sources */,
 				794557711C0C323E005C0E10 /* MZFormSheetPresentationViewControllerAnimator.m in Sources */,
-				79BA50EA1C9A43D8006A5AE4 /* LWHistoricalItmView.m in Sources */,
 				7919B8BA1BFADC670058853F /* LWPatientRecordsBaseModel.m in Sources */,
 				79084E331C27AF530002BBF2 /* YLImageView.m in Sources */,
 				79AD91B91BF2E3290098D6CD /* LWPersonalSetingCtr.m in Sources */,
 				79B72D5E1C9BAF9000E2920F /* LWLogStateView.m in Sources */,
 				79FE2B711C50D156000C1E08 /* LWPatientRelatedModel.m in Sources */,
-				79084E3F1C27AFBE0002BBF2 /* SVProgressHUD.m in Sources */,
 				791215151BF1CFB1004166C5 /* COUserDefaultsManager.m in Sources */,
+				79CCF4B81CABAB6A0075FD2F /* LWBaseHistoricalView.m in Sources */,
 				7929ACBB1C33B1F8002712EC /* LWMessageTakeCell.m in Sources */,
 				7906511B1C9FC8E6004E13D0 /* LWScaleCircleView.m in Sources */,
-				79BA50EC1C9A43D8006A5AE4 /* LWScrollMenuView.m in Sources */,
 				79FFBB4B1C0D8EB10072FDCB /* KSDataBaseManager.m in Sources */,
-				79084E401C27AFBE0002BBF2 /* SVRadialGradientLayer.m in Sources */,
 				790A67401BFC7314007E6DD6 /* LWChatModel.m in Sources */,
 				7955C28F1C03F705003D6836 /* FMDatabasePool.m in Sources */,
 				7938E56E1C0EDBA800AD043F /* LWCardView.m in Sources */,
 				790BE93F1C02EC1A00BD1D67 /* LWACTAssessmentCell.m in Sources */,
 				7941A8981C34DF8100B8ACC7 /* LWPickerViewController.m in Sources */,
 				7929ACB61C33B1F8002712EC /* LWChatMessageInputBar.m in Sources */,
-				7994D5B01C57256200E41865 /* UMSAgent.m in Sources */,
 				7955C2941C03F705003D6836 /* LKDBUtils.m in Sources */,
 				7955C2961C03F705003D6836 /* NSObject+LKModel.m in Sources */,
 				7958ED6C1CA3B0E800C7FE11 /* KLPatientRelatedModel.m in Sources */,
-				7994D5A71C57256200E41865 /* UMSDataMgr.m in Sources */,
 				7945576E1C0C323E005C0E10 /* MZFormSheetContentSizingNavigationControllerAnimator.m in Sources */,
 				7919B8BD1BFADC670058853F /* LWPatientRecordsPatientArchives.m in Sources */,
-				7994D5AF1C57256200E41865 /* EventInfoObj.m in Sources */,
 				79FFBB521C0D8EB10072FDCB /* KSCache.m in Sources */,
 				790243781C4DEB470010B1D9 /* ZZBrowerAnimate.m in Sources */,
+				79CCF4AD1CABAB500075FD2F /* LWHistoricalLogModel.m in Sources */,
+				79220AA31CAD1F3A00CFBEC2 /* KLTimerWeeksViewController.m in Sources */,
 				79AD91B31BF2D5D60098D6CD /* LWPatientRemarksTFCell.m in Sources */,
-				7994D5AC1C57256200E41865 /* CommonReturn.m in Sources */,
 				798922BF1BFEB523002C695C /* NSObject+Encodeing.m in Sources */,
 				79AD91E81BF31D250098D6CD /* LWLoginManager.m in Sources */,
 				79084E121C2792060002BBF2 /* LWChatLoadingView.m in Sources */,
 				7919B8BB1BFADC670058853F /* LWPatientRecordsBody.m in Sources */,
-				7994D5A81C57256200E41865 /* UMSNetwork.m in Sources */,
 				790A67361BFC591B007E6DD6 /* RecordHUD.m in Sources */,
-				791148F51C9BE8460020AB2C /* LWHistoricalCountModel.m in Sources */,
 				791215571BF1CFD0004166C5 /* LBLoginBaseModel.m in Sources */,
+				794BC6091CB78D55009F29B2 /* KLTimerRemindViewOperation.m in Sources */,
 				79BA50FE1C9A5F28006A5AE4 /* LWMedicationContentCell.m in Sources */,
 				790A67351BFC591B007E6DD6 /* Mp3Recorder.m in Sources */,
 				7902438B1C4DEB470010B1D9 /* ZZPhotoHud.m in Sources */,
+				790392DD1CB4A89F00B020C4 /* LCCoolHUD.m in Sources */,
 				7945577C1C0C3271005C0E10 /* NSInvocation+Copy.m in Sources */,
 				790BE9391C02EBB200BD1D67 /* LWACTStateAssessmentCell.m in Sources */,
 				79FFBB5A1C0D8EB10072FDCB /* UIViewController+KSNoNetController.m in Sources */,
+				79CCF4B11CABAB500075FD2F /* LWScrollMenuView.m in Sources */,
 				790243871C4DEB470010B1D9 /* ZZBrowserPickerCell.m in Sources */,
 				79B72D581C9B9F4C00E2920F /* LWHistoricalLogView.m in Sources */,
-				7952F1011C0582880030B279 /* LWPEFLineModel.m in Sources */,
 				79CEEDD81C017E0F004D6786 /* SegmentTapView.m in Sources */,
 				7902438A1C4DEB470010B1D9 /* ZZPageControl.m in Sources */,
 				795FE0941C08295200B2EA2A /* LWAsthmaAssessLogBody.m in Sources */,
 				791215051BF1CF56004166C5 /* CODataCacheManager.m in Sources */,
 				79FFBB591C0D8EB10072FDCB /* ProgressHUD.m in Sources */,
-				7958EDC71CA4D55D00C7FE11 /* KLPatientLogBodyModel.m in Sources */,
 				79F346641C8022440064BBC6 /* LWChatConventionCardView.m in Sources */,
 				79F7C1FB1BF71A4400D618AE /* NSLayoutConstraint+PureLayout.m in Sources */,
-				7916E88C1C8D7A8300F891B3 /* LCCoolHUD.m in Sources */,
 				7990DF2C1CA8F8160096DA4B /* KLPEFItmLineView.m in Sources */,
 				79F21EC31BF9777700F6A465 /* LWChatViewControllerDataSource.m in Sources */,
-				7994D5AE1C57256200E41865 /* ErrorLogObj.m in Sources */,
 				794712C21BF9D0FA0083CE6E /* LGReachability.m in Sources */,
 				794712E81BF9D3CC0083CE6E /* LWVoiceManager.m in Sources */,
+				79CCF4BE1CABAB8C0075FD2F /* KLSymptomsLogModel.m in Sources */,
+				790392E71CB50D0C00B020C4 /* KLMessageOperation.m in Sources */,
 				7941A89C1C3518C700B8ACC7 /* LWOrderRecordViewController.m in Sources */,
 				7912155C1BF1CFD0004166C5 /* LWPatientRows.m in Sources */,
 				7912155B1BF1CFD0004166C5 /* LWPatientPager.m in Sources */,
@@ -4001,11 +3904,11 @@
 				79AD91F51BF33CCB0098D6CD /* YRJSONAdapter.m in Sources */,
 				7958ED601CA143F000C7FE11 /* LWPEFLineView.m in Sources */,
 				794557731C0C323E005C0E10 /* MZFormSheetPresentationViewControllerSegue.m in Sources */,
+				79220A9D1CAD15B300CFBEC2 /* KLTimerWeeksView.m in Sources */,
 				7990DF321CA9018E0096DA4B /* LWLineButton.m in Sources */,
 				790243881C4DEB470010B1D9 /* ZZCameraFocusView.m in Sources */,
 				79BA9FDE1C46688B00D9236A /* LWTheFromMrows.m in Sources */,
 				791211321BF1A6A6004166C5 /* AppDelegate.m in Sources */,
-				7990DF1D1CA501E30096DA4B /* KLSymptomsLogModel.m in Sources */,
 				79BA9FDD1C46688B00D9236A /* LWTheFromBaseModel.m in Sources */,
 				798922C21BFEB6A2002C695C /* GJMFileHelper.m in Sources */,
 				79BA50F21C9A45EB006A5AE4 /* LWSymptomsFootView.m in Sources */,
@@ -4013,15 +3916,15 @@
 				79AD91A31BF2CEF60098D6CD /* CDCheckBox.m in Sources */,
 				79BA9FDC1C46688B00D9236A /* LWTheFromArows.m in Sources */,
 				794275611C7D891300E42F87 /* LWOrderListModel.m in Sources */,
+				79CCF4B91CABAB6A0075FD2F /* KLHistoricalOperation.m in Sources */,
 				7945577B1C0C3271005C0E10 /* MZAppearance.m in Sources */,
 				7955DC081C4CDCAA00314221 /* LWPatientBiaoDanBody.m in Sources */,
 				7955C28D1C03F705003D6836 /* FMDatabase.m in Sources */,
+				79CCF4AC1CABAB500075FD2F /* LWHistoricalCountModel.m in Sources */,
 				7990DF201CA647AC0096DA4B /* NSObject+ProperList.m in Sources */,
-				7952F1021C0582880030B279 /* LWPEFRecordList.m in Sources */,
 				794555471C0BD98F005C0E10 /* NSDate+Extension.m in Sources */,
 				79CEEDED1C0184A0004D6786 /* LWPatientLogDateIndexView.m in Sources */,
 				7938E5701C0EDBA800AD043F /* UUMessageFrame.m in Sources */,
-				7994D5AA1C57256200E41865 /* ActivityLogObj.m in Sources */,
 				7929ACB71C33B1F8002712EC /* LWChatMessageMoreCollectionCell.m in Sources */,
 				7990D7B31C7AF76A00127A28 /* RFLayout.m in Sources */,
 				79F7C5E61BF745FF00D618AE /* AboutUsVC.m in Sources */,
@@ -4037,9 +3940,9 @@
 				794D51551C7EE9CE00403767 /* LWOrderDetailedListViewController.m in Sources */,
 				791214D91BF1CE9E004166C5 /* LWMessageCtr.m in Sources */,
 				79AD86101C4F300E00EBE224 /* LWPatientCententCtr.m in Sources */,
-				7994D5A91C57256200E41865 /* SFHFKeychainUtils.m in Sources */,
 				7997888C1C9A42D100E86B91 /* LWSymptomsView.m in Sources */,
 				791935D81C7C589000EF4FFA /* DZ_ScaleCircle.m in Sources */,
+				79CD7FBE1CBB513300019A33 /* KLRootViewController.swift in Sources */,
 				7912155F1BF1CFD0004166C5 /* LWMainMessageBaseModel.m in Sources */,
 				794557761C0C323E005C0E10 /* UIViewController+TargetViewController.m in Sources */,
 				791215071BF1CF56004166C5 /* ControllerExtraDataManager.m in Sources */,
@@ -4054,23 +3957,22 @@
 				795FE0831C07FD1800B2EA2A /* LWYerChangIndexView.m in Sources */,
 				7955C2911C03F705003D6836 /* FMResultSet.m in Sources */,
 				794557701C0C323E005C0E10 /* MZFormSheetPresentationViewController.m in Sources */,
-				79BA50E71C9A43D8006A5AE4 /* JSDropmenuView.m in Sources */,
 				79084E321C27AF530002BBF2 /* YLGIFImage.m in Sources */,
 				790243B21C4E302E0010B1D9 /* LWOrderDetailsCell.m in Sources */,
 				79F710311C87E216004FFAA8 /* LWReservationDetailedModel.m in Sources */,
+				79472D2F1CB6075200451E23 /* KLHistoricalHeardCell.m in Sources */,
 				79AD91A71BF2CF550098D6CD /* CDCommontConvenient.m in Sources */,
 				79FFBB561C0D8EB10072FDCB /* KSReachability.m in Sources */,
 				79F7C1FA1BF71A4400D618AE /* NSArray+PureLayout.m in Sources */,
 				79F21EC01BF9765F00F6A465 /* LWChatRows.m in Sources */,
+				796EA6D51CA924CE00D40C19 /* KLPEFBubbleView.m in Sources */,
 				790243721C4DEB470010B1D9 /* ZZCameraController.m in Sources */,
-				792EF0CC1CA0EC9F001A69CC /* LWHistoricalLogModel.m in Sources */,
 				794555481C0BD98F005C0E10 /* NSString+Contains.m in Sources */,
 				790243B11C4E302E0010B1D9 /* LWOrderCountCell.m in Sources */,
 				795553FF1C8FBAA60073F14C /* LWOrderViewCell.m in Sources */,
 				790243711C4DEB470010B1D9 /* ZZBrowserPickerViewController.m in Sources */,
 				79BA50F51C9A5A8E006A5AE4 /* LWSymptomsButton.m in Sources */,
 				7912150A1BF1CF56004166C5 /* NavManager.m in Sources */,
-				7994D5AD1C57256200E41865 /* DeviceInfoObj.m in Sources */,
 				793DE42B1C04697D000CE2BE /* LCDownloadManager.m in Sources */,
 				790243BB1C4E302E0010B1D9 /* LWTimerButtonCell.m in Sources */,
 				790BE94C1C02FAFC00BD1D67 /* LWACTAssessmentModel.m in Sources */,
@@ -4078,7 +3980,6 @@
 				798430321C3A218D00C79DCA /* LWAgreedHeadCell.m in Sources */,
 				790243B31C4E302E0010B1D9 /* LWPersonalCell.m in Sources */,
 				790BE9421C02EC4500BD1D67 /* LWAsthmaAssessmentCell.m in Sources */,
-				7952F1001C0582880030B279 /* LWPEFBody.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4200,6 +4101,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -4217,6 +4119,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.E-breath.breatheDoctor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "BreatheDoctor/ViewControllers/Root/BreatheDoctor-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -4226,6 +4130,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
@@ -4243,6 +4148,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.E-breath.breatheDoctor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "BreatheDoctor/ViewControllers/Root/BreatheDoctor-Bridging-Header.h";
 			};
 			name = Release;
 		};

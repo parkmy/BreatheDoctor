@@ -12,7 +12,6 @@
 #import "ALActionSheetView.h"
 #import "LWUpLoadingManager.h"
 #import "ZZPhotoHud.h"
-#import "SVProgressHUD.h"
 #import "UITextView+placeholder.h"
 #import "ZZBrowserPickerViewController.h"
 #import "KLPatientRelatedModel.h"

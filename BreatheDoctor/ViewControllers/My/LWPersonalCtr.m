@@ -83,26 +83,26 @@
             
         }];
         if (indexPath.row == 1) {
-            personalCell.lefticon.image = kImage(@"huifu@2x");
+            personalCell.lefticon.image = kImage(@"huifu");
             personalCell.leftmenuTitleLabel.text = @"回复时间";
             personalCell.leftButton.tapType = tapTypeRecoverytime;
-            personalCell.rightIcon.image = kImage(@"jilu@2x");
+            personalCell.rightIcon.image = kImage(@"jilu");
             personalCell.rightMenuLabel.text = @"患者购买记录";
             personalCell.rightButton.tapType = tapTypePurchaseRecords;
         }else
         {
-            personalCell.lefticon.image = kImage(@"shezhi@2x");
+            personalCell.lefticon.image = kImage(@"shezhi");
             personalCell.leftmenuTitleLabel.text = @"更多设置";
             personalCell.leftButton.tapType = tapTypeMoreSettings;
-            personalCell.rightIcon.image = kImage(@"gengduo@2x");
+            personalCell.rightIcon.image = kImage(@"gengduo");
             personalCell.rightMenuLabel.text = @"敬请期待";
             personalCell.rightButton.tapType = tapTypeStayTunedFor;
             
         }
-        personalCell.iconw.constant = personalCell.lefticon.image.size.width;
-        personalCell.iconh.constant = personalCell.lefticon.image.size.height;
-        personalCell.riconw.constant = personalCell.rightIcon.image.size.width;
-        personalCell.riconh.constant = personalCell.rightIcon.image.size.height;
+//        personalCell.iconw.constant  = personalCell.lefticon.image.size.width;
+//        personalCell.iconh.constant  = personalCell.lefticon.image.size.height;
+//        personalCell.riconw.constant = personalCell.rightIcon.image.size.width;
+//        personalCell.riconh.constant = personalCell.rightIcon.image.size.height;
         cell = personalCell;
         
     }

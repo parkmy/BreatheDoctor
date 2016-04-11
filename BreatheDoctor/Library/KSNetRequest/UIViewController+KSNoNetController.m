@@ -14,29 +14,30 @@
 
 - (void)showErrorMessage:(NSString *)message isShowButton:(BOOL)isShow type:(showErrorType)type
 {
-    [self hiddenNonetWork];
     
-    KSNoNetView* view = [KSNoNetView instanceNoNetView];
-    view.frame = self.view.frame;
-    view.ErrorButton.hidden = isShow;
-    view.ErrorButton.tag = type;
-    if (!isShow)
-    {
-        if (type == showErrorTypeHttp || type == showErrorType64Hight) {
-            [view.ErrorButton setTitle:@"点击重试" forState:UIControlStateNormal];
-        }else
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self hiddenNonetWork];
+        
+        KSNoNetView* view = [[KSNoNetView alloc] initWithFrame:self.view.frame];
+        
+        view.isShowErrorButton = isShow;
+        view.ErrorButtonTag = type;
+        if (!isShow)
         {
-            [view.ErrorButton setTitle:@"添加患者" forState:UIControlStateNormal];
+            if (type == showErrorTypeHttp || type == showErrorType64Hight) {
+                [view setErrorButtonTitleInfo:@"点击重试"];
+            }else
+            {
+                [view setErrorButtonTitleInfo:@"添加患者"];
+            }
         }
-    }
+        
+        view.delegate = self;
+        [view setErrorLabelMessageInfo:message];
+        [self.view addSubview:view];
+        view.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
 
-    view.delegate = self;
-    view.messageLabel.text = message;
-//    if (type == showErrorType64Hight) {
-//        view.frame = self.view.bounds;
-//        view.yOrigin = 64+40;
-//    }
-    [self.view addSubview:view];
+    });
 }
 - (void)hiddenNonetWork
 {

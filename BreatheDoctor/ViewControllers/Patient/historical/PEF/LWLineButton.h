@@ -11,4 +11,5 @@
 
 @interface LWLineButton : UIButton
 @property (nonatomic, strong) CoordinateItem *itm;
+@property (nonatomic, assign) BOOL isShow;
 @end

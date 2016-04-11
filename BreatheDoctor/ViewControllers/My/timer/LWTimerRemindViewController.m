@@ -12,10 +12,11 @@
 #import "LWPickerViewController.h"
 #import "LWTimerWeeksViewController.h"
 #import "NSString+Contains.h"
-#import "YRJSONAdapter.h"
-#import "SVProgressHUD.h"
 #import "LWPopAlatView.h"
 #import "NSDate+Extension.h"
+#import "KLDatePickViewController.h"
+#import "KLTimerWeeksViewController.h"
+#import "KLTimerRemindViewOperation.h"
 #import "ZZPhotoHud.h"
 
 @interface LWTimerRemindViewController ()<LWTimerRemindIndexViewDeleagte,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
@@ -24,7 +25,7 @@
 
 @property (nonatomic, strong) NSMutableArray *models;
 @property (nonatomic, assign) BOOL isChange;
-
+@property (nonatomic, strong) KLDatePickViewController *datePickViewController;
 @end
 
 @implementation LWTimerRemindViewController
@@ -49,7 +50,7 @@
 
 - (void)setUI
 {
-    self.tableView.rowHeight = 95*MULTIPLE;
+    self.tableView.rowHeight = 120*MULTIPLE;
 }
 
 - (void)loadData
@@ -75,47 +76,6 @@
         [LWProgressHUD showALAlertBannerWithView:nil Style:0 Position:0 Subtitle:errorMes];
     }];
 }
-- (void)saveSeting
-{
-    
-    NSMutableString *requestString = [[NSMutableString alloc] initWithString:@""];
-    for (int i = 0; i < self.models.count; i++)
-    {
-        LWDoctorTimerModel *model = self.models[i];
-        NSDictionary *dic = model.dictionaryRepresentation;
-        NSString *string = dic.JSONString;
-        if (i == 0) {
-            [requestString appendFormat:@"[%@",string];
-        }else if (i == 1)
-        {
-            [requestString appendFormat:@",%@",string];
-        }else if (i == 2)
-        {
-            [requestString appendFormat:@",%@]",string];
-        }
-        
-    }
-    
-    NSLog(@"%@",requestString);
-    
-    requestString = [requestString stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];  //去除掉首尾的空白字符和换行字符
-    requestString = [requestString stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-    requestString = [requestString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-    //    NSLog(@"%@",self.models.JSONString);
-    
-    [ZZPhotoHud showActiveHudWithTitle:@"正在保存..."];
-    
-    [LWHttpRequestManager httpsubmitDoctorServerTimeWithJsonString:requestString Success:^() {
-        [ZZPhotoHud hideActiveHud];
-        [LCCoolHUD showSuccess:@"设置成功" zoom:YES shadow:NO];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self.navigationController popViewControllerAnimated:YES];
-        });
-    } failure:^(NSString *errorMes) {
-        [ZZPhotoHud hideActiveHud];
-        [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];
-    }];
-}
 
 - (NSMutableArray *)models
 {
@@ -124,8 +84,6 @@
     }
     return _models;
 }
-
-
 
 - (void)navLeftButtonAction
 {
@@ -140,21 +98,27 @@
 
 - (void)navRightButtonAction
 {
-    [self saveSeting];
+    [KLTimerRemindViewOperation saveTimerRemindSetingWithArray:self.models success:^(BOOL isSuccess) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }];
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
         [self.navigationController popViewControllerAnimated:YES];
-        
     }else
     {
-        [self saveSeting];
+        [KLTimerRemindViewOperation saveTimerRemindSetingWithArray:self.models success:^(BOOL isSuccess) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
     }
 }
 #pragma mark - tableviewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    if (self.models.count > 3) {
+        return 3;
+    }
     return self.models.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -169,15 +133,37 @@
 {
     return .1;
 }
-
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    
+    
+    return nil;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LWTimerButtonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LWTimerButtonCell" forIndexPath:indexPath];
-    
+    switch (indexPath.section) {
+        case 0:
+        {
+            cell.indexLabel.text = @"时段段一";
+        }
+            break;
+        case 1:
+        {
+            cell.indexLabel.text = @"时段段二";
+        }
+            break;
+        case 2:
+        {
+            cell.indexLabel.text = @"时段段三";
+        }
+            break;
+        default:
+            break;
+    }
     LWDoctorTimerModel *model = self.models[indexPath.section];
     cell.starLabel.text = model.startTime;
     cell.endLabel.text = model.endTime;
-    [self setWeekLabelWithLabel:cell.weekslabel data:model.repeatWeek];
+    [KLTimerRemindViewOperation setWeekLabelWithLabel:cell.weekslabel data:model.repeatWeek];
     
     [cell setTapStarButtonBlock:^(UILabel *label) {
         [self showPickView:label withIndexPath:indexPath withModel:model isStar:YES];
@@ -188,13 +174,18 @@
     }];
     
     [cell setTapMoreButtonBlock:^(UILabel *label) {
-        LWTimerWeeksViewController *vc = [[LWTimerWeeksViewController alloc] init];
-        vc.weeks = [NSMutableArray arrayWithArray:[self weekArray:model.repeatWeek]];
-        [self.navigationController pushViewController:vc animated:YES];
-        
-        [vc setBackBlock:^(NSMutableArray *weeks) {
             
-            if (weeks.count != [[self weekArray:model.repeatWeek] count]) {
+        KLTimerWeeksViewController *weeksViewController = [KLTimerWeeksViewController new];
+        weeksViewController.weeks = [NSMutableArray arrayWithArray:[KLTimerRemindViewOperation weekArray:model.repeatWeek]];
+        [self addChildViewController:weeksViewController];
+        [self.view addSubview:weeksViewController.view];
+        
+        
+        [self.tableView setContentOffset:CGPointMake(0, indexPath.section*(90+15)) animated:YES];
+
+        [weeksViewController setBackBlock:^(NSMutableArray *weeks) {
+            
+            if (weeks.count != [[KLTimerRemindViewOperation weekArray:model.repeatWeek] count]) {
                 self.isChange = YES;
                 self.navRightButton.hidden = NO;
             }else
@@ -204,7 +195,7 @@
                 {
                     [string appendString:mstr];
                 }
-                for (NSString *astr in [self weekArray:model.repeatWeek])
+                for (NSString *astr in [KLTimerRemindViewOperation weekArray:model.repeatWeek])
                 {
                     if (![string containsaString:astr])
                     {
@@ -226,6 +217,12 @@
             model.repeatWeek = weekString;
             [self.tableView reloadData];
         }];
+        
+      
+        [weeksViewController setCompleteDismiss:^{
+            [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+        }];
+
     }];
     
     
@@ -233,114 +230,74 @@
     
 }
 
-#pragma mark - void
-- (NSArray *)weekArray:(NSString *)string
-{
-    if (string.length <= 0) {
-        return [NSArray array];
-    }
-    return  [string componentsSeparatedByString:@"|"];
-}
-- (NSString *)getWeekString:(NSArray *)array
-{
-    NSMutableString *weekString = [[NSMutableString alloc] initWithString:@""];
-    for (NSString *str in array)
-    {
-        if (str.integerValue == 1)
-        {
-            [weekString appendString:@" 周一 "];
-        }else if (str.integerValue == 2)
-        {
-            [weekString appendString:@" 周二 "];
-        }else if (str.integerValue == 3)
-        {
-            [weekString appendString:@" 周三 "];
-        }else if (str.integerValue == 4)
-        {
-            [weekString appendString:@" 周四 "];
-        }else if (str.integerValue == 5)
-        {
-            [weekString appendString:@" 周五 "];
-        }else if (str.integerValue == 6)
-        {
-            [weekString appendString:@" 周六 "];
-        }else if (str.integerValue == 7)
-        {
-            [weekString appendString:@" 周日 "];
-        }
-        
-    }
-    return weekString.length == 0?@"未选择":weekString;
-}
-
-- (void)setWeekLabelWithLabel:(UILabel *)label data:(NSString *)string
-{
-    label.text = [self getWeekString:[self weekArray:string]];
-    
-}
 - (void)showPickView:(UILabel *)label withIndexPath:(NSIndexPath *)indexPath withModel:(LWDoctorTimerModel *)model isStar:(BOOL)isStar
 {
-    __weak LWPickerViewController *vc = (LWPickerViewController *)StoryboardCtr(@"LWPickerViewController");
+    NSString *left = @"";
+    NSString *right = @"";
+    
+    NSArray *array = [stringJudgeNull(label.text) componentsSeparatedByString:@":"];
+    if (array.count > 1) {
+        left = [array objectAtIndex:0];
+        right = [array objectAtIndex:1];
+    }
+    if (_datePickViewController) {
+        _datePickViewController.view.hidden = NO;
+
+    }else{
+        _datePickViewController = [[KLDatePickViewController alloc] init];
+    }
+    [_datePickViewController setleftButtonTitleInfo:@"取消"];
+    [_datePickViewController setcenterTitleLabelStringInfo:isStar?@"开始时间":@"结束时间"];
+    [_datePickViewController setrightButtonTitleInfo:@"保存"];
+    
     [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:0 animated:YES];
     [self.tableView setContentOffset:CGPointMake(0, indexPath.section*(90+15)) animated:YES];
-    
-    [vc setCompleteChooseBlock:^(NSString *string) {
+
+    __weak typeof(self)weakSelf = self;
+    [_datePickViewController setCompleteChooseBlock:^(NSString *string) {
         if (![label.text isEqualToString:string]) {
-            self.isChange = YES;
-            self.navRightButton.hidden = NO;
+            weakSelf.isChange = YES;
+            weakSelf.navRightButton.hidden = NO;
         }
         if (isStar) {
             
             NSDate *starDate = [NSDate dateWithString:stringJudgeNull(string) format:[NSDate hmFormat]];
+            
             NSDate *endDate  = [NSDate dateWithString:stringJudgeNull(model.endTime) format:[NSDate hmFormat]];
-            if ([starDate timeIntervalSinceReferenceDate] > [endDate timeIntervalSinceReferenceDate]) {
+            NSInteger endCount = [model.endTime integerValue];
+
+            double cha = [endDate timeIntervalSinceReferenceDate] - [starDate timeIntervalSinceReferenceDate];
+            if (cha < 30*60 && endCount > 0) {
                 SHOWAlertView(@"提示", @"您选择的时间段不符合，请重新选择！")
                 return ;
             }
-            
             model.startTime = string;
         }else
         {
             NSDate *starDate = [NSDate dateWithString:stringJudgeNull(model.startTime) format:[NSDate hmFormat]];
             NSDate *endDate  = [NSDate dateWithString:stringJudgeNull(string) format:[NSDate hmFormat]];
-            if ([starDate timeIntervalSinceReferenceDate] > [endDate timeIntervalSinceReferenceDate]) {
+            NSInteger starCount = [model.startTime integerValue];
+
+            double cha = [endDate timeIntervalSinceReferenceDate] - [starDate timeIntervalSinceReferenceDate];
+            if (cha < 30*60 && starCount > 0) {
                 SHOWAlertView(@"提示", @"您选择的时间段不符合，请重新选择！")
                 return ;
             }
             model.endTime = string;
         }
         label.text = string;
-        [vc dismissPickerView];
+        
+        weakSelf.datePickViewController.view.hidden = YES;
+        [weakSelf.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
     }];
-    [vc setCompleteDismiss:^{
-        [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+    [_datePickViewController setCompleteDismiss:^{
+        [weakSelf.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
     }];
-    [self addChildViewController:vc];
-    [self.view addSubview:vc.view];
+    [self addChildViewController:_datePickViewController];
+    [self.view addSubview:_datePickViewController.view];
     
-    
-    
+    [_datePickViewController setleftPickViewCountIndex:[left intValue]];
+    [_datePickViewController setRightPickViewCountIndex:[right intValue]];
 }
-
-
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//
-//}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end

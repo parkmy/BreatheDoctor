@@ -11,7 +11,17 @@
 @interface LWLogStateView : UIView
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
+/**
+ *  状态图标
+ *
+ *  @param image 图片名字
+ */
 - (void)setStateIconImageName:(NSString *)image;
+/**
+ *  状态标题
+ *
+ *  @param name 标题
+ */
 - (void)setStateTitleName:(NSString *)name;
 
 @end

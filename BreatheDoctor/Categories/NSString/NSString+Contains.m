@@ -10,6 +10,16 @@
 
 @implementation NSString (Contains)
 
++ (NSString *)stringJudgeNullInfoString:(NSString *)string{
+    
+    if(string == nil || string == NULL || [string isEqual:[NSNull null]]||[string isEqual:@"(null)"]){
+        return @"";
+    }
+    else
+    {
+        return [NSString stringWithFormat:@"%@",string];
+    }
+}
 +(NSString*)getSendMessageReqNum
 {
     NSDate *now = [NSDate date];
@@ -28,7 +38,7 @@
 + (NSString *)appVersion
 {
     NSDictionary * info = [[NSBundle mainBundle]infoDictionary];
-    return [[NSString stringWithFormat:@"%@",info[@"CFBundleVersion"]] stringByReplacingOccurrencesOfString:@"." withString:@""];
+    return [[NSString stringWithFormat:@"%@",info[@"CFBundleShortVersionString"]] stringByReplacingOccurrencesOfString:@"." withString:@""];
 }
 /**
  *  @brief  判断URL中是否包含中文

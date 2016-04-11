@@ -24,5 +24,13 @@
 - (void)showLocalPushAction:(UILocalNotification *)notification;
 
 - (void)didRegisterDeviceToken:(NSData *)deviceToken;
+/**
+ *  判断是否注册通知未注册提示用户
+ *
+ *  @param application application description
+ *  @param isDate      是否需要时间判断
+ */
+- (void)isRegisterUserNotification:(UIApplication *)application
+                     theisInfoDate:(BOOL)isDate;
 
 @end

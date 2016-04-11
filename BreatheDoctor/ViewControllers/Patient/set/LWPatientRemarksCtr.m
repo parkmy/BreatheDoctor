@@ -26,7 +26,7 @@
 }
 - (void)dealloc
 {
-
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,15 +38,18 @@
 }
 - (void)initProperty
 {
-    if ([self.patient.groupId isEqualToString:@"1"]) {
+    if ([self.patient.groupId isEqualToString:@"1"])
+    {
         self.group = @"未确认";
     }else if ([self.patient.groupId isEqualToString:@"2"])
     {
         self.group = @"完全控制";
     }else if ([self.patient.groupId isEqualToString:@"3"])
-    {        self.group = @"部分控制";
+    {
+        self.group = @"部分控制";
     }else if ([self.patient.groupId isEqualToString:@"4"])
-    {        self.group = @"未控制";
+    {
+        self.group = @"未控制";
     }
 }
 - (void)showTF

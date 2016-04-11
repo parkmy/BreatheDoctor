@@ -53,9 +53,10 @@
     
     [[CODataCacheManager shareInstance] clearUserModel]; //删除用户信息
     
-    
     [self showLoginViewNav:vc]; //回到登陆
     
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
 }
 - (void)showLoginViewNav:(UIViewController *)vc
 {

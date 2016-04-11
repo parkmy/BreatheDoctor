@@ -9,7 +9,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "YLGIFImageInSwiftProjectDemo-Bridging-Header.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "SVProgressHUD.h"
 
 @interface MJPhoto : NSObject
 

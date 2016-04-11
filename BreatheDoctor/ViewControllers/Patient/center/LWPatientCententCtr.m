@@ -32,7 +32,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [UMSAgent event:@"patientCenter" label:@"患者个人中心"];
     
     setExtraCellLineHidden(self.tableView);
     [self loadPatientRecords];
@@ -74,7 +73,7 @@
             LWPatientRemarksCtr *patientRemarks = (LWPatientRemarksCtr *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRemarks];
             [patientRemarks setPatient:self.patient];
             [self.navigationController pushViewController:patientRemarks animated:YES];
-            [UMSAgent event:@"patientNote" label:@"患者备注"];
+            [MobClick event:@"patientNote" label:@"患者备注按钮的点击量"];
 
         }];
     }else
@@ -133,7 +132,7 @@
         vc.patientId = self.patient.patientId;
         vc.showType = showTheFormTypeBiaoDan;
         [self.navigationController pushViewController:vc animated:YES];
-        [UMSAgent event:@"patientHaveTheform" label:@"患者已填表单"];
+        [MobClick event:@"patientHaveTheform" label:@"患者已填表单按钮的点击量"];
 
     }else if (indexPath.row == 0){
         
@@ -142,7 +141,7 @@
         LWPatientRelatedVC *vc = (LWPatientRelatedVC *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRelated];
         vc.patientId = self.patient.patientId;
         [self.navigationController pushViewController:vc animated:YES];
-        [UMSAgent event:@"patientRelated" label:@"患者病情相关"];
+        [MobClick event:@"patientRelated" label:@"患者病情相关按钮的点击量"];
 
     }else if (indexPath.row == 3)
     {
@@ -150,9 +149,10 @@
 //        patientLog.patientId = self.patient.patientId;
 //        patientLog.patientName = self.patient.patientName;
 //        [self.navigationController pushViewController:patientLog animated:YES];
-//        [UMSAgent event:@"patientLOG" label:@"患者日志"];
+        [MobClick event:@"patientLOG" label:@"患者日志按钮的点击量"];
 
         LWHistoricalRecordVC *vc = [LWHistoricalRecordVC new];
+        vc.pid = self.patient.patientId;
         [self.navigationController pushViewController:vc animated:YES];
 
     }

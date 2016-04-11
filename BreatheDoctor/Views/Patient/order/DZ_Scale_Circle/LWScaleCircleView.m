@@ -259,7 +259,7 @@
  *  显示圆环 -- fourth
  */
 -(void )drawOutCCircle_fourth{
-    UIBezierPath *bPath_fourth = [UIBezierPath bezierPathWithArcCenter: self.CGPoinCerter radius:radius+5 startAngle: 0 endAngle: M_PI * 2  clockwise: self.clockwise];
+    UIBezierPath *bPath_fourth = [UIBezierPath bezierPathWithArcCenter: self.CGPoinCerter radius:radius+4 startAngle: 0 endAngle: M_PI * 2  clockwise: self.clockwise];
     
     CAShapeLayer *lineLayer_fourth = [CAShapeLayer layer];
     lineLayer_fourth.frame = _orderCountView.frame;

@@ -225,7 +225,7 @@
         UILabel *label = self.yNumbers[i];
         CGFloat Y;
         if (i == 0) {
-            label.text = number1;
+            label.text = [number1 doubleValue]>800?@"":number1;
             label.textColor = [LWHistoricalCountModel normalColor];
             Y = self.frame.size.height - (MARGIN_TOP + [number1 integerValue]*spa);
             
@@ -335,11 +335,7 @@
         
         
     }
-    
-    
-    
-    
-    
+
 //    //排序下
 //    [array sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
 //        

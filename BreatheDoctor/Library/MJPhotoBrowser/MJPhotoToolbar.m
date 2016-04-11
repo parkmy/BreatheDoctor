@@ -65,12 +65,12 @@
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
 {
     if (error) {
-        [SVProgressHUD showErrorWithStatus:@"保存失败"];
+        [LCCoolHUD showFailure:@"保存失败" zoom:YES shadow:NO];
     } else {
         MJPhoto *photo = _photos[_currentPhotoIndex];
         photo.save = YES;
         _saveImageBtn.enabled = NO;
-        [SVProgressHUD showSuccessWithStatus:@"成功保存到相册"];
+        [LCCoolHUD showSuccess:@"成功保存到相册" zoom:YES shadow:NO];
     }
 }
 

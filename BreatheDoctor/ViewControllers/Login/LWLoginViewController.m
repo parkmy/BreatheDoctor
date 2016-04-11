@@ -115,9 +115,7 @@
     [self starTimerLoding];
     
     [LWHttpRequestManager httpLoginWithPhoneNumber:self.accountTF.text password:[self.passwordTF.text md5String] success:^(LBLoginBaseModel *userModel) {
-        //统计
-        [UMSAgent startWithAppkey:@""];
-        
+
         if (_delegate && [_delegate respondsToSelector:@selector(loginSucc)]) {
             [_delegate loginSucc];
         }
@@ -131,6 +129,10 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if (textField == self.passwordTF) {
+        return YES;
+    }
+    
     if (range.location > 10)
     {
         return  NO;
@@ -141,7 +143,13 @@
     }
 }
 
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField{
 
+    if (textField == self.passwordTF && self.accountTF.text.length == 11) {
+        [self buttonClick:nil];
+    }
+    return YES;
+}
 
 /*
 #pragma mark - Navigation

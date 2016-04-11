@@ -27,9 +27,6 @@
 //患者ACT分析
 + (void)ACTAssessmentChangeWithModel:(LWACTModel *)model withArray:(NSMutableArray *)array;
 
-//患者日志症状分析
-+ (NSMutableArray *)LogrowsCount;
-+ (NSMutableArray *)LoglabelsCount:(LWPEFRecordList *)model;
 //患者日志 控制分析
 + (NSMutableArray *)toDealWithAsthmaAssessLogModel:(LWAsthmaAssessLogModel *)model;
 //患者PEF时间段走势分析

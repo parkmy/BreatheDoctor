@@ -101,13 +101,6 @@
                              success:(void (^)(LWAsthmaModel *model))success
                              failure:(void (^)(NSString * errorMes))failure;
 
-#pragma mark PEF记录
-+ (void)httpLoadPEFRecordWithPatientId:(NSString *)patientId
-                               StartDt:(NSString *)startDt
-                                 EndDt:(NSString *)endDt
-                               success:(void (^)(LWPEFLineModel *model))success
-                               failure:(void (^)(NSString * errorMes))failure;
-
 #pragma mark 加载哮喘症状评估日志录
 + (void)httpLoadAsthmaAssessLogWithPatientId:(NSString *)patientId
                                         year:(NSString *)year

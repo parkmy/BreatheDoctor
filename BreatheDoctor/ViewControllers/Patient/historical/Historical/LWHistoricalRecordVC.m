@@ -37,6 +37,8 @@
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) KLPatientLogBodyModel *patientLogBodyModel;
+@property (nonatomic, assign) BOOL isShowRight;
+@property (nonatomic, assign) NSInteger requestDay;
 
 @end
 
@@ -45,7 +47,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [super addNavBar:@"历史记录"];
+    [super addNavBar:@"患者日志"];
     [super addRightButton:@"rili.png"];
     [super addBackButton:@"nav_btnBack.png"];
 }
@@ -54,26 +56,38 @@
 {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.requestDay = 7;
     [self loadUI];
     
     [self.menuArray addObjectsFromArray:@[[NSMutableDictionary dictionaryWithDictionary:@{@"title":@"最近7天",@"isSele":@"1"}],[NSMutableDictionary dictionaryWithDictionary:@{@"title":@"最近14天",@"isSele":@"0"}],[NSMutableDictionary dictionaryWithDictionary:@{@"title":@"最近30天",@"isSele":@"0"}]]];
     
     [self setLogDateTextIndexTag:0];
-    [self loadhttpDataInfo:7];
+    [self loadhttpDataInfo:self.requestDay];
 }
 - (void)loadhttpDataInfo:(NSInteger)day
 {
     [self.pefView setPefDateList:day];
     
     [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
-    [LWHttpRequestManager httpLoadPatientRecordHistoryWithPatientId:@"" recentDays:day Success:^(KLPatientLogBodyModel *model) {
+    [LWHttpRequestManager httpLoadPatientRecordHistoryWithPatientId:self.pid recentDays:day Success:^(KLPatientLogBodyModel *model) {
+        [self hiddenNonetWork];
         [LWProgressHUD closeProgressHUD:self.view];
         self.patientLogBodyModel = model;
-        [self refreshView];
+        if (self.patientLogBodyModel.recordList.count <= 0) {
+            [self showErrorMessage:@"患者偷懒了，没有数据记录~" isShowButton:YES type:showErrorType64Hight];
+        }else{
+            [self refreshView];
+        }
     } failure:^(NSString *errorMes) {
         [LWProgressHUD closeProgressHUD:self.view];
-        [LWProgressHUD showALAlertBannerWithView:nil Style:0 Position:0 Subtitle:errorMes];
+//        [LWProgressHUD showALAlertBannerWithView:nil Style:0 Position:0 Subtitle:errorMes];
+        [self showErrorMessage:errorMes isShowButton:NO type:showErrorType64Hight];
+
     }];
+}
+- (void)reloadRequestWithSender:(UIButton *)sender //错误页面按钮点击事件
+{
+    [self loadhttpDataInfo:self.requestDay];
 }
 - (void)refreshView
 {
@@ -130,7 +144,7 @@
 - (LWHistoricalItmView *)itmView
 {
     if (!_itmView) {
-        _itmView = [[LWHistoricalItmView alloc] initWithSize:CGSizeMake(130*MULTIPLEVIEW, 30*MULTIPLEVIEW) leftTitle:@"图文" rightTitle:@"日志"];
+        _itmView = [[LWHistoricalItmView alloc] initWithSize:CGSizeMake(130*MULTIPLEVIEW, 30*MULTIPLEVIEW) leftTitle:@"图表" rightTitle:@"日志"];
     }
     return _itmView;
 }
@@ -185,23 +199,33 @@
 }
 - (void)showLeftView
 {
+    self.isShowRight = NO;
     [UIView animateWithDuration:.5 animations:^{
         self.logView.alpha = 0;
         self.chartView.alpha = 1;
         self.chartView.hidden = NO;
     } completion:^(BOOL finished) {
         self.logView.hidden = YES;
+        [self showView];
     }];
     
 }
+- (void)showView{
+    if (self.logView.hidden && self.chartView.hidden) {
+        self.logView.hidden = !self.isShowRight;
+        self.chartView.hidden = self.isShowRight;
+    }
+}
 - (void)showRightView
 {
+    self.isShowRight = YES;
     [UIView animateWithDuration:.5 animations:^{
         self.chartView.alpha = 0;
         self.logView.alpha = 1;
         self.logView.hidden = NO;
     } completion:^(BOOL finished) {
         self.chartView.hidden = YES;
+        [self showView];
     }];
 }
 
@@ -210,15 +234,25 @@
     __weak typeof(self)weakSelf = self;
     [self.itmView setLeftButtonBlock:^{
         [weakSelf showLeftView];
+        [MobClick event:@"chartView" label:@"图表按钮的点击量"];
     }];
     
     [self.itmView setRightButtonBlock:^{
         [weakSelf showRightView];
+        [MobClick event:@"logView" label:@"日志按钮的点击量"];
     }];
     
     [self.scrollMenuView setScrollViewDidEndDeceleratingBlock:^(NSInteger tag) {
         [weakSelf.segment selectIndex:tag+1];
+        if (tag == 0){
+            [MobClick event:@"pefView" label:@"PEF按钮的点击量"];
+        }else if (tag == 1){
+            [MobClick event:@"symptomsView" label:@"症状按钮的点击量"];
+        }else if (tag == 2){
+            [MobClick event:@"medicationView" label:@"用药按钮的点击量"];
+        }
     }];
+    
 }
 #pragma mark - nav
 - (void)navLeftButtonAction
@@ -252,8 +286,9 @@
     NSMutableDictionary *oldDic = self.menuArray[_seleIndex];
     [oldDic setObject:@"0" forKey:@"isSele"];
     _seleIndex = index;
+    self.requestDay = index==0?7:index==1?14:30;
     //刷新数据
-    [self loadhttpDataInfo:index==0?7:index==1?14:30];
+    [self loadhttpDataInfo:self.requestDay];
     
 }
 - (NSArray*)dropmenuDataSource
@@ -265,5 +300,13 @@
 {
     [self.scrollMenuView setscrollViewIndex:index];
     
+    if (index == 0){
+        [MobClick event:@"pefView" label:@"PEF按钮的点击量"];
+    }else if (index == 1){
+        [MobClick event:@"symptomsView" label:@"症状按钮的点击量"];
+    }else if (index == 2){
+        [MobClick event:@"medicationView" label:@"用药按钮的点击量"];
+    }
+
 }
 @end

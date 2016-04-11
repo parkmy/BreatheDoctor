@@ -76,7 +76,7 @@
         [self addSubview:medicationState];
         
         dateLabel.sd_layout.leftSpaceToView(self,10).topSpaceToView(self,10).widthIs(100).heightIs(20*MULTIPLEVIEW);
-        timeFrame.sd_layout.leftSpaceToView(dateLabel,0).topSpaceToView(self,10).widthIs(100).heightIs(20*MULTIPLEVIEW);
+        timeFrame.sd_layout.leftSpaceToView(dateLabel,0).topSpaceToView(self,17).widthIs(100).heightIs(13*MULTIPLEVIEW);
         contentBreadView.sd_layout.leftSpaceToView(self,10).topSpaceToView(dateLabel,5).rightSpaceToView(self,10).heightIs(220*MULTIPLEVIEW/2);
         line.sd_layout.leftSpaceToView(self,10).topSpaceToView(contentBreadView,0).rightSpaceToView(self,10).heightIs(.5);
         medicationState.sd_layout.leftSpaceToView(self,10).bottomSpaceToView(self,5).rightSpaceToView(self,10).heightIs(65*MULTIPLEVIEW);
@@ -127,7 +127,7 @@
     medicationState.dataArray = model.medication;
     
     self.scaleCircleView.isShowBottomLabel = YES;
-    self.scaleCircleView.lineWith = 4.0f;
+    self.scaleCircleView.lineWith = 3.0f;
     self.scaleCircleView.animation_time = 0;
     self.scaleCircleView.centerLable.text = kNSString(kNSNumDouble(model.pefValue));
     self.scaleCircleView.firstScale = model.pefValue/model.pefPredictedValue;

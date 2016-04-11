@@ -77,6 +77,7 @@
             historicalHeardView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
         }
         LWHistoricalHeardView *historicalHeardView = (LWHistoricalHeardView *)[cell viewWithTag:888];
+        historicalHeardView.baseHistoricalView = self;
         [historicalHeardView setFootLabelTitle:@"保持身体正常，无不适，可改善哮喘风险"];
         [historicalHeardView setHistoricalType:showHistoricalTypeSymptoms];
         [historicalHeardView setScaleCircleWithObjc:_model];

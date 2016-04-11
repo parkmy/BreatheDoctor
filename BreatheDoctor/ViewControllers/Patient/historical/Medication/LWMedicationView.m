@@ -44,7 +44,7 @@
 - (void)reloadMedicationViewData:(KLPatientLogBodyModel *)model
 {
     _model = model;
-    _dataArray = [KLHistoricalOperation mergeHistoricalListInfo:_model.recordList];
+    _dataArray = (NSMutableArray *)[[[KLHistoricalOperation mergeHistoricalListInfo:_model.recordList] reverseObjectEnumerator] allObjects];
     [self.mTableView reloadData];
 }
 #pragma mark - tableDelegate
@@ -65,6 +65,7 @@
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"historicalHeardView"];
             cell.selectionStyle = 0;
             LWHistoricalHeardView *historicalHeardView = [LWBaseHistoricalView historicalHeardView];
+            historicalHeardView.baseHistoricalView = self;
             historicalHeardView.tag = 888;
             [cell.contentView addSubview:historicalHeardView];
             historicalHeardView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));

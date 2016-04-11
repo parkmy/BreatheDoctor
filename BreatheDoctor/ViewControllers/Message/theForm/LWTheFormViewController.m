@@ -25,7 +25,6 @@
 #import "YRJSONAdapter.h"
 #import "UIResponder+Router.h"
 #import "LWTool.h"
-#import "SVProgressHUD.h"
 
 @interface LWTheFormViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -251,11 +250,14 @@
 
 - (void)uploadBiaoDan
 {
+    
+    [MobClick event:@"uploadBiaoDan" label:@"提交表单按钮的点击量"];
+
     [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
     [LWHttpRequestManager httpDoctorReply:self.patientId content:@"哮喘诊断判定表" contentType:21 voiceMin:0 success:^(LWSenderResBaseModel *senderResBaseModel) {
         [LWProgressHUD closeProgressHUD:self.view];
         [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_SENDERZHENGDUANMOKUAISUCC object:nil userInfo:@{@"message":senderResBaseModel}];
-        [SVProgressHUD showSuccessWithStatus:@"发送成功"];
+        [LCCoolHUD showSuccess:@"发送成功" zoom:YES shadow:NO];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             UIViewController *vc = self.navigationController.viewControllers[1];
             [self.navigationController popToViewController:vc animated:YES];

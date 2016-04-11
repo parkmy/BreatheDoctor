@@ -20,36 +20,36 @@
 #   define DLog(...)
 #endif
 
-#define VersionNum 210            //v1.3.1 ver就传 131
-//渠道
-//#define ChannelId @"QQ3群"
-//#define ChannelId @"本地服务器"
-//#define ChannelId @"App Store"
- #define ChannelId @"91助手"
-//#define ChannelId @"同步推"
-//#define ChannelId @"PP助手"
-//渠道数字
-//#define ChannelNum @"q103"
-//#define ChannelNum @"k800"
-//#define ChannelNum @"k801"
-//#define ChannelNum @"k802"
-//#define ChannelNum @"k803"
-
-//xxx-xx(02ios)-xxx(01:正式 03:企业 99:测试)
-#define ChannelNum @"1010203"
-
-#define Join_Id @"comveeiPhone"
-
-#define FILEPATH @"FilePath" 
-
+//#define VersionNum 210            //v1.3.1 ver就传 131
+////渠道
+////#define ChannelId @"QQ3群"
+////#define ChannelId @"本地服务器"
+////#define ChannelId @"App Store"
+// #define ChannelId @"91助手"
+////#define ChannelId @"同步推"
+////#define ChannelId @"PP助手"
+////渠道数字
+////#define ChannelNum @"q103"
+////#define ChannelNum @"k800"
+////#define ChannelNum @"k801"
+////#define ChannelNum @"k802"
+////#define ChannelNum @"k803"
+//
+////xxx-xx(02ios)-xxx(01:正式 03:企业 99:测试)
+//#define ChannelNum @"1010203"
+//
+//#define Join_Id @"comveeiPhone"
+//
+//#define FILEPATH @"FilePath" 
+//
 #define DBDIR   @"comveeDB"
-
-#define ImageFilePath @"/ChatCaches/ThumbNail"
-
-#define SoundFilePath @"/ChatCaches/chatSound"
-
-
-//字体
+//
+//#define ImageFilePath @"/ChatCaches/ThumbNail"
+//
+//#define SoundFilePath @"/ChatCaches/chatSound"
+//
+//
+////字体
 #define FONT @"HelveticaNeue"
 #define FONT_BOLD @"HelveticaNeue-Bold"
 

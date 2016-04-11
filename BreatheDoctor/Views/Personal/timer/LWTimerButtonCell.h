@@ -16,6 +16,7 @@
 @property (nonatomic, copy) void(^tapMoreButtonBlock)(UILabel *weeksLabel);
 @property (nonatomic, copy) void(^tapStarButtonBlock)(UILabel *starLabel);
 @property (nonatomic, copy) void(^tapEndButtonBlock)(UILabel *endLabel);
+@property (weak, nonatomic) IBOutlet UILabel *indexLabel;
 
 @end
 

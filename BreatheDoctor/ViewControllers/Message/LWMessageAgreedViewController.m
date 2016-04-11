@@ -99,7 +99,7 @@
             } failure:^(NSString *errorMes) {
                 [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
             }];
-            [UMSAgent event:@"AgreedTonewfriend" label:@"同意新朋友"];
+            [MobClick event:@"AgreedTonewfriend" label:@"同意新朋友按钮的点击量"];
 
         }];
         [agreedButtonCell setJuJueBlock:^{
@@ -112,7 +112,7 @@
             } failure:^(NSString *errorMes) {
                 [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
             }];
-            [UMSAgent event:@"RefusedTonewfriend" label:@"拒绝新朋友"];
+            [MobClick event:@"RefusedTonewfriend" label:@"拒绝新朋友按钮的点击量"];
 
         }];
         cell = agreedButtonCell;

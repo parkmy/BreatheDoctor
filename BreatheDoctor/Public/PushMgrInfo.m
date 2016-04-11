@@ -8,6 +8,7 @@
 #import "PushMgrInfo.h"
 #import "CDMacro.h"
 #import "YRJSONAdapter.h"
+#import "LWLoginManager.h"
 
 @implementation PushMgrInfo
 
@@ -151,6 +152,43 @@
     //        [self.navigationController popToRootViewControllerAnimated:YES];
     //        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReceiveRemoteNotification" object:nil];
     //    }
+}
+- (void)isRegisterUserNotification:(UIApplication *)application
+                     theisInfoDate:(BOOL)isDate{
+
+    if (isDate)
+    {
+        NSDate *olddate = [[NSUserDefaults standardUserDefaults] objectForKey:@"UIUserNotificationTypeNoneDate"];
+        NSDate *newDate = [NSDate date];
+        
+        double count = [newDate timeIntervalSinceReferenceDate] - [olddate timeIntervalSinceReferenceDate];
+        NSInteger h = count/120;
+        
+        if (![LWLoginManager isLogin] || h < 12) {
+            return;
+        }
+    }
+
+    UIUserNotificationSettings *userNotSet = [application currentUserNotificationSettings];
+    if (userNotSet.types == UIUserNotificationTypeNone)
+    {
+        [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"UIUserNotificationTypeNoneDate"];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您的通知消息功能受到限制，这将影响您的消息推送功能，是否设置？" delegate:self cancelButtonTitle:@"是" otherButtonTitles:@"否", nil];
+        [alert show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex == 0)
+    {
+        NSURL *url = [NSURL URLWithString:@"prefs:root=NOTIFICATIONS_ID"];
+        if ([[UIApplication sharedApplication] canOpenURL:url])
+        {
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }
+    
 }
 
 @end

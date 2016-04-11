@@ -285,6 +285,8 @@
 -(void)moreBtnClick:(UIButton*)sender
 {
     
+    [MobClick event:@"moreBtnClick" label:@"对话更多按钮的点击量"];
+    
     if (sender.selected)
     {//隐藏更多界面，显示键盘输入
         

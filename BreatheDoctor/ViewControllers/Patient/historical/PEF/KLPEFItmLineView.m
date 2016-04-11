@@ -8,13 +8,16 @@
 
 #import "KLPEFItmLineView.h"
 #import "CoordinateItem.h"
+#import "KLPEFBubbleView.h"
 
 #define ANIMATION_DURING 2
 #define LINE_WIDTH  1
 
 
 @interface KLPEFItmLineView()
-
+{
+    LWLineButton *showButton;
+}
 //折线和标点的颜色
 @property (strong, nonatomic) UIColor *lineAndPointColor;
 
@@ -23,6 +26,7 @@
 
 @property (nonatomic, strong) NSMutableArray *lines;
 @property (nonatomic, strong) NSMutableArray *buttons;
+@property (nonatomic, strong) KLPEFBubbleView *bubbleView;
 
 @end
 @implementation KLPEFItmLineView
@@ -48,7 +52,6 @@
         self.lineAndPointColor = [LWThemeManager shareInstance].navBackgroundColor;
         self.isAnimation = isAnimation;
         self.backgroundColor = [UIColor clearColor];
-        
     }
     return self;
 }
@@ -72,6 +75,9 @@
 - (void)drawRect:(CGRect)rect {
     // Drawing code
     [super drawRect:rect];
+    
+    [self removeBubbleView];
+    
     CGFloat spa = (self.frame.size.height - MARGIN_TOP*2)/800;
     
     CGContextRef currentCtx = UIGraphicsGetCurrentContext();
@@ -221,9 +227,47 @@
 
 - (void)linButtonClick:(LWLineButton *)sender
 {
-    if (_choosItmButtonClickBlock) {
-        _choosItmButtonClickBlock(sender);
+    [self showBubbleView:sender];
+}
+- (void)removeBubbleView
+{
+    if (self.bubbleView) {
+        [self.bubbleView removeFromSuperview];
+        self.bubbleView = nil;
     }
+}
+- (void)showBubbleView:(LWLineButton *)sender{
+
+    [self removeBubbleView];
+    /**
+     *  如果展示了 又是同一个 那么不展示
+     */
+    if (showButton == sender && sender.isShow) {
+        showButton.isShow = NO;
+        return;
+    }
+    _bubbleView = [[KLPEFBubbleView alloc] initWithFrame:CGRectMake(0, 0, 22*MULTIPLEVIEW, 14*MULTIPLEVIEW)];
+    _bubbleView.fillColor = [LWThemeManager shareInstance].navBackgroundColor;
+    [self addSubview:self.bubbleView];
+
+    self.bubbleView.pefValue = sender.itm.logModel.pefValue;
+    self.bubbleView.xCenter = sender.centerX;
+    self.bubbleView.yCenter = sender.centerY-self.bubbleView.height/2 - 8*MULTIPLEVIEW;
+    self.bubbleView.fillColor = sender.itm.itemColor;
+    [self.bubbleView setNeedsDisplay];
+    
+    CABasicAnimation *pulse = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    pulse.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    pulse.duration = .3;
+    pulse.repeatCount = 1;
+    pulse.autoreverses = YES;
+    pulse.fromValue = [NSNumber numberWithFloat:.8];
+    pulse.toValue = [NSNumber numberWithFloat:1.2];
+    [self.bubbleView.layer addAnimation:pulse forKey:nil];
+    
+    sender.isShow  = YES;
+//    isShow = YES;
+    showButton = sender;
 }
 
 /**

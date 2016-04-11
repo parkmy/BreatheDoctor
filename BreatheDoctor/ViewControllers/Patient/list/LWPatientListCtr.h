@@ -6,8 +6,8 @@
 //  Copyright © 2015年 lwh. All rights reserved.
 // 患者列表
 
-#import "LWBaseViewController.h"
+#import "BaseViewController.h"
 
-@interface LWPatientListCtr : LWBaseViewController
+@interface LWPatientListCtr : BaseViewController
 
 @end

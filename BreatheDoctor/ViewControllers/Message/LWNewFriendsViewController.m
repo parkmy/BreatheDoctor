@@ -35,8 +35,6 @@
     self.tableView.rowHeight = 65;
     self.tableView.backgroundColor = [UIColor whiteColor];
     setExtraCellLineHidden(self.tableView);
-    
-    [UMSAgent event:@"newfriend" label:@"新朋友"];
 
 }
 
@@ -103,7 +101,6 @@
     
 }
 
-
 #pragma mark -LWMessageTakeCellDelegate
 - (void)tapAcceptButtonEventWith:(LWMainRows *)row
 {
@@ -115,6 +112,8 @@
 //        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
 //    }];
     
+    [MobClick event:@"ThePatientsApplyfor" label:@"患者申请同意按钮的点击量"];
+
     
     LWMainRows *message = row;
     

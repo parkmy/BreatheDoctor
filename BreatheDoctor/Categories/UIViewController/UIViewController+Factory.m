@@ -21,6 +21,7 @@
 #import "LWReservationDetailedViewController.h"
 #import "LWOrderDetailedListViewController.h"
 #import "LWPatientRelatedVC.h"
+#import "LWHistoricalRecordVC.h"
 
 @implementation UIViewController (Factory)
 
@@ -99,7 +100,7 @@
         }
         case CtrlTag_PatientLog:
         {
-//            resCtrl = [[LWPatientLogViewController alloc] init];
+            resCtrl = [[LWHistoricalRecordVC alloc] init];
             break;
         }
         case CtrlTag_ACTAssessment:

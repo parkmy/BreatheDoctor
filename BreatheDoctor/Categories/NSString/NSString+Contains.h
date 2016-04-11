@@ -9,6 +9,16 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (Contains)
+
+/**
+ *  处理空字符串
+ *
+ *  @param string 判断的字段
+ *
+ *  @return 返回新的字符串
+ */
++ (NSString *)stringJudgeNullInfoString:(NSString *)string;
+
 /**
  *  @brief  判断URL中是否包含中文
  *
