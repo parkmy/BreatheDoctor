@@ -29,6 +29,7 @@
 #import "LWReservationDetailedViewController.h"
 #import "LWHistoricalRecordVC.h"
 #import "PushMgrInfo.h"
+#import "KLPatientListModel.h"
 
 #define kBkColorTableView    ([UIColor colorWithRed:0.773 green:0.855 blue:0.824 alpha:1])
 
@@ -479,10 +480,10 @@ typedef NS_ENUM(NSInteger , SenderType) {
 }
 - (void)navRightButtonAction
 {
-    LWPatientRows *pat = [self listPatient];
+    KLPatientListModel *pat = [self listPatient];
     
     if (!pat) {
-        [LWHttpRequestManager httpPatientListWithPage:1 size:100000 refreshDate:nil success:^(LWPatientBaseModel *patientBaseModel) {
+        [LWHttpRequestManager httpPatientListWithPage:1 size:100000 refreshDate:nil success:^(NSMutableArray *list) {
             [self pushPatientCententCtr:[self listPatient]];
         } failure:^(NSString *errorMes) {
             [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
@@ -492,13 +493,13 @@ typedef NS_ENUM(NSInteger , SenderType) {
     }
 }
 
-- (LWPatientRows *)listPatient
+- (KLPatientListModel *)listPatient
 {
-    LWPatientRows *model = [[LKDBHelper getUsingLKDBHelper] searchSingle:[LWPatientRows class] where:[NSString stringWithFormat:@"patientId = %@",self.patient.memberId] orderBy:nil];
+    KLPatientListModel *model = [[LKDBHelper getUsingLKDBHelper] searchSingle:[KLPatientListModel class] where:[NSString stringWithFormat:@"patientId = %@",self.patient.memberId] orderBy:nil];
     
     return model;
 }
-- (void)pushPatientCententCtr:(LWPatientRows *)row
+- (void)pushPatientCententCtr:(KLPatientListModel *)row
 {
     LWPatientCententCtr *patientCentent = (LWPatientCententCtr *)[UIViewController CreateControllerWithTag:CtrlTag_PatientCenter];
     patientCentent.patient = row;

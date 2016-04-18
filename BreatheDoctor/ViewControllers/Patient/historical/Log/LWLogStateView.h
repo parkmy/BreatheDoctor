@@ -23,5 +23,10 @@
  *  @param name 标题
  */
 - (void)setStateTitleName:(NSString *)name;
-
+/**
+ *  返回内容高度
+ *
+ *  @return 高度
+ */
+- (CGFloat)collectionViewContentHeight;
 @end

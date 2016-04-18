@@ -7,8 +7,9 @@
 //  备注
 
 #import "LWBaseViewController.h"
+@class KLPatientListModel;
 
 @interface LWPatientRemarksCtr : LWBaseViewController
-@property (nonatomic, strong) LWPatientRows *patient;
+@property (nonatomic, strong) KLPatientListModel *patient;
 
 @end

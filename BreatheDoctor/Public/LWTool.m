@@ -13,6 +13,7 @@
 #import "LWACTAssessmentModel.h"
 #import "UUMessageFrame.h"
 #import "LWTheFromBaseModel.h"
+#import "KLPatientListModel.h"
 
 @implementation LWTool
 //控制等级 1 未确认 2 已控制 3 部分控制 4 未控制
@@ -349,7 +350,7 @@
     NSInteger wanquankongz = 0;
     NSInteger bufenkongz = 0;
     NSInteger weikongz = 0;
-    for (LWPatientRows *patin in array) {
+    for (KLPatientListModel *patin in array) {
         //1 未确认 2 已控制 3 部分控制 4 未控制
         if (patin.controlLevel == 1) {
             weiQueDing++;

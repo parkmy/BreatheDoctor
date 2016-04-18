@@ -64,7 +64,16 @@
     if (string.length <= 0) {
         return [NSArray array];
     }
-    return  [string componentsSeparatedByString:@"|"];
+    NSMutableArray *array = [NSMutableArray arrayWithArray:[string componentsSeparatedByString:@"|"]];
+    for (NSInteger i = array.count-1; i > 0; i--)
+    {
+        NSString *objc = [array objectAtIndex:i];
+        
+        if ([objc isEqualToString:@""]) {
+            [array removeObject:objc];
+        }
+    }
+    return  array;
 }
 
 + (NSString *)getWeekString:(NSArray *)array

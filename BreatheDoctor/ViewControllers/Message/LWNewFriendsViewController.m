@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+
 @end
 
 @implementation LWNewFriendsViewController
@@ -48,7 +49,6 @@
 
 - (void)navLeftButtonAction
 {
-    _backBlock?_backBlock():nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -95,10 +95,17 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LWMainRows *message = self.requsetArray[indexPath.row];
+    /**
+     *  添加删除的对象
+     */
     [[LKDBHelper getUsingLKDBHelper] deleteToDB:message];
     [self.requsetArray removeObject:message];
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    
+    _backBlock?_backBlock(message):nil;
+    if(self.requsetArray.count <= 0)
+    {
+        [self showErrorMessage:@"暂无新朋友请求哦~" isShowButton:YES type:showErrorTypeMore];
+    }
 }
 
 #pragma mark -LWMessageTakeCellDelegate
@@ -122,23 +129,29 @@
     [self.navigationController pushViewController:vc animated:YES];
     
     [vc setAddPatientSuccBlock:^{
-        _addSuccBlock?_addSuccBlock():nil;
         [self.requsetArray removeObject:message];
         [self.tableView reloadData];
         if(self.requsetArray.count <= 0)
         {
-            [self showErrorMessage:@"暂无新朋友哦~" isShowButton:YES type:showErrorTypeMore];
+            [self showErrorMessage:@"暂无新朋友请求哦~" isShowButton:YES type:showErrorTypeMore];
         }
+        _backBlock?_backBlock(message):nil;
+        _addSuccBlock?_addSuccBlock():nil;
     }];
     
     [vc setAddPatientFaileBlock:^{
-        _backBlock?_backBlock():nil;
+        
+        /**
+         *  拒绝的也添加
+         */
         [self.requsetArray removeObject:message];
         [self.tableView reloadData];
         if(self.requsetArray.count <= 0)
         {
             [self showErrorMessage:@"暂无新朋友哦~" isShowButton:YES type:showErrorTypeMore];
         }
+        _backBlock?_backBlock(message):nil;
+        
     }];
     
 }

@@ -11,6 +11,6 @@
 @interface LWNewFriendsViewController : BaseViewController
 @property (nonatomic, copy) NSString *patientId;
 @property (nonatomic, strong) NSMutableArray *requsetArray;
-@property (nonatomic, copy) void(^backBlock)();
+@property (nonatomic, copy) void(^backBlock)(LWMainRows *model);
 @property (nonatomic, copy) void(^addSuccBlock)();
 @end

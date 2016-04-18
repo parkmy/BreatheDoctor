@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class KLPatientListModel;
 
 @interface LWPatientRemarksIconCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *patienticon;
@@ -14,6 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *typeWidth;
 
-@property (nonatomic, strong) LWPatientRows *patient;
+@property (nonatomic, strong) KLPatientListModel *patient;
 
 @end

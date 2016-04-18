@@ -9,6 +9,7 @@
 #import "LWPatientRemarksIconCell.h"
 #import "LWTool.h"
 #import <UIImageView+WebCache.h>
+#import "KLPatientListModel.h"
 
 @implementation LWPatientRemarksIconCell
 
@@ -23,7 +24,7 @@
 }
 
 
-- (void)setPatient:(LWPatientRows *)patient
+- (void)setPatient:(KLPatientListModel *)patient
 {
     _patient = patient;
     

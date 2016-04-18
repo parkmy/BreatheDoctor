@@ -14,11 +14,6 @@
 #import "LWMainPager.h"
 #import "LWMainMessageBaseModel.h"
 
-#import "LWPatientBaseModel.h"
-#import "LWPatientBody.h"
-#import "LWPatientPager.h"
-#import "LWPatientRows.h"
-
 #import "LWChatBody.h"
 #import "LWChatRows.h"
 #import "LWChatPager.h"

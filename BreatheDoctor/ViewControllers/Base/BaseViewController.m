@@ -102,7 +102,6 @@
         [_navRightButton addTarget:self action:@selector(navRightButtonAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _navRightButton;
-    
 }
 
 - (UIButton *)navLeftButton
@@ -113,7 +112,6 @@
         [_navLeftButton addTarget:self action:@selector(navLeftButtonAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _navLeftButton;
-    
 }
 - (UINavigationBar *)navBar
 {

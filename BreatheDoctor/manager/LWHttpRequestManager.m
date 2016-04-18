@@ -14,6 +14,7 @@
 #import "CODataCacheManager.h"
 #import "NSDate+Extension.h"
 #import "KSCache.h"
+#import "KLPatientListModel.h"
 
 @implementation LWHttpRequestManager
 
@@ -188,7 +189,7 @@
 + (void)httpPatientListWithPage:(NSInteger )page
                            size:(NSInteger)size
                     refreshDate:(NSString *)refreshDate
-                        success:(void (^)(LWPatientBaseModel *patientBaseModel))success
+                        success:(void (^)(NSMutableArray *list))success
                         failure:(void (^)(NSString * errorMes))failure
 {
     
@@ -196,25 +197,45 @@
     [requestParams setObject:kNSNumInteger(page) forKey:@"page"];
     [requestParams setObject:kNSNumInteger(size) forKey:@"rows"];
     if (refreshDate) {
-        [requestParams setObject:refreshDate forKey:@"refreshDate"];
+        [requestParams setObject:refreshDate forKey:@"refreshTime"];
     }
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADPATIENTLIST] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         NSLog(@"%@",[responseObject
                      JSONString]);
-        LWPatientBaseModel *patientBaseModel = [[LWPatientBaseModel alloc] initWithDictionary:responseObject];
-        
-        for (LWPatientRows *model in patientBaseModel.body.rows) {
-            
+        NSDictionary *body = responseObject[res_body];
+        NSArray      *rows = body[@"rows"];
+        NSString     *refTimer = body[@"refreshTime"];
+        NSMutableArray *list = [NSMutableArray array];
+        for (NSDictionary *dic in rows)
+        {
+            KLPatientListModel *model = [[KLPatientListModel alloc] initWithDictionary:dic];
+            model.refTimer = refTimer;
+            [list addObject:model];
             NSString *where = [NSString stringWithFormat:@"patientId = %@",model.patientId];
-            if ([[LKDBHelper getUsingLKDBHelper] isExistsClass:[LWPatientRows class] where:where]) {
+            if ([[LKDBHelper getUsingLKDBHelper] isExistsClass:[KLPatientListModel class] where:where]) {
                 [[LKDBHelper getUsingLKDBHelper]updateToDB:model where:where];
             }
-            else
+            else{
                 [[LKDBHelper getUsingLKDBHelper] insertToDB:model];
+            }
         }
-        if (success){ success(patientBaseModel);}
+        
+        /**
+         *  以后增加缓存清除处理老版本缓存
+         */
+//        for (LWPatientRows *model in patientBaseModel.body.rows) {
+//            
+//            NSString *where = [NSString stringWithFormat:@"patientId = %@",model.patientId];
+//            if ([[LKDBHelper getUsingLKDBHelper] isExistsClass:[LWPatientRows class] where:where]) {
+//                [[LKDBHelper getUsingLKDBHelper]updateToDB:model where:where];
+//            }
+//            else
+//                [[LKDBHelper getUsingLKDBHelper] insertToDB:model];
+//        }
+//        
+        if (success){ success(list);}
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;

@@ -36,7 +36,7 @@
     return YES;
 }
 
--(NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
+- (NSArray*)layoutAttributesForElementsInRect:(CGRect)rect
 {
     NSArray* array = [super layoutAttributesForElementsInRect:rect];
     CGRect visibleRect;

@@ -18,6 +18,7 @@
 #import "KLTimerWeeksViewController.h"
 #import "KLTimerRemindViewOperation.h"
 #import "ZZPhotoHud.h"
+#import "KLSetInstructionsViewController.h"
 
 @interface LWTimerRemindViewController ()<LWTimerRemindIndexViewDeleagte,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 @property (nonatomic, strong) LWTimerRemindIndexView *indexView;
@@ -55,7 +56,6 @@
 
 - (void)loadData
 {
-    
     [ZZPhotoHud showActiveHudWithTitle:@"正在获取..."];
     [LWHttpRequestManager httploadDoctorServerTimeSuccess:^(NSMutableArray *models) {
         [ZZPhotoHud hideActiveHud];
@@ -88,7 +88,6 @@
 - (void)navLeftButtonAction
 {
     if (self.isChange) {
-        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您没有保存设置，是否保存设置？" delegate:self cancelButtonTitle:@"否" otherButtonTitles:@"是", nil];
         [alert show];
         return;
@@ -113,6 +112,11 @@
         }];
     }
 }
+- (void)setInstructions{
+    
+    KLSetInstructionsViewController *vc = [KLSetInstructionsViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 #pragma mark - tableviewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -131,12 +135,32 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return .1;
+    return section == 2?30:.1;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
     
+    if (section != 2) {
+        return nil;
+    }
+    UIView *view = [UIView new];
     
-    return nil;
+    UIImageView *icon = [[UIImageView alloc] initWithImage:kImage(@"timer_warning")];
+    icon.frame = CGRectMake(10, 5, 15, 15);
+    
+    UILabel     *label = [UILabel new];
+    label.text = @"设置说明";
+    label.font = kNSPXFONT(30);
+    label.frame = CGRectMake(30, 5, 80, 15);
+    label.textColor = [LWThemeManager shareInstance].navBackgroundColor;
+    [view addSubview:icon];
+    [view addSubview:label];
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 2.5, 120, 25);
+    button.backgroundColor =[UIColor clearColor];
+    [view addSubview:button];
+    [button addTarget:self action:@selector(setInstructions) forControlEvents:UIControlEventTouchUpInside];
+    return view;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

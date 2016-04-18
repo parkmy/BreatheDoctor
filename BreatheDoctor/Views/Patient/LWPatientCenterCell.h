@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+@class KLPatientListModel;
 
 @interface LWPatientCenterCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *patientIcon;
@@ -17,7 +18,7 @@
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *patientDataLabels;
 
 @property (nonatomic, strong) LWPatientRecordsBaseModel *patientRecordsModel;
-@property (nonatomic, strong) LWPatientRows *patient;
+@property (nonatomic, strong) KLPatientListModel *patient;
 
 @property (nonatomic, copy) void(^editorButtonEventBlock)();
 @end

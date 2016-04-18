@@ -10,6 +10,7 @@
 #import "LWTool.h"
 #import <UIImageView+WebCache.h>
 #import "NSDate+Extension.h"
+#import "KLPatientListModel.h"
 
 @implementation LWPatientCenterCell
 
@@ -73,7 +74,7 @@
     
 }
 
-- (void)setPatient:(LWPatientRows *)patient
+- (void)setPatient:(KLPatientListModel *)patient
 {
     _patient = patient;
     

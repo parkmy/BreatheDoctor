@@ -82,6 +82,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LWHistoricalLogModel *model = self.dataArray[indexPath.section];
+    NSLog(@"11------%f",model.rowHeight);
     return model.rowHeight;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section

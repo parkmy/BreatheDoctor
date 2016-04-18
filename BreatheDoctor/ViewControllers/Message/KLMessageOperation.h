@@ -11,14 +11,9 @@
 
 @interface KLMessageOperation : NSObject
 
-/**
- *  获取缓存数据
- *
- *  @param requestArray 请求消息数组
- *
- *  @return 缓存数据
- */
-+ (NSMutableArray *)sqlCacheMessagesInfoRequestArray:(NSMutableArray *)requestArray;
++ (KLMessageOperation *)shareInstance;
+
++ (NSMutableArray *)sqlCacheMessages;
 
 /**
  *  改变角标数量
@@ -30,13 +25,21 @@
              andMessgaeArray:(NSMutableArray *)array;
 
 
+
+//
+//+ (void)refreshHomeMsgInfo:(UITableView *)tableView
+//        theOldMessageArray:(NSMutableArray *)oldArray
+//        theNewMessageArray:(NSMutableArray *)newArray;
+
 /**
- *  刷新消息
+ *  刷新表
  *
- *  @param successBlock 返回结果
+ *  @param array        要刷新的数据
+ *  @param messageArray 旧数据
+ *  @param tableView    表
  */
-
-+ (void)refreshHomeMsgSuccess:(void(^)(NSMutableArray *messageArray))successBlock;
-
++ (void)reloadTableViewInfoObjcs:(NSArray *)array
+                 theMessageArray:(NSMutableArray *)messageArray
+                    theTableView:(UITableView *)tableView;
 
 @end

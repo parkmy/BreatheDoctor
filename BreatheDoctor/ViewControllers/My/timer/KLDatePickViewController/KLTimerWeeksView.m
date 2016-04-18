@@ -11,9 +11,10 @@
 #import <ReactiveCocoa.h>
 
 @interface KLTimerWeeksView ()<UICollectionViewDelegate,UICollectionViewDataSource>
-@property (nonatomic,strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIButton       *leftButton;
 @property (nonatomic, strong) UIButton       *rightButton;
+@property (nonatomic, assign) BOOL           isEvery;
 @end
 
 @implementation KLTimerWeeksView
@@ -87,20 +88,25 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    
-    return 7;
+    return 8;
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     KLTimerWeeksCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"KLTimerWeeksCell" forIndexPath:indexPath];
-    [cell setItmInfo:@[@"每周一",@"每周二",@"每周三",@"每周四",@"每周五",@"每周六",@"每周日"][indexPath.row]];
+    [cell setItmInfo:@[@"每周一",@"每周二",@"每周三",@"每周四",@"每周五",@"每周六",@"每周日",@"每    天"][indexPath.row]];
+    cell.contentButton.selected = NO;
+    [cell.contentButton setImage:kImage(@"timer_gray") forState:UIControlStateNormal];
     for (NSString *str in self.weeks) {
-        if (indexPath.row == (str.integerValue -1)) {
+        if (indexPath.row == (str.integerValue - 1)) {
             cell.contentButton.selected = YES;
             [cell.contentButton setImage:kImage(@"xuanze") forState:UIControlStateNormal];
         }
+    }
+    if (self.weeks.count == 7 && indexPath.row == 7) {
+        cell.contentButton.selected = YES;
+        [cell.contentButton setImage:kImage(@"xuanze") forState:UIControlStateNormal];
     }
     return cell;
 }
@@ -108,15 +114,29 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     KLTimerWeeksCell *cell = (KLTimerWeeksCell *)[collectionView cellForItemAtIndexPath:indexPath];
     
+    if (indexPath.row == 7 && self.weeks.count != 7)
+    {
+        [self.weeks removeAllObjects];
+        for (NSInteger i = 1; i < 8; i++)
+        {
+            [self.weeks addObject:kNSString(kNSNumInteger(i))];
+        }
+        [self.collectionView reloadData];
+        self.isEvery = YES;
+        return;
+    }
+    
     cell.contentButton.selected = !cell.contentButton.selected;
     
     if (cell.contentButton.selected) {
         [cell.contentButton setImage:kImage(@"xuanze") forState:UIControlStateNormal];
-        [self.weeks addObject:[NSString stringWithFormat:@"%ld",indexPath.row+1]];
+        [self.weeks addObject:kNSString(kNSNumInteger(indexPath.row+1))];
     }else
     {
-        [cell.contentButton setImage:kImage(@"timer_gray") forState:UIControlStateNormal];
-        [self.weeks removeObject:[NSString stringWithFormat:@"%ld",indexPath.row+1]];
+        [self.weeks removeObject:kNSString(kNSNumInteger(indexPath.row+1))];
     }
+    self.isEvery = self.weeks.count == 7?YES:NO;
+
+    [self.collectionView reloadData];
 }
 @end

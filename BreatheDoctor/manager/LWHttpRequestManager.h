@@ -46,7 +46,7 @@
 + (void)httpPatientListWithPage:(NSInteger )page
                            size:(NSInteger)size
                     refreshDate:(NSString *)refreshDate
-                        success:(void (^)(LWPatientBaseModel *patientBaseModel))success
+                        success:(void (^)(NSMutableArray *list))success
                         failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark 对话列表

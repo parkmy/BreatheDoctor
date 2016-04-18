@@ -14,6 +14,7 @@
 #import "LWTheFormTypeViewController.h"
 #import "LWPatientRelatedVC.h"
 #import "LWHistoricalRecordVC.h"
+#import "KLPatientListModel.h"
 
 @interface LWPatientCententCtr ()
 @property (nonatomic, strong) LWPatientRecordsBaseModel *patientRecordsModel;

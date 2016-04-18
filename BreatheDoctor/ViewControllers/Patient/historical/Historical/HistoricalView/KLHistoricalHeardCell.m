@@ -15,6 +15,8 @@
     
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
+        self.selectionStyle = 0;
+        
         _titleLabel = [UILabel new];
         _titleLabel.font = kNSPXFONT(30);
         _titleLabel.textColor = [UIColor colorWithHexString:@"#333333"];
@@ -44,7 +46,8 @@
         kl_ci.sd_layout
         .leftSpaceToView(_countLabel,0)
         .bottomEqualToView(_countLabel)
-        .heightRatioToView(_countLabel,1);
+        .heightRatioToView(_countLabel,1)
+        .widthIs(20);
         
     }
     return self;

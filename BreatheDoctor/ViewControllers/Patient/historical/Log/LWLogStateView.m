@@ -92,6 +92,9 @@
     _dataArray = dataArray;
     [self.collectionView reloadData];
 }
+- (CGFloat)collectionViewContentHeight{
+    return _collectionView.contentHeight;
+}
 //- (void)setSymptoms:(NSMutableArray *)symptoms{
 //    
 //    _symptoms = symptoms;

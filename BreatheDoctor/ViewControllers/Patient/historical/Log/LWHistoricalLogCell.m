@@ -79,7 +79,7 @@
         timeFrame.sd_layout.leftSpaceToView(dateLabel,0).topSpaceToView(self,17).widthIs(100).heightIs(13*MULTIPLEVIEW);
         contentBreadView.sd_layout.leftSpaceToView(self,10).topSpaceToView(dateLabel,5).rightSpaceToView(self,10).heightIs(220*MULTIPLEVIEW/2);
         line.sd_layout.leftSpaceToView(self,10).topSpaceToView(contentBreadView,0).rightSpaceToView(self,10).heightIs(.5);
-        medicationState.sd_layout.leftSpaceToView(self,10).bottomSpaceToView(self,5).rightSpaceToView(self,10).heightIs(65*MULTIPLEVIEW);
+        medicationState.sd_layout.leftSpaceToView(self,10).bottomSpaceToView(self,5).rightSpaceToView(self,10).heightIs(70*MULTIPLEVIEW);
         line2.sd_layout.leftSpaceToView(self,50).rightSpaceToView(self,0).bottomSpaceToView(medicationState,0).heightIs(.5);
         symptomsState.sd_layout.leftSpaceToView(self,10).topSpaceToView(line,0).rightSpaceToView(self,13).bottomSpaceToView(line2,0);
         self.scaleCircleView.sd_layout.widthIs(182*MULTIPLEVIEW/2).heightIs(182*MULTIPLEVIEW/2).centerXEqualToView(contentBreadView).centerYEqualToView(contentBreadView);
@@ -126,6 +126,8 @@
     symptomsState.dataArray = model.symptoms;
     medicationState.dataArray = model.medication;
     
+//    model.rowHeight = (286-60)*MULTIPLEVIEW + [medicationState collectionViewContentHeight] + [symptomsState collectionViewContentHeight];
+//    NSLog(@"------%f",[medicationState collectionViewContentHeight]);
     self.scaleCircleView.isShowBottomLabel = YES;
     self.scaleCircleView.lineWith = 3.0f;
     self.scaleCircleView.animation_time = 0;

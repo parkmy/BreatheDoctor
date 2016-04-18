@@ -14,7 +14,9 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dict{
 
     if ([super init]) {
-        self.pefPredictedValue = [[dict objectForKey:@"pefPredictedValue"] doubleValue];
+        
+        id pefPredictedValueObjc = [dict objectForKey:@"pefPredictedValue"];
+        self.pefPredictedValue = [[NSString stringJudgeNullInfoString:pefPredictedValueObjc] doubleValue];
         NSArray *list = [dict objectForKey:@"recordList"];
         NSMutableArray *array = [NSMutableArray array];
         for (NSDictionary *dic in list) {

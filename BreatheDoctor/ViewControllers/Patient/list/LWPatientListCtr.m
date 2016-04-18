@@ -18,6 +18,8 @@
 #import "NSString+Pinyin.h"
 #import "NSString+Contains.h"
 #import <ReactiveCocoa.h>
+#import "LWTool.h"
+#import "KLPatientListModel.h"
 
 typedef NS_ENUM(NSInteger , ShowGroupingType) {
     ShowGroupingTypeAll = 0, //所有
@@ -83,6 +85,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 {
     [self.patientDics removeAllObjects];
     [self.patients removeAllObjects];
+    self.refreshTime = nil;
     self.keys = nil;
     [self.tableView reloadData];
     [self httploadPatientList];
@@ -142,7 +145,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     }else
     {
         @autoreleasepool {
-            for (LWPatientRows *pat in self.patients) {
+            for (KLPatientListModel *pat in self.patients) {
                 if (pat.controlLevel == self.showGroupingType) {
                     [array addObject:pat];
                 }
@@ -152,7 +155,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     
     @autoreleasepool {
         
-        for (LWPatientRows *pat in array)
+        for (KLPatientListModel *pat in array)
         {
             
             if (!pat.PinYin || ![ALPHA containsaString:stringJudgeNull(pat.PinYin)]) {
@@ -282,7 +285,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     [self.searchArray removeAllObjects];
-    for (LWPatientRows *pat in self.patients) {
+    for (KLPatientListModel *pat in self.patients) {
         NSString *patientNmae = [NSString stringWithFormat:@"%@(%@)",pat.patientName,pat.remark];
         NSString *pinying = [patientNmae pinyinWithoutBlank];
         if ([patientNmae containsaString:searchText]||[pinying containsaString:searchText]) {
@@ -312,7 +315,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LWPatientCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LWPatientCell" forIndexPath:indexPath];
-    LWPatientRows *model;
+    KLPatientListModel *model;
     if (self.isSearch) {
         model = self.searchArray[indexPath.row];
     }else{
@@ -357,7 +360,7 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
     [MobClick event:@"patientCenter" label:@"患者个人中心按钮的点击量"];
 
     LWPatientCententCtr *patientCentent = (LWPatientCententCtr *)[UIViewController CreateControllerWithTag:CtrlTag_PatientCenter];
-    LWPatientRows *model;
+    KLPatientListModel *model;
     if (self.isSearch) {
         model = self.searchArray[indexPath.row];
     }else{
@@ -475,13 +478,14 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 
 - (void)loadCacheMes
 {
-    NSMutableArray *array = [[LKDBHelper getUsingLKDBHelper] search:[LWPatientRows class] where:nil orderBy:nil offset:0 count:10000];
+    NSMutableArray *array = [[LKDBHelper getUsingLKDBHelper] search:[KLPatientListModel class] where:nil orderBy:@"refTimer DESC" offset:0 count:10000];
     if (array.count <= 0) {
         [self showErrorMessage:@"您还没有患者，去添加吧~" isShowButton:NO type:showErrorTypeMore];
         self.tableView.hidden = YES;
         return;
     }
-    LWPatientRows *model = array[0];
+    KLPatientListModel *model = [array firstObject];
+    NSLog(@"%@",model.refTimer);
     self.refreshTime = model.refTimer;
     [self.patients removeAllObjects];
     [self.patients addObjectsFromArray:array];
@@ -493,9 +497,11 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 
 - (void)httploadPatientList
 {
-    [LWHttpRequestManager httpPatientListWithPage:1 size:100000 refreshDate:self.refreshTime success:^(LWPatientBaseModel *patientBaseModel) {
+    [LWHttpRequestManager httpPatientListWithPage:1 size:100000 refreshDate:self.refreshTime success:^(NSMutableArray *list) {
         [LWProgressHUD closeProgressHUD:self.view];
-        if (patientBaseModel.body.rows.count <= 0) {
+//        NSLog(@"%@",patientBaseModel.body.refreshTime);
+//        self.refreshTime = patientBaseModel.body.refreshTime;
+        if (list.count <= 0) {
             return ;
         }
         [self loadCacheMes];

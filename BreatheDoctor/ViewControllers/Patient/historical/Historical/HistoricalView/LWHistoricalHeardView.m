@@ -156,7 +156,7 @@ static const CGFloat tableHeight = 60 + 15*2;
 {
     self.scaleCircleView.isShowBottomLabel = NO;
 
-    self.scaleCircleView.lineWith = 3.0f;
+    self.scaleCircleView.lineWith = 3.5f*MULTIPLE;
     self.scaleCircleView.animation_time = 0;
     self.baseHistoricalView.noDataView.hidden = YES;
     

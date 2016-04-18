@@ -19,7 +19,7 @@
 @interface LWMessageCtr ()<LWMessageTakeCellDelegate>
 @property (nonatomic, strong)   NSMutableArray *messageArray;
 @property (nonatomic, copy)     NSString *refreshTime;
-@property (nonatomic, strong)   NSMutableArray *requestMessageArray;
+//@property (nonatomic, strong)   NSMutableArray *requestMessageArray;
 @property (nonatomic, strong)   LWMainMessageBaseModel *mainMessageModel;
 @property (nonatomic, strong)   UIView *headerErrorView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -68,13 +68,19 @@
                                              selector:@selector(appNotification:)
                                                  name:UIApplicationDidBecomeActiveNotification object:nil];
 }
-- (NSMutableArray *)requestMessageArray
-{
-    if (!_requestMessageArray) {
-        _requestMessageArray = [NSMutableArray array];
+- (NSMutableArray *)messageArray{
+    if (!_messageArray) {
+        _messageArray = [NSMutableArray array];
     }
-    return _requestMessageArray;
+    return _messageArray;
 }
+//- (NSMutableArray *)requestMessageArray
+//{
+//    if (!_requestMessageArray) {
+//        _requestMessageArray = [NSMutableArray array];
+//    }
+//    return _requestMessageArray;
+//}
 - (void)loginSucc:(NSNotification *)sender
 {
     [self showErrorMessage:@"暂时没有新消息~" isShowButton:YES type:showErrorTypeMore];
@@ -138,14 +144,7 @@
         [[LWLoginManager shareInstance] showLoginViewNav:self];
     }else
     {
-        self.messageArray = [KLMessageOperation sqlCacheMessagesInfoRequestArray:self.requestMessageArray];
-        if ([self.messageArray count] > 0) {
-            [self reloadTableView:nil];
-        }else
-        {
-            [self showErrorMessage:@"暂时没有新消息~" isShowButton:YES type:showErrorTypeMore];
-            [self refreshHomeMsg];
-        }
+        [self loadCacheMes];
     }
 }
 
@@ -179,10 +178,19 @@
         [MobClick event:@"newfriend" label:@"新朋友按钮的点击量"];
         
         LWNewFriendsViewController *newFirends = (LWNewFriendsViewController *)[UIViewController CreateControllerWithTag:CtrlTag_newFriends];
-        newFirends.requsetArray = self.requestMessageArray;
+        newFirends.requsetArray = message.requestArray;
         [self.navigationController pushViewController:newFirends animated:YES];
-        [newFirends setBackBlock:^{
-            [self loadCacheMes];
+        [newFirends setBackBlock:^(LWMainRows *model){
+            message.count = message.count - 1;
+            if (message.count <= 0) {
+                [[LKDBHelper getUsingLKDBHelper] deleteToDB:message];
+                [self.messageArray removeObject:message];
+                [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            }else{
+                
+                [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+            }
+            [KLMessageOperation changeBadgeValueInfo:self.navigationController.tabBarItem andMessgaeArray:self.messageArray];
         }];
         [newFirends setAddSuccBlock:^{
             [self refreshHomeMsg];
@@ -199,7 +207,8 @@
             message.insertDt = date;
             message.msgContent = content;
             [[LKDBHelper getUsingLKDBHelper] updateToDB:message where:wheres];
-            [self loadCacheMes];
+            [KLMessageOperation reloadTableViewInfoObjcs:@[message] theMessageArray:self.messageArray theTableView:self.tableView];
+            [KLMessageOperation changeBadgeValueInfo:self.navigationController.tabBarItem andMessgaeArray:self.messageArray];
         }];
         vc.patient = message;
         vc.hidesBottomBarWhenPushed = YES;
@@ -232,20 +241,17 @@
 #pragma mark - 获取缓存数据
 - (void)loadCacheMes
 {
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        self.messageArray = [KLMessageOperation sqlCacheMessagesInfoRequestArray:self.requestMessageArray];
-        if (self.messageArray.count <= 0) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self showErrorMessage:@"暂时没有新消息~" isShowButton:YES type:showErrorTypeMore];
-                self.navigationController.tabBarItem.badgeValue = @"0";
-            });
-            return ;
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self reloadTableView:nil];
-        });
-    });
+    [self.messageArray removeAllObjects];
+    [self.messageArray addObjectsFromArray:[KLMessageOperation sqlCacheMessages]];
     
+    if (self.messageArray.count <= 0) {
+        [self showErrorMessage:@"暂时没有新消息~" isShowButton:YES type:showErrorTypeMore];
+        self.navigationController.tabBarItem.badgeValue = nil;
+        [self refreshHomeMsg];
+        
+    }else{
+        [self reloadTableView:nil];
+    }
 }
 #pragma mark - 获取刷新数据
 -(void)refreshHomeMsg
@@ -260,25 +266,20 @@
             LWMainRows *model = [self.messageArray firstObject];
             self.refreshTime = model.refreshTime;;
         }
-        //        else
-        //        {
-        //            NSMutableArray *array = [self sqlCacheMessages];//本地缓存
-        //            if ([array count] > 0) {
-        //                LWMainRows *model = [array firstObject];
-        //                self.refreshTime = model.refreshTime;
-        //            }
-        //        }
     }
     [LWHttpRequestManager httpMaiMesggaeWithPage:1 size:100000 refreshDate:self.refreshTime  success:^(LWMainMessageBaseModel *mainMessageBaseModel) {
         self.mainMessageModel = mainMessageBaseModel;
         if (self.mainMessageModel.body.rows.count <= 0) {
             return ;
         }
-        [self loadCacheMes];
+        [self hiddenNonetWork];
+        [KLMessageOperation reloadTableViewInfoObjcs:self.mainMessageModel.body.rows theMessageArray:self.messageArray theTableView:self.tableView];
+        [KLMessageOperation changeBadgeValueInfo:self.navigationController.tabBarItem andMessgaeArray:self.messageArray];
     } failure:^(NSString *errorMes) {
         //        [self showErrorMessage:errorMes isShowButton:NO type:showErrorTypeHttp];
     }];
 }
+
 #pragma mark - nav
 - (void)navRightButtonAction
 {

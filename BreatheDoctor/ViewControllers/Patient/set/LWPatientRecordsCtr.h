@@ -7,7 +7,8 @@
 //  患者档案
 
 #import "LWBaseViewController.h"
+@class KLPatientListModel;
 
 @interface LWPatientRecordsCtr : LWBaseViewController
-@property (nonatomic, strong) LWPatientRows *patient;
+@property (nonatomic, strong) KLPatientListModel *patient;
 @end

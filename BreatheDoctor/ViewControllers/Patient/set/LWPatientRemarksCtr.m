@@ -10,6 +10,7 @@
 #import "LWPatientRemarksIconCell.h"
 #import "LWPatientRemarksTFCell.h"
 #import "LWPatientGroupsCtr.h"
+#import "KLPatientListModel.h"
 
 @interface LWPatientRemarksCtr ()
 @property (nonatomic, copy) NSString *group;

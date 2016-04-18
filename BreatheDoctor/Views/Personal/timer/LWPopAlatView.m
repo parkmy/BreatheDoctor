@@ -37,7 +37,7 @@
 - (void)setUI
 {
     
-    _hudView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 500/2, 360/2)];
+    _hudView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 500*MULTIPLE/2, 360*MULTIPLE/2)];
     _hudView.center = CGPointMake([UIScreen mainScreen].bounds.size.width / 2, [UIScreen mainScreen].bounds.size.height / 2);
     _hudView.layer.cornerRadius = 10;
     _hudView.clipsToBounds = YES;

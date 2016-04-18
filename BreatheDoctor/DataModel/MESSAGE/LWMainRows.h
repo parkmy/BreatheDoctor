@@ -27,6 +27,8 @@
 @property (nonatomic, assign) double ownerType;
 @property (nonatomic, strong) NSString *refreshTime;
 
+@property (nonatomic, strong) NSMutableArray *requestArray;
+
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;

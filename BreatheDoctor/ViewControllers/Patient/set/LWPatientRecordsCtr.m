@@ -11,6 +11,7 @@
 #import "LWPersonalMessageCell.h"
 #import "LWTool.h"
 #import <MJRefresh/MJRefresh.h>
+#import "KLPatientListModel.h"
 
 @interface LWPatientRecordsCtr ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) NSMutableDictionary *patientTypeDic;

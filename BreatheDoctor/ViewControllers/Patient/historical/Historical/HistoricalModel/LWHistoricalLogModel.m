@@ -130,12 +130,12 @@
     self.symptoms = sym;
     self.medication = med;
     
-    NSInteger hang = self.symptoms.count/4 + 1;
+    NSInteger hang = self.symptoms.count/5 + 1;
     
     if (hang>1) {
-        self.rowHeight = 285*MULTIPLEVIEW + hang*20*MULTIPLEVIEW;
+        self.rowHeight = 290*MULTIPLEVIEW + hang*20;
     }else{
-        self.rowHeight = 285*MULTIPLEVIEW;
+        self.rowHeight = 290*MULTIPLEVIEW;
     }
     
  

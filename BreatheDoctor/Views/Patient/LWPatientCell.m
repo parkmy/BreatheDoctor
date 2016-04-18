@@ -9,6 +9,7 @@
 #import "LWPatientCell.h"
 #import <UIImageView+WebCache.h>
 #import "LWTool.h"
+#import "KLPatientListModel.h"
 
 @implementation LWPatientCell
 
@@ -22,7 +23,7 @@
     // Configure the view for the selected state
 }
 
-- (void)setPatient:(LWPatientRows *)patient
+- (void)setPatient:(KLPatientListModel *)patient
 {
     _patient = patient;
     

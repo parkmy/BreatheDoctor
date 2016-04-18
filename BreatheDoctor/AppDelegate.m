@@ -28,7 +28,6 @@
 
     NSLog(@"%@",NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES));
     
-    
 //    300002         呼吸客户端IOS版
     //统计
     [MobClick startWithAppkey:UMKEY];

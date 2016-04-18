@@ -104,10 +104,6 @@
 		791215151BF1CFB1004166C5 /* COUserDefaultsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 791215141BF1CFB1004166C5 /* COUserDefaultsManager.m */; };
 		791215571BF1CFD0004166C5 /* LBLoginBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 791215261BF1CFD0004166C5 /* LBLoginBaseModel.m */; };
 		791215581BF1CFD0004166C5 /* LBLoginBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 791215281BF1CFD0004166C5 /* LBLoginBody.m */; };
-		791215591BF1CFD0004166C5 /* LWPatientBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912152B1BF1CFD0004166C5 /* LWPatientBaseModel.m */; };
-		7912155A1BF1CFD0004166C5 /* LWPatientBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912152D1BF1CFD0004166C5 /* LWPatientBody.m */; };
-		7912155B1BF1CFD0004166C5 /* LWPatientPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912152F1BF1CFD0004166C5 /* LWPatientPager.m */; };
-		7912155C1BF1CFD0004166C5 /* LWPatientRows.m in Sources */ = {isa = PBXBuildFile; fileRef = 791215311BF1CFD0004166C5 /* LWPatientRows.m */; };
 		7912155E1BF1CFD0004166C5 /* LWMainBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 791215361BF1CFD0004166C5 /* LWMainBody.m */; };
 		7912155F1BF1CFD0004166C5 /* LWMainMessageBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 791215381BF1CFD0004166C5 /* LWMainMessageBaseModel.m */; };
 		791215601BF1CFD0004166C5 /* LWMainPager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912153A1BF1CFD0004166C5 /* LWMainPager.m */; };
@@ -267,6 +263,8 @@
 		794712E81BF9D3CC0083CE6E /* LWVoiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 794712E71BF9D3CC0083CE6E /* LWVoiceManager.m */; };
 		7947160E1BF48A1600C4D2E8 /* LWTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947160D1BF48A1600C4D2E8 /* LWTool.m */; };
 		79472D2F1CB6075200451E23 /* KLHistoricalHeardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79472D2E1CB6075200451E23 /* KLHistoricalHeardCell.m */; };
+		7948A01D1CBF6B6400E36142 /* KLPatientListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7948A01C1CBF6B6400E36142 /* KLPatientListModel.m */; };
+		7948A0221CBF898B00E36142 /* KLSetInstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7948A0211CBF898B00E36142 /* KLSetInstructionsViewController.m */; };
 		794BC6091CB78D55009F29B2 /* KLTimerRemindViewOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 794BC6081CB78D55009F29B2 /* KLTimerRemindViewOperation.m */; };
 		794D51521C7EE46900403767 /* LWOrderDetailedLisetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D51511C7EE46900403767 /* LWOrderDetailedLisetCell.m */; };
 		794D51551C7EE9CE00403767 /* LWOrderDetailedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D51541C7EE9CE00403767 /* LWOrderDetailedListViewController.m */; };
@@ -491,7 +489,6 @@
 		79BA9FDE1C46688B00D9236A /* LWTheFromMrows.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA9FD91C46688B00D9236A /* LWTheFromMrows.m */; };
 		79BA9FDF1C46688B00D9236A /* LWTheFromRowArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA9FDB1C46688B00D9236A /* LWTheFromRowArray.m */; };
 		79BB5F0E1C1038F600E7046B /* UIViewController+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BB5F0D1C1038F600E7046B /* UIViewController+Factory.m */; };
-		79BD63AC1C911BED00415D63 /* Statistical.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 79BD63AB1C911BED00415D63 /* Statistical.rtf */; };
 		79CCF4AA1CABAB500075FD2F /* KLPatientLogBodyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF49A1CABAB4F0075FD2F /* KLPatientLogBodyModel.m */; };
 		79CCF4AB1CABAB500075FD2F /* KLPatientLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF49C1CABAB4F0075FD2F /* KLPatientLogModel.m */; };
 		79CCF4AC1CABAB500075FD2F /* LWHistoricalCountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF49E1CABAB4F0075FD2F /* LWHistoricalCountModel.m */; };
@@ -505,7 +502,6 @@
 		79CCF4BE1CABAB8C0075FD2F /* KLSymptomsLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF4BC1CABAB8C0075FD2F /* KLSymptomsLogModel.m */; };
 		79CCF4BF1CABAB8C0075FD2F /* LWSymptomsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79CCF4BD1CABAB8C0075FD2F /* LWSymptomsList.plist */; };
 		79CCF5E31C3FA0B900A00104 /* LWVisitList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79CCF5E21C3FA0B900A00104 /* LWVisitList.plist */; };
-		79CD7FBE1CBB513300019A33 /* KLRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79CD7FBD1CBB513300019A33 /* KLRootViewController.swift */; };
 		79CEEDD81C017E0F004D6786 /* SegmentTapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CEEDD61C017E0F004D6786 /* SegmentTapView.m */; };
 		79CEEDED1C0184A0004D6786 /* LWPatientLogDateIndexView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CEEDEC1C0184A0004D6786 /* LWPatientLogDateIndexView.m */; };
 		79E52B2F1C3CAA230079CE14 /* LWNewFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E52B2E1C3CAA230079CE14 /* LWNewFriendsViewController.m */; };
@@ -754,14 +750,6 @@
 		791215261BF1CFD0004166C5 /* LBLoginBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLoginBaseModel.m; sourceTree = "<group>"; };
 		791215271BF1CFD0004166C5 /* LBLoginBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLoginBody.h; sourceTree = "<group>"; };
 		791215281BF1CFD0004166C5 /* LBLoginBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLoginBody.m; sourceTree = "<group>"; };
-		7912152A1BF1CFD0004166C5 /* LWPatientBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientBaseModel.h; sourceTree = "<group>"; };
-		7912152B1BF1CFD0004166C5 /* LWPatientBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientBaseModel.m; sourceTree = "<group>"; };
-		7912152C1BF1CFD0004166C5 /* LWPatientBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientBody.h; sourceTree = "<group>"; };
-		7912152D1BF1CFD0004166C5 /* LWPatientBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientBody.m; sourceTree = "<group>"; };
-		7912152E1BF1CFD0004166C5 /* LWPatientPager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientPager.h; sourceTree = "<group>"; };
-		7912152F1BF1CFD0004166C5 /* LWPatientPager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientPager.m; sourceTree = "<group>"; };
-		791215301BF1CFD0004166C5 /* LWPatientRows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRows.h; sourceTree = "<group>"; };
-		791215311BF1CFD0004166C5 /* LWPatientRows.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRows.m; sourceTree = "<group>"; };
 		791215351BF1CFD0004166C5 /* LWMainBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMainBody.h; sourceTree = "<group>"; };
 		791215361BF1CFD0004166C5 /* LWMainBody.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMainBody.m; sourceTree = "<group>"; };
 		791215371BF1CFD0004166C5 /* LWMainMessageBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMainMessageBaseModel.h; sourceTree = "<group>"; };
@@ -990,6 +978,10 @@
 		7947160D1BF48A1600C4D2E8 /* LWTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTool.m; sourceTree = "<group>"; };
 		79472D2D1CB6075200451E23 /* KLHistoricalHeardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLHistoricalHeardCell.h; sourceTree = "<group>"; };
 		79472D2E1CB6075200451E23 /* KLHistoricalHeardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLHistoricalHeardCell.m; sourceTree = "<group>"; };
+		7948A01B1CBF6B6400E36142 /* KLPatientListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientListModel.h; sourceTree = "<group>"; };
+		7948A01C1CBF6B6400E36142 /* KLPatientListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPatientListModel.m; sourceTree = "<group>"; };
+		7948A0201CBF898B00E36142 /* KLSetInstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLSetInstructionsViewController.h; sourceTree = "<group>"; };
+		7948A0211CBF898B00E36142 /* KLSetInstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSetInstructionsViewController.m; sourceTree = "<group>"; };
 		794BC6071CB78D55009F29B2 /* KLTimerRemindViewOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTimerRemindViewOperation.h; sourceTree = "<group>"; };
 		794BC6081CB78D55009F29B2 /* KLTimerRemindViewOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTimerRemindViewOperation.m; sourceTree = "<group>"; };
 		794D51501C7EE46900403767 /* LWOrderDetailedLisetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderDetailedLisetCell.h; sourceTree = "<group>"; };
@@ -1306,7 +1298,6 @@
 		79BA9FDB1C46688B00D9236A /* LWTheFromRowArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTheFromRowArray.m; sourceTree = "<group>"; };
 		79BB5F0C1C1038F600E7046B /* UIViewController+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Factory.h"; sourceTree = "<group>"; };
 		79BB5F0D1C1038F600E7046B /* UIViewController+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Factory.m"; sourceTree = "<group>"; };
-		79BD63AB1C911BED00415D63 /* Statistical.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Statistical.rtf; sourceTree = "<group>"; };
 		79CCF4991CABAB4F0075FD2F /* KLPatientLogBodyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientLogBodyModel.h; sourceTree = "<group>"; };
 		79CCF49A1CABAB4F0075FD2F /* KLPatientLogBodyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPatientLogBodyModel.m; sourceTree = "<group>"; };
 		79CCF49B1CABAB4F0075FD2F /* KLPatientLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientLogModel.h; sourceTree = "<group>"; };
@@ -1331,8 +1322,6 @@
 		79CCF4BC1CABAB8C0075FD2F /* KLSymptomsLogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSymptomsLogModel.m; sourceTree = "<group>"; };
 		79CCF4BD1CABAB8C0075FD2F /* LWSymptomsList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LWSymptomsList.plist; sourceTree = "<group>"; };
 		79CCF5E21C3FA0B900A00104 /* LWVisitList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = LWVisitList.plist; sourceTree = "<group>"; };
-		79CD7FBA1CBB510500019A33 /* BreatheDoctor-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BreatheDoctor-Bridging-Header.h"; sourceTree = "<group>"; };
-		79CD7FBD1CBB513300019A33 /* KLRootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KLRootViewController.swift; sourceTree = "<group>"; };
 		79CEEDD51C017E0F004D6786 /* SegmentTapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentTapView.h; sourceTree = "<group>"; };
 		79CEEDD61C017E0F004D6786 /* SegmentTapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentTapView.m; sourceTree = "<group>"; };
 		79CEEDEB1C0184A0004D6786 /* LWPatientLogDateIndexView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientLogDateIndexView.h; sourceTree = "<group>"; };
@@ -1757,7 +1746,6 @@
 				7912113E1BF1A6A6004166C5 /* Info.plist */,
 				7912112E1BF1A6A6004166C5 /* main.m */,
 				7912148F1BF1C18F004166C5 /* BreatheDoctor.pch */,
-				79BD63AB1C911BED00415D63 /* Statistical.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2021,14 +2009,8 @@
 			children = (
 				79FE2B6F1C50D156000C1E08 /* LWPatientRelatedModel.h */,
 				79FE2B701C50D156000C1E08 /* LWPatientRelatedModel.m */,
-				7912152A1BF1CFD0004166C5 /* LWPatientBaseModel.h */,
-				7912152B1BF1CFD0004166C5 /* LWPatientBaseModel.m */,
-				7912152C1BF1CFD0004166C5 /* LWPatientBody.h */,
-				7912152D1BF1CFD0004166C5 /* LWPatientBody.m */,
-				7912152E1BF1CFD0004166C5 /* LWPatientPager.h */,
-				7912152F1BF1CFD0004166C5 /* LWPatientPager.m */,
-				791215301BF1CFD0004166C5 /* LWPatientRows.h */,
-				791215311BF1CFD0004166C5 /* LWPatientRows.m */,
+				7948A01B1CBF6B6400E36142 /* KLPatientListModel.h */,
+				7948A01C1CBF6B6400E36142 /* KLPatientListModel.m */,
 				79E573661C003A2C00797B2E /* LWPatientListModel.h */,
 				79E573671C003A2C00797B2E /* LWPatientListModel.m */,
 				790BE94A1C02FAFC00BD1D67 /* LWACTAssessmentModel.h */,
@@ -2163,6 +2145,8 @@
 				79220A911CACF2E900CFBEC2 /* KLDatePickViewController */,
 				7929ACC71C33CA93002712EC /* LWTimerRemindViewController.h */,
 				7929ACC81C33CA93002712EC /* LWTimerRemindViewController.m */,
+				7948A0201CBF898B00E36142 /* KLSetInstructionsViewController.h */,
+				7948A0211CBF898B00E36142 /* KLSetInstructionsViewController.m */,
 				794BC6071CB78D55009F29B2 /* KLTimerRemindViewOperation.h */,
 				794BC6081CB78D55009F29B2 /* KLTimerRemindViewOperation.m */,
 				7941A8961C34DF8100B8ACC7 /* LWPickerViewController.h */,
@@ -2946,8 +2930,6 @@
 			children = (
 				79AD86341C4F320100EBE224 /* LWRootViewController.h */,
 				79AD86351C4F320100EBE224 /* LWRootViewController.m */,
-				79CD7FBA1CBB510500019A33 /* BreatheDoctor-Bridging-Header.h */,
-				79CD7FBD1CBB513300019A33 /* KLRootViewController.swift */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -3421,7 +3403,6 @@
 				799788351C96B22200E86B91 /* chuanxi@3x.png in Resources */,
 				797986A21C435350005052DF /* shanchu@3x.png in Resources */,
 				794556F51C0BDA15005C0E10 /* yishengzhushousy_16@2x.png in Resources */,
-				79BD63AC1C911BED00415D63 /* Statistical.rtf in Resources */,
 				794557381C0BDA15005C0E10 /* tupian_@2x.png in Resources */,
 				796991D71C44D0B000A3A2C6 /* weiqueding@2x.png in Resources */,
 				7938E5791C0EE5FE00AD043F /* jiankangzixun_57@2x.png in Resources */,
@@ -3742,7 +3723,6 @@
 				79220A981CACF2E900CFBEC2 /* KLDatePickNumberView.m in Sources */,
 				790A671A1BFC07AF007E6DD6 /* PushMgrInfo.m in Sources */,
 				7990DF261CA7C3470096DA4B /* KLStateCell.m in Sources */,
-				7912155A1BF1CFD0004166C5 /* LWPatientBody.m in Sources */,
 				79FFBB261C0D46530072FDCB /* LWAsthmaLineBody.m in Sources */,
 				79AD91B01BF2D5B70098D6CD /* LWPatientRemarksIconCell.m in Sources */,
 				7929ACC21C33B66D002712EC /* LWThemeManager.m in Sources */,
@@ -3755,6 +3735,7 @@
 				790515711BFDB16E001D5F33 /* LWSenderResBody.m in Sources */,
 				79AD86361C4F320100EBE224 /* LWRootViewController.m in Sources */,
 				79E573681C003A2C00797B2E /* LWPatientListModel.m in Sources */,
+				7948A01D1CBF6B6400E36142 /* KLPatientListModel.m in Sources */,
 				7955C2921C03F705003D6836 /* LKDB+Mapping.m in Sources */,
 				7979862B1C433871005052DF /* PatientTaskDescribeVC.m in Sources */,
 				79084E281C27AEA00002BBF2 /* MJPhotoLoadingView.m in Sources */,
@@ -3769,11 +3750,11 @@
 				7929ACB81C33B1F8002712EC /* LWChatMessageMoreView.m in Sources */,
 				794555501C0BD98F005C0E10 /* UIView+BorderLine.m in Sources */,
 				79220AA01CAD17D300CFBEC2 /* KLTimerWeeksCell.m in Sources */,
+				7948A0221CBF898B00E36142 /* KLSetInstructionsViewController.m in Sources */,
 				79AD86111C4F300E00EBE224 /* LWPatientGroupsCtr.m in Sources */,
 				799788891C9A42D100E86B91 /* LWPEFHistorListTitleCell.m in Sources */,
 				7945576D1C0C323E005C0E10 /* MZFormSheetContentSizingNavigationController.m in Sources */,
 				794557751C0C323E005C0E10 /* MZTransition.m in Sources */,
-				791215591BF1CFD0004166C5 /* LWPatientBaseModel.m in Sources */,
 				79BA50EB1C9A43D8006A5AE4 /* LWHistoricalRecordVC.m in Sources */,
 				79E52B2F1C3CAA230079CE14 /* LWNewFriendsViewController.m in Sources */,
 				794D51521C7EE46900403767 /* LWOrderDetailedLisetCell.m in Sources */,
@@ -3896,8 +3877,6 @@
 				79CCF4BE1CABAB8C0075FD2F /* KLSymptomsLogModel.m in Sources */,
 				790392E71CB50D0C00B020C4 /* KLMessageOperation.m in Sources */,
 				7941A89C1C3518C700B8ACC7 /* LWOrderRecordViewController.m in Sources */,
-				7912155C1BF1CFD0004166C5 /* LWPatientRows.m in Sources */,
-				7912155B1BF1CFD0004166C5 /* LWPatientPager.m in Sources */,
 				794555491C0BD98F005C0E10 /* NSString+Hash.m in Sources */,
 				790243741C4DEB470010B1D9 /* ZZPhotoController.m in Sources */,
 				79B72D5B1C9BA46800E2920F /* LWHistoricalLogCell.m in Sources */,
@@ -3942,7 +3921,6 @@
 				79AD86101C4F300E00EBE224 /* LWPatientCententCtr.m in Sources */,
 				7997888C1C9A42D100E86B91 /* LWSymptomsView.m in Sources */,
 				791935D81C7C589000EF4FFA /* DZ_ScaleCircle.m in Sources */,
-				79CD7FBE1CBB513300019A33 /* KLRootViewController.swift in Sources */,
 				7912155F1BF1CFD0004166C5 /* LWMainMessageBaseModel.m in Sources */,
 				794557761C0C323E005C0E10 /* UIViewController+TargetViewController.m in Sources */,
 				791215071BF1CF56004166C5 /* ControllerExtraDataManager.m in Sources */,
@@ -4102,8 +4080,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: kanglian Changxiang(Beijing) Medical Technology Co.,Ltd. (W9WB7VWTFF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: kanglian Changxiang(Beijing) Medical Technology Co.,Ltd. (W9WB7VWTFF)";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BreatheDoctor/BreatheDoctor.pch";
@@ -4113,13 +4091,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BreatheDoctor/Library/D3RecordBtutton",
-					"$(PROJECT_DIR)/BreatheDoctor/Library/UMeng/UMAnalytics_Sdk_3.1.2",
-					"$(PROJECT_DIR)/BreatheDoctor/Library/UMeng/UMFeedback",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.E-breath.breatheDoctor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BreatheDoctor/ViewControllers/Root/BreatheDoctor-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -4131,8 +4108,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: kanglian Changxiang(Beijing) Medical Technology Co.,Ltd. (W9WB7VWTFF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: kanglian Changxiang(Beijing) Medical Technology Co.,Ltd. (W9WB7VWTFF)";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/BreatheDoctor/BreatheDoctor.pch";
@@ -4142,13 +4119,12 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BreatheDoctor/Library/D3RecordBtutton",
-					"$(PROJECT_DIR)/BreatheDoctor/Library/UMeng/UMAnalytics_Sdk_3.1.2",
-					"$(PROJECT_DIR)/BreatheDoctor/Library/UMeng/UMFeedback",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.E-breath.breatheDoctor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "BreatheDoctor/ViewControllers/Root/BreatheDoctor-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
