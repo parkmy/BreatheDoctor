@@ -9,11 +9,11 @@
 #import "LWLoginManager.h"
 #import "LWLoginViewController.h"
 #import "CODataCacheManager.h"
-#import "LWMessageCtr.h"
 #import "GJMFileHelper.h"
 #import <SDImageCache.h>
 #import "LWVoiceManager.h"
 #import "KSCache.h"
+#import "KLMessageViewController.h"
 
 @interface LWLoginManager ()<LWLoginViewControllerDelegate>
 
@@ -56,6 +56,7 @@
     [self showLoginViewNav:vc]; //回到登陆
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
 
 }
 - (void)showLoginViewNav:(UIViewController *)vc

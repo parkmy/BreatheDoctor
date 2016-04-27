@@ -27,7 +27,21 @@
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
 
     NSLog(@"%@",NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES));
+//    NSArray* familys = [UIFont familyNames];
     
+//    for (int i = 0; i<[familys count]; i++) {
+//        
+//        NSString* family = [familys objectAtIndex:i];
+//        
+//        NSLog(@"Fontfamily:%@=====",family);
+//        
+//        NSArray* fonts = [UIFont fontNamesForFamilyName:family];
+//        
+//        for (int j = 0; j<[fonts count]; j++) {
+//            
+//            NSLog(@"FontName:%@",[fonts objectAtIndex:j]);
+//            
+//        }}
 //    300002         呼吸客户端IOS版
     //统计
     [MobClick startWithAppkey:UMKEY];

@@ -7,7 +7,10 @@
 // 患者列表
 
 #import "BaseViewController.h"
+#import "KLPatientOperation.h"
 
 @interface LWPatientListCtr : BaseViewController
+
+- (instancetype)initWithListType:(LISTTYPE)type;
 
 @end

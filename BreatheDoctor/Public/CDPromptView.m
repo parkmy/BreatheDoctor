@@ -16,7 +16,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-
         
         self.backgroundColor = [UIColor blackColor];
         self.layer.opacity= 0.7;

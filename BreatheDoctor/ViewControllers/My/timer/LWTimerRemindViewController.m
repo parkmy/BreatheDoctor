@@ -232,6 +232,9 @@
                 }
                 
             }
+            if (weeks) {
+                weeks = (NSMutableArray *)[weeks sortedArrayUsingSelector:@selector(compare:)];
+            }
             
             NSMutableString *weekString = [[NSMutableString alloc] initWithString:@""];
             for (NSString *str in weeks)

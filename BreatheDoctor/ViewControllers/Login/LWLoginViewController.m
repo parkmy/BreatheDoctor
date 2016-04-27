@@ -99,16 +99,16 @@
     }
     
     if (self.accountTF.text.length <= 0) {
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:NSLocalizedString(@"LOGIN_ALERT_NOUSERNAME", nil)];
+        [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:NSLocalizedString(@"LOGIN_ALERT_NOUSERNAME",nil)];
         return;
     }
     
     if (![self.accountTF.text isMobileNumber]) {
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:NSLocalizedString(@"LOGIN_ALERT_IncorrectUsername", nil)];
+        [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:NSLocalizedString(@"LOGIN_ALERT_IncorrectUsername",nil)];
         return;
     }
     if (self.passwordTF.text == nil || [self.passwordTF.text isEqualToString:@""]) {
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:NSLocalizedString(@"LOGIN_ALERT_NOPASSWORD", nil)];
+        [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:NSLocalizedString(@"LOGIN_ALERT_NOPASSWORD",nil)];
         return;
     }
     
@@ -122,7 +122,7 @@
             [self endHidenTimer];
     } failure:^(NSString *errorMes) {
             [self endHidenTimer];
-            [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:errorMes];
     }];
     
 }

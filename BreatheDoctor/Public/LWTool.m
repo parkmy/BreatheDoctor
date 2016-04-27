@@ -25,24 +25,24 @@
     
     if (controLevel == 1) {
         title = @"未确认";
-        color = RGBA(203, 203, 203, 1);
+        color = [UIColor colorWithHexString:@"#d5d5d5"];
         bgImageNmae = @"weiqueren";
     }else if (controLevel == 2)
     {
-        color = RGBA(119, 204, 78, 1);
+        color = [UIColor colorWithHexString:@"#91e367"];
         title = @"完全控制";
         bgImageNmae = @"wanquankongzhi";
         
     }else if (controLevel == 3)
     {
         title = @"部分控制";
-        color = RGBA(251, 186, 94, 1);
+        color = [UIColor colorWithHexString:@"#ffc571"];
         bgImageNmae = @"bufenkongzhi";
         
     }else if (controLevel == 4)
     {
         title = @"未控制";
-        color = RGBA(248, 140, 143, 1);
+        color = [UIColor colorWithHexString:@"#ffa0a0"];
         bgImageNmae = @"weikongzhi";
         
     }else
@@ -53,14 +53,14 @@
         
     }
     
-    CGSize size = [title sizeWithFont:[UIFont systemFontOfSize:kNSPXFONTFLOAT(26)] constrainedToHeight:20];
+    CGSize size = [title sizeWithFont:[UIFont systemFontOfSize:kNSPXFONTFLOAT(24)] constrainedToHeight:20];
     
     if ([objc isKindOfClass:[UILabel class]]) {
         UILabel *label = (UILabel *)objc;
         label.backgroundColor = color;
         label.text = title;
         [label setCornerRadius:label.height/2];
-        
+        label.sd_layout.widthIs(size.width+20);
     }else if ([objc isKindOfClass:[UIButton class]])
     {
         UIButton *button = (UIButton *)objc;
@@ -68,7 +68,9 @@
         [button setTitle:title forState:UIControlStateNormal];
         
     }
-    traint.constant = size.width+20;
+    if (traint) {
+        traint.constant = size.width+20;
+    }
     
 }
 

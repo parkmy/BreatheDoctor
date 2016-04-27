@@ -182,7 +182,7 @@
 {
     if(buttonIndex == 0)
     {
-        NSURL *url = [NSURL URLWithString:@"prefs:root=NOTIFICATIONS_ID"];
+        NSURL *url = [NSURL URLWithString:@"prefs:root=NOTIFICATIONS_ID&path=breatheDoctor://"];
         if ([[UIApplication sharedApplication] canOpenURL:url])
         {
             [[UIApplication sharedApplication] openURL:url];

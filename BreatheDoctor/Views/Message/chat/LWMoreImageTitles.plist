@@ -26,5 +26,11 @@
 		<key>title</key>
 		<string>表单</string>
 	</dict>
+	<dict>
+		<key>image</key>
+		<string>doctor_qunfa_shangpin</string>
+		<key>title</key>
+		<string>推荐商品</string>
+	</dict>
 </array>
 </plist>

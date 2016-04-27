@@ -85,7 +85,7 @@
     }
     
     [[self class] dealRequestMessageInfo:requestArray theRequestModel:requestModel theSQLwheres:wheres theCacheMessageArray:cacheMessageArray];
-
+    
     return cacheMessageArray;
 }
 
@@ -220,7 +220,7 @@
                  theMessageArray:(NSMutableArray *)messageArray
                     theTableView:(UITableView *)tableView{
     
-    NSMutableArray *indexPaths = [NSMutableArray array];
+    //    NSMutableArray *indexPaths = [NSMutableArray array];
     NSMutableArray *newArray = [NSMutableArray array];
     
     /**
@@ -231,6 +231,7 @@
     /**
      *  遍历要刷新的数据得到刷新的indexs
      */
+    
     for (LWMainRows *objc in array)
     {
         LWMainRows *oldObjc = nil;
@@ -238,13 +239,29 @@
         for (int j = 0; j < messageArray.count; j++)
         {
             LWMainRows *searchObjc = messageArray[j];
-            
             if ([searchObjc.memberId isEqualToString:objc.memberId])
             {
                 oldObjc = searchObjc;
-                [messageArray replaceObjectAtIndex:j withObject:objc];
-//                searchObjc = objc;
-                [indexPaths addObject:[NSIndexPath indexPathForRow:j inSection:0]];
+                if (j == 0) {
+                    [messageArray replaceObjectAtIndex:j withObject:objc];
+                    [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:j inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                    continue;
+                }
+
+                LWMainRows *oneObjc = messageArray[0];
+                
+                NSDate *date1 = [NSDate dateWithString:objc.insertDt format:[NSDate ymdHmsFormat]];
+                NSDate *date2 = [NSDate dateWithString:oneObjc.insertDt format:[NSDate ymdHmsFormat]];
+                
+                if ([date1 compare:date2] == NSOrderedAscending){
+                    [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:j inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                }else{
+                    
+                    [messageArray removeObjectAtIndex:j];
+                    [tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:j inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                    [messageArray insertObject:objc atIndex:0];
+                    [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                }
                 continue;
             }
         }
@@ -255,9 +272,9 @@
     /**
      *  有刷新刷新
      */
-    if (indexPaths.count > 0) {
-        [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
-    }
+    //    if (indexPaths.count > 0) {
+    //        [tableView reloadRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationNone];
+    //    }
     /**
      *  是否有新数据
      */

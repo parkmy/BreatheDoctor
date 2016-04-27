@@ -17,6 +17,8 @@
 
 #import "LWRootViewController.h"
 #import "CDMacro.h"
+#import "LWPatientListCtr.h"
+#import "KLMessageViewController.h"
 
 @interface LWRootViewController ()
 
@@ -40,8 +42,8 @@
 {
     self.tabBar.hidden=NO;
     //5个视图控制器--对应5个模块
-    UIViewController *vc1  = StoryboardCtr(@"LWMessageCtr");
-    UIViewController *vc2  = StoryboardCtr(@"LWPatientListCtr");
+    UIViewController *vc1  = [[KLMessageViewController alloc] init];
+    UIViewController *vc2  = [[LWPatientListCtr alloc] initWithListType:LISTTYPEDEFT];
     UIViewController *vc3  = StoryboardCtr(@"LWPersonalCtr");
     
     //5个导航控制器--对应上述5个视图

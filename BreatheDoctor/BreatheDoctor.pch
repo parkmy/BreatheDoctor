@@ -31,9 +31,13 @@
 #import "LCCoolHUD.h"
 #import <MobClick.h>
 #import "NSString+Contains.h"
+#import "KLPromptViewManager.h"
+#import <ReactiveCocoa.h>
 
 #define StoryboardCtr(Identifier) [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:Identifier]
 
+#define WEAKSELF __weak typeof(self)KL_weakSelf = self;
+#define KL_weakSelf weakSelf
 
 #define TICK   NSDate *startTime = [NSDate date];
 #define TOCK   NSLog(@"Time: %f", -[startTime timeIntervalSinceNow]);

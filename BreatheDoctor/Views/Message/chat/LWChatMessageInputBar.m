@@ -339,11 +339,9 @@
     [_mMoreBtn addTarget:self action:@selector(moreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     _mMoreBtn.backgroundColor = [UIColor clearColor];
     
-    
-    
-    [_mMoreBtn setImage:[UIImage imageNamed:@"add"] forState:UIControlStateNormal];
-    [_mMoreBtn setImage:[UIImage imageNamed:@"add"] forState:UIControlStateHighlighted];
-    [_mMoreBtn  setImage:[UIImage imageNamed:@"add"] forState:UIControlStateSelected];
+    [_mMoreBtn setImage:[UIImage imageNamed:@"doctor_qunfa_fenlei.png"] forState:UIControlStateNormal];
+//    [_mMoreBtn setImage:[UIImage imageNamed:@"doctor_qunfa_fenlei.png"] forState:UIControlStateHighlighted];
+    [_mMoreBtn  setImage:[UIImage imageNamed:@"doctor_qunfa_fenlei.png"] forState:UIControlStateSelected];
     [_mMoreBtn autoSetDimensionsToSize:kSizeBtn];
     
     
@@ -381,11 +379,10 @@
     _mVoiceBtn.translatesAutoresizingMaskIntoConstraints = NO;
     [_mVoiceBtn addTarget:self action:@selector(voiceBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     _mVoiceBtn.backgroundColor = [UIColor clearColor];
-    [_mVoiceBtn setImage:[UIImage imageNamed:@"speaker"] forState:UIControlStateNormal];
+    [_mVoiceBtn setImage:[UIImage imageNamed:@"doctor_qunfa_yuyin.png"] forState:UIControlStateNormal];
 //    [_mVoiceBtn setImage:[UIImage imageNamed:@"chat_bottom_voice_press@3x"] forState:UIControlStateHighlighted];
     [_mVoiceBtn  setImage:[UIImage imageNamed:@"keyBoard"] forState:UIControlStateSelected];
     [_mVoiceBtn autoSetDimensionsToSize:kSizeBtn];
-    
     
     return _mVoiceBtn;
 }

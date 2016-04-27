@@ -10,6 +10,8 @@
 
 @interface KLPatientListModel : NSObject
 
+@property (nonatomic, assign) BOOL isSele;
+
 @property (nonatomic, assign) BOOL isConfirm;
 @property (nonatomic, assign) NSInteger sex;
 @property (nonatomic, assign) double patientPhone;

@@ -75,7 +75,8 @@
         [self.tableView reloadData];
     } failure:^(NSString *errorMes) {
         [ZZPhotoHud hideActiveHud];
-        [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];
+        [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:errorMes];
+//        [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];
     }];
 }
 
@@ -124,10 +125,10 @@
     [ZZPhotoHud showActiveHudWithTitle:@"正在修改..."];
     [LWHttpRequestManager httpupdateDiseaseRelateWithSid:self.model.sid treatmentResult:[self treatmentResult] basicCondition:[self basicCondition] images:[self updateImageString] Success:^(NSMutableArray *models) {
         [ZZPhotoHud hideActiveHud];
-        [LCCoolHUD showSuccess:@"修改成功" zoom:YES shadow:NO];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:@"修改成功" theHiddenBlock:^{
             [self.navigationController popViewControllerAnimated:YES];
-        });
+        }];
     } failure:^(NSString *errorMes) {
         [ZZPhotoHud hideActiveHud];
         [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];
@@ -139,10 +140,9 @@
 {
     [LWHttpRequestManager httpsubmitDiseaseRelateWithPatientId:self.patientId treatmentResult:[self treatmentResult] basicCondition:[self basicCondition] images:[self updateImageString] Success:^(NSMutableArray *models) {
         [ZZPhotoHud hideActiveHud];
-        [LCCoolHUD showSuccess:@"保存成功" zoom:YES shadow:NO];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:@"保存成功" theHiddenBlock:^{
             [self.navigationController popViewControllerAnimated:YES];
-        });
+        }];
     } failure:^(NSString *errorMes) {
         [ZZPhotoHud hideActiveHud];
         [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];

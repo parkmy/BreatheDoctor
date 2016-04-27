@@ -89,8 +89,10 @@ UIView* showView = nil;
 
 +(void)showALAlertBannerWithView:(UIView*)view Style:(int)style Position:(int)position Subtitle:(NSString*)subtitle{
     
-    [LCCoolHUD showFailureOblong:subtitle zoom:YES shadow:NO];
+//    [LCCoolHUD showFailureOblong:subtitle zoom:YES shadow:NO];
     
+    [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:subtitle];
+
 //    if ([LWPublicDataManager shareInstance].ifRemoveFromSuperview==NO)
 //    {
 //        

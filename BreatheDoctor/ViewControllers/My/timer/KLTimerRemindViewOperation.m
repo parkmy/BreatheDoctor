@@ -47,10 +47,12 @@
     
     [LWHttpRequestManager httpsubmitDoctorServerTimeWithJsonString:requestString Success:^() {
         [ZZPhotoHud hideActiveHud];
-        [LCCoolHUD showSuccess:@"设置成功" zoom:YES shadow:NO];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:@"设置成功" theHiddenBlock:^{
             successBlock?successBlock(YES):nil;
-        });
+        }];
+//        [LCCoolHUD showSuccess:@"设置成功" zoom:YES shadow:NO];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        });
     } failure:^(NSString *errorMes) {
         [ZZPhotoHud hideActiveHud];
         [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];

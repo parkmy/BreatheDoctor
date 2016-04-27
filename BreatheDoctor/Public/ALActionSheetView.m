@@ -239,7 +239,7 @@
 - (void)dismiss
 {
     _isShow = NO;
-    
+    _selectRowBlock?_selectRowBlock(self, CGFLOAT_MAX):nil;
     [UIView animateWithDuration:0.35f delay:0 usingSpringWithDamping:0.9f initialSpringVelocity:0.7f options:UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionLayoutSubviews animations:^{
         
         _backView.alpha = 0.0;
