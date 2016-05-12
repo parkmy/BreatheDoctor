@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class KLGroupSenderChatView;
 
 @interface KLGroupSenderChatCell : UITableViewCell
 
+@property (nonatomic, strong) id model;
+@property (nonatomic, copy) void(^againSenderEventBlock)();
+@property (nonatomic, copy) void(^removeEventBlock)(id model);
+@property (nonatomic, copy) void(^tapGoodsBlock)(NSString *goodsId);
+@property (nonatomic, copy) void(^voiceTapBlock)(id model,id view);
 @end

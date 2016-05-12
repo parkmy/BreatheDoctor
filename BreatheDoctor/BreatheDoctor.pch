@@ -52,7 +52,7 @@
 
 #define MULTIPLE (iPhone6Plus?1.15:iPhone6?1.08:1)
 #define kNSPXFONTFLOAT(M) ((M/2)*MULTIPLE)
-#define kNSPXFONT(M) [UIFont systemFontOfSize:kNSPXFONTFLOAT(M)]
+#define kNSPXFONT(M) [UIFont fontWithName:@"HiraginoSans-W3" size:kNSPXFONTFLOAT(M)]
 
 #define RGBA(r, g, b, a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 #pragma mark - 主视图bound

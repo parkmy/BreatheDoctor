@@ -18,6 +18,11 @@
  *  @brief  聊天界面底部输入界面
  */
 @interface LWChatMessageInputBar : UIView
+/**
+ *  @brief  输入TextView
+ */
+@property(nonatomic,strong)UITextView *mInputTextView;
+
 @property (nonatomic, strong) UITableView *baseTbaleView;
 @property (nonatomic, weak) id<LWChatMessageInputBarDelegate>delegate;
 - (void)fastReplyContent:(NSString *)content;

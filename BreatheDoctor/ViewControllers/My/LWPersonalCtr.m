@@ -84,7 +84,7 @@
         }];
         if (indexPath.row == 1) {
             personalCell.lefticon.image = kImage(@"huifu");
-            personalCell.leftmenuTitleLabel.text = @"回复时间";
+            personalCell.leftmenuTitleLabel.text = @"在线时间";
             personalCell.leftButton.tapType = tapTypeRecoverytime;
             personalCell.rightIcon.image = kImage(@"jilu");
             personalCell.rightMenuLabel.text = @"患者购买记录";

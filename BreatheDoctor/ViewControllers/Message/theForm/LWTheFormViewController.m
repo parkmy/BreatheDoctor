@@ -254,7 +254,7 @@
     [MobClick event:@"uploadBiaoDan" label:@"提交表单按钮的点击量"];
 
     [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
-    [LWHttpRequestManager httpDoctorReply:self.patientId content:@"哮喘诊断判定表" contentType:21 voiceMin:0 success:^(LWSenderResBaseModel *senderResBaseModel) {
+    [LWHttpRequestManager httpDoctorReply:self.patientId content:@"哮喘诊断判定表" contentType:21 voiceMin:0 foreignId:nil success:^(LWSenderResBaseModel *senderResBaseModel) {
         [LWProgressHUD closeProgressHUD:self.view];
         [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_SENDERZHENGDUANMOKUAISUCC object:nil userInfo:@{@"message":senderResBaseModel}];
         [LCCoolHUD showSuccess:@"发送成功" zoom:YES shadow:NO];

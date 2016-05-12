@@ -24,40 +24,27 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-
-    NSLog(@"%@",NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES));
-//    NSArray* familys = [UIFont familyNames];
     
-//    for (int i = 0; i<[familys count]; i++) {
-//        
-//        NSString* family = [familys objectAtIndex:i];
-//        
-//        NSLog(@"Fontfamily:%@=====",family);
-//        
-//        NSArray* fonts = [UIFont fontNamesForFamilyName:family];
-//        
-//        for (int j = 0; j<[fonts count]; j++) {
-//            
-//            NSLog(@"FontName:%@",[fonts objectAtIndex:j]);
-//            
-//        }}
-//    300002         呼吸客户端IOS版
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    
+    NSLog(@"%@",NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES));
     //统计
     [MobClick startWithAppkey:UMKEY];
-    [MobClick setAppVersion:[NSString appVersion]];
     
+    [MobClick setAppVersion:[NSString appVersion]];
     //主题
     [LWThemeManager shareInstance].themeType = themeTypeDefault;
-    
     //加载缓存
     [[CODataCacheManager shareInstance] loadUserDefaultData];
-    
     //注册通知
     [self registerUserNotification:application withLaunchOptions:launchOptions];
     
     [[PushMgrInfo sharedInstance] isRegisterUserNotification:application theisInfoDate:YES];
     
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+    });
     return YES;
 }
 

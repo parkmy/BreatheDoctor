@@ -61,10 +61,7 @@
     
 }
 
-/**
- *  @brief  输入TextView
- */
-@property(nonatomic,strong)UITextView *mInputTextView;
+
 
 /**
  *  @brief  录制语音按钮

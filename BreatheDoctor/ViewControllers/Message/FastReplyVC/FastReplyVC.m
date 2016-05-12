@@ -55,7 +55,6 @@
 {
     [super addNavBar:isDelete?@"编辑":@"快捷回复"];
     [super addBackButton:@"nav_btnBack.png"];
-    
     [super addRightButton:isDelete?@"完成":@"编辑"];
 }
 
@@ -145,7 +144,6 @@
         cell = [[FastReplyVCCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.backgroundColor = [UIColor whiteColor];
-      
     }
     
     [cell setDetailTetil:[msgArray objectAtIndex:indexPath.row]];
@@ -157,7 +155,6 @@
     else
     {
         cell.detailLable.frame = CGRectMake(15,0,m_view.frame.size.width-30,cell.detailLable.frame.size.height);
-        
     }
     
     return cell;

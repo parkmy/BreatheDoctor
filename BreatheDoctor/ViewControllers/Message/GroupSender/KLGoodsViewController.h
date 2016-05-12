@@ -6,8 +6,8 @@
 //  Copyright © 2016年 lwh. All rights reserved.
 //  商品
 
-#import "LWBaseViewController.h"
+#import "BaseViewController.h"
 
-@interface KLGoodsViewController : LWBaseViewController
-
+@interface KLGoodsViewController : BaseViewController
+- (void)senderGoods:(NSString *)goodsId theSenderVc:(UIViewController *)vc;
 @end

@@ -9,14 +9,16 @@
 #import "KLGoodsCell.h"
 #import "KLGroupSenderOperation.h"
 #import "KLLineLabel.h"
+#import "KLGoodsModel.h"
+#import <UIImageView+WebCache.h>
 
 @interface KLGoodsCell ()
 {
-    UIImageView *_goodsIcon;
-    UILabel     *_goodsNameLabel;
-    UILabel     *_goodsPriceLabel;
+    UIImageView     *_goodsIcon;
+    UILabel         *_goodsNameLabel;
+    UILabel         *_goodsPriceLabel;
     KLLineLabel     *_goodsOriginalPriceLabe;
-    
+    UIView          *_contentTypeView;
 }
 @end
 
@@ -26,9 +28,16 @@
 
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
+        //修改背景颜色
+        UIView *backgroundViews = [[UIView alloc]initWithFrame:self.contentView.frame];
+        backgroundViews.backgroundColor = [[UIColor colorWithHexString:@"#d4d4d4"] colorWithAlphaComponent:.7];
+        self.selectedBackgroundView = backgroundViews;
+        
         _goodsIcon = ({
             
             UIImageView *imageView = [UIImageView new];
+            imageView.layer.borderColor = [UIColor colorWithHexString:@"#dcdcdc"].CGColor;
+            imageView.layer.borderWidth = .5f;
             imageView.image = kImage(@"defaultIconImage");
             imageView;
         });
@@ -41,6 +50,14 @@
             label.textColor = [UIColor colorWithHexString:@"#333333"];
             label;
         });
+        
+        _contentTypeView = ({
+        
+            UIView *view = [UIView new];
+            view.backgroundColor = [UIColor whiteColor];
+            view;
+        });
+        
         
         _goodsPriceLabel = ({
             
@@ -59,10 +76,14 @@
             label;
         });
 
+        UIView *bottomLine = [UIView allocAppLineView];
+        
         [self sd_addSubviews:@[_goodsIcon,
                                _goodsNameLabel,
+                               _contentTypeView,
                                _goodsPriceLabel,
-                               _goodsOriginalPriceLabe]];
+                               _goodsOriginalPriceLabe
+                               ,bottomLine]];
         
         _goodsIcon.sd_layout
         .leftSpaceToView(self,10)
@@ -76,6 +97,12 @@
         .topSpaceToView(self,11)
         .heightIs(40);
         
+        _contentTypeView.sd_layout
+        .leftEqualToView(_goodsNameLabel)
+        .rightEqualToView(_goodsNameLabel)
+        .topSpaceToView(_goodsNameLabel,7)
+        .bottomSpaceToView(_goodsPriceLabel,10);
+        
         _goodsPriceLabel.sd_layout
         .bottomSpaceToView(self,12)
         .leftSpaceToView(_goodsIcon,10)
@@ -88,16 +115,93 @@
         .heightIs(10)
         .widthIs(50);
         
-        
-        _goodsNameLabel.text = @"_goodsNameLabel_goodsNameLabel_goodsNameLabel_goodsNameLabel";
-        _goodsPriceLabel.attributedText = [KLGroupSenderOperation getGoodsPriceLabeString:@"￥1700"];
-        _goodsOriginalPriceLabe.text = @"￥1900";
+        bottomLine.sd_layout
+        .bottomSpaceToView(self,0)
+        .rightSpaceToView(self,0)
+        .leftSpaceToView(self,0)
+        .heightIs(.5);
         
         [_goodsIcon updateLayout];
     }
     return self;
 }
 
+- (void)setGoods:(id)goods{
+
+    _goods = goods;
+    
+    KLGoodsModel *model = _goods;
+
+    _goodsNameLabel.text = [NSString stringJudgeNullInfoString:model.productName];
+    CGFloat height = [_goodsNameLabel.text heightWithFont:_goodsNameLabel.font constrainedToWidth:_goodsNameLabel.width];
+    _goodsNameLabel.sd_layout.heightIs(MAX(height, 14));
+    
+    [_goodsIcon sd_setImageWithURL:kNSURL([NSString stringJudgeNullInfoString:model.imageUrl]) placeholderImage:kImage(@"defaultIconImage")];
+    
+    _goodsPriceLabel.text = [KLGroupSenderOperation priceFloatEqlistThePrice:[NSString stringWithFormat:@"￥%.2f",model.marketPrice/100]];
+
+    CGFloat width = [_goodsPriceLabel.text widthWithFont:_goodsPriceLabel.font constrainedToHeight:_goodsPriceLabel.height];
+    _goodsPriceLabel.sd_layout.widthIs(width);
+    _goodsPriceLabel.attributedText = [KLGroupSenderOperation getGoodsPriceLabeString:_goodsPriceLabel.text];
+    
+    _goodsOriginalPriceLabe.text = [KLGroupSenderOperation priceFloatEqlistThePrice:[NSString stringWithFormat:@"￥%.2f",model.originalPrice/100]];
+    
+    NSArray *tags = [[self class] getTages:model.tags];
+    
+    [[self class] addTagsLabelWithSuperView:_contentTypeView andTages:tags];
+    
+    [_contentTypeView layoutSubviews];
+    
+    [self layoutSubviews];
+}
+
++ (void)addTagsLabelWithSuperView:(UIView *)view andTages:(NSArray *)tags{
+
+    [view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+
+    CGFloat x = 0;
+    
+    for (int j = 0; j < tags.count; j++)
+    {
+        NSString *tag = tags[j];
+        UILabel *label = [self tagLabelWith:tag];
+        if (label) {
+            [view addSubview:label];
+            CGFloat width = [tag widthWithFont:label.font constrainedToHeight:14*MULTIPLEVIEW];
+            label.sd_layout
+            .leftSpaceToView(view,x)
+            .centerYEqualToView(view)
+            .widthIs(width+10)
+            .heightIs(14*MULTIPLEVIEW);
+            
+            x += (width+5+10);
+        }
+    }
+    
+}
++ (UILabel *)tagLabelWith:(NSString *)tag{
+    
+    if ([tag isEqualToString:@""])
+    {
+        return nil;
+    }
+    
+    UILabel *label = [UILabel new];
+    label.tag = 10086;
+    label.textAlignment = 1;
+    label.text = tag;
+    label.font = kNSPXFONT(18);
+    label.textColor = [UIColor colorWithHexString:@"#ff6565"];
+    label.layer.borderWidth = .5;
+    label.layer.borderColor = [UIColor colorWithHexString:@"#ff6565"].CGColor;
+    [label setCornerRadius:4.0f];
+    return label;
+}
+
++ (NSArray *)getTages:(NSString *)tag{
+
+    return [[NSString stringJudgeNullInfoString:tag] componentsSeparatedByString:@"@#@"];
+}
 
 
 @end

@@ -51,7 +51,7 @@
         
         UIView *line = [UIView allocAppLineView];
         
-        [self sd_addSubviews:@[self.mVoiceBtn,self.mInputTextView,self.mVoiceBtn,self.mMoreBtn,line,self.mMoreView]];
+        [self sd_addSubviews:@[self.mVoiceBtn,self.mInputTextView,self.longButtonVoice,self.mVoiceBtn,self.mMoreBtn,line,self.mMoreView]];
         
         self.mVoiceBtn.sd_layout
         .leftSpaceToView(self,10)
@@ -126,6 +126,7 @@
         _mMoreBtn.selected = NO;
     }else
     {
+        [self removeFromMoreView];
         if (!self.mMoreBtn.selected){
             self.sd_layout.heightIs(defHeight+(self.mInputTextView.height-kMinHeightTextView));
         }
@@ -162,6 +163,7 @@
         _longButtonVoice.layer.borderWidth = .5f;
         _longButtonVoice.userInteractionEnabled = YES;
         
+        _longButtonVoice.hidden = YES;
     }
     return _longButtonVoice;
 }
@@ -247,6 +249,14 @@
         self.sd_layout.heightIs(defHeight + (self.mInputTextView.height-kMinHeightTextView));
     }
 }
+- (void)kl_fastReplyContent:(NSString *)content
+{
+    _mInputTextView.text = content;
+    [self textViewDidChange:_mInputTextView];
+    [_mInputTextView becomeFirstResponder];
+    
+}
+#define MoreViewHeight 115
 
 -(void)moreBtnClick:(UIButton*)sender
 {
@@ -263,8 +273,8 @@
     }else
     {
         
-        _mMoreView.sd_layout.heightIs(220);
-        self.sd_layout.heightIs(defHeight + 220 + (self.mInputTextView.height-kMinHeightTextView));
+        _mMoreView.sd_layout.heightIs(MoreViewHeight);
+        self.sd_layout.heightIs(defHeight + MoreViewHeight + (self.mInputTextView.height-kMinHeightTextView));
 
         //隐藏键盘，显示更多界面
         [self.mInputTextView resignFirstResponder];
@@ -282,8 +292,7 @@
         if (![textView.text isEqualToString:@""])
         {//输入框当前有数据才需要发送
             
-//            [self routerEventWithType:EventChatCellTypeSendMsgEvent userInfo:@{@"type":@(WSChatCellType_Text),@"text":textView.text}];
-            
+            [self kl_textSenderWithText:textView.text];
             textView.text = @"";//清空输入框
             [self textViewDidChange:textView];
         }
@@ -324,31 +333,27 @@
     }
 }
 #pragma mark - delegate
-- (void)seleMoreButtonClick:(NSInteger)tag
-{
-//    if (_delegate && [_delegate respondsToSelector:@selector(moreButtonEventClick:)]) {
-//        [_delegate moreButtonEventClick:tag];
-//    }
-}
+
 - (void)recording:(float) recordTime
 {
     
 }
 - (void)endRecord:(NSData *)voiceData timeCount:(NSInteger)count
 {
-    //    NSError *error;
-    //    play = [[AVAudioPlayer alloc]initWithData:voiceData error:&error];
-    //    NSLog(@"%@",error);
-    //    play.volume = 1.0f;
-    //    [play play];
-    //    NSLog(@"yesssssssssss..........%f",play.duration);
     [_longButtonVoice setTitle:@"按住说话" forState:UIControlStateNormal];
-//    if (_delegate && [_delegate respondsToSelector:@selector(voicEndRecord:count:)]) {
-//        [_delegate voicEndRecord:voiceData count:count];
-//    }
+
+    [self kl_voiceSenderWithVoiceData:voiceData theVoiceCount:count];
 }
 
 -(void)dragEnter{
     [_longButtonVoice setTitle:@"松开发送" forState:UIControlStateNormal];
+}
+
+#pragma mark -senderEvent
+- (void)kl_voiceSenderWithVoiceData:(NSData *)data theVoiceCount:(NSInteger)count{
+
+}
+- (void)kl_textSenderWithText:(NSString *)text{
+
 }
 @end

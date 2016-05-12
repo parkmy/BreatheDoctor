@@ -7,30 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-/**
- *  群发类型
- */
-typedef NS_ENUM(NSInteger, GroupSenderChatType) {
-    /**
-     *  文字
-     */
-    GroupSenderChatTypeText =  0,
-    /**
-     *  语音
-     */
-    GroupSenderChatTypeVoice,
-    /**
-     *  图片
-     */
-    GroupSenderChatTypeImage,
-    /**
-     *  商品
-     */
-    GroupSenderChatTypeGoods,
-};
+
+@class KLGroupSenderContentView;
 
 @interface KLGroupSenderChatView : UIView
 
+@property (nonatomic, strong) UIButton                    *againSenderButton;
+@property (nonatomic, strong) KLGroupSenderContentView    *contentView;
+@property (nonatomic, strong) id model;
 
+- (void)removeItemClicked:(id)sender;
 
 @end

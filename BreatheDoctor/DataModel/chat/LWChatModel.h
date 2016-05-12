@@ -78,6 +78,11 @@
 
 @property (nonatomic, assign) BOOL voiceIsPlay;
 
+@property (nonatomic, copy) NSString *productName;
+@property (nonatomic, copy) NSString *tags;
+@property (nonatomic, copy) NSString *imageUrl;
+@property (nonatomic, copy) NSString *productId;
+
 + (LWChatModel *)modelWith:(LWChatBaseModel *)model WithRow:(LWChatRows *)row;
 
 

@@ -10,12 +10,17 @@
 #import <AVFoundation/AVFoundation.h>
 #import "LWChatModel.h"
 #import "UUMessageCell.h"
+#import "KLGroupSenderContentView.h"
+
+@class KLGroupSenderChatModel;
 
 @interface LWVoiceManager : NSObject
 
 + (LWVoiceManager *)shareInstance;
 
 - (void)playVoiceWithModel:(LWChatModel *)model withCell:(UUMessageCell *)cell;
+
+- (void)playVoiceWithPlayModel:(KLGroupSenderChatModel *)model withPlayImageView:(KLVoiceTypeView *)voiceView;
 
 - (void)stopVoice;
 

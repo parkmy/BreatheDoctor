@@ -15,6 +15,8 @@
 #import "NSDate+Extension.h"
 #import "KSCache.h"
 #import "KLPatientListModel.h"
+#import "KLGoodsModel.h"
+#import "KLGroupSenderChatModel.h"
 
 @implementation LWHttpRequestManager
 
@@ -367,6 +369,7 @@
                 content:(NSString *)content
             contentType:(NSInteger )type
                voiceMin:(NSInteger)count
+              foreignId:(NSString *)foreignId
                 success:(void (^)(LWSenderResBaseModel *senderResBaseModel))success
                 failure:(void (^)(NSString * errorMes))failure
 {
@@ -380,6 +383,9 @@
     [requestParams setObject:kNSNumInteger(type) forKey:@"contentType"];
     if (count > 0) {
         [requestParams setObject:kNSNumInteger(count) forKey:@"voiceMin"];
+    }
+    if (foreignId.length > 0){
+        [requestParams setObject:foreignId forKey:@"foreignId"];
     }
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
@@ -833,6 +839,159 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
     } isCache:YES];
+}
+#pragma mark  加载商品列表
++ (void)httploadProductListPage:(NSInteger)page
+                       theCount:(NSInteger)count
+                        Success:(void (^)(NSMutableArray *models))success
+                        failure:(void (^)(NSString * errorMes))failure{
+
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    [requestParams setObject:kNSNumInteger(page) forKey:@"page"];
+    [requestParams setObject:kNSNumInteger(count) forKey:@"rows"];
+    
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADPRODUCTLIST] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        NSMutableArray *array = [NSMutableArray array];
+        NSArray *body = responseObject[res_body];
+        
+        for (NSDictionary *dic in body) {
+            KLGoodsModel *model = [[KLGoodsModel alloc] initWithDictionary:dic];
+            [array addObject:model];
+        }
+        success?success(array):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:YES];
+}
+
+#pragma mark  加载商品详情
++ (void)httploadProductDetailWithproductId:(NSString *)productId
+                                   Success:(void (^)(KLGoodsDetailedModel *models))success
+                                   failure:(void (^)(NSString * errorMes))failure{
+    
+    
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    [requestParams setObject:[NSString stringJudgeNullInfoString:productId] forKey:@"productId"];
+    
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADPRODUCTDETAIL] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        NSDictionary *body = responseObject[res_body];
+        success?success([[KLGoodsDetailedModel alloc] initWithDictionary:body]):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:YES];
+
+}
+
+#pragma mark  群发消息
++ (void)httploadProductDetailWithContent:(NSString *)content
+                        patientIdJsonStr:(NSString *)patientIdJsonStr
+                             contentType:(NSInteger )contentType
+                                voiceMin:(NSInteger )voiceMin
+                               foreignId:(NSString *)foreignId
+                                 Success:(void (^)())success
+                                 failure:(void (^)(NSString * errorMes))failure{
+    
+    
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    
+    [requestParams setObject:[NSString stringJudgeNullInfoString:patientIdJsonStr] forKey:@"patientIdJsonStr"];
+    if (content) {
+        [requestParams setObject:stringJudgeNull(content) forKey:@"content"];
+    }
+    [requestParams setObject:kNSNumInteger(contentType) forKey:@"contentType"];
+    if (voiceMin > 0) {
+        [requestParams setObject:kNSNumInteger(voiceMin) forKey:@"voiceMin"];
+    }
+    if (foreignId.length > 0){
+        [requestParams setObject:foreignId forKey:@"foreignId"];
+    }
+    NSLog(@"%@",requestParams);
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_DOCTORMASSREPLY] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        NSDictionary *body = responseObject[res_body];
+        success?success([[KLGoodsDetailedModel alloc] initWithDictionary:body]):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];
+    
+}
+
+#pragma mark  群发记录
++ (void)httploadMassDialogueRecordWithRefreshTime:(NSString *)refreshTime
+                                          thePage:(NSInteger)page
+                                          theType:(NSInteger)type
+                                          Success:(void (^)(NSMutableArray *models))success
+                                          failure:(void (^)(NSString * errorMes))failure{
+
+    
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    if (refreshTime.length > 0) {
+        [requestParams setObject:stringJudgeNull(refreshTime) forKey:@"refreshTime"];
+    }
+//    [requestParams setObject:kNSNumInteger(page) forKey:@"page"];
+
+    [requestParams setObject:kNSNumInteger(type) forKey:@"type"];
+    
+    NSLog(@"%@",requestParams);
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADMASSDIALOGUERECORD] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        NSMutableArray *array = [NSMutableArray array];
+
+        NSDictionary *body = responseObject[res_body];
+        
+        if (body) {
+            NSArray *massDialogueList = [body objectForKey:@"massDialogueList"];
+            
+            for (NSDictionary *dic in massDialogueList) {
+                
+                KLGroupSenderChatModel *model = [[KLGroupSenderChatModel alloc] initWithDictionary:dic];
+                model.returnDate = body[@"returnDate"];
+                [array addObject:model];
+                
+                NSString * wheres = [NSString stringWithFormat:@"sid = %@",model.sid];
+                
+                if ([[LKDBHelper getUsingLKDBHelper] rowCount:[KLGroupSenderChatModel class] where:wheres]>0) {
+                    [[LKDBHelper getUsingLKDBHelper] updateToDB:model where:wheres];
+                }else
+                {
+                    [[LKDBHelper getUsingLKDBHelper] insertToDB:model];
+                }
+                
+            }
+        }
+        success?success((NSMutableArray *)[KLGroupSenderChatModel loadSqlDataTheReftimerWhere:[KLGroupSenderChatModel refWhereTheRefTimer:refreshTime theRefType:type]]):nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];
+}
+#pragma mark  群发记录删除
++ (void)httpdeleteMassDialogueRecordWithMassDialogueId:(NSString *)massDialogueId
+                                               Success:(void (^)())success
+                                               failure:(void (^)(NSString * errorMes))failure{
+
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    if (massDialogueId.length > 0) {
+        [requestParams setObject:stringJudgeNull(massDialogueId) forKey:@"massDialogueId"];
+    }
+    
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_DELETEMASSDIALOGUERECORD] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        success?success():nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];
 }
 
 @end

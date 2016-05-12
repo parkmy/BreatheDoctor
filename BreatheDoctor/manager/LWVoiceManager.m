@@ -9,12 +9,15 @@
 #import "LWVoiceManager.h"
 #import "NSString+Contains.h"
 #import "LCDownloadManager.h"
-
+#import "KLGroupSenderChatModel.h"
 
 @interface LWVoiceManager ()<AVAudioPlayerDelegate>
 @property (nonatomic, strong) AVAudioPlayer * mm_player;
 @property (nonatomic, strong) LWChatModel *chatModel;
 @property (nonatomic, strong) UUMessageCell *starCell;
+
+@property (nonatomic, strong) KLVoiceTypeView *voiceView;
+@property (nonatomic, strong) KLGroupSenderChatModel *model;
 @end
 
 @implementation LWVoiceManager
@@ -30,12 +33,67 @@
     if (_mm_player) {
         [_mm_player stop];
         [self.starCell.btnContent stopPlay];
+        [self.voiceView stopPlay];
     }
 }
 - (void)clearChae
 {
     [[NSFileManager defaultManager] removeItemAtPath:[self downloadPath] error:nil];
 }
+- (void)playVoiceWithPlayModel:(KLGroupSenderChatModel *)model withPlayImageView:(KLVoiceTypeView *)voiceView;{
+    /**
+     *  先判断是否是同个语音 以及在播放状态 如果是停止播放
+     */
+    if ([self.model.sid isEqualToString:model.sid] && _mm_player.isPlaying) {
+        
+        model.voiceIsPlay = NO;
+        [_mm_player stop];
+        [voiceView stopPlay];
+        return;
+    }
+    
+    self.model = model;
+    /**
+     *  如果不是播放或者同个语音 停止当前播放
+     */
+    if (self.voiceView) {
+        
+        if (_mm_player.isPlaying) {
+            [_mm_player stop];
+        }
+        [self.voiceView stopPlay];
+    }
+    
+    self.voiceView = voiceView;
+    /**
+     *  开启新播放
+     */
+    [voiceView benginLoadVoice];
+    
+    model.voiceIsPlay = YES;
+    /**
+     *  获取本地缓存语音 如果有直接播放
+     */
+    NSData *data = [self voicData:[self fileName2]];
+
+    if (data) {
+        [self playWav:data];
+        return;
+    }
+    
+    /*
+     ||
+     || 下载
+     ||
+     
+     */
+    
+    NSString *url = model.content;
+    
+    [self downloadFileWithUrl:url theModelSid:self.model.sid thePlayType:2];
+    
+}
+
 - (void)playVoiceWithModel:(LWChatModel *)model withCell:(UUMessageCell *)cell{
     
     if ([self.chatModel.sid isEqualToString:model.sid] && _mm_player.isPlaying) //相同的取消在播放不播放
@@ -58,13 +116,11 @@
     model.voiceIsPlay = YES;
     //    NSString * saveFilePath = Account.videoFolder;
     
-    NSData *data = [self voicData]; //判断如果本地有了 就直接播放
+    NSData *data = [self voicData:[self fileName1]]; //判断如果本地有了 就直接播放
     if (data) {
         [self playWav:data];
         return;
     }
-    
-    
     /*
      ||
      || 下载
@@ -74,25 +130,36 @@
     
     NSString *url = model.content;
     
-    [LCDownloadManager downloadFileWithURLString:url cachePath:[NSString stringWithFormat:@"%@%@",[CODataCacheManager shareInstance].userModel.sessionId,self.chatModel.sid] progress:^(CGFloat progress, CGFloat totalMBRead, CGFloat totalMBExpectedToRead) {
+    [self downloadFileWithUrl:url theModelSid:self.chatModel.sid thePlayType:1];
+    
+}
+
+- (void)downloadFileWithUrl:(NSString *)url theModelSid:(NSString *)sid thePlayType:(NSInteger)type{
+
+    
+    [LCDownloadManager downloadFileWithURLString:url cachePath:[NSString stringWithFormat:@"%@%@",[CODataCacheManager shareInstance].userModel.sessionId,sid] progress:^(CGFloat progress, CGFloat totalMBRead, CGFloat totalMBExpectedToRead) {
         
         NSLog(@"Task1 -> progress: %.2f -> download: %fMB -> all: %fMB", progress, totalMBRead, totalMBExpectedToRead);
         
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSLog(@"Task1 -> Download finish");
-        NSData *data = [self voicData];
-        [self playWav:data];
+        if (type == 1) {
+            NSData *data = [self voicData:[self fileName1]];
+            [self playWav:data];
+        }else if (type == 2){
+            NSData *data = [self voicData:[self fileName2]];
+            [self playWav:data];
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         if (error.code == -999) NSLog(@"Task1 -> Maybe you pause download.");
         [self.starCell.btnContent stopPlay];
-        
+        [self.voiceView stopPlay];
     }];
-    
-    //    [WHCDownloadCenter startDownloadWithURL:[NSURL URLWithString:url] savePath:saveFilePath savefileName:[NSString stringWithFormat:@"%@%@",[CODataCacheManager shareInstance].userModel.sessionId,self.chatModel.sid] delegate:self];
-    
+
 }
+
 
 - (NSString *)fileName1
 {
@@ -100,11 +167,11 @@
 }
 - (NSString *)fileName2
 {
-    return [NSString stringWithFormat:@"%@%@",[CODataCacheManager shareInstance].userModel.sessionId,self.chatModel.sid];
+    return [NSString stringWithFormat:@"%@%@",[CODataCacheManager shareInstance].userModel.sessionId,self.model.sid];
 }
-- (NSData *)voicData
+- (NSData *)voicData:(NSString *)fileNmae
 {
-    NSString *videoDir = [NSString stringWithFormat:@"%@/%@",[self downloadPath],[self fileName1]];
+    NSString *videoDir = [NSString stringWithFormat:@"%@/%@",[self downloadPath],fileNmae];
     
     NSData *data = [NSData dataWithContentsOfFile:videoDir];
     
@@ -123,7 +190,9 @@
 
 -(void)playWav:(NSData*)wavdata
 {
+    [self.voiceView didLoadVoice];
     [self.starCell.btnContent didLoadVoice];
+
     if (wavdata.length>0)
     {
         _mm_player = nil;
@@ -163,12 +232,16 @@
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
 {
     self.chatModel.voiceIsPlay = NO;
+    self.model.voiceIsPlay = NO;
     [self.starCell.btnContent stopPlay];
+    [self.voiceView stopPlay];
 }
 - (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer *)player error:(NSError * __nullable)error
 {
     self.chatModel.voiceIsPlay = NO;
+    self.model.voiceIsPlay = NO;
     [self.starCell.btnContent stopPlay];
+    [self.voiceView stopPlay];
 }
 
 @end

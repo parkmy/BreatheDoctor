@@ -132,4 +132,33 @@
     
 }
 
++ (void)httpUpLoadData:(NSData *)data
+              withType:(NSInteger)type
+           withVocMain:(NSInteger )count
+               success:(void (^)(NSDictionary *dic))success
+               failure:(void (^)(NSString * errorMes))failure{
+    
+    [LWHttpRequestManager httpUpLoadData:data WithType:type success:^(NSDictionary *dic) {
+        success?success(dic):nil;
+    } failure:^(NSString *errorMes) {
+        [LWProgressHUD showALAlertBannerWithView:nil Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+    }];
+    
+}
++ (NSString *)getUploadSuccessString:(NSDictionary *)dic{
+    NSArray *body = dic[@"body"];
+    if (body.count <= 0) {
+        return @"";
+    }
+    
+    NSDictionary *dicDic = body[0];
+    NSString *key = dicDic[@"key"];
+    NSString *url = dicDic[@"url"];
+    NSString *content =[NSString stringWithFormat:@"%@/%@",url,key];
+    
+    content = [content stringByReplacingOccurrencesOfString:@" " withString:@""];
+    [content stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+    
+    return content;
+}
 @end

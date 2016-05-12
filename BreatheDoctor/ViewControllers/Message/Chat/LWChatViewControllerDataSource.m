@@ -11,6 +11,7 @@
 #import "LWChatModel.h"
 #import "UUMessageCell.h"
 #import "UUMessageFrame.h"
+#import "LWChatMessageInputBar.h"
 
 @interface LWChatViewControllerDataSource ()<UUMessageCellDelegate>
 
@@ -53,12 +54,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    LWChatModel *model = self.dataSource[indexPath.row];
-//    
-//
-//    WSChatBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellReuseID(model) forIndexPath:indexPath];
-//    
-//    [cell setModel:model];
+
     UUMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UUMessageCell" forIndexPath:indexPath];
 //    cell.backgroundColor = RGBA(arc4random_uniform(245), arc4random_uniform(222), arc4random_uniform(111), 1);
     cell.delegate = self;
@@ -68,11 +64,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.vc.view endEditing:YES];
     
+    if (self.vc.inputBar.mInputTextView.isFirstResponder) {
+        [self.vc.view endEditing:YES];
+        return;
+    }
     UUMessageFrame *modelFram = self.dataSource[indexPath.row];
 
     if (_delegate && [_delegate respondsToSelector:@selector(didSelectRowAtIndexPath:)]) {
+        
         [_delegate didSelectRowAtIndexPath:modelFram.model];
     }
     

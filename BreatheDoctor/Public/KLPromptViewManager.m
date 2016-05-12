@@ -165,7 +165,7 @@
 - (void)kl_showPromptViewWithTitle:(NSString *)title
                      theContent:(NSString *)content{
     
-    [self.promptView setTtileText:title];
+    [self.promptView setTtileText:title.length>0?title:@"温馨提示"];
     [self.promptView setContentText:content];
     [self.window addSubview:self.promptView];
     [self show];

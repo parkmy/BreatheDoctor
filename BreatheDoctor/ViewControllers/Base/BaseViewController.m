@@ -129,6 +129,13 @@
 
 -(void)addRightButton:(NSString*)rightImg
 {
+    if (rightImg.length <= 0) {
+        
+        [self.navRightButton removeFromSuperview];
+        self.navRightButton = nil;
+        return;
+    }
+    
     if ([rightImg containsaString:@"png"]) {
         [self.navRightButton setImage:[UIImage imageNamed:rightImg] forState:UIControlStateNormal];
     }else

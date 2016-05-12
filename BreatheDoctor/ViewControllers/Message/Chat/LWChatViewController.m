@@ -30,6 +30,11 @@
 #import "LWHistoricalRecordVC.h"
 #import "PushMgrInfo.h"
 #import "KLPatientListModel.h"
+#import "KLImagePickerManager.h"
+#import "LWUpLoadingManager.h"
+#import "KLGoodsViewController.h"
+#import "KLGoodsDetailedViewController.h"
+#import "KLIndicatorViewManager.h"
 
 #define kBkColorTableView    ([UIColor colorWithRed:0.773 green:0.855 blue:0.824 alpha:1])
 
@@ -49,8 +54,6 @@ typedef NS_ENUM(NSInteger , SenderType) {
 @property (nonatomic, strong) NSMutableArray *DataSource;
 
 @property (nonatomic, strong) UITableView *tableView;
-
-@property (nonatomic, strong) LWChatMessageInputBar *inputBar;
 
 @property (nonatomic, assign) RefreshType refreshType;
 
@@ -152,10 +155,8 @@ typedef NS_ENUM(NSInteger , SenderType) {
 }
 - (void)appNotificationss:(NSNotification *)sender
 {
-    if ([LWPublicDataManager shareInstance].currentPatientID ) {
-        self.refreshType = RefreshTypeNew;
-        [self loadHttpChatList];
-    }
+    self.refreshType = RefreshTypeNew;
+    [self loadHttpChatList];
 }
 
 #pragma mark - init
@@ -329,6 +330,12 @@ typedef NS_ENUM(NSInteger , SenderType) {
             [self senderJsAliYunType:21 WithDic:nil withContent:nil withVocMain:0];
 
             break;
+        case EventChatCellTypeSenderGoods:
+        {
+            KLGoodsDetailedViewController *vc = [[KLGoodsDetailedViewController alloc] initWithGoodsId:model.productId theFootButtonHidden:YES];
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+            break;
         default:
             break;
     }
@@ -466,7 +473,11 @@ typedef NS_ENUM(NSInteger , SenderType) {
         }else if (model.chatCellType == WSChatCellType_Text)
         {
             message = model.content;
-        }else
+        }else if (model.chatCellType == WSChatCellType_Goods)
+        {
+            message = @"商品";
+        }
+        else
         {
             message = model.msgContent;
         }
@@ -509,113 +520,6 @@ typedef NS_ENUM(NSInteger , SenderType) {
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-#pragma mark-------------------相册
--(void)pictureBtnAction
-{
-    
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
-    {
-        UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-//        [controls.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-//        [controls.navigationBar  setShadowImage:[UIImage new]];
-        picker.edgesForExtendedLayout = UIRectEdgeNone;
-
-        picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        picker.delegate = self;
-          
-        [self.navigationController presentViewController:picker animated:YES completion:^
-         {
-             [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-
-         }];
-    }
-    
-}
-#pragma mark------------------拍照
--(void)cameraBtnAction
-{
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-    {
-        
-        UIImagePickerController *controls = [[UIImagePickerController alloc]init];
-        controls.sourceType = UIImagePickerControllerSourceTypeCamera;
-        controls.delegate = self;
-        
-        [self.navigationController presentViewController:controls animated:YES completion:^{
-            
-        }];
-    }
-    else
-    {
-//        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:@"很抱歉，您的设备不支持摄像头"];
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"很抱歉，您的设备不支持摄像头,是否设置？" delegate:self cancelButtonTitle:@"是" otherButtonTitles:@"否", nil];
-        [alert show];
-        
-    }
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if(buttonIndex == 0)
-    {
-        NSURL *url = [NSURL URLWithString:@"prefs:root=General"];
-        if ([[UIApplication sharedApplication] canOpenURL:url])
-        {
-            [[UIApplication sharedApplication] openURL:url];
-        }
-    }
-}
-
-//相册、拍照取消
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [picker dismissViewControllerAnimated:NO completion:
-     ^{
-         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-
-     }];
-}
-
-//图片缩放
-- (UIImage *)resetSizeOfImage:(UIImage*)source_image
-{
-    CGSize newSize;
-    newSize = CGSizeMake(source_image.size.width, source_image.size.height);
-    if (source_image.size.width>960) {
-        newSize = CGSizeMake(source_image.size.width*0.5, source_image.size.height*0.5);
-    }
-    UIGraphicsBeginImageContext(newSize);
-    [source_image drawInRect : CGRectMake(0, 0, newSize.width, newSize.height)];
-    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newImage;
-}
-- (void)navigationController:(UINavigationController *)navigationController
-      willShowViewController:(UIViewController *)viewController
-                    animated:(BOOL)animated
-{
-    if ([navigationController isKindOfClass:[UIImagePickerController class]])
-    {
-        viewController.navigationController.navigationBar.translucent = NO;
-        viewController.edgesForExtendedLayout = UIRectEdgeNone;
-    }
-}
-//图片转换数据data上传
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
-{
-    [picker dismissViewControllerAnimated:NO completion:
-     ^{
-         [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-
-         UIImage *scale_image=[self resetSizeOfImage:image];
-         NSData *imageData=nil;
-         imageData = UIImageJPEGRepresentation(scale_image, 0.5);
-
-         [self httpUpLoadData:imageData withType:2 withVocMain:0];
-
-     }];
 }
 
 #pragma mark - void
@@ -703,25 +607,9 @@ typedef NS_ENUM(NSInteger , SenderType) {
     }
     else
     {
-        NSArray *body = dic[@"body"];
-        if (body.count <= 0) {
-            return;
-        }
-        if (type == 2) { //图片
-            
-        }else //语音
-        {
-            
-        }
-        NSDictionary *dicDic = body[0];
-        NSString *key = dicDic[@"key"];
-        NSString *url = dicDic[@"url"];
-        content =[NSString stringWithFormat:@"%@/%@",url,key];
-        
-        content = [content stringByReplacingOccurrencesOfString:@" " withString:@""];
-        [content stringByReplacingOccurrencesOfString:@"\\" withString:@""];
+        content = [LWUpLoadingManager getUploadSuccessString:dic];
     }
-    [LWHttpRequestManager httpDoctorReply:self.patient.memberId content:content contentType:type voiceMin:vocMain success:^(LWSenderResBaseModel *senderResBaseModel) {
+    [LWHttpRequestManager httpDoctorReply:self.patient.memberId content:content contentType:type voiceMin:vocMain foreignId:nil success:^(LWSenderResBaseModel *senderResBaseModel) {
   
         [self addSenderModel:senderResBaseModel];
     } failure:^(NSString *errorMes) {
@@ -732,7 +620,6 @@ typedef NS_ENUM(NSInteger , SenderType) {
 - (void)httpUpLoadData:(NSData *)data withType:(NSInteger)type withVocMain:(NSInteger )count
 {
     [LWHttpRequestManager httpUpLoadData:data WithType:type success:^(NSDictionary *dic) {
-        [self senderJsAliYunType:type WithDic:dic withContent:nil withVocMain:count];
     } failure:^(NSString *errorMes) {
         [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
@@ -741,33 +628,46 @@ typedef NS_ENUM(NSInteger , SenderType) {
 
 #pragma mark -LWChatMessageInputBarDelegate
 
+- (void)uploadData:(NSData *)data
+           theType:(NSInteger)type
+             count:(NSInteger)count{
+WEAKSELF
+    [LWUpLoadingManager httpUpLoadData:data withType:type withVocMain:count success:^(NSDictionary *dic) {
+        [KL_weakSelf senderJsAliYunType:type WithDic:dic withContent:nil withVocMain:count];
 
+    } failure:nil];
+}
 - (void)voicEndRecord:(NSData *)voiceData count:(NSInteger)cout
 {
-    [self httpUpLoadData:voiceData withType:3 withVocMain:cout];
+    [self uploadData:voiceData theType:3 count:cout];
 }
-
 - (void)moreButtonEventClick:(NSInteger)tag
 {
+    WEAKSELF
     switch (tag) {
         case 0: //照片
         {
-            [self pictureBtnAction];
+            [[KLImagePickerManager shareInstance] photoLibraryTheNav:self.navigationController succBlock:^(NSData *imageData) {
+                
+                [KL_weakSelf uploadData:imageData theType:2 count:0];
+            }];
         }
             break;
         case 1://相机
         {
-            [self cameraBtnAction];
+            [[KLImagePickerManager shareInstance] cameraTheNav:self.navigationController succBlock:^(NSData *imageData) {
+                
+                [KL_weakSelf uploadData:imageData theType:2 count:0];
+            }];
         }
             break;
         case 2://快捷回复
         {
-            __weak typeof(self)weakSelf = self;
             
             FastReplyVC *vc = (FastReplyVC *)[UIViewController CreateControllerWithTag:CtrlTag_FastReply];
             [vc setChooseFastRepBlock:^(NSString *content) {
-                [weakSelf.inputBar fastReplyContent:content];
                 
+                [KL_weakSelf.inputBar fastReplyContent:content];
             }];
             [self.navigationController pushViewController:vc animated:YES];
             
@@ -786,11 +686,43 @@ typedef NS_ENUM(NSInteger , SenderType) {
             [MobClick event:@"TheForm" label:@"表单按钮的点击量"];
         }
             break;
+        case 4:
+        {
+            KLGoodsViewController *vc = [KLGoodsViewController new];
+            [self.navigationController pushViewController:vc animated:YES];
+            
+            /**
+             *  发送商品给患者
+             */
+            [[vc rac_signalForSelector:@selector(senderGoods:theSenderVc:)] subscribeNext:^(id x) {
+                RACTuple *Tuple = x;
+                NSLog(@"%@",Tuple.first);
+
+                UIViewController *senderVc = Tuple.second;
+                
+                [[KLIndicatorViewManager standardIndicatorViewManager] showLoadingWithContent:@"正在发送" theView:senderVc.view];
+                [LWHttpRequestManager httpDoctorReply:self.patient.memberId content:@"" contentType:13 voiceMin:0 foreignId:Tuple.first success:^(LWSenderResBaseModel *senderResBaseModel) {
+                    
+                    [[KLIndicatorViewManager standardIndicatorViewManager] showErrorWith:@"发送成功" theView:senderVc.view theImage:nil showSucc:^{
+                        
+                        [MobClick event:@"goodssender" label:@"商品发送"];
+                        [weakSelf appNotificationss:nil];
+                        [weakSelf.navigationController popToViewController:weakSelf animated:YES];
+                    }];
+                } failure:^(NSString *errorMes) {
+                    
+                    [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:errorMes];
+                }];
+
+            }];
+            
+        }
+            break;
         default:
             break;
     }
-
 }
+
 #pragma mark - Private methods
 
 - (void)showImage :(UUMessageCell *)cell{
@@ -824,29 +756,8 @@ typedef NS_ENUM(NSInteger , SenderType) {
             break;
         case WSChatMessageType_PEFRecord: //PEF记录通知
         {
-//            
             LWHistoricalRecordVC *patientLog = (LWHistoricalRecordVC *)[UIViewController CreateControllerWithTag:CtrlTag_PatientLog];
             patientLog.pid = self.patient.memberId;
-//            //初始化时间建区
-//            patientLog.refDateDic = [LWTool patientPEFDateLineSx:model.insertDt];
-//            //初始化展示数据模型
-//            LWPEFRecordList *record = [[LWPEFRecordList alloc] init];
-//            record.recordDt = model.recordDt;
-//            record.pefValue = model.pEFValue;
-//            record.pharmacyControl = model.pharmacyControl;
-//            record.symptomChestdistress = model.symptomChestdistress;
-//            record.symptomDyspnea = model.symptomDyspnea;
-//            record.symptomCough = model.symptomCough;
-//            record.pharmacyControl = model.pharmacyControl;
-//            record.remark = model.remark;
-//            record.symptomNightWoke = model.symptomNightWoke;
-//            record.symptomGood = model.symptomGood;
-//            
-//            patientLog.record = record;
-//            
-//            patientLog.patientId = self.patient.memberId;
-//            patientLog.patientName = self.patient.patientName;
-//            patientLog.intDate = model.insertDt;
             [self.navigationController pushViewController:patientLog animated:YES];
         }
             break;
@@ -865,6 +776,12 @@ typedef NS_ENUM(NSInteger , SenderType) {
             vc.isDispose = model.isDispose;
             [self.navigationController pushViewController:vc animated:YES];
         
+        }
+            break;
+        case WSChatMessageType_goods:
+        {
+            KLGoodsDetailedViewController *vc = [[KLGoodsDetailedViewController alloc] initWithGoodsId:model.productId theFootButtonHidden:YES];
+            [self.navigationController pushViewController:vc animated:YES];
         }
             break;
         default:

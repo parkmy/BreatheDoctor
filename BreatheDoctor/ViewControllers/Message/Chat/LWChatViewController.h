@@ -7,10 +7,14 @@
 // 对话界面
 
 #import "BaseViewController.h"
+@class LWChatMessageInputBar;
 /**
  *  @brief  聊天窗口
  */
 @interface LWChatViewController : BaseViewController
+
+@property (nonatomic, strong) LWChatMessageInputBar *inputBar;
+
 
 @property (nonatomic, strong) LWMainRows *patient;
 @property (nonatomic, copy) void(^backBlock)(NSString *date,NSString *content);

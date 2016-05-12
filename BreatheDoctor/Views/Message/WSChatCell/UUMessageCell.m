@@ -138,7 +138,7 @@
     headImageBackView.hidden = YES;
     self.agreedView.hidden = YES;
     chatConventionCardView.hidden = YES;
-
+    self.btnContent.goodsView.hidden = YES;
     // 1、设置时间
     self.labelTime.text = model.insertDt;
     self.labelTime.frame = messageFrame.timeF;
@@ -182,6 +182,11 @@
                                                  [UIImage imageNamed:@"jiankangzixun_62-07.png"],
                                                  [UIImage imageNamed:@"jiankangzixun_62-06.png"],
                                                  nil];
+        if(model.chatCellType == WSChatCellType_Goods){
+            
+            normal = [UIImage imageNamed:@"goods_chat_bg.png"];
+            normal = [normal resizableImageWithCapInsets:UIEdgeInsetsMake(18, 13, 16, 20)];
+        }
     }
     else{//yuyin-2_22@2x
         normal = [UIImage imageNamed:@"yuyin-2_22"];
@@ -193,9 +198,11 @@
                                                  [UIImage imageNamed:@"jiankangzixun_62-11.png"],
                                                  nil];
     }
+
     [self.btnContent setBackgroundImage:normal forState:UIControlStateNormal];
     [self.btnContent setBackgroundImage:normal forState:UIControlStateHighlighted];
     
+
     
 //    self.chatLoadingView.hidden = NO;
     
@@ -258,9 +265,21 @@
             self.agreedView.hidden = NO;
         }
             break;
+        case WSChatCellType_Goods:
+        {
+            self.btnContent.goodsView.hidden = NO;
+            self.agreedView.hidden = YES;
+            self.btnContent.hidden = NO;
+            self.btnHeadImage.hidden = NO;
+            headImageBackView.hidden = NO;
+            self.btnContent.goodsView.frame = CGRectMake(0, 0, self.btnContent.frame.size.width, self.btnContent.frame.size.height);
+            self.btnContent.goodsView.model = model;
+        }
+            break;
         default:
             break;
     }
+//    goods_chat_bg@2x
 }
 
 - (void)makeMaskView:(UIView *)view withImage:(UIImage *)image
@@ -287,7 +306,12 @@
         UIMenuController *menu = [UIMenuController sharedMenuController];
         [menu setTargetRect:self.btnContent.frame inView:self.btnContent.superview];
         [menu setMenuVisible:YES animated:YES];
+    }else if (self.messageFrame.model.chatCellType == WSChatCellType_Goods)
+    {
+        [self routerEventWithType:EventChatCellTypeSenderGoods userInfo:@{kModelKey:self.messageFrame.model,@"self":self}];
+
     }
+    
 }
 
 @end

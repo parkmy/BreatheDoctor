@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) id model;
 @property (nonatomic, assign) LISTTYPE type;
+
+- (void)seteditorIconSele:(BOOL)isSele;
 @end

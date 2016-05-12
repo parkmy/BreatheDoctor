@@ -8,11 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+@class KLGroupSenderChatModel;
+
+
+@interface KLVoiceTypeView : UIView
+
+@property (nonatomic, strong) UILabel *voiceCountLabel;
+@property (nonatomic, strong) UIButton *bgView;
+@property (nonatomic, strong) UIImageView *animationView;
+@property (nonatomic, strong) UIActivityIndicatorView *indicator;
+- (void)benginLoadVoice;
+- (void)didLoadVoice;
+- (void)stopPlay;
+@end
+
 @interface KLGroupSenderContentView : UIView
 
-@property (nonatomic, strong) UILabel   *textTypeLabelView;
-@property (nonatomic, strong) UIView    *voiceTypeView;
-@property (nonatomic, strong) UIView    *imageTypeView;
-@property (nonatomic, strong) UIView    *goodsTypeView;
+@property (nonatomic, strong) KLGroupSenderChatModel *model;
+
+- (void)tapGoodsTheGoodsID:(NSString *)goodsId;
+- (void)voiceTapEvent:(KLGroupSenderChatModel *)model thePlayView:(id)view;
 
 @end

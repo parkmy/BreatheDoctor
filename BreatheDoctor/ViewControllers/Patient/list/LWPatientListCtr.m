@@ -23,6 +23,7 @@
 #import "LWCustomMenu.h"
 #import "LWTool.h"
 #import "KLGroupSenderViewCtr.h"
+#import "KLGroupSenderPatientListModel.h"
 
 @interface LWPatientListCtr ()<UISearchBarDelegate,LWCustomMenuDelegate>
 
@@ -35,7 +36,6 @@
 @property (nonatomic, strong) UIButton         *pullBtn;
 @property (nonatomic, strong) LWCustomMenu     *pullDownView;
 
-
 @property (nonatomic, strong) NSMutableArray      *patients;
 
 @property (nonatomic, copy)   NSString            *refreshTime;
@@ -47,6 +47,8 @@
 @property (nonatomic, strong) UIButton            *footNextButton;
 
 @property (nonatomic, strong) NSMutableArray      *editorArray;
+
+@property (nonatomic, strong) UILabel             *notPatientLabel;
 
 @end
 
@@ -84,10 +86,11 @@
     [self httploadPatientList];
     
     [self registeredNotificationCenter];
-
+    
     [self setBlock];
 }
 - (void)registeredNotificationCenter{
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appLoginSucc:) name:APP_LOGIN_SUCC object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotification:) name:APP_ADDPATIENT_SUCC object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotification:) name:APP_UPDATEPATIENT_SUCC object:nil];
@@ -110,6 +113,7 @@
 }
 - (void)initSubViews
 {
+    
     self.showGroupingType = ShowGroupingTypeAll;
     self.isShowPullDowView  = NO;
     
@@ -126,7 +130,7 @@
     }else
     {
         [self.view addSubview:self.footNextButton];
-
+        
         self.footNextButton.sd_layout
         .leftSpaceToView(self.view,10)
         .rightSpaceToView(self.view,10)
@@ -140,8 +144,20 @@
         .bottomSpaceToView(self.footNextButton,10);
     }
     
+    _notPatientLabel = [UILabel new];
+    _notPatientLabel.textAlignment = 1;
+    _notPatientLabel.textColor = [UIColor colorWithHexString:@"#999999"];
+    _notPatientLabel.font = kNSPXFONT(30);
+    _notPatientLabel.text = @"无结果";
+    [self.view addSubview:_notPatientLabel];
     
-
+    _notPatientLabel.sd_layout
+    .widthIs(100)
+    .heightIs(20)
+    .centerYEqualToView(self.view)
+    .centerXEqualToView(self.view);
+    
+    _notPatientLabel.hidden = YES;
 }
 
 - (void)setNavControl
@@ -152,8 +168,9 @@
         [super addRightButton:@"添加患者"];
     }else{
         [super addBackButton:@"nav_btnBack"];
+        [super addRightButton:@"全选"];
     }
-
+    
     _pullImg = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width-13)/2+30,19.5,13, 7)];
     _pullImg.image = [UIImage imageNamed:@"V-1_.png"];
     [super.navBar addSubview:_pullImg];
@@ -167,7 +184,7 @@
 }
 #pragma mark -void
 - (void)pushPatientCenter:(KLPatientListModel *)model theIndex:(NSIndexPath *)index{
-
+    
     WEAKSELF
     LWPatientCententCtr *patientCentent = (LWPatientCententCtr *)[UIViewController CreateControllerWithTag:CtrlTag_PatientCenter];
     patientCentent.patient = model;
@@ -176,6 +193,7 @@
     NSIndexPath *seleIndexPath = index;
     //返回的时候刷新这行
     [patientCentent setBackBlock:^{
+        
         [KL_weakSelf loadCacheMes];
         if (index.row > 0) {
             [NSIndexPath indexPathForRow:seleIndexPath.row-1 inSection:seleIndexPath.section];
@@ -200,25 +218,33 @@
     WEAKSELF
     [self.patientDataSource setDidSelectTableCellBlock:^(NSIndexPath *index, KLPatientListModel *model) {
         if (KL_weakSelf.listType == LISTTYPEDEFT) {
+            
+            [MobClick event:@"patientCenter" label:@"患者个人中心按钮的点击量"];
             [KL_weakSelf pushPatientCenter:model theIndex:index];
         }else{
+            
             model.isSele = !model.isSele;
             if (model.isSele) {
                 [KL_weakSelf.editorArray addObject:model];
             }else{
                 [KL_weakSelf.editorArray removeObject:model];
             }
-            [KL_weakSelf.tableView reloadRowsAtIndexPaths:@[index] withRowAnimation:UITableViewRowAnimationNone];
+            
+            KLPatientLisetCell *cell = [KL_weakSelf.tableView cellForRowAtIndexPath:index];
+            [cell seteditorIconSele:model.isSele];
+            
             [KL_weakSelf changeFootNetxButton];
         }
     }];
-    
 }
+
+
 - (void)showGroupClick
 {
     if(self.patientDataSource.isSearch)return;
     self.isShowPullDowView = !self.isShowPullDowView;
     if (self.isShowPullDowView) {
+        
         [self pullDownViewShowOrHide];
     }else
     {
@@ -231,15 +257,90 @@
         [self hiddenPullView];
         return;
     }
-    [self showAddPatinentView];
+    /**
+     *   全选或者添加患者
+     */
+    if (self.listType == LISTTYPEDEFT) {
+     
+        [self showAddPatinentView];
+    }else{
+        
+//        [self.editorArray removeAllObjects];
+//        [self.editorArray ];
+        
+        [self arrayWithMemberIsOnly:[self patientListDidSele]];
+        
+        [self.tableView reloadData];
+        [self changeFootNetxButton];
+    }
+}
+- (NSMutableArray *)patientListDidSele{
+    
+    
+    NSMutableArray *patientSeleArray = [NSMutableArray array];
+    
+    WEAKSELF
+    [self.patientDataSource.keys enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+       
+        NSString *key = KL_weakSelf.patientDataSource.keys[idx];
+        NSMutableArray *arr = (NSMutableArray *)[KL_weakSelf.patientDataSource.patientDics objectForKey:key];
+        
+        [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            KLPatientListModel *model = obj;
+            [patientSeleArray addObject:model];
+            if (!model.isSele) {
+                model.isSele = YES;
+            }
+        }];
+    }];
+    
+    return patientSeleArray;
+}
+- (void)arrayWithMemberIsOnly:(NSArray *)array
+{
+    for (unsigned i = 0; i < [array count]; i++)
+    {
+        @autoreleasepool
+        {
+            if (![self.editorArray containsObject:[array objectAtIndex:i]]) {
+                
+                [self.editorArray addObject:[array objectAtIndex:i]];
+            }
+        }
+    }
 }
 - (void)navLeftButtonAction{
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)nextButtonClick:(UIButton *)sender{
     
-    KLGroupSenderViewCtr *vc = [[KLGroupSenderViewCtr alloc] initWithGroupSenderArray:self.editorArray];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (self.listType == LISTTYPEGROUPAGAINSENDER) {
+        
+        [self againSenderEdtiorSuccModel:[KLGroupSenderPatientListModel listVcGroupSenderPatientLisetModelWithList:self.editorArray]];
+    }else{
+        
+        KLGroupSenderViewCtr *vc = [[KLGroupSenderViewCtr alloc] initWithGroupSenderPatientListModel:[KLGroupSenderPatientListModel listVcGroupSenderPatientLisetModelWithList:self.editorArray]];
+        vc.pushType = PUSHTYPELIST;
+        [self.navigationController pushViewController:vc animated:YES];
+        WEAKSELF
+        [[vc rac_signalForSelector:@selector(guoupSenderSuccess)] subscribeNext:^(id x) {
+            
+            [KL_weakSelf patientListGuoupSenderSuccess];
+        }];
+    }
+}
+/**
+ *  群发成功
+ */
+- (void)patientListGuoupSenderSuccess{
+    
+}
+/**
+ *  再次发送成功
+*/
+- (void)againSenderEdtiorSuccModel:(KLGroupSenderPatientListModel *)model{
+
 }
 #pragma mark - init
 - (UITableView *)tableView{
@@ -292,7 +393,7 @@
     return _searchBar;
 }
 - (UIButton *)footNextButton{
-
+    
     if (!_footNextButton) {
         _footNextButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _footNextButton.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
@@ -308,7 +409,7 @@
 {
     WEAKSELF
     if (!self.pullDownView) {
-
+        
         _pullDownView.delegate = self;
         
         self.pullDownView = [[LWCustomMenu alloc] initWithDataArr:[LWTool forGrouping:self.patients] origin:CGPointMake(0, 0) width:125 rowHeight:44];
@@ -363,17 +464,40 @@
 {
     WEAKSELF
     [KLPatientOperation loadCachePatientListSucc:^(NSMutableArray *dataArray, NSString *refTimer) {
+        
         [KL_weakSelf.patients removeAllObjects];
         [KL_weakSelf.patients addObjectsFromArray:dataArray];
-        KL_weakSelf.refreshTime = refTimer;
+         KL_weakSelf.refreshTime = refTimer;
+        /**
+         *  如果是再次发送的编辑进行遍历
+         */
+        [KL_weakSelf traversePushType];
         
         [KL_weakSelf loadData];
     }];
     
 }
+- (void)traversePushType{
+    
+    if (self.listType == LISTTYPEGROUPAGAINSENDER) {
+        
+        for (NSString *patientID in [self.ListModel patientIds]) {
+            
+            for (KLPatientListModel *model in self.patients) {
+                
+                if ([model.patientId isEqualToString:patientID]) {
+                    
+                    model.isSele = YES;
+                    [self.editorArray addObject:model];
+                }
+            }
+        }
+        [self changeFootNetxButton];
+    }
+}
 #pragma mark -刷新数据
 - (void)loadData{
-
+    
     WEAKSELF
     [KLPatientOperation patientsInfoShowGroupingType:self.showGroupingType theDataArray:self.patients theSucc:^(NSMutableArray *patients, NSMutableDictionary *listDic, NSArray *keys) {
         
@@ -382,6 +506,7 @@
         
         KL_weakSelf.patientDataSource.keys = nil;
         KL_weakSelf.patientDataSource.keys = keys;
+        
         
         [KL_weakSelf.tableView reloadData];
         
@@ -398,7 +523,7 @@
             KL_weakSelf.tableView.hidden = NO;
         }
     }];
-
+    
 }
 #pragma mark -加载网络新数据
 - (void)httploadPatientList
@@ -439,24 +564,30 @@
 #pragma mark -UISearchBarDelegate
 - (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar
 {
-    [self isSearchShow];
     self.patientDataSource.searchBar.showsCancelButton = YES;
     return YES;
 }
 
 - (BOOL)searchBarShouldEndEditing:(UISearchBar *)searchBar
 {
-    [self isSearchShow];
     self.searchBar.showsCancelButton = NO;
     return YES;
 }
 - (void)isSearchShow
 {
+    if (!self.searchBar.showsCancelButton) {
+        self.patientDataSource.isSearch = YES;
+    }
     if (self.patientDataSource.searchArray.count <= 0) {
-        self.patientDataSource.isSearch = NO;
+        
+//        self.tableView.hidden = YES;
+        self.notPatientLabel.hidden = NO;
+        
     }else
     {
-        self.patientDataSource.isSearch = YES;
+//        self.tableView.hidden = NO;
+        self.notPatientLabel.hidden = YES;
+
     }
 }
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
@@ -465,6 +596,7 @@
 }
 - (void)searchDissmiss
 {
+    self.notPatientLabel.hidden = YES;
     [self.patientDataSource.searchArray removeAllObjects];
     self.patientDataSource.isSearch = NO;
     self.searchBar.text = @"";
@@ -475,6 +607,15 @@
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
+    if (searchText.length <= 0) {
+        
+        self.patientDataSource.isSearch = NO;
+        self.notPatientLabel.hidden = YES;
+        [self.tableView reloadData];
+        return;
+    }
+    self.patientDataSource.isSearch = YES;
+
     [self.patientDataSource.searchArray removeAllObjects];
     for (KLPatientListModel *pat in self.patients) {
         NSString *patientNmae = [NSString stringWithFormat:@"%@(%@)",pat.patientName,pat.remark];

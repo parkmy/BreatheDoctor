@@ -66,6 +66,9 @@
         case WSChatCellType_Agreed:
             
             break;
+        case WSChatCellType_Goods:
+            contentSize = CGSizeMake(screenW-28-ChatIconWH-ChatMargin*2, (152/2)*MULTIPLEVIEW);
+            break;
         default:
             break;
     }
@@ -91,6 +94,9 @@
     {
         _cellHeight = 75;
         _contentF = CGRectZero;
+    }else if (model.chatCellType == WSChatCellType_Goods){
+        _contentF = CGRectMake(28, contentY, contentSize.width, contentSize.height);
+        _cellHeight = MAX(CGRectGetMaxY(_contentF), CGRectGetMaxY(_nameF))  + ChatMargin;
     }
 }
 

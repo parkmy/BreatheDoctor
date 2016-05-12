@@ -84,11 +84,18 @@
         self.symptomNightWoke = row.dataStruct.symptomNightWoke;
         self.symptomGood = row.dataStruct.symptomGood;
         
+
+        self.productName = row.dataStruct.productName;
+        self.tags = row.dataStruct.tags;
+        self.imageUrl = row.dataStruct.imageUrl;
+        self.productId = row.dataStruct.productId;
+        
         [self changeTheDateString:self.insertDt];
         //        [self changRowhight];
     }
     return self;
 }
+
 //"08-10 晚上08:09:41.0" ->
 //"昨天 上午10:09"或者"2012-08-10 凌晨07:09"
 - (NSString *)changeTheDateString:(NSString *)Str

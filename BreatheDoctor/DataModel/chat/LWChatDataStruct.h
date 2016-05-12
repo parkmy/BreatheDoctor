@@ -32,6 +32,11 @@
 @property (nonatomic, assign) double symptomNightWoke;
 @property (nonatomic, assign) double symptomGood;
 
+@property (nonatomic, copy) NSString *productName;
+@property (nonatomic, copy) NSString *tags;
+@property (nonatomic, copy) NSString *imageUrl;
+@property (nonatomic, copy) NSString *productId;
+
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;

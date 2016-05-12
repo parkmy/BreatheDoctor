@@ -10,6 +10,7 @@
 #import "CDMacro.h"
 #import "CDCommontConvenient.h"
 #import "LWLoginManager.h"
+#import "NSString+Hash.h"
 
 @interface PersonalPassModifyVC ()
 
@@ -209,7 +210,7 @@
         alertStr=@"两次输入的密码不一致，请重新输入";
     }
 	
-    if (alertStr!=nil)
+    if (alertStr)
     {
 
         [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:alertStr ];
@@ -217,7 +218,7 @@
     }
     
     [LWProgressHUD displayProgressHUD:self.view.window displayText:@"请稍后..."];
-    [LWHttpRequestManager httpChangeThePasswordWitholdPwd:old_password.text newPwd:password1 success:^(NSDictionary *dic) {
+    [LWHttpRequestManager httpChangeThePasswordWitholdPwd:[old_password.text md5String] newPwd:[password1 md5String] success:^(NSDictionary *dic) {
         [LWProgressHUD closeProgressHUD:self.view.window];
         [[LWLoginManager shareInstance] exitLoginViewVc:self];
     } failure:^(NSString *errorMes) {

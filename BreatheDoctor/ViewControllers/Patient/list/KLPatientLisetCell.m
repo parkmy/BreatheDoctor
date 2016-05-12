@@ -13,7 +13,7 @@
 
 @interface KLPatientLisetCell ()
 
-@property (nonatomic, strong) UIImageView *editorIcon;
+@property (nonatomic, strong) UIButton *editorIcon;
 @property (nonatomic, strong) UIImageView *userIcon;
 @property (nonatomic, strong) UILabel     *userNameLabel;
 @property (nonatomic, strong) UILabel     *groupingLabel;
@@ -26,9 +26,17 @@
 
     if ([super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        _editorIcon = [UIImageView new];
-        [_editorIcon setImage:kImage(@"patienList_editor_nor.png")];
-        [_editorIcon setHighlightedImage:kImage(@"patienList_editor_sele.png")];
+//        self.selectionStyle = 0;
+        
+        //修改背景颜色
+        UIView *backgroundViews = [[UIView alloc]initWithFrame:self.contentView.frame];
+        backgroundViews.backgroundColor = [[UIColor colorWithHexString:@"#d4d4d4"] colorWithAlphaComponent:.7];
+        self.selectedBackgroundView = backgroundViews;
+        
+        _editorIcon = [UIButton buttonWithType:UIButtonTypeCustom];
+        _editorIcon.userInteractionEnabled = false;
+        [_editorIcon setImage:kImage(@"patienList_editor_nor.png") forState:UIControlStateNormal];
+        [_editorIcon setImage:kImage(@"patienList_editor_sele.png") forState:UIControlStateSelected];
         
         _userIcon   = [UIImageView new];
         _userIcon.image = kImage(@"yishengzhushousy_03.png");
@@ -47,8 +55,8 @@
         _editorIcon.sd_layout
         .leftSpaceToView(self,20)
         .centerYEqualToView(self)
-        .widthIs(_editorIcon.image.size.width)
-        .heightIs(_editorIcon.image.size.height);
+        .widthIs(_editorIcon.imageView.image.size.width)
+        .heightIs(_editorIcon.imageView.image.size.height);
         
         _userIcon.sd_layout
         .widthIs(37*MULTIPLEVIEW)
@@ -78,9 +86,14 @@
         _editorIcon.sd_layout.widthIs(0).leftSpaceToView(self,0);
     }else{
         _editorIcon.hidden = NO;
-        _editorIcon.sd_layout.widthIs(_editorIcon.image.size.width).leftSpaceToView(self,20);
+        _editorIcon.sd_layout.widthIs(_editorIcon.imageView.image.size.width).leftSpaceToView(self,20);
     }
 }
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+}
+
+
 - (void)setModel:(id)model{
 
     _model = model;
@@ -97,11 +110,16 @@
     }
     
     [LWTool atientControlLevel:listModel.controlLevel withLayoutConstraint:nil withLabel:self.groupingLabel];
-    if (_type == LISTTYPEGROUPSENDER) {
-        _editorIcon.highlighted = listModel.isSele;
+    
+    if (_type != LISTTYPEDEFT) {
+        _editorIcon.selected = listModel.isSele;
     }
 }
 
+- (void)seteditorIconSele:(BOOL)isSele{
+    
+    _editorIcon.selected = isSele;
+}
 
 
 

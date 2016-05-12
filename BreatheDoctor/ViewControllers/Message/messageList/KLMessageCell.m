@@ -50,11 +50,6 @@
         .bottomSpaceToView(self,11.5)
         .heightIs(20);
         
-        self.dateLabel.text = @"11:11";
-        self.messageLabel.text = @"小明我今天去吃饭了。。。";
-        self.userNameLabel.text = @"小星";
-        self.messageCountLabel.text = @"99";
-        
         [self.userIcon updateLayout];
     }
     return self;

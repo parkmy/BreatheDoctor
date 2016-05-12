@@ -87,7 +87,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [MobClick event:@"patientCenter" label:@"患者个人中心按钮的点击量"];
     KLPatientListModel *model;
     if (self.isSearch) {
         model = self.searchArray[indexPath.row];

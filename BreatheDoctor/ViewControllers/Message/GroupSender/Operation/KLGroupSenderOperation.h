@@ -19,4 +19,10 @@
 */
 + (NSAttributedString *)getGoodsPriceLabeString:(NSString *)string;
 
++ (NSMutableArray *)goodsImageUrlListWithList:(NSArray *)list;
+
++ (NSString *)priceFloatEqlistThePrice:(NSString *)price;
+
+
+
 @end

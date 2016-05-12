@@ -34,7 +34,7 @@
     
     CGSize textSize = [self.text sizeWithFont:[self font] constrainedToWidth:CGFLOAT_MAX];
     
-    NSLog(@"______textSize = %@ , ______rect = %@",NSStringFromCGSize(textSize),NSStringFromCGRect(rect));
+//    NSLog(@"______textSize = %@ , ______rect = %@",NSStringFromCGSize(textSize),NSStringFromCGRect(rect));
     
     CGFloat strikeWidth = textSize.width;
     

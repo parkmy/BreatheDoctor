@@ -21,6 +21,10 @@ typedef NS_ENUM(NSInteger, LISTTYPE) {
      *  群发列表
      */
     LISTTYPEGROUPSENDER,
+    /**
+     *  再次群发编辑
+     */
+    LISTTYPEGROUPAGAINSENDER,
 };
 
 #define ALPHA	@"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -42,6 +46,8 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
                              theSucc:(void(^)(NSMutableArray *patients,NSMutableDictionary *listDic,NSArray *keys))succBlock;
 
 + (void)loadCachePatientListSucc:(void(^)(NSMutableArray *dataArray,NSString *refTimer))succBlock;
+
+
 
 //- (void)showPullView:(NSMutableArray *)patients;
 //- (void)hiddenPullView;

@@ -7,6 +7,7 @@
 //
 
 #import "UUMessageContentButton.h"
+
 @implementation UUMessageContentButton
 
 - (id)initWithFrame:(CGRect)frame
@@ -46,6 +47,9 @@
         self.voice.backgroundColor = [UIColor clearColor];
         self.voiceBackView.backgroundColor = [UIColor clearColor];
         
+        self.goodsView = [[KLGoodsChatView alloc] initWithFrame:self.bounds];
+        [self addSubview:self.goodsView];
+        self.goodsView.userInteractionEnabled = NO;
     }
     return self;
 }

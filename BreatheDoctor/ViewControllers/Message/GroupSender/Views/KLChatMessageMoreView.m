@@ -22,7 +22,7 @@
 /**
  *  @brief  数据源
  */
-@property(nonatomic,strong)NSArray *DataSource;
+@property(nonatomic,strong)NSMutableArray *DataSource;
 @end
 
 @implementation KLChatMessageMoreView
@@ -35,7 +35,7 @@
         
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
         
-        [layout setItemSize:CGSizeMake([UIScreen mainScreen].bounds.size.width/4-30, kHeightMoreView)];
+        [layout setItemSize:CGSizeMake([UIScreen mainScreen].bounds.size.width/4-20, kHeightMoreView)];
         [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
         layout.sectionInset = UIEdgeInsetsMake(20,10,0,10);
         layout.minimumLineSpacing = 20;
@@ -86,7 +86,7 @@
     mPageControl.currentPage = (scrollView.contentOffset.x)/scrollView.bounds.size.width;
 }
 
--(NSArray *)DataSource
+-(NSMutableArray *)DataSource
 {
     if (_DataSource) {
         return _DataSource;
@@ -94,8 +94,8 @@
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"LWMoreImageTitles" ofType:@"plist"];;
     
-    _DataSource = [NSArray arrayWithContentsOfFile:filePath];
-    
+    _DataSource = [NSMutableArray arrayWithArray:[NSArray arrayWithContentsOfFile:filePath]];
+    [_DataSource removeObjectAtIndex:_DataSource.count-2];
     return _DataSource;
 }
 @end

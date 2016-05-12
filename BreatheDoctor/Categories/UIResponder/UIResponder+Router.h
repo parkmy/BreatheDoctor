@@ -45,6 +45,10 @@ typedef NS_OPTIONS(NSInteger, EventChatCellType)
      *  @brief  发送表单
      */
     EventChatCellTypeSenderBiaoDan,
+    /**
+     *  @brief  点击商品
+     */
+    EventChatCellTypeSenderGoods,
 };
 
 #define kModelKey      (@"model")

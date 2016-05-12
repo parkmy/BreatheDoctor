@@ -50,7 +50,8 @@ NSString *const kLWChatDataStructPEFValue = @"pEFValue";
 - (instancetype)initWithDictionary:(NSDictionary *)dict
 {
     self = [super init];
-    
+    NSLog(@"---%@",dict);
+
     // This check serves to make sure that a non-NSDictionary object
     // passed into the model class doesn't break the parsing.
     if(self && [dict isKindOfClass:[NSDictionary class]]) {
@@ -76,7 +77,11 @@ NSString *const kLWChatDataStructPEFValue = @"pEFValue";
         self.symptomNightWoke = [[self objectOrNilForKey:@"symptomNightWoke" fromDictionary:dict] doubleValue];
         self.symptomGood = [[self objectOrNilForKey:@"symptomGood" fromDictionary:dict] doubleValue];
         
-        
+        self.productName = [self objectOrNilForKey:@"productName" fromDictionary:dict];
+        self.tags = [self objectOrNilForKey:@"tags" fromDictionary:dict];
+        self.imageUrl = [self objectOrNilForKey:@"imageUrl" fromDictionary:dict];
+        self.productId = [self objectOrNilForKey:@"productId" fromDictionary:dict];
+
         
     }
     

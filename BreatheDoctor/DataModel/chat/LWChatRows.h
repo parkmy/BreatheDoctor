@@ -43,7 +43,12 @@ typedef NS_OPTIONS(NSInteger,WSChatCellType)
     /**
      *  @brief  同意消息
      */
-    WSChatCellType_Agreed  = 0
+    WSChatCellType_Agreed  = 0,
+    
+    /**
+     *  @brief  商品
+     */
+    WSChatCellType_Goods  = 6,
 };
 
 

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface KLGoodsChatView : UIView
-
+@property (nonatomic, strong) LWChatModel *model;
 @end

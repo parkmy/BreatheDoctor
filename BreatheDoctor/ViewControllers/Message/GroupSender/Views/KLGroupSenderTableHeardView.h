@@ -7,12 +7,16 @@
 //  
 
 #import <UIKit/UIKit.h>
+@class KLGroupSenderPatientListModel;
 
 @interface KLGroupSenderTableHeardView : UIView
 
 @property (nonatomic, copy) void(^backBlock)();
 
-- (instancetype)initWithPatientArray:(NSMutableArray *)array;
+- (instancetype)initWithPatientListModel:(KLGroupSenderPatientListModel *)model;
+
+
+@property (nonatomic, strong) KLGroupSenderPatientListModel *listModel;
 
 - (CGFloat)getHeight;
 

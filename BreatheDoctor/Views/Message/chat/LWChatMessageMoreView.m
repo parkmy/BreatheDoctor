@@ -12,7 +12,7 @@
 #import "LWChatMessageMoreCollectionCell.h"
 
 //自己的高度
-#define kHeightMoreView      (235/2)
+#define kHeightMoreView      (220)
 
 //可重用ID
 #define kReuseID             (@"unique")
@@ -45,10 +45,10 @@
         self.backgroundColor = [UIColor clearColor];
         
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
-        
-        [layout setItemSize:CGSizeMake([UIScreen mainScreen].bounds.size.width/4-10, kHeightMoreView)];
-        [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-        layout.sectionInset = UIEdgeInsetsMake(0, 0,0, 0);
+        [layout setItemSize:CGSizeMake([UIScreen mainScreen].bounds.size.width/4-20, 80)];
+        [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
+        layout.sectionInset = UIEdgeInsetsMake(20,10,0,10);
+        layout.minimumLineSpacing = 20;
         
         mCollectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
         mCollectionView.pagingEnabled = YES;
@@ -60,7 +60,7 @@
         [mCollectionView registerClass:[LWChatMessageMoreCollectionCell class] forCellWithReuseIdentifier:kReuseID];
         
         [self addSubview:mCollectionView];
-        UIEdgeInsets inset = UIEdgeInsetsMake(0, 8,0, 0);
+        UIEdgeInsets inset = UIEdgeInsetsMake(0, 0,0, 0);
         
         [mCollectionView autoPinEdgesToSuperviewEdgesWithInsets:inset];
         

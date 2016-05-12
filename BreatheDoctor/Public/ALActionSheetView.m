@@ -18,8 +18,8 @@
 @interface ALActionSheetView ()
 {
     UIView      *_backView;
-    UIView *_actionSheetView;
-    CGFloat _actionSheetHeight;
+    UIView      *_actionSheetView;
+    CGFloat     _actionSheetHeight;
     BOOL        _isShow;
 }
 

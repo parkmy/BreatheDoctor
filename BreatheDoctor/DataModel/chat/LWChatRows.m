@@ -86,6 +86,7 @@ NSString *const kLWChatRowsOwnerType = @"ownerType";
 
         
         if (self.dataStruct.contentType == 1) { //文本
+            
             self.chatCellType = WSChatCellType_Text;
         }else if (self.dataStruct.contentType == 2)//图片
         {
@@ -105,6 +106,10 @@ NSString *const kLWChatRowsOwnerType = @"ownerType";
         }else
         {
            self.chatCellType = WSChatCellType_Card;
+        }
+        if (self.chatMessageType == 13) {
+            
+            self.chatCellType = WSChatCellType_Goods;
         }
         
     }

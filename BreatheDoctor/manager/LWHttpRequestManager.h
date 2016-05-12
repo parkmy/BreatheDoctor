@@ -10,6 +10,7 @@
 #import <AFNetworking.h>
 #import "KSNetRequest.h"
 #import "DataModels.h"
+#import "KLGoodsDetailedModel.h"
 
 @interface LWHttpRequestManager : NSObject
 
@@ -81,6 +82,7 @@
                 content:(NSString *)content
             contentType:(NSInteger )type
                voiceMin:(NSInteger)count
+              foreignId:(NSString *)foreignId
                 success:(void (^)(LWSenderResBaseModel *senderResBaseModel))success
                 failure:(void (^)(NSString * errorMes))failure;
 
@@ -137,30 +139,30 @@
 
 #pragma mark 提交患者病情相关
 + (void)httpsubmitDiseaseRelateWithPatientId:(NSString *)patientId
- treatmentResult:(NSString *)treatmentResult
-  basicCondition:(NSString *)basicCondition
-          images:(NSString *)images
-         Success:(void (^)(NSMutableArray *models))success
-         failure:(void (^)(NSString * errorMes))failure;
+                             treatmentResult:(NSString *)treatmentResult
+                              basicCondition:(NSString *)basicCondition
+                                      images:(NSString *)images
+                                     Success:(void (^)(NSMutableArray *models))success
+                                     failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark  加载患者病情相关
 + (void)httploadDiseaseRelate:(NSString *)patientId
-                                   Success:(void (^)(LWPatientRelatedModel *model))success
-                                   failure:(void (^)(NSString * errorMes))failure;
+                      Success:(void (^)(LWPatientRelatedModel *model))success
+                      failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark  修改患者病情相关
 + (void)httpupdateDiseaseRelateWithSid:(NSString *)sid
                        treatmentResult:(NSString *)treatmentResult
-                       basicCondition:(NSString *)basicCondition
-                       images:(NSString *)images
-                      Success:(void (^)(NSMutableArray *models))success
-                      failure:(void (^)(NSString * errorMes))failure;
+                        basicCondition:(NSString *)basicCondition
+                                images:(NSString *)images
+                               Success:(void (^)(NSMutableArray *models))success
+                               failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark  拒绝患者添加
 + (void)httprefuseAttentionWithSid:(NSString *)sid
-                       patientID:(NSString *)pid
-                               Success:(void (^)())success
-                               failure:(void (^)(NSString * errorMes))failure;
+                         patientID:(NSString *)pid
+                           Success:(void (^)())success
+                           failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark  加载订单记录首页
 + (void)httpLoadDoctorRelateOrderIndexWithDate:(NSString *)date
@@ -171,17 +173,60 @@
 + (void)httpLoadOrderListWithDate:(NSString *)date
                    andProductType:(NSString *)productType
                           andPage:(NSInteger)page
-                                       Success:(void (^)(NSMutableArray *models))success
-                                       failure:(void (^)(NSString * errorMes))failure;
+                          Success:(void (^)(NSMutableArray *models))success
+                          failure:(void (^)(NSString * errorMes))failure;
 #pragma mark  加载预约详情
 + (void)httpLoadOrderAppointmentInfoWithOrdAppid:(NSString *)ordAppid
-                                       Success:(void (^)(LWReservationDetailedModel *model))success
-                                       failure:(void (^)(NSString * errorMes))failure;
+                                         Success:(void (^)(LWReservationDetailedModel *model))success
+                                         failure:(void (^)(NSString * errorMes))failure;
 
 #pragma mark  加载患者历史记录
 + (void)httpLoadPatientRecordHistoryWithPatientId:(NSString *)pid
                                        recentDays:(NSInteger)day
-                                         Success:(void (^)(KLPatientLogBodyModel *model))success
-                                         failure:(void (^)(NSString * errorMes))failure;
+                                          Success:(void (^)(KLPatientLogBodyModel *model))success
+                                          failure:(void (^)(NSString * errorMes))failure;
 
+#pragma mark  加载商品列表
++ (void)httploadProductListPage:(NSInteger)page
+                       theCount:(NSInteger)count
+                        Success:(void (^)(NSMutableArray *models))success
+                        failure:(void (^)(NSString * errorMes))failure;
+
+#pragma mark  加载商品详情
++ (void)httploadProductDetailWithproductId:(NSString *)productId
+                                   Success:(void (^)(KLGoodsDetailedModel *models))success
+                                   failure:(void (^)(NSString * errorMes))failure;
+
+#pragma mark  群发消息
+/**
+ *  群发消息
+ *
+ *  @param content          内容
+ *  @param patientIdJsonStr 患者列表
+ *  @param contentType      内容类型
+ *  @param voiceMin         语音秒数
+ *  @param foreignId        商品或者事物ID
+ *  @param success          成功
+ *  @param failure          失败
+ */
++ (void)httploadProductDetailWithContent:(NSString *)content
+                        patientIdJsonStr:(NSString *)patientIdJsonStr
+                             contentType:(NSInteger )contentType
+                                voiceMin:(NSInteger )voiceMin
+                               foreignId:(NSString *)foreignId
+                                 Success:(void (^)())success
+                                 failure:(void (^)(NSString * errorMes))failure;
+
+
+#pragma mark  群发记录
++ (void)httploadMassDialogueRecordWithRefreshTime:(NSString *)refreshTime
+                                          thePage:(NSInteger)page
+                                          theType:(NSInteger)type
+                                          Success:(void (^)(NSMutableArray *models))success
+                                          failure:(void (^)(NSString * errorMes))failure;
+
+#pragma mark  群发记录删除
++ (void)httpdeleteMassDialogueRecordWithMassDialogueId:(NSString *)massDialogueId
+                                          Success:(void (^)())success
+                                          failure:(void (^)(NSString * errorMes))failure;
 @end

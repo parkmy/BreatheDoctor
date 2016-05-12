@@ -218,6 +218,7 @@
     [self.messageDataSource.messageArray addObjectsFromArray:[KLMessageOperation sqlCacheMessages]];
     
     if (self.messageDataSource.messageArray.count <= 0) {
+        
         [self showErrorMessage:@"暂时没有新消息~" isShowButton:YES type:showErrorTypeMore];
         self.navigationController.tabBarItem.badgeValue = nil;
         [self refreshHomeMsg];
@@ -282,10 +283,10 @@
 #pragma mark -新朋友
 - (void)pushNewFriendsViewWithModel:(LWMainRows *)message theIndexPath:(NSIndexPath *)indexPath{
 
-
     LWNewFriendsViewController *newFirends = (LWNewFriendsViewController *)[UIViewController CreateControllerWithTag:CtrlTag_newFriends];
     newFirends.requsetArray = message.requestArray;
     [self.navigationController pushViewController:newFirends animated:YES];
+    
     WEAKSELF
     [newFirends setBackBlock:^(LWMainRows *model){
         message.count = message.count - 1;
@@ -301,7 +302,6 @@
         [KLMessageOperation changeBadgeValueInfo:KL_weakSelf.navigationController.tabBarItem andMessgaeArray:KL_weakSelf.messageDataSource.messageArray];
         
     }];
-    
     
     [newFirends setAddSuccBlock:^{
         [KL_weakSelf refreshHomeMsg];

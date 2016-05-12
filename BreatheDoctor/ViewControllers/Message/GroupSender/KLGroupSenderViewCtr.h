@@ -7,9 +7,25 @@
 // 群发对话界面
 
 #import "BaseViewController.h"
-
+@class KLGroupSenderPatientListModel;
+/**
+ *  进入类型
+ */
+typedef NS_ENUM(NSInteger, PUSHTYPE) {
+    /**
+     *  患者列表
+     */
+    PUSHTYPELIST = 0,
+    /**
+     *  再次发
+     */
+    PUSHTYPEAGAIN,
+};
 @interface KLGroupSenderViewCtr : BaseViewController
 
-- (instancetype)initWithGroupSenderArray:(NSMutableArray *)array;
+@property (nonatomic, assign) PUSHTYPE pushType;
+
+- (instancetype)initWithGroupSenderPatientListModel:(KLGroupSenderPatientListModel *)listModel;
+- (void)guoupSenderSuccess;
 
 @end

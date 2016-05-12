@@ -31,7 +31,7 @@ PODS:
   - ReactiveCocoa/no-arc (2.5)
   - ReactiveCocoa/UI (2.5):
     - ReactiveCocoa/Core
-  - SDAutoLayout (1.50)
+  - SDAutoLayout (1.52)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
@@ -55,7 +55,7 @@ SPEC CHECKSUMS:
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   OpenUDID: e7cb6984c7304906ad20f3a36bf087b025896b6b
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
-  SDAutoLayout: 88b539a0c6204787d8e4084ef1b0db250241cc47
+  SDAutoLayout: 7c92e8f149059e80010507e471e1b4b6c85a62bb
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   UMengAnalytics-NO-IDFA: 6d02561a00579b2e37718f204eb81347df5d7b8b
 

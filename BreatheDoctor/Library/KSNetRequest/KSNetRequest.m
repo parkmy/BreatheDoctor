@@ -12,6 +12,7 @@
 #import "ProgressHUD.h"
 #import "UIViewController+KSNoNetController.h"
 #import "YRJSONAdapter.h"
+#import "KLIndicatorViewManager.h"
 
 //===========================请求超时时间==========================//
 #define TIMEOUTINTERVAL 10
@@ -55,6 +56,8 @@
             [self requestProgress:URLString parameters:parameters success:success failure:failure];
         }
     }else{
+        
+        [[KLIndicatorViewManager standardIndicatorViewManager] hiddenIndicatorView];
         if ([KSCache selectObjectWithURL:URLString parameter:parameters]) {
             success?success(nil,[KSCache selectObjectWithURL:URLString parameter:parameters]):nil;
         }
@@ -77,13 +80,17 @@
             //=====这个判断需要和后台协商，什么情况下请求成功=然后才可以缓寸=====================================================//
             if ([KSNetRequest httpIsOk:responseObject[res_msg]]) {
             //======================================================//
+                [[KLIndicatorViewManager standardIndicatorViewManager] hiddenIndicatorView];
                 [KSCache updateObject:responseObject withURL:URLString parameter:parameters];
                 success?success(task,responseObject):nil;
             }else
             {
+                [[KLIndicatorViewManager standardIndicatorViewManager] hiddenIndicatorView];
                 failure?failure(task,[KSNetRequest failureMes:responseObject[res_msg]]):nil;
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+            
+            [[KLIndicatorViewManager standardIndicatorViewManager] hiddenIndicatorView];
             failure?failure(task,errorMessage):nil;
         }];
     }else{
@@ -96,9 +103,12 @@
 + (void)requestProgress:(nonnull NSString*)URLString parameters:(nullable id)parameters success:(requestSuccess)success failure:(requestFailure)failure
 {
     [self requestPOST:URLString parameters:parameters success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        
+        [[KLIndicatorViewManager standardIndicatorViewManager] hiddenIndicatorView];
         success?success(task,responseObject):nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         
+        [[KLIndicatorViewManager standardIndicatorViewManager] hiddenIndicatorView];
         failure?failure(task,errorMessage):nil;
     }];
 }
@@ -124,6 +134,8 @@
             failure?failure(task,[KSNetRequest failureMes:responseObject[res_msg]]):nil;
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        [[KLIndicatorViewManager standardIndicatorViewManager] hiddenIndicatorView];
         //如果有回调，则返回处理
         failure?failure(task,@"无法连接服务器"):NSLog(@"%@",error);
     }];

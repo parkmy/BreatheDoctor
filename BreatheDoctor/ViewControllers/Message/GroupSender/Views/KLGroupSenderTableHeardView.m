@@ -8,6 +8,7 @@
 
 #import "KLGroupSenderTableHeardView.h"
 #import "KLGroupSenderOperation.h"
+#import "KLGroupSenderPatientListModel.h"
 
 @interface KLGroupSenderTableHeardView ()
 @property (nonatomic, strong) UILabel  *listCountLabel;
@@ -17,7 +18,7 @@
 
 @implementation KLGroupSenderTableHeardView
 
-- (instancetype)initWithPatientArray:(NSMutableArray *)array{
+- (instancetype)initWithPatientListModel:(KLGroupSenderPatientListModel *)model{
     
     if ([super init]) {
 
@@ -28,7 +29,7 @@
             UILabel *label = [UILabel new];
             label.font = kNSPXFONT(26);
             label.textColor = [UIColor colorWithHexString:@"#666666"];
-            label.text = [NSString stringWithFormat:@"分别发送给%@位朋友",kNSNumInteger(array.count)];
+            label.text = [NSString stringWithFormat:@"分别发送给%@位朋友",kNSNumInteger(model.patientListCount)];
             label;
         });
         
@@ -45,7 +46,7 @@
             UILabel *label = [UILabel new];
             label.font = kNSPXFONT(30);
             label.numberOfLines = 0;
-            label.text = [KLGroupSenderOperation getGroupSenderListStringWithPatientArray:array];
+            label.text = model.patientNmaes;
             label;
         });
         
@@ -65,25 +66,32 @@
         
         CGFloat height = [_patientListLabel.text heightWithFont:_patientListLabel.font constrainedToWidth:screenWidth-30];
         _patientListLabel.sd_layout
-        .topSpaceToView(_listCountLabel,20)
+        .topSpaceToView(_listCountLabel,10)
         .leftSpaceToView(self,15)
         .rightSpaceToView(self,15)
-        .heightIs(MAX(20, height));
+        .heightIs(MAX(20, height))
+        .maxHeightIs(250);
         
-//        WEAKSELF
-//        [[_addButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-//            KL_weakSelf.backBlock?KL_weakSelf.backBlock():nil;
-//        }];
 
     }
     return self;
+}
+- (void)setListModel:(KLGroupSenderPatientListModel *)listModel{
+    
+    _listModel = listModel;
+    
+    _patientListLabel.text = listModel.patientNmaes;
+    _listCountLabel.text = [NSString stringWithFormat:@"消息将发送给%@位朋友",kNSNumInteger(listModel.patientListCount)];
+    CGFloat height = [_patientListLabel.text heightWithFont:_patientListLabel.font constrainedToWidth:screenWidth-30];
+
+    _patientListLabel.sd_layout.heightIs(MAX(20, height));
 }
 - (void)backClick{
 
 }
 - (CGFloat)getHeight{
     CGFloat height = [_patientListLabel.text heightWithFont:_patientListLabel.font constrainedToWidth:screenWidth-30];
-    return (_addButton.imageView.image.size.height + 10 + 20 + MAX(20, height) + 10);
+    return (_addButton.imageView.image.size.height  + 20 + MAX(20, height) + 10);
 }
 
 @end

@@ -7,6 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+/**
+ *  上传类型
+ */
+typedef NS_ENUM(NSInteger, UPDATATYPE) {
+    /**
+     *  图片
+     */
+    UPDATATYPEIMAGE = 2,
+    /**
+     *  语音
+     */
+    UPDATATYPEVOICE = 3,
+};
 
 @interface LWUpLoadingManager : NSObject
 
@@ -26,5 +39,23 @@
                       compressionRatio:(float)ratio
                                success:(void (^)(NSMutableArray *models))success
                                failure:(void (^)(NSString * errorMes))failure;
+
+
+/**
+ *  上传二进制流
+ *
+ *  @param data  流
+ *  @param type  类型
+ *  @param count 语音类 时间
+ */
++ (void)httpUpLoadData:(NSData *)data
+              withType:(NSInteger)type
+           withVocMain:(NSInteger )count
+               success:(void (^)(NSDictionary *dic))success
+               failure:(void (^)(NSString * errorMes))failure;
+
+
+
++ (NSString *)getUploadSuccessString:(NSDictionary *)dic;
 
 @end
