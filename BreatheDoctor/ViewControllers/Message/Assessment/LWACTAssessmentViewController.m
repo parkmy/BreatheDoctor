@@ -14,9 +14,11 @@
 #import "LWACTAssessmentModel.h"
 #import "LWTool.h"
 
-@interface LWACTAssessmentViewController ()
+@interface LWACTAssessmentViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) LWACTModel *ACTMdel;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation LWACTAssessmentViewController
@@ -29,7 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tableView.backgroundColor = RGBA(245, 245, 245, 1);
     
     [self loadACTbyd];
 }
@@ -43,15 +44,16 @@
 - (void)loadACTbyd
 {
     [LWProgressHUD displayProgressHUD:self.view displayText:@"加载中..."];
+    WEAKSELF
     [LWHttpRequestManager httpLoadActById:self.bayId success:^(LWACTModel *model) {
-        [LWProgressHUD closeProgressHUD:self.view];
-        [self hiddenNonetWork];
-        self.ACTMdel = model;
-        [LWTool ACTAssessmentChangeWithModel:self.ACTMdel withArray:self.dataArray];
-        [self.tableView reloadData];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+        [KL_weakSelf hiddenNonetWork];
+        KL_weakSelf.ACTMdel = model;
+        [LWTool ACTAssessmentChangeWithModel:KL_weakSelf.ACTMdel withArray:KL_weakSelf.dataArray];
+        [KL_weakSelf.tableView reloadData];
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD closeProgressHUD:self.view];
-        [self showErrorMessage:@"网络连接失败，点击重试~" isShowButton:NO type:showErrorTypeHttp];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+        [KL_weakSelf showErrorMessage:@"网络连接失败，点击重试~" isShowButton:NO type:showErrorTypeHttp];
 //        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
 

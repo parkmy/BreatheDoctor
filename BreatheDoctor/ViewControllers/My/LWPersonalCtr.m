@@ -12,8 +12,8 @@
 #import "CODataCacheManager.h"
 #import "LWPersonalMenuButton.h"
 
-@interface LWPersonalCtr ()
-
+@interface LWPersonalCtr ()<UITableViewDelegate,UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation LWPersonalCtr
@@ -25,9 +25,8 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -43,11 +42,12 @@
 {
     UITableViewCell *cell = nil;
     if (indexPath.row == 0) {
+        
         LWPersonalHeardCell *personalHeardCell = [tableView dequeueReusableCellWithIdentifier:@"LWPersonalHeardCell" forIndexPath:indexPath];
         personalHeardCell.backgroundColor = [UIColor colorWithPatternImage:kImage(@"huanzhezhongxinbeijing")];
         LBLoginBaseModel *user = [CODataCacheManager shareInstance].userModel;
         [personalHeardCell setDoctorIconImage:user.body.perRealPhoto];
-        [personalHeardCell setDoctordoctorName:user.body.perName];
+        [personalHeardCell setDoctordoctorName:user.body.perName.length>0?user.body.perName:stringJudgeNull(user.loginZhangHao)];
         [personalHeardCell setDoctorType:user.body.positionText];
         
         cell = personalHeardCell;
@@ -55,21 +55,25 @@
     }else
     {
         LWPersonalCell *personalCell = [tableView dequeueReusableCellWithIdentifier:@"LWPersonalCell" forIndexPath:indexPath];
+        WEAKSELF
         [personalCell setPersonalMenuButtonTapBlock:^(tapType type) {
             switch (type) {
                 case tapTypeRecoverytime:
                 {
-                    [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_TimerRemind] animated:YES];
+                    if (![LBLoginBaseModel isCheckStatusTheIsShow:YES]) {
+                        return;
+                    }
+                    [KL_weakSelf.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_TimerRemind] animated:YES];
                 }
                     break;
                 case tapTypePurchaseRecords:
                 {
-                    [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_OrderRecord] animated:YES];
+                    [KL_weakSelf.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_OrderRecord] animated:YES];
                 }
                     break;
                 case tapTypeMoreSettings:
                 {
-                    [self.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_PersonalSeting] animated:YES];
+                    [KL_weakSelf.navigationController pushViewController:[UIViewController CreateControllerWithTag:CtrlTag_PersonalSeting] animated:YES];
                 }
                     break;
                 case tapTypeStayTunedFor:

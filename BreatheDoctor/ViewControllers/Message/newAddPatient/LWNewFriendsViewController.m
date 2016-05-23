@@ -127,13 +127,14 @@
     LWMessageAgreedViewController *vc = (LWMessageAgreedViewController *)[UIViewController CreateControllerWithTag:CtrlTag_PatientAgreed];
     vc.patientModel = message;
     [self.navigationController pushViewController:vc animated:YES];
-    
+    WEAKSELF
     [vc setAddPatientSuccBlock:^{
-        [self.requsetArray removeObject:message];
-        [self.tableView reloadData];
-        if(self.requsetArray.count <= 0)
+        
+        [KL_weakSelf.requsetArray removeObject:message];
+        [KL_weakSelf.tableView reloadData];
+        if(KL_weakSelf.requsetArray.count <= 0)
         {
-            [self showErrorMessage:@"暂无新朋友请求哦~" isShowButton:YES type:showErrorTypeMore];
+            [KL_weakSelf showErrorMessage:@"暂无新朋友请求哦~" isShowButton:YES type:showErrorTypeMore];
         }
         _backBlock?_backBlock(message):nil;
         _addSuccBlock?_addSuccBlock():nil;
@@ -144,11 +145,11 @@
         /**
          *  拒绝的也添加
          */
-        [self.requsetArray removeObject:message];
-        [self.tableView reloadData];
-        if(self.requsetArray.count <= 0)
+        [KL_weakSelf.requsetArray removeObject:message];
+        [KL_weakSelf.tableView reloadData];
+        if(KL_weakSelf.requsetArray.count <= 0)
         {
-            [self showErrorMessage:@"暂无新朋友哦~" isShowButton:YES type:showErrorTypeMore];
+            [KL_weakSelf showErrorMessage:@"暂无新朋友哦~" isShowButton:YES type:showErrorTypeMore];
         }
         _backBlock?_backBlock(message):nil;
         

@@ -45,7 +45,7 @@
 #pragma mark - RGBA颜色
 
 #define appMargin 10
-#define appLineColor [UIColor colorWithHexString:@"#eeeeee"]
+#define appLineColor [UIColor colorWithHexString:@"#dddddd"]
 
 
 #define MULTIPLEVIEW (iPhone6Plus?1.35:iPhone6?1.2:1)

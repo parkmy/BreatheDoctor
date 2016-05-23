@@ -57,20 +57,21 @@
 - (void)loadData
 {
     [ZZPhotoHud showActiveHudWithTitle:@"正在获取..."];
+    WEAKSELF
     [LWHttpRequestManager httploadDoctorServerTimeSuccess:^(NSMutableArray *models) {
         [ZZPhotoHud hideActiveHud];
         if (![[NSUserDefaults standardUserDefaults] objectForKey:@"LWPopAlatView"]) {
             [[NSUserDefaults standardUserDefaults] setObject:@"11111" forKey:@"LWPopAlatView"];
             [LWPopAlatView showView:nil];
         }
-        [self.models removeAllObjects];
-        [self.models addObjectsFromArray:models];
-        int a = 3 - (int)self.models.count;
+        [KL_weakSelf.models removeAllObjects];
+        [KL_weakSelf.models addObjectsFromArray:models];
+        int a = 3 - (int)KL_weakSelf.models.count;
         for (int i = 0; i < a; i++) {
             LWDoctorTimerModel *model = [LWDoctorTimerModel getInitModel];
-            [self.models addObject:model];
+            [KL_weakSelf.models addObject:model];
         }
-        [self.tableView reloadData];
+        [KL_weakSelf.tableView reloadData];
     } failure:^(NSString *errorMes) {
         [ZZPhotoHud hideActiveHud];
         [LWProgressHUD showALAlertBannerWithView:nil Style:0 Position:0 Subtitle:errorMes];
@@ -97,8 +98,9 @@
 
 - (void)navRightButtonAction
 {
+    WEAKSELF
     [KLTimerRemindViewOperation saveTimerRemindSetingWithArray:self.models success:^(BOOL isSuccess) {
-        [self.navigationController popViewControllerAnimated:YES];
+        [KL_weakSelf.navigationController popViewControllerAnimated:YES];
     }];
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -107,8 +109,9 @@
         [self.navigationController popViewControllerAnimated:YES];
     }else
     {
+        WEAKSELF
         [KLTimerRemindViewOperation saveTimerRemindSetingWithArray:self.models success:^(BOOL isSuccess) {
-            [self.navigationController popViewControllerAnimated:YES];
+            [KL_weakSelf.navigationController popViewControllerAnimated:YES];
         }];
     }
 }
@@ -188,30 +191,30 @@
     cell.starLabel.text = model.startTime;
     cell.endLabel.text = model.endTime;
     [KLTimerRemindViewOperation setWeekLabelWithLabel:cell.weekslabel data:model.repeatWeek];
-    
+    WEAKSELF
     [cell setTapStarButtonBlock:^(UILabel *label) {
-        [self showPickView:label withIndexPath:indexPath withModel:model isStar:YES];
+        [KL_weakSelf showPickView:label withIndexPath:indexPath withModel:model isStar:YES];
     }];
     
     [cell setTapEndButtonBlock:^(UILabel *label) {
-        [self showPickView:label withIndexPath:indexPath withModel:model isStar:NO];
+        [KL_weakSelf showPickView:label withIndexPath:indexPath withModel:model isStar:NO];
     }];
     
     [cell setTapMoreButtonBlock:^(UILabel *label) {
             
         KLTimerWeeksViewController *weeksViewController = [KLTimerWeeksViewController new];
         weeksViewController.weeks = [NSMutableArray arrayWithArray:[KLTimerRemindViewOperation weekArray:model.repeatWeek]];
-        [self addChildViewController:weeksViewController];
-        [self.view addSubview:weeksViewController.view];
+        [KL_weakSelf addChildViewController:weeksViewController];
+        [KL_weakSelf.view addSubview:weeksViewController.view];
         
         
-        [self.tableView setContentOffset:CGPointMake(0, indexPath.section*(90+15)) animated:YES];
+        [KL_weakSelf.tableView setContentOffset:CGPointMake(0, indexPath.section*(90+15)) animated:YES];
 
         [weeksViewController setBackBlock:^(NSMutableArray *weeks) {
             
             if (weeks.count != [[KLTimerRemindViewOperation weekArray:model.repeatWeek] count]) {
-                self.isChange = YES;
-                self.navRightButton.hidden = NO;
+                KL_weakSelf.isChange = YES;
+                KL_weakSelf.navRightButton.hidden = NO;
             }else
             {
                 NSMutableString *string = [[NSMutableString alloc] initWithString:@""];
@@ -224,8 +227,8 @@
                     if (![string containsaString:astr])
                     {
                         if (![astr isEqualToString:@""]) {
-                            self.isChange = YES;
-                            self.navRightButton.hidden = NO;
+                            KL_weakSelf.isChange = YES;
+                            KL_weakSelf.navRightButton.hidden = NO;
                         }
                         
                     }
@@ -242,12 +245,13 @@
                 [weekString appendString:[NSString stringWithFormat:@"%@|",str]];
             }
             model.repeatWeek = weekString;
-            [self.tableView reloadData];
+            [KL_weakSelf.tableView reloadData];
         }];
         
       
         [weeksViewController setCompleteDismiss:^{
-            [self.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
+            
+            [KL_weakSelf.tableView setContentOffset:CGPointMake(0, 0) animated:YES];
         }];
 
     }];

@@ -492,12 +492,12 @@ typedef NS_ENUM(NSInteger , SenderType) {
 - (void)navRightButtonAction
 {
     KLPatientListModel *pat = [self listPatient];
-    
+    WEAKSELF
     if (!pat) {
         [LWHttpRequestManager httpPatientListWithPage:1 size:100000 refreshDate:nil success:^(NSMutableArray *list) {
-            [self pushPatientCententCtr:[self listPatient]];
+            [KL_weakSelf pushPatientCententCtr:[KL_weakSelf listPatient]];
         } failure:^(NSString *errorMes) {
-            [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+            [LWProgressHUD showALAlertBannerWithView:KL_weakSelf.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
         }];
     }else{
         [self pushPatientCententCtr:pat];
@@ -609,11 +609,12 @@ typedef NS_ENUM(NSInteger , SenderType) {
     {
         content = [LWUpLoadingManager getUploadSuccessString:dic];
     }
+    WEAKSELF
     [LWHttpRequestManager httpDoctorReply:self.patient.memberId content:content contentType:type voiceMin:vocMain foreignId:nil success:^(LWSenderResBaseModel *senderResBaseModel) {
   
-        [self addSenderModel:senderResBaseModel];
+        [KL_weakSelf addSenderModel:senderResBaseModel];
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        [LWProgressHUD showALAlertBannerWithView:KL_weakSelf.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
     
 }
@@ -621,7 +622,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
 {
     [LWHttpRequestManager httpUpLoadData:data WithType:type success:^(NSDictionary *dic) {
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        [LWProgressHUD showALAlertBannerWithView:nil Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
 
 }
@@ -691,6 +692,7 @@ WEAKSELF
             KLGoodsViewController *vc = [KLGoodsViewController new];
             [self.navigationController pushViewController:vc animated:YES];
             
+            WEAKSELF
             /**
              *  发送商品给患者
              */
@@ -701,7 +703,7 @@ WEAKSELF
                 UIViewController *senderVc = Tuple.second;
                 
                 [[KLIndicatorViewManager standardIndicatorViewManager] showLoadingWithContent:@"正在发送" theView:senderVc.view];
-                [LWHttpRequestManager httpDoctorReply:self.patient.memberId content:@"" contentType:13 voiceMin:0 foreignId:Tuple.first success:^(LWSenderResBaseModel *senderResBaseModel) {
+                [LWHttpRequestManager httpDoctorReply:KL_weakSelf.patient.memberId content:@"" contentType:13 voiceMin:0 foreignId:Tuple.first success:^(LWSenderResBaseModel *senderResBaseModel) {
                     
                     [[KLIndicatorViewManager standardIndicatorViewManager] showErrorWith:@"发送成功" theView:senderVc.view theImage:nil showSucc:^{
                         

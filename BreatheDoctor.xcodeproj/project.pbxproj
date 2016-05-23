@@ -53,6 +53,10 @@
 		79025A771C8D569300F71892 /* nanguo2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79025A761C8D569300F71892 /* nanguo2@3x.png */; };
 		79025A791C8D569D00F71892 /* nanguo2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79025A781C8D569D00F71892 /* nanguo2@2x.png */; };
 		790392DD1CB4A89F00B020C4 /* LCCoolHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 790392DC1CB4A89F00B020C4 /* LCCoolHUD.m */; };
+		79050DC91CEBFA3500FA260D /* KLRegisteredViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79050DC81CEBFA3500FA260D /* KLRegisteredViewCell.m */; };
+		79050DCC1CEC00F900FA260D /* KLRegistModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79050DCB1CEC00F900FA260D /* KLRegistModel.m */; };
+		79050DD41CEC16E300FA260D /* KLRetrievePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79050DD11CEC154600FA260D /* KLRetrievePasswordViewController.m */; };
+		79050DD51CEC170500FA260D /* KLRegistPublicFootView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79050DCE1CEC07AF00FA260D /* KLRegistPublicFootView.m */; };
 		790515701BFDB16E001D5F33 /* LWSenderResBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7905156D1BFDB16E001D5F33 /* LWSenderResBaseModel.m */; };
 		790515711BFDB16E001D5F33 /* LWSenderResBody.m in Sources */ = {isa = PBXBuildFile; fileRef = 7905156F1BFDB16E001D5F33 /* LWSenderResBody.m */; };
 		7906511B1C9FC8E6004E13D0 /* LWScaleCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7906511A1C9FC8E6004E13D0 /* LWScaleCircleView.m */; };
@@ -97,12 +101,10 @@
 		790EE5541C7EA261004ABC78 /* LWReservationDetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790EE5531C7EA261004ABC78 /* LWReservationDetailedViewController.m */; };
 		7912112F1BF1A6A6004166C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7912112E1BF1A6A6004166C5 /* main.m */; };
 		791211321BF1A6A6004166C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211311BF1A6A6004166C5 /* AppDelegate.m */; };
-		791211351BF1A6A6004166C5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211341BF1A6A6004166C5 /* ViewController.m */; };
 		791211481BF1A6A6004166C5 /* BreatheDoctorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211471BF1A6A6004166C5 /* BreatheDoctorTests.m */; };
 		791211531BF1A6A6004166C5 /* BreatheDoctorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 791211521BF1A6A6004166C5 /* BreatheDoctorUITests.m */; };
 		791214991BF1C6D4004166C5 /* LWPatientCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 791214981BF1C6D4004166C5 /* LWPatientCell.m */; };
 		791214D71BF1CE9E004166C5 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791214C91BF1CE9E004166C5 /* BaseViewController.m */; };
-		791214D81BF1CE9E004166C5 /* LWBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 791214CB1BF1CE9E004166C5 /* LWBaseViewController.m */; };
 		791214DA1BF1CE9E004166C5 /* LWPersonalCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 791214D11BF1CE9E004166C5 /* LWPersonalCtr.m */; };
 		791215051BF1CF56004166C5 /* CODataCacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 791214E71BF1CF56004166C5 /* CODataCacheManager.m */; };
 		791215071BF1CF56004166C5 /* ControllerExtraDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 791214EB1BF1CF56004166C5 /* ControllerExtraDataManager.m */; };
@@ -207,7 +209,6 @@
 		7945554B1C0BD98F005C0E10 /* NSString+RegexCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 794555341C0BD98F005C0E10 /* NSString+RegexCategory.m */; };
 		7945554C1C0BD98F005C0E10 /* NSString+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 794555361C0BD98F005C0E10 /* NSString+Size.m */; };
 		7945554D1C0BD98F005C0E10 /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 794555391C0BD98F005C0E10 /* UIColor+HexString.m */; };
-		7945554E1C0BD98F005C0E10 /* UIImage+color.m in Sources */ = {isa = PBXBuildFile; fileRef = 7945553C1C0BD98F005C0E10 /* UIImage+color.m */; };
 		7945554F1C0BD98F005C0E10 /* UIResponder+Router.m in Sources */ = {isa = PBXBuildFile; fileRef = 7945553F1C0BD98F005C0E10 /* UIResponder+Router.m */; };
 		794555501C0BD98F005C0E10 /* UIView+BorderLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 794555421C0BD98F005C0E10 /* UIView+BorderLine.m */; };
 		794555511C0BD98F005C0E10 /* UIView+TKGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 794555441C0BD98F005C0E10 /* UIView+TKGeometry.m */; };
@@ -276,19 +277,6 @@
 		7945573F1C0BDA15005C0E10 /* yitianxie_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556AE1C0BDA15005C0E10 /* yitianxie_@2x.png */; };
 		794557401C0BDA15005C0E10 /* yiwanchen_@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556AF1C0BDA15005C0E10 /* yiwanchen_@2x.png */; };
 		794557411C0BDA15005C0E10 /* defaultIconImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 794556B11C0BDA15005C0E10 /* defaultIconImage@2x.png */; };
-		7945576C1C0C323E005C0E10 /* MZBlurEffectAdapter.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557531C0C323D005C0E10 /* MZBlurEffectAdapter.m */; };
-		7945576D1C0C323E005C0E10 /* MZFormSheetContentSizingNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557551C0C323D005C0E10 /* MZFormSheetContentSizingNavigationController.m */; };
-		7945576E1C0C323E005C0E10 /* MZFormSheetContentSizingNavigationControllerAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557571C0C323D005C0E10 /* MZFormSheetContentSizingNavigationControllerAnimator.m */; };
-		7945576F1C0C323E005C0E10 /* MZFormSheetPresentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7945575B1C0C323D005C0E10 /* MZFormSheetPresentationController.m */; };
-		794557701C0C323E005C0E10 /* MZFormSheetPresentationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7945575D1C0C323D005C0E10 /* MZFormSheetPresentationViewController.m */; };
-		794557711C0C323E005C0E10 /* MZFormSheetPresentationViewControllerAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557601C0C323D005C0E10 /* MZFormSheetPresentationViewControllerAnimator.m */; };
-		794557721C0C323E005C0E10 /* MZFormSheetPresentationViewControllerInteractiveAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557621C0C323D005C0E10 /* MZFormSheetPresentationViewControllerInteractiveAnimator.m */; };
-		794557731C0C323E005C0E10 /* MZFormSheetPresentationViewControllerSegue.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557651C0C323D005C0E10 /* MZFormSheetPresentationViewControllerSegue.m */; };
-		794557741C0C323E005C0E10 /* MZMethodSwizzler.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557671C0C323D005C0E10 /* MZMethodSwizzler.m */; };
-		794557751C0C323E005C0E10 /* MZTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557691C0C323D005C0E10 /* MZTransition.m */; };
-		794557761C0C323E005C0E10 /* UIViewController+TargetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7945576B1C0C323E005C0E10 /* UIViewController+TargetViewController.m */; };
-		7945577B1C0C3271005C0E10 /* MZAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 794557781C0C3271005C0E10 /* MZAppearance.m */; };
-		7945577C1C0C3271005C0E10 /* NSInvocation+Copy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7945577A1C0C3271005C0E10 /* NSInvocation+Copy.m */; };
 		794712C21BF9D0FA0083CE6E /* LGReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 794712C11BF9D0FA0083CE6E /* LGReachability.m */; };
 		794712E81BF9D3CC0083CE6E /* LWVoiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 794712E71BF9D3CC0083CE6E /* LWVoiceManager.m */; };
 		7947160E1BF48A1600C4D2E8 /* LWTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7947160D1BF48A1600C4D2E8 /* LWTool.m */; };
@@ -301,6 +289,10 @@
 		794D51551C7EE9CE00403767 /* LWOrderDetailedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 794D51541C7EE9CE00403767 /* LWOrderDetailedListViewController.m */; };
 		79515EA71CC8834B008989A7 /* KLPatientOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 79515EA61CC8834B008989A7 /* KLPatientOperation.m */; };
 		79515F2A1CC8D310008989A7 /* KLPatientDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 79515F291CC8D310008989A7 /* KLPatientDataSource.m */; };
+		7952871F1CEC4093009267F2 /* KLServiceAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952871E1CEC4093009267F2 /* KLServiceAgreementViewController.m */; };
+		795287261CEC4CE4009267F2 /* KLServiceAgreementModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 795287251CEC4CE4009267F2 /* KLServiceAgreementModel.m */; };
+		795287291CEC50A7009267F2 /* KLServiceAgreementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 795287281CEC50A7009267F2 /* KLServiceAgreementCell.m */; };
+		7952872C1CEC75DB009267F2 /* KLRegistPublicOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7952872B1CEC75DB009267F2 /* KLRegistPublicOperation.m */; };
 		795553FF1C8FBAA60073F14C /* LWOrderViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 795553FE1C8FBAA60073F14C /* LWOrderViewCell.m */; };
 		795554021C8FD0E20073F14C /* LWOrderCellTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 795554011C8FD0E20073F14C /* LWOrderCellTypeView.m */; };
 		79559E0D1CDC3191003CC3FA /* KLGoodsImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79559E0C1CDC3191003CC3FA /* KLGoodsImageModel.m */; };
@@ -495,7 +487,6 @@
 		79AD86101C4F300E00EBE224 /* LWPatientCententCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD85F21C4F300E00EBE224 /* LWPatientCententCtr.m */; };
 		79AD86111C4F300E00EBE224 /* LWPatientGroupsCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD85F41C4F300E00EBE224 /* LWPatientGroupsCtr.m */; };
 		79AD86121C4F300E00EBE224 /* LWPatientListCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD85F81C4F300E00EBE224 /* LWPatientListCtr.m */; };
-		79AD86141C4F300E00EBE224 /* LWPatientRecordsCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD85FE1C4F300E00EBE224 /* LWPatientRecordsCtr.m */; };
 		79AD86151C4F300E00EBE224 /* LWPatientRemarksCtr.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD86001C4F300E00EBE224 /* LWPatientRemarksCtr.m */; };
 		79AD86361C4F320100EBE224 /* LWRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD86351C4F320100EBE224 /* LWRootViewController.m */; };
 		79AD91A31BF2CEF60098D6CD /* CDCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AD91A01BF2CEF60098D6CD /* CDCheckBox.m */; };
@@ -538,6 +529,11 @@
 		79BA9FDE1C46688B00D9236A /* LWTheFromMrows.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA9FD91C46688B00D9236A /* LWTheFromMrows.m */; };
 		79BA9FDF1C46688B00D9236A /* LWTheFromRowArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BA9FDB1C46688B00D9236A /* LWTheFromRowArray.m */; };
 		79BB5F0E1C1038F600E7046B /* UIViewController+Factory.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BB5F0D1C1038F600E7046B /* UIViewController+Factory.m */; };
+		79BC1B781CEAFA0300512F98 /* KLOutLoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BC1B771CEAFA0300512F98 /* KLOutLoginCell.m */; };
+		79BC1B7E1CEB0D7300512F98 /* KLRegisteredViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BC1B7D1CEB0D7300512F98 /* KLRegisteredViewController.m */; };
+		79BC1B871CEB0F1D00512F98 /* KLLoginTextBoxModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BC1B861CEB0F1D00512F98 /* KLLoginTextBoxModel.m */; };
+		79BC1B8B1CEB174500512F98 /* KLTimeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BC1B891CEB16B100512F98 /* KLTimeButton.m */; };
+		79BC1B8E1CEB232300512F98 /* KLLoginTextFieldBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 79BC1B8D1CEB232300512F98 /* KLLoginTextFieldBox.m */; };
 		79CCF4AA1CABAB500075FD2F /* KLPatientLogBodyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF49A1CABAB4F0075FD2F /* KLPatientLogBodyModel.m */; };
 		79CCF4AB1CABAB500075FD2F /* KLPatientLogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF49C1CABAB4F0075FD2F /* KLPatientLogModel.m */; };
 		79CCF4AC1CABAB500075FD2F /* LWHistoricalCountModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79CCF49E1CABAB4F0075FD2F /* LWHistoricalCountModel.m */; };
@@ -715,6 +711,14 @@
 		79025A781C8D569D00F71892 /* nanguo2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nanguo2@2x.png"; sourceTree = "<group>"; };
 		790392DB1CB4A89F00B020C4 /* LCCoolHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCCoolHUD.h; sourceTree = "<group>"; };
 		790392DC1CB4A89F00B020C4 /* LCCoolHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCCoolHUD.m; sourceTree = "<group>"; };
+		79050DC71CEBFA3500FA260D /* KLRegisteredViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLRegisteredViewCell.h; sourceTree = "<group>"; };
+		79050DC81CEBFA3500FA260D /* KLRegisteredViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLRegisteredViewCell.m; sourceTree = "<group>"; };
+		79050DCA1CEC00F900FA260D /* KLRegistModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLRegistModel.h; sourceTree = "<group>"; };
+		79050DCB1CEC00F900FA260D /* KLRegistModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLRegistModel.m; sourceTree = "<group>"; };
+		79050DCD1CEC07AF00FA260D /* KLRegistPublicFootView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLRegistPublicFootView.h; sourceTree = "<group>"; };
+		79050DCE1CEC07AF00FA260D /* KLRegistPublicFootView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLRegistPublicFootView.m; sourceTree = "<group>"; };
+		79050DD01CEC154600FA260D /* KLRetrievePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLRetrievePasswordViewController.h; sourceTree = "<group>"; };
+		79050DD11CEC154600FA260D /* KLRetrievePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLRetrievePasswordViewController.m; sourceTree = "<group>"; };
 		7905156C1BFDB16E001D5F33 /* LWSenderResBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSenderResBaseModel.h; sourceTree = "<group>"; };
 		7905156D1BFDB16E001D5F33 /* LWSenderResBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWSenderResBaseModel.m; sourceTree = "<group>"; };
 		7905156E1BFDB16E001D5F33 /* LWSenderResBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWSenderResBody.h; sourceTree = "<group>"; };
@@ -795,8 +799,6 @@
 		7912112E1BF1A6A6004166C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		791211301BF1A6A6004166C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		791211311BF1A6A6004166C5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		791211331BF1A6A6004166C5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		791211341BF1A6A6004166C5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7912113E1BF1A6A6004166C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		791211431BF1A6A6004166C5 /* BreatheDoctorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BreatheDoctorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		791211471BF1A6A6004166C5 /* BreatheDoctorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BreatheDoctorTests.m; sourceTree = "<group>"; };
@@ -810,8 +812,6 @@
 		791214AC1BF1CD9C004166C5 /* CDMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDMacro.h; sourceTree = "<group>"; };
 		791214C81BF1CE9E004166C5 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		791214C91BF1CE9E004166C5 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		791214CA1BF1CE9E004166C5 /* LWBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWBaseViewController.h; sourceTree = "<group>"; };
-		791214CB1BF1CE9E004166C5 /* LWBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWBaseViewController.m; sourceTree = "<group>"; };
 		791214D01BF1CE9E004166C5 /* LWPersonalCtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPersonalCtr.h; sourceTree = "<group>"; };
 		791214D11BF1CE9E004166C5 /* LWPersonalCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPersonalCtr.m; sourceTree = "<group>"; };
 		791214E61BF1CF56004166C5 /* CODataCacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CODataCacheManager.h; sourceTree = "<group>"; };
@@ -983,8 +983,6 @@
 		794555361C0BD98F005C0E10 /* NSString+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Size.m"; sourceTree = "<group>"; };
 		794555381C0BD98F005C0E10 /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
 		794555391C0BD98F005C0E10 /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
-		7945553B1C0BD98F005C0E10 /* UIImage+color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+color.h"; sourceTree = "<group>"; };
-		7945553C1C0BD98F005C0E10 /* UIImage+color.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+color.m"; sourceTree = "<group>"; };
 		7945553E1C0BD98F005C0E10 /* UIResponder+Router.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Router.h"; sourceTree = "<group>"; };
 		7945553F1C0BD98F005C0E10 /* UIResponder+Router.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+Router.m"; sourceTree = "<group>"; };
 		794555411C0BD98F005C0E10 /* UIView+BorderLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+BorderLine.h"; sourceTree = "<group>"; };
@@ -1056,36 +1054,6 @@
 		794556AE1C0BDA15005C0E10 /* yitianxie_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yitianxie_@2x.png"; sourceTree = "<group>"; };
 		794556AF1C0BDA15005C0E10 /* yiwanchen_@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yiwanchen_@2x.png"; sourceTree = "<group>"; };
 		794556B11C0BDA15005C0E10 /* defaultIconImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "defaultIconImage@2x.png"; sourceTree = "<group>"; };
-		794557521C0C323D005C0E10 /* MZBlurEffectAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZBlurEffectAdapter.h; sourceTree = "<group>"; };
-		794557531C0C323D005C0E10 /* MZBlurEffectAdapter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZBlurEffectAdapter.m; sourceTree = "<group>"; };
-		794557541C0C323D005C0E10 /* MZFormSheetContentSizingNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetContentSizingNavigationController.h; sourceTree = "<group>"; };
-		794557551C0C323D005C0E10 /* MZFormSheetContentSizingNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetContentSizingNavigationController.m; sourceTree = "<group>"; };
-		794557561C0C323D005C0E10 /* MZFormSheetContentSizingNavigationControllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetContentSizingNavigationControllerAnimator.h; sourceTree = "<group>"; };
-		794557571C0C323D005C0E10 /* MZFormSheetContentSizingNavigationControllerAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetContentSizingNavigationControllerAnimator.m; sourceTree = "<group>"; };
-		794557581C0C323D005C0E10 /* MZFormSheetPresentationContentSizing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetPresentationContentSizing.h; sourceTree = "<group>"; };
-		794557591C0C323D005C0E10 /* MZFormSheetPresentationController Swift Example-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MZFormSheetPresentationController Swift Example-Bridging-Header.h"; sourceTree = "<group>"; };
-		7945575A1C0C323D005C0E10 /* MZFormSheetPresentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetPresentationController.h; sourceTree = "<group>"; };
-		7945575B1C0C323D005C0E10 /* MZFormSheetPresentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetPresentationController.m; sourceTree = "<group>"; };
-		7945575C1C0C323D005C0E10 /* MZFormSheetPresentationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetPresentationViewController.h; sourceTree = "<group>"; };
-		7945575D1C0C323D005C0E10 /* MZFormSheetPresentationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetPresentationViewController.m; sourceTree = "<group>"; };
-		7945575E1C0C323D005C0E10 /* MZFormSheetPresentationViewControllerAnimatedTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetPresentationViewControllerAnimatedTransitioning.h; sourceTree = "<group>"; };
-		7945575F1C0C323D005C0E10 /* MZFormSheetPresentationViewControllerAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetPresentationViewControllerAnimator.h; sourceTree = "<group>"; };
-		794557601C0C323D005C0E10 /* MZFormSheetPresentationViewControllerAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetPresentationViewControllerAnimator.m; sourceTree = "<group>"; };
-		794557611C0C323D005C0E10 /* MZFormSheetPresentationViewControllerInteractiveAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetPresentationViewControllerInteractiveAnimator.h; sourceTree = "<group>"; };
-		794557621C0C323D005C0E10 /* MZFormSheetPresentationViewControllerInteractiveAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetPresentationViewControllerInteractiveAnimator.m; sourceTree = "<group>"; };
-		794557631C0C323D005C0E10 /* MZFormSheetPresentationViewControllerInteractiveTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetPresentationViewControllerInteractiveTransitioning.h; sourceTree = "<group>"; };
-		794557641C0C323D005C0E10 /* MZFormSheetPresentationViewControllerSegue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZFormSheetPresentationViewControllerSegue.h; sourceTree = "<group>"; };
-		794557651C0C323D005C0E10 /* MZFormSheetPresentationViewControllerSegue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZFormSheetPresentationViewControllerSegue.m; sourceTree = "<group>"; };
-		794557661C0C323D005C0E10 /* MZMethodSwizzler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZMethodSwizzler.h; sourceTree = "<group>"; };
-		794557671C0C323D005C0E10 /* MZMethodSwizzler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZMethodSwizzler.m; sourceTree = "<group>"; };
-		794557681C0C323D005C0E10 /* MZTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTransition.h; sourceTree = "<group>"; };
-		794557691C0C323D005C0E10 /* MZTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTransition.m; sourceTree = "<group>"; };
-		7945576A1C0C323E005C0E10 /* UIViewController+TargetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TargetViewController.h"; sourceTree = "<group>"; };
-		7945576B1C0C323E005C0E10 /* UIViewController+TargetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TargetViewController.m"; sourceTree = "<group>"; };
-		794557771C0C3271005C0E10 /* MZAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZAppearance.h; sourceTree = "<group>"; };
-		794557781C0C3271005C0E10 /* MZAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZAppearance.m; sourceTree = "<group>"; };
-		794557791C0C3271005C0E10 /* NSInvocation+Copy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+Copy.h"; sourceTree = "<group>"; };
-		7945577A1C0C3271005C0E10 /* NSInvocation+Copy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+Copy.m"; sourceTree = "<group>"; };
 		794712C01BF9D0FA0083CE6E /* LGReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGReachability.h; sourceTree = "<group>"; };
 		794712C11BF9D0FA0083CE6E /* LGReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGReachability.m; sourceTree = "<group>"; };
 		794712E61BF9D3CC0083CE6E /* LWVoiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWVoiceManager.h; sourceTree = "<group>"; };
@@ -1110,6 +1078,14 @@
 		79515EA61CC8834B008989A7 /* KLPatientOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPatientOperation.m; sourceTree = "<group>"; };
 		79515F281CC8D310008989A7 /* KLPatientDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientDataSource.h; sourceTree = "<group>"; };
 		79515F291CC8D310008989A7 /* KLPatientDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPatientDataSource.m; sourceTree = "<group>"; };
+		7952871D1CEC4093009267F2 /* KLServiceAgreementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLServiceAgreementViewController.h; sourceTree = "<group>"; };
+		7952871E1CEC4093009267F2 /* KLServiceAgreementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLServiceAgreementViewController.m; sourceTree = "<group>"; };
+		795287241CEC4CE4009267F2 /* KLServiceAgreementModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLServiceAgreementModel.h; sourceTree = "<group>"; };
+		795287251CEC4CE4009267F2 /* KLServiceAgreementModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLServiceAgreementModel.m; sourceTree = "<group>"; };
+		795287271CEC50A7009267F2 /* KLServiceAgreementCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLServiceAgreementCell.h; sourceTree = "<group>"; };
+		795287281CEC50A7009267F2 /* KLServiceAgreementCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLServiceAgreementCell.m; sourceTree = "<group>"; };
+		7952872A1CEC75DB009267F2 /* KLRegistPublicOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLRegistPublicOperation.h; sourceTree = "<group>"; };
+		7952872B1CEC75DB009267F2 /* KLRegistPublicOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLRegistPublicOperation.m; sourceTree = "<group>"; };
 		795553FD1C8FBAA60073F14C /* LWOrderViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderViewCell.h; sourceTree = "<group>"; };
 		795553FE1C8FBAA60073F14C /* LWOrderViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWOrderViewCell.m; sourceTree = "<group>"; };
 		795554001C8FD0E20073F14C /* LWOrderCellTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWOrderCellTypeView.h; sourceTree = "<group>"; };
@@ -1265,6 +1241,7 @@
 		797AF49C1CCE106700154DED /* doctor_qunfa_yuyin@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doctor_qunfa_yuyin@3x.png"; sourceTree = "<group>"; };
 		797AF49D1CCE106700154DED /* yishengduan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yishengduan@2x.png"; sourceTree = "<group>"; };
 		797AF49E1CCE106700154DED /* yishengduan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yishengduan@3x.png"; sourceTree = "<group>"; };
+		797BE4621CE57E34002DC328 /* UIImage+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extension.h"; sourceTree = "<group>"; };
 		7984302D1C3A20BA00C79DCA /* LWMessageAgreedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWMessageAgreedCell.h; sourceTree = "<group>"; };
 		7984302E1C3A20BA00C79DCA /* LWMessageAgreedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWMessageAgreedCell.m; sourceTree = "<group>"; };
 		798430301C3A218D00C79DCA /* LWAgreedHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWAgreedHeadCell.h; sourceTree = "<group>"; };
@@ -1364,8 +1341,6 @@
 		79AD85F41C4F300E00EBE224 /* LWPatientGroupsCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientGroupsCtr.m; sourceTree = "<group>"; };
 		79AD85F71C4F300E00EBE224 /* LWPatientListCtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientListCtr.h; sourceTree = "<group>"; };
 		79AD85F81C4F300E00EBE224 /* LWPatientListCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientListCtr.m; sourceTree = "<group>"; };
-		79AD85FD1C4F300E00EBE224 /* LWPatientRecordsCtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRecordsCtr.h; sourceTree = "<group>"; };
-		79AD85FE1C4F300E00EBE224 /* LWPatientRecordsCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRecordsCtr.m; sourceTree = "<group>"; };
 		79AD85FF1C4F300E00EBE224 /* LWPatientRemarksCtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWPatientRemarksCtr.h; sourceTree = "<group>"; };
 		79AD86001C4F300E00EBE224 /* LWPatientRemarksCtr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWPatientRemarksCtr.m; sourceTree = "<group>"; };
 		79AD86341C4F320100EBE224 /* LWRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWRootViewController.h; sourceTree = "<group>"; };
@@ -1439,6 +1414,16 @@
 		79BA9FDB1C46688B00D9236A /* LWTheFromRowArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWTheFromRowArray.m; sourceTree = "<group>"; };
 		79BB5F0C1C1038F600E7046B /* UIViewController+Factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Factory.h"; sourceTree = "<group>"; };
 		79BB5F0D1C1038F600E7046B /* UIViewController+Factory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Factory.m"; sourceTree = "<group>"; };
+		79BC1B761CEAFA0300512F98 /* KLOutLoginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLOutLoginCell.h; sourceTree = "<group>"; };
+		79BC1B771CEAFA0300512F98 /* KLOutLoginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLOutLoginCell.m; sourceTree = "<group>"; };
+		79BC1B7C1CEB0D7300512F98 /* KLRegisteredViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLRegisteredViewController.h; sourceTree = "<group>"; };
+		79BC1B7D1CEB0D7300512F98 /* KLRegisteredViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLRegisteredViewController.m; sourceTree = "<group>"; };
+		79BC1B851CEB0F1D00512F98 /* KLLoginTextBoxModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLLoginTextBoxModel.h; sourceTree = "<group>"; };
+		79BC1B861CEB0F1D00512F98 /* KLLoginTextBoxModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLoginTextBoxModel.m; sourceTree = "<group>"; };
+		79BC1B881CEB16B100512F98 /* KLTimeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLTimeButton.h; sourceTree = "<group>"; };
+		79BC1B891CEB16B100512F98 /* KLTimeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLTimeButton.m; sourceTree = "<group>"; };
+		79BC1B8C1CEB232300512F98 /* KLLoginTextFieldBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLLoginTextFieldBox.h; sourceTree = "<group>"; };
+		79BC1B8D1CEB232300512F98 /* KLLoginTextFieldBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLLoginTextFieldBox.m; sourceTree = "<group>"; };
 		79CCF4991CABAB4F0075FD2F /* KLPatientLogBodyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientLogBodyModel.h; sourceTree = "<group>"; };
 		79CCF49A1CABAB4F0075FD2F /* KLPatientLogBodyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLPatientLogBodyModel.m; sourceTree = "<group>"; };
 		79CCF49B1CABAB4F0075FD2F /* KLPatientLogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLPatientLogModel.h; sourceTree = "<group>"; };
@@ -1755,6 +1740,8 @@
 				790243B01C4E302E0010B1D9 /* LWTimerRemindIndexView.m */,
 				790243BD1C4E30B00010B1D9 /* LWPopAlatView.h */,
 				790243BE1C4E30B00010B1D9 /* LWPopAlatView.m */,
+				79BC1B761CEAFA0300512F98 /* KLOutLoginCell.h */,
+				79BC1B771CEAFA0300512F98 /* KLOutLoginCell.m */,
 			);
 			path = timer;
 			sourceTree = "<group>";
@@ -1940,8 +1927,6 @@
 				791211601BF1BA95004166C5 /* ViewControllers */,
 				791211301BF1A6A6004166C5 /* AppDelegate.h */,
 				791211311BF1A6A6004166C5 /* AppDelegate.m */,
-				791211331BF1A6A6004166C5 /* ViewController.h */,
-				791211341BF1A6A6004166C5 /* ViewController.m */,
 				79F75E8C1BF4253800AE75AB /* Localizable.strings */,
 				79EA5D511C168267001F0EE3 /* Images.xcassets */,
 				7912112D1BF1A6A6004166C5 /* Supporting Files */,
@@ -2100,8 +2085,6 @@
 			children = (
 				791214C81BF1CE9E004166C5 /* BaseViewController.h */,
 				791214C91BF1CE9E004166C5 /* BaseViewController.m */,
-				791214CA1BF1CE9E004166C5 /* LWBaseViewController.h */,
-				791214CB1BF1CE9E004166C5 /* LWBaseViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -2514,8 +2497,7 @@
 		7945553A1C0BD98F005C0E10 /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
-				7945553B1C0BD98F005C0E10 /* UIImage+color.h */,
-				7945553C1C0BD98F005C0E10 /* UIImage+color.m */,
+				797BE4621CE57E34002DC328 /* UIImage+Extension.h */,
 			);
 			path = UIImage;
 			sourceTree = "<group>";
@@ -2715,43 +2697,6 @@
 				794556B11C0BDA15005C0E10 /* defaultIconImage@2x.png */,
 			);
 			path = TaskDetail;
-			sourceTree = "<group>";
-		};
-		794557511C0C323D005C0E10 /* MZFormSheetPresentationController */ = {
-			isa = PBXGroup;
-			children = (
-				794557771C0C3271005C0E10 /* MZAppearance.h */,
-				794557781C0C3271005C0E10 /* MZAppearance.m */,
-				794557791C0C3271005C0E10 /* NSInvocation+Copy.h */,
-				7945577A1C0C3271005C0E10 /* NSInvocation+Copy.m */,
-				794557521C0C323D005C0E10 /* MZBlurEffectAdapter.h */,
-				794557531C0C323D005C0E10 /* MZBlurEffectAdapter.m */,
-				794557541C0C323D005C0E10 /* MZFormSheetContentSizingNavigationController.h */,
-				794557551C0C323D005C0E10 /* MZFormSheetContentSizingNavigationController.m */,
-				794557561C0C323D005C0E10 /* MZFormSheetContentSizingNavigationControllerAnimator.h */,
-				794557571C0C323D005C0E10 /* MZFormSheetContentSizingNavigationControllerAnimator.m */,
-				794557581C0C323D005C0E10 /* MZFormSheetPresentationContentSizing.h */,
-				794557591C0C323D005C0E10 /* MZFormSheetPresentationController Swift Example-Bridging-Header.h */,
-				7945575A1C0C323D005C0E10 /* MZFormSheetPresentationController.h */,
-				7945575B1C0C323D005C0E10 /* MZFormSheetPresentationController.m */,
-				7945575C1C0C323D005C0E10 /* MZFormSheetPresentationViewController.h */,
-				7945575D1C0C323D005C0E10 /* MZFormSheetPresentationViewController.m */,
-				7945575E1C0C323D005C0E10 /* MZFormSheetPresentationViewControllerAnimatedTransitioning.h */,
-				7945575F1C0C323D005C0E10 /* MZFormSheetPresentationViewControllerAnimator.h */,
-				794557601C0C323D005C0E10 /* MZFormSheetPresentationViewControllerAnimator.m */,
-				794557611C0C323D005C0E10 /* MZFormSheetPresentationViewControllerInteractiveAnimator.h */,
-				794557621C0C323D005C0E10 /* MZFormSheetPresentationViewControllerInteractiveAnimator.m */,
-				794557631C0C323D005C0E10 /* MZFormSheetPresentationViewControllerInteractiveTransitioning.h */,
-				794557641C0C323D005C0E10 /* MZFormSheetPresentationViewControllerSegue.h */,
-				794557651C0C323D005C0E10 /* MZFormSheetPresentationViewControllerSegue.m */,
-				794557661C0C323D005C0E10 /* MZMethodSwizzler.h */,
-				794557671C0C323D005C0E10 /* MZMethodSwizzler.m */,
-				794557681C0C323D005C0E10 /* MZTransition.h */,
-				794557691C0C323D005C0E10 /* MZTransition.m */,
-				7945576A1C0C323E005C0E10 /* UIViewController+TargetViewController.h */,
-				7945576B1C0C323E005C0E10 /* UIViewController+TargetViewController.m */,
-			);
-			path = MZFormSheetPresentationController;
 			sourceTree = "<group>";
 		};
 		7952F0F81C0582880030B279 /* PEF */ = {
@@ -3188,7 +3133,6 @@
 				79084E2C1C27AF530002BBF2 /* YLGIFImage */,
 				79084E171C27AEA00002BBF2 /* MJPhotoBrowser */,
 				79FFBB271C0D8EB10072FDCB /* KSNetRequest */,
-				794557511C0C323D005C0E10 /* MZFormSheetPresentationController */,
 				7955C2711C03F705003D6836 /* LKDBHelp */,
 				790A671B1BFC591B007E6DD6 /* D3RecordBtutton */,
 				79F7C1EF1BF71A4400D618AE /* PureLayout */,
@@ -3240,8 +3184,6 @@
 		79AD85FC1C4F300E00EBE224 /* set */ = {
 			isa = PBXGroup;
 			children = (
-				79AD85FD1C4F300E00EBE224 /* LWPatientRecordsCtr.h */,
-				79AD85FE1C4F300E00EBE224 /* LWPatientRecordsCtr.m */,
 				79AD85FF1C4F300E00EBE224 /* LWPatientRemarksCtr.h */,
 				79AD86001C4F300E00EBE224 /* LWPatientRemarksCtr.m */,
 			);
@@ -3262,6 +3204,30 @@
 			children = (
 				79AD91E31BF31BE00098D6CD /* LWLoginViewController.h */,
 				79AD91E41BF31BE00098D6CD /* LWLoginViewController.m */,
+				79BC1B7C1CEB0D7300512F98 /* KLRegisteredViewController.h */,
+				79BC1B7D1CEB0D7300512F98 /* KLRegisteredViewController.m */,
+				7952872A1CEC75DB009267F2 /* KLRegistPublicOperation.h */,
+				7952872B1CEC75DB009267F2 /* KLRegistPublicOperation.m */,
+				79050DD01CEC154600FA260D /* KLRetrievePasswordViewController.h */,
+				79050DD11CEC154600FA260D /* KLRetrievePasswordViewController.m */,
+				7952871D1CEC4093009267F2 /* KLServiceAgreementViewController.h */,
+				7952871E1CEC4093009267F2 /* KLServiceAgreementViewController.m */,
+				795287241CEC4CE4009267F2 /* KLServiceAgreementModel.h */,
+				795287251CEC4CE4009267F2 /* KLServiceAgreementModel.m */,
+				795287271CEC50A7009267F2 /* KLServiceAgreementCell.h */,
+				795287281CEC50A7009267F2 /* KLServiceAgreementCell.m */,
+				79050DCD1CEC07AF00FA260D /* KLRegistPublicFootView.h */,
+				79050DCE1CEC07AF00FA260D /* KLRegistPublicFootView.m */,
+				79050DCA1CEC00F900FA260D /* KLRegistModel.h */,
+				79050DCB1CEC00F900FA260D /* KLRegistModel.m */,
+				79050DC71CEBFA3500FA260D /* KLRegisteredViewCell.h */,
+				79050DC81CEBFA3500FA260D /* KLRegisteredViewCell.m */,
+				79BC1B8C1CEB232300512F98 /* KLLoginTextFieldBox.h */,
+				79BC1B8D1CEB232300512F98 /* KLLoginTextFieldBox.m */,
+				79BC1B851CEB0F1D00512F98 /* KLLoginTextBoxModel.h */,
+				79BC1B861CEB0F1D00512F98 /* KLLoginTextBoxModel.m */,
+				79BC1B881CEB16B100512F98 /* KLTimeButton.h */,
+				79BC1B891CEB16B100512F98 /* KLTimeButton.m */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -4097,6 +4063,7 @@
 				79F75E851BF421F400AE75AB /* LWProgressHUD.m in Sources */,
 				790EE5541C7EA261004ABC78 /* LWReservationDetailedViewController.m in Sources */,
 				7959649C1C06F1F4001C18D8 /* LWMedicationModel.m in Sources */,
+				79050DCC1CEC00F900FA260D /* KLRegistModel.m in Sources */,
 				7929ACBF1C33B2FF002712EC /* LWTheFormView.m in Sources */,
 				7943F2A21CD04C2B00AF030B /* KLGroupSenderChatCell.m in Sources */,
 				797986B41C4393D9005052DF /* LWTimerWeeksViewController.m in Sources */,
@@ -4107,13 +4074,11 @@
 				79BA51011C9A7CF8006A5AE4 /* LWMedicationTypeView.m in Sources */,
 				799788851C9A42D100E86B91 /* LWMedicationView.m in Sources */,
 				79F21EBC1BF9765F00F6A465 /* LWChatBaseModel.m in Sources */,
-				7945576F1C0C323E005C0E10 /* MZFormSheetPresentationController.m in Sources */,
 				79E33E7E1CE03A550095DBFB /* FDActionSheet.m in Sources */,
 				791214D71BF1CE9E004166C5 /* BaseViewController.m in Sources */,
 				7958ED691CA2982600C7FE11 /* LWPatientRelatedPhotoCell.m in Sources */,
 				7943F2D11CD09B3E00AF030B /* KLMessageViewController.m in Sources */,
 				79CCF4AA1CABAB500075FD2F /* KLPatientLogBodyModel.m in Sources */,
-				794557721C0C323E005C0E10 /* MZFormSheetPresentationViewControllerInteractiveAnimator.m in Sources */,
 				79220A981CACF2E900CFBEC2 /* KLDatePickNumberView.m in Sources */,
 				79FBE6DD1CD2FF4E00A5D807 /* TAAbstractDotView.m in Sources */,
 				790A671A1BFC07AF007E6DD6 /* PushMgrInfo.m in Sources */,
@@ -4137,23 +4102,21 @@
 				790ABB641CCF60940005BACA /* KLLineLabel.m in Sources */,
 				7979862B1C433871005052DF /* PatientTaskDescribeVC.m in Sources */,
 				79084E281C27AEA00002BBF2 /* MJPhotoLoadingView.m in Sources */,
-				791211351BF1A6A6004166C5 /* ViewController.m in Sources */,
 				7955C2951C03F705003D6836 /* NSObject+LKDBHelper.m in Sources */,
 				791215621BF1CFD0004166C5 /* LWMainRows.m in Sources */,
 				790243791C4DEB470010B1D9 /* ZZPhotoDatas.m in Sources */,
-				79AD86141C4F300E00EBE224 /* LWPatientRecordsCtr.m in Sources */,
 				79F75E881BF4226B00AE75AB /* CDPromptView.m in Sources */,
 				7994D5B31C57263400E41865 /* NSMutableArray+Sort.m in Sources */,
 				79084E271C27AEA00002BBF2 /* MJPhotoBrowser.m in Sources */,
 				7929ACB81C33B1F8002712EC /* LWChatMessageMoreView.m in Sources */,
 				794555501C0BD98F005C0E10 /* UIView+BorderLine.m in Sources */,
 				79220AA01CAD17D300CFBEC2 /* KLTimerWeeksCell.m in Sources */,
+				79BC1B8B1CEB174500512F98 /* KLTimeButton.m in Sources */,
 				7948A0221CBF898B00E36142 /* KLSetInstructionsViewController.m in Sources */,
 				79AD86111C4F300E00EBE224 /* LWPatientGroupsCtr.m in Sources */,
 				799788891C9A42D100E86B91 /* LWPEFHistorListTitleCell.m in Sources */,
-				7945576D1C0C323E005C0E10 /* MZFormSheetContentSizingNavigationController.m in Sources */,
-				794557751C0C323E005C0E10 /* MZTransition.m in Sources */,
 				79BA50EB1C9A43D8006A5AE4 /* LWHistoricalRecordVC.m in Sources */,
+				79050DC91CEBFA3500FA260D /* KLRegisteredViewCell.m in Sources */,
 				794D51521C7EE46900403767 /* LWOrderDetailedLisetCell.m in Sources */,
 				79AD91BC1BF2E7B90098D6CD /* LWPersonalCenterCtr.m in Sources */,
 				794555511C0BD98F005C0E10 /* UIView+TKGeometry.m in Sources */,
@@ -4178,11 +4141,11 @@
 				790243B91C4E302E0010B1D9 /* LWPatientRelatedPhotoView.m in Sources */,
 				795B6C221C47539B00612AF6 /* LWDoctorTimerModel.m in Sources */,
 				79CCF4AF1CABAB500075FD2F /* LWHistoricalHeardView.m in Sources */,
-				794557741C0C323E005C0E10 /* MZMethodSwizzler.m in Sources */,
 				7984302F1C3A20BA00C79DCA /* LWMessageAgreedCell.m in Sources */,
 				79FFBB541C0D8EB10072FDCB /* KSNoNetView.m in Sources */,
 				7955C28C1C03F705003D6836 /* FMDatabase+InMemoryOnDiskIO.m in Sources */,
 				79F7C1F91BF71A4400D618AE /* ALView+PureLayout.m in Sources */,
+				7952872C1CEC75DB009267F2 /* KLRegistPublicOperation.m in Sources */,
 				79F21EBF1BF9765F00F6A465 /* LWChatPager.m in Sources */,
 				790ABB5A1CCF545C0005BACA /* KLChatMessageMoreView.m in Sources */,
 				791214DA1BF1CE9E004166C5 /* LWPersonalCtr.m in Sources */,
@@ -4196,14 +4159,12 @@
 				790243B61C4E302E0010B1D9 /* LWPersonalMessageCell.m in Sources */,
 				79084E291C27AEA00002BBF2 /* MJPhotoProgressView.m in Sources */,
 				79CCF4AB1CABAB500075FD2F /* KLPatientLogModel.m in Sources */,
-				7945576C1C0C323E005C0E10 /* MZBlurEffectAdapter.m in Sources */,
 				790BE9321C02EA2600BD1D67 /* LWAsthmaAssessmentViewController.m in Sources */,
 				7955C29B1C044BB4003D6836 /* LWACTModel.m in Sources */,
 				79220A991CACF2E900CFBEC2 /* KLDatePickView.m in Sources */,
 				790A672C1BFC591B007E6DD6 /* D3RecordButton.m in Sources */,
 				79BA9FAE1C45E18600D9236A /* UITextView+placeholder.m in Sources */,
 				790243751C4DEB470010B1D9 /* ZZPhotoListViewController.m in Sources */,
-				791214D81BF1CE9E004166C5 /* LWBaseViewController.m in Sources */,
 				7990DF231CA7BC4C0096DA4B /* KLStateView.m in Sources */,
 				79BA51041C9A83FC006A5AE4 /* LWMedicationTitleTypeView.m in Sources */,
 				790243B81C4E302E0010B1D9 /* LWPatientRelatedPhotoCollectionViewCell.m in Sources */,
@@ -4223,7 +4184,6 @@
 				790243BF1C4E30B00010B1D9 /* LWPopAlatView.m in Sources */,
 				790ABB611CCF55C00005BACA /* KLGoodsCell.m in Sources */,
 				79CCF4AE1CABAB500075FD2F /* JSDropmenuView.m in Sources */,
-				794557711C0C323E005C0E10 /* MZFormSheetPresentationViewControllerAnimator.m in Sources */,
 				79FBE6E31CD2FF4E00A5D807 /* UIView+SDExtension.m in Sources */,
 				7919B8BA1BFADC670058853F /* LWPatientRecordsBaseModel.m in Sources */,
 				79084E331C27AF530002BBF2 /* YLImageView.m in Sources */,
@@ -4246,7 +4206,6 @@
 				7955C2941C03F705003D6836 /* LKDBUtils.m in Sources */,
 				7955C2961C03F705003D6836 /* NSObject+LKModel.m in Sources */,
 				7958ED6C1CA3B0E800C7FE11 /* KLPatientRelatedModel.m in Sources */,
-				7945576E1C0C323E005C0E10 /* MZFormSheetContentSizingNavigationControllerAnimator.m in Sources */,
 				7919B8BD1BFADC670058853F /* LWPatientRecordsPatientArchives.m in Sources */,
 				79FFBB521C0D8EB10072FDCB /* KSCache.m in Sources */,
 				790243781C4DEB470010B1D9 /* ZZBrowerAnimate.m in Sources */,
@@ -4264,9 +4223,9 @@
 				794BC6091CB78D55009F29B2 /* KLTimerRemindViewOperation.m in Sources */,
 				79BA50FE1C9A5F28006A5AE4 /* LWMedicationContentCell.m in Sources */,
 				790A67351BFC591B007E6DD6 /* Mp3Recorder.m in Sources */,
+				79BC1B7E1CEB0D7300512F98 /* KLRegisteredViewController.m in Sources */,
 				7902438B1C4DEB470010B1D9 /* ZZPhotoHud.m in Sources */,
 				790392DD1CB4A89F00B020C4 /* LCCoolHUD.m in Sources */,
-				7945577C1C0C3271005C0E10 /* NSInvocation+Copy.m in Sources */,
 				790BE9391C02EBB200BD1D67 /* LWACTStateAssessmentCell.m in Sources */,
 				7943F2D21CD09B3E00AF030B /* KLMessgaeDataSource.m in Sources */,
 				79FFBB5A1C0D8EB10072FDCB /* UIViewController+KSNoNetController.m in Sources */,
@@ -4286,14 +4245,16 @@
 				79CCF4BE1CABAB8C0075FD2F /* KLSymptomsLogModel.m in Sources */,
 				790ABB5E1CCF54C90005BACA /* KLGoodsViewController.m in Sources */,
 				7941A89C1C3518C700B8ACC7 /* LWOrderRecordViewController.m in Sources */,
+				79050DD51CEC170500FA260D /* KLRegistPublicFootView.m in Sources */,
 				790ABB581CCF545C0005BACA /* KLGroupSenderOperation.m in Sources */,
 				794555491C0BD98F005C0E10 /* NSString+Hash.m in Sources */,
 				790243741C4DEB470010B1D9 /* ZZPhotoController.m in Sources */,
 				79B72D5B1C9BA46800E2920F /* LWHistoricalLogCell.m in Sources */,
+				79BC1B871CEB0F1D00512F98 /* KLLoginTextBoxModel.m in Sources */,
 				7943F2DB1CD09F7400AF030B /* KLGoodsChatView.m in Sources */,
+				7952871F1CEC4093009267F2 /* KLServiceAgreementViewController.m in Sources */,
 				79AD91F51BF33CCB0098D6CD /* YRJSONAdapter.m in Sources */,
 				7958ED601CA143F000C7FE11 /* LWPEFLineView.m in Sources */,
-				794557731C0C323E005C0E10 /* MZFormSheetPresentationViewControllerSegue.m in Sources */,
 				79220A9D1CAD15B300CFBEC2 /* KLTimerWeeksView.m in Sources */,
 				7990DF321CA9018E0096DA4B /* LWLineButton.m in Sources */,
 				790243881C4DEB470010B1D9 /* ZZCameraFocusView.m in Sources */,
@@ -4305,21 +4266,24 @@
 				798922C21BFEB6A2002C695C /* GJMFileHelper.m in Sources */,
 				7943F2CD1CD09B3E00AF030B /* LWChatViewController.m in Sources */,
 				79BA50F21C9A45EB006A5AE4 /* LWSymptomsFootView.m in Sources */,
+				795287261CEC4CE4009267F2 /* KLServiceAgreementModel.m in Sources */,
 				797986281C43384D005052DF /* FastReplyVCCell.m in Sources */,
 				79AD91A31BF2CEF60098D6CD /* CDCheckBox.m in Sources */,
 				79515EA71CC8834B008989A7 /* KLPatientOperation.m in Sources */,
+				795287291CEC50A7009267F2 /* KLServiceAgreementCell.m in Sources */,
 				79BA9FDC1C46688B00D9236A /* LWTheFromArows.m in Sources */,
 				794275611C7D891300E42F87 /* LWOrderListModel.m in Sources */,
 				79CCF4B91CABAB6A0075FD2F /* KLHistoricalOperation.m in Sources */,
-				7945577B1C0C3271005C0E10 /* MZAppearance.m in Sources */,
 				794167751CCE1E3700137C93 /* KLGroupSenderViewCtr.m in Sources */,
 				7955DC081C4CDCAA00314221 /* LWPatientBiaoDanBody.m in Sources */,
 				7955C28D1C03F705003D6836 /* FMDatabase.m in Sources */,
 				79CCF4AC1CABAB500075FD2F /* LWHistoricalCountModel.m in Sources */,
 				7990DF201CA647AC0096DA4B /* NSObject+ProperList.m in Sources */,
+				79BC1B781CEAFA0300512F98 /* KLOutLoginCell.m in Sources */,
 				794555471C0BD98F005C0E10 /* NSDate+Extension.m in Sources */,
 				7943F2D51CD09B3E00AF030B /* PatientAddVC.m in Sources */,
 				79CEEDED1C0184A0004D6786 /* LWPatientLogDateIndexView.m in Sources */,
+				79BC1B8E1CEB232300512F98 /* KLLoginTextFieldBox.m in Sources */,
 				7938E5701C0EDBA800AD043F /* UUMessageFrame.m in Sources */,
 				7929ACB71C33B1F8002712EC /* LWChatMessageMoreCollectionCell.m in Sources */,
 				7990D7B31C7AF76A00127A28 /* RFLayout.m in Sources */,
@@ -4345,9 +4309,7 @@
 				791935D81C7C589000EF4FFA /* DZ_ScaleCircle.m in Sources */,
 				7948972C1CD9846C009081A4 /* KLGroupSenderPatientListModel.m in Sources */,
 				7912155F1BF1CFD0004166C5 /* LWMainMessageBaseModel.m in Sources */,
-				794557761C0C323E005C0E10 /* UIViewController+TargetViewController.m in Sources */,
 				791215071BF1CF56004166C5 /* ControllerExtraDataManager.m in Sources */,
-				7945554E1C0BD98F005C0E10 /* UIImage+color.m in Sources */,
 				791214991BF1C6D4004166C5 /* LWPatientCell.m in Sources */,
 				79BA9FB71C46413000D9236A /* LWTheFormCell.m in Sources */,
 				79FBE6C81CD2F3A700A5D807 /* KLGoodsDetailedViewController.m in Sources */,
@@ -4356,10 +4318,10 @@
 				7945554A1C0BD98F005C0E10 /* NSString+Pinyin.m in Sources */,
 				79F21EBD1BF9765F00F6A465 /* LWChatBody.m in Sources */,
 				7912112F1BF1A6A6004166C5 /* main.m in Sources */,
+				79050DD41CEC16E300FA260D /* KLRetrievePasswordViewController.m in Sources */,
 				79FAEACA1CD82F5D00DE8FF4 /* KLGoodsImageCollectionViewCell.m in Sources */,
 				795FE0831C07FD1800B2EA2A /* LWYerChangIndexView.m in Sources */,
 				7955C2911C03F705003D6836 /* FMResultSet.m in Sources */,
-				794557701C0C323E005C0E10 /* MZFormSheetPresentationViewController.m in Sources */,
 				79084E321C27AF530002BBF2 /* YLGIFImage.m in Sources */,
 				790243B21C4E302E0010B1D9 /* LWOrderDetailsCell.m in Sources */,
 				79F710311C87E216004FFAA8 /* LWReservationDetailedModel.m in Sources */,
@@ -4518,6 +4480,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BreatheDoctor/Library/D3RecordBtutton",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.E-breath.breatheDoctor";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

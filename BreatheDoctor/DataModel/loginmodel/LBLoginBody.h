@@ -29,6 +29,7 @@
 @property (nonatomic, strong) NSString *perSpacil;
 @property (nonatomic, assign) double perSex;
 @property (nonatomic, strong) NSString *departmentName;
+@property (nonatomic, copy) NSString *CheckStatus;
 
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;

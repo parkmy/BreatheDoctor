@@ -51,6 +51,7 @@
     [self.view addSubview:self.webView];
     NSURL *url =[NSURL URLWithString:self.url];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+
     [request setTimeoutInterval:10];
     [self.webView loadRequest:request];
     
@@ -61,11 +62,20 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [LWProgressHUD closeProgressHUD:webView];
+    
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     [LWProgressHUD closeProgressHUD:webView];
+}
+
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

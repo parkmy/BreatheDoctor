@@ -50,6 +50,7 @@
     UINavigationController *nav1 = [[UINavigationController alloc]initWithRootViewController:vc1];
     UINavigationController *nav2 =[[UINavigationController alloc]initWithRootViewController:vc2];
     UINavigationController *nav3 =[[UINavigationController alloc]initWithRootViewController:vc3];
+
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     //nav_third

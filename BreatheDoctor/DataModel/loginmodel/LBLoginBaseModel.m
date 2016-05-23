@@ -96,6 +96,8 @@ NSString *const kLBLoginBaseModelResNum = @"res_num";
     self.valid = [aDecoder decodeObjectForKey:kLBLoginBaseModelValid];
     self.joinId = [aDecoder decodeObjectForKey:kLBLoginBaseModelJoinId];
     self.resNum = [aDecoder decodeObjectForKey:kLBLoginBaseModelResNum];
+    self.loginMiMa = [aDecoder decodeObjectForKey:@"loginMiMa"];
+    self.loginZhangHao = [aDecoder decodeObjectForKey:@"loginZhangHao"];
     return self;
 }
 
@@ -108,6 +110,9 @@ NSString *const kLBLoginBaseModelResNum = @"res_num";
     [aCoder encodeObject:_valid forKey:kLBLoginBaseModelValid];
     [aCoder encodeObject:_joinId forKey:kLBLoginBaseModelJoinId];
     [aCoder encodeObject:_resNum forKey:kLBLoginBaseModelResNum];
+    [aCoder encodeObject:_loginMiMa forKey:@"loginMiMa"];
+    [aCoder encodeObject:_loginZhangHao forKey:@"loginZhangHao"];
+
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -127,5 +132,29 @@ NSString *const kLBLoginBaseModelResNum = @"res_num";
     return copy;
 }
 
++ (BOOL)isCheckStatusTheIsShow:(BOOL)show{
+
+    //开通服务请拨打客服电话 4007-038-039 ，或联系身边工作人员
+    LBLoginBaseModel *model = [[CODataCacheManager shareInstance] userModel];
+    
+    BOOL isCheck = [model.body.CheckStatus boolValue];
+    if (!isCheck&&show) {
+        SHOWAlertView(@"", @"开通服务请拨打客服电话 4007-038-039 ，或联系身边工作人员");
+    }
+    return isCheck;
+}
+
+
++ (void)updateUserModel{
+
+    LBLoginBaseModel *model = [[CODataCacheManager shareInstance] userModel];
+    NSLog(@"%@",model.body.CheckStatus);
+    if (!model.body.CheckStatus) {
+        
+        model.body.CheckStatus = @"1";
+        [CODataCacheManager shareInstance].userModel = model;
+        [[CODataCacheManager shareInstance] saveUserModel];
+    }
+}
 
 @end

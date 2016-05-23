@@ -10,8 +10,10 @@
 #import "LWLoginManager.h"
 #import "LWWEBViewController.h"
 #import "LWHttpDefine.h"
+#import "KLOutLoginCell.h"
 
-@interface LWPersonalSetingCtr ()
+@interface LWPersonalSetingCtr ()<UITableViewDelegate,UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -25,8 +27,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self addSubViews];
+}
+- (void)addSubViews{
+
     self.tableView.rowHeight = 44*MULTIPLE;
     self.tableView.sectionFooterHeight = .1;
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"stcell"];
 }
 - (void)navLeftButtonAction
 {
@@ -39,7 +47,33 @@
 }
 
 #pragma mark -
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+ 
+    return 2;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    
+    return 1;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
+    if (indexPath.section == 0) {
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"stcell" forIndexPath:indexPath];
+        cell.textLabel.font = kNSPXFONT(28);
+        cell.textLabel.textColor = [UIColor colorWithHexString:@"#333333"];
+        cell.textLabel.text = @"修改密码";
+        return cell;
+
+    }else if (indexPath.section == 1){
+    
+        KLOutLoginCell *cell = [tableView dequeueReusableCellWithIdentifier:@"KLOutLoginCell" forIndexPath:indexPath];
+        
+        return cell;
+    }
+    return nil;
+    
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section == 0) {

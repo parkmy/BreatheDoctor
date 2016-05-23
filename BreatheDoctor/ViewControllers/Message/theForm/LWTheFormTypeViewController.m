@@ -11,8 +11,10 @@
 #import "YRJSONAdapter.h"
 #import "LWPatientBiaoDanBody.h"
 
-@interface LWTheFormTypeViewController ()
+@interface LWTheFormTypeViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) UITableView *tableView;
+
 @end
 
 @implementation LWTheFormTypeViewController
@@ -27,12 +29,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self addSubViews];
+    
+
+    
+    [self loadData];
+}
+- (void)addSubViews{
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    [self.view addSubview:_tableView];
+    _tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
     
     self.tableView.rowHeight = 60;
     self.tableView.separatorStyle = 0;
     setExtraCellLineHidden(self.tableView);
-    
-    [self loadData];
 }
 - (NSMutableArray *)dataArray
 {
@@ -45,20 +58,22 @@
 {
     if (self.showType == showTheFormTypeBiaoDan) {
         [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
+        WEAKSELF
         [LWHttpRequestManager httploadPatientFirstDiagnosticList:self.patientId Success:^(NSMutableArray *models) {
-            [LWProgressHUD closeProgressHUD:self.view];
-            [self.dataArray removeAllObjects];
-            [self.dataArray addObjectsFromArray:models];
-            [self.tableView reloadData];
-            if (self.dataArray.count <= 0) {
-                [self showErrorMessage:@"暂无已填表单～" isShowButton:YES type:showErrorType64Hight];
+            [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+            [KL_weakSelf.dataArray removeAllObjects];
+            [KL_weakSelf.dataArray addObjectsFromArray:models];
+            [KL_weakSelf.tableView reloadData];
+            if (KL_weakSelf.dataArray.count <= 0) {
+                [KL_weakSelf showErrorMessage:@"暂无已填表单～" isShowButton:YES type:showErrorType64Hight];
             }else
             {
-                [self hiddenNonetWork];
+                [KL_weakSelf hiddenNonetWork];
             }
         } failure:^(NSString *errorMes) {
-            [LWProgressHUD closeProgressHUD:self.view];
-            [self showErrorMessage:errorMes isShowButton:NO type:showErrorTypeHttp];
+            
+            [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+            [KL_weakSelf showErrorMessage:errorMes isShowButton:NO type:showErrorTypeHttp];
         }];
     }
 }

@@ -36,6 +36,9 @@
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
     {
         UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+        picker.navigationBar.barTintColor = [LWThemeManager shareInstance].navBackgroundColor;
+        [picker.navigationBar setTintColor:[UIColor whiteColor]];
+//        picker.view.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
         //        [controls.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
         //        [controls.navigationBar  setShadowImage:[UIImage new]];
         picker.edgesForExtendedLayout = UIRectEdgeNone;
@@ -124,18 +127,17 @@
 //图片转换数据data上传
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
 {
-    WEAKSELF
+    
+    
+    UIImage *scale_image=[self resetSizeOfImage:image];
+    NSData *imageData=nil;
+    imageData = UIImageJPEGRepresentation(scale_image, 0.5);
+    
+    self.didSeleImageBlock?self.didSeleImageBlock(imageData):nil;
+    
     [picker dismissViewControllerAnimated:NO completion:
      ^{
          [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-         
-         UIImage *scale_image=[KL_weakSelf resetSizeOfImage:image];
-         NSData *imageData=nil;
-         imageData = UIImageJPEGRepresentation(scale_image, 0.5);
-         
-         KL_weakSelf.didSeleImageBlock?KL_weakSelf.didSeleImageBlock(imageData):nil;
-//         [self httpUpLoadData:imageData withType:2 withVocMain:0];
-         
      }];
 }
 

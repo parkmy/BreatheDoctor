@@ -6,9 +6,9 @@
 //  Copyright © 2015年 lwh. All rights reserved.
 // ACT
 
-#import "LWBaseViewController.h"
+#import "BaseViewController.h"
 
-@interface LWACTAssessmentViewController : LWBaseViewController
+@interface LWACTAssessmentViewController : BaseViewController
 @property (nonatomic, copy) NSString *bayId; //获取id
 @property (nonatomic, copy) NSString *patientName;
 @end

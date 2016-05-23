@@ -17,6 +17,7 @@
 #import "KLPatientListModel.h"
 #import "KLGoodsModel.h"
 #import "KLGroupSenderChatModel.h"
+#import "NSString+Hash.h"
 
 @implementation LWHttpRequestManager
 
@@ -82,13 +83,15 @@
 {
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     [requestParams setObject:phoneNumber forKey:@"userNo"];
-    [requestParams setObject:password forKey:@"userPwd"];
+    [requestParams setObject:[password md5String] forKey:@"userPwd"];
     
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOGIN] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
         NSLog(@"%@",[responseObject JSONString]);
         LBLoginBaseModel *userModel = [[LBLoginBaseModel alloc] initWithDictionary:responseObject];
+        userModel.loginZhangHao = phoneNumber;
+        userModel.loginMiMa     = password;
         [CODataCacheManager shareInstance].userModel = userModel;
         [[CODataCacheManager shareInstance] saveUserModel];
         
@@ -223,20 +226,6 @@
                 [[LKDBHelper getUsingLKDBHelper] insertToDB:model];
             }
         }
-        
-        /**
-         *  以后增加缓存清除处理老版本缓存
-         */
-//        for (LWPatientRows *model in patientBaseModel.body.rows) {
-//            
-//            NSString *where = [NSString stringWithFormat:@"patientId = %@",model.patientId];
-//            if ([[LKDBHelper getUsingLKDBHelper] isExistsClass:[LWPatientRows class] where:where]) {
-//                [[LKDBHelper getUsingLKDBHelper]updateToDB:model where:where];
-//            }
-//            else
-//                [[LKDBHelper getUsingLKDBHelper] insertToDB:model];
-//        }
-//        
         if (success){ success(list);}
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
@@ -345,7 +334,6 @@
                                success:(void (^)(NSDictionary *dic))success
                                failure:(void (^)(NSString * errorMes))failure
 {
-    
     
     NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
     
@@ -864,7 +852,7 @@
         success?success(array):nil;
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
-    } isCache:YES];
+    } isCache:NO];
 }
 
 #pragma mark  加载商品详情
@@ -992,6 +980,76 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
     } isCache:NO];
+}
+
+#pragma mark  发送短信验证码
++ (void)httpSenderMessageVcoderThePhone:(NSString *)mobilePhone
+                             verifyType:(NSInteger)verifyType
+                                Success:(void (^)())success
+                               failure:(void (^)(NSString * errorMes))failure{
+
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    [requestParams setObject:stringJudgeNull(mobilePhone) forKey:@"mobilePhone"];
+    [requestParams setObject:kNSString(kNSNumInteger(verifyType)) forKey:@"verifyType"];
+
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_SENDERMESSAGEVERCODE] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        success?success():nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];
+}
+
+#pragma mark  注册
++ (void)httpRegistDoctorWithMobilePhone:(NSString *)mobilePhone
+                             theUserPsw:(NSString *)userPsw
+                          theVerifyCode:(NSString *)verifyCode
+                      theInvitationCode:(NSString *)invitationCode
+                                Success:(void (^)())success
+                                failure:(void (^)(NSString * errorMes))failure{
+
+    
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    [requestParams setObject:stringJudgeNull(mobilePhone) forKey:@"mobilePhone"];
+    [requestParams setObject:[stringJudgeNull(userPsw) md5String]forKey:@"userPwd"];
+    [requestParams setObject:stringJudgeNull(verifyCode) forKey:@"verifyCode"];
+    [requestParams setObject:stringJudgeNull(invitationCode) forKey:@"invitationCode"];
+
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_REGISTERDOCTOR] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        success?success():nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];
+    
+
+}
+
+#pragma mark  找回密码
++ (void)httpFindPasswordWithMobilePhone:(NSString *)mobilePhone
+                          theVerifyCode:(NSString *)verifyCode
+                              theNewPwd:(NSString *)newPwd
+                                Success:(void (^)())success
+                                failure:(void (^)(NSString * errorMes))failure{
+
+    NSMutableDictionary *requestParams = [LWHttpRequestManager dic];
+    [LWHttpRequestManager addPublicHeaderPost:requestParams];
+    [requestParams setObject:stringJudgeNull(mobilePhone) forKey:@"mobilePhone"];
+    [requestParams setObject:stringJudgeNull(verifyCode) forKey:@"verifyCode"];
+    [requestParams setObject:[stringJudgeNull(newPwd) md5String] forKey:@"newPwd"];
+    
+    [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_FINDPASSWORD] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
+        NSLog(@"%@",[responseObject JSONString]);
+        
+        success?success():nil;
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
+        failure?failure(errorMessage):nil;
+    } isCache:NO];
+
 }
 
 @end

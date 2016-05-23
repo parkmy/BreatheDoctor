@@ -59,14 +59,15 @@
 - (void)loadData
 {
     [LWProgressHUD displayProgressHUD:self.view displayText:@""];
+    WEAKSELF
     [LWHttpRequestManager httpLoadOrderAppointmentInfoWithOrdAppid:self.requestId Success:^(LWReservationDetailedModel *model) {
-        [self hiddenNonetWork];
-        [LWProgressHUD closeProgressHUD:self.view];
-        self.model = model;
-        [self.tableView reloadData];
+        [KL_weakSelf hiddenNonetWork];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+        KL_weakSelf.model = model;
+        [KL_weakSelf.tableView reloadData];
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD closeProgressHUD:self.view];
-        [self showErrorMessage:errorMes isShowButton:NO type:showErrorTypeHttp];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+        [KL_weakSelf showErrorMessage:errorMes isShowButton:NO type:showErrorTypeHttp];
     }];
     
 }

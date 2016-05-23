@@ -26,7 +26,7 @@ NSString *const kLBLoginBodySignature = @"tags";
 NSString *const kLBLoginBodyPerSpacil = @"perSpacil";
 NSString *const kLBLoginBodyPerSex = @"perSex";
 NSString *const kLBLoginBodyDepartmentName = @"departmentName";
-
+NSString *const kLBLoginBodyCheckStatus = @"checkStatus";
 
 @interface LBLoginBody ()
 
@@ -86,7 +86,7 @@ NSString *const kLBLoginBodyDepartmentName = @"departmentName";
             self.perSpacil = [self objectOrNilForKey:kLBLoginBodyPerSpacil fromDictionary:dict];
             self.perSex = [[self objectOrNilForKey:kLBLoginBodyPerSex fromDictionary:dict] doubleValue];
             self.departmentName = [self objectOrNilForKey:kLBLoginBodyDepartmentName fromDictionary:dict];
-
+            self.CheckStatus =  [self objectOrNilForKey:kLBLoginBodyCheckStatus fromDictionary:dict];
     }
     
     return self;
@@ -155,6 +155,8 @@ NSString *const kLBLoginBodyDepartmentName = @"departmentName";
     self.perSpacil = [aDecoder decodeObjectForKey:kLBLoginBodyPerSpacil];
     self.perSex = [aDecoder decodeDoubleForKey:kLBLoginBodyPerSex];
     self.departmentName = [aDecoder decodeObjectForKey:kLBLoginBodyDepartmentName];
+    self.CheckStatus = [aDecoder decodeObjectForKey:kLBLoginBodyCheckStatus];
+    
     return self;
 }
 
@@ -179,6 +181,8 @@ NSString *const kLBLoginBodyDepartmentName = @"departmentName";
     [aCoder encodeObject:_perSpacil forKey:kLBLoginBodyPerSpacil];
     [aCoder encodeDouble:_perSex forKey:kLBLoginBodyPerSex];
     [aCoder encodeObject:_departmentName forKey:kLBLoginBodyDepartmentName];
+    [aCoder encodeObject:_CheckStatus forKey:kLBLoginBodyCheckStatus];
+    
 }
 
 - (id)copyWithZone:(NSZone *)zone
@@ -205,6 +209,7 @@ NSString *const kLBLoginBodyDepartmentName = @"departmentName";
         copy.perSpacil = [self.perSpacil copyWithZone:zone];
         copy.perSex = self.perSex;
         copy.departmentName = [self.departmentName copyWithZone:zone];
+        copy.CheckStatus = [self.CheckStatus copyWithZone:zone];
     }
     
     return copy;

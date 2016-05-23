@@ -9,6 +9,7 @@
 #import "CDMacro.h"
 #import "YRJSONAdapter.h"
 #import "LWLoginManager.h"
+#import "KLRegistPublicOperation.h"
 
 @implementation PushMgrInfo
 
@@ -118,6 +119,16 @@
 
         }
             break;
+        case 8://认证通过
+        {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_CERTIFICATION_SUCC object:nil];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"已为您开通平台服务快去邀请您的患者吧" delegate:self cancelButtonTitle:@"这就去" otherButtonTitles:@"取消", nil];
+            alert.tag = 2;
+            [alert show];
+            
+            
+        }
+            break;
         default:
             break;
     }
@@ -153,6 +164,7 @@
     //        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReceiveRemoteNotification" object:nil];
     //    }
 }
+
 - (void)isRegisterUserNotification:(UIApplication *)application
                      theisInfoDate:(BOOL)isDate{
 
@@ -174,21 +186,70 @@
     {
         [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:@"UIUserNotificationTypeNoneDate"];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示" message:@"您的通知消息功能受到限制，这将影响您的消息推送功能，是否设置？" delegate:self cancelButtonTitle:@"是" otherButtonTitles:@"否", nil];
+        alert.tag = 1;
         [alert show];
     }
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if(buttonIndex == 0)
-    {
-        NSURL *url = [NSURL URLWithString:@"prefs:root=NOTIFICATIONS_ID&path=breatheDoctor://"];
-        if ([[UIApplication sharedApplication] canOpenURL:url])
+    if (alertView.tag == 1) {
+        if(buttonIndex == 0)
         {
-            [[UIApplication sharedApplication] openURL:url];
+            NSURL *url = [NSURL URLWithString:@"prefs:root=NOTIFICATIONS_ID&path=breatheDoctor://"];
+            if ([[UIApplication sharedApplication] canOpenURL:url])
+            {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+        }
+    }else if (alertView.tag == 2){
+    
+        [KLRegistPublicOperation notCertificationAgainIfCertificationSuccess:^(BOOL isCheck) {
+            
+            id getCurrentVc = [self getCurrentVC];
+            
+            if ([getCurrentVc isKindOfClass:[UITabBarController class]]) {
+                
+                UITabBarController *tabar = getCurrentVc;
+                UINavigationController *nav  = tabar.viewControllers[tabar.selectedIndex];
+                [nav popToRootViewControllerAnimated:false];
+                UIViewController *vc = [UIViewController CreateControllerWithTag:CtrlTag_AddPatient];
+                vc.hidesBottomBarWhenPushed = YES;
+                
+                [nav pushViewController:vc animated:true];
+            }
+
+        }];
+    }
+
+}
+//获取当前屏幕显示的viewcontroller
+- (UIViewController *)getCurrentVC
+{
+    UIViewController *result = nil;
+    
+    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+    if (window.windowLevel != UIWindowLevelNormal)
+    {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow * tmpWin in windows)
+        {
+            if (tmpWin.windowLevel == UIWindowLevelNormal)
+            {
+                window = tmpWin;
+                break;
+            }
         }
     }
     
+    UIView *frontView = [[window subviews] objectAtIndex:0];
+    id nextResponder = [frontView nextResponder];
+    
+    if ([nextResponder isKindOfClass:[UIViewController class]])
+        result = nextResponder;
+    else
+        result = window.rootViewController;
+    
+    return result;
 }
-
 @end

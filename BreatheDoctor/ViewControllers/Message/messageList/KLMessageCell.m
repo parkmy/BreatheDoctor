@@ -83,7 +83,7 @@
         _messageCountLabel.font = kNSPXFONT(24);
         _messageCountLabel.textAlignment = 1;
         _messageCountLabel.textColor = [UIColor whiteColor];
-        _messageCountLabel.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:.7];
+        _messageCountLabel.backgroundColor = RGBA(244, 53, 48, 1);
         _messageCountLabel.adjustsFontSizeToFitWidth = YES;
         [_messageCountLabel setCornerRadius:10];
     }

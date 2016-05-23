@@ -12,8 +12,8 @@
 #import "CODataCacheManager.h"
 #import <UIImageView+WebCache.h>
 
-@interface LWPersonalCenterCtr ()
-
+@interface LWPersonalCenterCtr ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic, strong) UITableView *tableView;
 @end
 
 @implementation LWPersonalCenterCtr
@@ -25,7 +25,17 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self addSubViews];
     // Do any additional setup after loading the view.
+}
+- (void)addSubViews{
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    [self.view addSubview:_tableView];
+    _tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
     self.tableView.sectionFooterHeight = .1;
 
 }
@@ -101,7 +111,7 @@
         {
             if (indexPath.row == 1) { //姓名
                 textLabelTitle = @"姓名";
-                detailTextLabelTitle = stringJudgeNull(user.body.perName);
+                detailTextLabelTitle = user.body.perName.length>0?user.body.perName:stringJudgeNull(user.loginZhangHao);
             }else if (indexPath.row == 2) //性别
             {
                 textLabelTitle = @"性别";

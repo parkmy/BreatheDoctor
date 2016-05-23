@@ -66,14 +66,16 @@
 - (void)loadRelated
 {
     [ZZPhotoHud showActiveHudWithTitle:@"正在加载..."];
+    WEAKSELF
     [LWHttpRequestManager httploadDiseaseRelate:self.patientId Success:^(LWPatientRelatedModel *model) {
         [ZZPhotoHud hideActiveHud];
-        self.model = model;
-        [KLPatientRelatedModel patientRelatedModelsWithModel:model andArray:self.dataArray];
-        KLPatientRelatedModel *patientRelatedModel = [self imagePatientRelatedModel];
+        KL_weakSelf.model = model;
+        [KLPatientRelatedModel patientRelatedModelsWithModel:model andArray:KL_weakSelf.dataArray];
+        KLPatientRelatedModel *patientRelatedModel = [KL_weakSelf imagePatientRelatedModel];
         [patientRelatedModel imagesChangeHeight:patientRelatedModel.images];
-        [self.tableView reloadData];
+        [KL_weakSelf.tableView reloadData];
     } failure:^(NSString *errorMes) {
+        
         [ZZPhotoHud hideActiveHud];
         [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:errorMes];
 //        [LCCoolHUD showFailure:errorMes zoom:YES shadow:NO];
@@ -123,11 +125,13 @@
 - (void)updateRelated
 {
     [ZZPhotoHud showActiveHudWithTitle:@"正在修改..."];
+    WEAKSELF
     [LWHttpRequestManager httpupdateDiseaseRelateWithSid:self.model.sid treatmentResult:[self treatmentResult] basicCondition:[self basicCondition] images:[self updateImageString] Success:^(NSMutableArray *models) {
         [ZZPhotoHud hideActiveHud];
         
         [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:@"修改成功" theHiddenBlock:^{
-            [self.navigationController popViewControllerAnimated:YES];
+            
+            [KL_weakSelf.navigationController popViewControllerAnimated:YES];
         }];
     } failure:^(NSString *errorMes) {
         [ZZPhotoHud hideActiveHud];
@@ -138,10 +142,11 @@
 //增加
 - (void)senderRelated
 {
+    WEAKSELF
     [LWHttpRequestManager httpsubmitDiseaseRelateWithPatientId:self.patientId treatmentResult:[self treatmentResult] basicCondition:[self basicCondition] images:[self updateImageString] Success:^(NSMutableArray *models) {
         [ZZPhotoHud hideActiveHud];
         [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:@"保存成功" theHiddenBlock:^{
-            [self.navigationController popViewControllerAnimated:YES];
+            [KL_weakSelf.navigationController popViewControllerAnimated:YES];
         }];
     } failure:^(NSString *errorMes) {
         [ZZPhotoHud hideActiveHud];
@@ -152,6 +157,7 @@
 //保存
 - (void)baocunButtonClick:(UIButton *)sender
 {
+    WEAKSELF
     [self uploadImagesSuccess:^(NSMutableArray *models) {
         
         NSMutableArray *updateImages = [NSMutableArray array];
@@ -170,12 +176,12 @@
             [updateImages addObject:contentString];
         }
        
-        [self updateImagesWithArray:updateImages];
+        [KL_weakSelf updateImagesWithArray:updateImages];
         
-        if (self.model.sid) {
-            [self updateRelated];
+        if (KL_weakSelf.model.sid) {
+            [KL_weakSelf updateRelated];
         }else{
-            [self senderRelated];
+            [KL_weakSelf senderRelated];
         }
     }];
 }
@@ -285,21 +291,22 @@
 
     if (indexPath.row == patientRelatedModel.images.count)
     {
+        WEAKSELF
         ALActionSheetView *view = [[ALActionSheetView alloc] initWithTitle:@"上传图片" cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@[@"相册",@"相机"] handler:^(ALActionSheetView *actionSheetView, NSInteger buttonIndex) {
             
             if (buttonIndex == 0) {
                 
                 ZZPhotoController *photoController = [[ZZPhotoController alloc]init];
                 photoController.selectPhotoOfMax = 9;
-                [photoController showIn:self result:^(id responseObject){
-                    [self addImages:responseObject];
+                [photoController showIn:KL_weakSelf result:^(id responseObject){
+                    [KL_weakSelf addImages:responseObject];
                 }];
             }else if (buttonIndex == 1)
             {
                 ZZCameraController *cameraController = [[ZZCameraController alloc]init];
                 cameraController.takePhotoOfMax = 9;
-                [cameraController showIn:self result:^(id responseObject){
-                    [self addImages:responseObject];
+                [cameraController showIn:KL_weakSelf result:^(id responseObject){
+                    [KL_weakSelf addImages:responseObject];
                 }];
             }
         }];

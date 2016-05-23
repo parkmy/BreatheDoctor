@@ -8,7 +8,6 @@
 
 #import "LWPatientCententCtr.h"
 #import "LWPatientCenterCell.h"
-#import "LWPatientRecordsCtr.h"
 #import "LWPatientRemarksCtr.h"
 #import "LWTheFormViewController.h"
 #import "LWTheFormTypeViewController.h"
@@ -16,7 +15,9 @@
 #import "LWHistoricalRecordVC.h"
 #import "KLPatientListModel.h"
 
-@interface LWPatientCententCtr ()
+@interface LWPatientCententCtr ()<UITableViewDelegate,UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @property (nonatomic, strong) LWPatientRecordsBaseModel *patientRecordsModel;
 @end
 
@@ -33,26 +34,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     setExtraCellLineHidden(self.tableView);
+
     [self loadPatientRecords];
-    
 }
+
 - (void)loadPatientRecords
 {
     if (!self.patientRecordsModel){
         [LWProgressHUD displayProgressHUD:self.view displayText:@"加载中..."];
     }
+    WEAKSELF
     [LWHttpRequestManager httpPantientArchivesWithPantientID:self.patient.patientId success:^(LWPatientRecordsBaseModel *patientRecordsBaseModel) {
         //        [self.tableView.mj_header endRefreshing];
-        [LWProgressHUD closeProgressHUD:self.view];
-        self.patientRecordsModel = patientRecordsBaseModel;
-        [self.tableView reloadData];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+        KL_weakSelf.patientRecordsModel = patientRecordsBaseModel;
+        [KL_weakSelf.tableView reloadData];
         
     } failure:^(NSString *errorMes) {
         //        [self.tableView.mj_header endRefreshing];
-        [LWProgressHUD closeProgressHUD:self.view.window];
-        [LWProgressHUD showALAlertBannerWithView:self.view.window Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view.window];
+        [LWProgressHUD showALAlertBannerWithView:KL_weakSelf.view.window Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
 }
 #pragma mark -
@@ -69,11 +71,11 @@
         [patientCenterCell setPatientRecordsModel:self.patientRecordsModel];
         [patientCenterCell setPatient:self.patient];
         cell = patientCenterCell;
-        
+        WEAKSELF
         [patientCenterCell setEditorButtonEventBlock:^{
             LWPatientRemarksCtr *patientRemarks = (LWPatientRemarksCtr *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRemarks];
-            [patientRemarks setPatient:self.patient];
-            [self.navigationController pushViewController:patientRemarks animated:YES];
+            [patientRemarks setPatient:KL_weakSelf.patient];
+            [KL_weakSelf.navigationController pushViewController:patientRemarks animated:YES];
             [MobClick event:@"patientNote" label:@"患者备注按钮的点击量"];
 
         }];

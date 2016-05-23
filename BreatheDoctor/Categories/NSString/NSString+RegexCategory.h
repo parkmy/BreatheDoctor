@@ -83,6 +83,10 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (RegexCategory)
+
+- (BOOL)isVcodeNumber;
+
+- (BOOL)isPhoneNumber;
 /**
  *  手机号码的有效性:分电信、联通、移动和小灵通
  */

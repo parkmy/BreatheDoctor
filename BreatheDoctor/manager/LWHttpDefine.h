@@ -28,8 +28,10 @@
 // 56f8f5c667e58ed604001f90 测试
 // 56f8f5e767e58ec3380010c6 正式
 #ifdef DEBUG
-//#define Comvee_Url @"http://wechat.comvee.cn/comveebreath/"
-#define Comvee_Url @"http://192.168.199.37:8084/comveebreath/"
+#define Comvee_Url @"http://wechat.comvee.cn/comveebreath/"
+//#define Comvee_Url  @"https://breathintf.huxiweishi.cn/"
+
+//#define Comvee_Url @"http://192.168.199.37:8084/comveebreath/"
 #define UMKEY       @"56f8f5c667e58ed604001f90"
 #define LOADFROMKEY @"99"
 #define platCode    @"199"
@@ -112,5 +114,11 @@ static  NSString *HTTP_POST_DOCTORMASSREPLY           = @"/mobile/dialogue/docto
 static  NSString *HTTP_POST_LOADMASSDIALOGUERECORD    = @"/mobile/dialogue/loadMassDialogueRecord.do";
 /// *-- 群发记录删除
 static  NSString *HTTP_POST_DELETEMASSDIALOGUERECORD  = @"/mobile/dialogue/deleteMassDialogueRecord.do";
+/// *-- 发送短信验证码
+static  NSString *HTTP_POST_SENDERMESSAGEVERCODE  = @"/mobile/user/sendMessageVerifyCode.do";
+/// *-- 注册医生
+static  NSString *HTTP_POST_REGISTERDOCTOR  = @"/mobile/user/registerDoctor.do";
+/// *-- 找回密码
+static  NSString *HTTP_POST_FINDPASSWORD  = @"/mobile/user/findPassword.do";
 
 #endif /* LWHttpDefine_h */

@@ -6,8 +6,8 @@
 //  Copyright © 2015年 lwh. All rights reserved.
 //  哮喘评估
 
-#import "LWBaseViewController.h"
+#import "BaseViewController.h"
 
-@interface LWAsthmaAssessmentViewController : LWBaseViewController
+@interface LWAsthmaAssessmentViewController : BaseViewController
 @property (nonatomic, copy) NSString *searchLoadId;
 @end

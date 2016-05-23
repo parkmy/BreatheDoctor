@@ -84,9 +84,10 @@
 - (void)httpRequestData
 {
     [LWProgressHUD displayProgressHUD:self.view displayText:@""];
+    WEAKSELF
     [LWHttpRequestManager httpLoadDoctorRelateOrderIndexWithDate:[NSDate stringWithDate:[NSDate date] format:[NSDate ymdHmsFormat]] Success:^(NSMutableArray *models) {
         [LWProgressHUD closeProgressHUD:self.view];
-        for (LWOrderListModel *model2 in _orderArray)
+        for (LWOrderListModel *model2 in KL_weakSelf.orderArray)
         {
             for (LWOrderListModel *model1 in models)
             {
@@ -101,11 +102,11 @@
             }
             
         }
-        [self.collectionView reloadData];
-        [self moveDate:[NSDate date] animated:NO];
+        [KL_weakSelf.collectionView reloadData];
+        [KL_weakSelf moveDate:[NSDate date] animated:NO];
     } failure:^(NSString *errorMes) {
         [LWProgressHUD closeProgressHUD:self.view];
-        [self moveDate:[NSDate date] animated:NO];
+        [KL_weakSelf moveDate:[NSDate date] animated:NO];
     }];
     
 }
@@ -190,14 +191,15 @@
 - (void)moveDate:(NSDate *)date animated:(BOOL)animated
 {
     self.isMove = NO;
+    WEAKSELF
     
     [self.orderArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         LWOrderListModel *model = obj;
         if (model.month == [date month] && model.year == [date year])
         {
-            [self.collectionView scrollRectToVisible:CGRectMake((self.collectionView.contentWidth/12)*idx- 5*idx, 0, self.collectionView.width, self.collectionView.height) animated:animated];
+            [KL_weakSelf.collectionView scrollRectToVisible:CGRectMake((KL_weakSelf.collectionView.contentWidth/12)*idx- 5*idx, 0, KL_weakSelf.collectionView.width, KL_weakSelf.collectionView.height) animated:animated];
             
-            self.isMove = YES;
+            KL_weakSelf.isMove = YES;
         }
         
     }];

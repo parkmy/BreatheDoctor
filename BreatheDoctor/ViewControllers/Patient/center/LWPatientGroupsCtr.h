@@ -6,8 +6,8 @@
 //  Copyright © 2015年 lwh. All rights reserved.
 //  分组
 
-#import "LWBaseViewController.h"
+#import "BaseViewController.h"
 
-@interface LWPatientGroupsCtr : LWBaseViewController
+@interface LWPatientGroupsCtr : BaseViewController
 @property (nonatomic, copy) void(^chooseGroup)(NSString *group,NSInteger tag);
 @end

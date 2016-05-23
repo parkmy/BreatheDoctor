@@ -9,8 +9,10 @@
 #import "LWAsthmaAssessmentViewController.h"
 #import "LWAsthmaAssessmentCell.h"
 
-@interface LWAsthmaAssessmentViewController ()
+@interface LWAsthmaAssessmentViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) LWAsthmaModel *asModel;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation LWAsthmaAssessmentViewController
@@ -34,14 +36,15 @@
 - (void)loadAsthmaAssessment
 {
     [LWProgressHUD displayProgressHUD:self.view displayText:@"加载中..."];
+    WEAKSELF
     [LWHttpRequestManager httpLoadAsthmaAssessmentById:self.searchLoadId success:^(LWAsthmaModel *model) {
-        [LWProgressHUD closeProgressHUD:self.view];
-        [self hiddenNonetWork];
-        self.asModel = model;
-        [self.tableView reloadData];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+        [KL_weakSelf hiddenNonetWork];
+        KL_weakSelf.asModel = model;
+        [KL_weakSelf.tableView reloadData];
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD closeProgressHUD:self.view];
-        [self showErrorMessage:@"网络连接失败，点击重试~" isShowButton:NO type:showErrorTypeHttp];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+        [KL_weakSelf showErrorMessage:@"网络连接失败，点击重试~" isShowButton:NO type:showErrorTypeHttp];
 //        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
 }

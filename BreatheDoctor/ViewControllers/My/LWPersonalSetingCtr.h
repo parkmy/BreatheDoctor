@@ -6,8 +6,8 @@
 //  Copyright © 2015年 lwh. All rights reserved.
 //  设置
 
-#import "LWBaseViewController.h"
+#import "BaseViewController.h"
 
-@interface LWPersonalSetingCtr : LWBaseViewController
+@interface LWPersonalSetingCtr : BaseViewController
 
 @end

@@ -15,6 +15,7 @@
 #import "NSDate+Extension.h"
 #import "LWNewFriendsViewController.h"
 #import "KLGroupSenderLogViewController.h"
+#import "KLRegistPublicOperation.h"
 
 @interface KLMessageViewController ()
 
@@ -49,15 +50,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self loginjudge];
-    
     [self addSubViews];
     
+    [self loginjudge];
+
     [self setBlock];
     
     [self registNotificationCenter];
     
     [self httpReachabilityStatusChange];
+    
 }
 - (void)addSubViews{
     
@@ -91,13 +93,14 @@
 }
 - (void)httpReachabilityStatusChange
 {
+    WEAKSELF
     [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         if (status <= 0) {
-            self.tableView.tableHeaderView = self.headerErrorView;
+            KL_weakSelf.tableView.tableHeaderView = KL_weakSelf.headerErrorView;
         }else
         {
-            self.tableView.tableHeaderView = self.headerGroupSenderView;
-            [self refreshHomeMsg];
+            KL_weakSelf.tableView.tableHeaderView = KL_weakSelf.headerGroupSenderView;
+            [KL_weakSelf refreshHomeMsg];
         }
     }];
 }
@@ -188,6 +191,17 @@
         [[LWLoginManager shareInstance] showLoginViewNav:self];
     }else
     {
+        [LBLoginBaseModel updateUserModel];
+        
+        /**
+         *  延迟判断是否认证
+         */
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
+            [KLRegistPublicOperation notCertificationAgainIfCertificationSuccess:^(BOOL isCheck) {
+                
+            }];
+        });
         [self loadCacheMes];
     }
 }
@@ -241,16 +255,18 @@
             self.refreshTime = model.refreshTime;;
         }
     }
+    WEAKSELF
     [LWHttpRequestManager httpMaiMesggaeWithPage:1 size:100000 refreshDate:self.refreshTime  success:^(LWMainMessageBaseModel *mainMessageBaseModel) {
-        self.mainMessageModel = mainMessageBaseModel;
-        if (self.mainMessageModel.body.rows.count <= 0) {
+        KL_weakSelf.mainMessageModel = mainMessageBaseModel;
+        if (KL_weakSelf.mainMessageModel.body.rows.count <= 0) {
+            [KLMessageOperation changeBadgeValueInfo:KL_weakSelf.navigationController.tabBarItem andMessgaeArray:KL_weakSelf.messageDataSource.messageArray];
             return ;
         }
-        [self hiddenNonetWork];
-        [KLMessageOperation reloadTableViewInfoObjcs:self.mainMessageModel.body.rows theMessageArray:self.messageDataSource.messageArray theTableView:self.tableView];
-        [KLMessageOperation changeBadgeValueInfo:self.navigationController.tabBarItem andMessgaeArray:self.messageDataSource.messageArray];
+        [KL_weakSelf hiddenNonetWork];
+        [KLMessageOperation reloadTableViewInfoObjcs:KL_weakSelf.mainMessageModel.body.rows theMessageArray:KL_weakSelf.messageDataSource.messageArray theTableView:KL_weakSelf.tableView];
+        [KLMessageOperation changeBadgeValueInfo:KL_weakSelf.navigationController.tabBarItem andMessgaeArray:KL_weakSelf.messageDataSource.messageArray];
     } failure:^(NSString *errorMes) {
-        //        [self showErrorMessage:errorMes isShowButton:NO type:showErrorTypeHttp];
+        [KLMessageOperation changeBadgeValueInfo:KL_weakSelf.navigationController.tabBarItem andMessgaeArray:KL_weakSelf.messageDataSource.messageArray];
     }];
 }
 - (void)reloadTableView:(NSMutableArray *)array
@@ -345,6 +361,9 @@
 #pragma mark -添加患者
 - (void)navRightButtonAction
 {
+    if (![LBLoginBaseModel isCheckStatusTheIsShow:YES]) {
+        return;
+    }
     UIViewController *vc = [UIViewController CreateControllerWithTag:CtrlTag_AddPatient];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];

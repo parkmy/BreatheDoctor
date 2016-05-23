@@ -53,13 +53,13 @@
         
         _collectionView.sd_layout.leftSpaceToView(self,0).
         rightSpaceToView(self,0).topSpaceToView(line,10).bottomSpaceToView(self.leftButton,0);
-        
+        WEAKSELF
         [[self.leftButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-            _leftButtonClikBlock?_leftButtonClikBlock():nil;
+            KL_weakSelf.leftButtonClikBlock?KL_weakSelf.leftButtonClikBlock():nil;
         }];
         
         [[self.rightButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
-            _rightButtonClikBlock?_rightButtonClikBlock(self.weeks):nil;
+            KL_weakSelf.rightButtonClikBlock?KL_weakSelf.rightButtonClikBlock(self.weeks):nil;
         }];
         
     }

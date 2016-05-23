@@ -42,14 +42,6 @@
     
     [self xialarefreshData];
     
-
-//    [self.dataArray.rac_sequence flattenMap:^RACStream *(id value) {
-//       
-//        
-//    }];
-    
-    
-    //    [self racEvent];
 }
 - (NSMutableArray *)dataArray
 {
@@ -78,34 +70,40 @@
 }
 - (void)loadGoods{
     
+    WEAKSELF
     [LWHttpRequestManager httploadProductListPage:self.page theCount:7 Success:^(NSMutableArray *models) {
-        [self.tableView.mj_header endRefreshing];
-        [self.tableView.mj_footer endRefreshing];
-        [self hiddenNonetWork];
-        if (self.isPull) {
-            [self.dataArray removeAllObjects];
-            [self.dataArray addObjectsFromArray:models];
+        
+        [KL_weakSelf.tableView.mj_header endRefreshing];
+        [KL_weakSelf.tableView.mj_footer endRefreshing];
+        [KL_weakSelf hiddenNonetWork];
+        if (KL_weakSelf.isPull) {
+            
+            [KL_weakSelf.dataArray removeAllObjects];
+            [KL_weakSelf.dataArray addObjectsFromArray:models];
         }else
         {
             if(models.count > 0){
-                [self.dataArray addObjectsFromArray:models];
-            }else
-            {
-                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+                
+                [KL_weakSelf.dataArray addObjectsFromArray:models];
+            }else{
+                
+                [KL_weakSelf.tableView.mj_footer endRefreshingWithNoMoreData];
             }
         }
-        [self.tableView reloadData];
-        if (self.dataArray.count <= 0) {
-            [self showErrorMessage:@"暂无商品，尽请期待" isShowButton:YES type:showErrorTypeMore];
+        [KL_weakSelf.tableView reloadData];
+        if (KL_weakSelf.dataArray.count <= 0) {
+            
+            [KL_weakSelf showErrorMessage:@"暂无商品，尽请期待" isShowButton:YES type:showErrorTypeMore];
         }
         
     } failure:^(NSString *errorMes) {
+        
         [self.tableView.mj_header endRefreshing];
         [self.tableView.mj_footer endRefreshing];
-        if (self.dataArray.count <= 0) {
-            [self showErrorMessage:errorMes isShowButton:NO type:showErrorTypeHttp];
+        if (KL_weakSelf.dataArray.count <= 0) {
+            
+            [KL_weakSelf showErrorMessage:errorMes isShowButton:NO type:showErrorTypeHttp];
         }
-        
     }];
 }
 
@@ -120,6 +118,7 @@
     __weak typeof(self) weakSelf = self;
     // 设置回调（一旦进入刷新状态就会调用这个refreshingBlock）
     MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
         weakSelf.isPull = YES;
         weakSelf.page = 1;
         [weakSelf loadGoods];
@@ -131,7 +130,6 @@
         weakSelf.isPull = NO;
         weakSelf.page ++;
         [weakSelf loadGoods];
-        
     }];
     
     self.tableView.mj_footer.automaticallyHidden = YES;
@@ -194,11 +192,11 @@
         
         KLGoodsDetailedViewController *vc = [[KLGoodsDetailedViewController alloc] initWithGoodsId:model.productId theFootButtonHidden:NO];
         [self.navigationController pushViewController:vc animated:YES];
-        
+        WEAKSELF
         [[vc rac_signalForSelector:@selector(footButtonClick:theSenderVC:)] subscribeNext:^(id x) {
             
             RACTuple *Tuple = x;
-            [self senderGoods:model.productId theSenderVc:Tuple.second];
+            [KL_weakSelf senderGoods:model.productId theSenderVc:Tuple.second];
         }];
         
     }else if (buttonIndex == 1)

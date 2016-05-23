@@ -6,9 +6,9 @@
 //  Copyright © 2016年 lwh. All rights reserved.
 //  患者申请
 
-#import "LWBaseViewController.h"
+#import "BaseViewController.h"
 
-@interface LWMessageAgreedViewController : LWBaseViewController
+@interface LWMessageAgreedViewController : BaseViewController
 @property (nonatomic, strong) LWMainRows *patientModel;
 
 @property (nonatomic, copy) void(^addPatientSuccBlock)();

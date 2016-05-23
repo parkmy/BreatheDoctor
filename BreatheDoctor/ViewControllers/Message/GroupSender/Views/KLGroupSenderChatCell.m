@@ -62,6 +62,7 @@
             
             KL_weakSelf.againSenderEventBlock?KL_weakSelf.againSenderEventBlock():nil;
         }];
+        
         [[_chatView rac_signalForSelector:@selector(removeItemClicked:)] subscribeNext:^(id x) {
             
             KL_weakSelf.removeEventBlock?KL_weakSelf.removeEventBlock(KL_weakSelf.model):nil;
@@ -82,9 +83,7 @@
     return self;
 }
 - (void)againSender{
-
 }
-
 - (void)setModel:(id)model{
     _model = model;
     KLGroupSenderChatModel *chatModel = model;

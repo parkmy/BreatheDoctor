@@ -192,12 +192,12 @@
     [view addSubview:self];
     [self setAnchorPoint:CGPointMake(0.9, 0) forView:self.showContainerView];
     self.showContainerView.transform = CGAffineTransformMakeScale(0.05, 0.05);
-    
+    WEAKSELF
     [UIView animateWithDuration:0.3 animations:^{
-        self.showContainerView.transform = CGAffineTransformMakeScale(0.99, 0.99);
+        KL_weakSelf.showContainerView.transform = CGAffineTransformMakeScale(0.99, 0.99);
     } completion:^(BOOL finished) {
-        [self setAnchorPoint:CGPointMake(0.5, 0.5) forView:self.showContainerView];
-        self.showContainerView.transform = CGAffineTransformMakeScale(1, 1);
+        [KL_weakSelf setAnchorPoint:CGPointMake(0.5, 0.5) forView:KL_weakSelf.showContainerView];
+        KL_weakSelf.showContainerView.transform = CGAffineTransformMakeScale(1, 1);
     }];
 }
 
@@ -223,11 +223,12 @@
 - (void)hideView:(void (^)(void))block{
     
     [self setAnchorPoint:CGPointMake(0.9, 0) forView:self.showContainerView];
+    WEAKSELF
     [UIView animateWithDuration:0.3 animations:^{
-        self.showContainerView.transform = CGAffineTransformMakeScale(0.05, 0.05);
+        KL_weakSelf.showContainerView.transform = CGAffineTransformMakeScale(0.05, 0.05);
     } completion:^(BOOL finished) {
-        [self setAnchorPoint:CGPointMake(0.5, 0.5) forView:self.showContainerView];
-        [self removeFromSuperview];
+        [KL_weakSelf setAnchorPoint:CGPointMake(0.5, 0.5) forView:KL_weakSelf.showContainerView];
+        [KL_weakSelf removeFromSuperview];
         block();
     }];
 }

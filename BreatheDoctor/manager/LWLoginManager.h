@@ -15,5 +15,6 @@
 + (BOOL)isLogin;
 - (void)exitLoginViewVc:(UIViewController *)vc;
 - (void)showLoginViewNav:(UIViewController *)vc;
+- (void)loginSucc;
 
 @end

@@ -6,9 +6,9 @@
 //  Copyright © 2015年 lwh. All rights reserved.
 // 表单类型
 
-#import "LWBaseViewController.h"
+#import "BaseViewController.h"
 
-@interface LWTheFormTypeViewController : LWBaseViewController
+@interface LWTheFormTypeViewController : BaseViewController
 @property (nonatomic, assign) showTheFormType showType;
 @property (nonatomic, copy) NSString *patientId;
 @end

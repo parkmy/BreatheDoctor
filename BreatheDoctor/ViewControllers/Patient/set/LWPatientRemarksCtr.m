@@ -12,9 +12,9 @@
 #import "LWPatientGroupsCtr.h"
 #import "KLPatientListModel.h"
 
-@interface LWPatientRemarksCtr ()
+@interface LWPatientRemarksCtr ()<UITableViewDelegate,UITableViewDataSource>
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, copy) NSString *group;
-
 @end
 
 @implementation LWPatientRemarksCtr
@@ -32,11 +32,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     self.tableView.sectionFooterHeight = .1;
     [self showTF];
     [self initProperty];
 }
+
 - (void)initProperty
 {
     if ([self.patient.groupId isEqualToString:@"1"])
@@ -55,8 +55,9 @@
 }
 - (void)showTF
 {
+    WEAKSELF
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        LWPatientRemarksTFCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+        LWPatientRemarksTFCell *cell = [KL_weakSelf.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
         [cell.reamkNameLabel becomeFirstResponder];
     });
     
@@ -81,17 +82,19 @@
     }
     
     [LWProgressHUD displayProgressHUD:self.view displayText:@"正在修改..."];
-    
+    WEAKSELF
     [LWHttpRequestManager httpPatientRemarkWithPatientId:self.patient.patientId groupId:self.patient.groupId remark:remk success:^(NSDictionary *dic) {
-        [LWProgressHUD closeProgressHUD:self.view];
-        self.patient.remark = remk;
-        self.patient.controlLevel = [self.patient.groupId doubleValue];
+        
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+        KL_weakSelf.patient.remark = remk;
+        KL_weakSelf.patient.controlLevel = [KL_weakSelf.patient.groupId doubleValue];
         /* 更新数据库 */
-        NSString *where = [NSString stringWithFormat:@"sid = %@",self.patient.sid];
-        [[LKDBHelper getUsingLKDBHelper]updateToDB:self.patient where:where];
+        NSString *where = [NSString stringWithFormat:@"sid = %@",KL_weakSelf.patient.sid];
+        [[LKDBHelper getUsingLKDBHelper]updateToDB:KL_weakSelf.patient where:where];
         [[NSNotificationCenter defaultCenter] postNotificationName:APP_UPDATEPATIENT_SUCC object:nil];
-        [self.navigationController popViewControllerAnimated:YES];
+        [KL_weakSelf.navigationController popViewControllerAnimated:YES];
     } failure:^(NSString *errorMes) {
+        
         [LWProgressHUD closeProgressHUD:self.view];
         [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes];
     }];
@@ -163,18 +166,21 @@
     if (indexPath.section == 2) {
         
         LWPatientGroupsCtr *patientGroupsCtr = (LWPatientGroupsCtr *)[UIViewController CreateControllerWithTag:CtrlTag_PatientGroups];
+        WEAKSELF
         [patientGroupsCtr setChooseGroup:^(NSString *grs, NSInteger tag) {
             if (tag  != 0) {
-                self.patient.groupId = kNSString(kNSNumInteger(tag));
+                
+                KL_weakSelf.patient.groupId = kNSString(kNSNumInteger(tag));
             }
             if(grs)
+                
             {
-                self.group = grs;
+                KL_weakSelf.group = grs;
             }else
             {
-                [self initProperty];
+                [KL_weakSelf initProperty];
             }
-            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:0];
+            [KL_weakSelf.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:0];
         }];
         [self.navigationController pushViewController:patientGroupsCtr animated:YES];
     }

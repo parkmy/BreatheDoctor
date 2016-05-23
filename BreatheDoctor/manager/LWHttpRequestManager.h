@@ -227,6 +227,28 @@
 
 #pragma mark  群发记录删除
 + (void)httpdeleteMassDialogueRecordWithMassDialogueId:(NSString *)massDialogueId
-                                          Success:(void (^)())success
-                                          failure:(void (^)(NSString * errorMes))failure;
+                                               Success:(void (^)())success
+                                               failure:(void (^)(NSString * errorMes))failure;
+
+
+#pragma mark  发送短信验证码
++ (void)httpSenderMessageVcoderThePhone:(NSString *)mobilePhone
+                             verifyType:(NSInteger)verifyType
+                                Success:(void (^)())success
+                                failure:(void (^)(NSString * errorMes))failure;
+
+#pragma mark  注册
++ (void)httpRegistDoctorWithMobilePhone:(NSString *)mobilePhone
+                             theUserPsw:(NSString *)userPsw
+                          theVerifyCode:(NSString *)verifyCode
+                      theInvitationCode:(NSString *)invitationCode
+                                Success:(void (^)())success
+                                failure:(void (^)(NSString * errorMes))failure;
+
+#pragma mark  找回密码
++ (void)httpFindPasswordWithMobilePhone:(NSString *)mobilePhone
+                          theVerifyCode:(NSString *)verifyCode
+                              theNewPwd:(NSString *)newPwd
+                                Success:(void (^)())success
+                                failure:(void (^)(NSString * errorMes))failure;
 @end

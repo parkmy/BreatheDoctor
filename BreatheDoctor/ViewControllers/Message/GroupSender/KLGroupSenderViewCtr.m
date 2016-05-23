@@ -108,6 +108,7 @@
      *  群发更多按钮点击
      */
     [[self.inputBar.mMoreView rac_signalForSelector:@selector(collectionView:didSelectItemAtIndexPath:)] subscribeNext:^(id x) {
+        
         RACTuple *tuple = x;
         UICollectionView *collectionView = tuple.first;
         NSIndexPath      *indexPath = tuple.second;
@@ -159,6 +160,7 @@
     [[KLIndicatorViewManager standardIndicatorViewManager] showLoadingWithContent:@"正在发送" theView:self.view];
     WEAKSELF
     [LWUpLoadingManager httpUpLoadData:data withType:type withVocMain:count success:^(NSDictionary *dic) {
+        
         [KL_weakSelf senderMessageWithContent:[LWUpLoadingManager getUploadSuccessString:dic] theType:type coiceCount:count foreignId:nil theSenderView:KL_weakSelf.view];
     } failure:nil];
 }
@@ -195,9 +197,7 @@
                 [KL_weakSelf.inputBar kl_fastReplyContent:content];
             }];
             [self.navigationController pushViewController:vc animated:YES];
-            
             [MobClick event:@"FastReply" label:@"快捷回复按钮的点击量"];
-            
         }
             break;
         case 3:

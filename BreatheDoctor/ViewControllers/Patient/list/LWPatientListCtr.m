@@ -11,7 +11,6 @@
 #import <IQKeyboardManager.h>
 #import <ReactiveCocoa.h>
 
-#import "UIImage+color.h"
 #import "NSString+Pinyin.h"
 #import "NSString+Contains.h"
 
@@ -276,7 +275,6 @@
 }
 - (NSMutableArray *)patientListDidSele{
     
-    
     NSMutableArray *patientSeleArray = [NSMutableArray array];
     
     WEAKSELF
@@ -387,7 +385,6 @@
         [_searchBar setAutocapitalizationType:UITextAutocapitalizationTypeNone];
         [_searchBar sizeToFit];
         _searchBar.backgroundColor = [UIColor colorWithHexString:@"#d7d7db"];
-        _searchBar.backgroundImage = [UIImage imageWithColor:[UIColor clearColor] size:_searchBar.bounds.size];
         _searchBar.placeholder = @"搜索";
     }
     return _searchBar;
@@ -443,20 +440,21 @@
     if (!self.pullDownView) {
         return;
     }
+    WEAKSELF
     [UIView animateWithDuration:0.5 animations:^{
-        self.pullDownView.transform = CGAffineTransformMakeTranslation(0, 0);
-        _pullImg.image = [UIImage imageNamed:@"V-1_.png"];
+        KL_weakSelf.pullDownView.transform = CGAffineTransformMakeTranslation(0, 0);
+        KL_weakSelf.pullImg.image = [UIImage imageNamed:@"V-1_.png"];
         
     }
                      completion:^(BOOL finished)
      {
-         [self.pullDownView dismissWithCompletion:^(LWCustomMenu *object) {
-             self.tableView.scrollEnabled = YES;
-             self.isShowPullDowView = NO;
-             self.pullImg.image = [UIImage imageNamed:@"V-1_.png"];
-             self.pullDownView = nil;
+         [KL_weakSelf.pullDownView dismissWithCompletion:^(LWCustomMenu *object) {
+             KL_weakSelf.tableView.scrollEnabled = YES;
+             KL_weakSelf.isShowPullDowView = NO;
+             KL_weakSelf.pullImg.image = [UIImage imageNamed:@"V-1_.png"];
+             KL_weakSelf.pullDownView = nil;
          }];
-         self.isShowPullDowView = NO;
+         KL_weakSelf.isShowPullDowView = NO;
      }];
 }
 #pragma mark -加载缓存
@@ -528,17 +526,25 @@
 #pragma mark -加载网络新数据
 - (void)httploadPatientList
 {
+    WEAKSELF
     [LWHttpRequestManager httpPatientListWithPage:1 size:100000 refreshDate:self.refreshTime success:^(NSMutableArray *list) {
-        [LWProgressHUD closeProgressHUD:self.view];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
         if (list.count <= 0) {
             return ;
         }
-        [self loadCacheMes];
+        [KL_weakSelf loadCacheMes];
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD closeProgressHUD:self.view];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
         if (self.patients.count <= 0) {
-            [self showErrorMessage:@"网络连接失败，点击重试~" isShowButton:NO type:showErrorTypeHttp];
-            self.tableView.hidden = YES;
+            
+            if ([LBLoginBaseModel isCheckStatusTheIsShow:NO]) {
+                
+                [KL_weakSelf showErrorMessage:@"网络连接失败，点击重试~" isShowButton:NO type:showErrorTypeHttp];
+            }else{
+                [KL_weakSelf showErrorMessage:@"您还没有患者，去添加吧~" isShowButton:NO type:showErrorTypeMore];
+            }
+            KL_weakSelf.tableView.hidden = YES;
+
         }
     }];
     
@@ -550,12 +556,17 @@
         [LWProgressHUD displayProgressHUD:self.view displayText:@"正在加载..."];
         [self httploadPatientList];
     }else{
+        
         [self showAddPatinentView];
     }
 }
 #pragma mark -添加患者
 - (void)showAddPatinentView
 {
+    if (![LBLoginBaseModel isCheckStatusTheIsShow:YES]) {
+        
+        return;
+    }
     UIViewController *vc = [UIViewController CreateControllerWithTag:CtrlTag_AddPatient];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];

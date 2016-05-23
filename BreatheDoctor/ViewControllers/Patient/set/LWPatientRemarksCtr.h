@@ -6,10 +6,10 @@
 //  Copyright © 2015年 lwh. All rights reserved.
 //  备注
 
-#import "LWBaseViewController.h"
+#import "BaseViewController.h"
 @class KLPatientListModel;
 
-@interface LWPatientRemarksCtr : LWBaseViewController
+@interface LWPatientRemarksCtr : BaseViewController
 @property (nonatomic, strong) KLPatientListModel *patient;
 
 @end

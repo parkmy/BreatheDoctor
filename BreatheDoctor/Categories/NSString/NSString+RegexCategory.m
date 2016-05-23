@@ -67,7 +67,16 @@
         return NO;
     }
 }
+- (BOOL)isPhoneNumber{
 
+    NSString* number=@"^1[3|4|5|7|8|6|9][0-9]\\d{8}$";
+    return [self isValidateByRegex:number];
+}
+- (BOOL)isVcodeNumber{
+    
+    NSString* number=@"^[0-9]*$";
+    return [self isValidateByRegex:number];
+}
 //手机号有效性
 - (BOOL)isMobileNumber{
     /**

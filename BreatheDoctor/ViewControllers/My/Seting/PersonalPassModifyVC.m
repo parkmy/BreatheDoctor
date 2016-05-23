@@ -216,14 +216,14 @@
         [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:alertStr ];
         return;
     }
-    
-    [LWProgressHUD displayProgressHUD:self.view.window displayText:@"请稍后..."];
+    WEAKSELF
+    [LWProgressHUD displayProgressHUD:KL_weakSelf.view.window displayText:@"请稍后..."];
     [LWHttpRequestManager httpChangeThePasswordWitholdPwd:[old_password.text md5String] newPwd:[password1 md5String] success:^(NSDictionary *dic) {
-        [LWProgressHUD closeProgressHUD:self.view.window];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view.window];
         [[LWLoginManager shareInstance] exitLoginViewVc:self];
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD closeProgressHUD:self.view.window];
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view.window];
+        [LWProgressHUD showALAlertBannerWithView:KL_weakSelf.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
     
     

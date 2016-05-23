@@ -48,6 +48,7 @@
     _deleteRowsAtIndexPathsBlock?_deleteRowsAtIndexPathsBlock(indexPath,message):nil;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     LWMainRows *message = self.messageArray[indexPath.row];
     _didSelectRowAtIndexPathBlock?_didSelectRowAtIndexPathBlock(indexPath,message):nil;

@@ -69,19 +69,21 @@
     [self.pefView setPefDateList:day];
     
     [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
+    WEAKSELF
     [LWHttpRequestManager httpLoadPatientRecordHistoryWithPatientId:self.pid recentDays:day Success:^(KLPatientLogBodyModel *model) {
-        [self hiddenNonetWork];
-        [LWProgressHUD closeProgressHUD:self.view];
-        self.patientLogBodyModel = model;
-        if (self.patientLogBodyModel.recordList.count <= 0) {
-            [self showErrorMessage:@"患者偷懒了，没有数据记录~" isShowButton:YES type:showErrorType64Hight];
+        
+        [KL_weakSelf hiddenNonetWork];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+        KL_weakSelf.patientLogBodyModel = model;
+        if (KL_weakSelf.patientLogBodyModel.recordList.count <= 0) {
+            [KL_weakSelf showErrorMessage:@"患者偷懒了，没有数据记录~" isShowButton:YES type:showErrorType64Hight];
         }else{
-            [self refreshView];
+            [KL_weakSelf refreshView];
         }
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD closeProgressHUD:self.view];
-//        [LWProgressHUD showALAlertBannerWithView:nil Style:0 Position:0 Subtitle:errorMes];
-        [self showErrorMessage:errorMes isShowButton:NO type:showErrorType64Hight];
+        
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+        [KL_weakSelf showErrorMessage:errorMes isShowButton:NO type:showErrorType64Hight];
 
     }];
 }
@@ -200,13 +202,14 @@
 - (void)showLeftView
 {
     self.isShowRight = NO;
+    WEAKSELF
     [UIView animateWithDuration:.5 animations:^{
-        self.logView.alpha = 0;
-        self.chartView.alpha = 1;
-        self.chartView.hidden = NO;
+        KL_weakSelf.logView.alpha = 0;
+        KL_weakSelf.chartView.alpha = 1;
+        KL_weakSelf.chartView.hidden = NO;
     } completion:^(BOOL finished) {
-        self.logView.hidden = YES;
-        [self showView];
+        KL_weakSelf.logView.hidden = YES;
+        [KL_weakSelf showView];
     }];
     
 }
@@ -219,13 +222,14 @@
 - (void)showRightView
 {
     self.isShowRight = YES;
+    WEAKSELF
     [UIView animateWithDuration:.5 animations:^{
-        self.chartView.alpha = 0;
-        self.logView.alpha = 1;
-        self.logView.hidden = NO;
+        KL_weakSelf.chartView.alpha = 0;
+        KL_weakSelf.logView.alpha = 1;
+        KL_weakSelf.logView.hidden = NO;
     } completion:^(BOOL finished) {
-        self.chartView.hidden = YES;
-        [self showView];
+        KL_weakSelf.chartView.hidden = YES;
+        [KL_weakSelf showView];
     }];
 }
 

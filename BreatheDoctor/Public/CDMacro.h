@@ -179,7 +179,10 @@ static NSString * APP_LOG_PEFSHOW         = @"APP_LOG_PEFSHOW";
 ///修改成功
 static NSString * APP_UPDATEPATIENT_SUCC    = @"APP_UPDATEPATIENT_SUCC";
 
-
+/**
+ *  认证通过certification
+ */
+static NSString * APP_PUSH_TYPE_CERTIFICATION_SUCC    = @"APP_CERTIFICATION_SUCC";
 
 typedef NS_ENUM(NSInteger ,showTheFormType) {
     showTheFormTypeBiaoDan = 0, //表单

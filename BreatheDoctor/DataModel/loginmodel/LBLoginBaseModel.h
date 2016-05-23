@@ -18,8 +18,15 @@
 @property (nonatomic, strong) NSString *joinId;
 @property (nonatomic, strong) NSString *resNum;
 
+@property (nonatomic, copy)  NSString *loginZhangHao;
+@property (nonatomic, copy)  NSString *loginMiMa;
+
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 - (instancetype)initWithDictionary:(NSDictionary *)dict;
 - (NSDictionary *)dictionaryRepresentation;
+
++ (BOOL)isCheckStatusTheIsShow:(BOOL)show;
+
++ (void)updateUserModel;
 
 @end

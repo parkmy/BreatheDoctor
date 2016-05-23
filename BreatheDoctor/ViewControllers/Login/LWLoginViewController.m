@@ -9,7 +9,8 @@
 #import "LWLoginViewController.h"
 #import "CDMacro.h"
 #import "NSString+RegexCategory.h"
-#import "NSString+Hash.h"
+#import "KLRegisteredViewController.h"
+#import "KLRetrievePasswordViewController.h"
 
 @interface LWLoginViewController ()<UITextFieldDelegate>
 
@@ -30,21 +31,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.hidesBackButton = YES;
     [self setUI];
 }
-
+- (void)dealloc{
+    
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+    self.navigationController.navigationBarHidden = YES;
 
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    
+    self.navigationController.navigationBarHidden = NO;
+
 }
 - (void)setUI
 {
@@ -113,18 +117,30 @@
     }
     
     [self starTimerLoding];
-    
-    [LWHttpRequestManager httpLoginWithPhoneNumber:self.accountTF.text password:[self.passwordTF.text md5String] success:^(LBLoginBaseModel *userModel) {
+    WEAKSELF
+    [LWHttpRequestManager httpLoginWithPhoneNumber:self.accountTF.text password:self.passwordTF.text success:^(LBLoginBaseModel *userModel) {
 
         if (_delegate && [_delegate respondsToSelector:@selector(loginSucc)]) {
             [_delegate loginSucc];
         }
-            [self endHidenTimer];
+            [KL_weakSelf endHidenTimer];
     } failure:^(NSString *errorMes) {
-            [self endHidenTimer];
+            [KL_weakSelf endHidenTimer];
         [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:errorMes];
     }];
     
+}
+- (IBAction)rigistEvent:(id)sender {
+    
+    KLRegisteredViewController *vc = [KLRegisteredViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (IBAction)RetrievePassword:(id)sender {
+    
+    KLRetrievePasswordViewController *vc = [KLRetrievePasswordViewController new];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

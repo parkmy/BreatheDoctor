@@ -51,13 +51,14 @@
 {
     if (self.showType == showTheFormTypeMouKuaiSucc) {
         [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
+        WEAKSELF
         [LWHttpRequestManager httploadFirstDiagnosticInfowithdiagnosticId:self.foreignId Success:^(LWPatientBiaoDanBody *model) {
-            [LWProgressHUD closeProgressHUD:self.view];
-            self.baseModel = [LWTool BiaoDanDataFenXiModel:model];
-            [self baseModelgetrowHight];
-            [self.tableView reloadData];
+            [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+            KL_weakSelf.baseModel = [LWTool BiaoDanDataFenXiModel:model];
+            [KL_weakSelf baseModelgetrowHight];
+            [KL_weakSelf.tableView reloadData];
         } failure:^(NSString *errorMes) {
-            [LWProgressHUD closeProgressHUD:self.view];
+            [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
         }];
     }else if (self.showType == showTheFormTypeMouKuai || self.showType == showTheFormTypeMouKuaiNoSucc)
     {
@@ -254,17 +255,18 @@
     [MobClick event:@"uploadBiaoDan" label:@"提交表单按钮的点击量"];
 
     [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
+    WEAKSELF
     [LWHttpRequestManager httpDoctorReply:self.patientId content:@"哮喘诊断判定表" contentType:21 voiceMin:0 foreignId:nil success:^(LWSenderResBaseModel *senderResBaseModel) {
-        [LWProgressHUD closeProgressHUD:self.view];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
         [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_SENDERZHENGDUANMOKUAISUCC object:nil userInfo:@{@"message":senderResBaseModel}];
         [LCCoolHUD showSuccess:@"发送成功" zoom:YES shadow:NO];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            UIViewController *vc = self.navigationController.viewControllers[1];
-            [self.navigationController popToViewController:vc animated:YES];
+            UIViewController *vc = KL_weakSelf.navigationController.viewControllers[1];
+            [KL_weakSelf.navigationController popToViewController:vc animated:YES];
         });
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD closeProgressHUD:self.view];
-        [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+        [LWProgressHUD showALAlertBannerWithView:KL_weakSelf.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
 }
 

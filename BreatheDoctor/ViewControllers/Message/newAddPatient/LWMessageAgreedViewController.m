@@ -15,6 +15,8 @@
 
 @property (nonatomic, strong) NSArray *titleArray;
 @property (nonatomic, strong) LWPatientRecordsBaseModel *patientRecordsModel;
+
+@property (nonatomic, strong) UITableView *tableView;
 @end
 
 @implementation LWMessageAgreedViewController
@@ -29,6 +31,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self addSubViews];
+    
     self.titleArray = @[@"真实姓名",
                         @"出生日期",
                         @"性        别",
@@ -39,20 +43,29 @@
     
 }
 
+- (void)addSubViews{
+    
+    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    [self.view addSubview:_tableView];
+    _tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
+}
+
 #pragma mark - void
 
 - (void)loadPatientRecords
 {
     [LWProgressHUD displayProgressHUD:self.view displayText:@"加载中..."];
-
+WEAKSELF
     [LWHttpRequestManager httpPantientArchivesWithPantientID:self.patientModel.memberId success:^(LWPatientRecordsBaseModel *patientRecordsBaseModel) {
-        [LWProgressHUD closeProgressHUD:self.view];
-        self.patientRecordsModel = patientRecordsBaseModel;
-        [self.tableView reloadData];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+        KL_weakSelf.patientRecordsModel = patientRecordsBaseModel;
+        [KL_weakSelf.tableView reloadData];
         
     } failure:^(NSString *errorMes) {
-        [LWProgressHUD closeProgressHUD:self.view];
-        [LWProgressHUD showALAlertBannerWithView:self.view.window Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+        [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
+        [LWProgressHUD showALAlertBannerWithView:KL_weakSelf.view.window Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
     }];
 }
 
@@ -91,26 +104,27 @@
     }else if (indexPath.section == 2)
     {
         LWMessageAgreedCell *agreedButtonCell = [tableView dequeueReusableCellWithIdentifier:@"LWMessageAgreedCell" forIndexPath:indexPath];
+        WEAKSELF
         [agreedButtonCell setTongYiBlock:^{
-
-            [LWPublicDataManager AcceptButtonEventClick:self.patientModel success:^{
+            
+            [LWPublicDataManager AcceptButtonEventClick:KL_weakSelf.patientModel success:^{
                 _addPatientSuccBlock?_addPatientSuccBlock():nil;
-                [self.navigationController popViewControllerAnimated:YES];
+                [KL_weakSelf.navigationController popViewControllerAnimated:YES];
             } failure:^(NSString *errorMes) {
-                [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+                [LWProgressHUD showALAlertBannerWithView:KL_weakSelf.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
             }];
             [MobClick event:@"AgreedTonewfriend" label:@"同意新朋友按钮的点击量"];
 
         }];
         [agreedButtonCell setJuJueBlock:^{
             [LWProgressHUD displayProgressHUD:nil displayText:@"请稍后..."];
-            [LWHttpRequestManager httprefuseAttentionWithSid:self.patientModel.sid patientID:self.patientModel.memberId Success:^{
+            [LWHttpRequestManager httprefuseAttentionWithSid:KL_weakSelf.patientModel.sid patientID:KL_weakSelf.patientModel.memberId Success:^{
                 [LWProgressHUD closeProgressHUD:nil];
-                [[LKDBHelper getUsingLKDBHelper] deleteToDB:self.patientModel];
+                [[LKDBHelper getUsingLKDBHelper] deleteToDB:KL_weakSelf.patientModel];
                 _addPatientFaileBlock?_addPatientFaileBlock():nil;
-                [self.navigationController popViewControllerAnimated:YES];
+                [KL_weakSelf.navigationController popViewControllerAnimated:YES];
             } failure:^(NSString *errorMes) {
-                [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
+                [LWProgressHUD showALAlertBannerWithView:KL_weakSelf.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:errorMes ];
             }];
             [MobClick event:@"RefusedTonewfriend" label:@"拒绝新朋友按钮的点击量"];
 

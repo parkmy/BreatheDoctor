@@ -37,31 +37,32 @@
 }
 - (void)loadData
 {
+    WEAKSELF
     [LWHttpRequestManager httpLoadOrderListWithDate:self.model.date andProductType:kNSString(kNSNumInteger(self.productType)) andPage:self.page Success:^(NSMutableArray *models) {
-        [self.tabelView.mj_header endRefreshing];
-        [self.tabelView.mj_footer endRefreshing];
-        [self hiddenNonetWork];
-        if (self.isPull) {
-            [self.dataArray removeAllObjects];
-            [self.dataArray addObjectsFromArray:models];
+        [KL_weakSelf.tabelView.mj_header endRefreshing];
+        [KL_weakSelf.tabelView.mj_footer endRefreshing];
+        [KL_weakSelf hiddenNonetWork];
+        if (KL_weakSelf.isPull) {
+            [KL_weakSelf.dataArray removeAllObjects];
+            [KL_weakSelf.dataArray addObjectsFromArray:models];
         }else
         {
             if(models.count > 0){
-                [self.dataArray addObjectsFromArray:models];
+                [KL_weakSelf.dataArray addObjectsFromArray:models];
             }else
             {
-                [self.tabelView.mj_footer endRefreshingWithNoMoreData];
+                [KL_weakSelf.tabelView.mj_footer endRefreshingWithNoMoreData];
             }
         }
-        [self.tabelView reloadData];
-        if (self.dataArray.count <= 0) {
-            [self showErrorMessage:@"暂无购买记录" isShowButton:YES type:showErrorTypeMore];
+        [KL_weakSelf.tabelView reloadData];
+        if (KL_weakSelf.dataArray.count <= 0) {
+            [KL_weakSelf showErrorMessage:@"暂无购买记录" isShowButton:YES type:showErrorTypeMore];
         }
     } failure:^(NSString *errorMes) {
-        [self.tabelView.mj_header endRefreshing];
-        [self.tabelView.mj_footer endRefreshing];
-        if (self.dataArray.count <= 0) {
-            [self showErrorMessage:errorMes isShowButton:NO type:showErrorTypeHttp];
+        [KL_weakSelf.tabelView.mj_header endRefreshing];
+        [KL_weakSelf.tabelView.mj_footer endRefreshing];
+        if (KL_weakSelf.dataArray.count <= 0) {
+            [KL_weakSelf showErrorMessage:errorMes isShowButton:NO type:showErrorTypeHttp];
         }
     }];
 }

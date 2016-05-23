@@ -10,6 +10,8 @@
 
 @interface LWPatientGroupsCtr ()
 @property (nonatomic, strong) NSArray *gArray;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation LWPatientGroupsCtr
@@ -23,9 +25,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.gArray = @[@"未确认",@"完全控制",@"部分控制",@"未控制"];
+    
     setExtraCellLineHidden(self.tableView);
     self.tableView.rowHeight = 60;
+    
+    self.gArray = @[@"未确认",@"完全控制",@"部分控制",@"未控制"];
+
 }
 
 

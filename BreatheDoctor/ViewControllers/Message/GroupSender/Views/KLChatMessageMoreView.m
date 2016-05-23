@@ -55,17 +55,16 @@
     }
     return self;
 }
+
 #pragma mark - Collection Delegate
-
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.DataSource.count;
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    LWChatMessageMoreCollectionCell*cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LWChatMessageMoreCollectionCell" forIndexPath:indexPath];
+    LWChatMessageMoreCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"LWChatMessageMoreCollectionCell" forIndexPath:indexPath];
 //        cell.backgroundColor = RGBA(arc4random_uniform(250), arc4random_uniform(35), arc4random_uniform(222), 1);
 
     cell.model = self.DataSource[indexPath.row];
