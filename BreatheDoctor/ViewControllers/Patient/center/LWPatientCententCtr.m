@@ -73,6 +73,7 @@
         cell = patientCenterCell;
         WEAKSELF
         [patientCenterCell setEditorButtonEventBlock:^{
+            
             LWPatientRemarksCtr *patientRemarks = (LWPatientRemarksCtr *)[UIViewController CreateControllerWithTag:CtrlTag_PatientRemarks];
             [patientRemarks setPatient:KL_weakSelf.patient];
             [KL_weakSelf.navigationController pushViewController:patientRemarks animated:YES];

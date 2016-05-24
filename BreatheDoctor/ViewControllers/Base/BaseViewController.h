@@ -9,18 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "CDMacro.h"
 #import "NSString+Contains.h"
-@interface BaseViewController : UIViewController
+#import "KLSuperViewController.h"
 
-@property (nonatomic,strong) UILabel *navTitle;
-@property (nonatomic,strong) UIButton *navLeftButton;
-@property (nonatomic,strong) UIButton *navRightButton;
-@property (nonatomic,strong) UINavigationBar *navBar;
-@property (nonatomic, strong) UIView *navBackView;
+
+@interface BaseViewController : KLSuperViewController
 
 - (void)addNavBar:(NSString*)title;
 - (void)addBackButton:(NSString*)backImg;
 - (void)addRightButton:(NSString*)rightImg;
-- (void)navLeftButtonAction;
-- (void)navRightButtonAction;
+
 
 @end

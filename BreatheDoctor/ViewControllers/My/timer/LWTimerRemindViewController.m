@@ -35,15 +35,14 @@
     [super viewWillAppear:animated];
     [super addNavBar:@"回复时间"];
     [super addBackButton:@"nav_btnBack.png"];
-    [super addRightButton:@"完成"];
-    self.navRightButton.hidden = !self.isChange;
+    self.navRightContent = self.isChange?@"完成":@"";
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navRightButton.hidden = YES;
+//    self.navRightButton.hidden = YES;
     
     [self setUI];
     [self loadData];
@@ -214,7 +213,7 @@
             
             if (weeks.count != [[KLTimerRemindViewOperation weekArray:model.repeatWeek] count]) {
                 KL_weakSelf.isChange = YES;
-                KL_weakSelf.navRightButton.hidden = NO;
+                weakSelf.navRightContent = @"完成";
             }else
             {
                 NSMutableString *string = [[NSMutableString alloc] initWithString:@""];
@@ -228,7 +227,7 @@
                     {
                         if (![astr isEqualToString:@""]) {
                             KL_weakSelf.isChange = YES;
-                            KL_weakSelf.navRightButton.hidden = NO;
+                            weakSelf.navRightContent = @"完成";
                         }
                         
                     }
@@ -288,7 +287,7 @@
     [_datePickViewController setCompleteChooseBlock:^(NSString *string) {
         if (![label.text isEqualToString:string]) {
             weakSelf.isChange = YES;
-            weakSelf.navRightButton.hidden = NO;
+            weakSelf.navRightContent = @"完成";
         }
         if (isStar) {
             

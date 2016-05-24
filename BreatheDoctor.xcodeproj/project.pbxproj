@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		624C46E81CF2A37900F6401C /* KLNavigationBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 624C46E31CF2A37900F6401C /* KLNavigationBarView.m */; };
+		624C46E91CF2A37900F6401C /* KLNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 624C46E51CF2A37900F6401C /* KLNavigationController.m */; };
+		624C46EA1CF2A37900F6401C /* KLSuperViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 624C46E71CF2A37900F6401C /* KLSuperViewController.m */; };
 		790243711C4DEB470010B1D9 /* ZZBrowserPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243401C4DEB470010B1D9 /* ZZBrowserPickerViewController.m */; };
 		790243721C4DEB470010B1D9 /* ZZCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243421C4DEB470010B1D9 /* ZZCameraController.m */; };
 		790243731C4DEB470010B1D9 /* ZZCameraPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790243441C4DEB470010B1D9 /* ZZCameraPickerViewController.m */; };
@@ -633,6 +636,12 @@
 
 /* Begin PBXFileReference section */
 		43FB9645AE7A12FB4874D22F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		624C46E21CF2A37900F6401C /* KLNavigationBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLNavigationBarView.h; sourceTree = "<group>"; };
+		624C46E31CF2A37900F6401C /* KLNavigationBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLNavigationBarView.m; sourceTree = "<group>"; };
+		624C46E41CF2A37900F6401C /* KLNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLNavigationController.h; sourceTree = "<group>"; };
+		624C46E51CF2A37900F6401C /* KLNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLNavigationController.m; sourceTree = "<group>"; };
+		624C46E61CF2A37900F6401C /* KLSuperViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KLSuperViewController.h; sourceTree = "<group>"; };
+		624C46E71CF2A37900F6401C /* KLSuperViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KLSuperViewController.m; sourceTree = "<group>"; };
 		7902433F1C4DEB470010B1D9 /* ZZBrowserPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZBrowserPickerViewController.h; sourceTree = "<group>"; };
 		790243401C4DEB470010B1D9 /* ZZBrowserPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZZBrowserPickerViewController.m; sourceTree = "<group>"; };
 		790243411C4DEB470010B1D9 /* ZZCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZZCameraController.h; sourceTree = "<group>"; };
@@ -1605,6 +1614,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		624C46E11CF2A37900F6401C /* KLNav */ = {
+			isa = PBXGroup;
+			children = (
+				624C46E21CF2A37900F6401C /* KLNavigationBarView.h */,
+				624C46E31CF2A37900F6401C /* KLNavigationBarView.m */,
+				624C46E41CF2A37900F6401C /* KLNavigationController.h */,
+				624C46E51CF2A37900F6401C /* KLNavigationController.m */,
+				624C46E61CF2A37900F6401C /* KLSuperViewController.h */,
+				624C46E71CF2A37900F6401C /* KLSuperViewController.m */,
+			);
+			path = KLNav;
+			sourceTree = "<group>";
+		};
 		7902433D1C4DEB470010B1D9 /* ZZPhotoRE */ = {
 			isa = PBXGroup;
 			children = (
@@ -2083,6 +2105,7 @@
 		791214C71BF1CE9E004166C5 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				624C46E11CF2A37900F6401C /* KLNav */,
 				791214C81BF1CE9E004166C5 /* BaseViewController.h */,
 				791214C91BF1CE9E004166C5 /* BaseViewController.m */,
 			);
@@ -4056,6 +4079,7 @@
 				790BE93C1C02EBCE00BD1D67 /* LWACTAssessmentViewController.m in Sources */,
 				7902438C1C4DEB470010B1D9 /* ZZPhotoListCell.m in Sources */,
 				7938E5761C0EE1B900AD043F /* NSDate+Utils.m in Sources */,
+				624C46E81CF2A37900F6401C /* KLNavigationBarView.m in Sources */,
 				790243B41C4E302E0010B1D9 /* LWPersonalHeardCell.m in Sources */,
 				79220A9A1CACF2E900CFBEC2 /* KLDatePickViewController.m in Sources */,
 				790515701BFDB16E001D5F33 /* LWSenderResBaseModel.m in Sources */,
@@ -4179,6 +4203,7 @@
 				790243BC1C4E302E0010B1D9 /* LWTimerRemindIndexView.m in Sources */,
 				7955C28E1C03F705003D6836 /* FMDatabaseAdditions.m in Sources */,
 				79CCF4B01CABAB500075FD2F /* LWHistoricalItmView.m in Sources */,
+				624C46EA1CF2A37900F6401C /* KLSuperViewController.m in Sources */,
 				7997888B1C9A42D100E86B91 /* LWPEFView.m in Sources */,
 				793F77F91CD1A2F0000F502F /* KLImagePickerManager.m in Sources */,
 				790243BF1C4E30B00010B1D9 /* LWPopAlatView.m in Sources */,
@@ -4298,6 +4323,7 @@
 				7945554C1C0BD98F005C0E10 /* NSString+Size.m in Sources */,
 				791215601BF1CFD0004166C5 /* LWMainPager.m in Sources */,
 				79559E0D1CDC3191003CC3FA /* KLGoodsImageModel.m in Sources */,
+				624C46E91CF2A37900F6401C /* KLNavigationController.m in Sources */,
 				7943F2D41CD09B3E00AF030B /* LWNewFriendsViewController.m in Sources */,
 				790243771C4DEB470010B1D9 /* UIImageHandle.m in Sources */,
 				790243891C4DEB470010B1D9 /* ZZCameraPickerCell.m in Sources */,

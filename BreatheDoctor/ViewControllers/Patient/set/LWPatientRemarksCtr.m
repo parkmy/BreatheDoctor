@@ -76,6 +76,7 @@
     if (remk) {
         remk = [remk stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
         if (remk.length > 15) {
+            
             [LWProgressHUD showALAlertBannerWithView:self.view Style:SALAlertBannerStyleWarning  Position:SALAlertBannerPositionTop Subtitle:@"对不起，请输入15字内的备注"];
             return;
         }

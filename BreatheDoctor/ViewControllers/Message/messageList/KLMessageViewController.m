@@ -36,8 +36,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [super addNavBar:@"消息"];
-    [super addRightButton:@"nav_btnAdd.png"];
+
 }
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -49,6 +48,9 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [super addNavBar:@"消息"];
+    [super addRightButton:@"nav_btnAdd.png"];
     
     [self addSubViews];
     
@@ -64,6 +66,7 @@
 - (void)addSubViews{
     
     [self.view addSubview:self.tableView];
+    self.tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(BARHIGHT, 0, 0, 0));
     setExtraCellLineHidden(self.tableView);
 }
 - (void)registNotificationCenter
@@ -209,7 +212,7 @@
 - (UITableView *)tableView{
     
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.backgroundColor  = [UIColor whiteColor];
         _tableView.rowHeight        = 65*MULTIPLE;
         _tableView.dataSource       = self.messageDataSource;

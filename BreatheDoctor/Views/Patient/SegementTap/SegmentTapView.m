@@ -25,13 +25,13 @@
         
         UIView *line = [UIView allocAppLineView];
         [self addSubview:line];
-        line.frame = CGRectMake(0, frame.size.height-1, frame.size.width, 1);
+        line.frame = CGRectMake(0, frame.size.height-.5, frame.size.width, .5);
         
         [self addSubSegmentView];
     }
     return self;
 }
-
+#define lineHright 1.5
 -(void)addSubSegmentView
 {
     float width = self.frame.size.width / _dataArray.count;
@@ -58,13 +58,14 @@
         [self addSubview:button];
         
         if (i != _dataArray.count || i != 0) {
-            UILabel *line = [[UILabel alloc ] initWithFrame:CGRectMake(i * width , 0, 0.45, 40)];
-            line.backgroundColor = [UIColor whiteColor];
+            
+            UIView *line = [UIView allocAppLineView];
+            line.frame = CGRectMake(i * width , 0, 0.45, self.height);
             [self bringSubviewToFront:line];
             [self addSubview:line];
         }
     }
-    self.lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-2, width, 2)];
+    self.lineImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-2, width, lineHright)];
     self.lineImageView.backgroundColor = _lineColor;
     [self addSubview:self.lineImageView];
 }
@@ -72,7 +73,7 @@
 -(void)tapAction:(id)sender{
     UIButton *button = (UIButton *)sender;
     [UIView animateWithDuration:0.2 animations:^{
-       self.lineImageView.frame = CGRectMake(button.frame.origin.x, self.frame.size.height-2, button.frame.size.width, 2);
+       self.lineImageView.frame = CGRectMake(button.frame.origin.x, self.frame.size.height-2, button.frame.size.width, lineHright);
     }];
     for (UIButton *subButton in self.buttonsArray) {
         if (button == subButton) {
@@ -95,7 +96,7 @@
         else{
             subButton.selected = YES;
             [UIView animateWithDuration:0.2 animations:^{
-                self.lineImageView.frame = CGRectMake(subButton.frame.origin.x, self.frame.size.height-2, subButton.frame.size.width, 2);
+                self.lineImageView.frame = CGRectMake(subButton.frame.origin.x, self.frame.size.height-2, subButton.frame.size.width, lineHright);
             }];
         }
     }

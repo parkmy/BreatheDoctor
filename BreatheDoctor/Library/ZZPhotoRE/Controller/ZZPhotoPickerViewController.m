@@ -269,6 +269,8 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     self.view.backgroundColor = [LWThemeManager shareInstance].navBackgroundColor;
+    self.navigationController.navigationBar.barTintColor = [LWThemeManager shareInstance].navBackgroundColor;
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         // 更新UI
         [self setupCollectionViewUI];

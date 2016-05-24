@@ -8,7 +8,7 @@
 
 #import "LWPatientGroupsCtr.h"
 
-@interface LWPatientGroupsCtr ()
+@interface LWPatientGroupsCtr ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) NSArray *gArray;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
@@ -26,6 +26,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self.view addSubview:self.tableView];
+    self.tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(BARHIGHT, 0, 0, 0));
     setExtraCellLineHidden(self.tableView);
     self.tableView.rowHeight = 60;
     
@@ -33,7 +35,15 @@
 
 }
 
-
+- (UITableView *)tableView
+{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+    }
+    return _tableView;
+}
 - (void)navLeftButtonAction
 {
     if (_chooseGroup) {

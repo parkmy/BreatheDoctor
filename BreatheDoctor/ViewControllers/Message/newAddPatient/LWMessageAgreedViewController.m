@@ -16,7 +16,8 @@
 @property (nonatomic, strong) NSArray *titleArray;
 @property (nonatomic, strong) LWPatientRecordsBaseModel *patientRecordsModel;
 
-@property (nonatomic, strong) UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation LWMessageAgreedViewController
@@ -31,8 +32,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self addSubViews];
-    
     self.titleArray = @[@"真实姓名",
                         @"出生日期",
                         @"性        别",
@@ -42,16 +41,6 @@
     [self loadPatientRecords];
     
 }
-
-- (void)addSubViews{
-    
-    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-    _tableView.dataSource = self;
-    _tableView.delegate = self;
-    [self.view addSubview:_tableView];
-    _tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
-}
-
 #pragma mark - void
 
 - (void)loadPatientRecords
@@ -176,7 +165,7 @@ WEAKSELF
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return indexPath.section == 0?90:indexPath.section == 2?90:55;
+    return indexPath.section == 0?80:indexPath.section == 2?80:50;
 }
 /*
  #pragma mark - Navigation

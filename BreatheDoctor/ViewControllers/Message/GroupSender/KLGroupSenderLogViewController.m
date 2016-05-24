@@ -276,7 +276,7 @@
     .leftSpaceToView(self.view,0)
     .rightSpaceToView(self.view,0)
     .bottomSpaceToView(self.groupSenderButton,10)
-    .topSpaceToView(self.view,0);
+    .topSpaceToView(self.view,BARHIGHT);
 }
 
 - (void)racEvent{

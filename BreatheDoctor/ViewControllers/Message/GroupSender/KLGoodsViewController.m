@@ -65,7 +65,7 @@
         table;
     });
     [self.view addSubview:_tableView];
-    _tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(64, 0, 0, 0));
+    _tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(BARHIGHT, 0, 0, 0));
     self.tableView.separatorStyle = 0;
 }
 - (void)loadGoods{

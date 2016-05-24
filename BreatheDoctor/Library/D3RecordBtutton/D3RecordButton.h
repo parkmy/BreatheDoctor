@@ -18,6 +18,9 @@
 - (void)recording:(float) recordTime;
 - (void)dragExit;
 - (void)dragEnter;
+- (void)starRecord;
+- (void)endRecord;
+
 @end
 
 @interface D3RecordButton : UIButton<Mp3RecorderDelegate>{

@@ -21,6 +21,7 @@
 #import "LWOrderDetailedListViewController.h"
 #import "LWPatientRelatedVC.h"
 #import "LWHistoricalRecordVC.h"
+#import "LWPatientGroupsCtr.h"
 
 @implementation UIViewController (Factory)
 
@@ -52,7 +53,7 @@
         }
         case CtrlTag_PatientGroups:
         {
-            resCtrl = (UIViewController *)StoryboardCtr(@"LWPatientGroupsCtr");
+            resCtrl = [LWPatientGroupsCtr new];
             break;
         }
         case CtrlTag_PersonalSeting:

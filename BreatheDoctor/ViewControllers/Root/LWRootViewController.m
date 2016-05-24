@@ -19,6 +19,7 @@
 #import "CDMacro.h"
 #import "LWPatientListCtr.h"
 #import "KLMessageViewController.h"
+#import "KLNavigationController.h"
 
 @interface LWRootViewController ()
 
@@ -40,19 +41,17 @@
 
 -(void)loginTabbar
 {
-    self.tabBar.hidden=NO;
+
     //5个视图控制器--对应5个模块
     UIViewController *vc1  = [[KLMessageViewController alloc] init];
     UIViewController *vc2  = [[LWPatientListCtr alloc] initWithListType:LISTTYPEDEFT];
     UIViewController *vc3  = StoryboardCtr(@"LWPersonalCtr");
     
     //5个导航控制器--对应上述5个视图
-    UINavigationController *nav1 = [[UINavigationController alloc]initWithRootViewController:vc1];
-    UINavigationController *nav2 =[[UINavigationController alloc]initWithRootViewController:vc2];
-    UINavigationController *nav3 =[[UINavigationController alloc]initWithRootViewController:vc3];
+    KLNavigationController *nav1 = [[KLNavigationController alloc]initWithRootViewController:vc1];
+    KLNavigationController *nav2 = [[KLNavigationController alloc]initWithRootViewController:vc2];
+    KLNavigationController *nav3 = [[KLNavigationController alloc]initWithRootViewController:vc3];
 
-    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     //nav_third
     NSArray *NavConnections=[[NSArray alloc] initWithObjects:nav1,nav2,nav3, nil];
     self.viewControllers = NavConnections;
@@ -63,6 +62,7 @@
     self.tabBar.itemPositioning = UITabBarItemPositioningAutomatic;
     //self.tabBar.delegate = self;
     
+    self.tabBar.backgroundColor = [UIColor whiteColor];
     [self.tabBar setTintColor:CUSTOM_COLOR(73, 146, 59, 1.0)];
     [self.tabBar setSelectedImageTintColor:systemColor];
     

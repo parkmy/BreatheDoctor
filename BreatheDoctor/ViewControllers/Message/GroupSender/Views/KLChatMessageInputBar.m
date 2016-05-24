@@ -338,6 +338,8 @@
 {
     
 }
+- (void)starRecord{};
+- (void)endRecord{};
 - (void)endRecord:(NSData *)voiceData timeCount:(NSInteger)count
 {
     [_longButtonVoice setTitle:@"按住说话" forState:UIControlStateNormal];

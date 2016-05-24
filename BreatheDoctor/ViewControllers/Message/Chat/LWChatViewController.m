@@ -79,6 +79,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
     [LWPublicDataManager shareInstance].currentPatientID = self.patient.memberId; //记录对话ID
 
 }
+
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
@@ -96,7 +97,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [[PushMgrInfo sharedInstance] isRegisterUserNotification:[UIApplication sharedApplication] theisInfoDate:NO];
-
+    
     [self initProperty];
     [self setUI];
     [self loadSQLData];
@@ -108,7 +109,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
 - (void)setUI
 {
     
-    UIEdgeInsets inset = UIEdgeInsetsMake(0, 0, 0, 0);
+    UIEdgeInsets inset = UIEdgeInsetsMake(BARHIGHT, 0, 0, 0);
     
     [self.view addSubview:self.tableView];
     [self.tableView autoPinEdgesToSuperviewEdgesWithInsets:inset excludingEdge:ALEdgeBottom];
@@ -127,6 +128,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
 
 - (void)dealloc
 {
+    [self backLoadMessage];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -186,6 +188,8 @@ typedef NS_ENUM(NSInteger , SenderType) {
             }else
             {
                 [weakSelf.DataSource addObjectsFromArray:array];
+                
+                
                 [weakSelf reloadTableViewCount:count];
                 [weakSelf.tableView.mj_header endRefreshing];
             }
@@ -219,10 +223,16 @@ typedef NS_ENUM(NSInteger , SenderType) {
 {
     [LWChatBaseModel minuteOffSetArray:self.DataSource];
     [LWTool traverseChatMessage:self.DataSource];
+    
+//    NSInteger nowCount = self.DataSource.count + count;
+    CGFloat oldHeight = self.tableView.contentHeight;
+
     if (self.DataSource.count > 0) {
         [self.tableView reloadData];
         if (self.DataSource.count > 0 && self.DataSource.count > count && count != 0) {
-            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.DataSource.count-count inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
+//            [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:oldCount inSection:0] atScrollPosition:UITableViewScrollPositionNone animated:NO];
+            
+            [self.tableView scrollRectToVisible:CGRectMake(0,self.tableView.contentHeight-oldHeight-60, self.tableView.width, self.tableView.height) animated:false];
         }else
         {
             if (self.DataSource.count > 0) {
@@ -454,19 +464,17 @@ typedef NS_ENUM(NSInteger , SenderType) {
     return _DataSource;
 }
 
+- (void)backLoadMessage{
 
-#pragma mark - nav
-- (void)navLeftButtonAction
-{
     if (self.DataSource.count > 0) {
         UUMessageFrame *modelFram = self.DataSource.lastObject;
         LWChatModel *model = modelFram.model;
         NSString *message ;
         if (model.chatCellType == WSChatCellType_Audio) {
-            message = @"语音";
+            message = @"[语音]";
         }else if (model.chatCellType == WSChatCellType_Image)
         {
-            message = @"图片";
+            message = @"[图片]";
         }else if (model.chatCellType == WSChatCellType_Card)
         {
             message = model.doctorText;
@@ -475,7 +483,7 @@ typedef NS_ENUM(NSInteger , SenderType) {
             message = model.content;
         }else if (model.chatCellType == WSChatCellType_Goods)
         {
-            message = @"商品";
+            message = @"[商品]";
         }
         else
         {
@@ -485,8 +493,13 @@ typedef NS_ENUM(NSInteger , SenderType) {
     }else
     {
         _backBlock?_backBlock(nil,nil):nil;
-
+        
     }
+}
+#pragma mark - nav
+- (void)navLeftButtonAction
+{
+    [self backLoadMessage];
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)navRightButtonAction

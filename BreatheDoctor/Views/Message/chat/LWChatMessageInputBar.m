@@ -516,6 +516,18 @@
 {
     
 }
+- (void)starRecord{
+
+    UIViewController *vc = (UIViewController *)self.delegate;
+    vc.navigationController.interactivePopGestureRecognizer.enabled = false;
+
+}
+- (void)endRecord{
+
+    UIViewController *vc = (UIViewController *)self.delegate;
+    vc.navigationController.interactivePopGestureRecognizer.enabled = true;
+
+}
 - (void)endRecord:(NSData *)voiceData timeCount:(NSInteger)count
 {
     //    NSError *error;
@@ -528,6 +540,8 @@
     if (_delegate && [_delegate respondsToSelector:@selector(voicEndRecord:count:)]) {
         [_delegate voicEndRecord:voiceData count:count];
     }
+    
+    
 }
 
 -(void)dragEnter{

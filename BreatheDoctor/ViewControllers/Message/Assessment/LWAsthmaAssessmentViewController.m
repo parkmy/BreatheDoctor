@@ -25,6 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.backgroundColor = [LWThemeManager shareInstance].vcBackgroundColor;
     [self loadAsthmaAssessment];
 }
 

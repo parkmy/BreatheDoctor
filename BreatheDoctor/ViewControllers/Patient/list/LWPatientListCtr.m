@@ -65,19 +65,17 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self setNavControl];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [_pullBtn removeFromSuperview];
-    [_pullImg removeFromSuperview];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.automaticallyAdjustsScrollViewInsets = YES;
     
+    [self setNavControl];
+
     [self initSubViews];
     
     [self loadCacheMes];
@@ -125,7 +123,7 @@
     
     if (self.listType == LISTTYPEDEFT)
     {
-        self.tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
+        self.tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(BARHIGHT, 0, 0, 0));
     }else
     {
         [self.view addSubview:self.footNextButton];
@@ -139,7 +137,7 @@
         self.tableView.sd_layout
         .leftSpaceToView(self.view,0)
         .rightSpaceToView(self.view,0)
-        .topSpaceToView(self.view,0)
+        .topSpaceToView(self.view,BARHIGHT)
         .bottomSpaceToView(self.footNextButton,10);
     }
     
@@ -161,26 +159,43 @@
 
 - (void)setNavControl
 {
-    [super addNavBar:@"患者"];
-    
     if (self.listType == LISTTYPEDEFT) {
         [super addRightButton:@"添加患者"];
     }else{
         [super addBackButton:@"nav_btnBack"];
         [super addRightButton:@"全选"];
     }
+ 
+    [self setCustomCenterView:[self patientListBarView]];
+}
+
+- (UIView *)patientListBarView{
     
-    _pullImg = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width-13)/2+30,19.5,13, 7)];
+    UIView *view = [UIView new];
+    view.bounds = CGRectMake(0, 0, 55, 44);
+    
+    UILabel *label = [UILabel new];
+    label.frame = CGRectMake(0, 0, view.width-15, 44);
+    label.textAlignment = 1;
+    label.font = kNSPXFONT(34);
+    label.textColor = [UIColor whiteColor];
+    label.text = @"患者";
+    
+    _pullImg = [[UIImageView alloc]init];
     _pullImg.image = [UIImage imageNamed:@"V-1_.png"];
-    [super.navBar addSubview:_pullImg];
+    _pullImg.frame = CGRectMake(label.maxX+3, (44-7)/2, 13, 7);
     
     _pullBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _pullBtn.frame = CGRectMake((self.view.frame.size.width-50)/2,0,50, 50);
-    
+    _pullBtn.frame = view.bounds;
     [_pullBtn addTarget:self action:@selector(showGroupClick) forControlEvents:UIControlEventTouchUpInside];
-    [super.navBar addSubview:_pullBtn];
     
+    [view sd_addSubviews:@[label,_pullImg,_pullBtn]];
+    
+    return view;
 }
+
+
+
 #pragma mark -void
 - (void)pushPatientCenter:(KLPatientListModel *)model theIndex:(NSIndexPath *)index{
     

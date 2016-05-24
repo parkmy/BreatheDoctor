@@ -132,6 +132,16 @@
         [[KLIndicatorViewManager standardIndicatorViewManager] showLoadingWithContent:@"正在发送" theView:KL_weakSelf.view];
         [KL_weakSelf senderMessageWithContent:tuple.first theType:1 coiceCount:0 foreignId:nil theSenderView:KL_weakSelf.view];
     }];
+    
+    [[self.inputBar rac_signalForSelector:@selector(starRecord)] subscribeNext:^(id x) {
+        
+        KL_weakSelf.navigationController.interactivePopGestureRecognizer.enabled = false;
+    }];
+    
+    [[self.inputBar rac_signalForSelector:@selector(endRecord)] subscribeNext:^(id x) {
+        
+        KL_weakSelf.navigationController.interactivePopGestureRecognizer.enabled = true;
+    }];
 }
 
 - (void)senderMessageWithContent:(NSString *)content theType:(NSInteger )type coiceCount:(NSInteger)count foreignId:(NSString *)foreignId theSenderView:(UIView *)senderView{

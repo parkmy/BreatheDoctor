@@ -40,14 +40,13 @@
 {
     [super viewWillAppear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    self.navigationController.navigationBarHidden = YES;
-
+    self.navigationController.interactivePopGestureRecognizer.enabled = NO;
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    self.navigationController.navigationBarHidden = NO;
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 
 }
 - (void)setUI
@@ -119,13 +118,14 @@
     [self starTimerLoding];
     WEAKSELF
     [LWHttpRequestManager httpLoginWithPhoneNumber:self.accountTF.text password:self.passwordTF.text success:^(LBLoginBaseModel *userModel) {
-
+        
+        [KL_weakSelf endHidenTimer];
         if (_delegate && [_delegate respondsToSelector:@selector(loginSucc)]) {
             [_delegate loginSucc];
         }
-            [KL_weakSelf endHidenTimer];
     } failure:^(NSString *errorMes) {
-            [KL_weakSelf endHidenTimer];
+        
+        [KL_weakSelf endHidenTimer];
         [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:errorMes];
     }];
     

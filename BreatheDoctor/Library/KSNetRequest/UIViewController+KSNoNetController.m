@@ -35,7 +35,7 @@
         view.delegate = self;
         [view setErrorLabelMessageInfo:message];
         [self.view addSubview:view];
-        view.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
+        view.sd_layout.spaceToSuperView(UIEdgeInsetsMake(64, 0, 0, 0));
 
     });
 }

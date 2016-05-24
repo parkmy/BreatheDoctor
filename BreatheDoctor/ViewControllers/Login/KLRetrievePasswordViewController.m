@@ -26,7 +26,6 @@
     [super viewWillAppear:animated];
     [super addNavBar:@"找回密码"];
     [super addBackButton:@"nav_btnBack"];
-    self.navigationController.navigationBarHidden = NO;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,7 +45,7 @@
     _tableView.dataSource = self;
     _tableView.delegate   = self;
     [self.view addSubview:_tableView];
-    _tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
+    _tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(BARHIGHT, 0, 0, 0));
     
     _tableView.rowHeight = 45*MULTIPLEVIEW;
     setExtraCellLineHidden(_tableView);

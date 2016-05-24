@@ -25,6 +25,9 @@
 
 @property (nonatomic, strong) UITableView *baseTbaleView;
 @property (nonatomic, weak) id<LWChatMessageInputBarDelegate>delegate;
+
+@property (nonatomic, weak) UIViewController *chatVc;
+
 - (void)fastReplyContent:(NSString *)content;
 - (void)removeFromMoreView;
 @end

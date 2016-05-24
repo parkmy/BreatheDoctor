@@ -53,6 +53,7 @@
         [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
         WEAKSELF
         [LWHttpRequestManager httploadFirstDiagnosticInfowithdiagnosticId:self.foreignId Success:^(LWPatientBiaoDanBody *model) {
+            
             [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
             KL_weakSelf.baseModel = [LWTool BiaoDanDataFenXiModel:model];
             [KL_weakSelf baseModelgetrowHight];
@@ -77,9 +78,6 @@
     NSDictionary *dic = [[NSDictionary alloc] initWithContentsOfFile:path];
     _baseModel = [[LWTheFromBaseModel alloc] initWithDictionary:dic];
     [self baseModelgetrowHight];
-    
-    
-//    NSLog(@"%@",[dic JSONString]);
 }
 
 - (void)baseModelgetrowHight
@@ -114,8 +112,6 @@
     [_tableView registerClass:[LWTheFormCell class] forCellReuseIdentifier:@"LWTheFormCell"];
     [self.view addSubview:_tableView];
     
-    
-    
     if (self.showType == showTheFormTypeMouKuai)
     {
         UIView *footView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -132,15 +128,13 @@
 
         btn.sd_layout.leftSpaceToView(footView,20).topSpaceToView(footView,5).rightSpaceToView(footView,20).bottomSpaceToView(footView,5);
 
-        _tableView.sd_layout.topSpaceToView(self.view,64).leftSpaceToView(self.view,0).rightSpaceToView(self.view,0).bottomSpaceToView(footView,0);
+        _tableView.sd_layout.topSpaceToView(self.view,BARHIGHT).leftSpaceToView(self.view,0).rightSpaceToView(self.view,0).bottomSpaceToView(footView,0);
 
     }else
     {
-        _tableView.sd_layout.topSpaceToView(self.view,64).leftSpaceToView(self.view,0).rightSpaceToView(self.view,0).bottomSpaceToView(self.view,0);
+        _tableView.sd_layout.topSpaceToView(self.view,BARHIGHT).leftSpaceToView(self.view,0).rightSpaceToView(self.view,0).bottomSpaceToView(self.view,0);
 
     }
-
-    
 }
 - (void)navLeftButtonAction
 {
@@ -257,10 +251,13 @@
     [LWProgressHUD displayProgressHUD:self.view displayText:@"请稍后..."];
     WEAKSELF
     [LWHttpRequestManager httpDoctorReply:self.patientId content:@"哮喘诊断判定表" contentType:21 voiceMin:0 foreignId:nil success:^(LWSenderResBaseModel *senderResBaseModel) {
+        
         [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
         [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_SENDERZHENGDUANMOKUAISUCC object:nil userInfo:@{@"message":senderResBaseModel}];
         [LCCoolHUD showSuccess:@"发送成功" zoom:YES shadow:NO];
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            
             UIViewController *vc = KL_weakSelf.navigationController.viewControllers[1];
             [KL_weakSelf.navigationController popToViewController:vc animated:YES];
         });

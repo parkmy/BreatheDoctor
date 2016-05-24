@@ -41,7 +41,7 @@
     _tableView.dataSource = self;
     _tableView.delegate   = self;
     [self.view addSubview:_tableView];
-    _tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
+    _tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(BARHIGHT, 0, 0, 0));
     
     [_tableView registerClass:[KLServiceAgreementCell class] forCellReuseIdentifier:@"KLServiceAgreementCell"];
 }

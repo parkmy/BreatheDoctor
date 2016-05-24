@@ -15,4 +15,6 @@
 - (void)kl_fastReplyContent:(NSString *)content;
 - (void)kl_voiceSenderWithVoiceData:(NSData *)data theVoiceCount:(NSInteger)count;
 - (void)kl_textSenderWithText:(NSString *)text;
+- (void)starRecord;
+- (void)endRecord;
 @end

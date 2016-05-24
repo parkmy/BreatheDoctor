@@ -31,6 +31,10 @@
 
 //开始录音
 -(void)startRecord{
+    
+    if ([_delegate respondsToSelector:@selector(starRecord)]) {
+        [_delegate starRecord];
+    }
     [self setTitle:@"松开发送" forState:UIControlStateNormal];
     self.backgroundColor = RGBA(49, 109, 255, .5);
     count = 0;
@@ -49,6 +53,9 @@
 
 //取消录音
 -(void)cancelRecord{
+    if ([_delegate respondsToSelector:@selector(endRecord)]) {
+        [_delegate endRecord];
+    }
     self.backgroundColor = [UIColor clearColor];
     [self setTitle:@"按住说话" forState:UIControlStateNormal];
     [mp3 cancelRecord];
@@ -102,6 +109,9 @@
 //回调录音资料
 - (void)endConvertWithData:(NSData *)voiceData
 {
+    if ([_delegate respondsToSelector:@selector(endRecord)]) {
+        [_delegate endRecord];
+    }
     [RecordHUD setTitle:@"录音成功"];
     if ([_delegate respondsToSelector:@selector(endRecord:timeCount:)]) {
         [_delegate endRecord:voiceData timeCount:count];

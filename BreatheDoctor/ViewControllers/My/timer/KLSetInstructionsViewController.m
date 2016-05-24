@@ -46,6 +46,7 @@
 - (void)setSubViews
 {
     [self.view addSubview:self.textView];
+    self.textView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(BARHIGHT, 0, 0, 0));
 }
 
 - (void)navLeftButtonAction

@@ -47,7 +47,7 @@
 - (void)setUI
 {
     [self.view addSubview:self.tableView];
-    self.tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(0, 0, 0, 0));
+    self.tableView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(BARHIGHT, 0, 0, 0));
 }
 
 - (UITableView *)tableView

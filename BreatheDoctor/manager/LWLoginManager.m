@@ -62,7 +62,6 @@
 - (void)showLoginViewNav:(UIViewController *)vc
 {
     self.showLoginVC = vc;
-    self.showLoginVC.navigationController.navigationBarHidden = YES;
     vc.hidesBottomBarWhenPushed = YES;
     LWLoginViewController *loginVC = (LWLoginViewController *)[UIViewController CreateControllerWithTag:CtrlTag_Login];
     loginVC.delegate = self;
@@ -75,7 +74,6 @@
     if (self.showLoginVC.tabBarController.selectedIndex != 0) {
         self.showLoginVC.tabBarController.selectedIndex = 0;
     }
-    self.showLoginVC.navigationController.navigationBarHidden = NO;
     self.showLoginVC.hidesBottomBarWhenPushed = NO;
     [self.showLoginVC.navigationController popToRootViewControllerAnimated:NO];
     

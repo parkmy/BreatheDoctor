@@ -60,7 +60,7 @@
 
 - (void)initialize
 {
-    m_view=[[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)] ;
+    m_view=[[UIView alloc]initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height-64)] ;
     [self.view addSubview:m_view];
     
 	m_tableView = [[UITableView alloc] initWithFrame:m_view.bounds];
@@ -97,15 +97,20 @@
    
     if (isDelete)
     {
-        [super.navRightButton setTitle:@"完成" forState:UIControlStateNormal];
-         super.navTitle.text = @"编辑";
+//        [super.navRightButton setTitle:@"完成" forState:UIControlStateNormal];
+        self.navRightContent = @"完成";
+        self.navCenterTitle = @"编辑";
+//         super.navTitle.text = @"编辑";
         [m_tableView setEditing:YES animated:YES];
          m_tableView.allowsSelectionDuringEditing = YES;
     }
     else
     {
-        [super.navRightButton setTitle:@"编辑" forState:UIControlStateNormal];
-         super.navTitle.text = NSLocalizedString(@"Fast Reply", "快捷回复");
+//        [super.navRightButton setTitle:@"编辑" forState:UIControlStateNormal];
+//         super.navTitle.text = NSLocalizedString(@"Fast Reply", "快捷回复");
+        
+        self.navRightContent = @"编辑";
+        self.navCenterTitle = @"快捷回复";
          [m_tableView setEditing:NO animated:YES];
     }
     
@@ -227,13 +232,14 @@
     
     if (isDelete)
     {
-        [super.navRightButton setTitle:@"完成" forState:UIControlStateNormal];
+        
+//        [super.navRightButton setTitle:@"完成" forState:UIControlStateNormal];
         
         return;
     }
     else
     {
-        [super.navRightButton setTitle:@"编辑" forState:UIControlStateNormal];
+//        [super.navRightButton setTitle:@"编辑" forState:UIControlStateNormal];
     }
    
 }
