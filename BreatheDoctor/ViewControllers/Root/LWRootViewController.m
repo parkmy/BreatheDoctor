@@ -21,6 +21,10 @@
 #import "KLMessageViewController.h"
 #import "KLNavigationController.h"
 
+#define kTitleKey   @"kTitleKey"
+#define kImgKey     @"kImgKey"
+#define kSelImgKey  @"kSelImgKey"
+
 @interface LWRootViewController ()
 
 @end
@@ -31,7 +35,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self loginTabbar];
+    [self addChildViewControllers];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,71 +43,51 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)loginTabbar
+-(void)addChildViewControllers
 {
 
-    //5个视图控制器--对应5个模块
-    UIViewController *vc1  = [[KLMessageViewController alloc] init];
-    UIViewController *vc2  = [[LWPatientListCtr alloc] initWithListType:LISTTYPEDEFT];
-    UIViewController *vc3  = StoryboardCtr(@"LWPersonalCtr");
-    
-    //5个导航控制器--对应上述5个视图
-    KLNavigationController *nav1 = [[KLNavigationController alloc]initWithRootViewController:vc1];
-    KLNavigationController *nav2 = [[KLNavigationController alloc]initWithRootViewController:vc2];
-    KLNavigationController *nav3 = [[KLNavigationController alloc]initWithRootViewController:vc3];
-
-    //nav_third
-    NSArray *NavConnections=[[NSArray alloc] initWithObjects:nav1,nav2,nav3, nil];
-    self.viewControllers = NavConnections;
-    
-    if (systemVersion>=7.0) {
-        [self.tabBar setTintAdjustmentMode:UIViewTintAdjustmentModeNormal];
-    }
-    self.tabBar.itemPositioning = UITabBarItemPositioningAutomatic;
-    //self.tabBar.delegate = self;
-    
     self.tabBar.backgroundColor = [UIColor whiteColor];
-    [self.tabBar setTintColor:CUSTOM_COLOR(73, 146, 59, 1.0)];
-    [self.tabBar setSelectedImageTintColor:systemColor];
+
+    NSArray *childItemsArray = @[
+                                 @{
+                                   kTitleKey  : @"消息",
+                                   kImgKey    : @"tab_down_1",
+                                   kSelImgKey : @"tab_up_1"},
+                                 
+                                 @{
+                                   kTitleKey  : @"患者",
+                                   kImgKey    : @"tab_down_2",
+                                   kSelImgKey : @"tab_up_2"},
+                                 
+                                 @{
+                                   kTitleKey  : @"我",
+                                   kImgKey    : @"tab_down_3",
+                                   kSelImgKey : @"tab_up_3"} ];
     
-    UIOffset sets = UIOffsetMake(0, -2);
-    nav1.tabBarItem.titlePositionAdjustment = sets;
-    [nav1.tabBarItem setTitle:@"消息"];
-    
-    nav2.tabBarItem.titlePositionAdjustment = sets;
-    [nav2.tabBarItem setTitle:@"患者"];
-    
-    
-    nav3.tabBarItem.titlePositionAdjustment = sets;
-    [nav3.tabBarItem setTitle:@"我"];
-    
-    UIImage *selectedImg=nil;
-    
-    selectedImg=[UIImage imageNamed:@"tab_up_1"];
-    if (systemVersion>=7) {
-        selectedImg=[selectedImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    }
-    [nav1.tabBarItem setFinishedSelectedImage:selectedImg withFinishedUnselectedImage:[UIImage imageNamed:@"tab_down_1"]];
-    
-    selectedImg=[UIImage imageNamed:@"tab_up_2"];
-    if (systemVersion>=7) {
-        selectedImg=[selectedImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    }
-    [nav2.tabBarItem setFinishedSelectedImage:selectedImg withFinishedUnselectedImage:[UIImage imageNamed:@"tab_down_2"]];
-    
-    selectedImg=[UIImage imageNamed:@"tab_up_3"];
-    if (systemVersion>=7) {
-        selectedImg=[selectedImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    }
-    
-    [nav3.tabBarItem setFinishedSelectedImage:selectedImg withFinishedUnselectedImage:[UIImage imageNamed:@"tab_down_3"]];
-    
-    selectedImg=[UIImage imageNamed:@"tab_up_5"];
-    if (systemVersion>=7) {
-        selectedImg=[selectedImg imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    }
-    self.selectedIndex=0;
-    
+    [childItemsArray enumerateObjectsUsingBlock:^(NSDictionary *dict, NSUInteger idx, BOOL *stop) {
+        
+        UIViewController *vc = nil;
+        
+        if (idx == 0) {
+            
+            vc = [[KLMessageViewController alloc] init];
+        }else if (idx == 1){
+        
+            vc = [[LWPatientListCtr alloc] initWithListType:LISTTYPEDEFT];
+        }else{
+        
+            vc = StoryboardCtr(@"LWPersonalCtr");
+        }
+        
+        vc.title = dict[kTitleKey];
+        KLNavigationController *nav = [[KLNavigationController alloc]initWithRootViewController:vc];
+        UITabBarItem *item = nav.tabBarItem;
+        item.title = dict[kTitleKey];
+        item.image = [UIImage imageNamed:dict[kImgKey]];
+        item.selectedImage = [[UIImage imageNamed:dict[kSelImgKey]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        [item setTitleTextAttributes:@{NSForegroundColorAttributeName : systemColor} forState:UIControlStateSelected];
+        [self addChildViewController:nav];
+    }];
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
