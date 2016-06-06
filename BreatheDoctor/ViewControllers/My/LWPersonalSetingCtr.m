@@ -86,6 +86,7 @@
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 1) {
+        
         [[LWLoginManager shareInstance] exitLoginViewVc:self];
     }else if (indexPath.section == 0)
     {

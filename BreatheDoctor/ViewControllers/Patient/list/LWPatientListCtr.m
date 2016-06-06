@@ -70,6 +70,9 @@
 {
     [super viewWillDisappear:animated];
 }
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -520,35 +523,44 @@
         KL_weakSelf.patientDataSource.keys = nil;
         KL_weakSelf.patientDataSource.keys = keys;
         
-        
         [KL_weakSelf.tableView reloadData];
         
-        if (!KL_weakSelf.patientDataSource.isSearch && KL_weakSelf.patientDataSource.patientDics.count <= 0) {
-            if (KL_weakSelf.showGroupingType == ShowGroupingTypeAll) {
-                [KL_weakSelf showErrorMessage:@"您还没有患者，去添加吧~" isShowButton:NO type:showErrorTypeMore];
-            }else{
-                [KL_weakSelf showErrorMessage:@"该分组暂无患者~" isShowButton:YES type:showErrorTypeMore];
-            }
-            KL_weakSelf.tableView.hidden = YES;
-        }else
-        {
-            [KL_weakSelf hiddenNonetWork];
-            KL_weakSelf.tableView.hidden = NO;
-        }
+        [KL_weakSelf isNotPatient];
     }];
     
 }
+- (void)isNotPatient{
+
+    if (!self.patientDataSource.isSearch && self.patientDataSource.patientDics.count <= 0) {
+        if (self.showGroupingType == ShowGroupingTypeAll) {
+            [self showErrorMessage:@"您还没有患者，去添加吧~" isShowButton:NO type:showErrorTypeMore];
+        }else{
+            [self showErrorMessage:@"该分组暂无患者~" isShowButton:YES type:showErrorTypeMore];
+        }
+        self.tableView.hidden = YES;
+    }else
+    {
+        [self hiddenNonetWork];
+        self.tableView.hidden = NO;
+    }
+
+}
+
 #pragma mark -加载网络新数据
 - (void)httploadPatientList
 {
     WEAKSELF
-    [LWHttpRequestManager httpPatientListWithPage:1 size:100000 refreshDate:self.refreshTime success:^(NSMutableArray *list) {
+    [KLPatientOperation httploadPatientListTheRefreshDate:self.refreshTime Succ:^(NSArray *list){
+       
         [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
         if (list.count <= 0) {
+            
+            [KL_weakSelf isNotPatient];
             return ;
         }
         [KL_weakSelf loadCacheMes];
     } failure:^(NSString *errorMes) {
+        
         [LWProgressHUD closeProgressHUD:KL_weakSelf.view];
         if (self.patients.count <= 0) {
             
@@ -559,10 +571,9 @@
                 [KL_weakSelf showErrorMessage:@"您还没有患者，去添加吧~" isShowButton:NO type:showErrorTypeMore];
             }
             KL_weakSelf.tableView.hidden = YES;
-
+            
         }
     }];
-    
 }
 #pragma mark -请求失败刷新
 - (void)reloadRequestWithSender:(UIButton *)sender //错误页面按钮点击事件

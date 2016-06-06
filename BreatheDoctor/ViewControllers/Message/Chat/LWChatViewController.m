@@ -134,20 +134,14 @@ typedef NS_ENUM(NSInteger , SenderType) {
 
 - (void)registNotificationCenter
 {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_ASSESS_ACT object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_ASSESS_ASTHMA object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_FIRST_DIAGNOSE object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_PATIENT_ADD_DIALOGUE object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_PEF_RECORD object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_REPEAT_TREATMENT_INFORM object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_REQUEST_RELATION object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(appNotificationss:)
                                                  name:UIApplicationDidBecomeActiveNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(senderZhenduanMokuai:) name:APP_PUSH_TYPE_SENDERZHENGDUANMOKUAISUCC object:nil];
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appNotificationss:) name:APP_PUSH_TYPE_NEWMESSAGE object:nil];
+
     
 }
 - (void)senderZhenduanMokuai:(NSNotification *)sender

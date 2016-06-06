@@ -7,6 +7,8 @@
 //  控制器父类
 
 #import <UIKit/UIKit.h>
+@class KLNavigationBarView;
+
 #define BARHIGHT 64
 
 @interface KLSuperViewController : UIViewController
@@ -34,6 +36,11 @@
  *  自定义中心试图
  */
 @property (nonatomic, strong) UIView *customCenterView;
+/**
+ *  navbar
+ */
+@property (nonatomic, strong) KLNavigationBarView *barView;
+
 
 - (void)navLeftButtonAction;
 - (void)navRightButtonAction;

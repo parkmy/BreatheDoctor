@@ -14,6 +14,7 @@
 #import "LWPatientRelatedVC.h"
 #import "LWHistoricalRecordVC.h"
 #import "KLPatientListModel.h"
+#import "KLHistoricalLogViewController.h"
 
 @interface LWPatientCententCtr ()<UITableViewDelegate,UITableViewDataSource>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -155,8 +156,13 @@
 //        [self.navigationController pushViewController:patientLog animated:YES];
         [MobClick event:@"patientLOG" label:@"患者日志按钮的点击量"];
 
-        LWHistoricalRecordVC *vc = [LWHistoricalRecordVC new];
-        vc.pid = self.patient.patientId;
+//        LWHistoricalRecordVC *vc = [LWHistoricalRecordVC new];
+//        vc.pid = self.patient.patientId;
+//        [self.navigationController pushViewController:vc animated:YES];
+
+        
+        KLHistoricalLogViewController *vc = [KLHistoricalLogViewController new];
+        vc.patientID = self.patient.patientId;
         [self.navigationController pushViewController:vc animated:YES];
 
     }

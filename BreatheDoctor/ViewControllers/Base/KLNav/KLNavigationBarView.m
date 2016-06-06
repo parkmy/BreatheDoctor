@@ -37,8 +37,8 @@
         
     }else if (self.imageView.image && self.titleLabel.text.length <= 0){
         
-        self.imageView.xOrigin = 0;
-        self.width = self.imageView.maxX+appMargin;
+//        self.imageView.xOrigin = 0;
+        self.width = 50;
     }else if (!self.imageView.image && self.titleLabel.text.length > 0){
         
         self.titleLabel.xOrigin = 0;

@@ -48,7 +48,9 @@ typedef NS_ENUM(NSInteger , ShowGroupingType) {
 + (void)loadCachePatientListSucc:(void(^)(NSMutableArray *dataArray,NSString *refTimer))succBlock;
 
 
-
++ (void)httploadPatientListTheRefreshDate:(NSString *)refDate
+                                     Succ:(void(^)(NSArray *list))succBlock
+                                  failure:(void (^)(NSString * errorMes))failure;
 //- (void)showPullView:(NSMutableArray *)patients;
 //- (void)hiddenPullView;
 

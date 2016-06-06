@@ -101,6 +101,16 @@
     }
     succBlock?succBlock(array,refreshTime):nil;
 }
++ (void)httploadPatientListTheRefreshDate:(NSString *)refDate
+                                     Succ:(void(^)(NSArray *list))succBlock
+                                  failure:(void (^)(NSString * errorMes))failure{
 
+    [LWHttpRequestManager httpPatientListWithPage:1 size:100000 refreshDate:refDate success:^(NSMutableArray *list) {
+        succBlock?succBlock(list):nil;
+    } failure:^(NSString *errorMes) {
+        failure?failure(errorMes):nil;
+    }];
+    
+}
 
 @end

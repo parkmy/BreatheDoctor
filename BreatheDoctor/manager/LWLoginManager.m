@@ -14,6 +14,7 @@
 #import "LWVoiceManager.h"
 #import "KSCache.h"
 #import "KLMessageViewController.h"
+#import "KLMessageOperation.h"
 
 @interface LWLoginManager ()<LWLoginViewControllerDelegate>
 
@@ -43,6 +44,8 @@
 - (void)exitLoginViewVc:(UIViewController *)vc
 {
  
+    [[KLMessageOperation shareInstance] removeMessageRequest];
+    
     [[SDImageCache sharedImageCache] clearDisk]; //清除图片缓存
     
     [[LWVoiceManager shareInstance] clearChae]; //清除多媒体

@@ -8,10 +8,34 @@
 
 #import <Foundation/Foundation.h>
 #define NEWTYPE 110
+@class KLMessgaeDataSource;
 
 @interface KLMessageOperation : NSObject
 
+@property (nonatomic, strong) UILabel *badgeLabel;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) KLMessgaeDataSource *source;
+@property (nonatomic, strong) UIViewController   *showVc;
+
 + (KLMessageOperation *)shareInstance;
+/**
+ *  退出登录的时候需要清除
+ */
+- (void)removeMessageRequest;
+/**
+ *  注册通知
+ */
+- (void)registHomeMessgaeNotificationCenter;
+/**
+ *  加载缓存消息
+ */
+- (void)loadCacheMesg;
+/**
+ *  刷新新消息
+ *
+ */
+- (void)refreshHomeMsg;
+
 
 + (NSMutableArray *)sqlCacheMessages;
 
@@ -21,8 +45,7 @@
  *  @param barItem
  *  @param array 消息数组
  */
-+ (void)changeBadgeValueInfo:(UITabBarItem *)barItem
-             andMessgaeArray:(NSMutableArray *)array;
+- (void)changeBadgeValueTheMessgaeArray:(NSMutableArray *)array;
 
 
 

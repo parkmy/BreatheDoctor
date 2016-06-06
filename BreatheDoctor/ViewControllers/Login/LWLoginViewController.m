@@ -77,7 +77,7 @@
 - (NSArray *)titleArray
 {
     if (!_titleArray) {
-        _titleArray = @[@"登录中.",@"登录中..",@"登录中..."];
+        _titleArray = @[@"登录中·",@"登录中··",@"登录中···"];
     }
     return _titleArray;
 }
@@ -106,7 +106,8 @@
         return;
     }
     
-    if (![self.accountTF.text isMobileNumber]) {
+    
+    if (self.accountTF.text.length <= 0||![self.accountTF.text isPhoneNumber]) {
         [[KLPromptViewManager shareInstance] kl_showPromptViewWithTitle:@"温馨提示" theContent:NSLocalizedString(@"LOGIN_ALERT_IncorrectUsername",nil)];
         return;
     }

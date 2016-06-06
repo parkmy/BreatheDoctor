@@ -11,7 +11,7 @@
 #import "KLNavigationBarView.h"
 
 @interface KLSuperViewController ()
-@property (nonatomic, strong) KLNavigationBarView *barView;
+
 @end
 
 @implementation KLSuperViewController

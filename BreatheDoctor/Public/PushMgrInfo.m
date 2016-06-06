@@ -78,60 +78,73 @@
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 
-    switch ([busyType intValue])
-    {
-            
-        case 1: //请求创建医患关系
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_REQUEST_RELATION object:nil];
+    if ([busyType integerValue] == 8) {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"已为您开通平台服务快去邀请您的患者吧" delegate:self cancelButtonTitle:@"这就去" otherButtonTitles:@"取消", nil];
+        alert.tag = 2;
+        [alert show];
+        
+    }else{
+    
+        [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_NEWMESSAGE object:nil];
 
-            break;
-            
-        case 2://PEF记录
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_PEF_RECORD object:nil];
-
-            break;
-        case 3://ACT评估
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_ASSESS_ACT object:nil];
-        }
-            break;
-        case 4://哮喘评估
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_ASSESS_ASTHMA object:nil];
-
-        }
-            break;
-        case 5://首诊
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_FIRST_DIAGNOSE object:nil];
-        }
-            break;
-        case 6://复诊通知
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_REPEAT_TREATMENT_INFORM object:nil];
-        }
-            break;
-        case 7://患者添加对话
-        {
-            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_PATIENT_ADD_DIALOGUE object:nil];
-
-        }
-            break;
-        case 8://认证通过
-        {
-//            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_CERTIFICATION_SUCC object:nil];
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"已为您开通平台服务快去邀请您的患者吧" delegate:self cancelButtonTitle:@"这就去" otherButtonTitles:@"取消", nil];
-            alert.tag = 2;
-            [alert show];
-            
-            
-        }
-            break;
-        default:
-            break;
     }
+    
+    
+//    switch ([busyType intValue])
+//    {
+//            
+//        case 1: //请求创建医患关系
+//            
+//            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_REQUEST_RELATION object:nil];
+//
+//            break;
+//            
+//        case 2://PEF记录
+//            
+//            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_PEF_RECORD object:nil];
+//
+//            break;
+//        case 3://ACT评估
+//        {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_ASSESS_ACT object:nil];
+//        }
+//            break;
+//        case 4://哮喘评估
+//        {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_ASSESS_ASTHMA object:nil];
+//
+//        }
+//            break;
+//        case 5://首诊
+//        {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_FIRST_DIAGNOSE object:nil];
+//        }
+//            break;
+//        case 6://复诊通知
+//        {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_REPEAT_TREATMENT_INFORM object:nil];
+//        }
+//            break;
+//        case 7://患者添加对话
+//        {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_PATIENT_ADD_DIALOGUE object:nil];
+//
+//        }
+//            break;
+//        case 8://认证通过
+//        {
+////            [[NSNotificationCenter defaultCenter] postNotificationName:APP_PUSH_TYPE_CERTIFICATION_SUCC object:nil];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"已为您开通平台服务快去邀请您的患者吧" delegate:self cancelButtonTitle:@"这就去" otherButtonTitles:@"取消", nil];
+//            alert.tag = 2;
+//            [alert show];
+//            
+//            
+//        }
+//            break;
+//        default:
+//            break;
+//    }
     
 }
 

@@ -56,6 +56,8 @@
      *  认证了就不需要判断了
      */
     if ([LBLoginBaseModel isCheckStatusTheIsShow:NO]) {
+        
+        success?success(YES):nil;
         return;
     }
 
@@ -66,9 +68,11 @@
         [[self class] loginWithPhoneNumber:userModel.loginZhangHao thePsw:userModel.loginMiMa success:^(id user) {
             
             LBLoginBaseModel *userModel = user;
-            
-            success?success([userModel.body.CheckStatus boolValue]):nil;
-            
+            if (userModel.body.CheckStatus) {
+                success?success([userModel.body.CheckStatus boolValue]):nil;
+            }else{
+                success?success(false):nil;
+            }
         } failure:^(NSString *errorMes) {
             
             success?success(false):nil;

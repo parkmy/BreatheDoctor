@@ -34,7 +34,51 @@
     }
     return string;
 }
-
+- (NSString *)pinYinWithString:(NSString *)chinese{
+    
+    NSString *pinYinStr = [NSString string];
+    
+    if (chinese.length){
+        
+        NSMutableString * pinYin = [[NSMutableString alloc]initWithString:chinese];
+        
+        //先转换为带声调的拼音
+        
+        if (CFStringTransform((__bridge CFMutableStringRef)pinYin, 0, kCFStringTransformMandarinLatin, NO)) {
+            
+            NSLog(@"pinyin: %@", pinYin);
+            
+        }
+        
+        //再转换为不带声调的拼音
+        
+        if (CFStringTransform((__bridge CFMutableStringRef)pinYin, 0, kCFStringTransformStripDiacritics, NO)) {
+            
+            NSLog(@"pinyin: %@", pinYin);
+            
+            //再去除空格，将拼音连在一起
+            
+            pinYinStr = [NSString stringWithString:pinYin];
+            
+            // 去除掉首尾的空白字符和换行字符
+            
+            pinYinStr = [pinYinStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+            
+            // 去除掉其它位置的空白字符和换行字符
+            
+            pinYinStr = [pinYinStr stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+            
+            pinYinStr = [pinYinStr stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+            
+            pinYinStr = [pinYinStr stringByReplacingOccurrencesOfString:@" " withString:@""];
+            
+        }
+        
+    }
+    
+    return pinYinStr;
+    
+}
 - (NSArray*)pinyinInitialsArray{
     NSMutableArray *array = [NSMutableArray array];
     for (NSString *str in [self pinyinArray]) {

@@ -22,20 +22,22 @@
 //#define Comvee_Url @"http://wechat.comvee.cn/comveebreath/"
 
 #define comveeUpload_URL @"http://img.mamibon.com:8080/fileuploader/uploader.do"
+
 //199 测试
 //105 正式
 
 // 56f8f5c667e58ed604001f90 测试
 // 56f8f5e767e58ec3380010c6 正式
 #ifdef DEBUG
-#define Comvee_Url @"http://wechat.comvee.cn/comveebreath/"
-//#define Comvee_Url  @"https://breathintf.huxiweishi.cn/"
-
+//#define Comvee_Url @"http://wechat.comvee.cn/comveebreath/"
+#define Comvee_Url  @"https://breathintf.huxiweishi.cn/"
+#define kangLianPatientLog_URL @"http://192.168.199.20:8099/wechatbreath/wechatbreath/asthmaRecord/history_doctor.jsp?"
 //#define Comvee_Url @"http://192.168.199.37:8084/comveebreath/"
 #define UMKEY       @"56f8f5c667e58ed604001f90"
 #define LOADFROMKEY @"99"
 #define platCode    @"199"
 #else
+#define kangLianPatientLog_URL @"http://192.168.199.20:8099/wechatbreath/wechatbreath/asthmaRecord/history_doctor.jsp?"
 #define Comvee_Url  @"https://breathintf.huxiweishi.cn/"
 #define UMKEY       @"56f8f5e767e58ec3380010c6"
 #define LOADFROMKEY @"01"

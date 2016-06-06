@@ -207,27 +207,35 @@
     [LWHttpRequestManager addPublicHeaderPost:requestParams];
     
     [KSNetRequest requestTargetPOST:[LWHttpRequestManager urlWith:HTTP_POST_LOADPATIENTLIST] parameters:requestParams success:^(NSURLSessionDataTask * _Nullable task, id  _Nullable responseObject) {
-        NSLog(@"%@",[responseObject
-                     JSONString]);
-        NSDictionary *body = responseObject[res_body];
-        NSArray      *rows = body[@"rows"];
-        NSString     *refTimer = body[@"refreshTime"];
-        NSMutableArray *list = [NSMutableArray array];
-        for (NSDictionary *dic in rows)
-        {
-            KLPatientListModel *model = [[KLPatientListModel alloc] initWithDictionary:dic];
-            model.refTimer = refTimer;
-            [list addObject:model];
-            NSString *where = [NSString stringWithFormat:@"patientId = %@",model.patientId];
-            if ([[LKDBHelper getUsingLKDBHelper] isExistsClass:[KLPatientListModel class] where:where]) {
-                [[LKDBHelper getUsingLKDBHelper]updateToDB:model where:where];
-            }
-            else{
-                [[LKDBHelper getUsingLKDBHelper] insertToDB:model];
-            }
-        }
-        if (success){ success(list);}
+                
+        NSLog(@"%@",[responseObject JSONString]);
         
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+           
+            NSDictionary *body = responseObject[res_body];
+            NSArray      *rows = body[@"rows"];
+            NSString     *refTimer = body[@"refreshTime"];
+            NSMutableArray *list = [NSMutableArray array];
+            for (NSDictionary *dic in rows)
+            {
+                KLPatientListModel *model = [[KLPatientListModel alloc] initWithDictionary:dic];
+                model.refTimer = refTimer;
+                [list addObject:model];
+                NSString *where = [NSString stringWithFormat:@"patientId = %@",model.patientId];
+                if ([[LKDBHelper getUsingLKDBHelper] isExistsClass:[KLPatientListModel class] where:where]) {
+                    [[LKDBHelper getUsingLKDBHelper]updateToDB:model where:where];
+                }
+                else{
+                    [[LKDBHelper getUsingLKDBHelper] insertToDB:model];
+                }
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+               
+                if (success){ success(list);}
+            });
+        });
+ 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSString * _Nullable errorMessage) {
         failure?failure(errorMessage):nil;
     } isCache:NO];

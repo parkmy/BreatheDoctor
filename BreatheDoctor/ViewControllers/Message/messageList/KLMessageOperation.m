@@ -8,8 +8,19 @@
 
 #import "KLMessageOperation.h"
 #import "NSDate+Extension.h"
+#import "KLMessgaeDataSource.h"
+#import "KLIndicatorViewManager.h"
+
+@interface KLMessageOperation ()
+@property (nonatomic, strong)   LWMainMessageBaseModel *mainMessageModel;
+@property (nonatomic, copy)  NSString *refreshTime;
+
+@property (nonatomic, strong) NSMutableArray *msgArray;
+
+@end
 
 @implementation KLMessageOperation
+
 + (KLMessageOperation *)shareInstance{
     
     static dispatch_once_t onceToken;
@@ -18,6 +29,116 @@
         _op = [KLMessageOperation new];
     });
     return _op;
+}
+- (void)removeMessageRequest{
+
+    [self.msgArray removeAllObjects];
+    self.mainMessageModel = nil;
+    self.refreshTime = nil;
+}
+
+- (void)dealloc{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+- (NSMutableArray *)msgArray{
+    
+    if (!_msgArray) {
+        _msgArray = [NSMutableArray array];
+    }
+    return _msgArray;
+}
+- (void)registHomeMessgaeNotificationCenter{
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(newMessage:) name:APP_PUSH_TYPE_NEWMESSAGE object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(newMessage:)
+                                                 name:UIApplicationDidBecomeActiveNotification object:nil];
+}
+/**
+ *  新消息通知
+ */
+- (void)newMessage:(NSNotificationCenter *)sender{
+    
+    [self refreshHomeMsg];
+}
+#pragma mark - 获取缓存数据
+- (void)loadCacheMesg
+{
+    [self.msgArray removeAllObjects];
+    [self.msgArray addObjectsFromArray:[KLMessageOperation sqlCacheMessages]];
+    
+    if (self.source) {
+        
+        [self.source.messageArray removeAllObjects];
+        [self.source.messageArray addObjectsFromArray:self.msgArray];
+    }
+
+    if (self.msgArray.count <= 0) {
+        
+        if (self.showVc) {
+            [self.showVc showErrorMessage:@"暂时没有新消息~" isShowButton:YES type:showErrorTypeMore];
+        }
+        [self refreshHomeMsg];
+        
+    }else{
+        if (self.showVc && self.tableView) {
+            
+            [self.showVc hiddenNonetWork];
+            [self.tableView reloadData];
+        }
+        [self changeBadgeValueTheMessgaeArray:self.msgArray];
+    }
+}
+
+#pragma mark - 获取刷新数据
+
+- (void)refreshHomeMsg
+{
+    
+    self.refreshTime = nil;
+    if (self.mainMessageModel)//内存对象
+    {
+        self.refreshTime = self.mainMessageModel.body.refreshDate;
+    }else
+    {
+        LWMainRows *model = [self.msgArray firstObject];
+        if (model) {//内存数组
+            self.refreshTime = model.refreshTime;;
+        }
+    }
+    WEAKSELF
+    [LWHttpRequestManager httpMaiMesggaeWithPage:1 size:100000 refreshDate:self.refreshTime  success:^(LWMainMessageBaseModel *mainMessageBaseModel) {
+        
+        KL_weakSelf.mainMessageModel = mainMessageBaseModel;
+        
+        if (KL_weakSelf.mainMessageModel.body.rows.count <= 0) {
+            
+            [KL_weakSelf changeBadgeValueTheMessgaeArray:KL_weakSelf.msgArray];
+            return ;
+        }
+        if (KL_weakSelf.showVc) {
+            [KL_weakSelf.showVc hiddenNonetWork];
+        }
+        
+        if (KL_weakSelf.source) {
+            
+            [KLMessageOperation reloadTableViewInfoObjcs:KL_weakSelf.mainMessageModel.body.rows theMessageArray:KL_weakSelf.source.messageArray theTableView:KL_weakSelf.tableView];
+            [KL_weakSelf.msgArray removeAllObjects];
+            [KL_weakSelf.msgArray addObjectsFromArray:KL_weakSelf.source.messageArray];
+
+        }else{
+            [KLMessageOperation reloadTableViewInfoObjcs:KL_weakSelf.mainMessageModel.body.rows theMessageArray:KL_weakSelf.msgArray theTableView:KL_weakSelf.tableView];
+        }
+
+        [KL_weakSelf changeBadgeValueTheMessgaeArray:KL_weakSelf.msgArray];
+        
+        [[KLIndicatorViewManager standardIndicatorViewManager] hiddenIndicatorView];
+    } failure:^(NSString *errorMes) {
+        
+        [KL_weakSelf changeBadgeValueTheMessgaeArray:KL_weakSelf.msgArray];
+        [[KLIndicatorViewManager standardIndicatorViewManager] hiddenIndicatorView];
+    }];
 }
 /**
  *  得到新朋友对象
@@ -191,8 +312,7 @@
     
     
 }
-+ (void)changeBadgeValueInfo:(UITabBarItem *)barItem
-             andMessgaeArray:(NSMutableArray *)array{
+- (void)changeBadgeValueTheMessgaeArray:(NSMutableArray *)array{
     
     NSInteger value = 0;
     
@@ -202,20 +322,30 @@
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = value;
     
+    self.badgeLabel.text = @"";
+    self.badgeLabel.hidden = false;
+    
     if (value <= 0)
     {
-        barItem.badgeValue = nil;
+        self.badgeLabel.text = @"";
+        self.badgeLabel.hidden = YES;
     }
     else if (value > 99)
     {
-        barItem.badgeValue = @"99+";
+        self.badgeLabel.text = @"99+";
     }
     else
     {
-        barItem.badgeValue = [NSString stringWithFormat:@"%@",kNSNumInteger(value)];
+        self.badgeLabel.text = [NSString stringWithFormat:@"%@",kNSNumInteger(value)];
     }
 }
-
+/**
+ *  刷新数据
+ *
+ *  @param array        新数据
+ *  @param messageArray 老数据
+ *  @param tableView    表
+ */
 + (void)reloadTableViewInfoObjcs:(NSArray *)array
                  theMessageArray:(NSMutableArray *)messageArray
                     theTableView:(UITableView *)tableView{
@@ -231,7 +361,6 @@
     /**
      *  遍历要刷新的数据得到刷新的indexs
      */
-    
     for (LWMainRows *objc in array)
     {
         LWMainRows *oldObjc = nil;
@@ -242,25 +371,40 @@
             if ([searchObjc.memberId isEqualToString:objc.memberId])
             {
                 oldObjc = searchObjc;
+                /**
+                 *  消息相同第一条 直接替换更新
+                 */
                 if (j == 0) {
                     [messageArray replaceObjectAtIndex:j withObject:objc];
-                    [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:j inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                    if (tableView) {
+                        [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:j inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                    }
                     continue;
                 }
-
+                /**
+                 *  不是第一条跟第一条对比
+                 */
                 LWMainRows *oneObjc = messageArray[0];
                 
                 NSDate *date1 = [NSDate dateWithString:objc.insertDt format:[NSDate ymdHmsFormat]];
                 NSDate *date2 = [NSDate dateWithString:oneObjc.insertDt format:[NSDate ymdHmsFormat]];
-                
+                /**
+                 *  比第一条
+                 */
                 if ([date1 compare:date2] == NSOrderedAscending){
-                    [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:j inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                    if (tableView) {
+                        [tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:j inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                    }
                 }else{
                     
                     [messageArray removeObjectAtIndex:j];
-                    [tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:j inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                    if (tableView) {
+                        [tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:j inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                    }
                     [messageArray insertObject:objc atIndex:0];
-                    [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                    if (tableView) {
+                        [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+                    }
                 }
                 continue;
             }
@@ -284,7 +428,9 @@
      */
     if (messageArray.count <= 0) {
         [messageArray addObjectsFromArray:newArray];
-        [tableView reloadData];
+        if (tableView) {
+            [tableView reloadData];
+        }
     }else{
         for (int j = 0; j < newArray.count; j++) {
             
@@ -295,19 +441,25 @@
              */
             if (objc.msgType == NEWTYPE) {
                 if (requestModel) {
-                    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                    if (tableView) {
+                        [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                    }
                 }else{
                     [messageArray insertObject:objc atIndex:j];
+                    if (tableView) {
+                        
+                        [tableView beginUpdates];
+                        [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                        [tableView endUpdates];
+                    }
+                }
+            }else{
+                [messageArray insertObject:objc atIndex:j];
+                if (tableView) {
                     [tableView beginUpdates];
                     [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
                     [tableView endUpdates];
                 }
-            }else{
-                [messageArray insertObject:objc atIndex:j];
-                [tableView beginUpdates];
-                [tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                [tableView endUpdates];
-                
             }
         }
     }

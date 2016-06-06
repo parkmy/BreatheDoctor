@@ -18,8 +18,8 @@
 #import "LWRootViewController.h"
 #import "CDMacro.h"
 #import "LWPatientListCtr.h"
-#import "KLMessageViewController.h"
 #import "KLNavigationController.h"
+#import "KLHomeViewController.h"
 
 #define kTitleKey   @"kTitleKey"
 #define kImgKey     @"kImgKey"
@@ -50,7 +50,7 @@
 
     NSArray *childItemsArray = @[
                                  @{
-                                   kTitleKey  : @"消息",
+                                   kTitleKey  : @"工作站",
                                    kImgKey    : @"tab_down_1",
                                    kSelImgKey : @"tab_up_1"},
                                  
@@ -70,7 +70,7 @@
         
         if (idx == 0) {
             
-            vc = [[KLMessageViewController alloc] init];
+            vc = [[KLHomeViewController alloc] init];
         }else if (idx == 1){
         
             vc = [[LWPatientListCtr alloc] initWithListType:LISTTYPEDEFT];
@@ -92,7 +92,7 @@
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item
 {
-    if ([item.title isEqualToString:@"消息"]) {
+    if ([item.title isEqualToString:@"工作站"]) {
             [[NSNotificationCenter defaultCenter] postNotificationName:APP_TABBAR_ITM_MESSAGE object:nil];
     }
 
